@@ -1,3 +1,6 @@
+require 'fog/core'
+require 'fog/json'
+require 'fog/openstack'
 require 'fog/openstack/identity'
 require 'fog/openstack/identity_v2'
 require 'fog/openstack/identity_v3'

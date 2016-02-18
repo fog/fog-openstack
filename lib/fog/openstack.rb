@@ -2,65 +2,13 @@ require 'fog/openstack/version'
 require 'fog/core'
 require 'fog/json'
 
+require 'fog/openstack/core'
+require 'fog/openstack/common'
+require 'fog/openstack/errors'
+
 module Fog
   module OpenStack
     extend Fog::Provider
-
-    autoload :Compute, File.expand_path('../openstack/compute', __FILE__)
-    autoload :IdentityV2, File.expand_path('../openstack/identity_v2', __FILE__)
-    autoload :IdentityV3, File.expand_path('../openstack/identity_v3', __FILE__)
-    autoload :Image, File.expand_path('../openstack/image', __FILE__)
-    autoload :ImageV1, File.expand_path('../openstack/image_v1', __FILE__)
-    autoload :ImageV2, File.expand_path('../openstack/image_v2', __FILE__)
-    autoload :Metering, File.expand_path('../openstack/metering', __FILE__)
-    autoload :Network, File.expand_path('../openstack/network', __FILE__)
-    autoload :Orchestration, File.expand_path('../openstack/orchestration', __FILE__)
-    autoload :Storage, File.expand_path('../openstack/storage', __FILE__)
-    autoload :Volume, File.expand_path('../openstack/volume', __FILE__)
-    autoload :VolumeV1, File.expand_path('../openstack/volume_v1', __FILE__)
-    autoload :VolumeV2, File.expand_path('../openstack/volume_v2', __FILE__)
-    autoload :BareMetal, File.expand_path('../openstack/baremetal', __FILE__)
-    autoload :Planning, File.expand_path('../openstack/planning', __FILE__)
-
-
-    module Errors
-      class ServiceError < Fog::Errors::Error
-        attr_reader :response_data
-
-        def self.slurp(error)
-          if error.response.body.empty?
-            data = nil
-            message = nil
-          else
-            data = Fog::JSON.decode(error.response.body)
-            message = data['message']
-            if message.nil? and !data.values.first.nil?
-              message = data.values.first['message']
-            end
-          end
-
-          new_error = super(error, message)
-          new_error.instance_variable_set(:@response_data, data)
-          new_error
-        end
-      end
-
-      class ServiceUnavailable < ServiceError; end
-
-      class BadRequest < ServiceError
-        attr_reader :validation_errors
-
-        def self.slurp(error)
-          new_error = super(error)
-          unless new_error.response_data.nil? or new_error.response_data['badRequest'].nil?
-            new_error.instance_variable_set(:@validation_errors, new_error.response_data['badRequest']['validationErrors'])
-          end
-          new_error
-        end
-      end
-
-      class InterfaceNotImplemented < Fog::Errors::Error; end
-    end
 
     service(:compute ,      'Compute')
     service(:image,         'Image')
@@ -73,116 +21,22 @@ module Fog
     service(:baremetal,     'Baremetal')
     service(:planning,      'Planning')
 
-    module Core
-      attr_accessor :auth_token
-      attr_reader :auth_token_expiration
-      attr_reader :current_user
-      attr_reader :current_user_id
-      attr_reader :current_tenant
-      attr_reader :openstack_domain_name
-      attr_reader :openstack_user_domain
-      attr_reader :openstack_project_domain
-      attr_reader :openstack_domain_id
-      attr_reader :openstack_user_domain_id
-      attr_reader :openstack_project_domain_id
-      attr_reader :openstack_identity_prefix
-
-      def initialize_identity options
-        # Create @openstack_* instance variables from all :openstack_* options
-        options.select{|x|x.to_s.start_with? 'openstack'}.each do |openstack_param, value|
-          instance_variable_set "@#{openstack_param}".to_sym, value
-        end
-
-        @auth_token        ||= options[:openstack_auth_token]
-        @openstack_identity_public_endpoint = options[:openstack_identity_endpoint]
-
-        @openstack_auth_uri    = URI.parse(options[:openstack_auth_url])
-        @openstack_must_reauthenticate  = false
-        @openstack_endpoint_type = options[:openstack_endpoint_type] || 'publicURL'
-
-        unless @auth_token
-          missing_credentials = Array.new
-
-          missing_credentials << :openstack_api_key unless @openstack_api_key
-          unless @openstack_username || @openstack_userid
-            missing_credentials << 'openstack_username or openstack_userid'
-          end
-          raise ArgumentError, "Missing required arguments: #{missing_credentials.join(', ')}" unless missing_credentials.empty?
-        end
-
-        @current_user = options[:current_user]
-        @current_user_id = options[:current_user_id]
-        @current_tenant = options[:current_tenant]
-
-      end
-
-      def credentials
-        options =  {
-          :provider                    => 'openstack',
-          :openstack_auth_url          => @openstack_auth_uri.to_s,
-          :openstack_auth_token        => @auth_token,
-          :openstack_identity_endpoint => @openstack_identity_public_endpoint,
-          :current_user                => @current_user,
-          :current_user_id             => @current_user_id,
-          :current_tenant              => @current_tenant,
-          :unscoped_token              => @unscoped_token}
-        openstack_options.merge options
-      end
-
-      def reload
-        @connection.reset
-      end
-
-      private
-
-      def openstack_options
-        options={}
-        # Create a hash of (:openstack_*, value) of all the @openstack_* instance variables
-        self.instance_variables.select{|x|x.to_s.start_with? '@openstack'}.each do |openstack_param|
-          option_name = openstack_param.to_s[1..-1]
-          options[option_name.to_sym] = instance_variable_get openstack_param
-        end
-        options
-      end
-
-      def authenticate
-        if !@openstack_management_url || @openstack_must_reauthenticate
-
-          options = openstack_options
-
-          options[:openstack_auth_token] = @openstack_must_reauthenticate ? nil : @openstack_auth_token
-
-          credentials = Fog::OpenStack.authenticate(options, @connection_options)
-
-          @current_user = credentials[:user]
-          @current_user_id = credentials[:current_user_id]
-          @current_tenant = credentials[:tenant]
-
-          @openstack_must_reauthenticate = false
-          @auth_token = credentials[:token]
-          @openstack_management_url = credentials[:server_management_url]
-          @unscoped_token = credentials[:unscoped_token]
-        else
-          @auth_token = @openstack_auth_token
-        end
-        @openstack_management_uri = URI.parse(@openstack_management_url)
-
-        @host   = @openstack_management_uri.host
-        @path   = @openstack_management_uri.path
-        @path.sub!(/\/$/, '')
-        @port   = @openstack_management_uri.port
-        @scheme = @openstack_management_uri.scheme
-
-        # Not all implementations have identity service in the catalog
-        if @openstack_identity_public_endpoint || @openstack_management_url
-          @identity_connection = Fog::Core::Connection.new(
-              @openstack_identity_public_endpoint || @openstack_management_url,
-              false, @connection_options)
-        end
-
-        true
-      end
-    end
+    autoload :Compute, File.expand_path('../openstack/compute', __FILE__)
+    autoload :Identity, File.expand_path('../openstack/identity', __FILE__)
+    autoload :IdentityV2, File.expand_path('../openstack/identity_v2', __FILE__)
+    autoload :IdentityV3, File.expand_path('../openstack/identity_v3', __FILE__)
+    autoload :Image, File.expand_path('../openstack/image', __FILE__)
+    autoload :ImageV1, File.expand_path('../openstack/image_v1', __FILE__)
+    autoload :ImageV2, File.expand_path('../openstack/image_v2', __FILE__)
+    autoload :Metering, File.expand_path('../openstack/metering', __FILE__)
+    autoload :Network, File.expand_path('../openstack/network', __FILE__)
+    autoload :Orchestration, File.expand_path('../openstack/orchestration', __FILE__)
+    autoload :Storage, File.expand_path('../openstack/storage', __FILE__)
+    autoload :Volume, File.expand_path('../openstack/volume', __FILE__)
+    autoload :VolumeV1, File.expand_path('../openstack/volume_v1', __FILE__)
+    autoload :VolumeV2, File.expand_path('../openstack/volume_v2', __FILE__)
+    autoload :Baremetal, File.expand_path('../openstack/baremetal', __FILE__)
+    autoload :Planning, File.expand_path('../openstack/planning', __FILE__)
 
     @@token_cache = {}
 
@@ -649,4 +503,5 @@ module Fog
 
     end
   end
+
 end
