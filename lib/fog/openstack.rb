@@ -10,6 +10,24 @@ module Fog
   module OpenStack
     extend Fog::Provider
 
+    # `require` is necessary until they can be refactored into autoload
+    require 'fog/openstack/image_v1'
+    require 'fog/openstack/storage'
+    require 'fog/openstack/volume_v1'
+    require 'fog/openstack/volume_v2'
+    require 'fog/openstack/planning'
+
+    autoload :Compute, File.expand_path('../openstack/compute', __FILE__)
+    autoload :IdentityV2, File.expand_path('../openstack/identity_v2', __FILE__)
+    autoload :IdentityV3, File.expand_path('../openstack/identity_v3', __FILE__)
+    autoload :Image, File.expand_path('../openstack/image', __FILE__)
+    autoload :ImageV2, File.expand_path('../openstack/image_v2', __FILE__)
+    autoload :Metering, File.expand_path('../openstack/metering', __FILE__)
+    autoload :Network, File.expand_path('../openstack/network', __FILE__)
+    autoload :Orchestration, File.expand_path('../openstack/orchestration', __FILE__)
+    autoload :Volume, File.expand_path('../openstack/volume', __FILE__)
+    autoload :Baremetal, File.expand_path('../openstack/baremetal', __FILE__)
+
     service(:compute ,      'Compute')
     service(:image,         'Image')
     service(:identity,      'Identity')
@@ -20,23 +38,6 @@ module Fog
     service(:orchestration, 'Orchestration')
     service(:baremetal,     'Baremetal')
     service(:planning,      'Planning')
-
-    autoload :Compute, File.expand_path('../openstack/compute', __FILE__)
-    autoload :Identity, File.expand_path('../openstack/identity', __FILE__)
-    autoload :IdentityV2, File.expand_path('../openstack/identity_v2', __FILE__)
-    autoload :IdentityV3, File.expand_path('../openstack/identity_v3', __FILE__)
-    autoload :Image, File.expand_path('../openstack/image', __FILE__)
-    autoload :ImageV1, File.expand_path('../openstack/image_v1', __FILE__)
-    autoload :ImageV2, File.expand_path('../openstack/image_v2', __FILE__)
-    autoload :Metering, File.expand_path('../openstack/metering', __FILE__)
-    autoload :Network, File.expand_path('../openstack/network', __FILE__)
-    autoload :Orchestration, File.expand_path('../openstack/orchestration', __FILE__)
-    autoload :Storage, File.expand_path('../openstack/storage', __FILE__)
-    autoload :Volume, File.expand_path('../openstack/volume', __FILE__)
-    autoload :VolumeV1, File.expand_path('../openstack/volume_v1', __FILE__)
-    autoload :VolumeV2, File.expand_path('../openstack/volume_v2', __FILE__)
-    autoload :Baremetal, File.expand_path('../openstack/baremetal', __FILE__)
-    autoload :Planning, File.expand_path('../openstack/planning', __FILE__)
 
     @@token_cache = {}
 
