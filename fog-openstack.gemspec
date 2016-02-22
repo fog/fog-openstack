@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{OpenStack fog provider gem}
   spec.description   = %q{OpenStack fog provider gem.}
-  spec.homepage      = "https://github.com/fog/fog-openstack.com"
+  spec.homepage      = "https://github.com/fog/fog-openstack"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
