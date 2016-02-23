@@ -1,8 +1,10 @@
 # Fog::Openstack
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/fog/openstack`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Gem Version](https://badge.fury.io/rb/fog-openstack.svg)](http://badge.fury.io/rb/fog-openstack) [![Build Status](https://travis-ci.org/fog/fog-openstack.svg?branch=master)](https://travis-ci.org/fog/fog-openstack) [![Dependency Status](https://gemnasium.com/fog/fog-openstack.svg)](https://gemnasium.com/fog/fog-openstack) [![Coverage Status](https://img.shields.io/coveralls/fog/fog-openstack.svg)](https://coveralls.io/r/fog/fog-openstack) [![Code Climate](https://codeclimate.com/github/fog/fog-openstack.png)](https://codeclimate.com/github/fog/fog-openstack)
 
-TODO: Delete this and the text above, and describe your gem
+This is the plugin Gem to talk to [OpenStack](http://openstack.org) clouds via fog.
+
+The main maintainers for the OpenStack sections are @dhague, @Ladas, @seanhandley, @mdarby and @jjasghar. Please send CC them on pull requests.
 
 ## Installation
 
