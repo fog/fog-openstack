@@ -91,11 +91,3 @@ WhileUntilModifier:
   Enabled: false
 WordArray:
   AutoCorrect: false
-
-ClassAndModuleCamelCase:
-  Exclude:
-    - lib/miq_automation_engine/service_models/*.rb
-FileName:
-  Exclude:
-    - lib/miq_automation_engine/service_models/*.rb
-    - config/toolbar_strings.rb
