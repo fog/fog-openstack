@@ -20,23 +20,6 @@ CollectionMethods:
     reduce: inject
 CyclomaticComplexity:
   Severity: refactor
-GlobalVars:
-  AllowedVariables:
-  # Loggers
-  - $audit_log
-  - $api_log
-  - $aws_log
-  - $fog_log
-  - $log
-  - $miq_ae_logger
-  - $policy_log
-  - $rails_log
-  - $rhevm_log
-  - $kube_log
-  - $scvmm_log
-  - $vim_log
-  # In Automate methods
-  - $evm
 FormatString:
   EnforcedStyle: percent
 HashSyntax:
@@ -64,10 +47,6 @@ TrivialAccessors:
 #
 # Enabled/Disabled
 #
-AllCops:
-  Exclude:
-    - config/toolbar_strings.rb
-    - gems/pending/VMwareWebService/wsdl41/vimws25MappingRegistry.rb
 ClassAndModuleChildren:
   Enabled: false
 DefEndAlignment:
