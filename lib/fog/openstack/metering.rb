@@ -20,12 +20,17 @@ module Fog
       model       :resource
       collection  :resources
 
+      model       :event
+      collection  :events
+
       request_path 'fog/openstack/requests/metering'
 
       # Metering
+      request :get_event
       request :get_resource
       request :get_samples
       request :get_statistics
+      request :list_events
       request :list_meters
       request :list_resources
 
@@ -126,7 +131,7 @@ module Fog
           rescue Excon::Errors::HTTPStatusError => error
             raise case error
             when Excon::Errors::NotFound
-              Fog::Compute::OpenStack::NotFound.slurp(error)
+              Fog::Metering::OpenStack::NotFound.slurp(error)
             else
               error
             end
