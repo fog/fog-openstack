@@ -5,7 +5,7 @@ matrix:
   fast_finish: true
   include:
   - rvm: 1.9.3
-    gemfile: Gemfile
+    gemfile: gemfiles/Gemfile-1.9
   - rvm: 2.0.0
     gemfile: Gemfile
   - rvm: 2.1.0
@@ -14,8 +14,10 @@ matrix:
     gemfile: Gemfile
   - rvm: 2.2.0
     gemfile: Gemfile
-  - rvm: jruby-19mode
+  - rvm: 2.3.0
     gemfile: Gemfile
+  - rvm: jruby-19mode
+    gemfile: gemfiles/Gemfile-1.9
   - rvm: jruby-head
     gemfile: Gemfile
   allow_failures:
