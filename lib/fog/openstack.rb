@@ -6,6 +6,22 @@ require 'fog/openstack/core'
 require 'fog/openstack/common'
 require 'fog/openstack/errors'
 
+require 'fog/openstack/compute'
+require 'fog/openstack/identity_v2'
+require 'fog/openstack/identity_v3'
+require 'fog/openstack/image'
+require 'fog/openstack/image_v1'
+require 'fog/openstack/image_v2'
+require 'fog/openstack/metering'
+require 'fog/openstack/network'
+require 'fog/openstack/orchestration'
+require 'fog/openstack/storage'
+require 'fog/openstack/volume'
+require 'fog/openstack/volume_v1'
+require 'fog/openstack/volume_v2'
+require 'fog/openstack/baremetal'
+require 'fog/openstack/planning'
+
 module Fog
   module OpenStack
     extend Fog::Provider
