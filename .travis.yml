@@ -25,4 +25,10 @@ matrix:
 after_success:
   - coveralls
 notifications:
+  webhooks:
+    urls:
+    - https://webhooks.gitter.im/e/af95aadff4470a9732b9
+    on_success: change
+    on_failure: always
+    on_start: never
   email: false
