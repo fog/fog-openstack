@@ -22,7 +22,5 @@ matrix:
     gemfile: Gemfile
   allow_failures:
   - rvm: jruby-head
-after_success:
-  - coveralls
 notifications:
   email: false
