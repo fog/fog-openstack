@@ -1,5 +1,7 @@
 # Fog::Openstack
 
+[![Join the chat at https://gitter.im/fog/fog-openstack](https://badges.gitter.im/fog/fog-openstack.svg)](https://gitter.im/fog/fog-openstack?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Gem Version](https://badge.fury.io/rb/fog-openstack.svg)](http://badge.fury.io/rb/fog-openstack) [![Build Status](https://travis-ci.org/fog/fog-openstack.svg?branch=master)](https://travis-ci.org/fog/fog-openstack) [![Dependency Status](https://gemnasium.com/fog/fog-openstack.svg)](https://gemnasium.com/fog/fog-openstack) [![Coverage Status](https://img.shields.io/coveralls/fog/fog-openstack.svg)](https://coveralls.io/r/fog/fog-openstack) [![Code Climate](https://codeclimate.com/github/fog/fog-openstack.png)](https://codeclimate.com/github/fog/fog-openstack)
 
 This is the plugin Gem to talk to [OpenStack](http://openstack.org) clouds via fog.
