@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require File.expand_path('../../lib/fog/openstack', __FILE__)
 
 Bundler.require(:test)
