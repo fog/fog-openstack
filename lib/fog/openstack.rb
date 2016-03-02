@@ -409,7 +409,8 @@ module Fog
                                           :headers => {'Content-Type' => 'application/json'},
                                           :body    => Fog::JSON.encode(request_body),
                                           :method  => 'POST',
-                                          :path    => path
+                                          :path    => path,
+                                          :omit_default_port => true
                                       })
         @@token_cache[{body: request_body, path: path}] = response, Time.now + 30 # 30-second TTL, enough for most requests
       end
