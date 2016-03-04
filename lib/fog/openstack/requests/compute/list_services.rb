@@ -18,13 +18,13 @@ module Fog
           response.status = 200
           response.body = {
             "services" => [{
-              "id" => 1,
-              "binary" => "nova-scheduler",
-              "host" => "host1",
-              "state" => "up",
-              "status" => "disabled",
-              "updated_at" => "2012-10-29T13:42:02.000000",
-              "zone" => "internal",
+              "id"              => 1,
+              "binary"          => "nova-scheduler",
+              "host"            => "host1",
+              "state"           => "up",
+              "status"          => "disabled",
+              "updated_at"      => "2012-10-29T13:42:02.000000",
+              "zone"            => "internal",
               "disabled_reason" => "test2"
             },
             {
