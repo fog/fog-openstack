@@ -300,11 +300,12 @@ module Fog
     end
 
     def self.retrieve_tokens_v2(options, connection_options = {})
-      api_key     = options[:openstack_api_key].to_s
-      username    = options[:openstack_username].to_s
-      tenant_name = options[:openstack_tenant].to_s
-      auth_token  = options[:openstack_auth_token] || options[:unscoped_token]
-      uri         = options[:openstack_auth_uri]
+      api_key           = options[:openstack_api_key].to_s
+      username          = options[:openstack_username].to_s
+      tenant_name       = options[:openstack_tenant].to_s
+      auth_token        = options[:openstack_auth_token] || options[:unscoped_token]
+      uri               = options[:openstack_auth_uri]
+      omit_default_port = options[:openstack_auth_omit_default_port]
 
       identity_v2_connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
       request_body = {:auth => Hash.new}
@@ -321,32 +322,36 @@ module Fog
       end
       request_body[:auth][:tenantName] = tenant_name if tenant_name
 
-      response = identity_v2_connection.request({
-        :expects  => [200, 204],
-        :headers  => {'Content-Type' => 'application/json'},
-        :body     => Fog::JSON.encode(request_body),
-        :method   => 'POST',
-        :path     => (uri.path and not uri.path.empty?) ? uri.path : 'v2.0'
-      })
+      request = {
+        :expects => [200, 204],
+        :headers => {'Content-Type' => 'application/json'},
+        :body    => Fog::JSON.encode(request_body),
+        :method  => 'POST',
+        :path    => (uri.path and not uri.path.empty?) ? uri.path : 'v2.0'
+      }
+      request[:omit_default_port] = omit_default_port unless omit_default_port.nil?
+
+      response = identity_v2_connection.request(request)
 
       Fog::JSON.decode(response.body)
     end
 
     def self.retrieve_tokens_v3(options, connection_options = {})
 
-      api_key      = options[:openstack_api_key].to_s
-      username     = options[:openstack_username].to_s
-      userid       = options[:openstack_userid]
-      domain_id    = options[:openstack_domain_id]
-      domain_name  = options[:openstack_domain_name]
-      project_domain = options[:openstack_project_domain]
+      api_key           = options[:openstack_api_key].to_s
+      username          = options[:openstack_username].to_s
+      userid            = options[:openstack_userid]
+      domain_id         = options[:openstack_domain_id]
+      domain_name       = options[:openstack_domain_name]
+      project_domain    = options[:openstack_project_domain]
       project_domain_id = options[:openstack_project_domain_id]
-      user_domain  = options[:openstack_user_domain]
-      user_domain_id  = options[:openstack_user_domain_id]
-      project_name = options[:openstack_project_name]
-      project_id   = options[:openstack_project_id]
-      auth_token   = options[:openstack_auth_token] || options[:unscoped_token]
-      uri          = options[:openstack_auth_uri]
+      user_domain       = options[:openstack_user_domain]
+      user_domain_id    = options[:openstack_user_domain_id]
+      project_name      = options[:openstack_project_name]
+      project_id        = options[:openstack_project_id]
+      auth_token        = options[:openstack_auth_token] || options[:unscoped_token]
+      uri               = options[:openstack_auth_uri]
+      omit_default_port = options[:openstack_auth_omit_default_port]
 
       connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
       request_body = {:auth => {}}
@@ -405,12 +410,16 @@ module Fog
       response, expires = @@token_cache[{body: request_body, path: path}]
 
       unless response && expires > Time.now
-        response = connection.request({   :expects => [201],
-                                          :headers => {'Content-Type' => 'application/json'},
-                                          :body    => Fog::JSON.encode(request_body),
-                                          :method  => 'POST',
-                                          :path    => path
-                                      })
+        request = {
+          :expects => [201],
+          :headers => {'Content-Type' => 'application/json'},
+          :body    => Fog::JSON.encode(request_body),
+          :method  => 'POST',
+          :path    => path
+        }
+        request[:omit_default_port] = omit_default_port unless omit_default_port.nil?
+
+        response = connection.request(request)
         @@token_cache[{body: request_body, path: path}] = response, Time.now + 30 # 30-second TTL, enough for most requests
       end
 
