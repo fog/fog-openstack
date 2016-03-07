@@ -1,6 +1,7 @@
 language: ruby
 sudo: false
 script: bundle exec rake test
+env: JRUBY_OPTS=--debug
 matrix:
   fast_finish: true
   include:
