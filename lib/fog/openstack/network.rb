@@ -38,6 +38,14 @@ module Fog
       collection  :lb_health_monitors
       model       :lb_vip
       collection  :lb_vips
+      model       :vpn_service
+      collection  :vpn_services
+      model       :ike_policy
+      collection  :ike_policies
+      model       :ipsec_policy
+      collection  :ipsec_policies
+      model       :ipsec_site_connection
+      collection  :ipsec_site_connections
       model       :security_group
       collection  :security_groups
       model       :security_group_rule
@@ -116,6 +124,34 @@ module Fog
       request :get_lb_vip
       request :update_lb_vip
 
+      # VPNaaS VPN Service CRUD
+      request :list_vpn_services
+      request :create_vpn_service
+      request :delete_vpn_service
+      request :get_vpn_service
+      request :update_vpn_service
+
+      # VPNaaS VPN IKE Policy CRUD
+      request :list_ike_policies
+      request :create_ike_policy
+      request :delete_ike_policy
+      request :get_ike_policy
+      request :update_ike_policy
+
+      # VPNaaS VPN IPSec Policy CRUD
+      request :list_ipsec_policies
+      request :create_ipsec_policy
+      request :delete_ipsec_policy
+      request :get_ipsec_policy
+      request :update_ipsec_policy
+
+      # VPNaaS VPN IPSec Site Connection CRUD
+      request :list_ipsec_site_connections
+      request :create_ipsec_site_connection
+      request :delete_ipsec_site_connection
+      request :get_ipsec_site_connection
+      request :update_ipsec_site_connection
+
       # Security Group
       request :create_security_group
       request :delete_security_group
@@ -180,6 +216,10 @@ module Fog
               :lb_members => {},
               :lb_health_monitors => {},
               :lb_vips => {},
+              :vpn_services           => {},
+              :ike_policies           => {},
+              :ipsec_policies         => {},
+              :ipsec_site_connections => {},
               :quota => {
                 "subnet" => 10,
                 "router" => 10,
