@@ -20,7 +20,7 @@ service = Fog::Metering::OpenStack.new({
 
 ## Events
 
-* `service.events([<query_filter>])`: Return a list of events.
+* `service.events([q: <query_filter>])`: Return a list of events, parameter q with query_filter is optional.
 * `service.events.find_by_id(<message_id>)`: Return the event matching message_id, or nil if no such event exists.
 
 ### Filter events example
@@ -34,7 +34,7 @@ query_filter = [{
   'value' => '2016-03-17T09:59:44.606000'
 }]
 
-service.events(query_filter)
+service.events(q: query_filter)
 ```
 
 ## Resources
