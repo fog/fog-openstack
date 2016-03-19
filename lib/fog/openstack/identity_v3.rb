@@ -148,31 +148,19 @@ module Fog
           version
         end
 
-        class Real
-          def self.not_found_class
-            Fog::Identity::OpenStack::NotFound
+        class Real < Fog::Identity::OpenStack::Real
+          private
+
+          def default_service_type(_)
+            DEFAULT_SERVICE_TYPE_V3
           end
-          include Fog::OpenStack::Common
 
-          def initialize(options={})
-            initialize_identity options
-
-            @openstack_service_type   = options[:openstack_service_type] || ['identity_v3','identityv3','identity']
-            @openstack_service_name   = options[:openstack_service_name]
-
-            @connection_options       = options[:connection_options] || {}
-
-            @openstack_endpoint_type  = options[:openstack_endpoint_type] || 'adminURL'
-
-            @openstack_endpoint_path_matches = options[:openstack_endpoint_path_matches] ||= /\/v3/
-            authenticate
-
-            if options[:openstack_identity_prefix]
-              @path = "/#{options[:openstack_identity_prefix]}/#{@path}"
+          def initialize_endpoint_path_matches(options)
+            if options[:openstack_endpoint_path_matches]
+              @openstack_endpoint_path_matches = options[:openstack_endpoint_path_matches]
+            else
+              @openstack_endpoint_path_matches = %r{/v3} unless options[:openstack_identity_prefix]
             end
-
-            @persistent = options[:persistent] || false
-            @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
           end
         end
       end
