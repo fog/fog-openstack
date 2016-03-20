@@ -7,49 +7,47 @@ require 'fog/openstack/common'
 require 'fog/openstack/errors'
 
 require 'fog/openstack/compute'
-require 'fog/openstack/identity'
 require 'fog/openstack/identity_v2'
 require 'fog/openstack/identity_v3'
-require 'fog/openstack/image'
 require 'fog/openstack/image_v1'
 require 'fog/openstack/image_v2'
-require 'fog/openstack/metering'
-require 'fog/openstack/network'
-require 'fog/openstack/orchestration'
 require 'fog/openstack/storage'
-require 'fog/openstack/volume'
 require 'fog/openstack/volume_v1'
 require 'fog/openstack/volume_v2'
-require 'fog/openstack/baremetal'
 require 'fog/openstack/planning'
 
 module Fog
-
   module Compute
     autoload :OpenStack, File.expand_path('../openstack/compute', __FILE__)
   end
+
   module Identity
     autoload :OpenStack, File.expand_path('../openstack/identity', __FILE__)
   end
+
   module Image
     autoload :OpenStack, File.expand_path('../openstack/image', __FILE__)
   end
+
   module Metering
     autoload :OpenStack, File.expand_path('../openstack/metering', __FILE__)
   end
+
   module Network
     autoload :OpenStack, File.expand_path('../openstack/network', __FILE__)
   end
+
   module Orchestration
     autoload :OpenStack, File.expand_path('../openstack/orchestration', __FILE__)
   end
+
   module Volume
     autoload :OpenStack, File.expand_path('../openstack/volume', __FILE__)
   end
+
   module Baremetal
     autoload :OpenStack, File.expand_path('../openstack/baremetal', __FILE__)
   end
-
 
   module OpenStack
     extend Fog::Provider
