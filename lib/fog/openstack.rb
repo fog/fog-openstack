@@ -9,42 +9,50 @@ require 'fog/openstack/errors'
 require 'fog/openstack/compute'
 require 'fog/openstack/identity_v2'
 require 'fog/openstack/identity_v3'
-require 'fog/openstack/image'
 require 'fog/openstack/image_v1'
 require 'fog/openstack/image_v2'
-require 'fog/openstack/metering'
-require 'fog/openstack/network'
-require 'fog/openstack/orchestration'
 require 'fog/openstack/storage'
-require 'fog/openstack/volume'
 require 'fog/openstack/volume_v1'
 require 'fog/openstack/volume_v2'
-require 'fog/openstack/baremetal'
 require 'fog/openstack/planning'
 
 module Fog
+  module Compute
+    autoload :OpenStack, File.expand_path('../openstack/compute', __FILE__)
+  end
+
+  module Identity
+    autoload :OpenStack, File.expand_path('../openstack/identity', __FILE__)
+  end
+
+  module Image
+    autoload :OpenStack, File.expand_path('../openstack/image', __FILE__)
+  end
+
+  module Metering
+    autoload :OpenStack, File.expand_path('../openstack/metering', __FILE__)
+  end
+
+  module Network
+    autoload :OpenStack, File.expand_path('../openstack/network', __FILE__)
+  end
+
+  module Orchestration
+    autoload :OpenStack, File.expand_path('../openstack/orchestration', __FILE__)
+  end
+
+  module Volume
+    autoload :OpenStack, File.expand_path('../openstack/volume', __FILE__)
+  end
+
+  module Baremetal
+    autoload :OpenStack, File.expand_path('../openstack/baremetal', __FILE__)
+  end
+
   module OpenStack
     extend Fog::Provider
 
-    # `require` is necessary until they can be refactored into autoload
-    require 'fog/openstack/image_v1'
-    require 'fog/openstack/storage'
-    require 'fog/openstack/volume_v1'
-    require 'fog/openstack/volume_v2'
-    require 'fog/openstack/planning'
-
-    autoload :Compute, File.expand_path('../openstack/compute', __FILE__)
-    autoload :IdentityV2, File.expand_path('../openstack/identity_v2', __FILE__)
-    autoload :IdentityV3, File.expand_path('../openstack/identity_v3', __FILE__)
-    autoload :Image, File.expand_path('../openstack/image', __FILE__)
-    autoload :ImageV2, File.expand_path('../openstack/image_v2', __FILE__)
-    autoload :Metering, File.expand_path('../openstack/metering', __FILE__)
-    autoload :Network, File.expand_path('../openstack/network', __FILE__)
-    autoload :Orchestration, File.expand_path('../openstack/orchestration', __FILE__)
-    autoload :Volume, File.expand_path('../openstack/volume', __FILE__)
-    autoload :Baremetal, File.expand_path('../openstack/baremetal', __FILE__)
-
-    service(:compute ,      'Compute')
+    service(:compute,       'Compute')
     service(:image,         'Image')
     service(:identity,      'Identity')
     service(:network,       'Network')
