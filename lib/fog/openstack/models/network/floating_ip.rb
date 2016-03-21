@@ -37,27 +37,23 @@ module Fog
 
         def associate(port_id, fixed_ip_address = nil)
           requires :id
-          options = if !fixed_ip_address.nil?
-                      {'fixed_ip_address' => fixed_ip_address}
-                    else
-                      {}
-                    end
           merge_attributes(service.associate_floating_ip(
             id,
             port_id,
-            options).body['floatingip'])
+            options(fixed_ip_address)).body['floatingip'])
         end
 
         def disassociate(fixed_ip_address = nil)
           requires :id
-          options = if !fixed_ip_address.nil?
-                      {'fixed_ip_address' => fixed_ip_address}
-                    else
-                      {}
-                    end
           merge_attributes(service.disassociate_floating_ip(
             id,
-            options).body['floatingip'])
+            options(fixed_ip_address)).body['floatingip'])
+        end
+
+        private
+
+        def options(fixed_ip_address)
+          fixed_ip_address ? {'fixed_ip_address' => fixed_ip_address} : {}
         end
       end
     end
