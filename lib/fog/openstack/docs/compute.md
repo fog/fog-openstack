@@ -10,14 +10,13 @@ Start by executing the following command:
 
 Once `irb` has launched you need to require the Fog library by executing:
 
-	require 'fog'
+	require 'fog-openstack'
 
 ## Create Service
 
 Next, create a connection to the Compute Service:
 
-	service = Fog::Compute.new({
-		:provider            => 'openstack',                                      # OpenStack Fog provider
+	service = Fog::Compute::OpenStack.new({
 		:openstack_auth_url  => 'http://KEYSTONE_HOST:KEYSTONE_PORT/v2.0/tokens', # OpenStack Keystone endpoint
 		:openstack_username  => OPEN_STACK_USER,                                  # Your OpenStack Username
 		:openstack_tenant    => OPEN_STACK_TENANT,                                # Your tenant id
