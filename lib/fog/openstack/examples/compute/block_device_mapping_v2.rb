@@ -1,6 +1,5 @@
 # OpenStack Compute (Nova) Example
 
-require 'fog'
 require 'fog/openstack'
 
 auth_url = "https://example.net/v2.0/tokens"
@@ -8,8 +7,7 @@ username = 'admin@example.net'
 password = 'secret'
 tenant   = 'My Compute Tenant' # String
 
-compute_client ||= ::Fog::Compute.new(
-  :provider           => :openstack,
+compute_client ||= ::Fog::Compute::OpenStack.new(
   :openstack_api_key  => password,
   :openstack_username => username,
   :openstack_auth_url => auth_url,
