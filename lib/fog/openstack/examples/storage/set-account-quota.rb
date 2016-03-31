@@ -1,4 +1,4 @@
-require 'fog'
+require 'fog/openstack'
 require 'pp'
 
 #
@@ -28,18 +28,16 @@ Excon.defaults[:ssl_verify_peer] = false
 # to retrieve the list of tenants available and find
 # the tenant we want to set the quotas for.
 #
-id = Fog::Identity.new :provider => 'OpenStack',
-                       :openstack_auth_url => auth_url,
-                       :openstack_username => user,
-                       :openstack_api_key  => password
+id = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
+                                  :openstack_username => user,
+                                  :openstack_api_key  => password
 
 #
 # Storage service (Swift)
 #
-st = Fog::Storage.new :provider => 'OpenStack',
-                      :openstack_auth_url => auth_url,
-                      :openstack_username => user,
-                      :openstack_api_key  => password
+st = Fog::Storage::OpenStack.new :openstack_auth_url => auth_url,
+                                 :openstack_username => user,
+                                 :openstack_api_key  => password
 
 id.tenants.each do |t|
   # We want to set the account quota for tenant demo@test.lan
