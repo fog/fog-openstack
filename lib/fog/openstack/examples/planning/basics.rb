@@ -1,6 +1,6 @@
 # OpenStack Planning Service (Tuskar) Example
 
-require 'fog'
+require 'fog/openstack'
 require 'pp'
 
 auth_url = "https://example.net/v2.0/tokens"
