@@ -15,13 +15,13 @@ If using Ruby 1.8.x execute:
 
 ```ruby
 require 'rubygems'
-require 'fog'
+require 'fog/openstack'
 ```
 
 If using Ruby 1.9.x execute:
 
 ```ruby
-require 'fog'
+require 'fog/openstack'
 ```
 
 ## Create Service
@@ -29,8 +29,7 @@ require 'fog'
 Next, create a connection to Swift:
 
 ```ruby
-service = Fog::Storage.new({
-  :provider            => 'OpenStack',   # OpenStack Fog provider
+service = Fog::Storage::OpenStack.new({
   :openstack_username  => USERNAME,      # Your OpenStack Username
   :openstack_api_key   => PASSWORD,      # Your OpenStack Password
   :openstack_auth_url  => 'http://YOUR_OPENSTACK_ENDPOINT:PORT/v2.0/tokens'
