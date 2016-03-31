@@ -10,7 +10,7 @@ Start by executing the following command:
 
 Once `irb` has launched you need to require the Fog library by executing:
 
-	require 'fog-openstack'
+	require 'fog/openstack'
 
 ## Create Service
 
