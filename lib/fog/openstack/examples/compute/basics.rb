@@ -1,6 +1,6 @@
 # OpenStack Compute (Nova) Example
 
-require 'fog'
+require 'fog/openstack'
 
 auth_url = "https://example.net/v2.0/tokens"
 username = 'admin@example.net'
