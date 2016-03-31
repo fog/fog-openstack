@@ -1,18 +1,17 @@
 # OpenStack Identity Service (Keystone) Example
 
-require 'fog'
+require 'fog/openstack'
 require 'pp'
 
 auth_url = "https://example.net/v2.0/tokens"
 username = 'admin@example.net'
 password = 'secret'
 
-keystone = Fog::Identity.new :provider           => 'OpenStack',
-                             :openstack_auth_url => auth_url,
-                             :openstack_username => username,
-                             :openstack_api_key  => password
-                             # Optional, self-signed certs
-                             #:connection_options => { :ssl_verify_peer => false }
+keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
+                                        :openstack_username => username,
+                                        :openstack_api_key  => password
+                                        # Optional, self-signed certs
+                                        #:connection_options => { :ssl_verify_peer => false }
 
 #
 # Listing keystone tenants
