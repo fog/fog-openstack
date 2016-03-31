@@ -20,16 +20,16 @@ Bundler helps manage gem dependencies and is recommended for new projects. For m
 
 ## Installation
 
-To install Fog via RubyGems run the following command:
+To install Fog-Openstack via RubyGems run the following command:
 
-    $ gem install fog
+    $ gem install fog-openstack
 
 To install Fog via Bundler add `gem 'fog'` to your `Gemfile`. This is a sample `Gemfile` to install Fog:
 
 ```ruby
 source 'https://rubygems.org'
 
-gem 'fog'
+gem 'fog-openstack'
 ```
 
 After creating your `Gemfile` execute the following command to install the libraries:
@@ -50,13 +50,13 @@ If using Ruby 1.8.x execute the following command:
 
 ```ruby
 require 'rubygems'
-require 'fog'
+require 'fog/openstack'
 ```
 
 If using Ruby 1.9.x execute the following command:
 
 ```ruby
-require 'fog'
+require 'fog/openstack'
 ```
 
 You should now be able to execute the following command to see a list of services Fog provides for the Rackspace Open Cloud:
