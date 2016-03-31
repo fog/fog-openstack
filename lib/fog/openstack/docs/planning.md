@@ -17,13 +17,13 @@ If using Ruby 1.8.x execute:
 
 ```ruby
 require 'rubygems'
-require 'fog-openstack'
+require 'fog/openstack'
 ```
 
 If using Ruby 1.9.x execute:
 
 ```ruby
-require 'fog-openstack'
+require 'fog/openstack'
 ```
 
 ## Create Service
