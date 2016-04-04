@@ -15,6 +15,10 @@ module Fog
         def get_volume_details(volume_id)
           response = Excon::Response.new
           if data = self.data[:volumes][volume_id]
+            if data['status'] == 'creating' \
+               && Time.now - Time.parse(data['createdAt']) >= Fog::Mock.delay
+              data['status'] = 'available'
+            end
             response.status = 200
             response.body = { 'volume' => data }
             response
