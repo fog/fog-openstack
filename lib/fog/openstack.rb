@@ -145,14 +145,6 @@ module Fog
 
       end
 
-      service['endpoints'] = service['endpoints'].select do |endpoint|
-        endpoint['region'] == openstack_region
-      end if openstack_region
-
-      if service['endpoints'].empty?
-        raise Fog::Errors::NotFound.new("No endpoints available for region '#{openstack_region}'")
-      end if openstack_region
-
       unless service
         available = body['access']['serviceCatalog'].map { |endpoint|
           endpoint['type']
@@ -164,6 +156,14 @@ module Fog
 
         raise Fog::Errors::NotFound, message
       end
+
+      service['endpoints'] = service['endpoints'].select do |endpoint|
+        endpoint['region'] == openstack_region
+      end if openstack_region
+
+      if service['endpoints'].empty?
+        raise Fog::Errors::NotFound.new("No endpoints available for region '#{openstack_region}'")
+      end if openstack_region
 
       regions = service["endpoints"].map{ |e| e['region'] }.uniq
       if regions.count > 1
