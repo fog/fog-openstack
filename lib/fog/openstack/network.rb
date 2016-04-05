@@ -309,6 +309,7 @@ module Fog
             if error.response.body != 'Bad username or password' # token expiration
               @openstack_must_reauthenticate = true
               authenticate
+              set_api_path
               retry
             else # bad credentials
               raise error
