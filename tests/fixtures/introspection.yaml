@@ -1,0 +1,287 @@
+---
+:rules:
+  - description: Successful Rule
+    actions:
+    - action: set-attribute
+      path: /extra/rule_success
+      value: 'yes'
+    conditions:
+    - field: memory_mb
+      op: ge
+      value: 256
+    - field: local_gb
+      op: ge
+      value: 1
+    links:
+    - href: /v1/rules/8dbc8e15-506e-4bd1-82e7-b090e0d33cae
+      rel: self
+    uuid: 8dbc8e15-506e-4bd1-82e7-b090e0d33cae
+  - description: Failing Rule
+    actions:
+    - action: set-attribute
+      path: /extra/rule_success
+      value: 'no'
+    - action: fail
+      message: This rule should not have run
+    conditions:
+    - field: memory_mb
+      op: lt
+      value: 42
+    - field: local_gb
+      op: eq
+      value: 0
+    links:
+    - href: /v1/rules/abf9337e-a38d-4041-ba7a-d4e5ac0cc134
+      rel: self
+    uuid: abf9337e-a38d-4041-ba7a-d4e5ac0cc134
+:introspection_data:
+  cpu_arch: x86_64
+  macs:
+  - 52:54:00:40:d0:11
+  root_disk:
+    rotational: true
+    vendor: '0x1af4'
+    name: "/dev/vda"
+    wwn_vendor_extension:
+    wwn_with_extension:
+    model: ''
+    wwn:
+    serial:
+    size: 64424509440
+  extra:
+    network:
+      eth0:
+        vlan-challenged: off [fixed]
+        tx-udp_tnl-segmentation: off [fixed]
+        ipv4-network: 192.0.2.0
+        rx-vlan-stag-filter: off [fixed]
+        highdma: on [fixed]
+        tx-nocache-copy: 'off'
+        tx-gso-robust: off [fixed]
+        fcoe-mtu: off [fixed]
+        netns-local: off [fixed]
+        udp-fragmentation-offload: 'on'
+        serial: 52:54:00:40:d0:11
+        latency: 0
+        tx-checksumming/tx-checksum-ipv6: off [fixed]
+        tx-checksumming/tx-checksum-ipv4: off [fixed]
+        ipv4-netmask: 255.255.255.0
+        tcp-segmentation-offload/tx-tcp-segmentation: 'on'
+        tx-ipip-segmentation: off [fixed]
+        rx-vlan-offload: off [fixed]
+        tx-gre-segmentation: off [fixed]
+        tx-checksumming/tx-checksum-ip-generic: 'on'
+        tcp-segmentation-offload/tx-tcp-ecn-segmentation: 'on'
+        tx-checksumming/tx-checksum-fcoe-crc: off [fixed]
+        ipv4: 192.0.2.100
+        businfo: pci@0000:00:03.0
+        rx-vlan-stag-hw-parse: off [fixed]
+        tx-vlan-offload: off [fixed]
+        product: Virtio network device
+        vendor: Red Hat, Inc
+        tx-checksumming/tx-checksum-sctp: off [fixed]
+        driver: virtio_net
+        tx-sit-segmentation: off [fixed]
+        busy-poll: off [fixed]
+        tx-vlan-stag-hw-insert: off [fixed]
+        scatter-gather/tx-scatter-gather: 'on'
+        link: 'yes'
+        ntuple-filters: off [fixed]
+        rx-all: off [fixed]
+        tcp-segmentation-offload: 'on'
+        tcp-segmentation-offload/tx-tcp6-segmentation: 'on'
+        rx-checksumming: on [fixed]
+        rx-fcs: off [fixed]
+        tx-lockless: off [fixed]
+        generic-segmentation-offload: 'on'
+        tx-fcoe-segmentation: off [fixed]
+        tx-checksumming: 'on'
+        ipv4-cidr: 24
+        large-receive-offload: off [fixed]
+        rx-vlan-filter: on [fixed]
+        receive-hashing: off [fixed]
+        scatter-gather/tx-scatter-gather-fraglist: off [fixed]
+        generic-receive-offload: 'on'
+        loopback: off [fixed]
+        scatter-gather: 'on'
+        tx-mpls-segmentation: off [fixed]
+      eth1:
+        vlan-challenged: off [fixed]
+        tx-udp_tnl-segmentation: off [fixed]
+        tx-vlan-stag-hw-insert: off [fixed]
+        rx-vlan-stag-filter: off [fixed]
+        highdma: on [fixed]
+        tx-nocache-copy: 'off'
+        tx-gso-robust: off [fixed]
+        fcoe-mtu: off [fixed]
+        netns-local: off [fixed]
+        udp-fragmentation-offload: 'on'
+        serial: 52:54:00:11:c5:d8
+        latency: 0
+        tx-checksumming/tx-checksum-ipv6: off [fixed]
+        tx-checksumming/tx-checksum-ipv4: off [fixed]
+        tx-fcoe-segmentation: off [fixed]
+        tcp-segmentation-offload/tx-tcp-segmentation: 'on'
+        tx-ipip-segmentation: off [fixed]
+        rx-vlan-offload: off [fixed]
+        tx-gre-segmentation: off [fixed]
+        tx-checksumming/tx-checksum-ip-generic: 'on'
+        tcp-segmentation-offload/tx-tcp-ecn-segmentation: 'on'
+        tx-checksumming/tx-checksum-fcoe-crc: off [fixed]
+        rx-vlan-stag-hw-parse: off [fixed]
+        businfo: pci@0000:00:04.0
+        tx-vlan-offload: off [fixed]
+        product: Virtio network device
+        vendor: Red Hat, Inc
+        tx-checksumming/tx-checksum-sctp: off [fixed]
+        driver: virtio_net
+        tx-sit-segmentation: off [fixed]
+        busy-poll: off [fixed]
+        scatter-gather/tx-scatter-gather: 'on'
+        link: 'yes'
+        ntuple-filters: off [fixed]
+        rx-all: off [fixed]
+        tcp-segmentation-offload: 'on'
+        tcp-segmentation-offload/tx-tcp6-segmentation: 'on'
+        rx-checksumming: on [fixed]
+        tx-lockless: off [fixed]
+        generic-segmentation-offload: 'on'
+        loopback: off [fixed]
+        tx-checksumming: 'on'
+        large-receive-offload: off [fixed]
+        rx-vlan-filter: on [fixed]
+        receive-hashing: off [fixed]
+        scatter-gather/tx-scatter-gather-fraglist: off [fixed]
+        generic-receive-offload: 'on'
+        rx-fcs: off [fixed]
+        scatter-gather: 'on'
+        tx-mpls-segmentation: off [fixed]
+    firmware:
+      bios:
+        date: 01/01/2011
+        version: 0.5.1
+        vendor: Seabios
+    system:
+      kernel:
+        cmdline: ipa-inspection-callback-url=http://192.0.2.1:5050/v1/continue ipa-inspection-collectors=default,extra-hardware,logs
+          systemd.journald.forward_to_console=yes BOOTIF=52:54:00:40:d0:11 ipa-debug=1
+        version: 3.10.0-327.10.1.el7.x86_64
+        arch: x86_64
+      product:
+        version: RHEL 7.0.0 PC (i440FX + PIIX, 1996)
+        vendor: Red Hat
+        name: KVM
+        uuid: FB25FBC2-3FF7-45C0-8581-3EF1BA7E7839
+      os:
+        version: Red Hat Enterprise Linux Server release 7.2 (Maipo)
+        vendor: RedHatEnterpriseServer
+    memory:
+      total:
+        size: 4294967296
+    disk:
+      vda:
+        optimal_io_size: 0
+        physical_block_size: 512
+        rotational: 1
+        vendor: '0x1af4'
+        size: 64
+      logical:
+        count: 1
+    cpu:
+      logical:
+        number: 4
+      physical_0:
+        physid: 401
+        product: Intel Xeon E312xx (Sandy Bridge)
+        frequency: 2000000000
+        vendor: Intel Corp.
+        flags: fpu fpu_exception wp de pse tsc msr pae mce cx8 apic sep mtrr pge mca
+          cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx rdtscp x86-64 constant_tsc
+          rep_good nopl eagerfpu pni pclmulqdq vmx ssse3 cx16 sse4_1 sse4_2 x2apic
+          popcnt tsc_deadline_timer aes xsave avx hypervisor lahf_lm tpr_shadow vnmi
+          flexpriority ept xsaveopt xsavec xgetbv1
+      physical_1:
+        physid: 402
+        product: Intel Xeon E312xx (Sandy Bridge)
+        frequency: 2000000000
+        vendor: Intel Corp.
+        flags: fpu fpu_exception wp de pse tsc msr pae mce cx8 apic sep mtrr pge mca
+          cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx rdtscp x86-64 constant_tsc
+          rep_good nopl eagerfpu pni pclmulqdq vmx ssse3 cx16 sse4_1 sse4_2 x2apic
+          popcnt tsc_deadline_timer aes xsave avx hypervisor lahf_lm tpr_shadow vnmi
+          flexpriority ept xsaveopt xsavec xgetbv1
+      physical_2:
+        physid: 403
+        product: Intel Xeon E312xx (Sandy Bridge)
+        frequency: 2000000000
+        vendor: Intel Corp.
+        flags: fpu fpu_exception wp de pse tsc msr pae mce cx8 apic sep mtrr pge mca
+          cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx rdtscp x86-64 constant_tsc
+          rep_good nopl eagerfpu pni pclmulqdq vmx ssse3 cx16 sse4_1 sse4_2 x2apic
+          popcnt tsc_deadline_timer aes xsave avx hypervisor lahf_lm tpr_shadow vnmi
+          flexpriority ept xsaveopt xsavec xgetbv1
+      physical_3:
+        physid: 404
+        product: Intel Xeon E312xx (Sandy Bridge)
+        frequency: 2000000000
+        vendor: Intel Corp.
+        flags: fpu fpu_exception wp de pse tsc msr pae mce cx8 apic sep mtrr pge mca
+          cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx rdtscp x86-64 constant_tsc
+          rep_good nopl eagerfpu pni pclmulqdq vmx ssse3 cx16 sse4_1 sse4_2 x2apic
+          popcnt tsc_deadline_timer aes xsave avx hypervisor lahf_lm tpr_shadow vnmi
+          flexpriority ept xsaveopt xsavec xgetbv1
+      physical:
+        number: 4
+  interfaces:
+    eth0:
+      ip: 192.0.2.100
+      mac: 52:54:00:40:d0:11
+  cpus: 4
+  boot_interface: 52:54:00:40:d0:11
+  memory_mb: 4096
+  ipmi_address: ''
+  inventory:
+    bmc_address: ''
+    interfaces:
+    - ipv4_address:
+      switch_port_descr:
+      switch_chassis_descr:
+      name: eth1
+      mac_address: 52:54:00:11:c5:d8
+    - ipv4_address: 192.0.2.100
+      switch_port_descr:
+      switch_chassis_descr:
+      name: eth0
+      mac_address: 52:54:00:40:d0:11
+    disks:
+    - rotational: true
+      vendor: '0x1af4'
+      name: "/dev/vda"
+      wwn_vendor_extension:
+      wwn_with_extension:
+      model: ''
+      wwn:
+      serial:
+      size: 64424509440
+    system_vendor:
+      serial_number: Not Specified
+      product_name: KVM
+      manufacturer: Red Hat
+    memory:
+      physical_mb: 4096
+      total: 4144173056
+    cpu:
+      count: 4
+      frequency: '3408.032'
+      model_name: Intel Xeon E312xx (Sandy Bridge)
+      architecture: x86_64
+  error:
+  local_gb: 59
+  all_interfaces:
+    eth1:
+      ip:
+      mac: 52:54:00:11:c5:d8
+    eth0:
+      ip: 192.0.2.100
+      mac: 52:54:00:40:d0:11
+  logs: Way too long...
