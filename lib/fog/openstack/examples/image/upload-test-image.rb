@@ -46,7 +46,7 @@ end
 image_service = Fog::Image::OpenStack.new :openstack_api_key => ENV['OS_PASSWORD'],
                                           :openstack_username => ENV["OS_USERNAME"],
                                           :openstack_auth_url => ENV["OS_AUTH_URL"] + "/tokens",
-                                          :openstack_tenant => ENV["OS_TENANT_NAME"])
+                                          :openstack_tenant => ENV["OS_TENANT_NAME"]
 
 puts "Uploading AKI..."
 aki = image_service.images.create :name => 'cirros-0.3.0-amd64-aki',
