@@ -49,6 +49,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../openstack/baremetal', __FILE__)
   end
 
+  module Introspection
+    autoload :OpenStack, File.expand_path('../openstack/introspection', __FILE__)
+  end
+
   module OpenStack
     extend Fog::Provider
 
@@ -62,6 +66,7 @@ module Fog
     service(:orchestration, 'Orchestration')
     service(:baremetal,     'Baremetal')
     service(:planning,      'Planning')
+    service(:introspection, 'Introspection')
 
     @@token_cache = {}
 
