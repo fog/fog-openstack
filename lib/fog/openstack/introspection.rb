@@ -33,6 +33,12 @@ module Fog
       request :get_rules
       request :delete_rules
 
+      ## MODELS
+      #
+      model_path 'fog/openstack/models/introspection'
+      model       :rules
+      collection  :rules_collection
+
       class Mock
         def self.data
           @data ||= Hash.new do |hash, key|
