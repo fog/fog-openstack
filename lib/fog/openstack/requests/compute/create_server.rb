@@ -6,10 +6,10 @@ module Fog
           data = {
             'server' => {
               'flavorRef'  => flavor_ref,
-              'imageRef'   => image_ref,
               'name'       => name
             }
           }
+          data['server']['imageRef'] = image_ref if image_ref
 
           vanilla_options = ['metadata', 'accessIPv4', 'accessIPv6',
                              'availability_zone', 'user_data', 'key_name',
@@ -59,15 +59,12 @@ module Fog
 
           if (block_device_mapping = options['block_device_mapping_v2'])
             data['server']['block_device_mapping_v2'] = [block_device_mapping].flatten.collect do |mapping|
-              {
-                'boot_index'            => mapping[:boot_index],
-                'delete_on_termination' => mapping[:delete_on_termination],
-                'destination_type'      => mapping[:destination_type],
-                'device_name'           => mapping[:device_name],
-                'source_type'           => mapping[:source_type],
-                'uuid'                  => mapping[:uuid],
-                'volume_size'           => mapping[:volume_size],
-              }
+              entered_block_device_mapping = {}
+              [:boot_index, :delete_on_termination, :destination_type, :device_name, :source_type, :uuid,
+               :volume_size].each do |index|
+                entered_block_device_mapping[index.to_s] = mapping[index] if mapping.key?(index)
+              end
+              entered_block_device_mapping
             end
           elsif (block_device_mapping = options['block_device_mapping'])
             data['server']['block_device_mapping'] = [block_device_mapping].flatten.collect do |mapping|
