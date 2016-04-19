@@ -1,7 +1,6 @@
-require 'fog/openstack/identity_v3'
-require 'fog/openstack/image_v2'
+require 'spec_helper'
 
-RSpec.describe Fog::Image::OpenStack do
+describe Fog::Image::OpenStack do
 
   it "Upload/download image data using chunked IO" do
     if ENV['OS_AUTH_URL'] # We only run this against a live system, because VCR's use of Webmock stops Excon :response_block from working correctly
@@ -21,7 +20,7 @@ RSpec.describe Fog::Image::OpenStack do
                                                :openstack_project_name => ENV['OS_PROJECT_NAME'] || 'admin'
                                            }) unless @service
 
-      spec_data_folder = 'spec/fog/openstack/image_v2'
+      spec_data_folder = 'spec/fixtures/openstack/image_v2'
 
       begin
         ####
@@ -47,14 +46,14 @@ RSpec.describe Fog::Image::OpenStack do
         while @service.images.find_by_id(foobar_id).status == 'saving' do
           sleep 1
         end
-        expect(@service.images.find_by_id(foobar_id).status).to eq 'active'
+        @service.images.find_by_id(foobar_id).status.to eq 'active'
 
         size = 0
         read_block = lambda do |chunk, remaining, total|
           size += chunk.size
         end
         foobar_image.download_data(:response_block => read_block)
-        expect(size).to eq File.size(image_path)
+        size.must_equal File.size(image_path)
 
       ensure
         # Delete the image
@@ -65,8 +64,8 @@ RSpec.describe Fog::Image::OpenStack do
         end
 
         # Check that the deletion worked
-        expect { @service.images.find_by_id foobar_id }.to raise_error(Fog::Image::OpenStack::NotFound) if foobar_id
-        expect(@service.images.all(:name => 'foobar_up2').length).to be 0
+        proc { @service.images.find_by_id foobar_id }.must_raise Fog::Image::OpenStack::NotFound if foobar_id
+        @service.images.all(:name => 'foobar_up2').length.must_equal 0
       end
     end
   end

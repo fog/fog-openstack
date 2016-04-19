@@ -1,22 +1,15 @@
-require 'fog/openstack/image_v2'
+require 'spec_helper'
+require_relative './shared_context'
 
-if RUBY_VERSION =~ /1.8/
-  require File.expand_path('../shared_context', __FILE__)
-else
-  require_relative './shared_context'
-end
+describe Fog::Image::OpenStack do
+  spec_data_folder = 'spec/fixtures/openstack/image_v2'
 
-RSpec.describe Fog::Image::OpenStack do
-
-  spec_data_folder = 'spec/fog/openstack/image_v2'
-
-  include_context 'OpenStack specs with VCR'
   before :all do
-    setup_vcr_and_service(
-        :vcr_directory => spec_data_folder,
-        # :service_class => Fog::Image::OpenStack::V2
-        :service_class => Fog::Image::OpenStack # No need to be explicit - Fog will choose the latest available version
+    openstack_vcr = OpenStackVCR.new(
+      :vcr_directory => spec_data_folder,
+      :service_class => Fog::Image::OpenStack # Fog to choose latest available version
     )
+    @service = openstack_vcr.service
   end
 
   def cleanup_image image, image_name=nil, image_id=nil
@@ -24,12 +17,14 @@ RSpec.describe Fog::Image::OpenStack do
     image.destroy if image
     image_by_id = @service.images.find_by_id(image_id) rescue false if image_id
     image_by_id.destroy if image_by_id
-    @service.images.all(:name => image_name).each do |image|
-      image.destroy
-    end if image_name
+    if image_name
+      @service.images.all(:name => image_name).each do |image|
+        image.destroy
+      end
+    end
     # Check that the deletion worked
-    expect { @service.images.find_by_id image_id }.to raise_error(Fog::Image::OpenStack::NotFound) if image_id
-    expect(@service.images.all(:name => image_name).length).to be 0 if image_name
+    proc { @service.images.find_by_id image_id }.must_raise Fog::Image::OpenStack::NotFound if image_id
+    @service.images.all(:name => image_name).length.must_equal 0 if image_name
   end
 
   it "CRUD & list images" do
@@ -37,26 +32,26 @@ RSpec.describe Fog::Image::OpenStack do
       image_name = 'foobar'
       image_rename = 'baz'
 
-      expect(@service.images.all).to_not be_nil
+      @service.images.all.wont_equal nil
       begin
         # Create an image called foobar
         foobar_image = @service.images.create(:name => image_name)
         foobar_id = foobar_image.id
-        expect(@service.images.all(:name => image_name).length).to be 1
-        expect(foobar_image.status).to eq 'queued'
+        @service.images.all(:name => image_name).length.must_equal 1
+        foobar_image.status.must_equal 'queued'
 
-        # Rename it to baz
+        # Rename it to ba
         foobar_image.update(:name => image_rename) # see "Patch images" test below - for now this will be a simple synthesis of a JSON patch with op = 'replace'
-        expect(foobar_image.name).to eq image_rename
+        foobar_image.name.must_equal image_rename
         baz_image = @service.images.find_by_id foobar_id
-        expect(baz_image).to_not be_nil
-        expect(baz_image.id).to eq foobar_id
-        expect(baz_image.name).to eq image_rename
+        baz_image.wont_equal nil
+        baz_image.id.must_equal foobar_id
+        baz_image.name.must_equal image_rename
 
         # Read the image freshly by listing images filtered by the new name
         images = @service.images.all(:name => image_rename)
-        expect(images.length).to be 1
-        expect(images.first.id).to eq baz_image.id
+        images.length.must_equal 1
+        images.first.id.must_equal baz_image.id
 
       ensure
         cleanup_image baz_image
@@ -64,7 +59,7 @@ RSpec.describe Fog::Image::OpenStack do
           image.destroy
         end
         # Check that the deletion worked
-        expect(@service.images.all.select { |image| [image_name, image_rename].include? image.name }.length).to be 0
+        @service.images.all.count { |image| [image_name, image_rename].include? image.name }.must_equal 0
       end
     end
   end
@@ -81,12 +76,12 @@ RSpec.describe Fog::Image::OpenStack do
         # Create an image with a specified ID
         foobar_image = @service.images.create(:name => 'foobar_id', :id => identifier)
         foobar_id = foobar_image.id
-        expect(@service.images.all(:name => image_name).length).to be 1
-        expect(foobar_image.status).to eq 'queued'
-        expect(foobar_id).to eq identifier
+        @service.images.all(:name => image_name).length.must_equal 1
+        foobar_image.status.must_equal 'queued'
+        foobar_id.must_equal identifier
 
         get_image = @service.images.find_by_id(identifier)
-        expect(get_image.name).to eq image_name
+        get_image.name.must_equal image_name
 
       ensure
         cleanup_image foobar_image, image_name, foobar_id
@@ -99,9 +94,7 @@ RSpec.describe Fog::Image::OpenStack do
 
       begin
         # Create image with location of image data
-        pending "Figure out 'Create image with location of image data'"
-        fail
-
+        skip "Figure out 'Create image with location of image data'"
       ensure
       end
     end
@@ -123,17 +116,17 @@ RSpec.describe Fog::Image::OpenStack do
         foobar_image.upload_data File.new(image_path, 'r')
 
         # Status should be saving or active
-        expect(@service.images.find_by_id(foobar_id).status).to satisfy { |value| ['saving', 'active'].include? value }
+        @service.images.find_by_id(foobar_id).status.must_match(/saving|active/)
 
         # Get an IO object from which to download image data - wait until finished saving though
         while @service.images.find_by_id(foobar_id).status == 'saving' do
           sleep 1
         end
-        expect(@service.images.find_by_id(foobar_id).status).to eq 'active'
+        @service.images.find_by_id(foobar_id).status.must_equal 'active'
 
         # Bulk download
         downloaded_data = foobar_image.download_data
-        expect(downloaded_data.size).to eq File.size(image_path)
+        downloaded_data.size.must_equal File.size(image_path)
 
       ensure
         cleanup_image foobar_image, image_name
@@ -144,7 +137,8 @@ RSpec.describe Fog::Image::OpenStack do
   it "Deactivates and activates an image" do
     VCR.use_cassette('image_v2_activation') do
       image_name = 'foobar3a'
-      image_path = "spec/fog/openstack/image_v2/minimal.ova" # "no-op" virtual machine image, 80kB .ova file containing 64Mb dynamic disk
+      # "no-op" virtual machine image, 80kB .ova file containing 64Mb dynamic disk
+      image_path = "spec/fixtures/openstack/image_v2/minimal.ova"
 
       begin
         # Create an image called foobar2
@@ -159,10 +153,10 @@ RSpec.describe Fog::Image::OpenStack do
         end
 
         foobar_image.deactivate
-        expect { foobar_image.download_data }.to raise_error(Excon::Errors::Forbidden)
+        proc { foobar_image.download_data }.must_raise Excon::Errors::Forbidden
 
         foobar_image.reactivate
-        expect { foobar_image.download_data }.not_to raise_error
+        foobar_image.download_data
       ensure
         cleanup_image foobar_image, image_name
       end
@@ -181,16 +175,16 @@ RSpec.describe Fog::Image::OpenStack do
         foobar_id = foobar_image.id
 
         foobar_image.add_tag 'tag1'
-        expect(@service.images.find_by_id(foobar_id).tags).to contain_exactly('tag1')
+        @service.images.find_by_id(foobar_id).tags.must_include 'tag1'
 
         foobar_image.add_tags ['tag2', 'tag3', 'tag4']
-        expect(@service.images.find_by_id(foobar_id).tags).to contain_exactly('tag1', 'tag2', 'tag3', 'tag4')
+        @service.images.find_by_id(foobar_id).tags.must_equal ["tag4", "tag1", "tag2", "tag3"]
 
         foobar_image.remove_tag 'tag2'
-        expect(@service.images.find_by_id(foobar_id).tags).to contain_exactly('tag1', 'tag3', 'tag4')
+        @service.images.find_by_id(foobar_id).tags.must_equal ["tag4", "tag1", "tag3"]
 
         foobar_image.remove_tags ['tag1', 'tag3']
-        expect(@service.images.find_by_id(foobar_id).tags).to contain_exactly('tag4')
+        @service.images.find_by_id(foobar_id).tags.must_include 'tag4'
 
       ensure
         cleanup_image foobar_image, image_name
@@ -207,20 +201,20 @@ RSpec.describe Fog::Image::OpenStack do
         foobar_image = @service.images.create(:name => image_name)
         foobar_id = foobar_image.id
 
-        expect(foobar_image.members.size).to be 0
+        foobar_image.members.size.must_equal 0
         foobar_image.add_member tenant_id
-        expect(foobar_image.members.size).to be 1
+        foobar_image.members.size.must_equal 1
 
         member = foobar_image.member tenant_id
-        expect(member).to_not be_nil
-        expect(member['status']).to eq 'pending'
+        member.wont_equal nil
+        member['status'].must_equal 'pending'
 
         member['status'] = 'accepted'
         foobar_image.update_member member
-        expect(foobar_image.member(tenant_id)['status']).to eq 'accepted'
+        foobar_image.member(tenant_id)['status'].must_equal 'accepted'
 
         foobar_image.remove_member member['member_id']
-        expect(foobar_image.members.size).to be 0
+        foobar_image.members.size.must_equal 0
       ensure
         cleanup_image foobar_image, image_name
       end
@@ -229,57 +223,49 @@ RSpec.describe Fog::Image::OpenStack do
 
   it "Gets JSON schemas for 'images', 'image', 'members', 'member'" do
     VCR.use_cassette('image_v2_schemas') do
-      pending 'Fetching JSON schemas: to be implemented'
-      fail
+      skip 'Fetching JSON schemas: to be implemented'
     end
   end
 
   it "CRUD resource types" do
     VCR.use_cassette('image_v2_resource_type_crud') do
-      pending 'CRUD resource types: to be implemented'
-      fail
+      skip 'CRUD resource types: to be implemented'
     end
   end
 
   it "CRUD namespace metadata definition" do
     VCR.use_cassette('image_v2_namespace_metadata_crud') do
-      pending 'CRUD namespace metadata definition: to be implemented'
-      fail
+      skip 'CRUD namespace metadata definition: to be implemented'
     end
   end
 
   it "CRUD property metadata definition" do
     VCR.use_cassette('image_v2_property_metadata_crud') do
-      pending 'CRUD property metadata definition: to be implemented'
-      fail
+      skip 'CRUD property metadata definition: to be implemented'
     end
   end
 
   it "CRUD object metadata definition" do
     VCR.use_cassette('image_v2_object_metadata_crud') do
-      pending 'CRUD object metadata definition: to be implemented'
-      fail
+      skip 'CRUD object metadata definition: to be implemented'
     end
   end
 
   it "CRUD tag metadata definition" do
     VCR.use_cassette('image_v2_tag_metadata_crud') do
-      pending 'CRUD tag metadata definition: to be implemented'
-      fail
+      skip 'CRUD tag metadata definition: to be implemented'
     end
   end
 
   it "CRUD schema metadata definition" do
     VCR.use_cassette('image_v2_schema_metadata_crud') do
-      pending 'CRUD schema metadata definition: to be implemented'
-      fail
+      skip 'CRUD schema metadata definition: to be implemented'
     end
   end
 
   it "Creates, lists & gets tasks" do
     VCR.use_cassette('image_v2_task_clg') do
-      pending 'Creates, lists & gets tasks: to be implemented'
-      fail
+      skip 'Creates, lists & gets tasks: to be implemented'
     end
   end
 end

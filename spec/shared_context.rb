@@ -1,45 +1,34 @@
-require 'rspec/core'
-require 'rspec/expectations'
 require 'vcr'
-require 'fog/openstack/core'
-require 'fog/openstack/identity'
-require 'fog/openstack/identity_v3'
-require 'fog/openstack/image'
-require 'fog/openstack/image_v1'
-require 'fog/openstack/image_v2'
-require 'fog/openstack/volume'
-require 'fog/openstack/volume_v1'
-require 'fog/openstack/volume_v2'
-require 'fog/openstack/network'
-
 #
 # There are basically two modes of operation for these specs.
 #
 # 1. ENV[OS_AUTH_URL] exists: talk to an actual OpenStack and record HTTP
 #    traffic in VCRs at "spec/debug" (credentials are read from the conventional
 #    environment variables: OS_AUTH_URL, OS_USERNAME, OS_PASSWORD etc.)
-# 2. otherwise (under Travis etc.): use VCRs at "spec/fog/openstack/#{service}"
+# 2. otherwise (under Travis etc.): use VCRs at "spec/fixtures/openstack/#{service}"
 #
 # When you develop a new unit test or change an existing one:
 #
 # 1. Record interactions against an actual OpenStack (Devstack is usually
 #    enough if configured correctly) using the first mode from above.
 # 2. Move the relevant VCRs from "spec/debug" to
-#    "spec/fog/openstack/#{service}".
+#    "spec/fixtures/openstack/#{service}".
 # 3. In these VCRs, string-replace your OpenStack's URLs/IPs by
 #    "devstack.openstack.stack". Also, string-replace the used tokens by the
 #    token obtained in the "common_setup.yml".
 #
-RSpec.shared_context 'OpenStack specs with VCR' do
 
+class OpenStackVCR
+  attr_reader :service, :os_auth_url
   # This method should be called in a "before :all" call to set everything up.
   # A properly configured instance of the service class (e.g.
   # Fog::Volume::OpenStack) is then made available in @service.
-  def setup_vcr_and_service(options)
+  def initialize(options)
     # read arguments
-    expect(@vcr_directory = options[:vcr_directory]).to be_a(String)
-    expect(@service_class = options[:service_class]).to be_a(Class)
-
+    # must_be_kind_of String
+    @vcr_directory = options[:vcr_directory]
+    # must_be_kind_of Class
+    @service_class = options[:service_class]
     # determine mode of operation
     use_recorded = !ENV.has_key?('OS_AUTH_URL')
     if use_recorded
@@ -108,8 +97,6 @@ RSpec.shared_context 'OpenStack specs with VCR' do
         }
       end
       @service = @service_class.new(options)
-
     end
   end
-
 end
