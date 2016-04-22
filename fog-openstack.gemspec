@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'fog-core',  '>= 1.37'
+  spec.add_dependency 'fog-core',  '>= 1.38'
   spec.add_dependency 'fog-json',  '>= 1.0'
   spec.add_dependency 'fog-xml',   '>= 0.1'
   spec.add_dependency 'ipaddress', '>= 0.8'
