@@ -365,6 +365,7 @@ module Fog
       auth_token        = options[:openstack_auth_token] || options[:unscoped_token]
       uri               = options[:openstack_auth_uri]
       omit_default_port = options[:openstack_auth_omit_default_port]
+      cache_ttl         = options[:openstack_cache_ttl] || 0
 
       connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
       request_body = {:auth => {}}
@@ -420,7 +421,7 @@ module Fog
 
       path     = (uri.path and not uri.path.empty?) ? uri.path : 'v3'
 
-      response, expires = @@token_cache[{body: request_body, path: path}]
+      response, expires = @@token_cache[{:body => request_body, :path => path}] if cache_ttl > 0
 
       unless response && expires > Time.now
         request = {
@@ -433,7 +434,7 @@ module Fog
         request[:omit_default_port] = omit_default_port unless omit_default_port.nil?
 
         response = connection.request(request)
-        @@token_cache[{body: request_body, path: path}] = response, Time.now + 30 # 30-second TTL, enough for most requests
+        @@token_cache[{:body => request_body, :path => path}] = response, Time.now + cache_ttl if cache_ttl > 0
       end
 
       [response.headers["X-Subject-Token"], Fog::JSON.decode(response.body)]

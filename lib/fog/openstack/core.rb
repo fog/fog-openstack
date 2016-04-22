@@ -2,6 +2,7 @@ module Fog
   module OpenStack
     module Core
       attr_accessor :auth_token
+      attr_reader   :openstack_cache_ttl
       attr_reader :auth_token_expiration
       attr_reader :current_user
       attr_reader :current_user_id
@@ -26,6 +27,8 @@ module Fog
         @openstack_auth_uri    = URI.parse(options[:openstack_auth_url])
         @openstack_must_reauthenticate  = false
         @openstack_endpoint_type = options[:openstack_endpoint_type] || 'publicURL'
+
+        @openstack_cache_ttl = options[:openstack_cache_ttl] || 0
 
         unless @auth_token
           missing_credentials = Array.new
