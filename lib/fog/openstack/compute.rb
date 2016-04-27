@@ -176,6 +176,7 @@ module Fog
 
       # Key Pair
       request :list_key_pairs
+      request :get_key_pair
       request :create_key_pair
       request :delete_key_pair
 
