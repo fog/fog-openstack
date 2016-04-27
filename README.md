@@ -518,7 +518,7 @@ neutron.add_router_interface router.id, subnet.id
 * Read the [OpenStack API documentation](http://developer.openstack.org/api-ref.html).
 * Also, remember that reading the code itself is the best way to educate yourself on how best to interact with this gem.
 
-## Development 
+## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
