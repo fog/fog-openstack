@@ -16,20 +16,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:48 GMT
+      - Tue, 10 Nov 2015 11:39:25 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-f6a2cc8b-b3d1-442a-b754-fce880d21c7e
+      - req-0fcb3d9e-a0e7-43ee-a864-9d5a8453745e
       Content-Length:
       - '866'
       Content-Type:
@@ -56,7 +56,7 @@ http_interactions:
         "service"}, {"id": "f7f01056a1b04631be460a3b0c07c59f", "links": {"self": "http://devstack.openstack.stack:35357/v3/roles/f7f01056a1b04631be460a3b0c07c59f"},
         "name": "Member"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:29 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:21 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/roles
@@ -73,20 +73,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:48 GMT
+      - Tue, 10 Nov 2015 11:39:25 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-f7d03edc-9190-4c53-b8c4-a458574e6e25
+      - req-2b4b72ff-296d-46e2-872d-b8c05bb0192d
       Content-Length:
       - '866'
       Content-Type:
@@ -113,7 +113,7 @@ http_interactions:
         "service"}, {"id": "f7f01056a1b04631be460a3b0c07c59f", "links": {"self": "http://devstack.openstack.stack:35357/v3/roles/f7f01056a1b04631be460a3b0c07c59f"},
         "name": "Member"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:29 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:21 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/roles
@@ -130,20 +130,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:48 GMT
+      - Tue, 10 Nov 2015 11:39:25 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c6664aec-6dc4-49d2-9a79-278314cb3372
+      - req-9416d886-efd7-4fa8-96a3-8202ca21f2de
       Content-Length:
       - '866'
       Content-Type:
@@ -170,7 +170,7 @@ http_interactions:
         "service"}, {"id": "f7f01056a1b04631be460a3b0c07c59f", "links": {"self": "http://devstack.openstack.stack:35357/v3/roles/f7f01056a1b04631be460a3b0c07c59f"},
         "name": "Member"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:29 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:21 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/roles
@@ -187,20 +187,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:49 GMT
+      - Tue, 10 Nov 2015 11:39:25 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-295ea8b2-a670-4a0a-95ac-c982431c5bf0
+      - req-d17593fa-d417-4363-8047-2f44ff75b154
       Content-Length:
       - '866'
       Content-Type:
@@ -227,7 +227,7 @@ http_interactions:
         "service"}, {"id": "f7f01056a1b04631be460a3b0c07c59f", "links": {"self": "http://devstack.openstack.stack:35357/v3/roles/f7f01056a1b04631be460a3b0c07c59f"},
         "name": "Member"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:29 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:21 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/roles/atlantis
@@ -244,20 +244,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:49 GMT
+      - Tue, 10 Nov 2015 11:39:25 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-ae46484a-6e32-4998-8c3a-48e52836f2ea
+      - req-a663d6fc-88c2-4875-8688-50ea528a370e
       Content-Length:
       - '90'
       Content-Type:
@@ -275,5 +275,5 @@ http_interactions:
       string: '{"error": {"message": "Could not find role: atlantis", "code": 404,
         "title": "Not Found"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:29 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:21 GMT
 recorded_with: VCR 2.9.3

@@ -113,7 +113,7 @@ require 'fog/openstack/shared_context'
         expect(volume.description).to eq(volume_description) if v2?
         expect(volume.size).to eq(volume_size)
 
-        puts "Waiting for volume to be available..." if ENV['DEBUG_VERBOSE']
+        # Wait for volume to be available
         volume.wait_for { ready? }
 
         # check retrieval of volume by name
@@ -121,7 +121,7 @@ require 'fog/openstack/shared_context'
 
         volumes = @service.volumes.all(@name_param => volume_name)
         expect(volumes.length).to be 1
-        volume = volumes[0]
+        volume = volumes.first
         expect(volume).to be_a(Fog::Volume::OpenStack::Volume)
 
         expect(volume.id).to eq(volume_id)

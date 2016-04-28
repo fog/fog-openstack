@@ -13,6 +13,8 @@ RSpec.describe Fog::Network::OpenStack do
 
   include_context 'OpenStack specs with VCR'
   before :all do
+    VCR_PROJECT_ID='ded5a6e0922c4be59e7c15517cfb89ee'
+
     setup_vcr_and_service(
         :vcr_directory => 'spec/fog/openstack/network',
         :service_class => Fog::Network::OpenStack

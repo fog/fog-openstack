@@ -16,20 +16,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:57 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-39f50662-e8ba-43b7-96cc-94ab9622b672
+      - req-2275e746-6383-4fb1-9574-8da5c8e581aa
       Content-Length:
       - '1949'
       Content-Type:
@@ -69,7 +69,7 @@ http_interactions:
         "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:37 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:29 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -86,20 +86,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:57 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-27476f17-6433-46dc-9a59-30e8450c9004
+      - req-296fd7dd-651e-41be-abf5-aa86edf384ab
       Content-Length:
       - '200'
       Content-Type:
@@ -115,10 +115,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"service": {"enabled": true, "type": "volume", "name": "foobar", "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/services/b2ee717191c4447db846c58b6729577b"},
-        "id": "b2ee717191c4447db846c58b6729577b"}}'
+        {"self": "http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f"},
+        "id": "ceadca99150f4537b7c7910fa053681f"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:37 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services?type=volume
@@ -135,20 +135,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:57 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-bf404be8-4d27-4dc9-8570-42efb87e7f51
+      - req-9ea60b52-45aa-43b1-8fd6-f711b7184d03
       Content-Length:
       - '535'
       Content-Type:
@@ -166,14 +166,14 @@ http_interactions:
       string: '{"services": [{"name": "cinder", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/54efbe90e47244eca5fac1a65374e594"},
         "enabled": true, "type": "volume", "id": "54efbe90e47244eca5fac1a65374e594",
         "description": "Cinder Volume Service"}, {"enabled": true, "type": "volume",
-        "name": "foobar", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/b2ee717191c4447db846c58b6729577b"},
-        "id": "b2ee717191c4447db846c58b6729577b"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services?type=volume",
+        "name": "foobar", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f"},
+        "id": "ceadca99150f4537b7c7910fa053681f"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services?type=volume",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:37 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
 - request:
     method: patch
-    uri: http://devstack.openstack.stack:35357/v3/services/b2ee717191c4447db846c58b6729577b
+    uri: http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f
     body:
       encoding: UTF-8
       string: '{"service":{"name":"baz"}}'
@@ -187,20 +187,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:57 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-136605b7-aede-4ca4-bc5f-de25a9a3a19c
+      - req-172a700f-1a08-449b-85dd-5db534ccd889
       Content-Length:
       - '197'
       Content-Type:
@@ -216,10 +216,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"service": {"enabled": true, "type": "volume", "name": "baz", "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/services/b2ee717191c4447db846c58b6729577b"},
-        "id": "b2ee717191c4447db846c58b6729577b"}}'
+        {"self": "http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f"},
+        "id": "ceadca99150f4537b7c7910fa053681f"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:38 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -236,20 +236,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:57 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-3806fa90-efc8-42b6-a197-790140421e4c
+      - req-d50a81ea-129b-4fff-83af-f9cc5ba6d693
       Content-Length:
       - '2135'
       Content-Type:
@@ -275,14 +275,14 @@ http_interactions:
         "description": "Cinder Volume Service V2"}, {"name": "cinder", "links": {"self":
         "http://devstack.openstack.stack:35357/v3/services/54efbe90e47244eca5fac1a65374e594"},
         "enabled": true, "type": "volume", "id": "54efbe90e47244eca5fac1a65374e594",
-        "description": "Cinder Volume Service"}, {"enabled": true, "type": "volume",
-        "name": "baz", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/b2ee717191c4447db846c58b6729577b"},
-        "id": "b2ee717191c4447db846c58b6729577b"}, {"name": "neutron", "links": {"self":
+        "description": "Cinder Volume Service"}, {"name": "neutron", "links": {"self":
         "http://devstack.openstack.stack:35357/v3/services/b6063de99a3b474094779d6f778cd87b"},
         "enabled": true, "type": "network", "id": "b6063de99a3b474094779d6f778cd87b",
         "description": "Neutron Service"}, {"name": "novav21", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c6ad05da1baa4dd190bdf01dca60e911"},
         "enabled": true, "type": "computev21", "id": "c6ad05da1baa4dd190bdf01dca60e911",
-        "description": "Nova Compute Service V2.1"}, {"name": "nova", "links": {"self":
+        "description": "Nova Compute Service V2.1"}, {"enabled": true, "type": "volume",
+        "name": "baz", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f"},
+        "id": "ceadca99150f4537b7c7910fa053681f"}, {"name": "nova", "links": {"self":
         "http://devstack.openstack.stack:35357/v3/services/d22c9f37ebea4187ae97eb57ced02483"},
         "enabled": true, "type": "compute", "id": "d22c9f37ebea4187ae97eb57ced02483",
         "description": "Nova Compute Service"}, {"name": "ec2", "links": {"self":
@@ -291,7 +291,7 @@ http_interactions:
         "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:38 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -308,20 +308,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:57 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-510c2aae-1a0c-4bc3-8082-bfced3a566f2
+      - req-70509d00-aeeb-4f2f-b756-d728304e70df
       Content-Length:
       - '2135'
       Content-Type:
@@ -347,14 +347,14 @@ http_interactions:
         "description": "Cinder Volume Service V2"}, {"name": "cinder", "links": {"self":
         "http://devstack.openstack.stack:35357/v3/services/54efbe90e47244eca5fac1a65374e594"},
         "enabled": true, "type": "volume", "id": "54efbe90e47244eca5fac1a65374e594",
-        "description": "Cinder Volume Service"}, {"enabled": true, "type": "volume",
-        "name": "baz", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/b2ee717191c4447db846c58b6729577b"},
-        "id": "b2ee717191c4447db846c58b6729577b"}, {"name": "neutron", "links": {"self":
+        "description": "Cinder Volume Service"}, {"name": "neutron", "links": {"self":
         "http://devstack.openstack.stack:35357/v3/services/b6063de99a3b474094779d6f778cd87b"},
         "enabled": true, "type": "network", "id": "b6063de99a3b474094779d6f778cd87b",
         "description": "Neutron Service"}, {"name": "novav21", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c6ad05da1baa4dd190bdf01dca60e911"},
         "enabled": true, "type": "computev21", "id": "c6ad05da1baa4dd190bdf01dca60e911",
-        "description": "Nova Compute Service V2.1"}, {"name": "nova", "links": {"self":
+        "description": "Nova Compute Service V2.1"}, {"enabled": true, "type": "volume",
+        "name": "baz", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f"},
+        "id": "ceadca99150f4537b7c7910fa053681f"}, {"name": "nova", "links": {"self":
         "http://devstack.openstack.stack:35357/v3/services/d22c9f37ebea4187ae97eb57ced02483"},
         "enabled": true, "type": "compute", "id": "d22c9f37ebea4187ae97eb57ced02483",
         "description": "Nova Compute Service"}, {"name": "ec2", "links": {"self":
@@ -363,10 +363,10 @@ http_interactions:
         "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:38 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/services/b2ee717191c4447db846c58b6729577b
+    uri: http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f
     body:
       encoding: US-ASCII
       string: ''
@@ -380,20 +380,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:57 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-90fe7ad6-5778-4420-a05d-781826ac6b64
+      - req-f57c01a2-6e63-44c7-a641-21a05c54a1eb
       Content-Length:
       - '0'
       X-Cache:
@@ -408,7 +408,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:38 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -425,20 +425,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:58 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-7ee214e8-b68b-484a-94ec-7bd2fa96812d
+      - req-e94334df-0e9f-4e9e-b629-f2a732bc97fd
       Content-Length:
       - '1949'
       Content-Type:
@@ -478,10 +478,10 @@ http_interactions:
         "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:38 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/projects/b2ee717191c4447db846c58b6729577b
+    uri: http://devstack.openstack.stack:35357/v3/projects/ceadca99150f4537b7c7910fa053681f
     body:
       encoding: US-ASCII
       string: ''
@@ -495,20 +495,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:58 GMT
+      - Tue, 10 Nov 2015 11:39:35 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-103f80c4-c849-4b90-bf34-e39ba0f028c7
+      - req-de7a53bc-2b32-4ce6-9c5b-142f17788152
       Content-Length:
       - '117'
       Content-Type:
@@ -523,10 +523,10 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"error": {"message": "Could not find project: b2ee717191c4447db846c58b6729577b",
+      string: '{"error": {"message": "Could not find project: ceadca99150f4537b7c7910fa053681f",
         "code": 404, "title": "Not Found"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:38 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -543,20 +543,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:58 GMT
+      - Tue, 10 Nov 2015 11:39:35 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c47d2e1a-8ad6-4735-b6e7-7601885dbf4d
+      - req-32365712-8865-4ebb-883c-fd7c07358e5d
       Content-Length:
       - '1949'
       Content-Type:
@@ -596,5 +596,5 @@ http_interactions:
         "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:38 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
 recorded_with: VCR 2.9.3

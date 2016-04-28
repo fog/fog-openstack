@@ -11,13 +11,7 @@ RSpec.describe Fog::Identity::OpenStack::V3 do
 
   include_context 'OpenStack specs with VCR'
   before :all do
-    VCR_USER_ID='a18abc2039d6493aa7239a42033cc7c9'
-    VCR_USER_NAME='admin'
-    VCR_PASSWORD='devstack'
-    VCR_DOMAIN_ID='default'
-    VCR_DOMAIN_NAME='Default'
-    VCR_PROJECT_NAME='admin'
-    VCR_REGION='RegionOne'
+    VCR_PROJECT_ID='ded5a6e0922c4be59e7c15517cfb89ee'
 
     setup_vcr_and_service(
         :vcr_directory => 'spec/fog/openstack/identity_v3',

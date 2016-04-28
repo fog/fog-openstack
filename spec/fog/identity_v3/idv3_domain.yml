@@ -16,20 +16,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:44 GMT
+      - Tue, 10 Nov 2015 11:39:21 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-5850e74f-113f-4ce0-9637-5ff1111b5440
+      - req-b85a3508-8aaf-4fef-92a3-d89ebfa1b0a9
       Content-Length:
       - '861'
       Content-Type:
@@ -55,7 +55,7 @@ http_interactions:
         on Identity API v2.", "name": "Default", "id": "default"}], "links": {"self":
         "http://devstack.openstack.stack:35357/v3/domains", "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:24 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:16 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/domains/default
@@ -72,20 +72,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:44 GMT
+      - Tue, 10 Nov 2015 11:39:21 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-0f7b0683-3b12-481c-b55e-5d377ce7402a
+      - req-2e1bac90-5fa2-494e-a949-b61093055bca
       Content-Length:
       - '218'
       Content-Type:
@@ -104,7 +104,7 @@ http_interactions:
         "enabled": true, "description": "Owns users and tenants (i.e. projects) available
         on Identity API v2.", "name": "Default", "id": "default"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:24 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:16 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/domains/atlantis
@@ -121,20 +121,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:44 GMT
+      - Tue, 10 Nov 2015 11:39:21 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-0709beb9-0947-4a58-8c3f-b639a9e01bad
+      - req-318f1d19-973f-4f66-afb5-74484a6ea27e
       Content-Length:
       - '92'
       Content-Type:
@@ -152,5 +152,5 @@ http_interactions:
       string: '{"error": {"message": "Could not find domain: atlantis", "code": 404,
         "title": "Not Found"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:24 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:16 GMT
 recorded_with: VCR 2.9.3

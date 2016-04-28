@@ -16,20 +16,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:56 GMT
+      - Tue, 10 Nov 2015 11:39:33 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-e3652d77-b843-48cb-afa2-d24bea3a1605
+      - req-4ce99503-723c-404c-87e3-6bc6316d9ec3
       Content-Length:
       - '1949'
       Content-Type:
@@ -69,7 +69,7 @@ http_interactions:
         "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:37 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:29 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -86,20 +86,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:57 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-b208a7ae-ad9a-4298-bc1e-4f999b68805e
+      - req-fbe70a8f-53e7-4680-9579-7ca628afe029
       Content-Length:
       - '1949'
       Content-Type:
@@ -139,7 +139,7 @@ http_interactions:
         "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:37 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:29 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -156,20 +156,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:57 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-70372f35-4b8f-4117-96d8-f5025baf9192
+      - req-b46cfd49-ceb3-48d4-807c-2818f56e4f31
       Content-Length:
       - '1949'
       Content-Type:
@@ -209,7 +209,7 @@ http_interactions:
         "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:37 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:29 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -226,20 +226,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:57 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-43722f23-e9b5-47ab-81bf-3a17cd554a46
+      - req-fc2b55b6-1067-404c-b3a0-7fcfd7826c0a
       Content-Length:
       - '1949'
       Content-Type:
@@ -279,7 +279,7 @@ http_interactions:
         "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:37 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:29 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/projects/atlantis
@@ -296,20 +296,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:57 GMT
+      - Tue, 10 Nov 2015 11:39:34 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-8927df6c-0c49-45cd-9d3f-00ce5f20a877
+      - req-dd03a0fe-9ff3-4fb8-b2a8-cfcf9dce4966
       Content-Length:
       - '93'
       Content-Type:
@@ -327,5 +327,5 @@ http_interactions:
       string: '{"error": {"message": "Could not find project: atlantis", "code": 404,
         "title": "Not Found"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:37 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:29 GMT
 recorded_with: VCR 2.9.3

@@ -16,20 +16,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:06:01 GMT
+      - Tue, 10 Nov 2015 11:39:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-3da9f77e-a711-4f98-b1d7-d18b9a93db04
+      - req-d5a0dcf4-c764-4291-b519-885690674e69
       Content-Length:
       - '107'
       Content-Type:
@@ -47,7 +47,7 @@ http_interactions:
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/policies", "previous":
         null, "next": null}, "policies": []}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:41 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:33 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/policies
@@ -64,20 +64,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:06:01 GMT
+      - Tue, 10 Nov 2015 11:39:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c6c54c16-c907-4531-b3f6-169ded51aa52
+      - req-f446df8e-7a6e-4ee6-87c9-55a4d88ce6b3
       Content-Length:
       - '227'
       Content-Type:
@@ -92,11 +92,11 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"policy": {"type": "application/json", "id": "69e80a1836e54de6a3740b8548073fb3",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/policies/69e80a1836e54de6a3740b8548073fb3"},
+      string: '{"policy": {"type": "application/json", "id": "fb3dfc15357046a6bcfc0004a67910c5",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/policies/fb3dfc15357046a6bcfc0004a67910c5"},
         "blob": "{\"foobar_user\":[\"role:compute-user\"]}"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:41 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:33 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/policies
@@ -113,20 +113,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:06:01 GMT
+      - Tue, 10 Nov 2015 11:39:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c03edb88-bd91-4d12-a9ce-a5446f570db7
+      - req-25557d72-883a-462e-ae79-f3481b45ffe5
       Content-Length:
       - '322'
       Content-Type:
@@ -142,14 +142,14 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/policies", "previous":
-        null, "next": null}, "policies": [{"type": "application/json", "id": "69e80a1836e54de6a3740b8548073fb3",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/policies/69e80a1836e54de6a3740b8548073fb3"},
+        null, "next": null}, "policies": [{"type": "application/json", "id": "fb3dfc15357046a6bcfc0004a67910c5",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/policies/fb3dfc15357046a6bcfc0004a67910c5"},
         "blob": "{\"foobar_user\":[\"role:compute-user\"]}"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:41 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:33 GMT
 - request:
     method: patch
-    uri: http://devstack.openstack.stack:35357/v3/policies/69e80a1836e54de6a3740b8548073fb3
+    uri: http://devstack.openstack.stack:35357/v3/policies/fb3dfc15357046a6bcfc0004a67910c5
     body:
       encoding: UTF-8
       string: '{"policy":{"blob":"{\"baz_user\":[\"role:compute-user\"]}"}}'
@@ -163,20 +163,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:06:01 GMT
+      - Tue, 10 Nov 2015 11:39:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-f4056359-faa7-4909-966d-b0b83fbe0a8d
+      - req-1a8d5c61-20e8-4e64-b061-8431533d9363
       Content-Length:
       - '224'
       Content-Type:
@@ -191,11 +191,11 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"policy": {"type": "application/json", "id": "69e80a1836e54de6a3740b8548073fb3",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/policies/69e80a1836e54de6a3740b8548073fb3"},
+      string: '{"policy": {"type": "application/json", "id": "fb3dfc15357046a6bcfc0004a67910c5",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/policies/fb3dfc15357046a6bcfc0004a67910c5"},
         "blob": "{\"baz_user\":[\"role:compute-user\"]}"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:42 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:34 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/policies
@@ -212,20 +212,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:06:01 GMT
+      - Tue, 10 Nov 2015 11:39:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-e785ba64-6458-4c23-a49e-adefaa613733
+      - req-eb012563-0a9c-42ef-8374-27a9eebdbd00
       Content-Length:
       - '319'
       Content-Type:
@@ -241,11 +241,11 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/policies", "previous":
-        null, "next": null}, "policies": [{"type": "application/json", "id": "69e80a1836e54de6a3740b8548073fb3",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/policies/69e80a1836e54de6a3740b8548073fb3"},
+        null, "next": null}, "policies": [{"type": "application/json", "id": "fb3dfc15357046a6bcfc0004a67910c5",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/policies/fb3dfc15357046a6bcfc0004a67910c5"},
         "blob": "{\"baz_user\":[\"role:compute-user\"]}"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:42 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:34 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/policies
@@ -262,20 +262,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:06:01 GMT
+      - Tue, 10 Nov 2015 11:39:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-e612a7f6-4b03-4aec-9020-5216c0779c13
+      - req-1afe9a97-570c-4019-9c92-5b0e5fbb38cf
       Content-Length:
       - '319'
       Content-Type:
@@ -291,14 +291,14 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/policies", "previous":
-        null, "next": null}, "policies": [{"type": "application/json", "id": "69e80a1836e54de6a3740b8548073fb3",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/policies/69e80a1836e54de6a3740b8548073fb3"},
+        null, "next": null}, "policies": [{"type": "application/json", "id": "fb3dfc15357046a6bcfc0004a67910c5",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/policies/fb3dfc15357046a6bcfc0004a67910c5"},
         "blob": "{\"baz_user\":[\"role:compute-user\"]}"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:42 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:34 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/policies/69e80a1836e54de6a3740b8548073fb3
+    uri: http://devstack.openstack.stack:35357/v3/policies/fb3dfc15357046a6bcfc0004a67910c5
     body:
       encoding: US-ASCII
       string: ''
@@ -312,20 +312,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:06:01 GMT
+      - Tue, 10 Nov 2015 11:39:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-5cc49169-b041-47ae-b90a-83bc20b00752
+      - req-e87bcdf6-a0c6-494d-ac72-00654583ad65
       Content-Length:
       - '0'
       X-Cache:
@@ -340,7 +340,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:42 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:34 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/policies
@@ -357,20 +357,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:06:01 GMT
+      - Tue, 10 Nov 2015 11:39:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-94d3cc64-b030-4d62-a37e-3dd397315fb3
+      - req-4a698bff-25db-4818-b17e-86b6701fa4c4
       Content-Length:
       - '107'
       Content-Type:
@@ -388,10 +388,10 @@ http_interactions:
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/policies", "previous":
         null, "next": null}, "policies": []}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:42 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:34 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/policies/69e80a1836e54de6a3740b8548073fb3
+    uri: http://devstack.openstack.stack:35357/v3/policies/fb3dfc15357046a6bcfc0004a67910c5
     body:
       encoding: US-ASCII
       string: ''
@@ -405,20 +405,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:06:01 GMT
+      - Tue, 10 Nov 2015 11:39:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-86e994c6-2edb-4438-bd1a-d11e9042e6f6
+      - req-a1975e33-458c-4e29-a234-da36db582a7b
       Content-Length:
       - '116'
       Content-Type:
@@ -433,10 +433,10 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"error": {"message": "Could not find policy: 69e80a1836e54de6a3740b8548073fb3",
+      string: '{"error": {"message": "Could not find policy: fb3dfc15357046a6bcfc0004a67910c5",
         "code": 404, "title": "Not Found"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:42 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:34 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/policies
@@ -453,20 +453,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:06:02 GMT
+      - Tue, 10 Nov 2015 11:39:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-59887eb4-cb73-484b-8252-7c37191c5f44
+      - req-a76676fb-d0de-4554-9186-5a5f4984c060
       Content-Length:
       - '107'
       Content-Type:
@@ -484,5 +484,5 @@ http_interactions:
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/policies", "previous":
         null, "next": null}, "policies": []}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:42 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:34 GMT
 recorded_with: VCR 2.9.3

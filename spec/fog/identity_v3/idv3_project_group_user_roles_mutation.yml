@@ -16,20 +16,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:54 GMT
+      - Tue, 10 Nov 2015 11:39:30 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-3e43817a-c2aa-4d14-8323-75487e00ce82
+      - req-d3c654de-2b5d-4f13-9353-4289274785e4
       Content-Length:
       - '123'
       Content-Type:
@@ -47,7 +47,7 @@ http_interactions:
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects?name=p-foobar69",
         "previous": null, "next": null}, "projects": []}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:34 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:26 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/projects
@@ -64,20 +64,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:54 GMT
+      - Tue, 10 Nov 2015 11:39:30 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-57d338a8-7271-4f2f-9394-1d4447fb7846
+      - req-165e3964-60cf-4c1f-9e1f-5663c49ec85a
       Content-Length:
       - '248'
       Content-Type:
@@ -92,11 +92,11 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"project": {"description": "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e"},
-        "enabled": true, "id": "5a7e2962af284e3d8801e6dfc983733e", "parent_id": null,
+      string: '{"project": {"description": "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f"},
+        "enabled": true, "id": "40a343bbe01f4bb5a564c717b907ab0f", "parent_id": null,
         "domain_id": "default", "name": "p-foobar69"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:34 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:26 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/roles?name=baz
@@ -113,20 +113,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:54 GMT
+      - Tue, 10 Nov 2015 11:39:31 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-5811c962-e549-4af3-aab7-708efeb5d243
+      - req-99236c27-9be3-4b38-b9ab-2b48ad334eba
       Content-Length:
       - '110'
       Content-Type:
@@ -144,7 +144,7 @@ http_interactions:
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/roles?name=baz", "previous":
         null, "next": null}, "roles": []}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:34 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:26 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/roles
@@ -161,20 +161,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:54 GMT
+      - Tue, 10 Nov 2015 11:39:31 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-e5b4e451-3e21-4414-bdac-7fb75e47ad7c
+      - req-30d77725-3849-4c11-81d6-d587b84ae613
       Content-Length:
       - '158'
       Content-Type:
@@ -189,11 +189,11 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"role": {"id": "6da60a545a9441999f34c929da16e7b4", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/roles/6da60a545a9441999f34c929da16e7b4"}, "name":
+      string: '{"role": {"id": "034f2688ed164d1da2c7b8ae6ff98462", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/roles/034f2688ed164d1da2c7b8ae6ff98462"}, "name":
         "baz69"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:34 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:26 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/users
@@ -210,20 +210,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:54 GMT
+      - Tue, 10 Nov 2015 11:39:31 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-d1cd4f01-28fe-4c3c-8a72-6025ff1f55af
+      - req-7758646b-28ad-406d-9c13-065a6a589f47
       Content-Length:
       - '235'
       Content-Type:
@@ -238,11 +238,11 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"user": {"name": "u-foobar69", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7"},
+      string: '{"user": {"name": "u-foobar69", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae"},
         "domain_id": "default", "enabled": true, "email": "foobar@example.com", "id":
-        "5a3658148b744146ba702a2855e11cd7"}}'
+        "a25f44020c27439687f19eb3c2861cae"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:34 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:26 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/groups
@@ -259,20 +259,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:54 GMT
+      - Tue, 10 Nov 2015 11:39:31 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-2aa19002-3dc4-4408-9d6a-427e5d5a89c7
+      - req-08d45c8b-a1e3-4430-ba61-8fbca53982a1
       Content-Length:
       - '229'
       Content-Type:
@@ -288,13 +288,13 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"group": {"domain_id": "default", "description": "Group of Foobar
-        users", "id": "1d481f9d10b148f1a3986c4bb6dd95bd", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/1d481f9d10b148f1a3986c4bb6dd95bd"},
+        users", "id": "8eef0d48da3f4ed8a96e66ed893c08de", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/8eef0d48da3f4ed8a96e66ed893c08de"},
         "name": "g-foobar69"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:26 GMT
 - request:
     method: put
-    uri: http://devstack.openstack.stack:35357/v3/groups/1d481f9d10b148f1a3986c4bb6dd95bd/users/5a3658148b744146ba702a2855e11cd7
+    uri: http://devstack.openstack.stack:35357/v3/groups/8eef0d48da3f4ed8a96e66ed893c08de/users/a25f44020c27439687f19eb3c2861cae
     body:
       encoding: US-ASCII
       string: ''
@@ -308,20 +308,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:54 GMT
+      - Tue, 10 Nov 2015 11:39:31 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-35a45f39-e51a-4847-a1a2-9c4650322139
+      - req-a9f36dba-40d3-45ac-bdef-ff440cba1aef
       Content-Length:
       - '0'
       X-Cache:
@@ -336,10 +336,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:27 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7/projects
+    uri: http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae/projects
     body:
       encoding: US-ASCII
       string: ''
@@ -353,20 +353,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:54 GMT
+      - Tue, 10 Nov 2015 11:39:31 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-00c3579a-571b-4e68-a7c8-3eb6a6ea9b20
+      - req-7dd3e4b8-c5de-496d-9898-943c10242b55
       Content-Length:
       - '146'
       Content-Type:
@@ -381,13 +381,13 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7/projects",
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae/projects",
         "previous": null, "next": null}, "projects": []}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:27 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=5a7e2962af284e3d8801e6dfc983733e&user.id=5a3658148b744146ba702a2855e11cd7
+    uri: http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=40a343bbe01f4bb5a564c717b907ab0f&user.id=a25f44020c27439687f19eb3c2861cae
     body:
       encoding: US-ASCII
       string: ''
@@ -401,20 +401,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:54 GMT
+      - Tue, 10 Nov 2015 11:39:31 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-9bc1b574-e2dd-4739-94cd-86c4893c159d
+      - req-33869ee3-5b43-4aff-a2c1-3bc251334459
       Content-Length:
       - '229'
       Content-Type:
@@ -429,13 +429,13 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"role_assignments": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=5a7e2962af284e3d8801e6dfc983733e&user.id=5a3658148b744146ba702a2855e11cd7",
+      string: '{"role_assignments": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=40a343bbe01f4bb5a564c717b907ab0f&user.id=a25f44020c27439687f19eb3c2861cae",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:27 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/users/5a3658148b744146ba702a2855e11cd7/roles
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/users/a25f44020c27439687f19eb3c2861cae/roles
     body:
       encoding: US-ASCII
       string: ''
@@ -449,20 +449,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:54 GMT
+      - Tue, 10 Nov 2015 11:39:31 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-abe3bcfb-9c6f-44de-9ada-04850e5d5127
+      - req-01f97419-3c52-4406-b23b-54d3fae579f9
       Content-Length:
       - '182'
       Content-Type:
@@ -477,13 +477,13 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/users/5a3658148b744146ba702a2855e11cd7/roles",
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/users/a25f44020c27439687f19eb3c2861cae/roles",
         "previous": null, "next": null}, "roles": []}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:27 GMT
 - request:
     method: put
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/users/5a3658148b744146ba702a2855e11cd7/roles/6da60a545a9441999f34c929da16e7b4
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/users/a25f44020c27439687f19eb3c2861cae/roles/034f2688ed164d1da2c7b8ae6ff98462
     body:
       encoding: US-ASCII
       string: ''
@@ -497,20 +497,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:31 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-272c7a3c-890f-4fb9-99c6-f762f1099b98
+      - req-fcb56f8f-89f9-4379-9688-f33277877881
       Content-Length:
       - '0'
       X-Cache:
@@ -525,10 +525,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:27 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7/projects
+    uri: http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae/projects
     body:
       encoding: US-ASCII
       string: ''
@@ -542,20 +542,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:31 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-3f0fc8b9-a380-416c-8074-d3eb20ead32a
+      - req-2f3c2b48-84d8-4f5b-b0f5-01d693424b20
       Content-Length:
       - '381'
       Content-Type:
@@ -570,16 +570,16 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7/projects",
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae/projects",
         "previous": null, "next": null}, "projects": [{"description": "", "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e"},
-        "enabled": true, "id": "5a7e2962af284e3d8801e6dfc983733e", "parent_id": null,
+        {"self": "http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f"},
+        "enabled": true, "id": "40a343bbe01f4bb5a564c717b907ab0f", "parent_id": null,
         "domain_id": "default", "name": "p-foobar69"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:27 GMT
 - request:
     method: head
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/users/5a3658148b744146ba702a2855e11cd7/roles/6da60a545a9441999f34c929da16e7b4
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/users/a25f44020c27439687f19eb3c2861cae/roles/034f2688ed164d1da2c7b8ae6ff98462
     body:
       encoding: US-ASCII
       string: ''
@@ -593,20 +593,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:31 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-56eb6226-e187-465e-90d8-f86fa35f3fb0
+      - req-0c2c034c-9a1a-42b6-8818-c0aa1849adec
       X-Cache:
       - MISS from i056593-vagrant
       X-Cache-Lookup:
@@ -619,10 +619,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:27 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/users/5a3658148b744146ba702a2855e11cd7/roles
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/users/a25f44020c27439687f19eb3c2861cae/roles
     body:
       encoding: US-ASCII
       string: ''
@@ -636,20 +636,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:32 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-d65b78e2-fed4-4130-adf2-0b8041e71a45
+      - req-3170d530-be76-414c-b8c8-96018e5f97f4
       Content-Length:
       - '330'
       Content-Type:
@@ -664,15 +664,15 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/users/5a3658148b744146ba702a2855e11cd7/roles",
-        "previous": null, "next": null}, "roles": [{"id": "6da60a545a9441999f34c929da16e7b4",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/roles/6da60a545a9441999f34c929da16e7b4"},
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/users/a25f44020c27439687f19eb3c2861cae/roles",
+        "previous": null, "next": null}, "roles": [{"id": "034f2688ed164d1da2c7b8ae6ff98462",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/roles/034f2688ed164d1da2c7b8ae6ff98462"},
         "name": "baz69"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:27 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/users/5a3658148b744146ba702a2855e11cd7/roles/6da60a545a9441999f34c929da16e7b4
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/users/a25f44020c27439687f19eb3c2861cae/roles/034f2688ed164d1da2c7b8ae6ff98462
     body:
       encoding: US-ASCII
       string: ''
@@ -686,20 +686,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:32 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-5457d496-3537-42dc-bccd-f9ccecd1f769
+      - req-8172152d-4fd9-49c7-9cc2-24e46a2c8d68
       Content-Length:
       - '0'
       X-Cache:
@@ -714,10 +714,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:27 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7/projects
+    uri: http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae/projects
     body:
       encoding: US-ASCII
       string: ''
@@ -731,20 +731,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:32 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-cadec267-f400-487f-8c76-8d8e99c79796
+      - req-ee7a57d1-0058-4da1-821b-d2f67f73b515
       Content-Length:
       - '146'
       Content-Type:
@@ -759,13 +759,13 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7/projects",
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae/projects",
         "previous": null, "next": null}, "projects": []}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:27 GMT
 - request:
     method: head
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/users/5a3658148b744146ba702a2855e11cd7/roles/6da60a545a9441999f34c929da16e7b4
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/users/a25f44020c27439687f19eb3c2861cae/roles/034f2688ed164d1da2c7b8ae6ff98462
     body:
       encoding: US-ASCII
       string: ''
@@ -779,20 +779,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:32 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-2a1be00e-f294-4a42-a4cc-fb05dc101d2b
+      - req-e5586a9f-2733-4245-b055-c658ce92b38a
       Content-Length:
       - '237'
       Content-Type:
@@ -809,10 +809,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:27 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/groups/1d481f9d10b148f1a3986c4bb6dd95bd/roles
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/groups/8eef0d48da3f4ed8a96e66ed893c08de/roles
     body:
       encoding: US-ASCII
       string: ''
@@ -826,20 +826,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:32 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-ab5b625f-2108-4aba-a6e4-0325a836fab8
+      - req-b6b76dff-b239-449a-a81e-9988ded993bb
       Content-Length:
       - '183'
       Content-Type:
@@ -854,13 +854,13 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/groups/1d481f9d10b148f1a3986c4bb6dd95bd/roles",
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/groups/8eef0d48da3f4ed8a96e66ed893c08de/roles",
         "previous": null, "next": null}, "roles": []}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:35 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:28 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=5a7e2962af284e3d8801e6dfc983733e&user.id=5a3658148b744146ba702a2855e11cd7
+    uri: http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=40a343bbe01f4bb5a564c717b907ab0f&user.id=a25f44020c27439687f19eb3c2861cae
     body:
       encoding: US-ASCII
       string: ''
@@ -874,20 +874,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:32 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-908eb6d3-5db9-418f-930a-51fa7e63ade0
+      - req-50a98b88-d1e3-443e-97d0-1a678dfa6c79
       Content-Length:
       - '229'
       Content-Type:
@@ -902,13 +902,13 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"role_assignments": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=5a7e2962af284e3d8801e6dfc983733e&user.id=5a3658148b744146ba702a2855e11cd7",
+      string: '{"role_assignments": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=40a343bbe01f4bb5a564c717b907ab0f&user.id=a25f44020c27439687f19eb3c2861cae",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:28 GMT
 - request:
     method: put
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/groups/1d481f9d10b148f1a3986c4bb6dd95bd/roles/6da60a545a9441999f34c929da16e7b4
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/groups/8eef0d48da3f4ed8a96e66ed893c08de/roles/034f2688ed164d1da2c7b8ae6ff98462
     body:
       encoding: US-ASCII
       string: ''
@@ -922,20 +922,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:32 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c21b9aa7-393f-45a4-ba5e-6084cf8a108a
+      - req-72a7830b-9e34-4a84-8c2a-d5220e487c81
       Content-Length:
       - '0'
       X-Cache:
@@ -950,10 +950,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:28 GMT
 - request:
     method: head
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/groups/1d481f9d10b148f1a3986c4bb6dd95bd/roles/6da60a545a9441999f34c929da16e7b4
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/groups/8eef0d48da3f4ed8a96e66ed893c08de/roles/034f2688ed164d1da2c7b8ae6ff98462
     body:
       encoding: US-ASCII
       string: ''
@@ -967,20 +967,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:32 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-e88b9e31-4517-4f59-9c46-7ba162254019
+      - req-ef03ea66-e517-4f8f-bc36-79c1aea241e4
       X-Cache:
       - MISS from i056593-vagrant
       X-Cache-Lookup:
@@ -993,10 +993,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:28 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/groups/1d481f9d10b148f1a3986c4bb6dd95bd/roles
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/groups/8eef0d48da3f4ed8a96e66ed893c08de/roles
     body:
       encoding: US-ASCII
       string: ''
@@ -1010,20 +1010,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:32 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-31f59231-c747-4511-b0fa-08bf55090283
+      - req-e258f8d3-dedf-4173-9f5d-9669bb34ac26
       Content-Length:
       - '331'
       Content-Type:
@@ -1038,15 +1038,15 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/groups/1d481f9d10b148f1a3986c4bb6dd95bd/roles",
-        "previous": null, "next": null}, "roles": [{"id": "6da60a545a9441999f34c929da16e7b4",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/roles/6da60a545a9441999f34c929da16e7b4"},
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/groups/8eef0d48da3f4ed8a96e66ed893c08de/roles",
+        "previous": null, "next": null}, "roles": [{"id": "034f2688ed164d1da2c7b8ae6ff98462",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/roles/034f2688ed164d1da2c7b8ae6ff98462"},
         "name": "baz69"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:28 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=5a7e2962af284e3d8801e6dfc983733e&user.id=5a3658148b744146ba702a2855e11cd7
+    uri: http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=40a343bbe01f4bb5a564c717b907ab0f&user.id=a25f44020c27439687f19eb3c2861cae
     body:
       encoding: US-ASCII
       string: ''
@@ -1060,20 +1060,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:55 GMT
+      - Tue, 10 Nov 2015 11:39:32 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-439d8cf0-dfd0-4c0b-b0e2-dc3673dfaa24
+      - req-7c463d05-99de-4ac0-b9fb-6572ebf47fdb
       Content-Length:
       - '700'
       Content-Type:
@@ -1088,17 +1088,17 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"role_assignments": [{"scope": {"project": {"id": "5a7e2962af284e3d8801e6dfc983733e"}},
-        "role": {"id": "6da60a545a9441999f34c929da16e7b4"}, "user": {"id": "5a3658148b744146ba702a2855e11cd7"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/groups/1d481f9d10b148f1a3986c4bb6dd95bd/roles/6da60a545a9441999f34c929da16e7b4",
-        "membership": "http://devstack.openstack.stack:35357/v3/groups/1d481f9d10b148f1a3986c4bb6dd95bd/users/5a3658148b744146ba702a2855e11cd7"}}],
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=5a7e2962af284e3d8801e6dfc983733e&user.id=5a3658148b744146ba702a2855e11cd7",
+      string: '{"role_assignments": [{"scope": {"project": {"id": "40a343bbe01f4bb5a564c717b907ab0f"}},
+        "role": {"id": "034f2688ed164d1da2c7b8ae6ff98462"}, "user": {"id": "a25f44020c27439687f19eb3c2861cae"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/groups/8eef0d48da3f4ed8a96e66ed893c08de/roles/034f2688ed164d1da2c7b8ae6ff98462",
+        "membership": "http://devstack.openstack.stack:35357/v3/groups/8eef0d48da3f4ed8a96e66ed893c08de/users/a25f44020c27439687f19eb3c2861cae"}}],
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/role_assignments?effective=true&scope.project.id=40a343bbe01f4bb5a564c717b907ab0f&user.id=a25f44020c27439687f19eb3c2861cae",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:28 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7/projects
+    uri: http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae/projects
     body:
       encoding: US-ASCII
       string: ''
@@ -1112,20 +1112,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:56 GMT
+      - Tue, 10 Nov 2015 11:39:32 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-73db31a5-01e8-40ad-9b92-6b2054cc3530
+      - req-2c0d9a64-ef23-4c2f-8c3d-f4c4f5005ab2
       Content-Length:
       - '381'
       Content-Type:
@@ -1140,16 +1140,16 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7/projects",
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae/projects",
         "previous": null, "next": null}, "projects": [{"description": "", "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e"},
-        "enabled": true, "id": "5a7e2962af284e3d8801e6dfc983733e", "parent_id": null,
+        {"self": "http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f"},
+        "enabled": true, "id": "40a343bbe01f4bb5a564c717b907ab0f", "parent_id": null,
         "domain_id": "default", "name": "p-foobar69"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:28 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/groups/1d481f9d10b148f1a3986c4bb6dd95bd/roles/6da60a545a9441999f34c929da16e7b4
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/groups/8eef0d48da3f4ed8a96e66ed893c08de/roles/034f2688ed164d1da2c7b8ae6ff98462
     body:
       encoding: US-ASCII
       string: ''
@@ -1163,20 +1163,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:56 GMT
+      - Tue, 10 Nov 2015 11:39:33 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-e22faaae-c189-4832-90de-1d817afba9eb
+      - req-012409f3-e97c-4782-b345-ac53d9d3518b
       Content-Length:
       - '0'
       X-Cache:
@@ -1191,10 +1191,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:28 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7/projects
+    uri: http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae/projects
     body:
       encoding: US-ASCII
       string: ''
@@ -1208,20 +1208,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:56 GMT
+      - Tue, 10 Nov 2015 11:39:33 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-bb9173d6-2d90-442a-bbb1-ce53593c6151
+      - req-521d67fc-04c3-468d-97b0-8029718e41f7
       Content-Length:
       - '146'
       Content-Type:
@@ -1236,13 +1236,13 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7/projects",
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae/projects",
         "previous": null, "next": null}, "projects": []}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:28 GMT
 - request:
     method: head
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e/groups/1d481f9d10b148f1a3986c4bb6dd95bd/roles/6da60a545a9441999f34c929da16e7b4
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f/groups/8eef0d48da3f4ed8a96e66ed893c08de/roles/034f2688ed164d1da2c7b8ae6ff98462
     body:
       encoding: US-ASCII
       string: ''
@@ -1256,20 +1256,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:56 GMT
+      - Tue, 10 Nov 2015 11:39:33 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-05f20e7a-68df-4d58-9ec0-d59add03b2c0
+      - req-4a29f119-3703-43ca-896b-e1f28f9cf15c
       Content-Length:
       - '237'
       Content-Type:
@@ -1286,10 +1286,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:28 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/users/5a3658148b744146ba702a2855e11cd7
+    uri: http://devstack.openstack.stack:35357/v3/users/a25f44020c27439687f19eb3c2861cae
     body:
       encoding: US-ASCII
       string: ''
@@ -1303,20 +1303,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:56 GMT
+      - Tue, 10 Nov 2015 11:39:33 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-bac4ea07-8c81-4514-8d76-74b1fc31494d
+      - req-c390de32-e230-4084-a342-3d8877cd15f3
       Content-Length:
       - '0'
       X-Cache:
@@ -1331,10 +1331,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:28 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/groups/1d481f9d10b148f1a3986c4bb6dd95bd
+    uri: http://devstack.openstack.stack:35357/v3/groups/8eef0d48da3f4ed8a96e66ed893c08de
     body:
       encoding: US-ASCII
       string: ''
@@ -1348,20 +1348,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:56 GMT
+      - Tue, 10 Nov 2015 11:39:33 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-f8e7edaa-3353-45c0-8174-6c4791cf467d
+      - req-3fb6ad8f-50c7-48d4-99cd-e6343c26e545
       Content-Length:
       - '0'
       X-Cache:
@@ -1376,10 +1376,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:29 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/roles/6da60a545a9441999f34c929da16e7b4
+    uri: http://devstack.openstack.stack:35357/v3/roles/034f2688ed164d1da2c7b8ae6ff98462
     body:
       encoding: US-ASCII
       string: ''
@@ -1393,20 +1393,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:56 GMT
+      - Tue, 10 Nov 2015 11:39:33 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-64b24cc8-7093-4697-8cc0-668f84893c7f
+      - req-6df37dc3-7147-49ef-9118-b9fdcfe1d998
       Content-Length:
       - '0'
       X-Cache:
@@ -1421,10 +1421,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:36 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:29 GMT
 - request:
     method: patch
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f
     body:
       encoding: UTF-8
       string: '{"project":{"enabled":false}}'
@@ -1438,20 +1438,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:56 GMT
+      - Tue, 10 Nov 2015 11:39:33 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-34a786c3-06c1-4c5f-9793-72f3bb43a4f2
+      - req-19a4fbc4-1967-4cd4-9c8d-ca5f8a9abb4f
       Content-Length:
       - '262'
       Content-Type:
@@ -1466,14 +1466,14 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"project": {"description": "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e"},
-        "extra": {}, "enabled": false, "id": "5a7e2962af284e3d8801e6dfc983733e", "parent_id":
+      string: '{"project": {"description": "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f"},
+        "extra": {}, "enabled": false, "id": "40a343bbe01f4bb5a564c717b907ab0f", "parent_id":
         null, "domain_id": "default", "name": "p-foobar69"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:37 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:29 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/projects/5a7e2962af284e3d8801e6dfc983733e
+    uri: http://devstack.openstack.stack:35357/v3/projects/40a343bbe01f4bb5a564c717b907ab0f
     body:
       encoding: US-ASCII
       string: ''
@@ -1487,20 +1487,20 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 0914e855563b4789977a0a2eaf2396c9
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:56 GMT
+      - Tue, 10 Nov 2015 11:39:33 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-d6ebd9bd-df54-4ea2-a6e4-59fa1db03c3d
+      - req-7cbff24a-03b6-4e5a-8b2d-08220533678c
       Content-Length:
       - '0'
       X-Cache:
@@ -1515,5 +1515,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:37 GMT
+  recorded_at: Tue, 10 Nov 2015 11:39:29 GMT
 recorded_with: VCR 2.9.3

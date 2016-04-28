@@ -99,7 +99,7 @@ RSpec.shared_context 'OpenStack specs with VCR' do
         options = {
           :openstack_auth_url       => "#{@os_auth_url}/tokens",
           :openstack_region         => ENV['OS_REGION_NAME']  || options[:region_name]  || 'RegionOne',
-          :openstack_api_key        => ENV['OS_PASSWORD']     || options[:password]     || 'devstack',
+          :openstack_api_key        => ENV['OS_PASSWORD']     || options[:password]     || 'password',
           :openstack_username       => ENV['OS_USERNAME']     || options[:username]     || 'admin',
           :openstack_tenant         => ENV['OS_PROJECT_NAME'] || options[:project_name] || 'admin'
           # FIXME: Identity V3 not properly supported by other services yet
