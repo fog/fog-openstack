@@ -104,6 +104,8 @@ require 'fog/shared_context'
         begin
           volume_name        = "fog-testvolume-1"
           volume_description = 'This is the volume description.'
+          volume_new_description = 'This is the updated volume description.'
+          volume_new_name    = "fog-updated-testvolume-1"
           volume_size        = 1 # in GB
 
           # create volume
@@ -145,6 +147,25 @@ require 'fog/shared_context'
           expect(volume.display_description).to eq(volume_description) unless v2?
           expect(volume.description).to eq(volume_description) if v2?
           expect(volume.size).to eq(volume_size)
+
+          # Update the volume's name
+          volume.update(@name_param => volume_new_name)
+
+          volumes = @service.volumes.all(@name_param => volume_new_name)
+          volume = volumes.first
+          expect(volume).to be_a(Fog::Volume::OpenStack::Volume)
+          expect(volume.display_name).to eq(volume_new_name) unless v2?
+          expect(volume.name).to eq(volume_new_name) if v2?
+
+          # Check that save does an update
+          volume.description = volume_new_description if v2?
+          volume.display_description = volume_new_description unless v2?
+          volume.save
+
+          volume = @service.volumes.get(volume_id)
+          expect(volume.description).to eq(volume_new_description) if v2?
+          expect(volume.display_description).to eq(volume_new_description) unless v2?
+
         ensure
           # delete volume
           cleanup_test_object(@service.volumes, volume_id)
@@ -211,7 +232,7 @@ require 'fog/shared_context'
           expect { volume.extend(volume_size_small) }.to raise_error(Excon::Errors::BadRequest, /Invalid input received: New size for extend must be greater than current size./)
         ensure
           # delete volume
-          cleanup_test_object(@service.volumes, volume.id)
+          cleanup_test_object(@service.volumes, volume.nil? ? nil : volume.id)
 
           # check that extending a non-existing volume fails
           puts "Extending deleted volume should fail..." if ENV['DEBUG_VERBOSE']
@@ -321,8 +342,8 @@ require 'fog/shared_context'
           end
         ensure
           # cleanup volume
-          cleanup_test_object(other_service.volumes, volume.id) if other_service
-          cleanup_test_object(@service.volumes, volume.id) unless other_service
+          cleanup_test_object(other_service.volumes, volume.nil? ? nil : volume.id) if other_service
+          cleanup_test_object(@service.volumes, volume.nil? ? nil : volume.id) unless other_service
         end
       end
     end
@@ -372,7 +393,7 @@ require 'fog/shared_context'
       end
     end
 
-    it 'can create and delete volume snapshots' do
+    it 'can create, update and delete volume snapshots' do
       VCR.use_cassette('volume_snapshot_and_delete') do
         begin
           # create volume object
@@ -399,6 +420,13 @@ require 'fog/shared_context'
               object.nil? || (['available', 'error'].include? object.status.downcase)
             end
           end
+
+          # Update snapshot
+          snapshot.update(@description_param => 'Updated description')
+
+          updated_snapshot = @service.snapshots.get(snapshot.id)
+          expect(updated_snapshot.description).to eq 'Updated description' if v2?
+          expect(updated_snapshot.display_description).to eq 'Updated description' unless v2?
 
           # delete snapshot
           snapshot.destroy
