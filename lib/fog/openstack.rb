@@ -227,6 +227,7 @@ module Fog
           if projects_body['projects'].empty?
             options[:openstack_domain_id] = body['token']['user']['domain']['id']
           else
+            options[:openstack_project_id] = projects_body['projects'].first['id']
             options[:openstack_project_name] = projects_body['projects'].first['name']
             options[:openstack_domain_id] = projects_body['projects'].first['domain_id']
           end
@@ -274,9 +275,9 @@ module Fog
       identity_url = identity_service['endpoints'].find { |e| e['interface']=='public' }['url'] if identity_service
 
       if body['token']['project']
-        tenant = body['token']['project']['name']
+        tenant = body['token']['project']
       else
-        tenant = body['token']['user']['project']['name'] if body['token']['user']['project']
+        tenant = body['token']['user']['project'] if body['token']['user']['project']
       end
 
       return {
