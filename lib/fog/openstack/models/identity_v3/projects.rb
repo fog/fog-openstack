@@ -54,7 +54,7 @@ module Fog
 
             if service.openstack_cache_ttl > 0
               @@cache[{:token => service.auth_token, :id => id, :options => options}] = [
-                top_project, Time.now + service.openstack_cache_tt]
+                top_project, Time.now + service.openstack_cache_ttl]
             end
             return top_project
           end
