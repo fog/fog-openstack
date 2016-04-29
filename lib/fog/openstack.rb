@@ -220,8 +220,10 @@ module Fog
               :method => 'GET'
           }
           user_id = body['token']['user']['id']
+          project_uri = uri.clone
+          project_uri.path = uri.path.sub('/auth/tokens',"/users/#{user_id}/projects")
           response = Fog::Core::Connection.new(
-              "#{uri.scheme}://#{uri.host}:#{uri.port}/v3/users/#{user_id}/projects", false, connection_options).request(request_body)
+              "#{project_uri.scheme}://#{project_uri.host}:#{project_uri.port}#{project_uri.path}", false, connection_options).request(request_body)
 
           projects_body = Fog::JSON.decode(response.body)
           if projects_body['projects'].empty?
