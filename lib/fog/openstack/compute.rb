@@ -135,6 +135,8 @@ module Fog
       # Flavor Actions
       request :get_flavor_metadata
       request :create_flavor_metadata
+      request :update_flavor_metadata
+      request :delete_flavor_metadata
 
       # Flavor Access
       request :add_flavor_access
