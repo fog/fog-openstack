@@ -44,6 +44,8 @@ module Fog
       collection  :tenants
       model       :volume
       collection  :volumes
+      model       :volume_attachment
+      collection  :volume_attachments
       model       :network
       collection  :networks
       model       :snapshot
@@ -194,6 +196,7 @@ module Fog
       request :attach_volume
       request :detach_volume
       request :get_server_volumes
+      request :list_volume_attachments
 
       # Snapshot
       request :create_volume_snapshot
@@ -218,6 +221,7 @@ module Fog
       # Zones
       request :list_zones
       request :list_zones_detailed
+      request :list_availability_zones
 
       class Mock
         attr_reader :auth_token
