@@ -40,6 +40,26 @@ module Fog
           attribute :instance_uuid
           attribute :user_id
 
+          def method_missing(method_sym, *arguments, &block)
+            if attributes.has_key?(method_sym)
+              attributes[method_sym]
+            elsif attributes.has_key?(method_sym.to_s)
+              attributes[method_sym.to_s]
+            else
+              super
+            end
+          end
+
+          def respond_to? method_sym,include_all=false
+            if attributes.has_key?(method_sym)
+              true
+            elsif attributes.has_key?(method_sym.to_s)
+              true
+            else
+              super
+            end
+          end
+
           def create
             requires :name
             merge_attributes(service.create_image(self.attributes).body)
