@@ -117,7 +117,6 @@ module Fog
 
             authenticate
 
-            process_path @openstack_management_uri
             unless @path.match(SUPPORTED_VERSIONS)
               @path = Fog::OpenStack.get_supported_version_path(SUPPORTED_VERSIONS,
                                                                  @openstack_management_uri,
@@ -127,16 +126,6 @@ module Fog
 
             @persistent = options[:persistent] || false
             @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
-          end
-
-          def process_path uri
-            unless @path.match(SUPPORTED_VERSIONS)
-              @path = "/" + Fog::OpenStack.get_supported_version(SUPPORTED_VERSIONS,
-                                                                 uri,
-                                                                 @auth_token,
-                                                                 @connection_options)
-            end
-            @path
           end
 
           private
