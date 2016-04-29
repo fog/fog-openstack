@@ -51,6 +51,8 @@ module Fog
         request :list_snapshots_detailed
         request :get_snapshot_details
         request :delete_snapshot
+        request :update_snapshot_metadata
+        request :delete_snapshot_metadata
 
         request :list_transfers
         request :list_transfers_detailed

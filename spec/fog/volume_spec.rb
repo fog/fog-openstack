@@ -500,6 +500,68 @@ require 'fog/shared_context'
       end
     end
 
+    it 'can create, update and delete volume snapshot metadata' do
+      VCR.use_cassette('volume_snapshot_metadata_crud') do
+        begin
+          # create volume object with metadata
+          volume = setup_test_object(:type       => :volume,
+                                     @name_param => 'fog-testvolume-1',
+                                     :size       => 1,
+                                     :metadata   => {'some_metadata' => 'this is meta',
+                                                     'more_metadata' => 'even more meta'}
+          )
+          volume.wait_for { ready? }
+
+          # create snapshot object
+          snapshot    = setup_test_object(:type              => :snapshot,
+                                          @name_param        => 'fog-testsnapshot-1',
+                                          @description_param => 'Test snapshot',
+                                          :volume_id         => volume.id
+          )
+          snapshot_id = snapshot.id
+
+          # wait for the snapshot to be available
+          Fog.wait_for do
+            begin
+              object = @service.snapshots.get(snapshot.id)
+              expect(object).to_not be_nil
+              puts "Current status: #{object ? object.status : 'deleted'}" if ENV['DEBUG_VERBOSE']
+              object.nil? || (['available', 'error'].include? object.status.downcase)
+            end
+          end
+
+          updated_snapshot = @service.snapshots.get(snapshot.id)
+          check_metadata = updated_snapshot.metadata
+          expect(check_metadata.size).to be 0
+
+          # update metadata
+          snapshot.update_metadata({'some_snapshot_metadata' => 'this is data',
+                                    'new_snapshot_metadata' => 'this is new'})
+
+          updated_snapshot = @service.snapshots.get(snapshot.id)
+          check_metadata = updated_snapshot.metadata
+          expect(check_metadata.size).to be 2
+          expect(check_metadata['some_snapshot_metadata']).to eq 'this is data'
+          expect(check_metadata['new_snapshot_metadata']).to eq 'this is new'
+
+
+
+          # delete metadata
+          snapshot.delete_metadata('some_snapshot_metadata')
+
+          updated_snapshot = @service.snapshots.get(snapshot.id)
+          check_metadata = updated_snapshot.metadata
+          expect(check_metadata.size).to be 1
+          expect(check_metadata['new_snapshot_metadata']).to eq 'this is new'
+
+        ensure
+          # cleanup volume
+          cleanup_test_object(@service.snapshots, snapshot.id) if snapshot
+          cleanup_test_object(@service.volumes, volume.id) if volume
+        end
+      end
+    end
+
     # TODO: tests for snapshots
     it 'responds to list_snapshots_detailed' do
       expect(@service.respond_to?(:list_snapshots_detailed)).to be true
