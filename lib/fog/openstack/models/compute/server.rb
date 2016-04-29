@@ -117,11 +117,11 @@ module Fog
         # returns all ip_addresses for a given instance
         # this includes both the fixed ip(s) and the floating ip(s)
         def ip_addresses
-          addresses.values.flatten.map{|x| x['addr']}
+          addresses ? addresses.values.flatten.map{|x| x['addr']} : []
         end
 
         def floating_ip_addresses
-          all_floating=addresses.values.flatten.select{ |data| data["OS-EXT-IPS:type"]=="floating" }.map{|addr| addr["addr"] }
+          all_floating= addresses  ? addresses.values.flatten.select{ |data| data["OS-EXT-IPS:type"]=="floating" }.map{|addr| addr["addr"] } : []
 
           # Return them all, leading with manually assigned addresses
           manual = all_addresses.map{|addr| addr["ip"]}
