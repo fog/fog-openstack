@@ -2,113 +2,143 @@
 http_interactions:
 - request:
     method: get
-    uri: http://devstack.openstack.stack:8776/v2/711f0a64ef5046c084ce904b4445d119/types
+    uri: http://devstack.openstack.stack:8776/v2/2ab82e30d7984631874def67813dffd8/types
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - f8e9e59847aa47f1b80eb28452cef591
+      - 96082e8bba9d418b8ce232496fa059ab
   response:
     status:
       code: 200
       message: ''
     headers:
       X-Compute-Request-Id:
-      - req-54416d94-ae11-4e32-9ebd-aee0bc1a1177
+      - req-8fb272c9-5c2d-4c39-a68d-342139447a0a
       Content-Type:
       - application/json
       Content-Length:
-      - '206'
+      - '225'
       X-Openstack-Request-Id:
-      - req-54416d94-ae11-4e32-9ebd-aee0bc1a1177
+      - req-8fb272c9-5c2d-4c39-a68d-342139447a0a
       Date:
-      - Thu, 22 Oct 2015 14:04:49 GMT
+      - Tue, 03 May 2016 14:15:41 GMT
+      X-Cache:
+      - MISS from i056593-u1404
+      X-Cache-Lookup:
+      - MISS from i056593-u1404:3128
+      Via:
+      - 1.1 i056593-u1404 (squid/3.3.8)
+      Connection:
+      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"volume_types": [{"os-volume-type-access:is_public": true, "extra_specs":
-        {"volume_backend_name": "lvmdriver-1"}, "id": "3637058f-9a35-451b-ab6c-5d5e2425d6ca",
-        "name": "lvmdriver-1", "description": null}]}'
+      string: '{"volume_types": [{"name": "lvmdriver-1", "extra_specs": {"volume_backend_name":
+        "lvmdriver-1"}, "os-volume-type-access:is_public": true, "is_public": true,
+        "id": "326e2b0b-3776-49a5-b26d-4de79ac659ed", "description": null}]}'
     http_version: 
-  recorded_at: Thu, 22 Oct 2015 14:04:30 GMT
+  recorded_at: Tue, 03 May 2016 14:15:41 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:8776/v2/711f0a64ef5046c084ce904b4445d119/types/3637058f-9a35-451b-ab6c-5d5e2425d6ca
+    uri: http://devstack.openstack.stack:8776/v2/2ab82e30d7984631874def67813dffd8/types/326e2b0b-3776-49a5-b26d-4de79ac659ed
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - f8e9e59847aa47f1b80eb28452cef591
+      - 96082e8bba9d418b8ce232496fa059ab
   response:
     status:
       code: 200
       message: ''
     headers:
       X-Compute-Request-Id:
-      - req-4f689228-dbe2-40cd-aa33-3ca37acd5e23
+      - req-5ce8cc43-b17c-4ef4-bc4e-78a94ff376c9
       Content-Type:
       - application/json
       Content-Length:
-      - '203'
+      - '222'
       X-Openstack-Request-Id:
-      - req-4f689228-dbe2-40cd-aa33-3ca37acd5e23
+      - req-5ce8cc43-b17c-4ef4-bc4e-78a94ff376c9
       Date:
-      - Thu, 22 Oct 2015 14:04:49 GMT
+      - Tue, 03 May 2016 14:15:41 GMT
+      X-Cache:
+      - MISS from i056593-u1404
+      X-Cache-Lookup:
+      - MISS from i056593-u1404:3128
+      Via:
+      - 1.1 i056593-u1404 (squid/3.3.8)
+      Connection:
+      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"volume_type": {"os-volume-type-access:is_public": true, "extra_specs":
-        {"volume_backend_name": "lvmdriver-1"}, "id": "3637058f-9a35-451b-ab6c-5d5e2425d6ca",
-        "name": "lvmdriver-1", "description": null}}'
+      string: '{"volume_type": {"name": "lvmdriver-1", "extra_specs": {"volume_backend_name":
+        "lvmdriver-1"}, "os-volume-type-access:is_public": true, "is_public": true,
+        "id": "326e2b0b-3776-49a5-b26d-4de79ac659ed", "description": null}}'
     http_version: 
-  recorded_at: Thu, 22 Oct 2015 14:04:30 GMT
+  recorded_at: Tue, 03 May 2016 14:15:41 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:8776/v2/711f0a64ef5046c084ce904b4445d119/types?lvmdriver-1
+    uri: http://devstack.openstack.stack:8776/v2/2ab82e30d7984631874def67813dffd8/types?lvmdriver-1
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - f8e9e59847aa47f1b80eb28452cef591
+      - 96082e8bba9d418b8ce232496fa059ab
   response:
     status:
       code: 200
       message: ''
     headers:
       X-Compute-Request-Id:
-      - req-2e5a783a-b12c-48a6-ba15-9371eda9da5b
+      - req-8e238a69-f835-423c-8b85-6465f2c07c9c
       Content-Type:
       - application/json
       Content-Length:
-      - '206'
+      - '225'
       X-Openstack-Request-Id:
-      - req-2e5a783a-b12c-48a6-ba15-9371eda9da5b
+      - req-8e238a69-f835-423c-8b85-6465f2c07c9c
       Date:
-      - Thu, 22 Oct 2015 14:04:49 GMT
+      - Tue, 03 May 2016 14:15:41 GMT
+      X-Cache:
+      - MISS from i056593-u1404
+      X-Cache-Lookup:
+      - MISS from i056593-u1404:3128
+      Via:
+      - 1.1 i056593-u1404 (squid/3.3.8)
+      Connection:
+      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"volume_types": [{"os-volume-type-access:is_public": true, "extra_specs":
-        {"volume_backend_name": "lvmdriver-1"}, "id": "3637058f-9a35-451b-ab6c-5d5e2425d6ca",
-        "name": "lvmdriver-1", "description": null}]}'
+      string: '{"volume_types": [{"name": "lvmdriver-1", "extra_specs": {"volume_backend_name":
+        "lvmdriver-1"}, "os-volume-type-access:is_public": true, "is_public": true,
+        "id": "326e2b0b-3776-49a5-b26d-4de79ac659ed", "description": null}]}'
     http_version: 
-  recorded_at: Thu, 22 Oct 2015 14:04:30 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 03 May 2016 14:15:42 GMT
+recorded_with: VCR 3.0.1

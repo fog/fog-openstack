@@ -8,7 +8,7 @@ http_interactions:
       string: '{"user":{"name":"foobar_role_user","email":"foobar@example.com","password":"s3cret!"}}'
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -16,48 +16,48 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:22 GMT
+      - Tue, 03 May 2016 13:51:57 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-eeaf542e-df39-4730-bbe9-7e712fb108f6
+      - req-fc51aef7-4b98-4181-b795-87234e5e968f
       Content-Length:
-      - '241'
+      - '242'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"user": {"name": "foobar_role_user", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/ea2507e8c4bd4515ab87c21099e53b1c"},
+      string: '{"user": {"name": "foobar_role_user", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/d5c338451a8249d3901fed9c41f08e70"},
         "domain_id": "default", "enabled": true, "email": "foobar@example.com", "id":
-        "ea2507e8c4bd4515ab87c21099e53b1c"}}'
+        "d5c338451a8249d3901fed9c41f08e70"}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:17 GMT
+  recorded_at: Tue, 03 May 2016 13:51:58 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/ea2507e8c4bd4515ab87c21099e53b1c/roles
+    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/d5c338451a8249d3901fed9c41f08e70/roles
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -65,38 +65,38 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:22 GMT
+      - Tue, 03 May 2016 13:51:58 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-b26fe8af-db66-48e5-b330-67ce44d153f1
+      - req-c9be37a7-d770-4828-8f12-9a1aed0e3d32
       Content-Length:
-      - '156'
+      - '157'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/default/users/ea2507e8c4bd4515ab87c21099e53b1c/roles",
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/default/users/d5c338451a8249d3901fed9c41f08e70/roles",
         "previous": null, "next": null}, "roles": []}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:17 GMT
+  recorded_at: Tue, 03 May 2016 13:51:58 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/roles
@@ -105,7 +105,7 @@ http_interactions:
       string: '{"role":{"name":"foobar_role"}}'
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -113,48 +113,48 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:22 GMT
+      - Tue, 03 May 2016 13:51:58 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-55b23b6b-6190-4677-bbc3-04be61349bfa
+      - req-66c04ff5-f01c-4c17-af69-44cce223fa92
       Content-Length:
-      - '164'
+      - '165'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"role": {"id": "82f06234da2847039ba158b3d6851d90", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/roles/82f06234da2847039ba158b3d6851d90"}, "name":
+      string: '{"role": {"id": "bcd7db1631be432298eddb8d7ce93d5d", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/roles/bcd7db1631be432298eddb8d7ce93d5d"}, "name":
         "foobar_role"}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:58 GMT
 - request:
     method: put
-    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/ea2507e8c4bd4515ab87c21099e53b1c/roles/82f06234da2847039ba158b3d6851d90
+    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/d5c338451a8249d3901fed9c41f08e70/roles/bcd7db1631be432298eddb8d7ce93d5d
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -162,44 +162,44 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:22 GMT
+      - Tue, 03 May 2016 13:51:58 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-be21ec07-18fa-4fc3-a838-8d518033ba53
+      - req-a2dee2d1-c27a-4306-9699-a90ed3180893
       Content-Length:
       - '0'
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:58 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/ea2507e8c4bd4515ab87c21099e53b1c/roles
+    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/d5c338451a8249d3901fed9c41f08e70/roles
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -207,49 +207,49 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:22 GMT
+      - Tue, 03 May 2016 13:51:58 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-773c4524-f6da-4238-82f5-0ea81e4bfcdf
+      - req-5b35e91d-c963-4d56-a1cb-2e48bc7ec1de
       Content-Length:
-      - '310'
+      - '312'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/default/users/ea2507e8c4bd4515ab87c21099e53b1c/roles",
-        "previous": null, "next": null}, "roles": [{"id": "82f06234da2847039ba158b3d6851d90",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/roles/82f06234da2847039ba158b3d6851d90"},
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/default/users/d5c338451a8249d3901fed9c41f08e70/roles",
+        "previous": null, "next": null}, "roles": [{"id": "bcd7db1631be432298eddb8d7ce93d5d",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/roles/bcd7db1631be432298eddb8d7ce93d5d"},
         "name": "foobar_role"}]}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:58 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/role_assignments?user.id=ea2507e8c4bd4515ab87c21099e53b1c
+    uri: http://devstack.openstack.stack:35357/v3/role_assignments?user.id=d5c338451a8249d3901fed9c41f08e70
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -257,41 +257,41 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:22 GMT
+      - Tue, 03 May 2016 13:51:58 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-25800905-adbe-42d0-b0ff-92ccd3f192c3
+      - req-bc92bca4-f039-4cd8-8d1b-488fe30c1802
       Content-Length:
-      - '458'
+      - '460'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"role_assignments": [{"scope": {"domain": {"id": "default"}}, "role":
-        {"id": "82f06234da2847039ba158b3d6851d90"}, "user": {"id": "ea2507e8c4bd4515ab87c21099e53b1c"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/domains/default/users/ea2507e8c4bd4515ab87c21099e53b1c/roles/82f06234da2847039ba158b3d6851d90"}}],
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/role_assignments?user.id=ea2507e8c4bd4515ab87c21099e53b1c",
+        {"id": "bcd7db1631be432298eddb8d7ce93d5d"}, "user": {"id": "d5c338451a8249d3901fed9c41f08e70"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/domains/default/users/d5c338451a8249d3901fed9c41f08e70/roles/bcd7db1631be432298eddb8d7ce93d5d"}}],
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/role_assignments?user.id=d5c338451a8249d3901fed9c41f08e70",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:58 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/role_assignments
@@ -300,7 +300,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -308,356 +308,164 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:22 GMT
+      - Tue, 03 May 2016 13:51:58 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-59097c89-18ca-415b-9f63-c0900b91da0f
+      - req-a5fa4b0d-b730-4465-bbfb-538db7eafc91
       Content-Length:
-      - '35859'
+      - '13535'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"role_assignments": [{"scope": {"project": {"id": "7695231df10d4cb5b6b5a1f74cb20c1d"}},
-        "role": {"id": "f6ca227446954afdb745b5fa83166c00"}, "user": {"id": "3fac8bae1b6f4d2e99a1cecf9b27f797"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/7695231df10d4cb5b6b5a1f74cb20c1d/users/3fac8bae1b6f4d2e99a1cecf9b27f797/roles/f6ca227446954afdb745b5fa83166c00"}},
-        {"scope": {"project": {"id": "7695231df10d4cb5b6b5a1f74cb20c1d"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "4467ea650993437786817ca7ec1348ad"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/7695231df10d4cb5b6b5a1f74cb20c1d/users/4467ea650993437786817ca7ec1348ad/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "7695231df10d4cb5b6b5a1f74cb20c1d"}}, "role":
-        {"id": "f6ca227446954afdb745b5fa83166c00"}, "user": {"id": "5f2d40b549ab419291fdc02ca93a2b21"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/7695231df10d4cb5b6b5a1f74cb20c1d/users/5f2d40b549ab419291fdc02ca93a2b21/roles/f6ca227446954afdb745b5fa83166c00"}},
-        {"scope": {"project": {"id": "7695231df10d4cb5b6b5a1f74cb20c1d"}}, "role":
-        {"id": "f6ca227446954afdb745b5fa83166c00"}, "user": {"id": "74e0fdd6679f49a79e0d02729e70834e"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/7695231df10d4cb5b6b5a1f74cb20c1d/users/74e0fdd6679f49a79e0d02729e70834e/roles/f6ca227446954afdb745b5fa83166c00"}},
-        {"scope": {"project": {"id": "a6266e6f4a56471da988788dd2a15c27"}}, "role":
-        {"id": "f7f01056a1b04631be460a3b0c07c59f"}, "user": {"id": "83e19aa7df6843d497f7cde5ef8faf65"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/a6266e6f4a56471da988788dd2a15c27/users/83e19aa7df6843d497f7cde5ef8faf65/roles/f7f01056a1b04631be460a3b0c07c59f"}},
-        {"scope": {"project": {"id": "ca6707581327490398bf1f68fe396a5a"}}, "role":
-        {"id": "693bf84201c446d19272c24aa4492c37"}, "user": {"id": "83e19aa7df6843d497f7cde5ef8faf65"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/ca6707581327490398bf1f68fe396a5a/users/83e19aa7df6843d497f7cde5ef8faf65/roles/693bf84201c446d19272c24aa4492c37"}},
-        {"scope": {"project": {"id": "ca6707581327490398bf1f68fe396a5a"}}, "role":
-        {"id": "f7f01056a1b04631be460a3b0c07c59f"}, "user": {"id": "83e19aa7df6843d497f7cde5ef8faf65"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/ca6707581327490398bf1f68fe396a5a/users/83e19aa7df6843d497f7cde5ef8faf65/roles/f7f01056a1b04631be460a3b0c07c59f"}},
-        {"scope": {"project": {"id": "01c4261095a34e7681931f9d9783ad35"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/01c4261095a34e7681931f9d9783ad35/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "058efc118b2343ae89834ec99c4f3ffa"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/058efc118b2343ae89834ec99c4f3ffa/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "0877df08429b4a9eb38c3f234dd94f12"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/0877df08429b4a9eb38c3f234dd94f12/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "0c50aac63b88455db4f27ff7f048bb90"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/0c50aac63b88455db4f27ff7f048bb90/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "0fa0dbc1ee164753b557ce83d53d842e"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/0fa0dbc1ee164753b557ce83d53d842e/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "13bce60c11144060b0bfbf255c10d7a9"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/13bce60c11144060b0bfbf255c10d7a9/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "17b6af808c634b05b06d1e9328bfcc56"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/17b6af808c634b05b06d1e9328bfcc56/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "1cad564061844ec1a86e250b49b43243"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/1cad564061844ec1a86e250b49b43243/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "1ec291849eae4eceb242f0a9ddd9422f"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/1ec291849eae4eceb242f0a9ddd9422f/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "1ed9a1907d26421383724a3fcef12681"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/1ed9a1907d26421383724a3fcef12681/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "1f8a1c2717a84cb596231349af703045"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/1f8a1c2717a84cb596231349af703045/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "1f98dd87c26e4f12bcb79b4ebadc9d62"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/1f98dd87c26e4f12bcb79b4ebadc9d62/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "21e9d8782d5d48f2beb9ffdb82c68a9a"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/21e9d8782d5d48f2beb9ffdb82c68a9a/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "247befe189474bfaaacf4ce689acca38"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/247befe189474bfaaacf4ce689acca38/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "26a2ef3df6c84beb99b75342ce067538"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/26a2ef3df6c84beb99b75342ce067538/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "2d51ccf5f0bd406697243567a57a6b11"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2d51ccf5f0bd406697243567a57a6b11/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "3049407c511b40a7955222e3cf6d80e1"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/3049407c511b40a7955222e3cf6d80e1/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "353354d2f86d496ba1a539be105dbf40"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/353354d2f86d496ba1a539be105dbf40/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "35712c2214cf4ba185723a05c5817610"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/35712c2214cf4ba185723a05c5817610/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "3b3f9a64eb074d14843510eb1fc3b591"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/3b3f9a64eb074d14843510eb1fc3b591/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "402826a96a6a4d948032e3b148f54181"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/402826a96a6a4d948032e3b148f54181/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "431ecc311a4b4773a5d5dc761d0b43ef"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/431ecc311a4b4773a5d5dc761d0b43ef/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "45ed30d9d5014badb54a4f93bd228860"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/45ed30d9d5014badb54a4f93bd228860/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "4699bde7d88f4eae9ed25935e71a3db5"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/4699bde7d88f4eae9ed25935e71a3db5/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "4da758a777e044be89014c8658675428"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/4da758a777e044be89014c8658675428/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "4e9d51081d9c4bf9b27a0e47c0d7f1db"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/4e9d51081d9c4bf9b27a0e47c0d7f1db/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "4eb0e5ceba5e4d66b5bdc715fc6393d1"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/4eb0e5ceba5e4d66b5bdc715fc6393d1/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "51503222813a47f5bb318391ea0a5187"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/51503222813a47f5bb318391ea0a5187/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "54e29c198ebc4b6e9c56ccf363d8b006"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/54e29c198ebc4b6e9c56ccf363d8b006/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "5c3625aab40d4094b72a1b50e1fb2030"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/5c3625aab40d4094b72a1b50e1fb2030/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "5c76ef994ef64f898a65e0b5ffdb283e"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/5c76ef994ef64f898a65e0b5ffdb283e/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "5ee9aa47425e4403bdde24db63cc9765"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/5ee9aa47425e4403bdde24db63cc9765/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "6046d7bd3a52466bb4acfc2df44c8252"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/6046d7bd3a52466bb4acfc2df44c8252/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "60577c5b959143f5b109c47f037bf6da"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/60577c5b959143f5b109c47f037bf6da/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "640bef0e5aef4a198d6c254f6f88bcbf"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/640bef0e5aef4a198d6c254f6f88bcbf/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "66249596bdf84970b7ae264105a0bb80"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/66249596bdf84970b7ae264105a0bb80/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "6cab48c185ef4131a24d5676dde806e3"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/6cab48c185ef4131a24d5676dde806e3/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "6d783f9b7b9f4e92a2ae15bbdf8e7748"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/6d783f9b7b9f4e92a2ae15bbdf8e7748/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "7026ab5afca44ea3a2172095163093ac"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/7026ab5afca44ea3a2172095163093ac/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "7179beb050b749bda88986176ab23060"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/7179beb050b749bda88986176ab23060/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "7219b517a88f4a6e810401bce7886e1b"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/7219b517a88f4a6e810401bce7886e1b/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "76900faff9e04c86b4c0a7a8bfcbec69"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/76900faff9e04c86b4c0a7a8bfcbec69/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "771faab66e3b4416a813d5e71b52f9a5"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/771faab66e3b4416a813d5e71b52f9a5/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "773f1896d6314b589b1716a275374f1c"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/773f1896d6314b589b1716a275374f1c/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "7783b4d889ca454a867cfd019f3b2846"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/7783b4d889ca454a867cfd019f3b2846/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "792a0727301d4974bc578abce64afa53"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/792a0727301d4974bc578abce64afa53/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "80546e3e7375434ba6752ebb0a6baaa5"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/80546e3e7375434ba6752ebb0a6baaa5/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "819481e3142b40468cf9b5021a89bc7b"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/819481e3142b40468cf9b5021a89bc7b/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "81a7816b55d14aa29741ae938a8af06c"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/81a7816b55d14aa29741ae938a8af06c/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "8336d7ae481b41789febd1f7b9dffbed"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/8336d7ae481b41789febd1f7b9dffbed/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "8d71b66bb163442da689d008eb919a89"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/8d71b66bb163442da689d008eb919a89/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "900e804e16e0402aa894c4db56a2c2bf"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/900e804e16e0402aa894c4db56a2c2bf/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "914850417f3e40e4b3f41b43b9c9fbd8"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/914850417f3e40e4b3f41b43b9c9fbd8/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "932f752ad2fc48a0a7a988d262cbad5a"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/932f752ad2fc48a0a7a988d262cbad5a/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "96d2e8ad08634a998dcdbffeed8f755e"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/96d2e8ad08634a998dcdbffeed8f755e/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "9c188c42b4a247c4b9fd46757aa7dde7"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/9c188c42b4a247c4b9fd46757aa7dde7/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "a1aa5baa364b44a2ad32c8292a7acb02"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/a1aa5baa364b44a2ad32c8292a7acb02/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "a49a338ab7164e59834e4b9f52204701"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/a49a338ab7164e59834e4b9f52204701/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "a9d65d1c2d8a486c8c34382b674eade4"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/a9d65d1c2d8a486c8c34382b674eade4/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "a9f504ab4fd348c9820fa7baac3511f0"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/a9f504ab4fd348c9820fa7baac3511f0/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "aab9b4f3b525460abab7f44af633f74b"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/aab9b4f3b525460abab7f44af633f74b/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "b028130e6fbb453a9ea886bb666989f3"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/b028130e6fbb453a9ea886bb666989f3/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "b428abe7c1ee4492b716c954b92d57ac"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/b428abe7c1ee4492b716c954b92d57ac/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "b5469bcdc8154fedb5b0e09062e8b4ae"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/b5469bcdc8154fedb5b0e09062e8b4ae/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "b5526d11086745c988292329ed234d12"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/b5526d11086745c988292329ed234d12/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "b5c0b8ae3d944b72b42401b380974f05"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/b5c0b8ae3d944b72b42401b380974f05/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "bb904913e0b140869327a37d77e7f080"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/bb904913e0b140869327a37d77e7f080/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "bff7e608a09b4696a8899a23f43e6f59"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/bff7e608a09b4696a8899a23f43e6f59/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "c4c59a0d666e43efb4953447f74e1f3d"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/c4c59a0d666e43efb4953447f74e1f3d/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "c523450758bc44478c3a4fe1bc8738d9"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/c523450758bc44478c3a4fe1bc8738d9/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "c528f9ecbac84bb28355a799dcf55c15"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/c528f9ecbac84bb28355a799dcf55c15/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "c5a02b95e9e548d4b57505cdec6ff6d2"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/c5a02b95e9e548d4b57505cdec6ff6d2/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "c61e450a4a1b463fbbaa8f5e6b06e4a0"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/c61e450a4a1b463fbbaa8f5e6b06e4a0/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "c75d157303324491883385a0d60cd878"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/c75d157303324491883385a0d60cd878/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "c9a14c794b674693a7128e2c5d42a321"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/c9a14c794b674693a7128e2c5d42a321/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "ca6707581327490398bf1f68fe396a5a"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/ca6707581327490398bf1f68fe396a5a/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "cd7fb56c15fd49d1bc9c7e8a6039b574"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/cd7fb56c15fd49d1bc9c7e8a6039b574/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "d44dd047a7e3451b9e3f1203c6b399a5"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/d44dd047a7e3451b9e3f1203c6b399a5/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "d9808ecab11d4451a4e9b45841327d03"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/d9808ecab11d4451a4e9b45841327d03/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "dac62601b1db4ac7a412ad71256cf7fa"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/dac62601b1db4ac7a412ad71256cf7fa/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "dc7888cd1fa9498781907c89c16519f6"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/dc7888cd1fa9498781907c89c16519f6/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "ded5a6e0922c4be59e7c15517cfb89ee"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/ded5a6e0922c4be59e7c15517cfb89ee/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "df28ccdf945447b587facadc25fee495"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/df28ccdf945447b587facadc25fee495/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "dfc56116a6ab4fac97a7cd1df68c930c"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/dfc56116a6ab4fac97a7cd1df68c930c/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "e854423b8cfc4df481755a06a8e579b1"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/e854423b8cfc4df481755a06a8e579b1/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "e8797f9084e3411a9305ec6281443d89"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/e8797f9084e3411a9305ec6281443d89/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "ee41236a29164caf85a9ccac6000fa6c"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/ee41236a29164caf85a9ccac6000fa6c/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "efc046df3ab1491ba37649ccf5704fc3"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/efc046df3ab1491ba37649ccf5704fc3/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "f14cb8d4f0a34d66b2e98babe80e53c5"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/f14cb8d4f0a34d66b2e98babe80e53c5/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "f2736c9b065d433eb7d975300e659535"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/f2736c9b065d433eb7d975300e659535/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "f427d50d6b3c4ed485ac936a51fdfc4f"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/f427d50d6b3c4ed485ac936a51fdfc4f/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "ff9069842d964bf2ad86ac5ed6773379"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/ff9069842d964bf2ad86ac5ed6773379/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"project": {"id": "ffab648350ef4cfc9ae2f9a81761ddcd"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/ffab648350ef4cfc9ae2f9a81761ddcd/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"domain": {"id": "260c87fb609c41f69a265240185c35da"}}, "role":
-        {"id": "d98e5f87050646f194c8c23b9e3f2bca"}, "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"},
-        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/domains/260c87fb609c41f69a265240185c35da/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"domain": {"id": "default"}}, "role": {"id": "d98e5f87050646f194c8c23b9e3f2bca"},
-        "user": {"id": "a18abc2039d6493aa7239a42033cc7c9"}, "links": {"assignment":
-        "http://devstack.openstack.stack:35357/v3/domains/default/users/a18abc2039d6493aa7239a42033cc7c9/roles/d98e5f87050646f194c8c23b9e3f2bca"}},
-        {"scope": {"domain": {"id": "default"}}, "role": {"id": "82f06234da2847039ba158b3d6851d90"},
-        "user": {"id": "ea2507e8c4bd4515ab87c21099e53b1c"}, "links": {"assignment":
-        "http://devstack.openstack.stack:35357/v3/domains/default/users/ea2507e8c4bd4515ab87c21099e53b1c/roles/82f06234da2847039ba158b3d6851d90"}}],
+      string: '{"role_assignments": [{"scope": {"project": {"id": "2ab82e30d7984631874def67813dffd8"}},
+        "role": {"id": "5929fb4077c3415c9850e66f2c2be16b"}, "user": {"id": "0536d9fac63c465ebf60a2a5f87bea1f"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8/users/0536d9fac63c465ebf60a2a5f87bea1f/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "30079dd13fb1488a88e6ee32f3e0b9ac"}}, "role":
+        {"id": "13c811edcd2a46dca5fed6252fd50cd2"}, "user": {"id": "1432886c5942446988bd6796a72bd08c"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/30079dd13fb1488a88e6ee32f3e0b9ac/users/1432886c5942446988bd6796a72bd08c/roles/13c811edcd2a46dca5fed6252fd50cd2"}},
+        {"scope": {"project": {"id": "2ab82e30d7984631874def67813dffd8"}}, "role":
+        {"id": "5929fb4077c3415c9850e66f2c2be16b"}, "user": {"id": "205e0e39a2534743b517ed0aa2fbcda7"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8/users/205e0e39a2534743b517ed0aa2fbcda7/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "2ab82e30d7984631874def67813dffd8"}}, "role":
+        {"id": "d46ad249d4dd40eb840d20ec917d682e"}, "user": {"id": "205e0e39a2534743b517ed0aa2fbcda7"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8/users/205e0e39a2534743b517ed0aa2fbcda7/roles/d46ad249d4dd40eb840d20ec917d682e"}},
+        {"scope": {"project": {"id": "650778a984b040d2bc7acd45d9e7940f"}}, "role":
+        {"id": "d46ad249d4dd40eb840d20ec917d682e"}, "user": {"id": "205e0e39a2534743b517ed0aa2fbcda7"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/650778a984b040d2bc7acd45d9e7940f/users/205e0e39a2534743b517ed0aa2fbcda7/roles/d46ad249d4dd40eb840d20ec917d682e"}},
+        {"scope": {"project": {"id": "a5db6ff5a6274dd589b6a05945d7f34d"}}, "role":
+        {"id": "5929fb4077c3415c9850e66f2c2be16b"}, "user": {"id": "205e0e39a2534743b517ed0aa2fbcda7"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/a5db6ff5a6274dd589b6a05945d7f34d/users/205e0e39a2534743b517ed0aa2fbcda7/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "f17a4813648d4b0bb82124ca1f5f1fd0"}}, "role":
+        {"id": "13c811edcd2a46dca5fed6252fd50cd2"}, "user": {"id": "205e0e39a2534743b517ed0aa2fbcda7"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/f17a4813648d4b0bb82124ca1f5f1fd0/users/205e0e39a2534743b517ed0aa2fbcda7/roles/13c811edcd2a46dca5fed6252fd50cd2"}},
+        {"scope": {"project": {"id": "f17a4813648d4b0bb82124ca1f5f1fd0"}}, "role":
+        {"id": "5929fb4077c3415c9850e66f2c2be16b"}, "user": {"id": "205e0e39a2534743b517ed0aa2fbcda7"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/f17a4813648d4b0bb82124ca1f5f1fd0/users/205e0e39a2534743b517ed0aa2fbcda7/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "f17a4813648d4b0bb82124ca1f5f1fd0"}}, "role":
+        {"id": "d46ad249d4dd40eb840d20ec917d682e"}, "user": {"id": "205e0e39a2534743b517ed0aa2fbcda7"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/f17a4813648d4b0bb82124ca1f5f1fd0/users/205e0e39a2534743b517ed0aa2fbcda7/roles/d46ad249d4dd40eb840d20ec917d682e"}},
+        {"scope": {"domain": {"id": "default"}}, "role": {"id": "5929fb4077c3415c9850e66f2c2be16b"},
+        "user": {"id": "205e0e39a2534743b517ed0aa2fbcda7"}, "links": {"assignment":
+        "http://devstack.openstack.stack:35357/v3/domains/default/users/205e0e39a2534743b517ed0aa2fbcda7/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "2ab82e30d7984631874def67813dffd8"}}, "role":
+        {"id": "5929fb4077c3415c9850e66f2c2be16b"}, "user": {"id": "42a9988a47134aa2aaa0deafef474d97"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8/users/42a9988a47134aa2aaa0deafef474d97/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "2ab82e30d7984631874def67813dffd8"}}, "role":
+        {"id": "d46ad249d4dd40eb840d20ec917d682e"}, "user": {"id": "42a9988a47134aa2aaa0deafef474d97"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8/users/42a9988a47134aa2aaa0deafef474d97/roles/d46ad249d4dd40eb840d20ec917d682e"}},
+        {"scope": {"project": {"id": "f17a4813648d4b0bb82124ca1f5f1fd0"}}, "role":
+        {"id": "5929fb4077c3415c9850e66f2c2be16b"}, "user": {"id": "42a9988a47134aa2aaa0deafef474d97"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/f17a4813648d4b0bb82124ca1f5f1fd0/users/42a9988a47134aa2aaa0deafef474d97/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "f17a4813648d4b0bb82124ca1f5f1fd0"}}, "role":
+        {"id": "d46ad249d4dd40eb840d20ec917d682e"}, "user": {"id": "42a9988a47134aa2aaa0deafef474d97"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/f17a4813648d4b0bb82124ca1f5f1fd0/users/42a9988a47134aa2aaa0deafef474d97/roles/d46ad249d4dd40eb840d20ec917d682e"}},
+        {"scope": {"domain": {"id": "default"}}, "role": {"id": "5929fb4077c3415c9850e66f2c2be16b"},
+        "user": {"id": "42a9988a47134aa2aaa0deafef474d97"}, "links": {"assignment":
+        "http://devstack.openstack.stack:35357/v3/domains/default/users/42a9988a47134aa2aaa0deafef474d97/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "30079dd13fb1488a88e6ee32f3e0b9ac"}}, "role":
+        {"id": "eb4ca4ce31d748ccb91d2052a2f5bedf"}, "user": {"id": "54956227818d4bf7a98a59af580708c2"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/30079dd13fb1488a88e6ee32f3e0b9ac/users/54956227818d4bf7a98a59af580708c2/roles/eb4ca4ce31d748ccb91d2052a2f5bedf"}},
+        {"scope": {"project": {"id": "8248851af6d54c689198bf2db30c5ed9"}}, "role":
+        {"id": "5929fb4077c3415c9850e66f2c2be16b"}, "user": {"id": "5955f4b81f414da6ace5b2e8949d047f"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/8248851af6d54c689198bf2db30c5ed9/users/5955f4b81f414da6ace5b2e8949d047f/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "30079dd13fb1488a88e6ee32f3e0b9ac"}}, "role":
+        {"id": "eb4ca4ce31d748ccb91d2052a2f5bedf"}, "group": {"id": "66d5464244d64171a5b1acbdd7634989"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/30079dd13fb1488a88e6ee32f3e0b9ac/groups/66d5464244d64171a5b1acbdd7634989/roles/eb4ca4ce31d748ccb91d2052a2f5bedf"}},
+        {"scope": {"project": {"id": "9eed0d548eb943fc88ac5a49df3a6911"}}, "role":
+        {"id": "5929fb4077c3415c9850e66f2c2be16b"}, "user": {"id": "6e53f10a91c44e15a9ad8cca2facd5a8"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/9eed0d548eb943fc88ac5a49df3a6911/users/6e53f10a91c44e15a9ad8cca2facd5a8/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "2ab82e30d7984631874def67813dffd8"}}, "role":
+        {"id": "13c811edcd2a46dca5fed6252fd50cd2"}, "user": {"id": "7031bcf1a2f344f483d137b5f5d4659a"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8/users/7031bcf1a2f344f483d137b5f5d4659a/roles/13c811edcd2a46dca5fed6252fd50cd2"}},
+        {"scope": {"project": {"id": "2ab82e30d7984631874def67813dffd8"}}, "role":
+        {"id": "d46ad249d4dd40eb840d20ec917d682e"}, "user": {"id": "72ec469780214348abe5ac51cd96157b"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8/users/72ec469780214348abe5ac51cd96157b/roles/d46ad249d4dd40eb840d20ec917d682e"}},
+        {"scope": {"project": {"id": "8248851af6d54c689198bf2db30c5ed9"}}, "role":
+        {"id": "eb9f0f3b348042ffa65f9d33e5d72014"}, "user": {"id": "8308d6e0421c458bb3e9a979ccf61aa1"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/8248851af6d54c689198bf2db30c5ed9/users/8308d6e0421c458bb3e9a979ccf61aa1/roles/eb9f0f3b348042ffa65f9d33e5d72014"}},
+        {"scope": {"project": {"id": "e9c90636e1b048df86267ca7c54782eb"}}, "role":
+        {"id": "7e4e00f7c94145a1855f39c32331ff5d"}, "user": {"id": "9a493030d8b047cab5d019cc4930aa15"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/e9c90636e1b048df86267ca7c54782eb/users/9a493030d8b047cab5d019cc4930aa15/roles/7e4e00f7c94145a1855f39c32331ff5d"}},
+        {"scope": {"project": {"id": "2ab82e30d7984631874def67813dffd8"}}, "role":
+        {"id": "13c811edcd2a46dca5fed6252fd50cd2"}, "user": {"id": "ac4e77c52dd048b7afd84f3bf63a70af"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8/users/ac4e77c52dd048b7afd84f3bf63a70af/roles/13c811edcd2a46dca5fed6252fd50cd2"}},
+        {"scope": {"project": {"id": "650778a984b040d2bc7acd45d9e7940f"}}, "role":
+        {"id": "13c811edcd2a46dca5fed6252fd50cd2"}, "user": {"id": "b0f31e5531cf4959bd909eb3c14aa2ae"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/650778a984b040d2bc7acd45d9e7940f/users/b0f31e5531cf4959bd909eb3c14aa2ae/roles/13c811edcd2a46dca5fed6252fd50cd2"}},
+        {"scope": {"project": {"id": "30079dd13fb1488a88e6ee32f3e0b9ac"}}, "role":
+        {"id": "7e4e00f7c94145a1855f39c32331ff5d"}, "group": {"id": "d3460e03a73d4aad9a999542290a0251"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/30079dd13fb1488a88e6ee32f3e0b9ac/groups/d3460e03a73d4aad9a999542290a0251/roles/7e4e00f7c94145a1855f39c32331ff5d"}},
+        {"scope": {"domain": {"id": "default"}}, "role": {"id": "bcd7db1631be432298eddb8d7ce93d5d"},
+        "user": {"id": "d5c338451a8249d3901fed9c41f08e70"}, "links": {"assignment":
+        "http://devstack.openstack.stack:35357/v3/domains/default/users/d5c338451a8249d3901fed9c41f08e70/roles/bcd7db1631be432298eddb8d7ce93d5d"}},
+        {"scope": {"project": {"id": "5c2f4406e91248ac9c1406b795385725"}}, "role":
+        {"id": "d97660751404495ab8c405826d547c16"}, "user": {"id": "d66fbe28f45a405a87fd32bb30f7c42e"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/5c2f4406e91248ac9c1406b795385725/users/d66fbe28f45a405a87fd32bb30f7c42e/roles/d97660751404495ab8c405826d547c16"}},
+        {"scope": {"project": {"id": "a5db6ff5a6274dd589b6a05945d7f34d"}}, "role":
+        {"id": "d97660751404495ab8c405826d547c16"}, "user": {"id": "d66fbe28f45a405a87fd32bb30f7c42e"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/a5db6ff5a6274dd589b6a05945d7f34d/users/d66fbe28f45a405a87fd32bb30f7c42e/roles/d97660751404495ab8c405826d547c16"}},
+        {"scope": {"project": {"id": "a5db6ff5a6274dd589b6a05945d7f34d"}}, "role":
+        {"id": "eb9f0f3b348042ffa65f9d33e5d72014"}, "user": {"id": "d66fbe28f45a405a87fd32bb30f7c42e"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/a5db6ff5a6274dd589b6a05945d7f34d/users/d66fbe28f45a405a87fd32bb30f7c42e/roles/eb9f0f3b348042ffa65f9d33e5d72014"}},
+        {"scope": {"project": {"id": "2ab82e30d7984631874def67813dffd8"}}, "role":
+        {"id": "13c811edcd2a46dca5fed6252fd50cd2"}, "user": {"id": "d93c389c04e54300931765702727c7e9"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8/users/d93c389c04e54300931765702727c7e9/roles/13c811edcd2a46dca5fed6252fd50cd2"}},
+        {"scope": {"project": {"id": "e9c90636e1b048df86267ca7c54782eb"}}, "role":
+        {"id": "eb4ca4ce31d748ccb91d2052a2f5bedf"}, "user": {"id": "df3e59fbd98c46d197ab1e582dac212f"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/e9c90636e1b048df86267ca7c54782eb/users/df3e59fbd98c46d197ab1e582dac212f/roles/eb4ca4ce31d748ccb91d2052a2f5bedf"}},
+        {"scope": {"project": {"id": "f17a4813648d4b0bb82124ca1f5f1fd0"}}, "role":
+        {"id": "5929fb4077c3415c9850e66f2c2be16b"}, "group": {"id": "e47ddb5b1f774b5481376facec57075a"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/f17a4813648d4b0bb82124ca1f5f1fd0/groups/e47ddb5b1f774b5481376facec57075a/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"domain": {"id": "default"}}, "role": {"id": "5929fb4077c3415c9850e66f2c2be16b"},
+        "group": {"id": "e47ddb5b1f774b5481376facec57075a"}, "links": {"assignment":
+        "http://devstack.openstack.stack:35357/v3/domains/default/groups/e47ddb5b1f774b5481376facec57075a/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "30079dd13fb1488a88e6ee32f3e0b9ac"}}, "role":
+        {"id": "7e4e00f7c94145a1855f39c32331ff5d"}, "user": {"id": "e82af7ca715e4a8a97fbb898e8208ee9"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/30079dd13fb1488a88e6ee32f3e0b9ac/users/e82af7ca715e4a8a97fbb898e8208ee9/roles/7e4e00f7c94145a1855f39c32331ff5d"}},
+        {"scope": {"project": {"id": "2ab82e30d7984631874def67813dffd8"}}, "role":
+        {"id": "5929fb4077c3415c9850e66f2c2be16b"}, "user": {"id": "ec19ce44e69049efbbb6f190e0ed8b69"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8/users/ec19ce44e69049efbbb6f190e0ed8b69/roles/5929fb4077c3415c9850e66f2c2be16b"}},
+        {"scope": {"project": {"id": "2ab82e30d7984631874def67813dffd8"}}, "role":
+        {"id": "d46ad249d4dd40eb840d20ec917d682e"}, "user": {"id": "ec19ce44e69049efbbb6f190e0ed8b69"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8/users/ec19ce44e69049efbbb6f190e0ed8b69/roles/d46ad249d4dd40eb840d20ec917d682e"}},
+        {"scope": {"project": {"id": "a5db6ff5a6274dd589b6a05945d7f34d"}}, "role":
+        {"id": "d97660751404495ab8c405826d547c16"}, "group": {"id": "f23d78d762544dcf9d5a5680e167bdc2"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/a5db6ff5a6274dd589b6a05945d7f34d/groups/f23d78d762544dcf9d5a5680e167bdc2/roles/d97660751404495ab8c405826d547c16"}},
+        {"scope": {"project": {"id": "ac812327c9b84a3cb1cabd56f251f5da"}}, "role":
+        {"id": "5929fb4077c3415c9850e66f2c2be16b"}, "user": {"id": "f62255e257cf46dc8d129e07223b2590"},
+        "links": {"assignment": "http://devstack.openstack.stack:35357/v3/projects/ac812327c9b84a3cb1cabd56f251f5da/users/f62255e257cf46dc8d129e07223b2590/roles/5929fb4077c3415c9850e66f2c2be16b"}}],
         "links": {"self": "http://devstack.openstack.stack:35357/v3/role_assignments", "previous":
         null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:59 GMT
 - request:
     method: head
-    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/ea2507e8c4bd4515ab87c21099e53b1c/roles/82f06234da2847039ba158b3d6851d90
+    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/d5c338451a8249d3901fed9c41f08e70/roles/bcd7db1631be432298eddb8d7ce93d5d
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -665,42 +473,42 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:22 GMT
+      - Tue, 03 May 2016 13:51:58 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-540cf0b8-39e9-4c26-948d-25493152c310
+      - req-7b1d7629-2b90-4a10-a926-1895b8c80c93
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:59 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/ea2507e8c4bd4515ab87c21099e53b1c/roles/82f06234da2847039ba158b3d6851d90
+    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/d5c338451a8249d3901fed9c41f08e70/roles/bcd7db1631be432298eddb8d7ce93d5d
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -708,44 +516,44 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:23 GMT
+      - Tue, 03 May 2016 13:51:59 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c7f5913d-6f54-4a3c-960d-cb124f69e762
+      - req-ad23ab6f-7122-4a47-b200-ea101e61a1db
       Content-Length:
       - '0'
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:59 GMT
 - request:
     method: head
-    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/ea2507e8c4bd4515ab87c21099e53b1c/roles/82f06234da2847039ba158b3d6851d90
+    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/d5c338451a8249d3901fed9c41f08e70/roles/bcd7db1631be432298eddb8d7ce93d5d
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -753,46 +561,46 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:23 GMT
+      - Tue, 03 May 2016 13:51:59 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-b6f7cf00-e55c-4bd4-a77a-34911a833aa7
+      - req-5a5e5cdc-e049-4792-a2a9-e4069c8628b0
       Content-Length:
       - '212'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:59 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/users/ea2507e8c4bd4515ab87c21099e53b1c
+    uri: http://devstack.openstack.stack:35357/v3/users/d5c338451a8249d3901fed9c41f08e70
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -800,44 +608,44 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:23 GMT
+      - Tue, 03 May 2016 13:51:59 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-6289acc3-ac70-46ca-8bb2-59e061e5cc69
+      - req-b2df53ec-0ec2-426f-b708-18399af8807f
       Content-Length:
       - '0'
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:59 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/roles/82f06234da2847039ba158b3d6851d90
+    uri: http://devstack.openstack.stack:35357/v3/roles/bcd7db1631be432298eddb8d7ce93d5d
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -845,33 +653,33 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:23 GMT
+      - Tue, 03 May 2016 13:51:59 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-07907dfe-83a9-4a18-94fb-6deca6bcc869
+      - req-7c9bf140-93cc-4c20-a4aa-e62783c8dabd
       Content-Length:
       - '0'
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:18 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 03 May 2016 13:51:59 GMT
+recorded_with: VCR 3.0.1

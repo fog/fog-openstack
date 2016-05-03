@@ -1,3 +1,4 @@
+require 'fog/openstack'
 require 'fog/openstack/compute'
 require 'fog/openstack/identity'
 require 'fog/openstack/identity_v3'
@@ -16,7 +17,7 @@ RSpec.describe Fog::Network::OpenStack do
     VCR_PROJECT_ID='ded5a6e0922c4be59e7c15517cfb89ee'
 
     setup_vcr_and_service(
-        :vcr_directory => 'spec/fog/openstack/network',
+        :vcr_directory => 'spec/fog/network',
         :service_class => Fog::Network::OpenStack
     )
   end

@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -16,30 +16,30 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:37 GMT
+      - Tue, 03 May 2016 13:52:22 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-921075ad-db39-4e8c-a233-18c457fbb3e3
+      - req-db7e6f25-7578-452a-b0ab-e0dd3ef2c469
       Content-Length:
-      - '107'
+      - '108'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
@@ -47,7 +47,7 @@ http_interactions:
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/policies", "previous":
         null, "next": null}, "policies": []}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:33 GMT
+  recorded_at: Tue, 03 May 2016 13:52:22 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/policies
@@ -56,7 +56,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -64,30 +64,30 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:37 GMT
+      - Tue, 03 May 2016 13:52:22 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-82f6e908-4dcf-4187-ba8c-fa404c6cedd8
+      - req-90d010a0-ad58-4e8a-90fd-31f406832a0e
       Content-Length:
-      - '107'
+      - '108'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
@@ -95,7 +95,7 @@ http_interactions:
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/policies", "previous":
         null, "next": null}, "policies": []}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:33 GMT
+  recorded_at: Tue, 03 May 2016 13:52:22 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/policies
@@ -104,7 +104,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -112,30 +112,30 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:38 GMT
+      - Tue, 03 May 2016 13:52:22 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-d7bffd9d-1e2e-4925-81e1-62946af90b70
+      - req-140644e7-4161-4df2-9987-21347004fb1a
       Content-Length:
-      - '107'
+      - '108'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
@@ -143,7 +143,7 @@ http_interactions:
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/policies", "previous":
         null, "next": null}, "policies": []}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:33 GMT
+  recorded_at: Tue, 03 May 2016 13:52:22 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/policies/atlantis
@@ -152,7 +152,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -160,30 +160,30 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:38 GMT
+      - Tue, 03 May 2016 13:52:22 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c512e608-57df-4957-952a-9a20f9e5e369
+      - req-7eefee91-d622-4505-b19a-1a27d6acd067
       Content-Length:
       - '92'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
@@ -191,5 +191,5 @@ http_interactions:
       string: '{"error": {"message": "Could not find policy: atlantis", "code": 404,
         "title": "Not Found"}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:33 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 03 May 2016 13:52:23 GMT
+recorded_with: VCR 3.0.1

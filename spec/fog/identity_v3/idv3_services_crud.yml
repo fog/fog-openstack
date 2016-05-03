@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -16,60 +16,72 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:34 GMT
+      - Tue, 03 May 2016 13:52:17 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-2275e746-6383-4fb1-9574-8da5c8e581aa
+      - req-185a5643-c949-45b6-802a-00fe5d6ca80c
       Content-Length:
-      - '1949'
+      - '2928'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"services": [{"name": "keystone", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/00707ec9c3574d8ebb638265844f7903"},
-        "enabled": true, "type": "identity", "id": "00707ec9c3574d8ebb638265844f7903",
-        "description": "Keystone Identity Service"}, {"name": "glance", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/1f1c2c6373754553938a93de04db5bc0"},
-        "enabled": true, "type": "image", "id": "1f1c2c6373754553938a93de04db5bc0",
-        "description": "Glance Image Service"}, {"name": "cinderv2", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/49ef74e8dab84ed0b683f764ae6d510c"},
-        "enabled": true, "type": "volumev2", "id": "49ef74e8dab84ed0b683f764ae6d510c",
-        "description": "Cinder Volume Service V2"}, {"name": "cinder", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/54efbe90e47244eca5fac1a65374e594"},
-        "enabled": true, "type": "volume", "id": "54efbe90e47244eca5fac1a65374e594",
-        "description": "Cinder Volume Service"}, {"name": "neutron", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/b6063de99a3b474094779d6f778cd87b"},
-        "enabled": true, "type": "network", "id": "b6063de99a3b474094779d6f778cd87b",
-        "description": "Neutron Service"}, {"name": "novav21", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c6ad05da1baa4dd190bdf01dca60e911"},
-        "enabled": true, "type": "computev21", "id": "c6ad05da1baa4dd190bdf01dca60e911",
-        "description": "Nova Compute Service V2.1"}, {"name": "nova", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/d22c9f37ebea4187ae97eb57ced02483"},
-        "enabled": true, "type": "compute", "id": "d22c9f37ebea4187ae97eb57ced02483",
-        "description": "Nova Compute Service"}, {"name": "ec2", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/e2550fc44d8044398e49a080439462ed"},
-        "enabled": true, "type": "ec2", "id": "e2550fc44d8044398e49a080439462ed",
-        "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
+      string: '{"services": [{"description": "Cinder Volume Service V2", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/1766683b2f9f4ef2acf7f9e4e359fb9a"},
+        "enabled": true, "type": "volumev2", "id": "1766683b2f9f4ef2acf7f9e4e359fb9a",
+        "name": "cinderv2"}, {"description": "Ceilometer Metering Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/18dbb2f0ddeb45b99d11ed0568f153ab"},
+        "enabled": true, "type": "metering", "id": "18dbb2f0ddeb45b99d11ed0568f153ab",
+        "name": "ceilometer"}, {"description": "Ceilometer Metering Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/261a2c1f467c4b148f38822ae9f179a3"},
+        "enabled": true, "type": "metering", "id": "261a2c1f467c4b148f38822ae9f179a3",
+        "name": "ceilometer"}, {"description": "Keystone Identity Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/311850187e5a47108ac9b43ec5346658"},
+        "enabled": true, "type": "identity", "id": "311850187e5a47108ac9b43ec5346658",
+        "name": "keystone"}, {"description": "Nova Compute Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/3fd114ff2cff43be8bd3ecc5bc117ec8"},
+        "enabled": true, "type": "compute", "id": "3fd114ff2cff43be8bd3ecc5bc117ec8",
+        "name": "nova"}, {"description": "Cinder Volume Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/4a6033d57e30494a9577358d90d08123"},
+        "enabled": true, "type": "volume", "id": "4a6033d57e30494a9577358d90d08123",
+        "name": "cinder"}, {"description": "EC2 Compatibility Layer", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/5eff43878c134ae7a5f405cf0d191aff"},
+        "enabled": true, "type": "ec2", "id": "5eff43878c134ae7a5f405cf0d191aff",
+        "name": "ec2"}, {"description": "Monasca Monitoring Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/73e3bfb0b1b944f0ace3a078baad1fcc"},
+        "enabled": true, "type": "monitoring", "id": "73e3bfb0b1b944f0ace3a078baad1fcc",
+        "name": "Monitoring"}, {"description": "Nova Compute Service (Legacy 2.0)",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/92e80becd6d8462b8f51fb227eb11999"},
+        "enabled": true, "type": "compute_legacy", "id": "92e80becd6d8462b8f51fb227eb11999",
+        "name": "nova_legacy"}, {"description": "Glance Image Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/b936e5bfd38e4a3b97fcb8d08840881f"},
+        "enabled": true, "type": "image", "id": "b936e5bfd38e4a3b97fcb8d08840881f",
+        "name": "glance"}, {"description": "Neutron Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c626cfc79ed34e3699c2d96c58d105cd"},
+        "enabled": true, "type": "network", "id": "c626cfc79ed34e3699c2d96c58d105cd",
+        "name": "neutron"}, {"description": "Swift Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/e6a92b95728740ea9bda0c348a89f0f1"},
+        "enabled": true, "type": "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1",
+        "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:29 GMT
+  recorded_at: Tue, 03 May 2016 13:52:17 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -78,7 +90,7 @@ http_interactions:
       string: '{"service":{"type":"volume","name":"foobar"}}'
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -86,39 +98,39 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:34 GMT
+      - Tue, 03 May 2016 13:52:17 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-296fd7dd-651e-41be-abf5-aa86edf384ab
+      - req-fd741145-6e96-402d-a005-5a54459a647b
       Content-Length:
-      - '200'
+      - '201'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"service": {"enabled": true, "type": "volume", "name": "foobar", "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f"},
-        "id": "ceadca99150f4537b7c7910fa053681f"}}'
+        {"self": "http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480"},
+        "id": "946ebec56e6b4a0eab31a70a51516480"}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
+  recorded_at: Tue, 03 May 2016 13:52:17 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services?type=volume
@@ -127,7 +139,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -135,51 +147,52 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:34 GMT
+      - Tue, 03 May 2016 13:52:17 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-9ea60b52-45aa-43b1-8fd6-f711b7184d03
+      - req-c7601a21-6ee0-4d1b-9927-10393a17fd2f
       Content-Length:
-      - '535'
+      - '538'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"services": [{"name": "cinder", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/54efbe90e47244eca5fac1a65374e594"},
-        "enabled": true, "type": "volume", "id": "54efbe90e47244eca5fac1a65374e594",
-        "description": "Cinder Volume Service"}, {"enabled": true, "type": "volume",
-        "name": "foobar", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f"},
-        "id": "ceadca99150f4537b7c7910fa053681f"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services?type=volume",
+      string: '{"services": [{"description": "Cinder Volume Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/4a6033d57e30494a9577358d90d08123"},
+        "enabled": true, "type": "volume", "id": "4a6033d57e30494a9577358d90d08123",
+        "name": "cinder"}, {"enabled": true, "type": "volume", "name": "foobar", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480"},
+        "id": "946ebec56e6b4a0eab31a70a51516480"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services?type=volume",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
+  recorded_at: Tue, 03 May 2016 13:52:17 GMT
 - request:
     method: patch
-    uri: http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f
+    uri: http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480
     body:
       encoding: UTF-8
       string: '{"service":{"name":"baz"}}'
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -187,39 +200,39 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:34 GMT
+      - Tue, 03 May 2016 13:52:17 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-172a700f-1a08-449b-85dd-5db534ccd889
+      - req-f821031f-0847-40ac-b070-ebbe5475f224
       Content-Length:
-      - '197'
+      - '198'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"service": {"enabled": true, "type": "volume", "name": "baz", "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f"},
-        "id": "ceadca99150f4537b7c7910fa053681f"}}'
+        {"self": "http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480"},
+        "id": "946ebec56e6b4a0eab31a70a51516480"}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
+  recorded_at: Tue, 03 May 2016 13:52:17 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -228,7 +241,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -236,62 +249,74 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:34 GMT
+      - Tue, 03 May 2016 13:52:17 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-d50a81ea-129b-4fff-83af-f9cc5ba6d693
+      - req-c095bcac-2e19-40fe-b00f-e86163fb4d2d
       Content-Length:
-      - '2135'
+      - '3115'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"services": [{"name": "keystone", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/00707ec9c3574d8ebb638265844f7903"},
-        "enabled": true, "type": "identity", "id": "00707ec9c3574d8ebb638265844f7903",
-        "description": "Keystone Identity Service"}, {"name": "glance", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/1f1c2c6373754553938a93de04db5bc0"},
-        "enabled": true, "type": "image", "id": "1f1c2c6373754553938a93de04db5bc0",
-        "description": "Glance Image Service"}, {"name": "cinderv2", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/49ef74e8dab84ed0b683f764ae6d510c"},
-        "enabled": true, "type": "volumev2", "id": "49ef74e8dab84ed0b683f764ae6d510c",
-        "description": "Cinder Volume Service V2"}, {"name": "cinder", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/54efbe90e47244eca5fac1a65374e594"},
-        "enabled": true, "type": "volume", "id": "54efbe90e47244eca5fac1a65374e594",
-        "description": "Cinder Volume Service"}, {"name": "neutron", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/b6063de99a3b474094779d6f778cd87b"},
-        "enabled": true, "type": "network", "id": "b6063de99a3b474094779d6f778cd87b",
-        "description": "Neutron Service"}, {"name": "novav21", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c6ad05da1baa4dd190bdf01dca60e911"},
-        "enabled": true, "type": "computev21", "id": "c6ad05da1baa4dd190bdf01dca60e911",
-        "description": "Nova Compute Service V2.1"}, {"enabled": true, "type": "volume",
-        "name": "baz", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f"},
-        "id": "ceadca99150f4537b7c7910fa053681f"}, {"name": "nova", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/d22c9f37ebea4187ae97eb57ced02483"},
-        "enabled": true, "type": "compute", "id": "d22c9f37ebea4187ae97eb57ced02483",
-        "description": "Nova Compute Service"}, {"name": "ec2", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/e2550fc44d8044398e49a080439462ed"},
-        "enabled": true, "type": "ec2", "id": "e2550fc44d8044398e49a080439462ed",
-        "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
+      string: '{"services": [{"description": "Cinder Volume Service V2", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/1766683b2f9f4ef2acf7f9e4e359fb9a"},
+        "enabled": true, "type": "volumev2", "id": "1766683b2f9f4ef2acf7f9e4e359fb9a",
+        "name": "cinderv2"}, {"description": "Ceilometer Metering Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/18dbb2f0ddeb45b99d11ed0568f153ab"},
+        "enabled": true, "type": "metering", "id": "18dbb2f0ddeb45b99d11ed0568f153ab",
+        "name": "ceilometer"}, {"description": "Ceilometer Metering Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/261a2c1f467c4b148f38822ae9f179a3"},
+        "enabled": true, "type": "metering", "id": "261a2c1f467c4b148f38822ae9f179a3",
+        "name": "ceilometer"}, {"description": "Keystone Identity Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/311850187e5a47108ac9b43ec5346658"},
+        "enabled": true, "type": "identity", "id": "311850187e5a47108ac9b43ec5346658",
+        "name": "keystone"}, {"description": "Nova Compute Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/3fd114ff2cff43be8bd3ecc5bc117ec8"},
+        "enabled": true, "type": "compute", "id": "3fd114ff2cff43be8bd3ecc5bc117ec8",
+        "name": "nova"}, {"description": "Cinder Volume Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/4a6033d57e30494a9577358d90d08123"},
+        "enabled": true, "type": "volume", "id": "4a6033d57e30494a9577358d90d08123",
+        "name": "cinder"}, {"description": "EC2 Compatibility Layer", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/5eff43878c134ae7a5f405cf0d191aff"},
+        "enabled": true, "type": "ec2", "id": "5eff43878c134ae7a5f405cf0d191aff",
+        "name": "ec2"}, {"description": "Monasca Monitoring Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/73e3bfb0b1b944f0ace3a078baad1fcc"},
+        "enabled": true, "type": "monitoring", "id": "73e3bfb0b1b944f0ace3a078baad1fcc",
+        "name": "Monitoring"}, {"description": "Nova Compute Service (Legacy 2.0)",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/92e80becd6d8462b8f51fb227eb11999"},
+        "enabled": true, "type": "compute_legacy", "id": "92e80becd6d8462b8f51fb227eb11999",
+        "name": "nova_legacy"}, {"enabled": true, "type": "volume", "name": "baz",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480"},
+        "id": "946ebec56e6b4a0eab31a70a51516480"}, {"description": "Glance Image Service",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/b936e5bfd38e4a3b97fcb8d08840881f"},
+        "enabled": true, "type": "image", "id": "b936e5bfd38e4a3b97fcb8d08840881f",
+        "name": "glance"}, {"description": "Neutron Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c626cfc79ed34e3699c2d96c58d105cd"},
+        "enabled": true, "type": "network", "id": "c626cfc79ed34e3699c2d96c58d105cd",
+        "name": "neutron"}, {"description": "Swift Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/e6a92b95728740ea9bda0c348a89f0f1"},
+        "enabled": true, "type": "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1",
+        "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
+  recorded_at: Tue, 03 May 2016 13:52:17 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -300,7 +325,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -308,71 +333,83 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:34 GMT
+      - Tue, 03 May 2016 13:52:17 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-70509d00-aeeb-4f2f-b756-d728304e70df
+      - req-d6dc2de3-a10d-46ad-a576-734d49fef08a
       Content-Length:
-      - '2135'
+      - '3115'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"services": [{"name": "keystone", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/00707ec9c3574d8ebb638265844f7903"},
-        "enabled": true, "type": "identity", "id": "00707ec9c3574d8ebb638265844f7903",
-        "description": "Keystone Identity Service"}, {"name": "glance", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/1f1c2c6373754553938a93de04db5bc0"},
-        "enabled": true, "type": "image", "id": "1f1c2c6373754553938a93de04db5bc0",
-        "description": "Glance Image Service"}, {"name": "cinderv2", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/49ef74e8dab84ed0b683f764ae6d510c"},
-        "enabled": true, "type": "volumev2", "id": "49ef74e8dab84ed0b683f764ae6d510c",
-        "description": "Cinder Volume Service V2"}, {"name": "cinder", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/54efbe90e47244eca5fac1a65374e594"},
-        "enabled": true, "type": "volume", "id": "54efbe90e47244eca5fac1a65374e594",
-        "description": "Cinder Volume Service"}, {"name": "neutron", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/b6063de99a3b474094779d6f778cd87b"},
-        "enabled": true, "type": "network", "id": "b6063de99a3b474094779d6f778cd87b",
-        "description": "Neutron Service"}, {"name": "novav21", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c6ad05da1baa4dd190bdf01dca60e911"},
-        "enabled": true, "type": "computev21", "id": "c6ad05da1baa4dd190bdf01dca60e911",
-        "description": "Nova Compute Service V2.1"}, {"enabled": true, "type": "volume",
-        "name": "baz", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f"},
-        "id": "ceadca99150f4537b7c7910fa053681f"}, {"name": "nova", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/d22c9f37ebea4187ae97eb57ced02483"},
-        "enabled": true, "type": "compute", "id": "d22c9f37ebea4187ae97eb57ced02483",
-        "description": "Nova Compute Service"}, {"name": "ec2", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/e2550fc44d8044398e49a080439462ed"},
-        "enabled": true, "type": "ec2", "id": "e2550fc44d8044398e49a080439462ed",
-        "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
+      string: '{"services": [{"description": "Cinder Volume Service V2", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/1766683b2f9f4ef2acf7f9e4e359fb9a"},
+        "enabled": true, "type": "volumev2", "id": "1766683b2f9f4ef2acf7f9e4e359fb9a",
+        "name": "cinderv2"}, {"description": "Ceilometer Metering Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/18dbb2f0ddeb45b99d11ed0568f153ab"},
+        "enabled": true, "type": "metering", "id": "18dbb2f0ddeb45b99d11ed0568f153ab",
+        "name": "ceilometer"}, {"description": "Ceilometer Metering Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/261a2c1f467c4b148f38822ae9f179a3"},
+        "enabled": true, "type": "metering", "id": "261a2c1f467c4b148f38822ae9f179a3",
+        "name": "ceilometer"}, {"description": "Keystone Identity Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/311850187e5a47108ac9b43ec5346658"},
+        "enabled": true, "type": "identity", "id": "311850187e5a47108ac9b43ec5346658",
+        "name": "keystone"}, {"description": "Nova Compute Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/3fd114ff2cff43be8bd3ecc5bc117ec8"},
+        "enabled": true, "type": "compute", "id": "3fd114ff2cff43be8bd3ecc5bc117ec8",
+        "name": "nova"}, {"description": "Cinder Volume Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/4a6033d57e30494a9577358d90d08123"},
+        "enabled": true, "type": "volume", "id": "4a6033d57e30494a9577358d90d08123",
+        "name": "cinder"}, {"description": "EC2 Compatibility Layer", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/5eff43878c134ae7a5f405cf0d191aff"},
+        "enabled": true, "type": "ec2", "id": "5eff43878c134ae7a5f405cf0d191aff",
+        "name": "ec2"}, {"description": "Monasca Monitoring Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/73e3bfb0b1b944f0ace3a078baad1fcc"},
+        "enabled": true, "type": "monitoring", "id": "73e3bfb0b1b944f0ace3a078baad1fcc",
+        "name": "Monitoring"}, {"description": "Nova Compute Service (Legacy 2.0)",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/92e80becd6d8462b8f51fb227eb11999"},
+        "enabled": true, "type": "compute_legacy", "id": "92e80becd6d8462b8f51fb227eb11999",
+        "name": "nova_legacy"}, {"enabled": true, "type": "volume", "name": "baz",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480"},
+        "id": "946ebec56e6b4a0eab31a70a51516480"}, {"description": "Glance Image Service",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/b936e5bfd38e4a3b97fcb8d08840881f"},
+        "enabled": true, "type": "image", "id": "b936e5bfd38e4a3b97fcb8d08840881f",
+        "name": "glance"}, {"description": "Neutron Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c626cfc79ed34e3699c2d96c58d105cd"},
+        "enabled": true, "type": "network", "id": "c626cfc79ed34e3699c2d96c58d105cd",
+        "name": "neutron"}, {"description": "Swift Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/e6a92b95728740ea9bda0c348a89f0f1"},
+        "enabled": true, "type": "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1",
+        "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
+  recorded_at: Tue, 03 May 2016 13:52:18 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/services/ceadca99150f4537b7c7910fa053681f
+    uri: http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -380,35 +417,35 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:34 GMT
+      - Tue, 03 May 2016 13:52:17 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-f57c01a2-6e63-44c7-a641-21a05c54a1eb
+      - req-011564e2-9c8d-49fa-9517-a00237382ef3
       Content-Length:
       - '0'
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
+  recorded_at: Tue, 03 May 2016 13:52:18 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -417,7 +454,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -425,69 +462,81 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:34 GMT
+      - Tue, 03 May 2016 13:52:18 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-e94334df-0e9f-4e9e-b629-f2a732bc97fd
+      - req-511b1c15-4c0d-4a8c-9f3e-e81c480dcfef
       Content-Length:
-      - '1949'
+      - '2928'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"services": [{"name": "keystone", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/00707ec9c3574d8ebb638265844f7903"},
-        "enabled": true, "type": "identity", "id": "00707ec9c3574d8ebb638265844f7903",
-        "description": "Keystone Identity Service"}, {"name": "glance", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/1f1c2c6373754553938a93de04db5bc0"},
-        "enabled": true, "type": "image", "id": "1f1c2c6373754553938a93de04db5bc0",
-        "description": "Glance Image Service"}, {"name": "cinderv2", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/49ef74e8dab84ed0b683f764ae6d510c"},
-        "enabled": true, "type": "volumev2", "id": "49ef74e8dab84ed0b683f764ae6d510c",
-        "description": "Cinder Volume Service V2"}, {"name": "cinder", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/54efbe90e47244eca5fac1a65374e594"},
-        "enabled": true, "type": "volume", "id": "54efbe90e47244eca5fac1a65374e594",
-        "description": "Cinder Volume Service"}, {"name": "neutron", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/b6063de99a3b474094779d6f778cd87b"},
-        "enabled": true, "type": "network", "id": "b6063de99a3b474094779d6f778cd87b",
-        "description": "Neutron Service"}, {"name": "novav21", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c6ad05da1baa4dd190bdf01dca60e911"},
-        "enabled": true, "type": "computev21", "id": "c6ad05da1baa4dd190bdf01dca60e911",
-        "description": "Nova Compute Service V2.1"}, {"name": "nova", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/d22c9f37ebea4187ae97eb57ced02483"},
-        "enabled": true, "type": "compute", "id": "d22c9f37ebea4187ae97eb57ced02483",
-        "description": "Nova Compute Service"}, {"name": "ec2", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/e2550fc44d8044398e49a080439462ed"},
-        "enabled": true, "type": "ec2", "id": "e2550fc44d8044398e49a080439462ed",
-        "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
+      string: '{"services": [{"description": "Cinder Volume Service V2", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/1766683b2f9f4ef2acf7f9e4e359fb9a"},
+        "enabled": true, "type": "volumev2", "id": "1766683b2f9f4ef2acf7f9e4e359fb9a",
+        "name": "cinderv2"}, {"description": "Ceilometer Metering Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/18dbb2f0ddeb45b99d11ed0568f153ab"},
+        "enabled": true, "type": "metering", "id": "18dbb2f0ddeb45b99d11ed0568f153ab",
+        "name": "ceilometer"}, {"description": "Ceilometer Metering Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/261a2c1f467c4b148f38822ae9f179a3"},
+        "enabled": true, "type": "metering", "id": "261a2c1f467c4b148f38822ae9f179a3",
+        "name": "ceilometer"}, {"description": "Keystone Identity Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/311850187e5a47108ac9b43ec5346658"},
+        "enabled": true, "type": "identity", "id": "311850187e5a47108ac9b43ec5346658",
+        "name": "keystone"}, {"description": "Nova Compute Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/3fd114ff2cff43be8bd3ecc5bc117ec8"},
+        "enabled": true, "type": "compute", "id": "3fd114ff2cff43be8bd3ecc5bc117ec8",
+        "name": "nova"}, {"description": "Cinder Volume Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/4a6033d57e30494a9577358d90d08123"},
+        "enabled": true, "type": "volume", "id": "4a6033d57e30494a9577358d90d08123",
+        "name": "cinder"}, {"description": "EC2 Compatibility Layer", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/5eff43878c134ae7a5f405cf0d191aff"},
+        "enabled": true, "type": "ec2", "id": "5eff43878c134ae7a5f405cf0d191aff",
+        "name": "ec2"}, {"description": "Monasca Monitoring Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/73e3bfb0b1b944f0ace3a078baad1fcc"},
+        "enabled": true, "type": "monitoring", "id": "73e3bfb0b1b944f0ace3a078baad1fcc",
+        "name": "Monitoring"}, {"description": "Nova Compute Service (Legacy 2.0)",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/92e80becd6d8462b8f51fb227eb11999"},
+        "enabled": true, "type": "compute_legacy", "id": "92e80becd6d8462b8f51fb227eb11999",
+        "name": "nova_legacy"}, {"description": "Glance Image Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/b936e5bfd38e4a3b97fcb8d08840881f"},
+        "enabled": true, "type": "image", "id": "b936e5bfd38e4a3b97fcb8d08840881f",
+        "name": "glance"}, {"description": "Neutron Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c626cfc79ed34e3699c2d96c58d105cd"},
+        "enabled": true, "type": "network", "id": "c626cfc79ed34e3699c2d96c58d105cd",
+        "name": "neutron"}, {"description": "Swift Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/e6a92b95728740ea9bda0c348a89f0f1"},
+        "enabled": true, "type": "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1",
+        "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
+  recorded_at: Tue, 03 May 2016 13:52:18 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/projects/ceadca99150f4537b7c7910fa053681f
+    uri: http://devstack.openstack.stack:35357/v3/projects/946ebec56e6b4a0eab31a70a51516480
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -495,38 +544,38 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:35 GMT
+      - Tue, 03 May 2016 13:52:18 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-de7a53bc-2b32-4ce6-9c5b-142f17788152
+      - req-37347309-b18a-47c7-955c-c7f9b496d63b
       Content-Length:
       - '117'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"error": {"message": "Could not find project: ceadca99150f4537b7c7910fa053681f",
+      string: '{"error": {"message": "Could not find project: 946ebec56e6b4a0eab31a70a51516480",
         "code": 404, "title": "Not Found"}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
+  recorded_at: Tue, 03 May 2016 13:52:18 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -535,7 +584,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -543,58 +592,70 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:39:35 GMT
+      - Tue, 03 May 2016 13:52:18 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-32365712-8865-4ebb-883c-fd7c07358e5d
+      - req-e0a961db-f3b1-4388-9b67-d2334a64caec
       Content-Length:
-      - '1949'
+      - '2928'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"services": [{"name": "keystone", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/00707ec9c3574d8ebb638265844f7903"},
-        "enabled": true, "type": "identity", "id": "00707ec9c3574d8ebb638265844f7903",
-        "description": "Keystone Identity Service"}, {"name": "glance", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/1f1c2c6373754553938a93de04db5bc0"},
-        "enabled": true, "type": "image", "id": "1f1c2c6373754553938a93de04db5bc0",
-        "description": "Glance Image Service"}, {"name": "cinderv2", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/49ef74e8dab84ed0b683f764ae6d510c"},
-        "enabled": true, "type": "volumev2", "id": "49ef74e8dab84ed0b683f764ae6d510c",
-        "description": "Cinder Volume Service V2"}, {"name": "cinder", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/54efbe90e47244eca5fac1a65374e594"},
-        "enabled": true, "type": "volume", "id": "54efbe90e47244eca5fac1a65374e594",
-        "description": "Cinder Volume Service"}, {"name": "neutron", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/b6063de99a3b474094779d6f778cd87b"},
-        "enabled": true, "type": "network", "id": "b6063de99a3b474094779d6f778cd87b",
-        "description": "Neutron Service"}, {"name": "novav21", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c6ad05da1baa4dd190bdf01dca60e911"},
-        "enabled": true, "type": "computev21", "id": "c6ad05da1baa4dd190bdf01dca60e911",
-        "description": "Nova Compute Service V2.1"}, {"name": "nova", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/d22c9f37ebea4187ae97eb57ced02483"},
-        "enabled": true, "type": "compute", "id": "d22c9f37ebea4187ae97eb57ced02483",
-        "description": "Nova Compute Service"}, {"name": "ec2", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/services/e2550fc44d8044398e49a080439462ed"},
-        "enabled": true, "type": "ec2", "id": "e2550fc44d8044398e49a080439462ed",
-        "description": "EC2 Compatibility Layer"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
+      string: '{"services": [{"description": "Cinder Volume Service V2", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/1766683b2f9f4ef2acf7f9e4e359fb9a"},
+        "enabled": true, "type": "volumev2", "id": "1766683b2f9f4ef2acf7f9e4e359fb9a",
+        "name": "cinderv2"}, {"description": "Ceilometer Metering Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/18dbb2f0ddeb45b99d11ed0568f153ab"},
+        "enabled": true, "type": "metering", "id": "18dbb2f0ddeb45b99d11ed0568f153ab",
+        "name": "ceilometer"}, {"description": "Ceilometer Metering Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/261a2c1f467c4b148f38822ae9f179a3"},
+        "enabled": true, "type": "metering", "id": "261a2c1f467c4b148f38822ae9f179a3",
+        "name": "ceilometer"}, {"description": "Keystone Identity Service", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/311850187e5a47108ac9b43ec5346658"},
+        "enabled": true, "type": "identity", "id": "311850187e5a47108ac9b43ec5346658",
+        "name": "keystone"}, {"description": "Nova Compute Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/3fd114ff2cff43be8bd3ecc5bc117ec8"},
+        "enabled": true, "type": "compute", "id": "3fd114ff2cff43be8bd3ecc5bc117ec8",
+        "name": "nova"}, {"description": "Cinder Volume Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/4a6033d57e30494a9577358d90d08123"},
+        "enabled": true, "type": "volume", "id": "4a6033d57e30494a9577358d90d08123",
+        "name": "cinder"}, {"description": "EC2 Compatibility Layer", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/5eff43878c134ae7a5f405cf0d191aff"},
+        "enabled": true, "type": "ec2", "id": "5eff43878c134ae7a5f405cf0d191aff",
+        "name": "ec2"}, {"description": "Monasca Monitoring Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/73e3bfb0b1b944f0ace3a078baad1fcc"},
+        "enabled": true, "type": "monitoring", "id": "73e3bfb0b1b944f0ace3a078baad1fcc",
+        "name": "Monitoring"}, {"description": "Nova Compute Service (Legacy 2.0)",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/92e80becd6d8462b8f51fb227eb11999"},
+        "enabled": true, "type": "compute_legacy", "id": "92e80becd6d8462b8f51fb227eb11999",
+        "name": "nova_legacy"}, {"description": "Glance Image Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/b936e5bfd38e4a3b97fcb8d08840881f"},
+        "enabled": true, "type": "image", "id": "b936e5bfd38e4a3b97fcb8d08840881f",
+        "name": "glance"}, {"description": "Neutron Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c626cfc79ed34e3699c2d96c58d105cd"},
+        "enabled": true, "type": "network", "id": "c626cfc79ed34e3699c2d96c58d105cd",
+        "name": "neutron"}, {"description": "Swift Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/e6a92b95728740ea9bda0c348a89f0f1"},
+        "enabled": true, "type": "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1",
+        "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:39:30 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 03 May 2016 13:52:18 GMT
+recorded_with: VCR 3.0.1

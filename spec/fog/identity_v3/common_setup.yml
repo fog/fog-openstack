@@ -5,10 +5,10 @@ http_interactions:
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"admin"}}},"scope":{"project":{"name":"admin","domain":{"name":"Default"}}}}}'
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"admin"}}},"scope":{"domain":{"name":"Default"}}}}'
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Content-Type:
       - application/json
   response:
@@ -17,82 +17,76 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Tue, 10 Nov 2015 11:38:54 GMT
+      - Tue, 03 May 2016 13:51:40 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       X-Subject-Token:
-      - 0914e855563b4789977a0a2eaf2396c9
+      - 7f72291092a647578b115b853d129693
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-ce8017bd-9bb5-4fb2-a61b-471584ca545b
+      - req-7fffa2b1-97bb-4605-80ac-623452cb6ee7
       Content-Length:
-      - '5331'
+      - '4597'
       Content-Type:
       - application/json
     body:
       encoding: UTF-8
-      string: '{"token": {"methods": ["password"], "roles": [{"id": "d98e5f87050646f194c8c23b9e3f2bca",
-        "name": "admin"}], "expires_at": "2015-11-10T12:38:59.709399Z", "project":
-        {"domain": {"id": "default", "name": "Default"}, "id": "ded5a6e0922c4be59e7c15517cfb89ee",
-        "name": "admin"}, "catalog": [{"endpoints": [{"region_id": "RegionOne", "url":
-        "http://devstack.openstack.stack:5000/v3", "region": "RegionOne", "interface": "public",
-        "id": "09bb76485f3849c1a81dfeda62f1b27b"}, {"region_id": "RegionOne", "url":
-        "http://devstack.openstack.stack:35357/v3", "region": "RegionOne", "interface": "admin",
-        "id": "73acd28dc39e4d2cb332fe63eafd05fa"}, {"region_id": "RegionOne", "url":
-        "http://devstack.openstack.stack:5000/v3", "region": "RegionOne", "interface": "internal",
-        "id": "c0acc2a6600148248912d585cfd3debf"}], "type": "identity", "id": "00707ec9c3574d8ebb638265844f7903",
-        "name": "keystone"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:9292",
-        "region": "RegionOne", "interface": "admin", "id": "9799d84417464a4cbb9226485ce539c7"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:9292", "region": "RegionOne",
-        "interface": "internal", "id": "a0d9872cbf42461ea5ab511d32387662"}, {"region_id":
-        "RegionOne", "url": "http://devstack.openstack.stack:9292", "region": "RegionOne", "interface":
-        "public", "id": "a93b60395e044b9187ccd7b37cf0c68c"}], "type": "image", "id":
-        "1f1c2c6373754553938a93de04db5bc0", "name": "glance"}, {"endpoints": [{"region_id":
-        "RegionOne", "url": "http://devstack.openstack.stack:8776/v2/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "admin", "id": "273424f04e404eb98eb6008cdff7654f"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v2/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "internal", "id": "4d6d1528f709499ca177e637521d7e85"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v2/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "public", "id": "fa22fdd7d604405bb734e5b04b825c57"}],
-        "type": "volumev2", "id": "49ef74e8dab84ed0b683f764ae6d510c", "name": "cinderv2"},
-        {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v1/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "internal", "id": "2b86f18fc82c4f599455afa9f54cae20"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v1/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "admin", "id": "5620b03559c84f6fbb01b660e3e5b8a9"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v1/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "public", "id": "f63063e775db4d48962172344fcdbdf1"}],
-        "type": "volume", "id": "54efbe90e47244eca5fac1a65374e594", "name": "cinder"},
-        {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:9696/",
-        "region": "RegionOne", "interface": "public", "id": "59f19d0e7c59457fa611c4f552fa37c3"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:9696/", "region": "RegionOne",
-        "interface": "admin", "id": "5f2d351a942e41bc8cc2163569c645b7"}, {"region_id":
-        "RegionOne", "url": "http://devstack.openstack.stack:9696/", "region": "RegionOne", "interface":
-        "internal", "id": "8e2b48e33993420b934607375242e6a1"}], "type": "network",
-        "id": "b6063de99a3b474094779d6f778cd87b", "name": "neutron"}, {"endpoints":
-        [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8774/v2.1/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "internal", "id": "1232531a1eda43cba7c8c539270a4839"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8774/v2.1/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "public", "id": "87a9c4d67a9549e58a12e93675520929"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8774/v2.1/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "admin", "id": "aa0660735da048068454148d747bd997"}],
-        "type": "computev21", "id": "c6ad05da1baa4dd190bdf01dca60e911", "name": "novav21"},
-        {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8774/v2/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "internal", "id": "1f0cd271fb524becaaa23c5e06730a19"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8774/v2/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "public", "id": "51429028b9e74cb585dfe4a7df2bfd40"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8774/v2/ded5a6e0922c4be59e7c15517cfb89ee",
-        "region": "RegionOne", "interface": "admin", "id": "8b6c30d816b1481f837448bcd368263a"}],
-        "type": "compute", "id": "d22c9f37ebea4187ae97eb57ced02483", "name": "nova"},
-        {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8773/",
-        "region": "RegionOne", "interface": "admin", "id": "d0af6d9e8b304d69bc349b63fdb7bd00"},
+      string: '{"token": {"domain": {"id": "default", "name": "Default"}, "methods":
+        ["password"], "roles": [{"id": "5929fb4077c3415c9850e66f2c2be16b", "name":
+        "admin"}], "expires_at": "2016-05-03T14:51:40.395145Z", "catalog": [{"endpoints":
+        [], "type": "volumev2", "id": "1766683b2f9f4ef2acf7f9e4e359fb9a", "name":
+        "cinderv2"}, {"endpoints": [], "type": "metering", "id": "18dbb2f0ddeb45b99d11ed0568f153ab",
+        "name": "ceilometer"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
+        "region": "RegionOne", "interface": "admin", "id": "6f44eb5bf4e646f9a7afebb1f32501f1"},
+        {"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
+        "region": "RegionOne", "interface": "public", "id": "9bb4f1c83833484e9d53ce2b57d6308b"},
+        {"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
+        "region": "RegionOne", "interface": "internal", "id": "e62f1c8709554031ace717700c431635"}],
+        "type": "metering", "id": "261a2c1f467c4b148f38822ae9f179a3", "name": "ceilometer"},
+        {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:35357/v3",
+        "region": "RegionOne", "interface": "admin", "id": "634d57ce5d534c808afb24127b7ac355"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:5000/v3", "region":
+        "RegionOne", "interface": "public", "id": "8a7a2620740c4c2fb6fabf15746c101f"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:5000/v3", "region":
+        "RegionOne", "interface": "internal", "id": "b53b60875b214e7f925f96d3a2a57464"}],
+        "type": "identity", "id": "311850187e5a47108ac9b43ec5346658", "name": "keystone"},
+        {"endpoints": [], "type": "compute", "id": "3fd114ff2cff43be8bd3ecc5bc117ec8",
+        "name": "nova"}, {"endpoints": [], "type": "volume", "id": "4a6033d57e30494a9577358d90d08123",
+        "name": "cinder"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8773/",
+        "region": "RegionOne", "interface": "internal", "id": "54546c7c383a4d6abc2b93c94d75e2f7"},
         {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8773/", "region": "RegionOne",
-        "interface": "public", "id": "e08749c48e9e4d2c9f2733fa221b3b2f"}, {"region_id":
+        "interface": "admin", "id": "b253dd3d3f7d43d8ab35ad97c68440c3"}, {"region_id":
         "RegionOne", "url": "http://devstack.openstack.stack:8773/", "region": "RegionOne", "interface":
-        "internal", "id": "faf1491ad0244c17b13f9b4fc10becbb"}], "type": "ec2", "id":
-        "e2550fc44d8044398e49a080439462ed", "name": "ec2"}], "extras": {}, "user":
-        {"domain": {"id": "default", "name": "Default"}, "id": "a18abc2039d6493aa7239a42033cc7c9",
-        "name": "admin"}, "audit_ids": ["OdZ9KVTvTSyeX2BKdUR2nA"], "issued_at": "2015-11-10T11:38:59.709451Z"}}'
+        "public", "id": "e7287110f01248d49cef8447d0f8d2cb"}], "type": "ec2", "id":
+        "5eff43878c134ae7a5f405cf0d191aff", "name": "ec2"}, {"endpoints": [{"region_id":
+        "RegionOne", "url": "http://i056593.dev.mo.sap.corp:8080/v2.0", "region":
+        "RegionOne", "interface": "internal", "id": "11d18be7930947f696db531c9bbdf245"},
+        {"region_id": "RegionOne", "url": "http://i056593.dev.mo.sap.corp:8080/v2.0",
+        "region": "RegionOne", "interface": "admin", "id": "a603e6ffd0804c4f82a8770d71dede64"},
+        {"region_id": "RegionOne", "url": "http://i056593.dev.mo.sap.corp:8080/v2.0",
+        "region": "RegionOne", "interface": "public", "id": "cf084db111ad4818a4f94080e0ed7819"}],
+        "type": "monitoring", "id": "73e3bfb0b1b944f0ace3a078baad1fcc", "name": "Monitoring"},
+        {"endpoints": [], "type": "compute_legacy", "id": "92e80becd6d8462b8f51fb227eb11999",
+        "name": "nova_legacy"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:9292",
+        "region": "RegionOne", "interface": "admin", "id": "acebdcb3418045b9a62ed295349327c3"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:9292", "region": "RegionOne",
+        "interface": "public", "id": "b3b24c2c4ef44ff48049caff79149091"}, {"region_id":
+        "RegionOne", "url": "http://devstack.openstack.stack:9292", "region": "RegionOne", "interface":
+        "internal", "id": "b9d30173e66148baa3ab2dc2df33cb5e"}], "type": "image", "id":
+        "b936e5bfd38e4a3b97fcb8d08840881f", "name": "glance"}, {"endpoints": [{"region_id":
+        "RegionOne", "url": "http://devstack.openstack.stack:9696/", "region": "RegionOne", "interface":
+        "admin", "id": "1a6718d75cd94e24993a27d275442a17"}, {"region_id": "RegionOne",
+        "url": "http://devstack.openstack.stack:9696/", "region": "RegionOne", "interface": "public",
+        "id": "5cfedecf28a54bd38031380dd0c255b1"}, {"region_id": "RegionOne", "url":
+        "http://devstack.openstack.stack:9696/", "region": "RegionOne", "interface": "internal",
+        "id": "e1be91e12d5646a8830c32146a3ed1aa"}], "type": "network", "id": "c626cfc79ed34e3699c2d96c58d105cd",
+        "name": "neutron"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8090",
+        "region": "RegionOne", "interface": "admin", "id": "b91bd1a6c34b4973b3d48f94516358bc"}],
+        "type": "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1", "name":
+        "swift"}], "extras": {}, "user": {"domain": {"id": "default", "name": "Default"},
+        "id": "205e0e39a2534743b517ed0aa2fbcda7", "name": "admin"}, "audit_ids": ["lLjqZsXsSj-Qs4FlZPGp7A"],
+        "issued_at": "2016-05-03T13:51:40.395192Z"}}'
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 11:38:55 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 03 May 2016 13:51:40 GMT
+recorded_with: VCR 3.0.1

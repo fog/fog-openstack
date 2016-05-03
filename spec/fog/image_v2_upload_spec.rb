@@ -1,7 +1,8 @@
+require 'fog/openstack'
 require 'fog/openstack/identity_v3'
 require 'fog/openstack/image_v2'
 
-RSpec.describe Fog::Image::OpenStack do
+RSpec.describe Fog::Image::OpenStack::V2::Upload do
 
   it "Upload/download image data using chunked IO" do
     if ENV['OS_AUTH_URL'] # We only run this against a live system, because VCR's use of Webmock stops Excon :response_block from working correctly
@@ -21,7 +22,7 @@ RSpec.describe Fog::Image::OpenStack do
                                                :openstack_project_name => ENV['OS_PROJECT_NAME'] || 'admin'
                                            }) unless @service
 
-      spec_data_folder = 'spec/fog/openstack/image_v2'
+      spec_data_folder = 'spec/fog/image_v2'
 
       begin
         ####
