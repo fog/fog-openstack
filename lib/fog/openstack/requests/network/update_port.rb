@@ -30,6 +30,7 @@ module Fog
             port['device_owner']      = options[:device_owner]
             port['device_id']         = options[:device_id]
             port['security_groups']   = options[:security_groups] || []
+            port['allowed_address_pairs']   = options[:allowed_address_pairs] || []
             response.body = { 'port' => port }
             response.status = 200
             response
