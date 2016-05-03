@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -16,46 +16,47 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:44 GMT
+      - Tue, 03 May 2016 13:51:55 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-5850e74f-113f-4ce0-9637-5ff1111b5440
+      - req-1060d3e9-1be9-4e46-885a-3602551def93
       Content-Length:
-      - '861'
+      - '968'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"domains": [{"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/260c87fb609c41f69a265240185c35da"},
-        "enabled": true, "description": "monsooncc_test", "name": "o-9fe4db22e", "id":
-        "260c87fb609c41f69a265240185c35da"}, {"enabled": true, "id": "405196a795c64f748551e468f2ba4164",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/405196a795c64f748551e468f2ba4164"},
-        "name": "domain1"}, {"enabled": true, "id": "85b07761a17741ef9b5177cb7de4d000",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/85b07761a17741ef9b5177cb7de4d000"},
-        "name": "domain2"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/default"},
+      string: '{"domains": [{"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/1617829d043b41858253a9a6e848615d"},
+        "enabled": true, "description": "Used for swift functional testing", "name":
+        "swift_test", "id": "1617829d043b41858253a9a6e848615d"}, {"links": {"self":
+        "http://devstack.openstack.stack:35357/v3/domains/36ba5b83865d482296b6d0682e983d77"},
+        "enabled": true, "description": "domain for services", "name": "monsooncc",
+        "id": "36ba5b83865d482296b6d0682e983d77"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/77e438db79474d5d90ab5f2c5c4942e2"},
+        "enabled": true, "description": "domain for user projects", "name": "monsoon2",
+        "id": "77e438db79474d5d90ab5f2c5c4942e2"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/default"},
         "enabled": true, "description": "Owns users and tenants (i.e. projects) available
         on Identity API v2.", "name": "Default", "id": "default"}], "links": {"self":
         "http://devstack.openstack.stack:35357/v3/domains", "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:24 GMT
+  recorded_at: Tue, 03 May 2016 13:51:56 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/domains/default
@@ -64,7 +65,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -72,30 +73,30 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:44 GMT
+      - Tue, 03 May 2016 13:51:56 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-0f7b0683-3b12-481c-b55e-5d377ce7402a
+      - req-d79bfbd0-5475-405e-b68f-26a9a7c445c8
       Content-Length:
-      - '218'
+      - '219'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
@@ -104,7 +105,7 @@ http_interactions:
         "enabled": true, "description": "Owns users and tenants (i.e. projects) available
         on Identity API v2.", "name": "Default", "id": "default"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:24 GMT
+  recorded_at: Tue, 03 May 2016 13:51:56 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/domains/atlantis
@@ -113,7 +114,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -121,30 +122,30 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:44 GMT
+      - Tue, 03 May 2016 13:51:56 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-0709beb9-0947-4a58-8c3f-b639a9e01bad
+      - req-ffade62e-4e20-410e-8aa2-aa81fea22b62
       Content-Length:
       - '92'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
@@ -152,5 +153,5 @@ http_interactions:
       string: '{"error": {"message": "Could not find domain: atlantis", "code": 404,
         "title": "Not Found"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:24 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 03 May 2016 13:51:56 GMT
+recorded_with: VCR 3.0.1

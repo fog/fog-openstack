@@ -331,7 +331,7 @@ module Fog
         def set_api_path
           @path.sub!(/\/$/, '')
           unless @path.match(SUPPORTED_VERSIONS)
-            @path = "/" + Fog::OpenStack.get_supported_version(SUPPORTED_VERSIONS,
+            @path = Fog::OpenStack.get_supported_version_path(SUPPORTED_VERSIONS,
                                                                @openstack_management_uri,
                                                                @auth_token,
                                                                @connection_options)

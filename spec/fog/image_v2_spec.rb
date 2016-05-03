@@ -1,3 +1,4 @@
+require 'fog/openstack'
 require 'fog/openstack/image_v2'
 
 if RUBY_VERSION =~ /1.8/
@@ -6,9 +7,9 @@ else
   require_relative './shared_context'
 end
 
-RSpec.describe Fog::Image::OpenStack do
+RSpec.describe Fog::Image::OpenStack::V2 do
 
-  spec_data_folder = 'spec/fog/openstack/image_v2'
+  spec_data_folder = 'spec/fog/image_v2'
 
   include_context 'OpenStack specs with VCR'
   before :all do
@@ -76,7 +77,7 @@ RSpec.describe Fog::Image::OpenStack do
       # Here be dragons - highly recommend not to supply an ID when creating
       begin
         # increment this identifier when running test more than once, unless the VCR recording is being used
-        identifier = '11111111-2222-3333-aaaa-bbbbbbccccdf'
+        identifier = '11111111-2222-3333-aaaa-bbbbbbcccce1'
 
         # Create an image with a specified ID
         foobar_image = @service.images.create(:name => 'foobar_id', :id => identifier)
@@ -119,6 +120,9 @@ RSpec.describe Fog::Image::OpenStack do
         )
         foobar_id = foobar_image.id
 
+        # Status should be queued
+        expect(@service.images.find_by_id(foobar_id).status).to satisfy { |value| value == 'queued' }
+
         # Upload data from File or IO object
         foobar_image.upload_data File.new(image_path, 'r')
 
@@ -144,7 +148,7 @@ RSpec.describe Fog::Image::OpenStack do
   it "Deactivates and activates an image" do
     VCR.use_cassette('image_v2_activation') do
       image_name = 'foobar3a'
-      image_path = "spec/fog/openstack/image_v2/minimal.ova" # "no-op" virtual machine image, 80kB .ova file containing 64Mb dynamic disk
+      image_path = "spec/fog/image_v2/minimal.ova" # "no-op" virtual machine image, 80kB .ova file containing 64Mb dynamic disk
 
       begin
         # Create an image called foobar2

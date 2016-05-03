@@ -103,6 +103,8 @@ module Fog
               :openstack_management_url => @openstack_management_url }
           end
         end
+        class Upload # Exists for image_v2_upload_spec "describe"
+        end
 
         class Real
           include Fog::OpenStack::Core

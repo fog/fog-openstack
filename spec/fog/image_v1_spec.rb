@@ -1,3 +1,4 @@
+require 'fog/openstack'
 require 'fog/openstack/image_v1'
 
 if RUBY_VERSION =~ /1.8/
@@ -6,12 +7,12 @@ else
   require_relative './shared_context'
 end
 
-RSpec.describe Fog::Image::OpenStack do
+RSpec.describe Fog::Image::OpenStack::V1 do
 
   include_context 'OpenStack specs with VCR'
   before :all do
     setup_vcr_and_service(
-        :vcr_directory => 'spec/fog/openstack/image_v1',
+        :vcr_directory => 'spec/fog/image_v1',
         :service_class => Fog::Image::OpenStack::V1
     )
   end

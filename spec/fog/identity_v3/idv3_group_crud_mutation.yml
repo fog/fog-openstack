@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -16,42 +16,49 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:39 GMT
+      - Tue, 03 May 2016 13:51:49 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-bd4918a0-c5b5-4901-b50a-4b3302f0d3a9
+      - req-a24ba29b-6343-40e0-8b27-c1c8ec0c012b
       Content-Length:
-      - '530'
+      - '1029'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/groups", "previous":
-        null, "next": null}, "groups": [{"domain_id": "default", "description": "non-admin
-        group", "id": "671b345e55bf4223a52ef31a321b1683", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/671b345e55bf4223a52ef31a321b1683"},
-        "name": "nonadmins"}, {"domain_id": "default", "description": "openstack admin
-        group", "id": "e91be21569d94bea9a058e729f2e0199", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e91be21569d94bea9a058e729f2e0199"},
-        "name": "admins"}]}'
+        null, "next": null}, "groups": [{"domain_id": "default", "description": "Technical
+        users for Monasca Agents", "id": "66d5464244d64171a5b1acbdd7634989", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/groups/66d5464244d64171a5b1acbdd7634989"},
+        "name": "MonitoringAgents"}, {"domain_id": "default", "description": "Users
+        with access to the Monasca Monitoring service", "id": "d3460e03a73d4aad9a999542290a0251",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/d3460e03a73d4aad9a999542290a0251"},
+        "name": "MonitoringUsers"}, {"domain_id": "default", "description": "openstack
+        admin group", "id": "e47ddb5b1f774b5481376facec57075a", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/groups/e47ddb5b1f774b5481376facec57075a"}, "name":
+        "admins"}, {"domain_id": "default", "description": "non-admin group", "id":
+        "f23d78d762544dcf9d5a5680e167bdc2", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/f23d78d762544dcf9d5a5680e167bdc2"},
+        "name": "nonadmins"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:20 GMT
+  recorded_at: Tue, 03 May 2016 13:51:49 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/groups
@@ -60,7 +67,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -68,42 +75,49 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:39 GMT
+      - Tue, 03 May 2016 13:51:49 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-1403285f-cf87-416e-9d75-d63c5f632b50
+      - req-d63236e0-971f-4fd2-be09-e0cb749e6007
       Content-Length:
-      - '530'
+      - '1029'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/groups", "previous":
-        null, "next": null}, "groups": [{"domain_id": "default", "description": "non-admin
-        group", "id": "671b345e55bf4223a52ef31a321b1683", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/671b345e55bf4223a52ef31a321b1683"},
-        "name": "nonadmins"}, {"domain_id": "default", "description": "openstack admin
-        group", "id": "e91be21569d94bea9a058e729f2e0199", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e91be21569d94bea9a058e729f2e0199"},
-        "name": "admins"}]}'
+        null, "next": null}, "groups": [{"domain_id": "default", "description": "Technical
+        users for Monasca Agents", "id": "66d5464244d64171a5b1acbdd7634989", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/groups/66d5464244d64171a5b1acbdd7634989"},
+        "name": "MonitoringAgents"}, {"domain_id": "default", "description": "Users
+        with access to the Monasca Monitoring service", "id": "d3460e03a73d4aad9a999542290a0251",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/d3460e03a73d4aad9a999542290a0251"},
+        "name": "MonitoringUsers"}, {"domain_id": "default", "description": "openstack
+        admin group", "id": "e47ddb5b1f774b5481376facec57075a", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/groups/e47ddb5b1f774b5481376facec57075a"}, "name":
+        "admins"}, {"domain_id": "default", "description": "non-admin group", "id":
+        "f23d78d762544dcf9d5a5680e167bdc2", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/f23d78d762544dcf9d5a5680e167bdc2"},
+        "name": "nonadmins"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:20 GMT
+  recorded_at: Tue, 03 May 2016 13:51:49 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/groups
@@ -112,7 +126,7 @@ http_interactions:
       string: '{"group":{"name":"foobar","description":"Group of Foobar users"}}'
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -120,39 +134,39 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:40 GMT
+      - Tue, 03 May 2016 13:51:49 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-4a0d88f6-cc9f-4bcd-a70c-e79dfc40a52f
+      - req-7a259615-6de8-4a72-a0ca-84246ae80b92
       Content-Length:
-      - '225'
+      - '226'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"group": {"domain_id": "default", "description": "Group of Foobar
-        users", "id": "54e18605644f4416a1d43998a4e0cf0c", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c"},
+        users", "id": "e7124aad44f74b73b6bb6a6fd04aed17", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17"},
         "name": "foobar"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:20 GMT
+  recorded_at: Tue, 03 May 2016 13:51:49 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/groups
@@ -161,7 +175,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -169,54 +183,60 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:40 GMT
+      - Tue, 03 May 2016 13:51:49 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-b42e7905-4e02-4134-82fa-e5f685c76fc6
+      - req-5ac85a66-f66d-4461-a8a6-29adc1d1770d
       Content-Length:
-      - '746'
+      - '1246'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/groups", "previous":
-        null, "next": null}, "groups": [{"domain_id": "default", "description": "Group
-        of Foobar users", "id": "54e18605644f4416a1d43998a4e0cf0c", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c"}, "name":
-        "foobar"}, {"domain_id": "default", "description": "non-admin group", "id":
-        "671b345e55bf4223a52ef31a321b1683", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/671b345e55bf4223a52ef31a321b1683"},
-        "name": "nonadmins"}, {"domain_id": "default", "description": "openstack admin
-        group", "id": "e91be21569d94bea9a058e729f2e0199", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e91be21569d94bea9a058e729f2e0199"},
-        "name": "admins"}]}'
+        null, "next": null}, "groups": [{"domain_id": "default", "description": "Technical
+        users for Monasca Agents", "id": "66d5464244d64171a5b1acbdd7634989", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/groups/66d5464244d64171a5b1acbdd7634989"},
+        "name": "MonitoringAgents"}, {"domain_id": "default", "description": "Users
+        with access to the Monasca Monitoring service", "id": "d3460e03a73d4aad9a999542290a0251",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/d3460e03a73d4aad9a999542290a0251"},
+        "name": "MonitoringUsers"}, {"domain_id": "default", "description": "openstack
+        admin group", "id": "e47ddb5b1f774b5481376facec57075a", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/groups/e47ddb5b1f774b5481376facec57075a"}, "name":
+        "admins"}, {"domain_id": "default", "description": "Group of Foobar users",
+        "id": "e7124aad44f74b73b6bb6a6fd04aed17", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17"},
+        "name": "foobar"}, {"domain_id": "default", "description": "non-admin group",
+        "id": "f23d78d762544dcf9d5a5680e167bdc2", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/f23d78d762544dcf9d5a5680e167bdc2"},
+        "name": "nonadmins"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:20 GMT
+  recorded_at: Tue, 03 May 2016 13:51:49 GMT
 - request:
     method: patch
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17
     body:
       encoding: UTF-8
       string: '{"group":{"name":"baz","description":"Group of Baz users"}}'
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -224,39 +244,39 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:40 GMT
+      - Tue, 03 May 2016 13:51:49 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-7c525c5d-2758-407f-8237-2fb8cfd13386
+      - req-6c946c50-2062-451e-a66f-7e6e9b45e285
       Content-Length:
-      - '219'
+      - '220'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"group": {"domain_id": "default", "description": "Group of Baz users",
-        "id": "54e18605644f4416a1d43998a4e0cf0c", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c"},
+        "id": "e7124aad44f74b73b6bb6a6fd04aed17", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17"},
         "name": "baz"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:20 GMT
+  recorded_at: Tue, 03 May 2016 13:51:50 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/groups
@@ -265,7 +285,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -273,45 +293,51 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:40 GMT
+      - Tue, 03 May 2016 13:51:50 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-682b5df1-17a6-4089-ad8d-0ff8b5077506
+      - req-2fb3f9a9-d66f-4930-9b4c-25a4ee08ef72
       Content-Length:
-      - '740'
+      - '1240'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/groups", "previous":
-        null, "next": null}, "groups": [{"domain_id": "default", "description": "Group
-        of Baz users", "id": "54e18605644f4416a1d43998a4e0cf0c", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c"}, "name":
-        "baz"}, {"domain_id": "default", "description": "non-admin group", "id": "671b345e55bf4223a52ef31a321b1683",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/671b345e55bf4223a52ef31a321b1683"},
-        "name": "nonadmins"}, {"domain_id": "default", "description": "openstack admin
-        group", "id": "e91be21569d94bea9a058e729f2e0199", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e91be21569d94bea9a058e729f2e0199"},
-        "name": "admins"}]}'
+        null, "next": null}, "groups": [{"domain_id": "default", "description": "Technical
+        users for Monasca Agents", "id": "66d5464244d64171a5b1acbdd7634989", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/groups/66d5464244d64171a5b1acbdd7634989"},
+        "name": "MonitoringAgents"}, {"domain_id": "default", "description": "Users
+        with access to the Monasca Monitoring service", "id": "d3460e03a73d4aad9a999542290a0251",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/d3460e03a73d4aad9a999542290a0251"},
+        "name": "MonitoringUsers"}, {"domain_id": "default", "description": "openstack
+        admin group", "id": "e47ddb5b1f774b5481376facec57075a", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/groups/e47ddb5b1f774b5481376facec57075a"}, "name":
+        "admins"}, {"domain_id": "default", "description": "Group of Baz users", "id":
+        "e7124aad44f74b73b6bb6a6fd04aed17", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17"},
+        "name": "baz"}, {"domain_id": "default", "description": "non-admin group",
+        "id": "f23d78d762544dcf9d5a5680e167bdc2", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/f23d78d762544dcf9d5a5680e167bdc2"},
+        "name": "nonadmins"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:20 GMT
+  recorded_at: Tue, 03 May 2016 13:51:50 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/groups
@@ -320,7 +346,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -328,45 +354,51 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:40 GMT
+      - Tue, 03 May 2016 13:51:50 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c464b017-89ac-4a76-ad08-e409fface16a
+      - req-b044707c-a6bd-4d24-973e-ec1b8ff0202d
       Content-Length:
-      - '740'
+      - '1240'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/groups", "previous":
-        null, "next": null}, "groups": [{"domain_id": "default", "description": "Group
-        of Baz users", "id": "54e18605644f4416a1d43998a4e0cf0c", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c"}, "name":
-        "baz"}, {"domain_id": "default", "description": "non-admin group", "id": "671b345e55bf4223a52ef31a321b1683",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/671b345e55bf4223a52ef31a321b1683"},
-        "name": "nonadmins"}, {"domain_id": "default", "description": "openstack admin
-        group", "id": "e91be21569d94bea9a058e729f2e0199", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e91be21569d94bea9a058e729f2e0199"},
-        "name": "admins"}]}'
+        null, "next": null}, "groups": [{"domain_id": "default", "description": "Technical
+        users for Monasca Agents", "id": "66d5464244d64171a5b1acbdd7634989", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/groups/66d5464244d64171a5b1acbdd7634989"},
+        "name": "MonitoringAgents"}, {"domain_id": "default", "description": "Users
+        with access to the Monasca Monitoring service", "id": "d3460e03a73d4aad9a999542290a0251",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/d3460e03a73d4aad9a999542290a0251"},
+        "name": "MonitoringUsers"}, {"domain_id": "default", "description": "openstack
+        admin group", "id": "e47ddb5b1f774b5481376facec57075a", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/groups/e47ddb5b1f774b5481376facec57075a"}, "name":
+        "admins"}, {"domain_id": "default", "description": "Group of Baz users", "id":
+        "e7124aad44f74b73b6bb6a6fd04aed17", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17"},
+        "name": "baz"}, {"domain_id": "default", "description": "non-admin group",
+        "id": "f23d78d762544dcf9d5a5680e167bdc2", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/f23d78d762544dcf9d5a5680e167bdc2"},
+        "name": "nonadmins"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:20 GMT
+  recorded_at: Tue, 03 May 2016 13:51:50 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/users
@@ -375,7 +407,7 @@ http_interactions:
       string: '{"user":{"name":"foobar1","email":"foobar1@example.com","password":"s3cret!1"}}'
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -383,39 +415,39 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:40 GMT
+      - Tue, 03 May 2016 13:51:50 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-ef4fb2bd-d1ff-4dc6-a6dd-b85debebd19d
+      - req-ce26e686-1fdc-464a-a6b2-0b4b6bbefa56
       Content-Length:
-      - '233'
+      - '234'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"user": {"name": "foobar1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/8616a1ffd2c640f1b0d4d53c25f69c1c"},
+      string: '{"user": {"name": "foobar1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/05a83e694acc4ec0ba615208891d9716"},
         "domain_id": "default", "enabled": true, "email": "foobar1@example.com", "id":
-        "8616a1ffd2c640f1b0d4d53c25f69c1c"}}'
+        "05a83e694acc4ec0ba615208891d9716"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:20 GMT
+  recorded_at: Tue, 03 May 2016 13:51:50 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/users
@@ -424,7 +456,7 @@ http_interactions:
       string: '{"user":{"name":"foobar2","email":"foobar2@example.com","password":"s3cret!2"}}'
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -432,48 +464,48 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:40 GMT
+      - Tue, 03 May 2016 13:51:50 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-2e84d49a-9f9d-44e1-89fa-158d53347732
+      - req-1e3a706f-00e8-482c-860d-7aae24c04c75
       Content-Length:
-      - '233'
+      - '234'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"user": {"name": "foobar2", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/e0c14e5a4a5b4be1bbf96adbd9c6de22"},
+      string: '{"user": {"name": "foobar2", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/8038462d4cd84547a7fa41f78ee6c818"},
         "domain_id": "default", "enabled": true, "email": "foobar2@example.com", "id":
-        "e0c14e5a4a5b4be1bbf96adbd9c6de22"}}'
+        "8038462d4cd84547a7fa41f78ee6c818"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:50 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/users/8616a1ffd2c640f1b0d4d53c25f69c1c/groups
+    uri: http://devstack.openstack.stack:35357/v3/users/05a83e694acc4ec0ba615208891d9716/groups
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -481,95 +513,95 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:40 GMT
+      - Tue, 03 May 2016 13:51:50 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-52281625-e85c-477e-9123-b08b502daef2
+      - req-7a5dc315-9dd5-45d3-9a06-fc83d7b3537a
+      Content-Length:
+      - '143'
+      Content-Type:
+      - application/json
+      X-Cache:
+      - MISS from i056593-u1404
+      X-Cache-Lookup:
+      - MISS from i056593-u1404:3128
+      Via:
+      - 1.1 i056593-u1404 (squid/3.3.8)
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/05a83e694acc4ec0ba615208891d9716/groups",
+        "previous": null, "next": null}, "groups": []}'
+    http_version: 
+  recorded_at: Tue, 03 May 2016 13:51:50 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 7f72291092a647578b115b853d129693
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Tue, 03 May 2016 13:51:50 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-f9e3a201-f197-4603-b828-959568ba24f7
       Content-Length:
       - '142'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/8616a1ffd2c640f1b0d4d53c25f69c1c/groups",
-        "previous": null, "next": null}, "groups": []}'
-    http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
-- request:
-    method: get
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/1.32.1
-      Proxy-Connection:
-      - Keep-Alive
-      Content-Type:
-      - application/json
-      Accept:
-      - application/json
-      X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Date:
-      - Wed, 28 Oct 2015 16:05:40 GMT
-      Server:
-      - Apache/2.4.7 (Ubuntu)
-      Vary:
-      - X-Auth-Token
-      X-Openstack-Request-Id:
-      - req-4e6074eb-6a61-46ee-a008-f9a7a0e7a7af
-      Content-Length:
-      - '141'
-      Content-Type:
-      - application/json
-      X-Cache:
-      - MISS from i056593-vagrant
-      X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
-      Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: '{"users": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users",
+      string: '{"users": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:51 GMT
 - request:
     method: put
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users/8616a1ffd2c640f1b0d4d53c25f69c1c
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users/05a83e694acc4ec0ba615208891d9716
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -577,44 +609,44 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:40 GMT
+      - Tue, 03 May 2016 13:51:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-41c660d2-15bd-4b09-afd5-4eb4ded8cbf5
+      - req-116ba6f2-f26a-48f5-9ecb-2b2ac0d7866b
       Content-Length:
       - '0'
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:51 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/users/8616a1ffd2c640f1b0d4d53c25f69c1c/groups
+    uri: http://devstack.openstack.stack:35357/v3/users/05a83e694acc4ec0ba615208891d9716/groups
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -622,50 +654,50 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:40 GMT
+      - Tue, 03 May 2016 13:51:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-176f92ae-7371-41b5-bc08-4afd121610c3
+      - req-429f8b99-6235-45d4-8fba-96ca8ea440af
       Content-Length:
-      - '350'
+      - '352'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/8616a1ffd2c640f1b0d4d53c25f69c1c/groups",
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/users/05a83e694acc4ec0ba615208891d9716/groups",
         "previous": null, "next": null}, "groups": [{"domain_id": "default", "description":
-        "Group of Baz users", "id": "54e18605644f4416a1d43998a4e0cf0c", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c"}, "name":
+        "Group of Baz users", "id": "e7124aad44f74b73b6bb6a6fd04aed17", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17"}, "name":
         "baz"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:51 GMT
 - request:
     method: head
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users/8616a1ffd2c640f1b0d4d53c25f69c1c
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users/05a83e694acc4ec0ba615208891d9716
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -673,42 +705,42 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-ffdeb302-cd4b-428a-a967-acdbdb5eb45d
+      - req-a664957d-7885-40e5-9435-f5edb33f6898
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:51 GMT
 - request:
     method: put
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users/e0c14e5a4a5b4be1bbf96adbd9c6de22
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users/8038462d4cd84547a7fa41f78ee6c818
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -716,44 +748,44 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-72eec8fb-cac4-40ca-85da-8355fbd6c871
+      - req-0725cce3-9b2b-4bc5-b09f-718ed6ea5149
       Content-Length:
       - '0'
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:51 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -761,52 +793,52 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-931eda0c-d2a8-41e0-811b-8019262c4fbf
+      - req-622660a8-9989-456f-bcfc-a1483025e908
       Content-Length:
-      - '589'
+      - '592'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"users": [{"name": "foobar1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/8616a1ffd2c640f1b0d4d53c25f69c1c"},
+      string: '{"users": [{"name": "foobar1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/05a83e694acc4ec0ba615208891d9716"},
         "domain_id": "default", "enabled": true, "email": "foobar1@example.com", "id":
-        "8616a1ffd2c640f1b0d4d53c25f69c1c"}, {"name": "foobar2", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/users/e0c14e5a4a5b4be1bbf96adbd9c6de22"}, "domain_id":
-        "default", "enabled": true, "email": "foobar2@example.com", "id": "e0c14e5a4a5b4be1bbf96adbd9c6de22"}],
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users",
+        "05a83e694acc4ec0ba615208891d9716"}, {"name": "foobar2", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/8038462d4cd84547a7fa41f78ee6c818"}, "domain_id":
+        "default", "enabled": true, "email": "foobar2@example.com", "id": "8038462d4cd84547a7fa41f78ee6c818"}],
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:51 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users/8616a1ffd2c640f1b0d4d53c25f69c1c
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users/05a83e694acc4ec0ba615208891d9716
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -814,44 +846,44 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-26b93721-8787-4ab2-a501-45d1872c47ca
+      - req-63e788a6-e974-44dc-9329-20754fb662b5
       Content-Length:
       - '0'
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:51 GMT
 - request:
     method: head
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users/8616a1ffd2c640f1b0d4d53c25f69c1c
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users/05a83e694acc4ec0ba615208891d9716
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -859,46 +891,46 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-b49c74da-7afe-41e0-b760-b3953500f7fe
+      - req-04d54d29-f83c-4fdb-8b5e-922bb97e5c27
       Content-Length:
       - '154'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:52 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -906,49 +938,49 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-9968c486-f057-4d30-9933-5045f7cf6e8e
+      - req-10d22f03-4aa2-4ac4-933f-ce98ae049c46
       Content-Length:
-      - '364'
+      - '366'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"users": [{"name": "foobar2", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/e0c14e5a4a5b4be1bbf96adbd9c6de22"},
+      string: '{"users": [{"name": "foobar2", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/8038462d4cd84547a7fa41f78ee6c818"},
         "domain_id": "default", "enabled": true, "email": "foobar2@example.com", "id":
-        "e0c14e5a4a5b4be1bbf96adbd9c6de22"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users",
+        "8038462d4cd84547a7fa41f78ee6c818"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:52 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/users/8616a1ffd2c640f1b0d4d53c25f69c1c
+    uri: http://devstack.openstack.stack:35357/v3/users/05a83e694acc4ec0ba615208891d9716
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -956,44 +988,44 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:52 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-7c393f0c-c3e6-43fb-9b79-f8c3cc364ada
+      - req-3055fb14-d7fc-4492-862b-586adc4be119
       Content-Length:
       - '0'
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:52 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/users/e0c14e5a4a5b4be1bbf96adbd9c6de22
+    uri: http://devstack.openstack.stack:35357/v3/users/8038462d4cd84547a7fa41f78ee6c818
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -1001,44 +1033,44 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:52 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-ff09c40e-665e-484e-82f1-d019aef8d312
+      - req-6f095135-59c8-437b-bc1e-355ef694e87d
       Content-Length:
       - '0'
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:21 GMT
+  recorded_at: Tue, 03 May 2016 13:51:52 GMT
 - request:
     method: head
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users/e0c14e5a4a5b4be1bbf96adbd9c6de22
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users/8038462d4cd84547a7fa41f78ee6c818
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -1046,46 +1078,46 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:52 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-940c6008-7a14-4fb4-97e9-e7560603d213
+      - req-834d2818-5654-4708-bf5c-83129355939b
       Content-Length:
       - '114'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:22 GMT
+  recorded_at: Tue, 03 May 2016 13:51:52 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -1093,47 +1125,47 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:52 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-0048d169-8244-4945-a64a-13de7228ecad
+      - req-33fc5b67-ee5b-46e6-8fbd-1e8eead49347
       Content-Length:
-      - '141'
+      - '142'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"users": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c/users",
+      string: '{"users": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17/users",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:22 GMT
+  recorded_at: Tue, 03 May 2016 13:51:52 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -1141,35 +1173,35 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:52 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-bbe50caa-8703-4ba9-98e7-24d76c3639aa
+      - req-4c2d3084-4d0a-47c3-8d2a-7cd713d03281
       Content-Length:
       - '0'
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:22 GMT
+  recorded_at: Tue, 03 May 2016 13:51:52 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/groups
@@ -1178,7 +1210,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -1186,51 +1218,58 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:52 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-a99e8e52-7f12-4ab9-aabb-e927fbfc793a
+      - req-18edab28-ddb1-4129-8634-cf9861e43867
       Content-Length:
-      - '530'
+      - '1029'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/groups", "previous":
-        null, "next": null}, "groups": [{"domain_id": "default", "description": "non-admin
-        group", "id": "671b345e55bf4223a52ef31a321b1683", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/671b345e55bf4223a52ef31a321b1683"},
-        "name": "nonadmins"}, {"domain_id": "default", "description": "openstack admin
-        group", "id": "e91be21569d94bea9a058e729f2e0199", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e91be21569d94bea9a058e729f2e0199"},
-        "name": "admins"}]}'
+        null, "next": null}, "groups": [{"domain_id": "default", "description": "Technical
+        users for Monasca Agents", "id": "66d5464244d64171a5b1acbdd7634989", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/groups/66d5464244d64171a5b1acbdd7634989"},
+        "name": "MonitoringAgents"}, {"domain_id": "default", "description": "Users
+        with access to the Monasca Monitoring service", "id": "d3460e03a73d4aad9a999542290a0251",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/d3460e03a73d4aad9a999542290a0251"},
+        "name": "MonitoringUsers"}, {"domain_id": "default", "description": "openstack
+        admin group", "id": "e47ddb5b1f774b5481376facec57075a", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/groups/e47ddb5b1f774b5481376facec57075a"}, "name":
+        "admins"}, {"domain_id": "default", "description": "non-admin group", "id":
+        "f23d78d762544dcf9d5a5680e167bdc2", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/f23d78d762544dcf9d5a5680e167bdc2"},
+        "name": "nonadmins"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:22 GMT
+  recorded_at: Tue, 03 May 2016 13:51:52 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/groups/54e18605644f4416a1d43998a4e0cf0c
+    uri: http://devstack.openstack.stack:35357/v3/groups/e7124aad44f74b73b6bb6a6fd04aed17
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -1238,38 +1277,38 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:41 GMT
+      - Tue, 03 May 2016 13:51:52 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-d05957a0-c999-42f9-9661-eb576aeb572f
+      - req-0c36d99f-3deb-4041-96b8-e357ae746f4b
       Content-Length:
       - '115'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"error": {"message": "Could not find group: 54e18605644f4416a1d43998a4e0cf0c",
+      string: '{"error": {"message": "Could not find group: e7124aad44f74b73b6bb6a6fd04aed17",
         "code": 404, "title": "Not Found"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:22 GMT
+  recorded_at: Tue, 03 May 2016 13:51:52 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/groups
@@ -1278,7 +1317,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -1286,40 +1325,47 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:42 GMT
+      - Tue, 03 May 2016 13:51:52 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-585de77e-174a-4dd1-a4ba-c28539dda285
+      - req-37cf1f8e-c6a1-424c-80bd-f69aca919eba
       Content-Length:
-      - '530'
+      - '1029'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/groups", "previous":
-        null, "next": null}, "groups": [{"domain_id": "default", "description": "non-admin
-        group", "id": "671b345e55bf4223a52ef31a321b1683", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/671b345e55bf4223a52ef31a321b1683"},
-        "name": "nonadmins"}, {"domain_id": "default", "description": "openstack admin
-        group", "id": "e91be21569d94bea9a058e729f2e0199", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/e91be21569d94bea9a058e729f2e0199"},
-        "name": "admins"}]}'
+        null, "next": null}, "groups": [{"domain_id": "default", "description": "Technical
+        users for Monasca Agents", "id": "66d5464244d64171a5b1acbdd7634989", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/groups/66d5464244d64171a5b1acbdd7634989"},
+        "name": "MonitoringAgents"}, {"domain_id": "default", "description": "Users
+        with access to the Monasca Monitoring service", "id": "d3460e03a73d4aad9a999542290a0251",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/d3460e03a73d4aad9a999542290a0251"},
+        "name": "MonitoringUsers"}, {"domain_id": "default", "description": "openstack
+        admin group", "id": "e47ddb5b1f774b5481376facec57075a", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/groups/e47ddb5b1f774b5481376facec57075a"}, "name":
+        "admins"}, {"domain_id": "default", "description": "non-admin group", "id":
+        "f23d78d762544dcf9d5a5680e167bdc2", "links": {"self": "http://devstack.openstack.stack:35357/v3/groups/f23d78d762544dcf9d5a5680e167bdc2"},
+        "name": "nonadmins"}]}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:22 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 03 May 2016 13:51:53 GMT
+recorded_with: VCR 3.0.1

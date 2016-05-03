@@ -1,4 +1,4 @@
-
+require 'fog/openstack/core'
 require 'fog/openstack/common'
 require 'fog/openstack/volume'
 
@@ -23,6 +23,9 @@ module Fog
         model :volume_type
         collection :volume_types
 
+        model :snapshot
+        collection :snapshots
+
         model :transfer
         collection :transfers
 
@@ -32,6 +35,7 @@ module Fog
         request :list_volumes
         request :list_volumes_detailed
         request :create_volume
+        request :update_volume
         request :get_volume_details
         request :extend_volume
         request :delete_volume
@@ -39,15 +43,16 @@ module Fog
         request :list_zones
 
         request :list_volume_types
-        request :create_volume_type
-        request :delete_volume_type
         request :get_volume_type_details
 
-        request :create_volume_snapshot
+        request :create_snapshot
+        request :update_snapshot
         request :list_snapshots
         request :list_snapshots_detailed
         request :get_snapshot_details
         request :delete_snapshot
+        request :update_snapshot_metadata
+        request :delete_snapshot_metadata
 
         request :list_transfers
         request :list_transfers_detailed
@@ -60,9 +65,12 @@ module Fog
         request :get_quota
         request :get_quota_defaults
 
-        request :get_quota_usage
+        request :update_metadata
+        request :replace_metadata
+        request :delete_metadata
 
         request :set_tenant
+        request :action
 
         class Mock
           def self.data

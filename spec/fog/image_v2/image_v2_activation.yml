@@ -5,45 +5,49 @@ http_interactions:
     uri: http://devstack.openstack.stack:9292/v2/images
     body:
       encoding: UTF-8
-      string: ! '{"name":"foobar3a","container_format":"ovf","disk_format":"vmdk"}'
+      string: '{"name":"foobar3a","container_format":"ovf","disk_format":"vmdk"}'
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 8b70080ceed140e5b3bb02c26e2eee42
+      - 1e843e1adc5342dab74687f6b359185c
   response:
     status:
       code: 201
       message: ''
     headers:
       Content-Length:
-      - '551'
+      - '521'
       Content-Type:
       - application/json; charset=UTF-8
       Location:
-      - http://devstack.openstack.stack:9292/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb
+      - http://devstack.openstack.stack:9292/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc
       X-Openstack-Request-Id:
-      - req-req-8fdb5922-985f-484b-8050-5943305974af
+      - req-9e91a18d-3776-47cb-bae0-aace76146de7
       Date:
-      - Fri, 11 Sep 2015 12:04:21 GMT
+      - Tue, 03 May 2016 14:00:56 GMT
+      Proxy-Connection:
+      - Keep-alive
     body:
-      encoding: US-ASCII
-      string: ! '{"status": "queued", "name": "foobar3a", "tags": [], "container_format":
-        "ovf", "created_at": "2015-09-11T12:04:21Z", "size": null, "disk_format":
-        "vmdk", "updated_at": "2015-09-11T12:04:21Z", "visibility": "private", "self":
-        "/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb", "min_disk": 0, "protected":
-        false, "id": "529864ad-7317-4b3f-93bb-4e8c8aad98cb", "file": "/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb/file",
-        "checksum": null, "owner": "123ac695d4db400a9001b91bb3b8aa46", "virtual_size":
-        null, "min_ram": 0, "schema": "/v2/schemas/image"}'
+      encoding: UTF-8
+      string: '{"status": "queued", "name": "foobar3a", "tags": [], "container_format":
+        "ovf", "created_at": "2016-05-03T14:00:56Z", "size": null, "disk_format":
+        "vmdk", "updated_at": "2016-05-03T14:00:56Z", "visibility": "private", "self":
+        "/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc", "min_disk": 0, "protected":
+        false, "id": "3886ae8a-5b8d-46f8-b42c-655f16ef68cc", "file": "/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc/file",
+        "checksum": null, "owner": null, "virtual_size": null, "min_ram": 0, "schema":
+        "/v2/schemas/image"}'
     http_version: 
-  recorded_at: Fri, 11 Sep 2015 12:04:10 GMT
+  recorded_at: Tue, 03 May 2016 14:00:56 GMT
 - request:
     method: put
-    uri: http://devstack.openstack.stack:9292/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb/file
+    uri: http://devstack.openstack.stack:9292/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc/file
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -1870,13 +1874,15 @@ http_interactions:
         AAAAAAAAAAAAAAAAAAAAAAAAAAA=
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/octet-stream
       Accept:
       - application/json
       X-Auth-Token:
-      - 8b70080ceed140e5b3bb02c26e2eee42
+      - 1e843e1adc5342dab74687f6b359185c
   response:
     status:
       code: 204
@@ -1887,68 +1893,76 @@ http_interactions:
       Content-Length:
       - '0'
       X-Openstack-Request-Id:
-      - req-req-4e5a8706-f9bc-4414-8580-ba2485345f6f
+      - req-3b50f834-8350-47e8-970b-d5d4c936b086
       Date:
-      - Fri, 11 Sep 2015 12:04:22 GMT
+      - Tue, 03 May 2016 14:00:57 GMT
+      Proxy-Connection:
+      - Keep-alive
     body:
-      encoding: US-ASCII
+      encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 11 Sep 2015 12:04:10 GMT
+  recorded_at: Tue, 03 May 2016 14:00:57 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:9292/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb
+    uri: http://devstack.openstack.stack:9292/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 8b70080ceed140e5b3bb02c26e2eee42
+      - 1e843e1adc5342dab74687f6b359185c
   response:
     status:
       code: 200
       message: ''
     headers:
       Content-Length:
-      - '582'
+      - '552'
       Content-Type:
       - application/json; charset=UTF-8
       X-Openstack-Request-Id:
-      - req-req-3cc53052-38c3-42b8-8bd1-b2bb271751cd
+      - req-5723e543-c1be-4d15-a1fe-4df3b386cd45
       Date:
-      - Fri, 11 Sep 2015 12:04:22 GMT
+      - Tue, 03 May 2016 14:00:57 GMT
+      Proxy-Connection:
+      - Keep-alive
     body:
-      encoding: US-ASCII
-      string: ! '{"status": "active", "name": "foobar3a", "tags": [], "container_format":
-        "ovf", "created_at": "2015-09-11T12:04:21Z", "size": 81920, "disk_format":
-        "vmdk", "updated_at": "2015-09-11T12:04:21Z", "visibility": "private", "self":
-        "/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb", "min_disk": 0, "protected":
-        false, "id": "529864ad-7317-4b3f-93bb-4e8c8aad98cb", "file": "/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb/file",
-        "checksum": "5ed761afc09ea10ec0117e5008e038f0", "owner": "123ac695d4db400a9001b91bb3b8aa46",
-        "virtual_size": null, "min_ram": 0, "schema": "/v2/schemas/image"}'
+      encoding: UTF-8
+      string: '{"status": "active", "name": "foobar3a", "tags": [], "container_format":
+        "ovf", "created_at": "2016-05-03T14:00:56Z", "size": 81920, "disk_format":
+        "vmdk", "updated_at": "2016-05-03T14:00:57Z", "visibility": "private", "self":
+        "/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc", "min_disk": 0, "protected":
+        false, "id": "3886ae8a-5b8d-46f8-b42c-655f16ef68cc", "file": "/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc/file",
+        "checksum": "5ed761afc09ea10ec0117e5008e038f0", "owner": null, "virtual_size":
+        null, "min_ram": 0, "schema": "/v2/schemas/image"}'
     http_version: 
-  recorded_at: Fri, 11 Sep 2015 12:04:10 GMT
+  recorded_at: Tue, 03 May 2016 14:00:57 GMT
 - request:
     method: post
-    uri: http://devstack.openstack.stack:9292/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb/actions/deactivate
+    uri: http://devstack.openstack.stack:9292/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc/actions/deactivate
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 8b70080ceed140e5b3bb02c26e2eee42
+      - 1e843e1adc5342dab74687f6b359185c
   response:
     status:
       code: 204
@@ -1959,29 +1973,33 @@ http_interactions:
       Content-Length:
       - '0'
       X-Openstack-Request-Id:
-      - req-req-66273330-50e4-4cf0-87cf-79e95a92b7f2
+      - req-57d7d6a1-e0f6-4814-b26f-e90d52f81587
       Date:
-      - Fri, 11 Sep 2015 12:04:22 GMT
+      - Tue, 03 May 2016 14:00:57 GMT
+      Proxy-Connection:
+      - Keep-alive
     body:
-      encoding: US-ASCII
+      encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 11 Sep 2015 12:04:10 GMT
+  recorded_at: Tue, 03 May 2016 14:00:57 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:9292/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb/file
+    uri: http://devstack.openstack.stack:9292/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc/file
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 8b70080ceed140e5b3bb02c26e2eee42
+      - 1e843e1adc5342dab74687f6b359185c
   response:
     status:
       code: 403
@@ -1992,30 +2010,34 @@ http_interactions:
       Content-Type:
       - text/plain; charset=UTF-8
       X-Openstack-Request-Id:
-      - req-req-6b412025-6106-40a4-91d0-15dd9aa7f348
+      - req-5f24f734-0dae-49db-83af-94ac2471c957
       Date:
-      - Fri, 11 Sep 2015 12:04:22 GMT
+      - Tue, 03 May 2016 14:00:57 GMT
+      Proxy-Connection:
+      - Keep-alive
     body:
-      encoding: US-ASCII
-      string: ! "403 Forbidden\n\nThe requested image has been deactivated. Image
-        data download is forbidden.\n\n   "
+      encoding: UTF-8
+      string: "403 Forbidden\n\nThe requested image has been deactivated. Image data
+        download is forbidden.\n\n   "
     http_version: 
-  recorded_at: Fri, 11 Sep 2015 12:04:10 GMT
+  recorded_at: Tue, 03 May 2016 14:00:57 GMT
 - request:
     method: post
-    uri: http://devstack.openstack.stack:9292/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb/actions/reactivate
+    uri: http://devstack.openstack.stack:9292/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc/actions/reactivate
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 8b70080ceed140e5b3bb02c26e2eee42
+      - 1e843e1adc5342dab74687f6b359185c
   response:
     status:
       code: 204
@@ -2026,29 +2048,33 @@ http_interactions:
       Content-Length:
       - '0'
       X-Openstack-Request-Id:
-      - req-req-2a4c76d9-cb5f-4df9-bc17-9f6b7e5a3b4f
+      - req-7e4be04d-d6a6-4725-a3c2-c2c07200dc27
       Date:
-      - Fri, 11 Sep 2015 12:04:22 GMT
+      - Tue, 03 May 2016 14:00:57 GMT
+      Proxy-Connection:
+      - Keep-alive
     body:
-      encoding: US-ASCII
+      encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 11 Sep 2015 12:04:10 GMT
+  recorded_at: Tue, 03 May 2016 14:00:58 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:9292/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb/file
+    uri: http://devstack.openstack.stack:9292/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc/file
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 8b70080ceed140e5b3bb02c26e2eee42
+      - 1e843e1adc5342dab74687f6b359185c
   response:
     status:
       code: 200
@@ -2057,9 +2083,11 @@ http_interactions:
       Content-Type:
       - application/octet-stream
       X-Openstack-Request-Id:
-      - req-req-1fe24fac-9b77-4e37-bff6-45a9f6700a2f
+      - req-5cae615f-0719-43be-ae7f-5240ce3fb3d5
       Date:
-      - Fri, 11 Sep 2015 12:04:22 GMT
+      - Tue, 03 May 2016 14:00:58 GMT
+      Proxy-Connection:
+      - Keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -3885,22 +3913,24 @@ http_interactions:
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAA=
     http_version: 
-  recorded_at: Fri, 11 Sep 2015 12:04:10 GMT
+  recorded_at: Tue, 03 May 2016 14:00:58 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:9292/v2/images/529864ad-7317-4b3f-93bb-4e8c8aad98cb
+    uri: http://devstack.openstack.stack:9292/v2/images/3886ae8a-5b8d-46f8-b42c-655f16ef68cc
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 8b70080ceed140e5b3bb02c26e2eee42
+      - 1e843e1adc5342dab74687f6b359185c
   response:
     status:
       code: 204
@@ -3911,14 +3941,16 @@ http_interactions:
       Content-Length:
       - '0'
       X-Openstack-Request-Id:
-      - req-req-43d3034e-ac7d-4191-88db-6cb49ef951cd
+      - req-095f00be-bc92-4f70-b436-2679159215ec
       Date:
-      - Fri, 11 Sep 2015 12:04:22 GMT
+      - Tue, 03 May 2016 14:00:59 GMT
+      Proxy-Connection:
+      - Keep-alive
     body:
-      encoding: US-ASCII
+      encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 11 Sep 2015 12:04:10 GMT
+  recorded_at: Tue, 03 May 2016 14:00:59 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:9292/v2/images?name=foobar3a
@@ -3927,13 +3959,15 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 8b70080ceed140e5b3bb02c26e2eee42
+      - 1e843e1adc5342dab74687f6b359185c
   response:
     status:
       code: 200
@@ -3944,14 +3978,16 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       X-Openstack-Request-Id:
-      - req-req-8e9b81bc-38c0-4663-b009-16f21e59f9f6
+      - req-19945fb0-79b7-4882-8317-9afc1050da6c
       Date:
-      - Fri, 11 Sep 2015 12:04:22 GMT
+      - Tue, 03 May 2016 14:00:59 GMT
+      Proxy-Connection:
+      - Keep-alive
     body:
-      encoding: US-ASCII
-      string: ! '{"images": [], "schema": "/v2/schemas/images", "first": "/v2/images?name=foobar3a"}'
+      encoding: UTF-8
+      string: '{"images": [], "schema": "/v2/schemas/images", "first": "/v2/images?name=foobar3a"}'
     http_version: 
-  recorded_at: Fri, 11 Sep 2015 12:04:10 GMT
+  recorded_at: Tue, 03 May 2016 14:00:59 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:9292/v2/images?name=foobar3a
@@ -3960,13 +3996,15 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 8b70080ceed140e5b3bb02c26e2eee42
+      - 1e843e1adc5342dab74687f6b359185c
   response:
     status:
       code: 200
@@ -3977,12 +4015,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       X-Openstack-Request-Id:
-      - req-req-a959dca9-afd4-4142-8448-afff472bdcff
+      - req-894721bc-e3b9-47e6-ac5a-6a58c5b1379a
       Date:
-      - Fri, 11 Sep 2015 12:04:22 GMT
+      - Tue, 03 May 2016 14:00:59 GMT
+      Proxy-Connection:
+      - Keep-alive
     body:
-      encoding: US-ASCII
-      string: ! '{"images": [], "schema": "/v2/schemas/images", "first": "/v2/images?name=foobar3a"}'
+      encoding: UTF-8
+      string: '{"images": [], "schema": "/v2/schemas/images", "first": "/v2/images?name=foobar3a"}'
     http_version: 
-  recorded_at: Fri, 11 Sep 2015 12:04:10 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 03 May 2016 14:00:59 GMT
+recorded_with: VCR 3.0.1

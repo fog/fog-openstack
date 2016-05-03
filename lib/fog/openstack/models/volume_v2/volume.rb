@@ -1,6 +1,5 @@
 require 'fog/openstack/models/volume/volume'
 
-
 module Fog
   module Volume
     class OpenStack
@@ -15,11 +14,21 @@ module Fog
 
           def save
             requires :name, :size
-            data = service.create_volume(name, description, size, attributes)
+            if self.id.nil?
+              data = service.create_volume(name, description, size, attributes)
+            else
+              data = service.update_volume(self.id, attributes.reject{|k,v| k == :id})
+            end
             merge_attributes(data.body['volume'])
             true
           end
 
+          def update(attr = nil)
+            requires :id
+            merge_attributes(
+                service.update_volume(self.id, attr || attributes).body['volume'])
+            self
+          end
         end
       end
     end

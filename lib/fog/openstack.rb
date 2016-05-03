@@ -220,13 +220,16 @@ module Fog
               :method => 'GET'
           }
           user_id = body['token']['user']['id']
+          project_uri = uri.clone
+          project_uri.path = uri.path.sub('/auth/tokens',"/users/#{user_id}/projects")
           response = Fog::Core::Connection.new(
-              "#{uri.scheme}://#{uri.host}:#{uri.port}/v3/users/#{user_id}/projects", false, connection_options).request(request_body)
+              "#{project_uri.scheme}://#{project_uri.host}:#{project_uri.port}#{project_uri.path}", false, connection_options).request(request_body)
 
           projects_body = Fog::JSON.decode(response.body)
           if projects_body['projects'].empty?
             options[:openstack_domain_id] = body['token']['user']['domain']['id']
           else
+            options[:openstack_project_id] = projects_body['projects'].first['id']
             options[:openstack_project_name] = projects_body['projects'].first['name']
             options[:openstack_domain_id] = projects_body['projects'].first['domain_id']
           end
@@ -274,9 +277,9 @@ module Fog
       identity_url = identity_service['endpoints'].find { |e| e['interface']=='public' }['url'] if identity_service
 
       if body['token']['project']
-        tenant = body['token']['project']['name']
+        tenant = body['token']['project']
       else
-        tenant = body['token']['user']['project']['name'] if body['token']['user']['project']
+        tenant = body['token']['user']['project'] if body['token']['user']['project']
       end
 
       return {
@@ -497,7 +500,7 @@ module Fog
       # Find a version in the path (e.g. the v1 in /xyz/v1/tenantid/abc) and get the path up until that version (e.g. /xyz))
       path_components = uri.path.split '/'
       version_component_index = path_components.index{|comp| comp.match(/v[0-9].?[0-9]?/) }
-      versionless_path = (path_components.take(version_component_index).join '/' if version_component_index) || ''
+      versionless_path = (path_components.take(version_component_index).join '/' if version_component_index) || uri.path
       connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}#{versionless_path}", false, connection_options)
       response = connection.request({
                                         :expects => [200, 204, 300],
