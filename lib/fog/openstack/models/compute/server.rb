@@ -302,7 +302,7 @@ module Fog
           service.live_migrate_server(id, host, block_migration, disk_over_commit)
         end
 
-        def evacuate(host = nil, on_shared_storage = nil, admin_password = nil)
+        def evacuate(host = nil, on_shared_storage = true, admin_password = nil)
           requires :id
           service.evacuate_server(id, host, on_shared_storage, admin_password)
         end
