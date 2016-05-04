@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -16,55 +16,104 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:38 GMT
+      - Tue, 03 May 2016 13:51:46 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-58232f8a-a376-45af-9838-2eb6ebdad5d9
+      - req-9df51694-9cc3-4fdf-ada5-d2e56de7e964
       Content-Length:
-      - '1845'
+      - '6188'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"users": [{"name": "glance", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/3fac8bae1b6f4d2e99a1cecf9b27f797"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "3fac8bae1b6f4d2e99a1cecf9b27f797"},
-        {"name": "nova", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/4467ea650993437786817ca7ec1348ad"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "4467ea650993437786817ca7ec1348ad"},
-        {"name": "neutron", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/5f2d40b549ab419291fdc02ca93a2b21"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "5f2d40b549ab419291fdc02ca93a2b21"},
-        {"name": "cinder", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/74e0fdd6679f49a79e0d02729e70834e"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "74e0fdd6679f49a79e0d02729e70834e"},
-        {"name": "demo", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/83e19aa7df6843d497f7cde5ef8faf65"},
+      string: '{"users": [{"name": "swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/0536d9fac63c465ebf60a2a5f87bea1f"},
+        "enabled": true, "id": "0536d9fac63c465ebf60a2a5f87bea1f", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/1432886c5942446988bd6796a72bd08c"},
+        "description": "Monasca Api User", "name": "monascaapi", "domain_id": "default",
+        "enabled": true, "id": "1432886c5942446988bd6796a72bd08c", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/19f57ca4000744a39da3e13611a7e8b9"},
+        "description": "test user for billing", "name": "dummy4", "domain_id": "default",
+        "enabled": true, "id": "19f57ca4000744a39da3e13611a7e8b9", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "admin", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/205e0e39a2534743b517ed0aa2fbcda7"},
+        "enabled": true, "id": "205e0e39a2534743b517ed0aa2fbcda7", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/35cd2200d034490bba3d0228a189e80b"},
+        "description": "test user for billing", "name": "dummy8", "domain_id": "default",
+        "enabled": true, "id": "35cd2200d034490bba3d0228a189e80b", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/42238d2a0e884ef5b334db9e14ccf90b"},
+        "description": "test user for billing", "name": "dummy9", "domain_id": "default",
+        "enabled": true, "id": "42238d2a0e884ef5b334db9e14ccf90b", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/42a9988a47134aa2aaa0deafef474d97"},
+        "description": "Ceilometer User", "name": "ceilometer", "domain_id": "default",
+        "enabled": true, "id": "42a9988a47134aa2aaa0deafef474d97", "default_project_id":
+        "2ab82e30d7984631874def67813dffd8"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/54956227818d4bf7a98a59af580708c2"},
+        "description": "Monasca Agent User", "name": "monascaagent", "domain_id":
+        "default", "enabled": true, "id": "54956227818d4bf7a98a59af580708c2", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/55600cdc25c042bfb197c83bc31042bb"},
+        "description": "test user for billing", "name": "dummy3", "domain_id": "default",
+        "enabled": true, "id": "55600cdc25c042bfb197c83bc31042bb", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "swiftusertest1", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/5955f4b81f414da6ace5b2e8949d047f"}, "domain_id":
+        "default", "enabled": true, "email": "test@example.com", "id": "5955f4b81f414da6ace5b2e8949d047f"},
+        {"name": "swiftusertest2", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/6e53f10a91c44e15a9ad8cca2facd5a8"},
+        "domain_id": "default", "enabled": true, "email": "test2@example.com", "id":
+        "6e53f10a91c44e15a9ad8cca2facd5a8"}, {"name": "cinder", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/7031bcf1a2f344f483d137b5f5d4659a"}, "enabled":
+        true, "id": "7031bcf1a2f344f483d137b5f5d4659a", "domain_id": "default"}, {"name":
+        "glance-swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/72ec469780214348abe5ac51cd96157b"},
+        "domain_id": "default", "enabled": true, "email": "glance-swift@example.com",
+        "id": "72ec469780214348abe5ac51cd96157b"}, {"name": "swiftusertest3", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/8308d6e0421c458bb3e9a979ccf61aa1"},
+        "domain_id": "default", "enabled": true, "email": "test3@example.com", "id":
+        "8308d6e0421c458bb3e9a979ccf61aa1"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/83c4eeb1c25244c6a3363ff3e5c70c02"},
+        "description": "test user for billing", "name": "dummy6", "domain_id": "default",
+        "enabled": true, "id": "83c4eeb1c25244c6a3363ff3e5c70c02", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/9c001a7ca2544d6ba4877a767ad85c32"},
+        "description": "test user for billing", "name": "dummy2", "domain_id": "default",
+        "enabled": true, "id": "9c001a7ca2544d6ba4877a767ad85c32", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/a3fb78a663ee4675a5ff1aedb95d122c"},
+        "description": "test user for billing", "name": "dummy", "domain_id": "default",
+        "enabled": true, "id": "a3fb78a663ee4675a5ff1aedb95d122c", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "neutron", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/ac4e77c52dd048b7afd84f3bf63a70af"}, "enabled":
+        true, "id": "ac4e77c52dd048b7afd84f3bf63a70af", "domain_id": "default"}, {"links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/b43dad2bc931442a92768883f55a81c3"},
+        "description": "test user for billing", "name": "dummy5", "domain_id": "default",
+        "enabled": true, "id": "b43dad2bc931442a92768883f55a81c3", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "demo", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/d66fbe28f45a405a87fd32bb30f7c42e"},
         "domain_id": "default", "enabled": true, "email": "demo@example.com", "id":
-        "83e19aa7df6843d497f7cde5ef8faf65"}, {"name": "admin", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/a18abc2039d6493aa7239a42033cc7c9"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "a18abc2039d6493aa7239a42033cc7c9"},
-        {"name": "user1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/c594720d5b4948e287fae4f7d39efe23"},
-        "domain_id": "405196a795c64f748551e468f2ba4164", "enabled": true, "email":
-        "user1@example1.com", "id": "c594720d5b4948e287fae4f7d39efe23"}, {"name":
-        "user1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/fe4e7a2eebde4addb5d288afeed3af30"},
-        "domain_id": "85b07761a17741ef9b5177cb7de4d000", "enabled": true, "email":
-        "user1@example2.com", "id": "fe4e7a2eebde4addb5d288afeed3af30"}], "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/users", "previous": null, "next": null}}'
+        "d66fbe28f45a405a87fd32bb30f7c42e"}, {"name": "glance", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/d93c389c04e54300931765702727c7e9"}, "enabled":
+        true, "id": "d93c389c04e54300931765702727c7e9", "domain_id": "default"}, {"links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/e82af7ca715e4a8a97fbb898e8208ee9"},
+        "description": "Monasca Admin User", "name": "monascaadmin", "domain_id":
+        "default", "enabled": true, "id": "e82af7ca715e4a8a97fbb898e8208ee9", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"name": "nova", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/ec19ce44e69049efbbb6f190e0ed8b69"},
+        "enabled": true, "id": "ec19ce44e69049efbbb6f190e0ed8b69", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/f8eba8de99cc4f4682ea634dd90c60ac"},
+        "description": "test user for billing", "name": "dummy7", "domain_id": "default",
+        "enabled": true, "id": "f8eba8de99cc4f4682ea634dd90c60ac", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/users",
+        "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:46 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users/u-random-blah
@@ -73,7 +122,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -81,30 +130,30 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:38 GMT
+      - Tue, 03 May 2016 13:51:46 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-39fc72ff-d50a-458c-9224-4ef6eea6f15b
+      - req-46114116-48bb-4bf3-b528-8b4c66a37027
       Content-Length:
       - '95'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
@@ -112,7 +161,7 @@ http_interactions:
       string: '{"error": {"message": "Could not find user: u-random-blah", "code":
         404, "title": "Not Found"}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:46 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users?name=admin
@@ -121,7 +170,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -129,40 +178,40 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:38 GMT
+      - Tue, 03 May 2016 13:51:46 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-2e8e7182-0f8b-4745-af24-8e6c568f5fc7
+      - req-0aad0e62-16a2-424f-b780-461e29589f68
       Content-Length:
-      - '316'
+      - '303'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"users": [{"name": "admin", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/a18abc2039d6493aa7239a42033cc7c9"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "a18abc2039d6493aa7239a42033cc7c9"}],
+      string: '{"users": [{"name": "admin", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/205e0e39a2534743b517ed0aa2fbcda7"},
+        "enabled": true, "id": "205e0e39a2534743b517ed0aa2fbcda7", "domain_id": "default"}],
         "links": {"self": "http://devstack.openstack.stack:35357/v3/users?name=admin", "previous":
         null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:46 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users
@@ -171,7 +220,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -179,55 +228,104 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:38 GMT
+      - Tue, 03 May 2016 13:51:46 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-5eb69a28-e4f3-4838-80a8-d7da793a2038
+      - req-9d2687c4-ff02-4262-9e29-c1cb9596e91d
       Content-Length:
-      - '1845'
+      - '6188'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"users": [{"name": "glance", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/3fac8bae1b6f4d2e99a1cecf9b27f797"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "3fac8bae1b6f4d2e99a1cecf9b27f797"},
-        {"name": "nova", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/4467ea650993437786817ca7ec1348ad"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "4467ea650993437786817ca7ec1348ad"},
-        {"name": "neutron", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/5f2d40b549ab419291fdc02ca93a2b21"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "5f2d40b549ab419291fdc02ca93a2b21"},
-        {"name": "cinder", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/74e0fdd6679f49a79e0d02729e70834e"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "74e0fdd6679f49a79e0d02729e70834e"},
-        {"name": "demo", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/83e19aa7df6843d497f7cde5ef8faf65"},
+      string: '{"users": [{"name": "swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/0536d9fac63c465ebf60a2a5f87bea1f"},
+        "enabled": true, "id": "0536d9fac63c465ebf60a2a5f87bea1f", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/1432886c5942446988bd6796a72bd08c"},
+        "description": "Monasca Api User", "name": "monascaapi", "domain_id": "default",
+        "enabled": true, "id": "1432886c5942446988bd6796a72bd08c", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/19f57ca4000744a39da3e13611a7e8b9"},
+        "description": "test user for billing", "name": "dummy4", "domain_id": "default",
+        "enabled": true, "id": "19f57ca4000744a39da3e13611a7e8b9", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "admin", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/205e0e39a2534743b517ed0aa2fbcda7"},
+        "enabled": true, "id": "205e0e39a2534743b517ed0aa2fbcda7", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/35cd2200d034490bba3d0228a189e80b"},
+        "description": "test user for billing", "name": "dummy8", "domain_id": "default",
+        "enabled": true, "id": "35cd2200d034490bba3d0228a189e80b", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/42238d2a0e884ef5b334db9e14ccf90b"},
+        "description": "test user for billing", "name": "dummy9", "domain_id": "default",
+        "enabled": true, "id": "42238d2a0e884ef5b334db9e14ccf90b", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/42a9988a47134aa2aaa0deafef474d97"},
+        "description": "Ceilometer User", "name": "ceilometer", "domain_id": "default",
+        "enabled": true, "id": "42a9988a47134aa2aaa0deafef474d97", "default_project_id":
+        "2ab82e30d7984631874def67813dffd8"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/54956227818d4bf7a98a59af580708c2"},
+        "description": "Monasca Agent User", "name": "monascaagent", "domain_id":
+        "default", "enabled": true, "id": "54956227818d4bf7a98a59af580708c2", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/55600cdc25c042bfb197c83bc31042bb"},
+        "description": "test user for billing", "name": "dummy3", "domain_id": "default",
+        "enabled": true, "id": "55600cdc25c042bfb197c83bc31042bb", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "swiftusertest1", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/5955f4b81f414da6ace5b2e8949d047f"}, "domain_id":
+        "default", "enabled": true, "email": "test@example.com", "id": "5955f4b81f414da6ace5b2e8949d047f"},
+        {"name": "swiftusertest2", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/6e53f10a91c44e15a9ad8cca2facd5a8"},
+        "domain_id": "default", "enabled": true, "email": "test2@example.com", "id":
+        "6e53f10a91c44e15a9ad8cca2facd5a8"}, {"name": "cinder", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/7031bcf1a2f344f483d137b5f5d4659a"}, "enabled":
+        true, "id": "7031bcf1a2f344f483d137b5f5d4659a", "domain_id": "default"}, {"name":
+        "glance-swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/72ec469780214348abe5ac51cd96157b"},
+        "domain_id": "default", "enabled": true, "email": "glance-swift@example.com",
+        "id": "72ec469780214348abe5ac51cd96157b"}, {"name": "swiftusertest3", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/8308d6e0421c458bb3e9a979ccf61aa1"},
+        "domain_id": "default", "enabled": true, "email": "test3@example.com", "id":
+        "8308d6e0421c458bb3e9a979ccf61aa1"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/83c4eeb1c25244c6a3363ff3e5c70c02"},
+        "description": "test user for billing", "name": "dummy6", "domain_id": "default",
+        "enabled": true, "id": "83c4eeb1c25244c6a3363ff3e5c70c02", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/9c001a7ca2544d6ba4877a767ad85c32"},
+        "description": "test user for billing", "name": "dummy2", "domain_id": "default",
+        "enabled": true, "id": "9c001a7ca2544d6ba4877a767ad85c32", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/a3fb78a663ee4675a5ff1aedb95d122c"},
+        "description": "test user for billing", "name": "dummy", "domain_id": "default",
+        "enabled": true, "id": "a3fb78a663ee4675a5ff1aedb95d122c", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "neutron", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/ac4e77c52dd048b7afd84f3bf63a70af"}, "enabled":
+        true, "id": "ac4e77c52dd048b7afd84f3bf63a70af", "domain_id": "default"}, {"links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/b43dad2bc931442a92768883f55a81c3"},
+        "description": "test user for billing", "name": "dummy5", "domain_id": "default",
+        "enabled": true, "id": "b43dad2bc931442a92768883f55a81c3", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "demo", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/d66fbe28f45a405a87fd32bb30f7c42e"},
         "domain_id": "default", "enabled": true, "email": "demo@example.com", "id":
-        "83e19aa7df6843d497f7cde5ef8faf65"}, {"name": "admin", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/a18abc2039d6493aa7239a42033cc7c9"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "a18abc2039d6493aa7239a42033cc7c9"},
-        {"name": "user1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/c594720d5b4948e287fae4f7d39efe23"},
-        "domain_id": "405196a795c64f748551e468f2ba4164", "enabled": true, "email":
-        "user1@example1.com", "id": "c594720d5b4948e287fae4f7d39efe23"}, {"name":
-        "user1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/fe4e7a2eebde4addb5d288afeed3af30"},
-        "domain_id": "85b07761a17741ef9b5177cb7de4d000", "enabled": true, "email":
-        "user1@example2.com", "id": "fe4e7a2eebde4addb5d288afeed3af30"}], "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/users", "previous": null, "next": null}}'
+        "d66fbe28f45a405a87fd32bb30f7c42e"}, {"name": "glance", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/d93c389c04e54300931765702727c7e9"}, "enabled":
+        true, "id": "d93c389c04e54300931765702727c7e9", "domain_id": "default"}, {"links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/e82af7ca715e4a8a97fbb898e8208ee9"},
+        "description": "Monasca Admin User", "name": "monascaadmin", "domain_id":
+        "default", "enabled": true, "id": "e82af7ca715e4a8a97fbb898e8208ee9", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"name": "nova", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/ec19ce44e69049efbbb6f190e0ed8b69"},
+        "enabled": true, "id": "ec19ce44e69049efbbb6f190e0ed8b69", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/f8eba8de99cc4f4682ea634dd90c60ac"},
+        "description": "test user for billing", "name": "dummy7", "domain_id": "default",
+        "enabled": true, "id": "f8eba8de99cc4f4682ea634dd90c60ac", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/users",
+        "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:46 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users
@@ -236,7 +334,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -244,55 +342,104 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:38 GMT
+      - Tue, 03 May 2016 13:51:46 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-8ea7a216-9570-4d2c-b953-5a33fcd2bf3a
+      - req-844ef04c-63dc-43b7-ad98-b612b282f64f
       Content-Length:
-      - '1845'
+      - '6188'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"users": [{"name": "glance", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/3fac8bae1b6f4d2e99a1cecf9b27f797"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "3fac8bae1b6f4d2e99a1cecf9b27f797"},
-        {"name": "nova", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/4467ea650993437786817ca7ec1348ad"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "4467ea650993437786817ca7ec1348ad"},
-        {"name": "neutron", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/5f2d40b549ab419291fdc02ca93a2b21"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "5f2d40b549ab419291fdc02ca93a2b21"},
-        {"name": "cinder", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/74e0fdd6679f49a79e0d02729e70834e"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "74e0fdd6679f49a79e0d02729e70834e"},
-        {"name": "demo", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/83e19aa7df6843d497f7cde5ef8faf65"},
+      string: '{"users": [{"name": "swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/0536d9fac63c465ebf60a2a5f87bea1f"},
+        "enabled": true, "id": "0536d9fac63c465ebf60a2a5f87bea1f", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/1432886c5942446988bd6796a72bd08c"},
+        "description": "Monasca Api User", "name": "monascaapi", "domain_id": "default",
+        "enabled": true, "id": "1432886c5942446988bd6796a72bd08c", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/19f57ca4000744a39da3e13611a7e8b9"},
+        "description": "test user for billing", "name": "dummy4", "domain_id": "default",
+        "enabled": true, "id": "19f57ca4000744a39da3e13611a7e8b9", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "admin", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/205e0e39a2534743b517ed0aa2fbcda7"},
+        "enabled": true, "id": "205e0e39a2534743b517ed0aa2fbcda7", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/35cd2200d034490bba3d0228a189e80b"},
+        "description": "test user for billing", "name": "dummy8", "domain_id": "default",
+        "enabled": true, "id": "35cd2200d034490bba3d0228a189e80b", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/42238d2a0e884ef5b334db9e14ccf90b"},
+        "description": "test user for billing", "name": "dummy9", "domain_id": "default",
+        "enabled": true, "id": "42238d2a0e884ef5b334db9e14ccf90b", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/42a9988a47134aa2aaa0deafef474d97"},
+        "description": "Ceilometer User", "name": "ceilometer", "domain_id": "default",
+        "enabled": true, "id": "42a9988a47134aa2aaa0deafef474d97", "default_project_id":
+        "2ab82e30d7984631874def67813dffd8"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/54956227818d4bf7a98a59af580708c2"},
+        "description": "Monasca Agent User", "name": "monascaagent", "domain_id":
+        "default", "enabled": true, "id": "54956227818d4bf7a98a59af580708c2", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/55600cdc25c042bfb197c83bc31042bb"},
+        "description": "test user for billing", "name": "dummy3", "domain_id": "default",
+        "enabled": true, "id": "55600cdc25c042bfb197c83bc31042bb", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "swiftusertest1", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/5955f4b81f414da6ace5b2e8949d047f"}, "domain_id":
+        "default", "enabled": true, "email": "test@example.com", "id": "5955f4b81f414da6ace5b2e8949d047f"},
+        {"name": "swiftusertest2", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/6e53f10a91c44e15a9ad8cca2facd5a8"},
+        "domain_id": "default", "enabled": true, "email": "test2@example.com", "id":
+        "6e53f10a91c44e15a9ad8cca2facd5a8"}, {"name": "cinder", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/7031bcf1a2f344f483d137b5f5d4659a"}, "enabled":
+        true, "id": "7031bcf1a2f344f483d137b5f5d4659a", "domain_id": "default"}, {"name":
+        "glance-swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/72ec469780214348abe5ac51cd96157b"},
+        "domain_id": "default", "enabled": true, "email": "glance-swift@example.com",
+        "id": "72ec469780214348abe5ac51cd96157b"}, {"name": "swiftusertest3", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/8308d6e0421c458bb3e9a979ccf61aa1"},
+        "domain_id": "default", "enabled": true, "email": "test3@example.com", "id":
+        "8308d6e0421c458bb3e9a979ccf61aa1"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/83c4eeb1c25244c6a3363ff3e5c70c02"},
+        "description": "test user for billing", "name": "dummy6", "domain_id": "default",
+        "enabled": true, "id": "83c4eeb1c25244c6a3363ff3e5c70c02", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/9c001a7ca2544d6ba4877a767ad85c32"},
+        "description": "test user for billing", "name": "dummy2", "domain_id": "default",
+        "enabled": true, "id": "9c001a7ca2544d6ba4877a767ad85c32", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/a3fb78a663ee4675a5ff1aedb95d122c"},
+        "description": "test user for billing", "name": "dummy", "domain_id": "default",
+        "enabled": true, "id": "a3fb78a663ee4675a5ff1aedb95d122c", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "neutron", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/ac4e77c52dd048b7afd84f3bf63a70af"}, "enabled":
+        true, "id": "ac4e77c52dd048b7afd84f3bf63a70af", "domain_id": "default"}, {"links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/b43dad2bc931442a92768883f55a81c3"},
+        "description": "test user for billing", "name": "dummy5", "domain_id": "default",
+        "enabled": true, "id": "b43dad2bc931442a92768883f55a81c3", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "demo", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/d66fbe28f45a405a87fd32bb30f7c42e"},
         "domain_id": "default", "enabled": true, "email": "demo@example.com", "id":
-        "83e19aa7df6843d497f7cde5ef8faf65"}, {"name": "admin", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/a18abc2039d6493aa7239a42033cc7c9"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "a18abc2039d6493aa7239a42033cc7c9"},
-        {"name": "user1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/c594720d5b4948e287fae4f7d39efe23"},
-        "domain_id": "405196a795c64f748551e468f2ba4164", "enabled": true, "email":
-        "user1@example1.com", "id": "c594720d5b4948e287fae4f7d39efe23"}, {"name":
-        "user1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/fe4e7a2eebde4addb5d288afeed3af30"},
-        "domain_id": "85b07761a17741ef9b5177cb7de4d000", "enabled": true, "email":
-        "user1@example2.com", "id": "fe4e7a2eebde4addb5d288afeed3af30"}], "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/users", "previous": null, "next": null}}'
+        "d66fbe28f45a405a87fd32bb30f7c42e"}, {"name": "glance", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/d93c389c04e54300931765702727c7e9"}, "enabled":
+        true, "id": "d93c389c04e54300931765702727c7e9", "domain_id": "default"}, {"links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/e82af7ca715e4a8a97fbb898e8208ee9"},
+        "description": "Monasca Admin User", "name": "monascaadmin", "domain_id":
+        "default", "enabled": true, "id": "e82af7ca715e4a8a97fbb898e8208ee9", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"name": "nova", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/ec19ce44e69049efbbb6f190e0ed8b69"},
+        "enabled": true, "id": "ec19ce44e69049efbbb6f190e0ed8b69", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/f8eba8de99cc4f4682ea634dd90c60ac"},
+        "description": "test user for billing", "name": "dummy7", "domain_id": "default",
+        "enabled": true, "id": "f8eba8de99cc4f4682ea634dd90c60ac", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/users",
+        "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:46 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users
@@ -301,7 +448,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -309,55 +456,104 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:38 GMT
+      - Tue, 03 May 2016 13:51:46 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-752736e4-8b7b-49dd-88b9-4a5392f3293f
+      - req-1d47b73e-14cc-40e0-9c09-65e44cb7b50e
       Content-Length:
-      - '1845'
+      - '6188'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"users": [{"name": "glance", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/3fac8bae1b6f4d2e99a1cecf9b27f797"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "3fac8bae1b6f4d2e99a1cecf9b27f797"},
-        {"name": "nova", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/4467ea650993437786817ca7ec1348ad"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "4467ea650993437786817ca7ec1348ad"},
-        {"name": "neutron", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/5f2d40b549ab419291fdc02ca93a2b21"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "5f2d40b549ab419291fdc02ca93a2b21"},
-        {"name": "cinder", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/74e0fdd6679f49a79e0d02729e70834e"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "74e0fdd6679f49a79e0d02729e70834e"},
-        {"name": "demo", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/83e19aa7df6843d497f7cde5ef8faf65"},
+      string: '{"users": [{"name": "swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/0536d9fac63c465ebf60a2a5f87bea1f"},
+        "enabled": true, "id": "0536d9fac63c465ebf60a2a5f87bea1f", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/1432886c5942446988bd6796a72bd08c"},
+        "description": "Monasca Api User", "name": "monascaapi", "domain_id": "default",
+        "enabled": true, "id": "1432886c5942446988bd6796a72bd08c", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/19f57ca4000744a39da3e13611a7e8b9"},
+        "description": "test user for billing", "name": "dummy4", "domain_id": "default",
+        "enabled": true, "id": "19f57ca4000744a39da3e13611a7e8b9", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "admin", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/205e0e39a2534743b517ed0aa2fbcda7"},
+        "enabled": true, "id": "205e0e39a2534743b517ed0aa2fbcda7", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/35cd2200d034490bba3d0228a189e80b"},
+        "description": "test user for billing", "name": "dummy8", "domain_id": "default",
+        "enabled": true, "id": "35cd2200d034490bba3d0228a189e80b", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/42238d2a0e884ef5b334db9e14ccf90b"},
+        "description": "test user for billing", "name": "dummy9", "domain_id": "default",
+        "enabled": true, "id": "42238d2a0e884ef5b334db9e14ccf90b", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/42a9988a47134aa2aaa0deafef474d97"},
+        "description": "Ceilometer User", "name": "ceilometer", "domain_id": "default",
+        "enabled": true, "id": "42a9988a47134aa2aaa0deafef474d97", "default_project_id":
+        "2ab82e30d7984631874def67813dffd8"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/54956227818d4bf7a98a59af580708c2"},
+        "description": "Monasca Agent User", "name": "monascaagent", "domain_id":
+        "default", "enabled": true, "id": "54956227818d4bf7a98a59af580708c2", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/55600cdc25c042bfb197c83bc31042bb"},
+        "description": "test user for billing", "name": "dummy3", "domain_id": "default",
+        "enabled": true, "id": "55600cdc25c042bfb197c83bc31042bb", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "swiftusertest1", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/5955f4b81f414da6ace5b2e8949d047f"}, "domain_id":
+        "default", "enabled": true, "email": "test@example.com", "id": "5955f4b81f414da6ace5b2e8949d047f"},
+        {"name": "swiftusertest2", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/6e53f10a91c44e15a9ad8cca2facd5a8"},
+        "domain_id": "default", "enabled": true, "email": "test2@example.com", "id":
+        "6e53f10a91c44e15a9ad8cca2facd5a8"}, {"name": "cinder", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/7031bcf1a2f344f483d137b5f5d4659a"}, "enabled":
+        true, "id": "7031bcf1a2f344f483d137b5f5d4659a", "domain_id": "default"}, {"name":
+        "glance-swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/72ec469780214348abe5ac51cd96157b"},
+        "domain_id": "default", "enabled": true, "email": "glance-swift@example.com",
+        "id": "72ec469780214348abe5ac51cd96157b"}, {"name": "swiftusertest3", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/8308d6e0421c458bb3e9a979ccf61aa1"},
+        "domain_id": "default", "enabled": true, "email": "test3@example.com", "id":
+        "8308d6e0421c458bb3e9a979ccf61aa1"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/83c4eeb1c25244c6a3363ff3e5c70c02"},
+        "description": "test user for billing", "name": "dummy6", "domain_id": "default",
+        "enabled": true, "id": "83c4eeb1c25244c6a3363ff3e5c70c02", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/9c001a7ca2544d6ba4877a767ad85c32"},
+        "description": "test user for billing", "name": "dummy2", "domain_id": "default",
+        "enabled": true, "id": "9c001a7ca2544d6ba4877a767ad85c32", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/a3fb78a663ee4675a5ff1aedb95d122c"},
+        "description": "test user for billing", "name": "dummy", "domain_id": "default",
+        "enabled": true, "id": "a3fb78a663ee4675a5ff1aedb95d122c", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "neutron", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/ac4e77c52dd048b7afd84f3bf63a70af"}, "enabled":
+        true, "id": "ac4e77c52dd048b7afd84f3bf63a70af", "domain_id": "default"}, {"links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/b43dad2bc931442a92768883f55a81c3"},
+        "description": "test user for billing", "name": "dummy5", "domain_id": "default",
+        "enabled": true, "id": "b43dad2bc931442a92768883f55a81c3", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}, {"name": "demo", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/d66fbe28f45a405a87fd32bb30f7c42e"},
         "domain_id": "default", "enabled": true, "email": "demo@example.com", "id":
-        "83e19aa7df6843d497f7cde5ef8faf65"}, {"name": "admin", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/a18abc2039d6493aa7239a42033cc7c9"},
-        "domain_id": "default", "enabled": true, "email": null, "id": "a18abc2039d6493aa7239a42033cc7c9"},
-        {"name": "user1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/c594720d5b4948e287fae4f7d39efe23"},
-        "domain_id": "405196a795c64f748551e468f2ba4164", "enabled": true, "email":
-        "user1@example1.com", "id": "c594720d5b4948e287fae4f7d39efe23"}, {"name":
-        "user1", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/fe4e7a2eebde4addb5d288afeed3af30"},
-        "domain_id": "85b07761a17741ef9b5177cb7de4d000", "enabled": true, "email":
-        "user1@example2.com", "id": "fe4e7a2eebde4addb5d288afeed3af30"}], "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/users", "previous": null, "next": null}}'
+        "d66fbe28f45a405a87fd32bb30f7c42e"}, {"name": "glance", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/users/d93c389c04e54300931765702727c7e9"}, "enabled":
+        true, "id": "d93c389c04e54300931765702727c7e9", "domain_id": "default"}, {"links":
+        {"self": "http://devstack.openstack.stack:35357/v3/users/e82af7ca715e4a8a97fbb898e8208ee9"},
+        "description": "Monasca Admin User", "name": "monascaadmin", "domain_id":
+        "default", "enabled": true, "id": "e82af7ca715e4a8a97fbb898e8208ee9", "default_project_id":
+        "30079dd13fb1488a88e6ee32f3e0b9ac"}, {"name": "nova", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/ec19ce44e69049efbbb6f190e0ed8b69"},
+        "enabled": true, "id": "ec19ce44e69049efbbb6f190e0ed8b69", "domain_id": "default"},
+        {"links": {"self": "http://devstack.openstack.stack:35357/v3/users/f8eba8de99cc4f4682ea634dd90c60ac"},
+        "description": "test user for billing", "name": "dummy7", "domain_id": "default",
+        "enabled": true, "id": "f8eba8de99cc4f4682ea634dd90c60ac", "default_project_id":
+        "a5db6ff5a6274dd589b6a05945d7f34d"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/users",
+        "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:18 GMT
+  recorded_at: Tue, 03 May 2016 13:51:46 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users?name=pimpernel
@@ -366,7 +562,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
       Proxy-Connection:
       - Keep-Alive
       Content-Type:
@@ -374,30 +570,30 @@ http_interactions:
       Accept:
       - application/json
       X-Auth-Token:
-      - e6b2788de4cb4562b55c8a7bb05e8444
+      - 7f72291092a647578b115b853d129693
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Wed, 28 Oct 2015 16:05:38 GMT
+      - Tue, 03 May 2016 13:51:46 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-42d79e03-0fc0-4cba-99aa-ae7cf2117388
+      - req-c36d5c92-7fce-4300-a7d0-39dcde5a2624
       Content-Length:
-      - '116'
+      - '117'
       Content-Type:
       - application/json
       X-Cache:
-      - MISS from i056593-vagrant
+      - MISS from i056593-u1404
       X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
+      - MISS from i056593-u1404:3128
       Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
+      - 1.1 i056593-u1404 (squid/3.3.8)
       Connection:
       - keep-alive
     body:
@@ -405,5 +601,5 @@ http_interactions:
       string: '{"users": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/users?name=pimpernel",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Wed, 28 Oct 2015 16:05:18 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 03 May 2016 13:51:47 GMT
+recorded_with: VCR 3.0.1

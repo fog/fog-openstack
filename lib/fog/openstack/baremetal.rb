@@ -11,7 +11,7 @@ module Fog
                  :openstack_tenant, :openstack_tenant_id,
                  :openstack_api_key, :openstack_username, :openstack_identity_endpoint,
                  :current_user, :current_tenant, :openstack_region,
-                 :openstack_endpoint_type,
+                 :openstack_endpoint_type, :openstack_cache_ttl,
                  :openstack_project_name, :openstack_project_id,
                  :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id

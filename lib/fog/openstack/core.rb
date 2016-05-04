@@ -2,7 +2,7 @@ module Fog
   module OpenStack
     module Core
       attr_accessor :auth_token
-      attr_reader   :openstack_cache_ttl
+      attr_reader :openstack_cache_ttl
       attr_reader :auth_token_expiration
       attr_reader :current_user
       attr_reader :current_user_id
@@ -12,6 +12,7 @@ module Fog
       attr_reader :openstack_project_domain
       attr_reader :openstack_domain_id
       attr_reader :openstack_user_domain_id
+      attr_reader :openstack_project_id
       attr_reader :openstack_project_domain_id
       attr_reader :openstack_identity_prefix
 
