@@ -2,19 +2,21 @@
 http_interactions:
 - request:
     method: get
-    uri: http://devstack.openstack.stack:9292/v1.1/images/detail
+    uri: http://devstack.openstack.stack:9292/v1/images/detail
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7016a3d2ce5348ae951b1e3d8edaa55d
+      - 3e7674510b954bc29f8da4cd6e1d663a
   response:
     status:
       code: 200
@@ -23,32 +25,47 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '1621'
+      - '2244'
       X-Openstack-Request-Id:
-      - req-req-6b19389b-d481-47bf-84e7-bf91e231cf6d
+      - req-497d2610-6da3-446d-99cf-ddb01afb7855
       Date:
-      - Mon, 21 Sep 2015 17:49:17 GMT
+      - Tue, 03 May 2016 14:00:04 GMT
+      X-Cache:
+      - MISS from i056593-u1404
+      X-Cache-Lookup:
+      - MISS from i056593-u1404:3128
+      Via:
+      - 1.1 i056593-u1404 (squid/3.3.8)
+      Connection:
+      - keep-alive
     body:
-      encoding: US-ASCII
-      string: ! '{"images": [{"status": "active", "deleted_at": null, "name": "cirros-0.3.2-x86_64-uec",
-        "deleted": false, "container_format": "ami", "created_at": "2015-05-07T09:35:58.000000",
-        "disk_format": "ami", "updated_at": "2015-05-07T09:35:58.000000", "min_disk":
-        0, "protected": false, "id": "d33e934a-55f3-4599-bf4e-d7557c251370", "min_ram":
-        0, "checksum": "4eada48c2843d2a262c814ddc92ecf2c", "owner": "123ac695d4db400a9001b91bb3b8aa46",
-        "is_public": true, "virtual_size": null, "properties": {"kernel_id": "a19e0492-ed63-471f-a017-4afcc4c0bf31",
-        "ramdisk_id": "56f1b09a-f38c-470d-90bb-0d41800d5a6f"}, "size": 25165824},
-        {"status": "active", "deleted_at": null, "name": "cirros-0.3.2-x86_64-uec-ramdisk",
-        "deleted": false, "container_format": "ari", "created_at": "2015-05-07T09:35:57.000000",
-        "disk_format": "ari", "updated_at": "2015-05-07T09:35:57.000000", "min_disk":
-        0, "protected": false, "id": "56f1b09a-f38c-470d-90bb-0d41800d5a6f", "min_ram":
-        0, "checksum": "68085af2609d03e51c7662395b5b6e4b", "owner": "123ac695d4db400a9001b91bb3b8aa46",
-        "is_public": true, "virtual_size": null, "properties": {}, "size": 3723817},
-        {"status": "active", "deleted_at": null, "name": "cirros-0.3.2-x86_64-uec-kernel",
-        "deleted": false, "container_format": "aki", "created_at": "2015-05-07T09:35:55.000000",
-        "disk_format": "aki", "updated_at": "2015-05-07T09:35:55.000000", "min_disk":
-        0, "protected": false, "id": "a19e0492-ed63-471f-a017-4afcc4c0bf31", "min_ram":
-        0, "checksum": "836c69cbcd1dc4f225daedbab6edc7c7", "owner": "123ac695d4db400a9001b91bb3b8aa46",
-        "is_public": true, "virtual_size": null, "properties": {}, "size": 4969360}]}'
+      encoding: UTF-8
+      string: '{"images": [{"status": "deleted", "deleted_at": null, "name": "test-image",
+        "deleted": false, "container_format": "bare", "created_at": "2016-03-31T14:25:51.000000",
+        "disk_format": "iso", "updated_at": "2016-04-29T16:47:12.000000", "min_disk":
+        10, "protected": false, "id": "afee0fe8-2d05-4af7-a33a-43d01ad260c4", "min_ram":
+        2, "checksum": "11ee7e2a449415cec8feb5dc7dbee064", "owner": "a5db6ff5a6274dd589b6a05945d7f34d",
+        "is_public": true, "virtual_size": null, "properties": {"kernel_id": "7eff86d0-fd53-4bcf-a444-367ec927c09a",
+        "ramdisk_id": "ab93f1b5-b10c-4387-90d5-5c6abbab12cf", "description": "asewertwerty"},
+        "size": 11116544}, {"status": "active", "deleted_at": null, "name": "cirros-0.3.4-x86_64-uec",
+        "deleted": false, "container_format": "ami", "created_at": "2016-02-05T11:39:36.000000",
+        "disk_format": "ami", "updated_at": "2016-02-05T11:39:40.000000", "min_disk":
+        0, "protected": false, "id": "ea20c966-d2fb-4287-a2eb-7bece9af4263", "min_ram":
+        0, "checksum": "eb9139e4942121f22bbc2afc0400b2a4", "owner": "f17a4813648d4b0bb82124ca1f5f1fd0",
+        "is_public": true, "virtual_size": null, "properties": {"kernel_id": "7eff86d0-fd53-4bcf-a444-367ec927c09a",
+        "ramdisk_id": "ab93f1b5-b10c-4387-90d5-5c6abbab12cf"}, "size": 25165824},
+        {"status": "active", "deleted_at": null, "name": "cirros-0.3.4-x86_64-uec-ramdisk",
+        "deleted": false, "container_format": "ari", "created_at": "2016-02-05T11:39:30.000000",
+        "disk_format": "ari", "updated_at": "2016-02-05T11:39:35.000000", "min_disk":
+        0, "protected": false, "id": "ab93f1b5-b10c-4387-90d5-5c6abbab12cf", "min_ram":
+        0, "checksum": "be575a2b939972276ef675752936977f", "owner": "f17a4813648d4b0bb82124ca1f5f1fd0",
+        "is_public": true, "virtual_size": null, "properties": {}, "size": 3740163},
+        {"status": "active", "deleted_at": null, "name": "cirros-0.3.4-x86_64-uec-kernel",
+        "deleted": false, "container_format": "aki", "created_at": "2016-02-05T11:39:24.000000",
+        "disk_format": "aki", "updated_at": "2016-02-05T11:39:29.000000", "min_disk":
+        0, "protected": false, "id": "7eff86d0-fd53-4bcf-a444-367ec927c09a", "min_ram":
+        0, "checksum": "8a40c862b5735975d82605c1dd395796", "owner": "f17a4813648d4b0bb82124ca1f5f1fd0",
+        "is_public": true, "virtual_size": null, "properties": {}, "size": 4979632}]}'
     http_version: 
-  recorded_at: Mon, 21 Sep 2015 17:49:17 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 03 May 2016 14:00:04 GMT
+recorded_with: VCR 3.0.1

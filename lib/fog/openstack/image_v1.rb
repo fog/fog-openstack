@@ -6,7 +6,6 @@ module Fog
   module Image
     class OpenStack
       class V1 < Fog::Service
-
         SUPPORTED_VERSIONS = /v1(\.(0|1))*/
 
         requires :openstack_auth_url
@@ -55,7 +54,7 @@ module Fog
             @data = nil
           end
 
-          def initialize(options={})
+          def initialize(options = {})
             @openstack_username = options[:openstack_username]
             @openstack_tenant   = options[:openstack_tenant]
             @openstack_auth_uri = URI.parse(options[:openstack_auth_url])
@@ -68,8 +67,8 @@ module Fog
             management_url.path = '/v1'
             @openstack_management_url = management_url.to_s
 
-            @data ||= { :users => {} }
-            unless @data[:users].find {|u| u['name'] == options[:openstack_username]}
+            @data ||= {:users => {}}
+            unless @data[:users].detect { |u| u['name'] == options[:openstack_username] }
               id = Fog::Mock.random_numbers(6).to_s
               @data[:users][id] = {
                 'id'       => id,
@@ -90,11 +89,11 @@ module Fog
           end
 
           def credentials
-            { :provider                 => 'openstack',
-              :openstack_auth_url       => @openstack_auth_uri.to_s,
-              :openstack_auth_token     => @auth_token,
-              :openstack_region         => @openstack_region,
-              :openstack_management_url => @openstack_management_url }
+            {:provider                 => 'openstack',
+             :openstack_auth_url       => @openstack_auth_uri.to_s,
+             :openstack_auth_token     => @auth_token,
+             :openstack_region         => @openstack_region,
+             :openstack_management_url => @openstack_management_url}
           end
         end
 
@@ -106,7 +105,7 @@ module Fog
           end
           include Fog::OpenStack::Common
 
-          def initialize(options={})
+          def initialize(options = {})
             initialize_identity options
 
             @openstack_service_type           = options[:openstack_service_type] || ['image']
@@ -117,30 +116,16 @@ module Fog
 
             authenticate
 
-            process_path @openstack_management_uri
             unless @path.match(SUPPORTED_VERSIONS)
               @path = Fog::OpenStack.get_supported_version_path(SUPPORTED_VERSIONS,
-                                                                 @openstack_management_uri,
-                                                                 @auth_token,
-                                                                 @connection_options)
+                                                                @openstack_management_uri,
+                                                                @auth_token,
+                                                                @connection_options)
             end
 
             @persistent = options[:persistent] || false
             @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
           end
-
-          def process_path uri
-            unless @path.match(SUPPORTED_VERSIONS)
-              @path = "/" + Fog::OpenStack.get_supported_version(SUPPORTED_VERSIONS,
-                                                                 uri,
-                                                                 @auth_token,
-                                                                 @connection_options)
-            end
-            @path
-          end
-
-          private
-
         end
       end
     end
