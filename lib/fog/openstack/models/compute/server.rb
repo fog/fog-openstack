@@ -117,11 +117,11 @@ module Fog
         # returns all ip_addresses for a given instance
         # this includes both the fixed ip(s) and the floating ip(s)
         def ip_addresses
-          addresses.values.flatten.map{|x| x['addr']}
+          addresses ? addresses.values.flatten.map{|x| x['addr']} : []
         end
 
         def floating_ip_addresses
-          all_floating=addresses.values.flatten.select{ |data| data["OS-EXT-IPS:type"]=="floating" }.map{|addr| addr["addr"] }
+          all_floating= addresses  ? addresses.values.flatten.select{ |data| data["OS-EXT-IPS:type"]=="floating" }.map{|addr| addr["addr"] } : []
 
           # Return them all, leading with manually assigned addresses
           manual = all_addresses.map{|addr| addr["ip"]}
@@ -302,7 +302,7 @@ module Fog
           service.live_migrate_server(id, host, block_migration, disk_over_commit)
         end
 
-        def evacuate(host = nil, on_shared_storage = nil, admin_password = nil)
+        def evacuate(host, on_shared_storage, admin_password = nil)
           requires :id
           service.evacuate_server(id, host, on_shared_storage, admin_password)
         end

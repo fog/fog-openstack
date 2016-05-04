@@ -44,6 +44,8 @@ module Fog
       collection  :tenants
       model       :volume
       collection  :volumes
+      model       :volume_attachment
+      collection  :volume_attachments
       model       :network
       collection  :networks
       model       :snapshot
@@ -133,6 +135,8 @@ module Fog
       # Flavor Actions
       request :get_flavor_metadata
       request :create_flavor_metadata
+      request :update_flavor_metadata
+      request :delete_flavor_metadata
 
       # Flavor Access
       request :add_flavor_access
@@ -176,6 +180,7 @@ module Fog
 
       # Key Pair
       request :list_key_pairs
+      request :get_key_pair
       request :create_key_pair
       request :delete_key_pair
 
@@ -193,9 +198,10 @@ module Fog
       request :attach_volume
       request :detach_volume
       request :get_server_volumes
+      request :list_volume_attachments
 
       # Snapshot
-      request :create_volume_snapshot
+      request :create_snapshot
       request :list_snapshots
       request :list_snapshots_detail
       request :get_snapshot_details
@@ -217,6 +223,7 @@ module Fog
       # Zones
       request :list_zones
       request :list_zones_detailed
+      request :list_availability_zones
 
       class Mock
         attr_reader :auth_token
