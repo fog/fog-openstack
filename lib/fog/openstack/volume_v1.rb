@@ -1,4 +1,4 @@
-
+require 'fog/openstack/core'
 require 'fog/openstack/common'
 require 'fog/openstack/volume'
 
@@ -23,6 +23,9 @@ module Fog
         model :volume_type
         collection :volume_types
 
+        model :snapshot
+        collection :snapshots
+
         model :transfer
         collection :transfers
 
@@ -32,6 +35,7 @@ module Fog
         request :list_volumes
         request :list_volumes_detailed
         request :create_volume
+        request :update_volume
         request :get_volume_details
         request :extend_volume
         request :delete_volume
@@ -43,11 +47,14 @@ module Fog
         request :delete_volume_type
         request :get_volume_type_details
 
-        request :create_volume_snapshot
+        request :create_snapshot
+        request :update_snapshot
         request :list_snapshots
         request :list_snapshots_detailed
         request :get_snapshot_details
         request :delete_snapshot
+        request :update_snapshot_metadata
+        request :delete_snapshot_metadata
 
         request :list_transfers
         request :list_transfers_detailed
@@ -59,22 +66,26 @@ module Fog
         request :update_quota
         request :get_quota
         request :get_quota_defaults
-
         request :get_quota_usage
 
+        request :update_metadata
+        request :replace_metadata
+        request :delete_metadata
+
         request :set_tenant
+        request :action
 
         class Mock
           def self.data
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                  :users   => {},
-                  :tenants => {},
-                  :quota   => {
-                      'gigabytes' => 1000,
-                      'volumes'   => 10,
-                      'snapshots' => 10
-                  }
+                :users   => {},
+                :tenants => {},
+                :quota   => {
+                  'gigabytes' => 1000,
+                  'volumes'   => 10,
+                  'snapshots' => 10
+                }
               }
             end
           end
@@ -83,7 +94,7 @@ module Fog
             @data = nil
           end
 
-          def initialize(options={})
+          def initialize(options = {})
             @openstack_username = options[:openstack_username]
             @openstack_tenant   = options[:openstack_tenant]
             @openstack_auth_uri = URI.parse(options[:openstack_auth_url])
@@ -100,11 +111,11 @@ module Fog
             unless @data[:users].find { |u| u['name'] == options[:openstack_username] }
               id                = Fog::Mock.random_numbers(6).to_s
               @data[:users][id] = {
-                  'id'       => id,
-                  'name'     => options[:openstack_username],
-                  'email'    => "#{options[:openstack_username]}@mock.com",
-                  'tenantId' => Fog::Mock.random_numbers(6).to_s,
-                  'enabled'  => true
+                'id'       => id,
+                'name'     => options[:openstack_username],
+                'email'    => "#{options[:openstack_username]}@mock.com",
+                'tenantId' => Fog::Mock.random_numbers(6).to_s,
+                'enabled'  => true
               }
             end
           end
@@ -132,7 +143,7 @@ module Fog
           end
           include Fog::OpenStack::Common
 
-          def initialize(options={})
+          def initialize(options = {})
             initialize_identity options
 
             @openstack_service_type  = options[:openstack_service_type] || ['volume']
@@ -153,9 +164,6 @@ module Fog
             @persistent = options[:persistent] || false
             @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
           end
-
-          private
-
         end
       end
     end
