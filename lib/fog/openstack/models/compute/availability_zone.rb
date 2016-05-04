@@ -7,7 +7,12 @@ module Fog
         identity :zoneName
 
         attribute :hosts
+        attribute :zoneLabel
         attribute :zoneState
+
+        def to_s
+          self.zoneName
+        end
       end
     end
   end
