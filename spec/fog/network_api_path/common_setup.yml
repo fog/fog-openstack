@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://devstack.openstack.stack:5000/v3/auth/tokens
+    uri: http://devstack.openstack.stack:5000/id/v3/auth/tokens
     body:
       encoding: UTF-8
       string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"admin"}}},"scope":{"domain":{"name":"Default"}}}}'
@@ -97,15 +97,13 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.32.1
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.32.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 3b58d1663a9a49b2af240e68bfb08081
+      - 0afbf49d007a4d82850b853b703025d7
   response:
     status:
       code: 200
@@ -114,21 +112,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '119'
+      - '122'
       Date:
-      - Thu, 29 Oct 2015 10:19:42 GMT
-      X-Cache:
-      - MISS from i056593-vagrant
-      X-Cache-Lookup:
-      - MISS from i056593-vagrant:3128
-      Via:
-      - 1.1 i056593-vagrant (squid/3.3.8)
-      Connection:
-      - keep-alive
+      - Thu, 16 Jul 2015 13:30:01 GMT
     body:
-      encoding: UTF-8
-      string: '{"versions": [{"status": "CURRENT", "id": "v2.0", "links": [{"href":
-        "http://devstack.openstack.stack:9696/v2.0", "rel": "self"}]}]}'
+      encoding: US-ASCII
+      string: ! '{"versions": [{"status": "CURRENT", "id": "v2.0", "links": [{"href":
+        "http://devstack.openstack.stack:9696/net/v2.0", "rel": "self"}]}]}'
     http_version: 
-  recorded_at: Thu, 29 Oct 2015 10:19:37 GMT
+  recorded_at: Thu, 16 Jul 2015 13:30:18 GMT
 recorded_with: VCR 2.9.3
