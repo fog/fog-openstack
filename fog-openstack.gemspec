@@ -31,4 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rubyzip', '~> 0.9.9'
   spec.add_development_dependency 'shindo',  '~> 0.3'
+  spec.add_development_dependency 'minitest'
+  spec.add_development_dependency 'vcr'
+  spec.add_development_dependency 'webmock'
 end
