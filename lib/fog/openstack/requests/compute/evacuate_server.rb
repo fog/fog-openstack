@@ -2,10 +2,9 @@ module Fog
   module Compute
     class OpenStack
       class Real
-        def evacuate_server(server_id, host = nil, on_shared_storage = nil, admin_password = nil)
-          evacuate = {}
+        def evacuate_server(server_id, host = nil, on_shared_storage = true, admin_password = nil)
+          evacuate = {'onSharedStorage' => on_shared_storage}
           evacuate['host'] = host if host
-          evacuate['onSharedStorage'] = on_shared_storage if on_shared_storage
           evacuate['adminPass'] = admin_password if admin_password
           body = {
             'evacuate' => evacuate
