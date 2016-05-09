@@ -201,7 +201,7 @@ module Fog
       request :list_volume_attachments
 
       # Snapshot
-      request :create_volume_snapshot
+      request :create_snapshot
       request :list_snapshots
       request :list_snapshots_detail
       request :get_snapshot_details
