@@ -1,12 +1,13 @@
 Shindo.tests("Fog::Identity[:openstack] | user", ['openstack']) do
-  tenant_id = Fog::Identity[:openstack].list_tenants.body['tenants'].first['id']
-  @instance = Fog::Identity[:openstack].users.new({
+  openstack = Fog::Identity::OpenStack.new(:openstack_auth_url => 'http://openstack:35357/v2.0/tokens')
+  tenant_id = openstack.list_tenants.body['tenants'].first['id']
+  @instance = openstack.users.new(
     :name      => 'User Name',
     :email     => 'test@fog.com',
     :tenant_id => tenant_id,
     :password  => 'spoof',
     :enabled   => true
-  })
+  )
 
   tests('success') do
     tests('#save').returns(true) do

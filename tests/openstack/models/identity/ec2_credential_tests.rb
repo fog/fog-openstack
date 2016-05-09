@@ -1,6 +1,6 @@
 Shindo.tests("Fog::Identity[:openstack] | ec2_credential", ['openstack']) do
   before do
-    openstack = Fog::Identity[:openstack]
+    openstack = Fog::Identity::OpenStack.new(:openstack_auth_url => 'http://openstack:35357/v2.0/tokens')
     tenant_id = openstack.list_tenants.body['tenants'].first['id']
 
     @user = openstack.users.find { |user| user.name == 'foobar' }

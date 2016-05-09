@@ -14,16 +14,21 @@ module Fog
                  :current_user, :current_user_id, :current_tenant, :openstack_cache_ttl,
                  :provider, :openstack_identity_prefix, :openstack_endpoint_path_matches
 
-      # Fog::Identity::OpenStack.new() will return a Fog::Identity::OpenStack::V2 or a Fog::Identity::OpenStack::V3,
-      #  depending on whether the auth URL is for an OpenStack Identity V2 or V3 API endpoint
+      # Fog::Identity::OpenStack.new() will return a Fog::Identity::OpenStack::V3 by default
       def self.new(args = {})
-        if self.inspect == 'Fog::Identity::OpenStack'
-          identity = super
-          config = identity.config
-          service = identity.v3? ? Fog::Identity::OpenStack::V3.new(config) : Fog::Identity::OpenStack::V2.new(config)
-        else
-          service = Fog::Service.new(args)
+        version = '3'
+        url = Fog.credentials[:openstack_auth_url] || args[:openstack_auth_url]
+        if url
+          uri = URI(url)
+          version = '2.0' if uri.path =~ /v2\.0/
         end
+
+        service = case version
+                  when '2.0'
+                    Fog::Identity::OpenStack::V2.new(args)
+                  else
+                    Fog::Identity::OpenStack::V3.new(args)
+                  end
         service
       end
 
@@ -32,16 +37,7 @@ module Fog
 
         def initialize(options = {})
           @openstack_auth_uri = URI.parse(options[:openstack_auth_url])
-          @openstack_identity_prefix = options[:openstack_identity_prefix]
           @config = options
-        end
-
-        def v3?
-          if @openstack_identity_prefix
-            @openstack_identity_prefix =~ /v3/
-          else
-            @openstack_auth_uri && @openstack_auth_uri.path =~ %r{/v3}
-          end
         end
       end
 
@@ -78,10 +74,6 @@ module Fog
 
           @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
-        end
-
-        def v3?
-          @path && @path =~ %r{/v3}
         end
 
         def config_service?

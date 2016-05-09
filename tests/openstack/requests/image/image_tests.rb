@@ -1,5 +1,6 @@
 Shindo.tests('Fog::Image[:openstack] | image requests', ['openstack']) do
   openstack = Fog::Identity[:openstack]
+
   @image_attributes = {
     :name             => 'new image',
     :owner            => openstack.current_tenant['id'],
