@@ -30,7 +30,7 @@ class OpenStackVCR
     # must_be_kind_of Class
     @service_class = options[:service_class]
     # determine mode of operation
-    use_recorded = !ENV.has_key?('OS_AUTH_URL')
+    use_recorded = !ENV.has_key?('OS_AUTH_URL') || ENV['USE_VCR'] == 'true'
     if use_recorded
       # when using the cassettes, there is no need to sleep in wait_for()
       Fog.interval = 0
@@ -58,7 +58,7 @@ class OpenStackVCR
       config.hook_into :webmock
 
       if use_recorded
-        config.cassette_library_dir = @vcr_directory
+        config.cassette_library_dir = ENV['SPEC_PATH'] || @vcr_directory
         config.default_cassette_options = { :record => :none }
         config.default_cassette_options.merge! :match_requests_on => [:method, :uri, :body] unless RUBY_VERSION =~ /1.8/ # Ruby 1.8.7 encodes JSON differently, which screws up request matching
       else
@@ -81,16 +81,17 @@ class OpenStackVCR
           :openstack_api_key      => ENV['OS_PASSWORD']    || options[:password]        || 'password',
           :openstack_username     => ENV['OS_USERNAME']    || options[:username]        || 'admin',
           :openstack_domain_name  => ENV['OS_USER_DOMAIN_NAME']|| options[:domain_name] || 'Default',
-          :openstack_project_name => ENV['OS_PROJECT_NAME']|| options[:project_name]    || 'admin'
+          :openstack_cache_ttl => 0
         }
         options[:openstack_service_type] = [ENV['OS_AUTH_SERVICE']] if ENV['OS_AUTH_SERVICE']
       else
         options = {
           :openstack_auth_url       => "#{@os_auth_url}/tokens",
           :openstack_region         => ENV['OS_REGION_NAME']  || options[:region_name]  || 'RegionOne',
-          :openstack_api_key        => ENV['OS_PASSWORD']     || options[:password]     || 'devstack',
+          :openstack_api_key        => ENV['OS_PASSWORD']     || options[:password]     || 'password',
           :openstack_username       => ENV['OS_USERNAME']     || options[:username]     || 'admin',
-          :openstack_tenant         => ENV['OS_PROJECT_NAME'] || options[:project_name] || 'admin'
+          :openstack_tenant         => ENV['OS_PROJECT_NAME'] || options[:project_name] || 'admin',
+          :openstack_cache_ttl => 0
           # FIXME: Identity V3 not properly supported by other services yet
           # :openstack_user_domain    => ENV['OS_USER_DOMAIN_NAME']    || 'Default',
           # :openstack_project_domain => ENV['OS_PROJECT_DOMAIN_NAME'] || 'Default',

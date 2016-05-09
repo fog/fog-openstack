@@ -11,7 +11,7 @@ module Fog
                  :openstack_user_domain, :openstack_project_domain,
                  :openstack_user_domain_id, :openstack_project_domain_id,
                  :openstack_api_key, :openstack_current_user_id, :openstack_userid, :openstack_username,
-                 :current_user, :current_user_id, :current_tenant,
+                 :current_user, :current_user_id, :current_tenant, :openstack_cache_ttl,
                  :provider, :openstack_identity_prefix, :openstack_endpoint_path_matches
 
       # Fog::Identity::OpenStack.new() will return a Fog::Identity::OpenStack::V2 or a Fog::Identity::OpenStack::V3,

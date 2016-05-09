@@ -1,9 +1,9 @@
 require 'spec_helper'
 require_relative './shared_context'
 
-VCR_USER_ID      = 'a18abc2039d6493aa7239a42033cc7c9'
+VCR_USER_ID      = '205e0e39a2534743b517ed0aa2fbcda7'
 VCR_USER_NAME    = 'admin'
-VCR_PASSWORD     = 'devstack'
+VCR_PASSWORD     = 'password'
 VCR_DOMAIN_ID    = 'default'
 VCR_DOMAIN_NAME  = 'Default'
 VCR_PROJECT_NAME = 'admin'
@@ -614,8 +614,6 @@ describe Fog::Identity::OpenStack::V3 do
 
   it "CRUD & list hierarchical projects" do
     VCR.use_cassette('idv3_project_hier_crud_list') do
-
-      default_domain = @service.domains.find_by_id ENV['OS_USER_DOMAIN_ID']||VCR_DOMAIN_ID
 
       begin
         # Create a project called foobar
