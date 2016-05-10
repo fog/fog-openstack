@@ -34,7 +34,10 @@ module Fog
       def get(uuid)
         raise Fog::OpenStack::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
       end
-      alias_method :find_by_id, :get
+
+      def find_by_id(uuid)
+        get(uuid)
+      end
 
       # Destroys record given record's UUID
       def destroy(uuid)
