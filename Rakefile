@@ -1,6 +1,6 @@
 require 'bundler/gem_tasks'
 require 'rubocop/rake_task'
-require "minitest/spec"
+require 'rake/testtask'
 
 RuboCop::RakeTask.new
 
@@ -12,7 +12,15 @@ task :test do
   sh("export FOG_MOCK=#{mock} && bundle exec shindont")
 end
 
-require 'rake/testtask'
+# The following is transition period until all shindo tests in /tests have been
+# migrated over minitest /test
+desc "Run fog-openstack unit tests for /test"
+Rake::TestTask.new do |t|
+  t.name = 'minitest'
+  t.libs.push [ "lib", "test" ]
+  t.test_files = FileList['test/openstack/*.rb']
+  t.verbose = true
+end
 
 desc "Run fog-openstack unit tests for /spec"
 Rake::TestTask.new do |t|
