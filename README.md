@@ -512,6 +512,18 @@ neutron.add_router_interface router.id, subnet.id
 
 ```
 
+### Object Storage (Swift)
+
+TO DO: Add doc
+
+### Orchestration (Heat)
+
+TO DO: Add doc
+
+### Metering (Ceilometer)
+
+TO DO: Add doc
+
 ### Further Reading
 
 * See [the documentation directory](https://github.com/fog/fog-openstack/tree/master/lib/fog/openstack/docs) for more examples.
