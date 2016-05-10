@@ -220,6 +220,7 @@ module Fog
       # Zones
       request :list_zones
       request :list_zones_detailed
+      request :list_availability_zones
 
       class Mock
         attr_reader :auth_token
