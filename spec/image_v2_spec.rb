@@ -12,15 +12,13 @@ describe Fog::Image::OpenStack do
     @service = openstack_vcr.service
   end
 
-  def cleanup_image image, image_name=nil, image_id=nil
+  def cleanup_image(image, image_name = nil, image_id = nil)
     # Delete the image
     image.destroy if image
     image_by_id = @service.images.find_by_id(image_id) rescue false if image_id
     image_by_id.destroy if image_by_id
     if image_name
-      @service.images.all(:name => image_name).each do |image|
-        image.destroy
-      end
+      @service.images.all(:name => image_name).each(&:destroy)
     end
     # Check that the deletion worked
     proc { @service.images.find_by_id image_id }.must_raise Fog::Image::OpenStack::NotFound if image_id
@@ -40,8 +38,10 @@ describe Fog::Image::OpenStack do
         @service.images.all(:name => image_name).length.must_equal 1
         foobar_image.status.must_equal 'queued'
 
-        # Rename it to ba
-        foobar_image.update(:name => image_rename) # see "Patch images" test below - for now this will be a simple synthesis of a JSON patch with op = 'replace'
+        # Rename it to baz
+        # see "Patch images" test below - for now this will be a simple synthesis of a JSON patch with op = 'replace'
+        foobar_image.update(:name => image_rename)
+
         foobar_image.name.must_equal image_rename
         baz_image = @service.images.find_by_id foobar_id
         baz_image.wont_equal nil
@@ -55,9 +55,7 @@ describe Fog::Image::OpenStack do
 
       ensure
         cleanup_image baz_image
-        @service.images.all.select { |image| [image_name, image_rename].include? image.name }.each do |image|
-          image.destroy
-        end
+        @service.images.all.select { |image| [image_name, image_rename].include? image.name }.each(&:destroy)
         # Check that the deletion worked
         @service.images.all.count { |image| [image_name, image_rename].include? image.name }.must_equal 0
       end
@@ -71,7 +69,7 @@ describe Fog::Image::OpenStack do
       # Here be dragons - highly recommend not to supply an ID when creating
       begin
         # increment this identifier when running test more than once, unless the VCR recording is being used
-        identifier = '11111111-2222-3333-aaaa-bbbbbbccccdf'
+        identifier = '11111111-2222-3333-aaaa-bbbbbbcccce1'
 
         # Create an image with a specified ID
         foobar_image = @service.images.create(:name => 'foobar_id', :id => identifier)
@@ -91,11 +89,9 @@ describe Fog::Image::OpenStack do
 
   it "Image creation with specified location" do
     VCR.use_cassette('image_v2_create_location') do
-
       begin
         # Create image with location of image data
         skip "Figure out 'Create image with location of image data'"
-      ensure
       end
     end
   end
@@ -104,13 +100,17 @@ describe Fog::Image::OpenStack do
     VCR.use_cassette('image_v2_upload_download') do
       image_name = 'foobar_up1'
       begin
-        image_path = "#{spec_data_folder}/minimal.ova" # "no-op" virtual machine image, 80kB .ova file containing 64Mb dynamic disk
+        # minimal.ova is a "no-op" virtual machine image, 80kB .ova file containing 64Mb dynamic disk
+        image_path = "#{spec_data_folder}/minimal.ova"
 
-        foobar_image = @service.images.create(:name => image_name,
+        foobar_image = @service.images.create(:name             => image_name,
                                               :container_format => 'ovf',
-                                              :disk_format => 'vmdk'
-        )
+                                              :disk_format      => 'vmdk'
+                                             )
         foobar_id = foobar_image.id
+
+        # Status should be queued
+        expect(@service.images.find_by_id(foobar_id).status).to satisfy { |value| value == 'queued' }
 
         # Upload data from File or IO object
         foobar_image.upload_data File.new(image_path, 'r')
@@ -119,7 +119,7 @@ describe Fog::Image::OpenStack do
         @service.images.find_by_id(foobar_id).status.must_match(/saving|active/)
 
         # Get an IO object from which to download image data - wait until finished saving though
-        while @service.images.find_by_id(foobar_id).status == 'saving' do
+        while @service.images.find_by_id(foobar_id).status == 'saving'
           sleep 1
         end
         @service.images.find_by_id(foobar_id).status.must_equal 'active'
@@ -142,13 +142,13 @@ describe Fog::Image::OpenStack do
 
       begin
         # Create an image called foobar2
-        foobar_image = @service.images.create(:name => image_name,
+        foobar_image = @service.images.create(:name             => image_name,
                                               :container_format => 'ovf',
-                                              :disk_format => 'vmdk'
-        )
+                                              :disk_format      => 'vmdk'
+                                             )
         foobar_id = foobar_image.id
         foobar_image.upload_data File.new(image_path, 'r')
-        while @service.images.find_by_id(foobar_id).status == 'saving' do
+        while @service.images.find_by_id(foobar_id).status == 'saving'
           sleep 1
         end
 
@@ -168,22 +168,22 @@ describe Fog::Image::OpenStack do
       image_name = 'foobar3'
       begin
         # Create an image
-        foobar_image = @service.images.create(:name => image_name,
+        foobar_image = @service.images.create(:name             => image_name,
                                               :container_format => 'ovf',
-                                              :disk_format => 'vmdk'
-        )
+                                              :disk_format      => 'vmdk'
+                                             )
         foobar_id = foobar_image.id
 
         foobar_image.add_tag 'tag1'
         @service.images.find_by_id(foobar_id).tags.must_include 'tag1'
 
-        foobar_image.add_tags ['tag2', 'tag3', 'tag4']
-        @service.images.find_by_id(foobar_id).tags.must_equal ["tag4", "tag1", "tag2", "tag3"]
+        foobar_image.add_tags %w(tag2 tag3 tag4)
+        @service.images.find_by_id(foobar_id).tags.must_equal %w(tag4 tag1 tag2 tag3)
 
         foobar_image.remove_tag 'tag2'
-        @service.images.find_by_id(foobar_id).tags.must_equal ["tag4", "tag1", "tag3"]
+        @service.images.find_by_id(foobar_id).tags.must_equal %w(tag4 tag1 tag3)
 
-        foobar_image.remove_tags ['tag1', 'tag3']
+        foobar_image.remove_tags %w(tag1 tag3)
         @service.images.find_by_id(foobar_id).tags.must_include 'tag4'
 
       ensure
@@ -199,7 +199,6 @@ describe Fog::Image::OpenStack do
       begin
         # Create an image called foobar
         foobar_image = @service.images.create(:name => image_name)
-        foobar_id = foobar_image.id
 
         foobar_image.members.size.must_equal 0
         foobar_image.add_member tenant_id

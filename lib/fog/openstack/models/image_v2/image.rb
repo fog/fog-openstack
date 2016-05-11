@@ -21,7 +21,7 @@ module Fog
           attribute :self
           attribute :file
 
-          #detailed
+          # detailed
           attribute :min_disk
           attribute :created_at
           attribute :updated_at
@@ -40,9 +40,29 @@ module Fog
           attribute :instance_uuid
           attribute :user_id
 
+          def method_missing(method_sym, *arguments, &block)
+            if attributes.key?(method_sym)
+              attributes[method_sym]
+            elsif attributes.key?(method_sym.to_s)
+              attributes[method_sym.to_s]
+            else
+              super
+            end
+          end
+
+          def respond_to?(method_sym, include_all = false)
+            if attributes.key?(method_sym)
+              true
+            elsif attributes.key?(method_sym.to_s)
+              true
+            else
+              super
+            end
+          end
+
           def create
             requires :name
-            merge_attributes(service.create_image(self.attributes).body)
+            merge_attributes(service.create_image(attributes).body)
             self
           end
 
@@ -60,88 +80,87 @@ module Fog
             attr.each do |key, value|
               op = (@attributes.keys.include? key) ? 'replace' : 'add'
               op = 'remove' if value.nil?
-              json_patch << {:op => op, :path => "/#{key}", :value => value }
+              json_patch << {:op => op, :path => "/#{key}", :value => value}
             end
             merge_attributes(
-                service.update_image(self.id, json_patch).body)
+              service.update_image(id, json_patch).body)
             self
           end
 
           def destroy
             requires :id
-            service.delete_image(self.id)
+            service.delete_image(id)
             true
           end
 
           def upload_data(io_obj)
             requires :id
-            if io_obj.is_a? Hash
-              service.upload_image(self.id, nil, io_obj)
+            if io_obj.kind_of? Hash
+              service.upload_image(id, nil, io_obj)
             else
-              service.upload_image(self.id, io_obj)
+              service.upload_image(id, io_obj)
             end
           end
 
-          def download_data(params={})
+          def download_data(params = {})
             requires :id
-            service.download_image(self.id, content_range=params[:content_range], params)
+            service.download_image(id, params[:content_range], params)
           end
 
           def reactivate
             requires :id
-            service.reactivate_image(self.id)
+            service.reactivate_image(id)
           end
 
           def deactivate
             requires :id
-            service.deactivate_image(self.id)
+            service.deactivate_image(id)
           end
 
           def add_member(member_id)
             requires :id
-            service.add_member_to_image(self.id, member_id)
+            service.add_member_to_image(id, member_id)
           end
 
           def remove_member(member_id)
             requires :id
-            service.remove_member_from_image(self.id, member_id)
+            service.remove_member_from_image(id, member_id)
           end
 
           def update_member(member)
             requires :id
-            service.update_image_member(self.id, member)
+            service.update_image_member(id, member)
           end
 
           def members
             requires :id
-            service.get_image_members(self.id).body['members']
+            service.get_image_members(id).body['members']
           end
 
           def member(member_id)
             requires :id
-            service.get_member_details(self.id, member_id)
+            service.get_member_details(id, member_id)
           end
 
           def add_tags(tags)
             requires :id
-            tags.each {|tag| add_tag tag}
+            tags.each { |tag| add_tag tag }
           end
 
           def add_tag(tag)
             requires :id
-            service.add_tag_to_image(self.id, tag)
+            service.add_tag_to_image(id, tag)
           end
 
           def remove_tags(tags)
             requires :id
-            tags.each {|tag| remove_tag tag}
+            tags.each { |tag| remove_tag tag }
           end
 
           def remove_tag(tag)
             requires :id
-            service.remove_tag_from_image(self.id, tag)
+            service.remove_tag_from_image(id, tag)
           end
-
         end
       end
     end
