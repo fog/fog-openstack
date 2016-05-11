@@ -1,0 +1,510 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:35357/v3/projects
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 3529b569335f4a43a40be0cfb0b4e635
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Wed, 11 May 2016 12:05:18 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-03b8aa7b-9e49-4af8-98a8-0f68d9ee0c61
+      Content-Length:
+      - '1458'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects", "previous":
+        null, "next": null}, "projects": [{"is_domain": false, "description": "",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/6df7cf36158a47e8a7736fd0c7693b06"},
+        "enabled": true, "id": "6df7cf36158a47e8a7736fd0c7693b06", "parent_id": "default",
+        "domain_id": "default", "name": "alt_demo"}, {"is_domain": false, "description":
+        "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/d1e053cab7a649c78c81739a189e1fd0"},
+        "enabled": true, "id": "d1e053cab7a649c78c81739a189e1fd0", "parent_id": "default",
+        "domain_id": "default", "name": "invisible_to_admin"}, {"is_domain": false,
+        "description": "Bootstrap project for initializing the cloud.", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/projects/dc4b3b173ee8467e9e2ae99e5c321d0c"},
+        "enabled": true, "id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "parent_id": "default",
+        "domain_id": "default", "name": "admin"}, {"is_domain": false, "description":
+        "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/e02755e20b3942e9b68ead0c0d5fa291"},
+        "enabled": true, "id": "e02755e20b3942e9b68ead0c0d5fa291", "parent_id": "default",
+        "domain_id": "default", "name": "demo"}, {"is_domain": false, "description":
+        "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/fec49ae8596c465ab05895afaed75ff1"},
+        "enabled": true, "id": "fec49ae8596c465ab05895afaed75ff1", "parent_id": "default",
+        "domain_id": "default", "name": "service"}]}'
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:22 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:35357/v3/projects
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 3529b569335f4a43a40be0cfb0b4e635
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Wed, 11 May 2016 12:05:18 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-cf6b8ef7-a398-41a0-ae2e-437497bfbecd
+      Content-Length:
+      - '1458'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects", "previous":
+        null, "next": null}, "projects": [{"is_domain": false, "description": "",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/6df7cf36158a47e8a7736fd0c7693b06"},
+        "enabled": true, "id": "6df7cf36158a47e8a7736fd0c7693b06", "parent_id": "default",
+        "domain_id": "default", "name": "alt_demo"}, {"is_domain": false, "description":
+        "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/d1e053cab7a649c78c81739a189e1fd0"},
+        "enabled": true, "id": "d1e053cab7a649c78c81739a189e1fd0", "parent_id": "default",
+        "domain_id": "default", "name": "invisible_to_admin"}, {"is_domain": false,
+        "description": "Bootstrap project for initializing the cloud.", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/projects/dc4b3b173ee8467e9e2ae99e5c321d0c"},
+        "enabled": true, "id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "parent_id": "default",
+        "domain_id": "default", "name": "admin"}, {"is_domain": false, "description":
+        "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/e02755e20b3942e9b68ead0c0d5fa291"},
+        "enabled": true, "id": "e02755e20b3942e9b68ead0c0d5fa291", "parent_id": "default",
+        "domain_id": "default", "name": "demo"}, {"is_domain": false, "description":
+        "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/fec49ae8596c465ab05895afaed75ff1"},
+        "enabled": true, "id": "fec49ae8596c465ab05895afaed75ff1", "parent_id": "default",
+        "domain_id": "default", "name": "service"}]}'
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:22 GMT
+- request:
+    method: post
+    uri: http://devstack.openstack.stack:9696/v2.0/networks
+    body:
+      encoding: UTF-8
+      string: '{"network":{"name":"foo-net23","tenant_id":"dc4b3b173ee8467e9e2ae99e5c321d0c"}}'
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2488d4b6fc95451192247b282c89937c
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '596'
+      X-Openstack-Request-Id:
+      - req-dc14a78d-ede6-4249-a0ed-67833d84a778
+      Date:
+      - Wed, 11 May 2016 12:05:18 GMT
+    body:
+      encoding: UTF-8
+      string: '{"network": {"status": "ACTIVE", "router:external": false, "availability_zone_hints":
+        [], "availability_zones": [], "description": "", "provider:physical_network":
+        null, "subnets": [], "shared": false, "name": "foo-net23", "created_at": "2016-05-11T12:05:18",
+        "tags": [], "updated_at": "2016-05-11T12:05:18", "provider:network_type":
+        "vxlan", "ipv6_address_scope": null, "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "admin_state_up": true, "ipv4_address_scope": null, "port_security_enabled":
+        true, "mtu": 1450, "id": "9bd99e12-499e-4f66-80c8-3239d03849bc", "provider:segmentation_id":
+        1087}}'
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:22 GMT
+- request:
+    method: post
+    uri: http://devstack.openstack.stack:9696/v2.0/rbac-policies
+    body:
+      encoding: UTF-8
+      string: '{"rbac_policy":{"object_type":"network","object_id":"9bd99e12-499e-4f66-80c8-3239d03849bc","tenant_id":"dc4b3b173ee8467e9e2ae99e5c321d0c","target_tenant":"6df7cf36158a47e8a7736fd0c7693b06","action":"access_as_shared"}}'
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2488d4b6fc95451192247b282c89937c
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '274'
+      X-Openstack-Request-Id:
+      - req-2b133cf6-a8d0-4584-8eeb-519ae364c2f6
+      Date:
+      - Wed, 11 May 2016 12:05:18 GMT
+    body:
+      encoding: UTF-8
+      string: '{"rbac_policy": {"target_tenant": "6df7cf36158a47e8a7736fd0c7693b06",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "object_type": "network",
+        "object_id": "9bd99e12-499e-4f66-80c8-3239d03849bc", "action": "access_as_shared",
+        "id": "bc8255ca-0511-469f-87de-042bff269896"}}'
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:23 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/v2.0/networks/9bd99e12-499e-4f66-80c8-3239d03849bc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2488d4b6fc95451192247b282c89937c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '596'
+      X-Openstack-Request-Id:
+      - req-ec1a5f90-34b7-47e0-89ae-7086eee4d021
+      Date:
+      - Wed, 11 May 2016 12:05:18 GMT
+    body:
+      encoding: UTF-8
+      string: '{"network": {"status": "ACTIVE", "router:external": false, "availability_zone_hints":
+        [], "availability_zones": [], "description": "", "provider:physical_network":
+        null, "subnets": [], "shared": false, "name": "foo-net23", "created_at": "2016-05-11T12:05:18",
+        "tags": [], "ipv6_address_scope": null, "provider:network_type": "vxlan",
+        "updated_at": "2016-05-11T12:05:18", "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "admin_state_up": true, "ipv4_address_scope": null, "port_security_enabled":
+        true, "mtu": 1450, "id": "9bd99e12-499e-4f66-80c8-3239d03849bc", "provider:segmentation_id":
+        1087}}'
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:23 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/v2.0/rbac-policies?object_id=9bd99e12-499e-4f66-80c8-3239d03849bc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2488d4b6fc95451192247b282c89937c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '278'
+      X-Openstack-Request-Id:
+      - req-5fad5792-88f3-4331-9221-a409535966dc
+      Date:
+      - Wed, 11 May 2016 12:05:18 GMT
+    body:
+      encoding: UTF-8
+      string: '{"rbac_policies": [{"target_tenant": "6df7cf36158a47e8a7736fd0c7693b06",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "object_type": "network",
+        "object_id": "9bd99e12-499e-4f66-80c8-3239d03849bc", "action": "access_as_shared",
+        "id": "bc8255ca-0511-469f-87de-042bff269896"}]}'
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:23 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/v2.0/rbac-policies/bc8255ca-0511-469f-87de-042bff269896
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2488d4b6fc95451192247b282c89937c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '274'
+      X-Openstack-Request-Id:
+      - req-24cae1c8-405b-41fa-9141-9f8692c8f12f
+      Date:
+      - Wed, 11 May 2016 12:05:18 GMT
+    body:
+      encoding: UTF-8
+      string: '{"rbac_policy": {"target_tenant": "6df7cf36158a47e8a7736fd0c7693b06",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "object_type": "network",
+        "object_id": "9bd99e12-499e-4f66-80c8-3239d03849bc", "action": "access_as_shared",
+        "id": "bc8255ca-0511-469f-87de-042bff269896"}}'
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:23 GMT
+- request:
+    method: put
+    uri: http://devstack.openstack.stack:9696/v2.0/rbac-policies/bc8255ca-0511-469f-87de-042bff269896
+    body:
+      encoding: UTF-8
+      string: '{"rbac_policy":{"target_tenant":"dc4b3b173ee8467e9e2ae99e5c321d0c"}}'
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2488d4b6fc95451192247b282c89937c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '274'
+      X-Openstack-Request-Id:
+      - req-f1608536-bba5-45a4-aea9-164245193f0d
+      Date:
+      - Wed, 11 May 2016 12:05:18 GMT
+    body:
+      encoding: UTF-8
+      string: '{"rbac_policy": {"target_tenant": "dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "object_type": "network",
+        "object_id": "9bd99e12-499e-4f66-80c8-3239d03849bc", "action": "access_as_shared",
+        "id": "bc8255ca-0511-469f-87de-042bff269896"}}'
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:23 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/v2.0/networks/9bd99e12-499e-4f66-80c8-3239d03849bc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2488d4b6fc95451192247b282c89937c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '595'
+      X-Openstack-Request-Id:
+      - req-a07f5d53-e868-45ef-987f-0c0a74c2dcfe
+      Date:
+      - Wed, 11 May 2016 12:05:18 GMT
+    body:
+      encoding: UTF-8
+      string: '{"network": {"status": "ACTIVE", "router:external": false, "availability_zone_hints":
+        [], "availability_zones": [], "description": "", "provider:physical_network":
+        null, "subnets": [], "shared": true, "name": "foo-net23", "created_at": "2016-05-11T12:05:18",
+        "tags": [], "ipv6_address_scope": null, "provider:network_type": "vxlan",
+        "updated_at": "2016-05-11T12:05:18", "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "admin_state_up": true, "ipv4_address_scope": null, "port_security_enabled":
+        true, "mtu": 1450, "id": "9bd99e12-499e-4f66-80c8-3239d03849bc", "provider:segmentation_id":
+        1087}}'
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:23 GMT
+- request:
+    method: delete
+    uri: http://devstack.openstack.stack:9696/v2.0/rbac-policies/bc8255ca-0511-469f-87de-042bff269896
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2488d4b6fc95451192247b282c89937c
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Content-Length:
+      - '0'
+      X-Openstack-Request-Id:
+      - req-9122b8d8-679e-403b-b4b1-9b4fdbbfc4c8
+      Date:
+      - Wed, 11 May 2016 12:05:19 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:23 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/v2.0/rbac-policies?object_id=9bd99e12-499e-4f66-80c8-3239d03849bc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2488d4b6fc95451192247b282c89937c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '21'
+      X-Openstack-Request-Id:
+      - req-ac391f88-06c2-4634-9e5f-5a95a0c16fbd
+      Date:
+      - Wed, 11 May 2016 12:05:19 GMT
+    body:
+      encoding: UTF-8
+      string: '{"rbac_policies": []}'
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:23 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/v2.0/networks/9bd99e12-499e-4f66-80c8-3239d03849bc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2488d4b6fc95451192247b282c89937c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '596'
+      X-Openstack-Request-Id:
+      - req-b583a998-3aca-4b72-a074-02500e3a011c
+      Date:
+      - Wed, 11 May 2016 12:05:19 GMT
+    body:
+      encoding: UTF-8
+      string: '{"network": {"status": "ACTIVE", "router:external": false, "availability_zone_hints":
+        [], "availability_zones": [], "description": "", "provider:physical_network":
+        null, "subnets": [], "shared": false, "name": "foo-net23", "created_at": "2016-05-11T12:05:18",
+        "tags": [], "ipv6_address_scope": null, "provider:network_type": "vxlan",
+        "updated_at": "2016-05-11T12:05:18", "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "admin_state_up": true, "ipv4_address_scope": null, "port_security_enabled":
+        true, "mtu": 1450, "id": "9bd99e12-499e-4f66-80c8-3239d03849bc", "provider:segmentation_id":
+        1087}}'
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:24 GMT
+- request:
+    method: delete
+    uri: http://devstack.openstack.stack:9696/v2.0/networks/9bd99e12-499e-4f66-80c8-3239d03849bc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2488d4b6fc95451192247b282c89937c
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Content-Length:
+      - '0'
+      X-Openstack-Request-Id:
+      - req-0c68b400-4531-4523-8ac0-4f1c1c4fd67d
+      Date:
+      - Wed, 11 May 2016 12:05:19 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Wed, 11 May 2016 12:05:24 GMT
+recorded_with: VCR 3.0.1

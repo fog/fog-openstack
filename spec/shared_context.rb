@@ -19,7 +19,7 @@ require 'vcr'
 #
 
 class OpenStackVCR
-  attr_reader :service, :os_auth_url
+  attr_reader :service, :os_auth_url, :project_name
   # This method should be called in a "before :all" call to set everything up.
   # A properly configured instance of the service class (e.g.
   # Fog::Volume::OpenStack) is then made available in @service.
@@ -30,23 +30,23 @@ class OpenStackVCR
     # must_be_kind_of Class
     @service_class = options[:service_class]
     # determine mode of operation
-    use_recorded = !ENV.has_key?('OS_AUTH_URL') || ENV['USE_VCR'] == 'true'
+    use_recorded = !ENV.key?('OS_AUTH_URL') || ENV['USE_VCR'] == 'true'
     if use_recorded
       # when using the cassettes, there is no need to sleep in wait_for()
       Fog.interval = 0
       # use an auth URL that matches our VCR recordings (IdentityV2 for most
       # services, but IdentityV3 test obviously needs IdentityV3 auth URL)
-      if [Fog::Identity::OpenStack::V3,
-          Fog::Volume::OpenStack,
-          Fog::Volume::OpenStack::V1,
-          Fog::Volume::OpenStack::V2,
-          Fog::Image::OpenStack,
-          Fog::Image::OpenStack::V1,
-          Fog::Network::OpenStack].include? @service_class
-        @os_auth_url = ENV['OS_AUTH_URL']||'http://devstack.openstack.stack:5000/v3'
-      else
-        @os_auth_url = 'http://devstack.openstack.stack:5000/v2.0'
-      end
+      @os_auth_url = if [Fog::Identity::OpenStack::V3,
+                         Fog::Volume::OpenStack,
+                         Fog::Volume::OpenStack::V1,
+                         Fog::Volume::OpenStack::V2,
+                         Fog::Image::OpenStack,
+                         Fog::Image::OpenStack::V1,
+                         Fog::Network::OpenStack].include? @service_class
+                       'http://devstack.openstack.stack:5000/v3'
+                     else
+                       'http://devstack.openstack.stack:5000/v2.0'
+                     end
     else
       # when an auth URL is given, we talk to a real OpenStack
       @os_auth_url = ENV['OS_AUTH_URL']
@@ -59,11 +59,11 @@ class OpenStackVCR
 
       if use_recorded
         config.cassette_library_dir = ENV['SPEC_PATH'] || @vcr_directory
-        config.default_cassette_options = { :record => :none }
-        config.default_cassette_options.merge! :match_requests_on => [:method, :uri, :body] unless RUBY_VERSION =~ /1.8/ # Ruby 1.8.7 encodes JSON differently, which screws up request matching
+        config.default_cassette_options = {:record => :none}
+        config.default_cassette_options.merge! :match_requests_on => [:method, :uri, :body]
       else
         config.cassette_library_dir = "spec/debug"
-        config.default_cassette_options = { :record => :all }
+        config.default_cassette_options = {:record => :all}
       end
     end
 
@@ -74,30 +74,45 @@ class OpenStackVCR
     VCR.use_cassette('common_setup') do
       Fog::OpenStack.clear_token_cache
 
+      region        = 'RegionOne'
+      password      = 'password'
+      username      = 'admin'
+      domain_name   = 'Default'
+      @project_name = 'admin'
+
+      unless use_recorded
+        region        = ENV['OS_REGION_NAME']       || options[:region_name]  || region
+        password      = ENV['OS_PASSWORD']          || options[:password]     || password
+        username      = ENV['OS_USERNAME']          || options[:username]     || username
+        domain_name   = ENV['OS_USER_DOMAIN_NAME']  || options[:domain_name]  || domain_name
+        @project_name = ENV['OS_PROJECT_NAME']      || options[:project_name] || @project_name
+      end
+
       if @service_class == Fog::Identity::OpenStack::V3 || @os_auth_url.end_with?('/v3')
-        options = {
-          :openstack_auth_url     => "#{@os_auth_url}/auth/tokens",
-          :openstack_region       => ENV['OS_REGION_NAME'] || options[:region_name]     || 'RegionOne',
-          :openstack_api_key      => ENV['OS_PASSWORD']    || options[:password]        || 'password',
-          :openstack_username     => ENV['OS_USERNAME']    || options[:username]        || 'admin',
-          :openstack_domain_name  => ENV['OS_USER_DOMAIN_NAME']|| options[:domain_name] || 'Default',
-          :openstack_cache_ttl => 0
+        connection_options = {
+          :openstack_auth_url    => "#{@os_auth_url}/auth/tokens",
+          :openstack_region      => region,
+          :openstack_api_key     => password,
+          :openstack_username    => username,
+          :openstack_domain_name => domain_name,
+          :openstack_cache_ttl   => 0
         }
-        options[:openstack_service_type] = [ENV['OS_AUTH_SERVICE']] if ENV['OS_AUTH_SERVICE']
+        connection_options[:openstack_project_name] = @project_name if options[:project_scoped]
+        connection_options[:openstack_service_type] = [ENV['OS_AUTH_SERVICE']] if ENV['OS_AUTH_SERVICE']
       else
-        options = {
-          :openstack_auth_url       => "#{@os_auth_url}/tokens",
-          :openstack_region         => ENV['OS_REGION_NAME']  || options[:region_name]  || 'RegionOne',
-          :openstack_api_key        => ENV['OS_PASSWORD']     || options[:password]     || 'password',
-          :openstack_username       => ENV['OS_USERNAME']     || options[:username]     || 'admin',
-          :openstack_tenant         => ENV['OS_PROJECT_NAME'] || options[:project_name] || 'admin',
+        connection_options = {
+          :openstack_auth_url  => "#{@os_auth_url}/tokens",
+          :openstack_region    => region,
+          :openstack_api_key   => password,
+          :openstack_username  => username,
+          :openstack_tenant    => @project_name,
           :openstack_cache_ttl => 0
           # FIXME: Identity V3 not properly supported by other services yet
           # :openstack_user_domain    => ENV['OS_USER_DOMAIN_NAME']    || 'Default',
           # :openstack_project_domain => ENV['OS_PROJECT_DOMAIN_NAME'] || 'Default',
         }
       end
-      @service = @service_class.new(options)
+      @service = @service_class.new(connection_options)
     end
   end
 end
