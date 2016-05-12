@@ -46,6 +46,8 @@ module Fog
       collection  :ipsec_policies
       model       :ipsec_site_connection
       collection  :ipsec_site_connections
+      model       :rbac_policy
+      collection  :rbac_policies
       model       :security_group
       collection  :security_groups
       model       :security_group_rule
@@ -152,6 +154,13 @@ module Fog
       request :get_ipsec_site_connection
       request :update_ipsec_site_connection
 
+      # RBAC Policy CRUD
+      request :list_rbac_policies
+      request :create_rbac_policy
+      request :delete_rbac_policy
+      request :get_rbac_policy
+      request :update_rbac_policy
+
       # Security Group
       request :create_security_group
       request :delete_security_group
@@ -229,6 +238,7 @@ module Fog
               :ike_policies           => {},
               :ipsec_policies         => {},
               :ipsec_site_connections => {},
+              :rbac_policies          => {},
               :quota                  => {
                 "subnet"     => 10,
                 "router"     => 10,
