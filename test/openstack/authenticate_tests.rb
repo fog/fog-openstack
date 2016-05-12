@@ -103,13 +103,15 @@ describe "OpenStack authentication" do
   end
 
   it "validates token" do
-    openstack = Fog::Identity::OpenStack::V2.new
+    Fog.credentials = {:openstack_auth_url => 'http://openstack:35357/v2.0/tokens'}
+    openstack = Fog::Identity[:openstack]
     openstack.validate_token(@token, @tenant_token)
     openstack.validate_token(@token)
   end
 
   it "checks token" do
-    openstack = Fog::Identity::OpenStack::V2.new
+    Fog.credentials = {:openstack_auth_url => 'http://openstack:35357/v2.0/tokens'}
+    openstack = Fog::Identity[:openstack]
     openstack.check_token(@token, @tenant_token)
     openstack.check_token(@token)
   end

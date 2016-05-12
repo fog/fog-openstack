@@ -1,7 +1,12 @@
 Shindo.tests("Fog::Identity[:openstack] | role", ['openstack']) do
-  @instance = Fog::Identity[:openstack].roles.new({:name => 'Role Name', :user_id => 1, :role_id => 1})
-  @tenant   = Fog::Identity[:openstack].tenants.create(:name => 'test_user')
-  @user     = Fog::Identity[:openstack].users.create(:name => 'test_user', :tenant_id => @tenant.id, :password => 'spoof')
+  @identity = Fog::Identity::OpenStack.new(:openstack_auth_url => 'http://openstack:35357/v2.0/tokens')
+  @instance = @identity.roles.new(
+    :name    => 'Role Name',
+    :user_id => 1,
+    :role_id => 1
+  )
+  @tenant   = @identity.tenants.create(:name => 'test_user')
+  @user     = @identity.users.create(:name => 'test_user', :tenant_id => @tenant.id, :password => 'spoof')
 
   tests('success') do
     tests('#save').returns(true) do
