@@ -41,6 +41,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../openstack/orchestration', __FILE__)
   end
 
+  module NFV
+    autoload :OpenStack, File.expand_path('../openstack/nfv', __FILE__)
+  end
+
   module Volume
     autoload :OpenStack, File.expand_path('../openstack/volume', __FILE__)
   end
@@ -64,6 +68,7 @@ module Fog
     service(:volume,        'Volume')
     service(:metering,      'Metering')
     service(:orchestration, 'Orchestration')
+    service(:nfv,           'NFV')
     service(:baremetal,     'Baremetal')
     service(:planning,      'Planning')
     service(:introspection, 'Introspection')
