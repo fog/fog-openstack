@@ -1,20 +1,23 @@
 Shindo.tests("Fog::Identity[:openstack] | tenant", ['openstack']) do
   tests('success') do
+    @openstack = Fog::Identity::OpenStack.new(:openstack_auth_url => 'http://openstack:35357/v2.0/tokens')
+
     tests('#roles_for(0)').succeeds do
-      instance = Fog::Identity[:openstack].tenants.first
+      instance = @openstack.tenants.first
       instance.roles_for(0)
     end
 
     tests('#users').succeeds do
-      instance = Fog::Identity[:openstack].tenants.first
+      instance = @openstack.tenants.first
+      openstack = Fog::Identity::OpenStack.new(:openstack_auth_url => 'http://openstack:35357/v2.0/tokens')
 
-      instance.users.count != Fog::Identity[:openstack].users.count
+      instance.users.count != openstack.users.count
     end
   end
 
   tests('CRUD') do
     tests('#create').succeeds do
-      @instance = Fog::Identity[:openstack].tenants.create(:name => 'test')
+      @instance = @openstack.tenants.create(:name => 'test')
       !@instance.id.nil?
     end
 

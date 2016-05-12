@@ -109,7 +109,6 @@ describe Fog::Identity::OpenStack::V3 do
   it 'get an unscoped token, then use it to get a scoped token' do
     VCR.use_cassette('authv3_unscoped') do
       skip 'get an unscoped token, then use it to get a scoped token to be fixed'
-=begin
       id_v3 = Fog::Identity::OpenStack::V3.new(
           :openstack_api_key => ENV['OS_PASSWORD'] || VCR_PASSWORD,
           :openstack_userid => ENV['OS_USER_ID']||VCR_USER_ID,
@@ -133,7 +132,6 @@ describe Fog::Identity::OpenStack::V3 do
 
       id_v3.tokens.check(token)
       proc { id_v3.tokens.check('random-token') }.must_raise Fog::Identity::OpenStack::NotFound
-=end
     end
   end
 
