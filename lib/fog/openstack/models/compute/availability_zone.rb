@@ -11,7 +11,7 @@ module Fog
         attribute :zoneState
 
         def to_s
-          self.zoneName
+          zoneName
         end
       end
     end

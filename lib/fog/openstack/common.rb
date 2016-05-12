@@ -1,5 +1,3 @@
-
-
 module Fog
   module OpenStack
     module Common

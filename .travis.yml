@@ -1,6 +1,8 @@
 language: ruby
 sudo: false
-script: bundle exec rake test
+script:
+  - bundle exec rake test
+  - bundle exec rake minitest
 env: JRUBY_OPTS=--debug
 matrix:
   fast_finish: true

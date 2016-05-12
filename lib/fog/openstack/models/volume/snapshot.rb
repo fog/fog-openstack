@@ -4,11 +4,10 @@ module Fog
   module Volume
     class OpenStack
       class Snapshot < Fog::OpenStack::Model
-
         def update(data)
           requires :id
 
-          response = service.update_snapshot(self.id, data)
+          response = service.update_snapshot(id, data)
           merge_attributes(response.body['snapshot'])
 
           self
@@ -16,7 +15,7 @@ module Fog
 
         def destroy
           requires :id
-          service.delete_snapshot(self.id)
+          service.delete_snapshot(id)
           true
         end
 
@@ -33,7 +32,6 @@ module Fog
           service.delete_snapshot_metadata(id, key_name)
           true
         end
-
       end
     end
   end

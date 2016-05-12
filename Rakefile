@@ -1,19 +1,31 @@
 require 'bundler/gem_tasks'
 require 'rubocop/rake_task'
+require 'rake/testtask'
 
 RuboCop::RakeTask.new
 
 task :default => :test
 
 desc 'Run fog-openstack unit tests'
-mock = ENV['FOG_MOCK'] || 'true'
-task :test => [:vcr] do
+task :test do
+  mock = ENV['FOG_MOCK'] || 'true'
   sh("export FOG_MOCK=#{mock} && bundle exec shindont")
 end
 
-task :vcr do
-  sh("export FOG_MOCK=false && bundle exec rspec spec/fog/*_spec.rb")
-  sh("export SPEC_PATH=spec/fog/network_api_path \
-               OS_AUTH_URL=http://devstack.openstack.stack:5000/id/v3 \
-               USE_VCR=true && bundle exec rspec spec/fog/network_spec.rb")
+# The following is transition period until all shindo tests in /tests have been
+# migrated over minitest /test
+desc "Run fog-openstack unit tests for /test"
+Rake::TestTask.new do |t|
+  t.name = 'minitest'
+  t.libs.push [ "lib", "test" ]
+  t.test_files = FileList['test/openstack/*.rb']
+  t.verbose = true
+end
+
+desc "Run fog-openstack unit tests for /spec"
+Rake::TestTask.new do |t|
+  t.name = 'spec'
+  t.libs.push [ "lib", "spec" ]
+  t.pattern = 'spec/**/*_spec.rb'
+  t.verbose = true
 end

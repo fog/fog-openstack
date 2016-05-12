@@ -41,6 +41,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../openstack/orchestration', __FILE__)
   end
 
+  module NFV
+    autoload :OpenStack, File.expand_path('../openstack/nfv', __FILE__)
+  end
+
   module Volume
     autoload :OpenStack, File.expand_path('../openstack/volume', __FILE__)
   end
@@ -64,6 +68,7 @@ module Fog
     service(:volume,        'Volume')
     service(:metering,      'Metering')
     service(:orchestration, 'Orchestration')
+    service(:nfv,           'NFV')
     service(:baremetal,     'Baremetal')
     service(:planning,      'Planning')
     service(:introspection, 'Introspection')
@@ -221,9 +226,9 @@ module Fog
           }
           user_id = body['token']['user']['id']
           project_uri = uri.clone
-          project_uri.path = uri.path.sub('/auth/tokens',"/users/#{user_id}/projects")
-          response = Fog::Core::Connection.new(
-              "#{project_uri.scheme}://#{project_uri.host}:#{project_uri.port}#{project_uri.path}", false, connection_options).request(request_body)
+          project_uri.path = uri.path.sub('/auth/tokens', "/users/#{user_id}/projects")
+          project_uri_param = "#{project_uri.scheme}://#{project_uri.host}:#{project_uri.port}#{project_uri.path}"
+          response = Fog::Core::Connection.new(project_uri_param, false, connection_options).request(request_body)
 
           projects_body = Fog::JSON.decode(response.body)
           if projects_body['projects'].empty?
@@ -278,8 +283,8 @@ module Fog
 
       if body['token']['project']
         tenant = body['token']['project']
-      else
-        tenant = body['token']['user']['project'] if body['token']['user']['project']
+      elsif body['token']['user']['project']
+        tenant = body['token']['user']['project']
       end
 
       return {

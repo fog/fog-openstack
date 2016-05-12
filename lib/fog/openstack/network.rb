@@ -11,7 +11,7 @@ module Fog
                  :openstack_tenant, :openstack_tenant_id,
                  :openstack_api_key, :openstack_username, :openstack_identity_endpoint,
                  :current_user, :current_tenant, :openstack_region,
-                 :openstack_endpoint_type,
+                 :openstack_endpoint_type, :openstack_cache_ttl,
                  :openstack_project_name, :openstack_project_id,
                  :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
@@ -181,7 +181,7 @@ module Fog
             tenant_id  = Fog::Mock.random_hex(8)
 
             hash[key] = {
-              :networks => {
+              :networks               => {
                 network_id                             => {
                   'id'                    => network_id,
                   'name'                  => 'Public',
@@ -203,8 +203,8 @@ module Fog
                   'tenant_id'      => 'f8b26a6032bc47718a7702233ac708b9',
                 }
               },
-              :ports => {},
-              :subnets => {
+              :ports                  => {},
+              :subnets                => {
                 subnet_id => {
                   'id'               => subnet_id,
                   'name'             => "Public",
@@ -219,35 +219,35 @@ module Fog
                   'tenant_id'        => tenant_id,
                 }
               },
-              :floating_ips => {},
-              :routers => {},
-              :lb_pools => {},
-              :lb_members => {},
-              :lb_health_monitors => {},
-              :lb_vips => {},
+              :floating_ips           => {},
+              :routers                => {},
+              :lb_pools               => {},
+              :lb_members             => {},
+              :lb_health_monitors     => {},
+              :lb_vips                => {},
               :vpn_services           => {},
               :ike_policies           => {},
               :ipsec_policies         => {},
               :ipsec_site_connections => {},
-              :quota => {
-                "subnet" => 10,
-                "router" => 10,
-                "port" => 50,
-                "network" => 10,
+              :quota                  => {
+                "subnet"     => 10,
+                "router"     => 10,
+                "port"       => 50,
+                "network"    => 10,
                 "floatingip" => 50
               },
-              :quotas => [
+              :quotas                 => [
                 {
-                  "subnet" => 10,
-                  "network" => 10,
+                  "subnet"     => 10,
+                  "network"    => 10,
                   "floatingip" => 50,
-                  "tenant_id" => tenant_id,
-                  "router" => 10,
-                  "port" => 30
+                  "tenant_id"  => tenant_id,
+                  "router"     => 10,
+                  "port"       => 30
                 }
               ],
-              :security_groups      => {},
-              :security_group_rules => {},
+              :security_groups        => {},
+              :security_group_rules   => {},
             }
           end
         end
@@ -258,7 +258,7 @@ module Fog
 
         include Fog::OpenStack::Core
 
-        def initialize(options={})
+        def initialize(options = {})
           @auth_token = Fog::Mock.random_base64(64)
           @auth_token_expiration = (Time.now.utc + 86400).iso8601
 
@@ -272,14 +272,12 @@ module Fog
         def reset_data
           self.class.data.delete("#{@openstack_username}-#{@openstack_tenant}")
         end
-
       end
 
       class Real
-
         include Fog::OpenStack::Core
 
-        def initialize(options={})
+        def initialize(options = {})
           initialize_identity options
 
           @openstack_service_type = options[:openstack_service_type] || ['network']
@@ -294,17 +292,16 @@ module Fog
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
         end
 
-
         def request(params)
           begin
-            response = @connection.request(params.merge({
-              :headers  => {
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-                'X-Auth-Token' => @auth_token
-              }.merge!(params[:headers] || {}),
-              :path     => "#{@path}/#{params[:path]}"#,
-            }))
+            response = @connection.request(params.merge(
+                                             :headers => {
+                                               'Content-Type' => 'application/json',
+                                               'Accept'       => 'application/json',
+                                               'X-Auth-Token' => @auth_token
+                                             }.merge!(params[:headers] || {}),
+                                             :path    => "#{@path}/#{params[:path]}" # ,
+            ))
           rescue Excon::Errors::Unauthorized => error
             if error.response.body != 'Bad username or password' # token expiration
               @openstack_must_reauthenticate = true
@@ -316,11 +313,11 @@ module Fog
             end
           rescue Excon::Errors::HTTPStatusError => error
             raise case error
-            when Excon::Errors::NotFound
-              Fog::Network::OpenStack::NotFound.slurp(error)
-            else
-              error
-            end
+                  when Excon::Errors::NotFound
+                    Fog::Network::OpenStack::NotFound.slurp(error)
+                  else
+                    error
+                  end
           end
           unless response.body.empty?
             response.body = Fog::JSON.decode(response.body)
@@ -329,12 +326,12 @@ module Fog
         end
 
         def set_api_path
-          @path.sub!(/\/$/, '')
+          @path.sub!(%r{\/$}, '')
           unless @path.match(SUPPORTED_VERSIONS)
             @path = Fog::OpenStack.get_supported_version_path(SUPPORTED_VERSIONS,
-                                                               @openstack_management_uri,
-                                                               @auth_token,
-                                                               @connection_options)
+                                                              @openstack_management_uri,
+                                                              @auth_token,
+                                                              @connection_options)
           end
         end
       end

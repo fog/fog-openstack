@@ -2,7 +2,7 @@ module Fog
   module Compute
     class OpenStack
       class Real
-        def list_availability_zones(options={})
+        def list_availability_zones(options = {})
           params = options
 
           request(
@@ -16,7 +16,6 @@ module Fog
 
       class Mock
         def list_endpoints
-
         end
       end
     end

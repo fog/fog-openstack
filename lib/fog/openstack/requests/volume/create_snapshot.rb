@@ -3,6 +3,7 @@ module Fog
     class OpenStack
       module Real
         private
+
         def _create_snapshot(data)
           request(
             :body    => Fog::JSON.encode(data),

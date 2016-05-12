@@ -43,6 +43,8 @@ module Fog
         request :list_zones
 
         request :list_volume_types
+        request :create_volume_type
+        request :delete_volume_type
         request :get_volume_type_details
 
         request :create_snapshot
@@ -64,6 +66,7 @@ module Fog
         request :update_quota
         request :get_quota
         request :get_quota_defaults
+        request :get_quota_usage
 
         request :update_metadata
         request :replace_metadata
@@ -76,13 +79,13 @@ module Fog
           def self.data
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                  :users   => {},
-                  :tenants => {},
-                  :quota   => {
-                      'gigabytes' => 1000,
-                      'volumes'   => 10,
-                      'snapshots' => 10
-                  }
+                :users   => {},
+                :tenants => {},
+                :quota   => {
+                  'gigabytes' => 1000,
+                  'volumes'   => 10,
+                  'snapshots' => 10
+                }
               }
             end
           end
@@ -91,7 +94,7 @@ module Fog
             @data = nil
           end
 
-          def initialize(options={})
+          def initialize(options = {})
             @openstack_username = options[:openstack_username]
             @openstack_tenant   = options[:openstack_tenant]
             @openstack_auth_uri = URI.parse(options[:openstack_auth_url])
@@ -108,11 +111,11 @@ module Fog
             unless @data[:users].find { |u| u['name'] == options[:openstack_username] }
               id                = Fog::Mock.random_numbers(6).to_s
               @data[:users][id] = {
-                  'id'       => id,
-                  'name'     => options[:openstack_username],
-                  'email'    => "#{options[:openstack_username]}@mock.com",
-                  'tenantId' => Fog::Mock.random_numbers(6).to_s,
-                  'enabled'  => true
+                'id'       => id,
+                'name'     => options[:openstack_username],
+                'email'    => "#{options[:openstack_username]}@mock.com",
+                'tenantId' => Fog::Mock.random_numbers(6).to_s,
+                'enabled'  => true
               }
             end
           end
@@ -140,7 +143,7 @@ module Fog
           end
           include Fog::OpenStack::Common
 
-          def initialize(options={})
+          def initialize(options = {})
             initialize_identity options
 
             @openstack_service_type  = options[:openstack_service_type] || ['volume']
@@ -161,9 +164,6 @@ module Fog
             @persistent = options[:persistent] || false
             @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
           end
-
-          private
-
         end
       end
     end

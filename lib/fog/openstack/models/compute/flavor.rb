@@ -20,29 +20,41 @@ module Fog
 
         def save
           requires :name, :ram, :vcpus, :disk
-          attributes[:ephemeral] = self.ephemeral || 0
-          attributes[:is_public] = self.is_public || false
-          attributes[:disabled] = self.disabled || false
-          attributes[:swap] = self.swap || 0
-          attributes[:rxtx_factor] = self.rxtx_factor || 1.0
-          merge_attributes(service.create_flavor(self.attributes).body['flavor'])
+          attributes[:ephemeral] = ephemeral || 0
+          attributes[:is_public] = is_public || false
+          attributes[:disabled] = disabled || false
+          attributes[:swap] = swap || 0
+          attributes[:rxtx_factor] = rxtx_factor || 1.0
+          merge_attributes(service.create_flavor(attributes).body['flavor'])
           self
         end
 
         def destroy
           requires :id
-          service.delete_flavor(self.id)
+          service.delete_flavor(id)
           true
         end
 
         def metadata
-          service.get_flavor_metadata(self.id).body['extra_specs']
+          service.get_flavor_metadata(id).body['extra_specs']
         rescue Fog::Compute::OpenStack::NotFound
           nil
         end
 
         def create_metadata(metadata)
-          service.create_flavor_metadata(self.id, metadata)
+          service.create_flavor_metadata(id, metadata)
+        rescue Fog::Compute::OpenStack::NotFound
+          nil
+        end
+
+        def update_metadata(key, value)
+          service.update_flavor_metadata(id, key, value)
+        rescue Fog::Compute::OpenStack::NotFound
+          nil
+        end
+
+        def delete_metadata(key)
+          service.delete_flavor_metadata(id, key)
         rescue Fog::Compute::OpenStack::NotFound
           nil
         end

@@ -2,7 +2,7 @@ module Fog
   module OpenStack
     module Core
       attr_accessor :auth_token
-      attr_reader   :openstack_cache_ttl
+      attr_reader :openstack_cache_ttl
       attr_reader :auth_token_expiration
       attr_reader :current_user
       attr_reader :current_user_id

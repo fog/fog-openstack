@@ -4,7 +4,6 @@ module Fog
   module Volume
     class OpenStack
       module Snapshots
-
         def all(options = {})
           load_response(service.list_snapshots_detailed(options), 'snapshots')
         end
@@ -14,13 +13,13 @@ module Fog
         end
 
         def get(snapshots_id)
-          if snapshot = service.get_snapshot_details(snapshots_id).body['snapshot']
+          snapshot = service.get_snapshot_details(snapshots_id).body['snapshot']
+          if snapshot
             new(snapshot)
           end
         rescue Fog::Volume::OpenStack::NotFound
           nil
         end
-
       end
     end
   end

@@ -15,11 +15,11 @@ module Fog
 
           def save
             requires :name
-            if self.id.nil?
-              data = service.create_snapshot(self.attributes[:volume_id], name, description, force)
-            else
-              data = service.update_snapshot(self.id, attributes.reject{|k,v| k == :id})
-            end
+            data = if id.nil?
+                     service.create_snapshot(attributes[:volume_id], name, description, force)
+                   else
+                     service.update_snapshot(id, attributes.reject { |k, _v| k == :id })
+                   end
             merge_attributes(data.body['snapshot'])
             true
           end
@@ -27,11 +27,11 @@ module Fog
           def create
             requires :name
 
-            #volume_id, name, description, force=false
-            response = service.create_snapshot(self.attributes[:volume_id],
-                                                      self.attributes[:name],
-                                                      self.attributes[:description],
-                                                      self.attributes[:force])
+            # volume_id, name, description, force=false
+            response = service.create_snapshot(attributes[:volume_id],
+                                               attributes[:name],
+                                               attributes[:description],
+                                               attributes[:force])
             merge_attributes(response.body['snapshot'])
 
             self

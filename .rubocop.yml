@@ -67,6 +67,7 @@ IfUnlessModifier:
   Enabled: false
 NumericLiterals:
   AutoCorrect: false
+  MinDigits: 7
 ParallelAssignment:
   Enabled: false
 PerlBackrefs:
