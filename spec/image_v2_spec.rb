@@ -110,7 +110,7 @@ describe Fog::Image::OpenStack do
         foobar_id = foobar_image.id
 
         # Status should be queued
-        expect(@service.images.find_by_id(foobar_id).status).to satisfy { |value| value == 'queued' }
+        @service.images.find_by_id(foobar_id).status.must_match(/queued/)
 
         # Upload data from File or IO object
         foobar_image.upload_data File.new(image_path, 'r')
