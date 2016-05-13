@@ -77,7 +77,7 @@ module Fog
             end
           end
 
-          path = block_device_mapping ? 'os-volumes_boot.json' : 'servers.json'
+          path = options['block_device_mapping'] ? 'os-volumes_boot.json' : 'servers.json'
 
           request(
             :body     => Fog::JSON.encode(data),
