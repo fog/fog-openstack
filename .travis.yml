@@ -3,7 +3,9 @@ sudo: false
 script:
   - bundle exec rake test
   - bundle exec rake minitest
-env: JRUBY_OPTS=--debug
+  - bundle exec rake spec
+env:
+  - JRUBY_OPTS=--debug
 matrix:
   fast_finish: true
   include:
