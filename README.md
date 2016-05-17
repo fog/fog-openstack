@@ -6,6 +6,10 @@ This is the plugin Gem to talk to [OpenStack](http://openstack.org) clouds via f
 
 The main maintainers for the OpenStack sections are @dhague, @Ladas, @seanhandley, @mdarby and @jjasghar. Please send CC them on pull requests.
 
+## Supported OpenStack APIs
+
+See the list of [supported OpenStack projects](supported.md).
+
 ## Installation
 
 Add this line to your application's Gemfile:
