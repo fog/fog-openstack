@@ -1,11 +1,11 @@
-require 'test_helper'
+require "test_helper"
 
 describe "'Fog::Identity[:openstack] | versions', ['openstack', 'identity']" do
   begin
     @old_mock_value = Excon.defaults[:mock]
     @old_credentials = Fog.credentials
 
-    it 'v2' do
+    it "v2" do
       Fog.credentials = {:openstack_auth_url => 'http://openstack:35357/v2.0/tokens'}
 
       assert(Fog::Identity::OpenStack::V2::Mock) do
@@ -13,7 +13,7 @@ describe "'Fog::Identity[:openstack] | versions', ['openstack', 'identity']" do
       end
     end
 
-    it 'v3' do
+    it "v3" do
       Fog.credentials = {:openstack_auth_url => 'http://openstack:35357/v3/auth/tokens'}
 
       assert(Fog::Identity::OpenStack::V3::Mock) do
