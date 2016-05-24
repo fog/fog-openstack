@@ -103,17 +103,21 @@ describe "OpenStack authentication" do
   end
 
   it "validates token" do
+    old_credentials = Fog.credentials
     Fog.credentials = {:openstack_auth_url => 'http://openstack:35357/v2.0/tokens'}
-    openstack = Fog::Identity[:openstack]
-    openstack.validate_token(@token, @tenant_token)
-    openstack.validate_token(@token)
+    identity = Fog::Identity[:openstack]
+    identity.validate_token(@token, @tenant_token)
+    identity.validate_token(@token)
+    Fog.credentials = old_credentials
   end
 
   it "checks token" do
+    old_credentials = Fog.credentials
     Fog.credentials = {:openstack_auth_url => 'http://openstack:35357/v2.0/tokens'}
-    openstack = Fog::Identity[:openstack]
-    openstack.check_token(@token, @tenant_token)
-    openstack.check_token(@token)
+    identity = Fog::Identity[:openstack]
+    identity.check_token(@token, @tenant_token)
+    identity.check_token(@token)
+    Fog.credentials = old_credentials
   end
 
   it "v2 missing service" do
@@ -122,11 +126,13 @@ describe "OpenStack authentication" do
       {:status => 200, :body => Fog::JSON.encode(@body)}
     )
 
-    proc { Fog::OpenStack.authenticate_v2(
-      :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
-      :openstack_tenant       => 'admin',
-      :openstack_service_type => %w[network])
-    }.must_raise Fog::Errors::NotFound, 'Could not find service network.  Have compute, image'
+    proc do
+      Fog::OpenStack.authenticate_v2(
+        :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
+        :openstack_tenant       => 'admin',
+        :openstack_service_type => %w[network]
+      )
+    end.must_raise Fog::Errors::NotFound, 'Could not find service network.  Have compute, image'
   end
 
   it "v2 missing storage service" do
@@ -135,17 +141,21 @@ describe "OpenStack authentication" do
       {:status => 200, :body => Fog::JSON.encode(@body)}
     )
 
-    proc { Fog::OpenStack.authenticate_v2(
-      :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
-      :openstack_tenant       => 'admin',
-      :openstack_service_type => 'object-store')
-    }.must_raise NoMethodError, "undefined method `join' for \"object-store\":String"
+    proc do
+      Fog::OpenStack.authenticate_v2(
+        :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
+        :openstack_tenant       => 'admin',
+        :openstack_service_type => 'object-store'
+      )
+    end.must_raise NoMethodError, "undefined method `join' for \"object-store\":String"
 
-    proc { Fog::OpenStack.authenticate_v2(
-      :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
-      :openstack_tenant       => 'admin',
-      :openstack_service_type => %w[object-store])
-    }.must_raise Fog::Errors::NotFound, "Could not find service object-store.  Have compute, image"
+    proc do
+      Fog::OpenStack.authenticate_v2(
+        :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
+        :openstack_tenant       => 'admin',
+        :openstack_service_type => %w[object-store]
+      )
+    end.must_raise Fog::Errors::NotFound, "Could not find service object-store.  Have compute, image"
   end
 
   it "v2 auth with two compute services" do
