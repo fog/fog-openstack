@@ -18,7 +18,7 @@ desc "Run fog-openstack unit tests for /test"
 Rake::TestTask.new do |t|
   t.name = 'minitest'
   t.libs.push [ "lib", "test" ]
-  t.test_files = FileList['test/openstack/*.rb']
+  t.test_files = FileList['test/**/*.rb']
   t.verbose = true
 end
 
