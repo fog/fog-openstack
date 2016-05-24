@@ -50,7 +50,7 @@ describe "Fog::Openstack[:planning] | Planning plan requests" do
 
     it "#patch_plan" do
       parameters = Fog::Openstack[:planning].get_plan(@instance['uuid']).
-        body['parameters'][0..1]
+                   body['parameters'][0..1]
       plan_parameters = parameters.collect do |parameter|
         {
           "name"  => parameter['name'],
