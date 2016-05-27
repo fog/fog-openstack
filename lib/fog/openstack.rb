@@ -15,6 +15,7 @@ require 'fog/openstack/storage'
 require 'fog/openstack/volume_v1'
 require 'fog/openstack/volume_v2'
 require 'fog/openstack/planning'
+require 'fog/openstack/monitoring'
 
 module Fog
   module Compute
@@ -57,6 +58,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../openstack/introspection', __FILE__)
   end
 
+  module Monitoring
+    autoload :OpenStack, File.expand_path('../fog/openstack/monitoring', __FILE__)
+  end
+
   module OpenStack
     extend Fog::Provider
 
@@ -72,6 +77,7 @@ module Fog
     service(:baremetal,     'Baremetal')
     service(:planning,      'Planning')
     service(:introspection, 'Introspection')
+    service(:monitoring,    'Monitoring')
 
     @@token_cache = {}
 

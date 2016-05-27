@@ -1,0 +1,180 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://devstack.openstack.stack/v2.0/metrics
+    body:
+      encoding: UTF-8
+      string: '{"name":"sample_metric_0","timestamp":1463757367143,"dimensions":{"key1":"value1"},"value":"42","value_meta":{"meta_key1":"meta_value1"}}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 6937d71ea659405f98b2184dcd462bdc
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 03 Jun 2016 14:39:26 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 03 Jun 2016 14:39:26 GMT
+- request:
+    method: post
+    uri: http://devstack.openstack.stack/v2.0/metrics
+    body:
+      encoding: UTF-8
+      string: '[{"name":"sample_metric_1","timestamp":1463757367143,"dimensions":{"key1":"value1"},"value":"42","value_meta":{"meta_key1":"meta_value1"}},{"name":"sample_metric_2","timestamp":1463757367143,"dimensions":{"key1":"value1"},"value":"42","value_meta":{"meta_key1":"meta_value1"}}]'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 6937d71ea659405f98b2184dcd462bdc
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 03 Jun 2016 14:39:26 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 03 Jun 2016 14:39:26 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 6937d71ea659405f98b2184dcd462bdc
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 03 Jun 2016 14:39:26 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding, Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_0"}],"elements":[{"id":"0","name":"sample_metric_0","dimensions":{"key1":"value1"}}]}'
+    http_version: 
+  recorded_at: Fri, 03 Jun 2016 14:39:26 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 6937d71ea659405f98b2184dcd462bdc
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 03 Jun 2016 14:39:26 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding, Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_1"}],"elements":[{"id":"0","name":"sample_metric_1","dimensions":{"key1":"value1"}}]}'
+    http_version: 
+  recorded_at: Fri, 03 Jun 2016 14:39:26 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 6937d71ea659405f98b2184dcd462bdc
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 03 Jun 2016 14:39:26 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding, Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_2"}],"elements":[{"id":"0","name":"sample_metric_2","dimensions":{"key1":"value1"}}]}'
+    http_version: 
+  recorded_at: Fri, 03 Jun 2016 14:39:26 GMT
+recorded_with: VCR 3.0.3
