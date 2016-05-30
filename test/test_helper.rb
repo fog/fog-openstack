@@ -11,7 +11,7 @@ require 'fog/test_helpers/minitest/expectations'
 
 require File.expand_path('../../lib/fog/openstack', __FILE__)
 
-Fog.mock!
+Fog.mock! if ENV["FOG_MOCK"] == "true"
 Bundler.require(:test)
 
 Excon.defaults.merge!(:debug_request => true, :debug_response => true)
