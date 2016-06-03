@@ -5,10 +5,13 @@
 require 'minitest/autorun'
 require "minitest/spec"
 require 'fog/core'
+require 'fog/test_helpers/types_helper.rb'
+require 'fog/test_helpers/minitest/assertions'
+require 'fog/test_helpers/minitest/expectations'
 
 require File.expand_path('../../lib/fog/openstack', __FILE__)
 
-Fog.mock!
+Fog.mock! if ENV["FOG_MOCK"] == "true"
 Bundler.require(:test)
 
 Excon.defaults.merge!(:debug_request => true, :debug_response => true)
@@ -27,4 +30,11 @@ end
 
 def array_differences(array_a, array_b)
   (array_a - array_b) | (array_b - array_a)
+end
+
+module Minitest
+  class Test
+    # Some tests need to be fixed. There are skipped unless the following is true
+    UNIT_TESTS_CLEAN = false
+  end
 end
