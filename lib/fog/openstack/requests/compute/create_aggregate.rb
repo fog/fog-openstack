@@ -9,7 +9,7 @@ module Fog
             }
           }
 
-          vanilla_options = ["availability_zone"]
+          vanilla_options = [:availability_zone]
 
           vanilla_options.select{|o| options[o]}.each do |key|
             data['aggregate'][key] = options[key]

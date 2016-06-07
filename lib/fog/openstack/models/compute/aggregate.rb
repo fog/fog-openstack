@@ -29,17 +29,18 @@ module Fog
         end
 
         def update
+          requires :id
           merge_attributes(service.update_aggregate(self.id, self.attributes).body['aggregate'])
           self
         end
 
         def add_host(host_uuid)
-          requires :id,
+          requires :id
           service.add_aggregate_host(self.id, host_uuid)
         end
 
         def remove_host(host_uuid)
-          requires :id,
+          requires :id
           service.remove_aggregate_host(self.id, host_uuid)
         end
 
