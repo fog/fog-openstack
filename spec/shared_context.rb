@@ -29,6 +29,10 @@ class OpenStackVCR
     @vcr_directory = options[:vcr_directory]
     # must_be_kind_of Class
     @service_class = options[:service_class]
+    # will be used as condition
+    @with_project_scope = options[:project_scoped]
+    # will be used as condition
+    @with_token_auth = options[:token_auth]
     # determine mode of operation
     use_recorded = !ENV.key?('OS_AUTH_URL') || ENV['USE_VCR'] == 'true'
     if use_recorded
@@ -78,6 +82,8 @@ class OpenStackVCR
       region        = 'RegionOne'
       password      = 'password'
       username      = 'admin'
+      # keep in sync with the token obtained in the "common_setup.yml"
+      token         = '5c28403cf669414d8ee179f1e7f205ee'
       domain_name   = 'Default'
       @project_name = 'admin'
 
@@ -85,6 +91,7 @@ class OpenStackVCR
         region        = ENV['OS_REGION_NAME']       || options[:region_name]  || region
         password      = ENV['OS_PASSWORD']          || options[:password]     || password
         username      = ENV['OS_USERNAME']          || options[:username]     || username
+        token         = ENV['OS_TOKEN']             || options[:token]        || token
         domain_name   = ENV['OS_USER_DOMAIN_NAME']  || options[:domain_name]  || domain_name
         @project_name = ENV['OS_PROJECT_NAME']      || options[:project_name] || @project_name
       end
@@ -93,19 +100,15 @@ class OpenStackVCR
         connection_options = {
           :openstack_auth_url    => "#{@os_auth_url}/auth/tokens",
           :openstack_region      => region,
-          :openstack_api_key     => password,
-          :openstack_username    => username,
           :openstack_domain_name => domain_name,
           :openstack_cache_ttl   => 0
         }
-        connection_options[:openstack_project_name] = @project_name if options[:project_scoped]
+        connection_options[:openstack_project_name] = @project_name if @with_project_scope
         connection_options[:openstack_service_type] = [ENV['OS_AUTH_SERVICE']] if ENV['OS_AUTH_SERVICE']
       else
         connection_options = {
           :openstack_auth_url  => "#{@os_auth_url}/tokens",
           :openstack_region    => region,
-          :openstack_api_key   => password,
-          :openstack_username  => username,
           :openstack_tenant    => @project_name,
           :openstack_cache_ttl => 0
           # FIXME: Identity V3 not properly supported by other services yet
@@ -113,6 +116,14 @@ class OpenStackVCR
           # :openstack_project_domain => ENV['OS_PROJECT_DOMAIN_NAME'] || 'Default',
         }
       end
+
+      if @with_token_auth
+        connection_options[:openstack_auth_token] = token
+      else
+        connection_options[:openstack_username] = username
+        connection_options[:openstack_api_key]  = password
+      end
+
       @service = @service_class.new(connection_options)
     end
   end

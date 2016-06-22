@@ -313,12 +313,14 @@ module Fog
                                              :path    => "#{@path}/#{params[:path]}" # ,
             ))
           rescue Excon::Errors::Unauthorized => error
-            if error.response.body != 'Bad username or password' # token expiration
+            # token expiration and renewal possible
+            if error.response.body != 'Bad username or password' && @openstack_can_reauthenticate
               @openstack_must_reauthenticate = true
               authenticate
               set_api_path
               retry
-            else # bad credentials
+            # bad credentials
+            else
               raise error
             end
           rescue Excon::Errors::HTTPStatusError => error

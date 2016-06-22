@@ -1,0 +1,413 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/v2.0/security-groups?limit=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 20fe8b89d90f4549b401b4cb2ba2b576
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '3532'
+      X-Openstack-Request-Id:
+      - req-f70a6dde-2415-42db-9272-270906e7ea27
+      Date:
+      - Wed, 22 Jun 2016 13:10:59 GMT
+    body:
+      encoding: UTF-8
+      string: '{"security_groups_links": [{"href": "http://devstack.openstack.stack:9696/v2.0/security-groups?limit=2&marker=17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "rel": "next"}, {"href": "http://devstack.openstack.stack:9696/v2.0/security-groups?limit=2&marker=13f64083-2941-42f7-ae85-6526623f9132&page_reverse=True",
+        "rel": "previous"}], "security_groups": [{"tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "description": "Default security group", "id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "security_group_rules": [{"direction": "ingress", "protocol": null, "description":
+        "", "port_range_max": null, "id": "2e6d2aa4-b13d-4c77-9585-ad0f80c686b7",
+        "remote_group_id": "13f64083-2941-42f7-ae85-6526623f9132", "remote_ip_prefix":
+        null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132", "tenant_id":
+        "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype": "IPv4"},
+        {"direction": "ingress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "737368bc-ec65-471f-aae2-a7811da2deb4", "remote_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "remote_ip_prefix": null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype":
+        "IPv6"}, {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "9f3418fd-36af-4308-8b77-e118ab71a994", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype":
+        "IPv6"}, {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "edd588d0-dcf5-433b-9299-1aa5d3ac79c4", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype":
+        "IPv4"}], "name": "default"}, {"tenant_id": "b182d5350a95499eb5f42d8c8b65c346",
+        "description": "Default security group", "id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "security_group_rules": [{"direction": "ingress", "protocol": null, "description":
+        "", "port_range_max": null, "id": "4c6e4076-39cb-413d-8b44-fc4a82e8ec22",
+        "remote_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4", "remote_ip_prefix":
+        null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4", "tenant_id":
+        "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype": "IPv6"},
+        {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "5926a81f-65d1-40a4-83ca-e1228a84d896", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "tenant_id": "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype":
+        "IPv6"}, {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "66664d72-1820-40c5-a9e3-08b3762e417e", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "tenant_id": "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype":
+        "IPv4"}, {"direction": "ingress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "8df66230-f388-49f1-8e95-167e289e54d3", "remote_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "remote_ip_prefix": null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "tenant_id": "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype":
+        "IPv4"}], "name": "default"}]}'
+    http_version:
+  recorded_at: Wed, 22 Jun 2016 13:10:59 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/v2.0/security-groups?limit=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 675b2ab2bc4b104b9454f09d98b8ef02
+  response:
+    status:
+      code: 401
+      message: ''
+    headers:
+      Content-Type:
+      - text/html; charset=UTF-8
+      Content-Length:
+      - '23'
+      Www-Authenticate:
+      - Keystone uri='http://devstack.openstack.stack:5000'
+      X-Openstack-Request-Id:
+      - req-36a3a38c-f399-4d05-b628-78476569218e
+      Date:
+      - Wed, 22 Jun 2016 13:10:59 GMT
+    body:
+      encoding: UTF-8
+      string: Authentication required
+    http_version:
+  recorded_at: Wed, 22 Jun 2016 13:10:59 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/v2.0/security-groups?limit=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 708a20afe0724b84bbc88f63130f5ad1
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '3532'
+      X-Openstack-Request-Id:
+      - req-31555bfb-020a-43c9-af14-521159cd037e
+      Date:
+      - Wed, 22 Jun 2016 13:10:59 GMT
+    body:
+      encoding: UTF-8
+      string: '{"security_groups_links": [{"href": "http://devstack.openstack.stack:9696/v2.0/security-groups?limit=2&marker=17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "rel": "next"}, {"href": "http://devstack.openstack.stack:9696/v2.0/security-groups?limit=2&marker=13f64083-2941-42f7-ae85-6526623f9132&page_reverse=True",
+        "rel": "previous"}], "security_groups": [{"tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "description": "Default security group", "id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "security_group_rules": [{"direction": "ingress", "protocol": null, "description":
+        "", "port_range_max": null, "id": "2e6d2aa4-b13d-4c77-9585-ad0f80c686b7",
+        "remote_group_id": "13f64083-2941-42f7-ae85-6526623f9132", "remote_ip_prefix":
+        null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132", "tenant_id":
+        "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype": "IPv4"},
+        {"direction": "ingress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "737368bc-ec65-471f-aae2-a7811da2deb4", "remote_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "remote_ip_prefix": null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype":
+        "IPv6"}, {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "9f3418fd-36af-4308-8b77-e118ab71a994", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype":
+        "IPv6"}, {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "edd588d0-dcf5-433b-9299-1aa5d3ac79c4", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype":
+        "IPv4"}], "name": "default"}, {"tenant_id": "b182d5350a95499eb5f42d8c8b65c346",
+        "description": "Default security group", "id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "security_group_rules": [{"direction": "ingress", "protocol": null, "description":
+        "", "port_range_max": null, "id": "4c6e4076-39cb-413d-8b44-fc4a82e8ec22",
+        "remote_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4", "remote_ip_prefix":
+        null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4", "tenant_id":
+        "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype": "IPv6"},
+        {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "5926a81f-65d1-40a4-83ca-e1228a84d896", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "tenant_id": "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype":
+        "IPv6"}, {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "66664d72-1820-40c5-a9e3-08b3762e417e", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "tenant_id": "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype":
+        "IPv4"}, {"direction": "ingress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "8df66230-f388-49f1-8e95-167e289e54d3", "remote_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "remote_ip_prefix": null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "tenant_id": "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype":
+        "IPv4"}], "name": "default"}]}'
+    http_version:
+  recorded_at: Wed, 22 Jun 2016 13:10:59 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/v2.0/security-groups?limit=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1da5f03136f88cbb48b4270efa02a807
+  response:
+    status:
+      code: 401
+      message: ''
+    headers:
+      Content-Type:
+      - text/html; charset=UTF-8
+      Content-Length:
+      - '23'
+      Www-Authenticate:
+      - Keystone uri='http://devstack.openstack.stack:5000'
+      X-Openstack-Request-Id:
+      - req-5e684870-d5e0-41f6-bd20-387b73cdc7a5
+      Date:
+      - Wed, 22 Jun 2016 13:11:00 GMT
+    body:
+      encoding: UTF-8
+      string: Authentication required
+    http_version:
+  recorded_at: Wed, 22 Jun 2016 13:11:00 GMT
+- request:
+    method: post
+    uri: http://devstack.openstack.stack:5000/v3/auth/tokens
+    body:
+      encoding: UTF-8
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"admin"}}},"scope":{"project":{"name":"admin","domain":{"name":"Default"}}}}}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      Date:
+      - Wed, 22 Jun 2016 13:11:00 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      X-Subject-Token:
+      - e5bc71f01dd642818f02b313744a6a4a
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-c2bb300f-04ab-4ae4-8b9b-b489d1e125da
+      Content-Length:
+      - '4837'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"token": {"methods": ["password"], "roles": [{"id": "8126832e336f4232bd8519bda81348db",
+        "name": "neutron_admin"}], "is_admin_project": true, "project": {"domain":
+        {"id": "default", "name": "Default"}, "id": "dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "name": "admin"}, "catalog": [{"endpoints": [{"region_id": "RegionOne", "url":
+        "http://devstack.openstack.stack:9292", "region": "RegionOne", "interface": "internal",
+        "id": "10d69506a8f3408482090ef461813e6f"}, {"region_id": "RegionOne", "url":
+        "http://devstack.openstack.stack:9292", "region": "RegionOne", "interface": "public",
+        "id": "9f04f53d3f7147db9d7524838496a9c9"}, {"region_id": "RegionOne", "url":
+        "http://devstack.openstack.stack:9292", "region": "RegionOne", "interface": "admin", "id":
+        "e5b2006675454d7bab41e6e307a3526b"}], "type": "image", "id": "07c0289b6ed24ab2ad9ab251d69bc360",
+        "name": "glance"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:9696/",
+        "region": "RegionOne", "interface": "internal", "id": "63baac6b30244e39982163edb3eea7a1"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:9696/", "region": "RegionOne",
+        "interface": "admin", "id": "7cbbd12dfc7d498a8e4be71b93e26ba4"}, {"region_id":
+        "RegionOne", "url": "http://devstack.openstack.stack:9696/", "region": "RegionOne", "interface":
+        "public", "id": "f1c9219c25d4474a8d8073274d210709"}], "type": "network", "id":
+        "3383f3f70d5844fa929196ac42f740ee", "name": "neutron"}, {"endpoints": [{"region_id":
+        "RegionOne", "url": "http://devstack.openstack.stack:8774/v2/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "public", "id": "397dc06293fb4e5fb683ea8c23dc27f4"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8774/v2/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "internal", "id": "95a1e8de18b342ce9f964ee129a5fd69"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8774/v2/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "admin", "id": "d38553afcb5446d3a38b5d95c74a6b3c"}],
+        "type": "compute_legacy", "id": "43fc06691cf3403e9f52306dc155c44b", "name":
+        "nova_legacy"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8774/v2.1/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "admin", "id": "ca081b14727d4f089c4801869e71dad8"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8774/v2.1/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "internal", "id": "d3b1545f1ce44723be67966d0b853c41"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8774/v2.1/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "public", "id": "fa1f5b65b32c4fb38cca2ce9e1fe09e3"}],
+        "type": "compute", "id": "82a87e6c324c41228b2387d701b56572", "name": "nova"},
+        {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:5000/v3",
+        "region": "RegionOne", "interface": "internal", "id": "2f46da49aa854fec81889bb74f53782a"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:35357/v3", "region":
+        "RegionOne", "interface": "admin", "id": "6c2384bcf3fb4460811caf75f06aacb9"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:5000/v3", "region":
+        "RegionOne", "interface": "public", "id": "e31e8a4680b047a6adc7eaeec5b2c2c8"}],
+        "type": "identity", "id": "d30ec3e1840b4e5abbc91d29341ba4cd", "name": "keystone"},
+        {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v2/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "internal", "id": "58630521c8214617a1805232d6427131"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v2/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "public", "id": "6dce34d56bc6436cafff58c81ca76372"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v2/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "admin", "id": "8753db765b534d11a7055a21ca1d04ef"}],
+        "type": "volumev2", "id": "dd17c542cd954c4da3563375c61b6ab5", "name": "cinderv2"},
+        {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v1/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "internal", "id": "27137a813d404515a52155b615295665"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v1/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "public", "id": "4dbfad6771ca43b9b6152f52b9166d03"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v1/dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "region": "RegionOne", "interface": "admin", "id": "692a7d6ac84947868c22f92ca0cd7f58"}],
+        "type": "volume", "id": "e1d3a6c255fb4e3c8dfbba65e6f8a88d", "name": "cinder"}],
+        "expires_at": "2016-06-22T14:11:00.129585Z", "user": {"domain": {"id": "default",
+        "name": "Default"}, "id": "7a92283442cd4b8daf3cdd4ac1d8bb8a", "name": "admin"},
+        "audit_ids": ["XdZZwDqeTtG48ger-yog1w"], "issued_at": "2016-06-22T13:11:00.129615Z"}}'
+    http_version:
+  recorded_at: Wed, 22 Jun 2016 13:11:00 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - e5bc71f01dd642818f02b313744a6a4a
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '120'
+      Date:
+      - Wed, 22 Jun 2016 13:11:00 GMT
+    body:
+      encoding: UTF-8
+      string: '{"versions": [{"status": "CURRENT", "id": "v2.0", "links": [{"href":
+        "http://devstack.openstack.stack:9696/v2.0", "rel": "self"}]}]}'
+    http_version:
+  recorded_at: Wed, 22 Jun 2016 13:11:00 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9696/v2.0/security-groups?limit=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - e5bc71f01dd642818f02b313744a6a4a
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '3532'
+      X-Openstack-Request-Id:
+      - req-c5b8e41f-d8f4-4466-bb2c-f17695ca3240
+      Date:
+      - Wed, 22 Jun 2016 13:11:00 GMT
+    body:
+      encoding: UTF-8
+      string: '{"security_groups_links": [{"href": "http://devstack.openstack.stack:9696/v2.0/security-groups?limit=2&marker=17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "rel": "next"}, {"href": "http://devstack.openstack.stack:9696/v2.0/security-groups?limit=2&marker=13f64083-2941-42f7-ae85-6526623f9132&page_reverse=True",
+        "rel": "previous"}], "security_groups": [{"tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c",
+        "description": "Default security group", "id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "security_group_rules": [{"direction": "ingress", "protocol": null, "description":
+        "", "port_range_max": null, "id": "2e6d2aa4-b13d-4c77-9585-ad0f80c686b7",
+        "remote_group_id": "13f64083-2941-42f7-ae85-6526623f9132", "remote_ip_prefix":
+        null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132", "tenant_id":
+        "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype": "IPv4"},
+        {"direction": "ingress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "737368bc-ec65-471f-aae2-a7811da2deb4", "remote_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "remote_ip_prefix": null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype":
+        "IPv6"}, {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "9f3418fd-36af-4308-8b77-e118ab71a994", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype":
+        "IPv6"}, {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "edd588d0-dcf5-433b-9299-1aa5d3ac79c4", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "13f64083-2941-42f7-ae85-6526623f9132",
+        "tenant_id": "dc4b3b173ee8467e9e2ae99e5c321d0c", "port_range_min": null, "ethertype":
+        "IPv4"}], "name": "default"}, {"tenant_id": "b182d5350a95499eb5f42d8c8b65c346",
+        "description": "Default security group", "id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "security_group_rules": [{"direction": "ingress", "protocol": null, "description":
+        "", "port_range_max": null, "id": "4c6e4076-39cb-413d-8b44-fc4a82e8ec22",
+        "remote_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4", "remote_ip_prefix":
+        null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4", "tenant_id":
+        "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype": "IPv6"},
+        {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "5926a81f-65d1-40a4-83ca-e1228a84d896", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "tenant_id": "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype":
+        "IPv6"}, {"direction": "egress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "66664d72-1820-40c5-a9e3-08b3762e417e", "remote_group_id": null,
+        "remote_ip_prefix": null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "tenant_id": "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype":
+        "IPv4"}, {"direction": "ingress", "protocol": null, "description": "", "port_range_max":
+        null, "id": "8df66230-f388-49f1-8e95-167e289e54d3", "remote_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "remote_ip_prefix": null, "security_group_id": "17c0d169-c9b8-4a5f-9818-1f0bb7286cf4",
+        "tenant_id": "b182d5350a95499eb5f42d8c8b65c346", "port_range_min": null, "ethertype":
+        "IPv4"}], "name": "default"}]}'
+    http_version:
+  recorded_at: Wed, 22 Jun 2016 13:11:00 GMT
+recorded_with: VCR 3.0.1

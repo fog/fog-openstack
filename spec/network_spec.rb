@@ -75,4 +75,36 @@ describe Fog::Network::OpenStack do
       end
     end
   end
+
+  it 'fails at token expiration on auth with token but not with username+password' do
+    VCR.use_cassette('token_expiration') do
+      @auth_token = @identity_service.credentials[:openstack_auth_token]
+      openstack_vcr = OpenStackVCR.new(
+        :vcr_directory  => 'spec/fixtures/openstack/network',
+        :service_class  => Fog::Network::OpenStack,
+        :project_scoped => true,
+        :token_auth     => true,
+        :token          => @auth_token
+      )
+      @service_with_token = openstack_vcr.service
+
+      [@service_with_token, @service].each_with_index do |service, index|
+        @network_token = service.credentials[:openstack_auth_token]
+        # any network object would do, take sec group - at least we have a default
+        @before = service.security_groups.all(:limit => 2).first.tenant_id
+        # invalidate the token, hopefully it is not a palindrome
+        # NOTE: token_revoke does not work here, because of neutron keystone-middleware cache
+        service.instance_variable_set("@auth_token", @network_token.reverse)
+        # with token
+        if index == 0
+          err = -> { service.security_groups.all(:limit => 2) }.must_raise Excon::Errors::Unauthorized
+          err.message.must_match(/Authentication required/)
+        # with username+password
+        else
+          @after = service.security_groups.all(:limit => 2).first.tenant_id
+          @before.must_equal @after
+        end
+      end
+    end
+  end
 end
