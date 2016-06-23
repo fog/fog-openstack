@@ -3,6 +3,8 @@
 module Fog
   module Metering
     class OpenStack < Fog::Service
+      SUPPORTED_VERSIONS = /v2/
+
       requires :openstack_auth_url
       recognizes :openstack_auth_token, :openstack_management_url,
                  :persistent, :openstack_service_type, :openstack_service_name,
@@ -93,7 +95,11 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        def initialize(options={})
+        def self.not_found_class
+          Fog::Metering::OpenStack::NotFound
+        end
+
+        def initialize(options = {})
           initialize_identity options
 
           @openstack_service_type           = options[:openstack_service_type] || ['metering']
@@ -103,47 +109,22 @@ module Fog
           @connection_options               = options[:connection_options] || {}
 
           authenticate
+          set_api_path
 
           @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
         end
 
-        def request(params)
-          begin
-            response = @connection.request(params.merge({
-              :headers  => {
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-                'X-Auth-Token' => @auth_token
-              }.merge!(params[:headers] || {}),
-              :path     => "#{@path}/v2/#{params[:path]}"#,
-              # Causes errors for some requests like tenants?limit=1
-              # :query    => ('ignore_awful_caching' << Time.now.to_i.to_s)
-            }))
-          rescue Excon::Errors::Unauthorized => error
-            if error.response.body != 'Bad username or password' # token expiration
-              @openstack_must_reauthenticate = true
-              authenticate
-              retry
-            else # bad credentials
-              raise error
-            end
-          rescue Excon::Errors::HTTPStatusError => error
-            raise case error
-            when Excon::Errors::NotFound
-              Fog::Metering::OpenStack::NotFound.slurp(error)
-            else
-              error
-            end
+        def set_api_path
+          unless @path.match(SUPPORTED_VERSIONS)
+            @path = "/" + Fog::OpenStack.get_supported_version(
+              SUPPORTED_VERSIONS,
+              @openstack_management_uri,
+              @auth_token,
+              @connection_options
+            )
           end
-          unless response.body.empty?
-            response.body = Fog::JSON.decode(response.body)
-          end
-          response
         end
-
-        private
-
       end
     end
   end

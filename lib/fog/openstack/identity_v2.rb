@@ -1,5 +1,3 @@
-
-require 'fog/openstack/common'
 require 'fog/openstack/identity'
 
 module Fog

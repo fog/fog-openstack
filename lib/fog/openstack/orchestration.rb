@@ -131,6 +131,11 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
+        # NOTE: uncommenting this should be treated as api-change!
+        # def self.not_found_class
+        #   Fog::Orchestration::OpenStack::NotFound
+        # end
+
         def initialize(options={})
           initialize_identity options
 
@@ -146,46 +151,6 @@ module Fog
           @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
         end
-
-        def request(params)
-          begin
-            response = @connection.request(params.merge({
-              :headers  => {
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-                'X-Auth-Token' => @auth_token,
-                'X-Auth-User'  => @openstack_username,
-                'X-Auth-Key'   => @openstack_api_key
-              }.merge!(params[:headers] || {}),
-              :path     => "#{@path}/#{params[:path]}",
-              :query    => params[:query]
-            }))
-          rescue Excon::Errors::Unauthorized => error
-            if error.response.body != 'Bad username or password' # token expiration
-              @openstack_must_reauthenticate = true
-              authenticate
-              retry
-            else # Bad Credentials
-              raise error
-            end
-          rescue Excon::Errors::HTTPStatusError => error
-            raise case error
-              when Excon::Errors::NotFound
-                Fog::Compute::OpenStack::NotFound.slurp(error)
-              else
-                error
-              end
-          end
-
-          if !response.body.empty? and response.get_header('Content-Type') =~ /application\/json/ then
-            response.body = Fog::JSON.decode(response.body)
-          end
-
-          response
-        end
-
-        private
-
       end
     end
   end

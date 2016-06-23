@@ -287,6 +287,10 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
+        def self.not_found_class
+          Fog::Network::OpenStack::NotFound
+        end
+
         def initialize(options = {})
           initialize_identity options
 
@@ -302,43 +306,8 @@ module Fog
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
         end
 
-        def request(params)
-          begin
-            response = @connection.request(params.merge(
-                                             :headers => {
-                                               'Content-Type' => 'application/json',
-                                               'Accept'       => 'application/json',
-                                               'X-Auth-Token' => @auth_token
-                                             }.merge!(params[:headers] || {}),
-                                             :path    => "#{@path}/#{params[:path]}" # ,
-            ))
-          rescue Excon::Errors::Unauthorized => error
-            # token expiration and renewal possible
-            if error.response.body != 'Bad username or password' && @openstack_can_reauthenticate
-              @openstack_must_reauthenticate = true
-              authenticate
-              set_api_path
-              retry
-            # bad credentials
-            else
-              raise error
-            end
-          rescue Excon::Errors::HTTPStatusError => error
-            raise case error
-                  when Excon::Errors::NotFound
-                    Fog::Network::OpenStack::NotFound.slurp(error)
-                  else
-                    error
-                  end
-          end
-          unless response.body.empty?
-            response.body = Fog::JSON.decode(response.body)
-          end
-          response
-        end
-
         def set_api_path
-          @path.sub!(%r{\/$}, '')
+          @path.sub!(%r{/$}, '')
           unless @path.match(SUPPORTED_VERSIONS)
             @path = Fog::OpenStack.get_supported_version_path(SUPPORTED_VERSIONS,
                                                               @openstack_management_uri,

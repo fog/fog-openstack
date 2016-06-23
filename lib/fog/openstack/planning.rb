@@ -97,7 +97,12 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        def initialize(options={})
+        # NOTE: uncommenting this should be treated as api-change!
+        # def self.not_found_class
+        #   Fog::Planning::OpenStack::NotFound
+        # end
+
+        def initialize(options = {})
           initialize_identity options
 
           @openstack_service_type           = options[:openstack_service_type] || ['management'] # currently Tuskar is configured as 'management' service in Keystone
@@ -107,51 +112,21 @@ module Fog
           @connection_options               = options[:connection_options] || {}
 
           authenticate
-
-          unless @path.match(SUPPORTED_VERSIONS)
-            @path = "/v2"
-          end
+          set_api_path
 
           @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
         end
 
-        def request(params)
-          begin
-            response = @connection.request(params.merge({
-              :headers  => {
-                'Content-Type' => 'application/json',
-                'X-Auth-Token' => @auth_token
-              }.merge!(params[:headers] || {}),
-              :path     => "#{@path}/#{params[:path]}"#,
-            }))
-          rescue Excon::Errors::Unauthorized => error
-            if error.response.body != 'Bad username or password' # token expiration
-              @openstack_must_reauthenticate = true
-              authenticate
-              retry
-            else # bad credentials
-              raise error
-            end
-          rescue Excon::Errors::HTTPStatusError => error
-            raise case error
-            when Excon::Errors::NotFound
-              Fog::Compute::OpenStack::NotFound.slurp(error)
-            else
-              error
-            end
+        def set_api_path
+          unless @path.match(SUPPORTED_VERSIONS)
+            @path = "/v2"
           end
-          unless response.body.empty?
-            response.body = Fog::JSON.decode(response.body)
-          end
-          response
         end
-
-        private
-
       end
     end
 
+    # TODO: get rid of inconform self.[] & self.new & self.services
     def self.[](service)
       new(:service => service)
     end
