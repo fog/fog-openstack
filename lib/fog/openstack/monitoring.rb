@@ -12,7 +12,7 @@ module Fog
                  :openstack_project_name, :openstack_project_id,
                  :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                 :openstack_identity_prefix, :openstack_temp_url_key
+                 :openstack_identity_prefix, :openstack_temp_url_key, :openstack_cache_ttl
 
       model_path 'fog/openstack/models/monitoring'
       model       :metric
@@ -68,6 +68,10 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
+        def self.not_found_class
+          Fog::Monitoring::OpenStack::NotFound
+        end
+
         def initialize(options = {})
           initialize_identity options
 
@@ -79,36 +83,6 @@ module Fog
           authenticate
           @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
-        end
-
-        def request(params, parse_json = true)
-          begin
-            response = @connection.request(params.merge(:headers => {
-              'Content-Type' => 'application/json',
-              'Accept'       => 'application/json',
-              'X-Auth-Token' => @auth_token
-            }.merge!(params[:headers] || {}),
-                                                        :path    => "#{@path}/#{params[:path]}"))
-          rescue Excon::Errors::Unauthorized => error
-            if error.response.body != 'Bad username or password' # token expiration
-              @openstack_must_reauthenticate = true
-              authenticate
-              retry
-            else # bad credentials
-              raise error
-            end
-          rescue Excon::Errors::HTTPStatusError => error
-            raise case error
-                  when Excon::Errors::NotFound
-                    Fog::Monitoring::OpenStack::NotFound.slurp(error)
-                  else
-                    error
-                  end
-          end
-          if !response.body.empty? && parse_json && response.get_header('Content-Type') =~ %r{application/json}
-            response.body = Fog::JSON.decode(response.body)
-          end
-          response
         end
       end
     end

@@ -2,6 +2,7 @@ module Fog
   module OpenStack
     module Core
       attr_accessor :auth_token
+      attr_reader :unscoped_token
       attr_reader :openstack_cache_ttl
       attr_reader :auth_token_expiration
       attr_reader :current_user
@@ -15,6 +16,11 @@ module Fog
       attr_reader :openstack_project_id
       attr_reader :openstack_project_domain_id
       attr_reader :openstack_identity_prefix
+
+      # fallback
+      def self.not_found_class
+        Fog::Compute::OpenStack::NotFound
+      end
 
       def initialize_identity(options)
         # Create @openstack_* instance variables from all :openstack_* options
@@ -68,6 +74,50 @@ module Fog
       end
 
       private
+
+      def request(params, parse_json = true)
+        retried = false
+        begin
+          response = @connection.request(params.merge(
+                                           :headers => {
+                                             'Content-Type' => 'application/json',
+                                             'Accept'       => 'application/json',
+                                             'X-Auth-Token' => @auth_token
+                                           }.merge!(params[:headers] || {}),
+                                           :path    => "#{@path}/#{params[:path]}"
+          ))
+        rescue Excon::Errors::Unauthorized => error
+          # token expiration and token renewal possible
+          if error.response.body != 'Bad username or password' && @openstack_can_reauthenticate && !retried
+            @openstack_must_reauthenticate = true
+            authenticate
+            set_api_path
+            retried = true
+            retry
+          # bad credentials or token renewal not possible
+          else
+            raise error
+          end
+        rescue Excon::Errors::HTTPStatusError => error
+          raise case error
+                when Excon::Errors::NotFound
+                  self.class.not_found_class.slurp(error)
+                else
+                  error
+                end
+        end
+
+        if !response.body.empty? && response.get_header('Content-Type').match('application/json')
+          # TODO: remove parse_json in favor of :raw_body
+          response.body = Fog::JSON.decode(response.body) if parse_json && !params[:raw_body]
+        end
+
+        response
+      end
+
+      def set_api_path
+        # if the service supports multiple versions, do the selection here
+      end
 
       def openstack_options
         options = {}

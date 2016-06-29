@@ -3,7 +3,6 @@ require 'fog/core'
 require 'fog/json'
 
 require 'fog/openstack/core'
-require 'fog/openstack/common'
 require 'fog/openstack/errors'
 
 require 'fog/openstack/compute'
