@@ -1,0 +1,456 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://devstack.openstack.stack/v2.0/alarm-definitions
+    body:
+      encoding: UTF-8
+      string: '{"name":"average cpu usage in perc","match_by":["hostname"],"expression":"(avg(cpu.user_perc{hostname=devstack})
+        > 10)","description":"Definition for an important alarm"}'
+    headers:
+      User-Agent:
+      - fog-core/1.39.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 58f9614d13f74cc9865024446023941a
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 20 May 2016 15:16:58 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Location:
+      - http://devstack.openstack.stack/v2.0/alarm-definitions/5b7bbc64-331a-446f-bd2b-b1aac79c3aa2
+    body:
+      encoding: UTF-8
+      string: '{"id":"5b7bbc64-331a-446f-bd2b-b1aac79c3aa2","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/5b7bbc64-331a-446f-bd2b-b1aac79c3aa2"}],"name":"average
+        cpu usage in perc","description":"Definition for an important alarm","expression":"(avg(cpu.user_perc{hostname=devstack})
+        > 10)","match_by":["hostname"],"severity":"LOW","actions_enabled":true,"alarm_actions":null,"ok_actions":[],"undetermined_actions":[]}'
+    http_version: 
+  recorded_at: Fri, 20 May 2016 15:16:58 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack/v2.0/alarm-definitions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.39.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 58f9614d13f74cc9865024446023941a
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 20 May 2016 15:16:58 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding, Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions"}],"elements":[{"id":"02c03351-8819-4e5b-b518-d77aaca9ed9e","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/02c03351-8819-4e5b-b518-d77aaca9ed9e"}],"name":"swift-cpu-overload","description":"Make
+        sure that CPUs on Swift servers have sufficient spare capacity","expression":"avg(cpu.idle_perc{service=object-store},
+        300) < 20.0","match_by":["service"],"severity":"HIGH","actions_enabled":false,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"07ac6438-cd92-4b07-8ad0-b2718086c58c","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/07ac6438-cd92-4b07-8ad0-b2718086c58c"}],"name":"monasca-kafka-down","description":"Make
+        sure that at least one Kafka process is running","expression":"max(process.pid_count{process_name=kafka.Kafka,systemtype=monasca})
+        < 1","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"0f147ea9-47eb-41ce-a387-11b9735c43cb","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/0f147ea9-47eb-41ce-a387-11b9735c43cb"}],"name":"monasca-cpu-overload","description":"Make
+        sure that CPUs on Monasca servers have sufficient spare capacity","expression":"avg(cpu.idle_perc{service=monitoring},
+        180) < 20.0","match_by":["service"],"severity":"MEDIUM","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"1415550d-6fe8-4dcc-b2ce-9fcdb22738b6","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/1415550d-6fe8-4dcc-b2ce-9fcdb22738b6"}],"name":"monasca-disk-inodes-exhausted","description":"Make
+        sure that we do not run out of inodes on Monasca server filesystems","expression":"max(disk.inode_used_perc{service=monitoring},
+        180) > 75.0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"1a26608b-2895-4e82-90ef-a1deccc3382c","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/1a26608b-2895-4e82-90ef-a1deccc3382c"}],"name":"monasca-influxdb-down","description":"Make
+        sure that InfluxDB is running at least one process","expression":"max(process.pid_count{service=monitoring,component=influxdb},180)
+        < 1","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"1aea564e-2bd4-45c7-b1c0-9f2c0a4d1ec5","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/1aea564e-2bd4-45c7-b1c0-9f2c0a4d1ec5"}],"name":"monasca-mem-swapping","description":"Make
+        sure that Monasca services run in memory","expression":"avg(mem.swap_used_mb{systemtype=monasca})
+        > 0","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"25ae58a4-b653-444b-8a67-6f457eba0be9","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/25ae58a4-b653-444b-8a67-6f457eba0be9"}],"name":"swift-overlapping-containers","description":"Alarms
+        on overlapping containers which point to cluster inconsistencies","expression":"min(swift.dispersion.container.overlapping,120)
+        > 0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":["f0bc7a4d-38a2-4843-94a6-a66e0fd00196"],"ok_actions":[],"undetermined_actions":[]},{"id":"2f4bf078-a3f5-4fe2-9fa8-2f846a316d0c","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/2f4bf078-a3f5-4fe2-9fa8-2f846a316d0c"}],"name":"monasca-http-avail","description":"Warn
+        if Monasca endpoints are not reachable or return errors","expression":"sum(http_status{service=monitoring},
+        180) > 1","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"48e99108-112e-472b-a97e-ede4b1f9ca55","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/48e99108-112e-472b-a97e-ede4b1f9ca55"}],"name":"swift-no-mem-swapping","description":"Make
+        sure that Swift nodes run in memory","expression":"avg(mem.swap_used_mb{service=object-store},300)
+        > 0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"4aa5d687-a11c-4556-a30f-f42e6cd8fefd","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/4aa5d687-a11c-4556-a30f-f42e6cd8fefd"}],"name":"swift-low-storage-warn-10tb","description":"Warn
+        free storage < 10 TB","expression":"min(swift.cluster.storage.free_bytes,
+        900) < 10000000000000","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"5b7bbc64-331a-446f-bd2b-b1aac79c3aa2","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/5b7bbc64-331a-446f-bd2b-b1aac79c3aa2"}],"name":"average
+        cpu usage in perc","description":"Definition for an important alarm","expression":"(avg(cpu.user_perc{hostname=devstack})
+        > 10)","match_by":["hostname"],"severity":"LOW","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"663e48ec-5fb8-493c-9994-96f294ee67ab","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/663e48ec-5fb8-493c-9994-96f294ee67ab"}],"name":"swift-overlapping-objects","description":"Alarms
+        on overlapping objects which point to cluster inconsistencies","expression":"min(swift.dispersion.object.overlapping,
+        120) > 0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":["f0bc7a4d-38a2-4843-94a6-a66e0fd00196"],"ok_actions":[],"undetermined_actions":["f0bc7a4d-38a2-4843-94a6-a66e0fd00196"]},{"id":"74bc26c2-f23e-4a07-b721-b8a51a935778","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/74bc26c2-f23e-4a07-b721-b8a51a935778"}],"name":"test-d042680-1","description":"test
+        for adef with multiple metrics","expression":"(min(cpu.user_perc{service=object-storage},
+        180) > 80) and (avg(cpu.user_perc{service=object-storage}, 180) > 99)","match_by":["hostname"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"a4320933-3a88-4b2c-b10a-77418980d706","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/a4320933-3a88-4b2c-b10a-77418980d706"}],"name":"swift-low-storage-alert-1tb","description":"Critical
+        alarm free storage < 1 TB","expression":"min(swift.cluster.storage.free_bytes,
+        900) < 1000000000000","match_by":["service"],"severity":"CRITICAL","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"a44eade4-2f4d-47fe-a424-0e1d7969be3e","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/a44eade4-2f4d-47fe-a424-0e1d7969be3e"}],"name":"monasca-disk-full","description":"Make
+        sure that we do not run out of disk space","expression":"max(disk.space_used_perc{service=monitoring},
+        180) > 75.0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"ad13df79-31dd-4486-8aac-d17d3c967dd4","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/ad13df79-31dd-4486-8aac-d17d3c967dd4"}],"name":"swift-disk-full","description":"Make
+        sure that we do not run out of disk space","expression":"max(disk.space_used_perc{service=object-store},
+        300) > 75.0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"cd401e10-8566-42b7-a9b7-479f9a805224","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/cd401e10-8566-42b7-a9b7-479f9a805224"}],"name":"monasca-mysql-down","description":"Make
+        sure that at least one MySQL deamon is up","expression":"max(process.pid_count{systemtype=monasca,process_name=mysqld},
+        180) < 1","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"dc4ea079-f963-4484-9df7-fe700a80689a","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/dc4ea079-f963-4484-9df7-fe700a80689a"}],"name":"swift-mismatched-rings","description":"Alarm
+        on mismatched rings","expression":"min(swift.cluster.md5.ring.not_matched,
+        120) > 0","match_by":["hostname","service","systemtype"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"dc7bc41e-daaa-4818-8674-1c35088a29a2","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/dc7bc41e-daaa-4818-8674-1c35088a29a2"}],"name":"monasca-api-congestion","description":"Make
+        sure that Monasca agents can emit metrics within few seconds","expression":"avg(monasca.emit_time_sec{component=monasca-agent,service=monitoring},
+        300) > 2","match_by":[],"severity":"HIGH","actions_enabled":false,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"deea9c09-3d5f-4691-960a-c9e94cd0840f","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/deea9c09-3d5f-4691-960a-c9e94cd0840f"}],"name":"monasca-notification-down","description":"Make
+        sure that the typical number of notification workers are up (>= 6)","expression":"max(process.pid_count{service=monitoring,component=monasca-notification})
+        < 6","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]}]}'
+    http_version: 
+  recorded_at: Fri, 20 May 2016 15:16:58 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack/v2.0/alarm-definitions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.39.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 58f9614d13f74cc9865024446023941a
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 20 May 2016 15:16:58 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding, Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions"}],"elements":[{"id":"02c03351-8819-4e5b-b518-d77aaca9ed9e","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/02c03351-8819-4e5b-b518-d77aaca9ed9e"}],"name":"swift-cpu-overload","description":"Make
+        sure that CPUs on Swift servers have sufficient spare capacity","expression":"avg(cpu.idle_perc{service=object-store},
+        300) < 20.0","match_by":["service"],"severity":"HIGH","actions_enabled":false,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"07ac6438-cd92-4b07-8ad0-b2718086c58c","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/07ac6438-cd92-4b07-8ad0-b2718086c58c"}],"name":"monasca-kafka-down","description":"Make
+        sure that at least one Kafka process is running","expression":"max(process.pid_count{process_name=kafka.Kafka,systemtype=monasca})
+        < 1","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"0f147ea9-47eb-41ce-a387-11b9735c43cb","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/0f147ea9-47eb-41ce-a387-11b9735c43cb"}],"name":"monasca-cpu-overload","description":"Make
+        sure that CPUs on Monasca servers have sufficient spare capacity","expression":"avg(cpu.idle_perc{service=monitoring},
+        180) < 20.0","match_by":["service"],"severity":"MEDIUM","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"1415550d-6fe8-4dcc-b2ce-9fcdb22738b6","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/1415550d-6fe8-4dcc-b2ce-9fcdb22738b6"}],"name":"monasca-disk-inodes-exhausted","description":"Make
+        sure that we do not run out of inodes on Monasca server filesystems","expression":"max(disk.inode_used_perc{service=monitoring},
+        180) > 75.0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"1a26608b-2895-4e82-90ef-a1deccc3382c","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/1a26608b-2895-4e82-90ef-a1deccc3382c"}],"name":"monasca-influxdb-down","description":"Make
+        sure that InfluxDB is running at least one process","expression":"max(process.pid_count{service=monitoring,component=influxdb},180)
+        < 1","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"1aea564e-2bd4-45c7-b1c0-9f2c0a4d1ec5","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/1aea564e-2bd4-45c7-b1c0-9f2c0a4d1ec5"}],"name":"monasca-mem-swapping","description":"Make
+        sure that Monasca services run in memory","expression":"avg(mem.swap_used_mb{systemtype=monasca})
+        > 0","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"25ae58a4-b653-444b-8a67-6f457eba0be9","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/25ae58a4-b653-444b-8a67-6f457eba0be9"}],"name":"swift-overlapping-containers","description":"Alarms
+        on overlapping containers which point to cluster inconsistencies","expression":"min(swift.dispersion.container.overlapping,120)
+        > 0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":["f0bc7a4d-38a2-4843-94a6-a66e0fd00196"],"ok_actions":[],"undetermined_actions":[]},{"id":"2f4bf078-a3f5-4fe2-9fa8-2f846a316d0c","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/2f4bf078-a3f5-4fe2-9fa8-2f846a316d0c"}],"name":"monasca-http-avail","description":"Warn
+        if Monasca endpoints are not reachable or return errors","expression":"sum(http_status{service=monitoring},
+        180) > 1","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"48e99108-112e-472b-a97e-ede4b1f9ca55","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/48e99108-112e-472b-a97e-ede4b1f9ca55"}],"name":"swift-no-mem-swapping","description":"Make
+        sure that Swift nodes run in memory","expression":"avg(mem.swap_used_mb{service=object-store},300)
+        > 0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"4aa5d687-a11c-4556-a30f-f42e6cd8fefd","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/4aa5d687-a11c-4556-a30f-f42e6cd8fefd"}],"name":"swift-low-storage-warn-10tb","description":"Warn
+        free storage < 10 TB","expression":"min(swift.cluster.storage.free_bytes,
+        900) < 10000000000000","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"5b7bbc64-331a-446f-bd2b-b1aac79c3aa2","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/5b7bbc64-331a-446f-bd2b-b1aac79c3aa2"}],"name":"average
+        cpu usage in perc","description":"Definition for an important alarm","expression":"(avg(cpu.user_perc{hostname=devstack})
+        > 10)","match_by":["hostname"],"severity":"LOW","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"663e48ec-5fb8-493c-9994-96f294ee67ab","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/663e48ec-5fb8-493c-9994-96f294ee67ab"}],"name":"swift-overlapping-objects","description":"Alarms
+        on overlapping objects which point to cluster inconsistencies","expression":"min(swift.dispersion.object.overlapping,
+        120) > 0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":["f0bc7a4d-38a2-4843-94a6-a66e0fd00196"],"ok_actions":[],"undetermined_actions":["f0bc7a4d-38a2-4843-94a6-a66e0fd00196"]},{"id":"74bc26c2-f23e-4a07-b721-b8a51a935778","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/74bc26c2-f23e-4a07-b721-b8a51a935778"}],"name":"test-d042680-1","description":"test
+        for adef with multiple metrics","expression":"(min(cpu.user_perc{service=object-storage},
+        180) > 80) and (avg(cpu.user_perc{service=object-storage}, 180) > 99)","match_by":["hostname"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"a4320933-3a88-4b2c-b10a-77418980d706","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/a4320933-3a88-4b2c-b10a-77418980d706"}],"name":"swift-low-storage-alert-1tb","description":"Critical
+        alarm free storage < 1 TB","expression":"min(swift.cluster.storage.free_bytes,
+        900) < 1000000000000","match_by":["service"],"severity":"CRITICAL","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"a44eade4-2f4d-47fe-a424-0e1d7969be3e","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/a44eade4-2f4d-47fe-a424-0e1d7969be3e"}],"name":"monasca-disk-full","description":"Make
+        sure that we do not run out of disk space","expression":"max(disk.space_used_perc{service=monitoring},
+        180) > 75.0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"ad13df79-31dd-4486-8aac-d17d3c967dd4","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/ad13df79-31dd-4486-8aac-d17d3c967dd4"}],"name":"swift-disk-full","description":"Make
+        sure that we do not run out of disk space","expression":"max(disk.space_used_perc{service=object-store},
+        300) > 75.0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"cd401e10-8566-42b7-a9b7-479f9a805224","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/cd401e10-8566-42b7-a9b7-479f9a805224"}],"name":"monasca-mysql-down","description":"Make
+        sure that at least one MySQL deamon is up","expression":"max(process.pid_count{systemtype=monasca,process_name=mysqld},
+        180) < 1","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"dc4ea079-f963-4484-9df7-fe700a80689a","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/dc4ea079-f963-4484-9df7-fe700a80689a"}],"name":"swift-mismatched-rings","description":"Alarm
+        on mismatched rings","expression":"min(swift.cluster.md5.ring.not_matched,
+        120) > 0","match_by":["hostname","service","systemtype"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"dc7bc41e-daaa-4818-8674-1c35088a29a2","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/dc7bc41e-daaa-4818-8674-1c35088a29a2"}],"name":"monasca-api-congestion","description":"Make
+        sure that Monasca agents can emit metrics within few seconds","expression":"avg(monasca.emit_time_sec{component=monasca-agent,service=monitoring},
+        300) > 2","match_by":[],"severity":"HIGH","actions_enabled":false,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"deea9c09-3d5f-4691-960a-c9e94cd0840f","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/deea9c09-3d5f-4691-960a-c9e94cd0840f"}],"name":"monasca-notification-down","description":"Make
+        sure that the typical number of notification workers are up (>= 6)","expression":"max(process.pid_count{service=monitoring,component=monasca-notification})
+        < 6","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]}]}'
+    http_version: 
+  recorded_at: Fri, 20 May 2016 15:16:58 GMT
+- request:
+    method: post
+    uri: http://devstack.openstack.stack/v2.0/notification-methods
+    body:
+      encoding: UTF-8
+      string: '{"name":"important notification","type":"EMAIL","address":"admin@example.com"}'
+    headers:
+      User-Agent:
+      - fog-core/1.39.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 58f9614d13f74cc9865024446023941a
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 20 May 2016 15:16:58 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Location:
+      - http://devstack.openstack.stack/v2.0/notification-methods/bfda803b-fcee-4df8-8a16-2d56eaa6be8e
+    body:
+      encoding: UTF-8
+      string: '{"id":"bfda803b-fcee-4df8-8a16-2d56eaa6be8e","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/notification-methods/bfda803b-fcee-4df8-8a16-2d56eaa6be8e"}],"name":"important
+        notification","type":"EMAIL","address":"admin@example.com"}'
+    http_version: 
+  recorded_at: Fri, 20 May 2016 15:16:58 GMT
+- request:
+    method: put
+    uri: http://devstack.openstack.stack/v2.0/alarm-definitions/5b7bbc64-331a-446f-bd2b-b1aac79c3aa2
+    body:
+      encoding: UTF-8
+      string: '{"name":"CPU percent greater than 15","match_by":["hostname"],"description":"Replaced
+        alarm-definition expression","expression":"(avg(cpu.user_perc{hostname=devstack})
+        > 15)","severity":"LOW","alarm_actions":["bfda803b-fcee-4df8-8a16-2d56eaa6be8e"],"ok_actions":["bfda803b-fcee-4df8-8a16-2d56eaa6be8e"],"undetermined_actions":["bfda803b-fcee-4df8-8a16-2d56eaa6be8e"],"actions_enabled":true}'
+    headers:
+      User-Agent:
+      - fog-core/1.39.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 58f9614d13f74cc9865024446023941a
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 20 May 2016 15:16:58 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"id":"5b7bbc64-331a-446f-bd2b-b1aac79c3aa2","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/5b7bbc64-331a-446f-bd2b-b1aac79c3aa2"}],"name":"CPU
+        percent greater than 15","description":"Replaced alarm-definition expression","expression":"(avg(cpu.user_perc{hostname=devstack})
+        > 15)","match_by":["hostname"],"severity":"LOW","actions_enabled":true,"alarm_actions":["bfda803b-fcee-4df8-8a16-2d56eaa6be8e"],"ok_actions":["bfda803b-fcee-4df8-8a16-2d56eaa6be8e"],"undetermined_actions":["bfda803b-fcee-4df8-8a16-2d56eaa6be8e"]}'
+    http_version: 
+  recorded_at: Fri, 20 May 2016 15:16:58 GMT
+- request:
+    method: patch
+    uri: http://devstack.openstack.stack/v2.0/alarm-definitions/5b7bbc64-331a-446f-bd2b-b1aac79c3aa2
+    body:
+      encoding: UTF-8
+      string: '{"description":"An updated alarm-definition."}'
+    headers:
+      User-Agent:
+      - fog-core/1.39.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 58f9614d13f74cc9865024446023941a
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 20 May 2016 15:16:59 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"id":"5b7bbc64-331a-446f-bd2b-b1aac79c3aa2","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/5b7bbc64-331a-446f-bd2b-b1aac79c3aa2"}],"name":"CPU
+        percent greater than 15","description":"An updated alarm-definition.","expression":"(avg(cpu.user_perc{hostname=devstack})
+        > 15)","match_by":["hostname"],"severity":"LOW","actions_enabled":true,"alarm_actions":["bfda803b-fcee-4df8-8a16-2d56eaa6be8e"],"ok_actions":["bfda803b-fcee-4df8-8a16-2d56eaa6be8e"],"undetermined_actions":["bfda803b-fcee-4df8-8a16-2d56eaa6be8e"]}'
+    http_version: 
+  recorded_at: Fri, 20 May 2016 15:16:58 GMT
+- request:
+    method: delete
+    uri: http://devstack.openstack.stack/v2.0/alarm-definitions/5b7bbc64-331a-446f-bd2b-b1aac79c3aa2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.39.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 58f9614d13f74cc9865024446023941a
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 20 May 2016 15:16:59 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 20 May 2016 15:16:58 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack/v2.0/alarm-definitions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.39.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 58f9614d13f74cc9865024446023941a
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 20 May 2016 15:16:59 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding, Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions"}],"elements":[{"id":"02c03351-8819-4e5b-b518-d77aaca9ed9e","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/02c03351-8819-4e5b-b518-d77aaca9ed9e"}],"name":"swift-cpu-overload","description":"Make
+        sure that CPUs on Swift servers have sufficient spare capacity","expression":"avg(cpu.idle_perc{service=object-store},
+        300) < 20.0","match_by":["service"],"severity":"HIGH","actions_enabled":false,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"07ac6438-cd92-4b07-8ad0-b2718086c58c","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/07ac6438-cd92-4b07-8ad0-b2718086c58c"}],"name":"monasca-kafka-down","description":"Make
+        sure that at least one Kafka process is running","expression":"max(process.pid_count{process_name=kafka.Kafka,systemtype=monasca})
+        < 1","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"0f147ea9-47eb-41ce-a387-11b9735c43cb","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/0f147ea9-47eb-41ce-a387-11b9735c43cb"}],"name":"monasca-cpu-overload","description":"Make
+        sure that CPUs on Monasca servers have sufficient spare capacity","expression":"avg(cpu.idle_perc{service=monitoring},
+        180) < 20.0","match_by":["service"],"severity":"MEDIUM","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"1415550d-6fe8-4dcc-b2ce-9fcdb22738b6","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/1415550d-6fe8-4dcc-b2ce-9fcdb22738b6"}],"name":"monasca-disk-inodes-exhausted","description":"Make
+        sure that we do not run out of inodes on Monasca server filesystems","expression":"max(disk.inode_used_perc{service=monitoring},
+        180) > 75.0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"1a26608b-2895-4e82-90ef-a1deccc3382c","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/1a26608b-2895-4e82-90ef-a1deccc3382c"}],"name":"monasca-influxdb-down","description":"Make
+        sure that InfluxDB is running at least one process","expression":"max(process.pid_count{service=monitoring,component=influxdb},180)
+        < 1","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"1aea564e-2bd4-45c7-b1c0-9f2c0a4d1ec5","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/1aea564e-2bd4-45c7-b1c0-9f2c0a4d1ec5"}],"name":"monasca-mem-swapping","description":"Make
+        sure that Monasca services run in memory","expression":"avg(mem.swap_used_mb{systemtype=monasca})
+        > 0","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"25ae58a4-b653-444b-8a67-6f457eba0be9","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/25ae58a4-b653-444b-8a67-6f457eba0be9"}],"name":"swift-overlapping-containers","description":"Alarms
+        on overlapping containers which point to cluster inconsistencies","expression":"min(swift.dispersion.container.overlapping,120)
+        > 0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":["f0bc7a4d-38a2-4843-94a6-a66e0fd00196"],"ok_actions":[],"undetermined_actions":[]},{"id":"2f4bf078-a3f5-4fe2-9fa8-2f846a316d0c","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/2f4bf078-a3f5-4fe2-9fa8-2f846a316d0c"}],"name":"monasca-http-avail","description":"Warn
+        if Monasca endpoints are not reachable or return errors","expression":"sum(http_status{service=monitoring},
+        180) > 1","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"48e99108-112e-472b-a97e-ede4b1f9ca55","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/48e99108-112e-472b-a97e-ede4b1f9ca55"}],"name":"swift-no-mem-swapping","description":"Make
+        sure that Swift nodes run in memory","expression":"avg(mem.swap_used_mb{service=object-store},300)
+        > 0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"4aa5d687-a11c-4556-a30f-f42e6cd8fefd","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/4aa5d687-a11c-4556-a30f-f42e6cd8fefd"}],"name":"swift-low-storage-warn-10tb","description":"Warn
+        free storage < 10 TB","expression":"min(swift.cluster.storage.free_bytes,
+        900) < 10000000000000","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"663e48ec-5fb8-493c-9994-96f294ee67ab","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/663e48ec-5fb8-493c-9994-96f294ee67ab"}],"name":"swift-overlapping-objects","description":"Alarms
+        on overlapping objects which point to cluster inconsistencies","expression":"min(swift.dispersion.object.overlapping,
+        120) > 0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":["f0bc7a4d-38a2-4843-94a6-a66e0fd00196"],"ok_actions":[],"undetermined_actions":["f0bc7a4d-38a2-4843-94a6-a66e0fd00196"]},{"id":"74bc26c2-f23e-4a07-b721-b8a51a935778","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/74bc26c2-f23e-4a07-b721-b8a51a935778"}],"name":"test-d042680-1","description":"test
+        for adef with multiple metrics","expression":"(min(cpu.user_perc{service=object-storage},
+        180) > 80) and (avg(cpu.user_perc{service=object-storage}, 180) > 99)","match_by":["hostname"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"a4320933-3a88-4b2c-b10a-77418980d706","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/a4320933-3a88-4b2c-b10a-77418980d706"}],"name":"swift-low-storage-alert-1tb","description":"Critical
+        alarm free storage < 1 TB","expression":"min(swift.cluster.storage.free_bytes,
+        900) < 1000000000000","match_by":["service"],"severity":"CRITICAL","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"a44eade4-2f4d-47fe-a424-0e1d7969be3e","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/a44eade4-2f4d-47fe-a424-0e1d7969be3e"}],"name":"monasca-disk-full","description":"Make
+        sure that we do not run out of disk space","expression":"max(disk.space_used_perc{service=monitoring},
+        180) > 75.0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"ad13df79-31dd-4486-8aac-d17d3c967dd4","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/ad13df79-31dd-4486-8aac-d17d3c967dd4"}],"name":"swift-disk-full","description":"Make
+        sure that we do not run out of disk space","expression":"max(disk.space_used_perc{service=object-store},
+        300) > 75.0","match_by":["service"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"cd401e10-8566-42b7-a9b7-479f9a805224","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/cd401e10-8566-42b7-a9b7-479f9a805224"}],"name":"monasca-mysql-down","description":"Make
+        sure that at least one MySQL deamon is up","expression":"max(process.pid_count{systemtype=monasca,process_name=mysqld},
+        180) < 1","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"dc4ea079-f963-4484-9df7-fe700a80689a","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/dc4ea079-f963-4484-9df7-fe700a80689a"}],"name":"swift-mismatched-rings","description":"Alarm
+        on mismatched rings","expression":"min(swift.cluster.md5.ring.not_matched,
+        120) > 0","match_by":["hostname","service","systemtype"],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"dc7bc41e-daaa-4818-8674-1c35088a29a2","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/dc7bc41e-daaa-4818-8674-1c35088a29a2"}],"name":"monasca-api-congestion","description":"Make
+        sure that Monasca agents can emit metrics within few seconds","expression":"avg(monasca.emit_time_sec{component=monasca-agent,service=monitoring},
+        300) > 2","match_by":[],"severity":"HIGH","actions_enabled":false,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]},{"id":"deea9c09-3d5f-4691-960a-c9e94cd0840f","links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/alarm-definitions/deea9c09-3d5f-4691-960a-c9e94cd0840f"}],"name":"monasca-notification-down","description":"Make
+        sure that the typical number of notification workers are up (>= 6)","expression":"max(process.pid_count{service=monitoring,component=monasca-notification})
+        < 6","match_by":[],"severity":"HIGH","actions_enabled":true,"alarm_actions":[],"ok_actions":[],"undetermined_actions":[]}]}'
+    http_version: 
+  recorded_at: Fri, 20 May 2016 15:16:58 GMT
+- request:
+    method: delete
+    uri: http://devstack.openstack.stack/v2.0/notification-methods/bfda803b-fcee-4df8-8a16-2d56eaa6be8e
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.39.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 58f9614d13f74cc9865024446023941a
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.13
+      Date:
+      - Fri, 20 May 2016 15:16:59 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 20 May 2016 15:16:59 GMT
+recorded_with: VCR 3.0.1

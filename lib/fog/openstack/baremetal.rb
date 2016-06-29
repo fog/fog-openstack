@@ -248,7 +248,12 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        def initialize(options={})
+        # NOTE: uncommenting this should be treated as api-change!
+        # def self.not_found_class
+        #   Fog::Baremetal::OpenStack::NotFound
+        # end
+
+        def initialize(options = {})
           initialize_identity options
 
           @openstack_service_type  = options[:openstack_service_type] || ['baremetal']
@@ -257,51 +262,22 @@ module Fog
           @connection_options = options[:connection_options] || {}
 
           authenticate
+          set_api_path
 
+          @persistent = options[:persistent] || false
+          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+        end
+
+        private
+
+        def set_api_path
           unless @path.match(SUPPORTED_VERSIONS)
             @path = "/" + Fog::OpenStack.get_supported_version(SUPPORTED_VERSIONS,
                                                                @openstack_management_uri,
                                                                @auth_token,
                                                                @connection_options)
           end
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
         end
-
-        def request(params)
-          begin
-            response = @connection.request(params.merge({
-              :headers  => {
-                'Content-Type' => 'application/json',
-                'X-Auth-Token' => @auth_token
-              }.merge!(params[:headers] || {}),
-              :path     => "#{@path}/#{params[:path]}"#,
-            }))
-          rescue Excon::Errors::Unauthorized => error
-            if error.response.body != 'Bad username or password' # token expiration
-              @openstack_must_reauthenticate = true
-              authenticate
-              retry
-            else # bad credentials
-              raise error
-            end
-          rescue Excon::Errors::HTTPStatusError => error
-            raise case error
-            when Excon::Errors::NotFound
-              Fog::Compute::OpenStack::NotFound.slurp(error)
-            else
-              error
-            end
-          end
-          unless response.body.empty?
-            response.body = Fog::JSON.decode(response.body)
-          end
-          response
-        end
-
-        private
-
       end
     end
   end

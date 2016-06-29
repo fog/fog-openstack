@@ -16,6 +16,7 @@ module Fog
           response = Excon::Response.new
           if self.data[:volumes][attachment_id] &&
              self.data[:volumes][attachment_id]['attachments'].reject! { |attachment| attachment['serverId'] == server_id }
+            data[:volumes][attachment_id]['status'] = 'available'
             response.status = 202
             response
           else

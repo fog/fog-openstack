@@ -1,5 +1,4 @@
 require 'fog/openstack/core'
-require 'fog/openstack/common'
 require 'fog/openstack/volume'
 
 module Fog
@@ -138,10 +137,10 @@ module Fog
 
         class Real
           include Fog::OpenStack::Core
+
           def self.not_found_class
             Fog::Volume::OpenStack::NotFound
           end
-          include Fog::OpenStack::Common
 
           def initialize(options = {})
             initialize_identity options
@@ -153,16 +152,19 @@ module Fog
             @connection_options = options[:connection_options] || {}
 
             authenticate
+            set_api_path
 
+            @persistent = options[:persistent] || false
+            @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+          end
+
+          def set_api_path
             unless @path.match(SUPPORTED_VERSIONS)
               @path = Fog::OpenStack.get_supported_version_path(SUPPORTED_VERSIONS,
                                                                 @openstack_management_uri,
                                                                 @auth_token,
                                                                 @connection_options)
             end
-
-            @persistent = options[:persistent] || false
-            @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
           end
         end
       end

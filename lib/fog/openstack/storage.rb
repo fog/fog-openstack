@@ -82,6 +82,10 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
+        def self.not_found_class
+          Fog::Storage::OpenStack::NotFound
+        end
+
         def initialize(options={})
           initialize_identity options
 
@@ -140,41 +144,6 @@ module Fog
         def reset_account_name
           @path = @original_path
         end
-
-        def request(params, parse_json = true)
-          begin
-            response = @connection.request(params.merge({
-              :headers  => {
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-                'X-Auth-Token' => @auth_token
-              }.merge!(params[:headers] || {}),
-              :path     => "#{@path}/#{params[:path]}",
-            }))
-          rescue Excon::Errors::Unauthorized => error
-            if error.response.body != 'Bad username or password' # token expiration
-              @openstack_must_reauthenticate = true
-              authenticate
-              retry
-            else # bad credentials
-              raise error
-            end
-          rescue Excon::Errors::HTTPStatusError => error
-            raise case error
-            when Excon::Errors::NotFound
-              Fog::Storage::OpenStack::NotFound.slurp(error)
-            else
-              error
-            end
-          end
-          if !response.body.empty? && parse_json && response.get_header('Content-Type') =~ %r{application/json}
-            response.body = Fog::JSON.decode(response.body)
-          end
-          response
-        end
-
-        private
-
       end
     end
   end

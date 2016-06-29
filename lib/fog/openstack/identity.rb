@@ -42,13 +42,14 @@ module Fog
       end
 
       class Real
+        include Fog::OpenStack::Core
+
         DEFAULT_SERVICE_TYPE_V3 = %w(identity_v3 identityv3 identity).collect(&:freeze).freeze
         DEFAULT_SERVICE_TYPE    = %w(identity).collect(&:freeze).freeze
 
         def self.not_found_class
           Fog::Identity::OpenStack::NotFound
         end
-        include Fog::OpenStack::Common
 
         def initialize(options = {})
           if options.respond_to?(:config_service?) && options.config_service?

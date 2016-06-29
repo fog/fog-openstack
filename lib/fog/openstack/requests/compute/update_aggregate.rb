@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def update_aggregate(uuid, options = {})
-          vanilla_options = ['name', 'availability_zone']
+          vanilla_options = [:name, :availability_zone]
 
           data = {'aggregate' => {}}
           vanilla_options.select{|o| options[o]}.each do |key|
