@@ -5,7 +5,7 @@ http_interactions:
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"id":"default"},"name":"admin"}}},"scope":{"domain":{"id":"default"}}}}'
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"admin"}}},"scope":{"domain":{"name":"Default"}}}}'
     headers:
       User-Agent:
       - fog-core/1.40.0
@@ -17,15 +17,15 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Fri, 15 Jul 2016 13:11:46 GMT
+      - Fri, 15 Jul 2016 11:17:59 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       X-Subject-Token:
-      - 19add1fa6b9042ed975c1460bfe3edb1
+      - 364aa24bffe44e4d95775e498bbd3654
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-8b75a1fa-c313-4aeb-9da5-a25a62a6c60e
+      - req-17584240-97d9-4f22-9f59-8a218e30d8b9
       Content-Length:
       - '4597'
       Content-Type:
@@ -34,7 +34,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"token": {"domain": {"id": "default", "name": "Default"}, "methods":
         ["password"], "roles": [{"id": "5929fb4077c3415c9850e66f2c2be16b", "name":
-        "admin"}], "expires_at": "2016-07-15T14:11:46.564405Z", "catalog": [{"endpoints":
+        "admin"}], "expires_at": "2016-07-15T12:17:59.176816Z", "catalog": [{"endpoints":
         [], "type": "volumev2", "id": "1766683b2f9f4ef2acf7f9e4e359fb9a", "name":
         "cinderv2"}, {"endpoints": [], "type": "metering", "id": "18dbb2f0ddeb45b99d11ed0568f153ab",
         "name": "ceilometer"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
@@ -85,8 +85,8 @@ http_interactions:
         "region": "RegionOne", "interface": "admin", "id": "b91bd1a6c34b4973b3d48f94516358bc"}],
         "type": "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1", "name":
         "swift"}], "extras": {}, "user": {"domain": {"id": "default", "name": "Default"},
-        "id": "205e0e39a2534743b517ed0aa2fbcda7", "name": "admin"}, "audit_ids": ["457h7OtNQ2ixNIpf9q3Crw"],
-        "issued_at": "2016-07-15T13:11:46.564459Z"}}'
+        "id": "205e0e39a2534743b517ed0aa2fbcda7", "name": "admin"}, "audit_ids": ["i8jy2Gr6TeOzierXutkLYg"],
+        "issued_at": "2016-07-15T11:17:59.176885Z"}}'
     http_version: 
-  recorded_at: Fri, 15 Jul 2016 13:11:17 GMT
+  recorded_at: Fri, 15 Jul 2016 11:17:30 GMT
 recorded_with: VCR 3.0.1

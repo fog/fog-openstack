@@ -8,40 +8,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1605f7328eb24e7594ea95b81676ce58
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:17 GMT
+      - Fri, 15 Jul 2016 13:11:50 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-185a5643-c949-45b6-802a-00fe5d6ca80c
+      - req-5ab7b56c-76bd-41d9-82b1-8f894fc3c4e9
       Content-Length:
       - '2928'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"services": [{"description": "Cinder Volume Service V2", "links":
@@ -81,7 +71,7 @@ http_interactions:
         "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:17 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:21 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -90,47 +80,37 @@ http_interactions:
       string: '{"service":{"type":"volume","name":"foobar"}}'
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1605f7328eb24e7594ea95b81676ce58
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:17 GMT
+      - Fri, 15 Jul 2016 13:11:50 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-fd741145-6e96-402d-a005-5a54459a647b
+      - req-f56f8571-1811-4ce9-98f8-a5cf1bed1c0e
       Content-Length:
       - '201'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"service": {"enabled": true, "type": "volume", "name": "foobar", "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480"},
-        "id": "946ebec56e6b4a0eab31a70a51516480"}}'
+        {"self": "http://devstack.openstack.stack:35357/v3/services/c058a07136474aaba3ecdb3a2878a423"},
+        "id": "c058a07136474aaba3ecdb3a2878a423"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:17 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:21 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services?type=volume
@@ -139,100 +119,80 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1605f7328eb24e7594ea95b81676ce58
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:17 GMT
+      - Fri, 15 Jul 2016 13:11:50 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c7601a21-6ee0-4d1b-9927-10393a17fd2f
+      - req-b569cc36-c091-4e65-8875-959c4f566c19
       Content-Length:
       - '538'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"services": [{"description": "Cinder Volume Service", "links": {"self":
         "http://devstack.openstack.stack:35357/v3/services/4a6033d57e30494a9577358d90d08123"},
         "enabled": true, "type": "volume", "id": "4a6033d57e30494a9577358d90d08123",
         "name": "cinder"}, {"enabled": true, "type": "volume", "name": "foobar", "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480"},
-        "id": "946ebec56e6b4a0eab31a70a51516480"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services?type=volume",
+        {"self": "http://devstack.openstack.stack:35357/v3/services/c058a07136474aaba3ecdb3a2878a423"},
+        "id": "c058a07136474aaba3ecdb3a2878a423"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services?type=volume",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:17 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:21 GMT
 - request:
     method: patch
-    uri: http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480
+    uri: http://devstack.openstack.stack:35357/v3/services/c058a07136474aaba3ecdb3a2878a423
     body:
       encoding: UTF-8
       string: '{"service":{"name":"baz"}}'
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1605f7328eb24e7594ea95b81676ce58
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:17 GMT
+      - Fri, 15 Jul 2016 13:11:50 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-f821031f-0847-40ac-b070-ebbe5475f224
+      - req-1b2338cb-abe9-4ba2-ab16-49e091c8563a
       Content-Length:
       - '198'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"service": {"enabled": true, "type": "volume", "name": "baz", "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480"},
-        "id": "946ebec56e6b4a0eab31a70a51516480"}}'
+        {"self": "http://devstack.openstack.stack:35357/v3/services/c058a07136474aaba3ecdb3a2878a423"},
+        "id": "c058a07136474aaba3ecdb3a2878a423"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:17 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:21 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -241,40 +201,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1605f7328eb24e7594ea95b81676ce58
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:17 GMT
+      - Fri, 15 Jul 2016 13:11:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c095bcac-2e19-40fe-b00f-e86163fb4d2d
+      - req-5c54d7d2-9fcf-4d2c-bd9a-2615b39b25ac
       Content-Length:
       - '3115'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"services": [{"description": "Cinder Volume Service V2", "links":
@@ -304,19 +254,20 @@ http_interactions:
         "name": "Monitoring"}, {"description": "Nova Compute Service (Legacy 2.0)",
         "links": {"self": "http://devstack.openstack.stack:35357/v3/services/92e80becd6d8462b8f51fb227eb11999"},
         "enabled": true, "type": "compute_legacy", "id": "92e80becd6d8462b8f51fb227eb11999",
-        "name": "nova_legacy"}, {"enabled": true, "type": "volume", "name": "baz",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480"},
-        "id": "946ebec56e6b4a0eab31a70a51516480"}, {"description": "Glance Image Service",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/b936e5bfd38e4a3b97fcb8d08840881f"},
+        "name": "nova_legacy"}, {"description": "Glance Image Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/b936e5bfd38e4a3b97fcb8d08840881f"},
         "enabled": true, "type": "image", "id": "b936e5bfd38e4a3b97fcb8d08840881f",
-        "name": "glance"}, {"description": "Neutron Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c626cfc79ed34e3699c2d96c58d105cd"},
+        "name": "glance"}, {"enabled": true, "type": "volume", "name": "baz", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/c058a07136474aaba3ecdb3a2878a423"},
+        "id": "c058a07136474aaba3ecdb3a2878a423"}, {"description": "Neutron Service",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c626cfc79ed34e3699c2d96c58d105cd"},
         "enabled": true, "type": "network", "id": "c626cfc79ed34e3699c2d96c58d105cd",
         "name": "neutron"}, {"description": "Swift Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/e6a92b95728740ea9bda0c348a89f0f1"},
         "enabled": true, "type": "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1",
         "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:17 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:22 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -325,40 +276,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1605f7328eb24e7594ea95b81676ce58
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:17 GMT
+      - Fri, 15 Jul 2016 13:11:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-d6dc2de3-a10d-46ad-a576-734d49fef08a
+      - req-2129acd6-1066-42f8-9ae7-398675c762e0
       Content-Length:
       - '3115'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"services": [{"description": "Cinder Volume Service V2", "links":
@@ -388,64 +329,55 @@ http_interactions:
         "name": "Monitoring"}, {"description": "Nova Compute Service (Legacy 2.0)",
         "links": {"self": "http://devstack.openstack.stack:35357/v3/services/92e80becd6d8462b8f51fb227eb11999"},
         "enabled": true, "type": "compute_legacy", "id": "92e80becd6d8462b8f51fb227eb11999",
-        "name": "nova_legacy"}, {"enabled": true, "type": "volume", "name": "baz",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480"},
-        "id": "946ebec56e6b4a0eab31a70a51516480"}, {"description": "Glance Image Service",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/b936e5bfd38e4a3b97fcb8d08840881f"},
+        "name": "nova_legacy"}, {"description": "Glance Image Service", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/services/b936e5bfd38e4a3b97fcb8d08840881f"},
         "enabled": true, "type": "image", "id": "b936e5bfd38e4a3b97fcb8d08840881f",
-        "name": "glance"}, {"description": "Neutron Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c626cfc79ed34e3699c2d96c58d105cd"},
+        "name": "glance"}, {"enabled": true, "type": "volume", "name": "baz", "links":
+        {"self": "http://devstack.openstack.stack:35357/v3/services/c058a07136474aaba3ecdb3a2878a423"},
+        "id": "c058a07136474aaba3ecdb3a2878a423"}, {"description": "Neutron Service",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/services/c626cfc79ed34e3699c2d96c58d105cd"},
         "enabled": true, "type": "network", "id": "c626cfc79ed34e3699c2d96c58d105cd",
         "name": "neutron"}, {"description": "Swift Service", "links": {"self": "http://devstack.openstack.stack:35357/v3/services/e6a92b95728740ea9bda0c348a89f0f1"},
         "enabled": true, "type": "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1",
         "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:18 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:22 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/services/946ebec56e6b4a0eab31a70a51516480
+    uri: http://devstack.openstack.stack:35357/v3/services/c058a07136474aaba3ecdb3a2878a423
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1605f7328eb24e7594ea95b81676ce58
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:17 GMT
+      - Fri, 15 Jul 2016 13:11:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-011564e2-9c8d-49fa-9517-a00237382ef3
+      - req-68c59d0d-ea0e-48d7-9ba5-f28eb478b96b
       Content-Length:
       - '0'
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:18 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:22 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -454,40 +386,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1605f7328eb24e7594ea95b81676ce58
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:18 GMT
+      - Fri, 15 Jul 2016 13:11:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-511b1c15-4c0d-4a8c-9f3e-e81c480dcfef
+      - req-2fce9756-9172-4671-9605-57a5e0010c95
       Content-Length:
       - '2928'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"services": [{"description": "Cinder Volume Service V2", "links":
@@ -527,55 +449,45 @@ http_interactions:
         "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:18 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:22 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/projects/946ebec56e6b4a0eab31a70a51516480
+    uri: http://devstack.openstack.stack:35357/v3/projects/c058a07136474aaba3ecdb3a2878a423
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1605f7328eb24e7594ea95b81676ce58
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:18 GMT
+      - Fri, 15 Jul 2016 13:11:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-37347309-b18a-47c7-955c-c7f9b496d63b
+      - req-c9262b6c-9dcc-46e6-bc0d-c4e004490d2e
       Content-Length:
       - '117'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"error": {"message": "Could not find project: 946ebec56e6b4a0eab31a70a51516480",
+      string: '{"error": {"message": "Could not find project: c058a07136474aaba3ecdb3a2878a423",
         "code": 404, "title": "Not Found"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:18 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:22 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -584,40 +496,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1605f7328eb24e7594ea95b81676ce58
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:18 GMT
+      - Fri, 15 Jul 2016 13:11:51 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-e0a961db-f3b1-4388-9b67-d2334a64caec
+      - req-f73cda78-a3b8-4ae2-a3bf-7f46c45348a7
       Content-Length:
       - '2928'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"services": [{"description": "Cinder Volume Service V2", "links":
@@ -657,5 +559,5 @@ http_interactions:
         "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:18 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:22 GMT
 recorded_with: VCR 3.0.1

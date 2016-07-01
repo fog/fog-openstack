@@ -8,40 +8,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 80f54d406ef148baae1e82e1adba7f50
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:16 GMT
+      - Fri, 15 Jul 2016 13:11:54 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-6c09504b-f879-42ec-86f6-c4c317114cd3
+      - req-866534a0-dbf9-4e39-9983-df3afcedf48a
       Content-Length:
       - '2928'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"services": [{"description": "Cinder Volume Service V2", "links":
@@ -81,7 +71,7 @@ http_interactions:
         "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:16 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:25 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -90,40 +80,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 80f54d406ef148baae1e82e1adba7f50
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:16 GMT
+      - Fri, 15 Jul 2016 13:11:54 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-5df19884-3a62-4223-9554-d9d79b460c0a
+      - req-ce2f1e57-97d1-43cb-95c7-7816a01490fc
       Content-Length:
       - '2928'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"services": [{"description": "Cinder Volume Service V2", "links":
@@ -163,7 +143,7 @@ http_interactions:
         "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:16 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:25 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -172,40 +152,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 80f54d406ef148baae1e82e1adba7f50
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:16 GMT
+      - Fri, 15 Jul 2016 13:11:54 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-f7eb9de0-5c6f-44ec-a9c4-6fb962b64d25
+      - req-cbe7f2ea-cc06-46d6-a158-9bbea3505bce
       Content-Length:
       - '2928'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"services": [{"description": "Cinder Volume Service V2", "links":
@@ -245,7 +215,7 @@ http_interactions:
         "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:17 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:25 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/services
@@ -254,40 +224,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 80f54d406ef148baae1e82e1adba7f50
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:17 GMT
+      - Fri, 15 Jul 2016 13:11:54 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-b58b66d8-542e-45cd-a777-12889353fa30
+      - req-791c7ad0-3f70-4b05-88a4-7028aa3ca6c8
       Content-Length:
       - '2928'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"services": [{"description": "Cinder Volume Service V2", "links":
@@ -327,7 +287,7 @@ http_interactions:
         "name": "swift"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/services",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:17 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:25 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/projects/atlantis
@@ -336,44 +296,34 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 80f54d406ef148baae1e82e1adba7f50
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:17 GMT
+      - Fri, 15 Jul 2016 13:11:54 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c418fb9b-9490-4ab9-9adf-b0515cc83e3a
+      - req-745c3634-de33-4e32-a4f9-06405711a001
       Content-Length:
       - '93'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"error": {"message": "Could not find project: atlantis", "code": 404,
         "title": "Not Found"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:17 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:25 GMT
 recorded_with: VCR 3.0.1

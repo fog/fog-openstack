@@ -8,40 +8,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - b82ddd5cf2a84a7f9600158ac49833f7
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:03 GMT
+      - Fri, 15 Jul 2016 13:11:35 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-070d0868-bb88-44d4-9986-4ffc4a0376c5
+      - req-a87c8670-6f62-4759-9d16-03bd9f0ff0cc
       Content-Length:
       - '1508'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/roles", "previous":
@@ -64,7 +54,7 @@ http_interactions:
         {"self": "http://devstack.openstack.stack:35357/v3/roles/eb9f0f3b348042ffa65f9d33e5d72014"},
         "name": "anotherrole"}]}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:03 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:06 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/roles
@@ -73,40 +63,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - b82ddd5cf2a84a7f9600158ac49833f7
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:03 GMT
+      - Fri, 15 Jul 2016 13:11:35 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-e93f3e40-c027-4dc0-9500-0f87f6f59a71
+      - req-b130c802-ab21-47c7-8cbb-d01d9f945399
       Content-Length:
       - '1508'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/roles", "previous":
@@ -129,7 +109,7 @@ http_interactions:
         {"self": "http://devstack.openstack.stack:35357/v3/roles/eb9f0f3b348042ffa65f9d33e5d72014"},
         "name": "anotherrole"}]}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:03 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:06 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/roles
@@ -138,40 +118,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - b82ddd5cf2a84a7f9600158ac49833f7
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:03 GMT
+      - Fri, 15 Jul 2016 13:11:35 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-eff80842-c60b-4479-a101-5980e14ff7d4
+      - req-a8c59a79-1185-4103-b2dc-f765bda3dec9
       Content-Length:
       - '1508'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/roles", "previous":
@@ -194,7 +164,7 @@ http_interactions:
         {"self": "http://devstack.openstack.stack:35357/v3/roles/eb9f0f3b348042ffa65f9d33e5d72014"},
         "name": "anotherrole"}]}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:03 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:06 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/roles
@@ -203,40 +173,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - b82ddd5cf2a84a7f9600158ac49833f7
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:03 GMT
+      - Fri, 15 Jul 2016 13:11:35 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-b84afbf1-7471-4dc5-950d-c0f15fef179f
+      - req-e9863496-8105-4b48-9eaa-8daf954b7522
       Content-Length:
       - '1508'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/roles", "previous":
@@ -259,7 +219,7 @@ http_interactions:
         {"self": "http://devstack.openstack.stack:35357/v3/roles/eb9f0f3b348042ffa65f9d33e5d72014"},
         "name": "anotherrole"}]}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:03 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:06 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/roles/atlantis
@@ -268,44 +228,34 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - b82ddd5cf2a84a7f9600158ac49833f7
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:03 GMT
+      - Fri, 15 Jul 2016 13:11:35 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-91306740-13cd-447e-b82c-e2ba052f0485
+      - req-c95b8758-287b-4718-b044-314c54047ebe
       Content-Length:
       - '90'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"error": {"message": "Could not find role: atlantis", "code": 404,
         "title": "Not Found"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:03 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:06 GMT
 recorded_with: VCR 3.0.1

@@ -8,40 +8,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 42ec51e9014e494bb963346c0f060962
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:46 GMT
+      - Fri, 15 Jul 2016 13:11:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-9df51694-9cc3-4fdf-ada5-d2e56de7e964
+      - req-487cb087-e8b9-4636-a77a-61e628ad3f56
       Content-Length:
       - '6188'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"users": [{"name": "swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/0536d9fac63c465ebf60a2a5f87bea1f"},
@@ -113,7 +103,7 @@ http_interactions:
         "a5db6ff5a6274dd589b6a05945d7f34d"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/users",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:46 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:09 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users/u-random-blah
@@ -122,46 +112,36 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 42ec51e9014e494bb963346c0f060962
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:46 GMT
+      - Fri, 15 Jul 2016 13:11:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-46114116-48bb-4bf3-b528-8b4c66a37027
+      - req-9415edcd-db26-4507-b9d2-c67fd4fbbf5f
       Content-Length:
       - '95'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"error": {"message": "Could not find user: u-random-blah", "code":
         404, "title": "Not Found"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:46 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:09 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users?name=admin
@@ -170,40 +150,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 42ec51e9014e494bb963346c0f060962
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:46 GMT
+      - Fri, 15 Jul 2016 13:11:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-0aad0e62-16a2-424f-b780-461e29589f68
+      - req-0c228aaf-c74d-414b-8e01-4a63d7c30a6f
       Content-Length:
       - '303'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"users": [{"name": "admin", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/205e0e39a2534743b517ed0aa2fbcda7"},
@@ -211,7 +181,7 @@ http_interactions:
         "links": {"self": "http://devstack.openstack.stack:35357/v3/users?name=admin", "previous":
         null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:46 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:09 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users
@@ -220,40 +190,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 42ec51e9014e494bb963346c0f060962
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:46 GMT
+      - Fri, 15 Jul 2016 13:11:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-9d2687c4-ff02-4262-9e29-c1cb9596e91d
+      - req-6027ab15-80c0-4703-8fbc-1ca977e241a6
       Content-Length:
       - '6188'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"users": [{"name": "swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/0536d9fac63c465ebf60a2a5f87bea1f"},
@@ -325,7 +285,7 @@ http_interactions:
         "a5db6ff5a6274dd589b6a05945d7f34d"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/users",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:46 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:09 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users
@@ -334,40 +294,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 42ec51e9014e494bb963346c0f060962
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:46 GMT
+      - Fri, 15 Jul 2016 13:11:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-844ef04c-63dc-43b7-ad98-b612b282f64f
+      - req-78794535-7bc5-4d57-b874-fe386f714371
       Content-Length:
       - '6188'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"users": [{"name": "swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/0536d9fac63c465ebf60a2a5f87bea1f"},
@@ -439,7 +389,7 @@ http_interactions:
         "a5db6ff5a6274dd589b6a05945d7f34d"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/users",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:46 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:09 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users
@@ -448,40 +398,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 42ec51e9014e494bb963346c0f060962
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:46 GMT
+      - Fri, 15 Jul 2016 13:11:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-1d47b73e-14cc-40e0-9c09-65e44cb7b50e
+      - req-fb8f487c-3838-4108-a0fc-b891ea033ecf
       Content-Length:
       - '6188'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"users": [{"name": "swift", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/0536d9fac63c465ebf60a2a5f87bea1f"},
@@ -553,7 +493,7 @@ http_interactions:
         "a5db6ff5a6274dd589b6a05945d7f34d"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/users",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:46 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:09 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/users?name=pimpernel
@@ -562,44 +502,34 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 42ec51e9014e494bb963346c0f060962
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:46 GMT
+      - Fri, 15 Jul 2016 13:11:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c36d5c92-7fce-4300-a7d0-39dcde5a2624
+      - req-7e10cdfd-1fa9-4d06-bacd-a34b8ea012a0
       Content-Length:
       - '117'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"users": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/users?name=pimpernel",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:47 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:09 GMT
 recorded_with: VCR 3.0.1
