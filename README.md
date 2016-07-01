@@ -310,43 +310,26 @@ volume.destroy
 
 ### Image (Glance)
 
-Create Glance image from URL:
+Download Glance image:
 
 ```ruby
 
 image = Fog::Image::OpenStack.new(@connection_params)
 
-cirros_location = "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
+image_out = File.open("/tmp/cirros-image-download", 'wb')
 
-image.images.create name:             "cirros",
-                    disk_format:      "qcow2",
-                    container_format: "bare",
-                    location:         cirros_location
-# =>   <Fog::Image::OpenStack::V2::Image
-#     id="4beedb46-e32f-4ef3-a87b-7f1234294dc1",
-#     name="cirros",
-#     visibility="private",
-#     tags=[],
-#     self="/v2/images/4beedb46-e32f-4ef3-a87b-7f1234294dc1",
-#     size=nil,
-#     disk_format="qcow2",
-#     container_format="bare",
-#     id="4beedb46-e32f-4ef3-a87b-7f1234294dc1",
-#     checksum=nil,
-#     self="/v2/images/4beedb46-e32f-4ef3-a87b-7f1234294dc1",
-#     file="/v2/images/4beedb46-e32f-4ef3-a87b-7f1234294dc1/file",
-#     min_disk=0,
-#     created_at="2016-03-07T14:28:10Z",
-#     updated_at="2016-03-07T14:28:10Z",
-#     protected=false,
-#     status="queued",
-#   >
+streamer = lambda do |chunk, _, _|
+  image_out.write chunk
+end
+
+image.download_image(image.images.first.id, response_block: streamer)
 
 ```
 
-Create Glance image from file:
+Create Glance image from file or URL:
 
 ```ruby
+
 cirros_location = "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
 image_out = File.open("/tmp/cirros-image-#{SecureRandom.hex}", 'wb')
 
@@ -359,8 +342,9 @@ image_out.close
 
 image.images.create name:             "cirros",
                     disk_format:      "qcow2",
-                    container_format: "bare",
-                    location:         image_out.path
+                    container_format: "bare"
+
+image.upload_data File.binread(image_out.path)
 
 ```
 
