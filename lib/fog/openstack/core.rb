@@ -78,13 +78,14 @@ module Fog
       def request(params, parse_json = true)
         retried = false
         begin
+          _path=@path
           response = @connection.request(params.merge(
                                            :headers => {
                                              'Content-Type' => 'application/json',
                                              'Accept'       => 'application/json',
                                              'X-Auth-Token' => @auth_token
                                            }.merge!(params[:headers] || {}),
-                                           :path    => "#{@path}/#{params[:path]}"
+                                           :path    => "#{_path}/#{params[:path]}"
           ))
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible
