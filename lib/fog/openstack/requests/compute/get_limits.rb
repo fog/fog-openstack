@@ -1,20 +1,21 @@
 module Fog
   module Compute
     class OpenStack
-      # http://docs.openstack.org/api/openstack-compute/2/content/ProgramaticLimits.html
-      #
+      # http://developer.openstack.org/api-ref-compute-v2.1.html#showlimits
+
       class Real
-        def get_limits
+        def get_limits(options = {})
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => '/limits.json'
+            :expects => 200,
+            :method  => 'GET',
+            :path    => '/limits',
+            :query   => options
           )
         end
       end
 
       class Mock
-        def get_limits
+        def get_limits(_options = {})
           rate_limits = [
             { 'regex' => '.*',
               'limit' => [
