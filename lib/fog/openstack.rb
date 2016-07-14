@@ -61,6 +61,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../fog/openstack/monitoring', __FILE__)
   end
 
+  module Workflow
+    autoload :OpenStack, File.expand_path('../openstack/workflow', __FILE__)
+  end
+
   module OpenStack
     extend Fog::Provider
 
@@ -77,6 +81,7 @@ module Fog
     service(:planning,      'Planning')
     service(:introspection, 'Introspection')
     service(:monitoring,    'Monitoring')
+    service(:workflow,      'Workflow')
 
     @@token_cache = {}
 
