@@ -2,12 +2,11 @@ module Fog
   module Monitoring
     class OpenStack
       class Real
-        def get_alarm(options = {})
+        def get_alarm(id)
           request(
             :expects => [200],
             :method  => 'GET',
-            :path    => "alarms/#{id}",
-            :query   => options
+            :path    => "alarms/#{id}"
           )
         end
       end

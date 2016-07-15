@@ -15,7 +15,7 @@ module Fog
           cached_alarm = detect { |alarm| alarm.id == id }
           return cached_alarm if cached_alarm
           alarm_hash = service.get_alarm(id).body
-          Fog::Identity::OpenStack::Alarm.new(
+          Fog::Monitoring::OpenStack::Alarm.new(
             alarm_hash.merge(:service => service)
           )
         end
