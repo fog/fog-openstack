@@ -13,9 +13,9 @@ module Fog
       end
 
       class Mock
-        def list_server_groups(options = {})
+        def list_server_groups(_options = {})
           groups = data[:server_groups].map do |id, grp|
-            grp.merge({ 'id' => id, 'project_id' => 'test-project', 'user_id' => 'test-user' })
+            grp.merge('id' => id, 'project_id' => 'test-project', 'user_id' => 'test-user')
           end
           Excon::Response.new(
             :body   => { 'server_groups' => groups },

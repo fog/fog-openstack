@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def delete_server_group(group_id)
-          rsp = request(
+          request(
             :expects  => 204,
             :method   => 'DELETE',
             :path     => "os-server-groups/#{group_id}"
@@ -13,25 +13,14 @@ module Fog
 
       class Mock
         def delete_server_group(group_id)
-          if data[:server_groups].delete(group_id)
-            response = Excon::Response.new
-            response.status = 204
-            response.headers = {
-              "Content-Type" => "text/html; charset=UTF-8",
-              "Content-Length" => "0",
-              "Date" => Date.new
-            }
-            response
-          else
-            response = Excon::Response.new
-            response.status = 404
-            response.headers = {
-              "Content-Type" => "text/html; charset=UTF-8",
-              "Content-Length" => "0",
-              "Date" => Date.new
-            }
-            response
-          end
+          response = Excon::Response.new
+          response.status = data[:server_groups].delete(group_id) ? 204 : 404
+          response.headers = {
+            "Content-Type" => "text/html; charset=UTF-8",
+            "Content-Length" => "0",
+            "Date" => Date.new
+          }
+          response
         end
       end
     end

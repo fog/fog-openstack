@@ -9,7 +9,7 @@ module Fog
             'name' => name,
             'policies' => [policy]
           }}
-          rsp = request(
+          request(
             :body     => Fog::JSON.encode(body),
             :expects  => 200,
             :method   => 'POST',
