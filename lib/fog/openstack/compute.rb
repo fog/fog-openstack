@@ -292,6 +292,7 @@ module Fog
                   ],
                 },
               },
+              :server_groups             => {},
               :server_security_group_map => {},
               :addresses                 => {},
               :quota                     => {

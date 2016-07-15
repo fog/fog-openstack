@@ -169,6 +169,12 @@ module Fog
 
           self.data[:last_modified][:servers][server_id] = Time.now
           self.data[:servers][server_id] = mock_data
+
+          if options['os:scheduler_hints'] && options['os:scheduler_hints']['group']
+            grp = self.data[:server_groups][options['os:scheduler_hints']['group']]
+            grp[:members] << server_id if grp
+          end
+
           if options['return_reservation_id'] == 'True' then
             response.body = response_data
           else

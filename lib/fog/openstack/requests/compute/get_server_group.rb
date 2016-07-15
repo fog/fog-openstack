@@ -13,18 +13,23 @@ module Fog
 
       class Mock
         def get_server_group(group_id)
+          grp = data[:server_groups][group_id]
           response = Excon::Response.new
           response.status = 200
-          response.body = {
-            'server_group' => {
-              'id' => group_id,
-              'name' => 'test-server-group',
-              'policies' => [ 'anti-affinity' ],
-              'members' => [],
-              'project_id' => 'test-project',
-              'user_id' => 'test-user'
-            }
+          response.headers = {
+            "Content-Type" => "text/html; charset=UTF-8",
+            "Content-Length" => "0",
+            "Date" => Date.new
           }
+          response.body = { 'server_group' => {
+            'id'         => group_id,
+            'name'       => grp[:name],
+            'policies'   => grp[:policies],
+            'members'    => grp[:members],
+            'metadata'   => {},
+            'project_id' => 'test-project',
+            'user_id'    => 'test-user'
+          } }
           response
         end
       end

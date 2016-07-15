@@ -21,24 +21,9 @@ module Fog
       class Mock
         def create_server_group(name, policy)
           Fog::Compute::OpenStack::ServerGroup.validate_server_group_policy policy
-
-          response = Excon::Response.new
-          response.status = 200
-          response.headers = {
-            "Content-Type" => "text/html; charset=UTF-8",
-            "Content-Length" => "0",
-            "Date" => Date.new
-          }
-          response.body = { 'server_group' => {
-            'id'         => '1234',
-            'name'       => name,
-            'policies'   => [ policy ],
-            'members'    => [],
-            'metadata'   => {},
-            'project_id' => 'test-project',
-            'user_id'    => 'test-user'
-          } }
-          response
+          id = SecureRandom.uuid
+          data[:server_groups][id] = { name: name, policies: [policy], members: []}
+          get_server_group id
         end
       end
     end
