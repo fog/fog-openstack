@@ -100,7 +100,6 @@ module Fog
         def default_options
           {
             :stack_name       => stack_name,
-            :disable_rollback => disable_rollback,
             :timeout_mins     => timeout_mins
           }
         end
