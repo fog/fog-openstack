@@ -104,14 +104,14 @@ module Fog
             else
               template
             end
-
-          {
+          options = {
             :stack_name       => stack_name,
             :disable_rollback => disable_rollback,
-            :template_url     => @template_url,
-            :template         => template_content,
             :timeout_mins     => timeout_mins
           }
+          options[:template] = template_content if template_content
+          options[:template_url] = @template_url if @template_url
+          options
         end
         private :default_options
       end
