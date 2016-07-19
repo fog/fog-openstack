@@ -131,10 +131,9 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        # NOTE: uncommenting this should be treated as api-change!
-        # def self.not_found_class
-        #   Fog::Orchestration::OpenStack::NotFound
-        # end
+        def self.not_found_class
+          Fog::Orchestration::OpenStack::NotFound
+        end
 
         def initialize(options={})
           initialize_identity options
