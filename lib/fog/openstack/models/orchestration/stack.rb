@@ -15,9 +15,9 @@ module Fog
 
         def save(options={})
           if persisted?
-            service.update_stack(self, default_options.merge(options)).body['stack']
+            service.update_stack(self, options).body['stack']
           else
-            service.stacks.create(default_options.merge(options))
+            service.stacks.create(options)
           end
         end
 
