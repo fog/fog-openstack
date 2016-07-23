@@ -28,7 +28,7 @@ module Fog
           end
 
           new(data)
-        rescue Fog::Compute::OpenStack::NotFound
+        rescue Fog::Orchestration::OpenStack::NotFound
           nil
         end
 
