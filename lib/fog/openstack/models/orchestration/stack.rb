@@ -15,9 +15,9 @@ module Fog
 
         def save(options={})
           if persisted?
-            service.update_stack(self, options).body['stack']
+            service.update_stack(self, default_options.merge(options)).body['stack']
           else
-            service.stacks.create(options)
+            service.stacks.create(default_options.merge(options))
           end
         end
 
@@ -105,13 +105,14 @@ module Fog
               template
             end
 
-          {
+          options = {
             :stack_name       => stack_name,
             :disable_rollback => disable_rollback,
-            :template_url     => @template_url,
-            :template         => template_content,
             :timeout_mins     => timeout_mins
           }
+          options[:template] = template_content if template_content
+          options[:template_url] = @template_url if @template_url
+          options
         end
         private :default_options
       end
