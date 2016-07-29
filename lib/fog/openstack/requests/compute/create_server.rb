@@ -171,8 +171,8 @@ module Fog
           self.data[:servers][server_id] = mock_data
 
           if options['os:scheduler_hints'] && options['os:scheduler_hints']['group']
-            grp = self.data[:server_groups][options['os:scheduler_hints']['group']]
-            grp[:members] << server_id if grp
+            group = self.data[:server_groups][options['os:scheduler_hints']['group']]
+            group[:members] << server_id if group
           end
 
           if options['return_reservation_id'] == 'True' then
