@@ -52,6 +52,8 @@ module Fog
       collection  :snapshots
       model       :host
       collection  :hosts
+      model       :server_group
+      collection  :server_groups
 
       ## REQUESTS
       #
@@ -225,6 +227,12 @@ module Fog
       request :list_zones_detailed
       request :list_availability_zones
 
+      # Server Group
+      request :list_server_groups
+      request :get_server_group
+      request :create_server_group
+      request :delete_server_group
+
       class Mock
         attr_reader :auth_token
         attr_reader :auth_token_expiration
@@ -284,6 +292,7 @@ module Fog
                   ],
                 },
               },
+              :server_groups             => {},
               :server_security_group_map => {},
               :addresses                 => {},
               :quota                     => {
