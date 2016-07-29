@@ -9,7 +9,7 @@ module Fog
         attribute :policies, :type => :array
         attribute :members
 
-        VALID_SERVER_GROUP_POLICIES = ['affinity', 'anti-affinity']
+        VALID_SERVER_GROUP_POLICIES = ['affinity', 'anti-affinity'].freeze
 
         def self.validate_server_group_policy(policy)
           fail ArgumentError, "#{policy} is an invalid policy... must use one of #{VALID_SERVER_GROUP_POLICIES.join(', ')}" \
