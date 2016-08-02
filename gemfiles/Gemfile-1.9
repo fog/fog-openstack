@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 
-gem "coveralls", require: false
-
 group :development, :test do
   gem "fog-core",        ">= 1.35"
   gem "fog-json",        ">= 1.0"
@@ -17,4 +15,5 @@ group :development, :test do
   gem "vcr"
   gem "webmock",         "~> 1.24.6"
   gem "json",            "< 2.0"
+  gem "coveralls",       "< 0.8.15"
 end
