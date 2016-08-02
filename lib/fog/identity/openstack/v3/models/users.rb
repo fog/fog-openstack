@@ -13,11 +13,12 @@ module Fog
           end
 
           def find_by_id(id)
-            cached_user = self.find { |user| user.id == id }
+            cached_user = find { |user| user.id == id }
             return cached_user if cached_user
             user_hash = service.get_user(id).body['user']
             Fog::Identity::OpenStack::V3::User.new(
-                user_hash.merge(:service => service))
+              user_hash.merge(:service => service)
+            )
           end
 
           def find_by_name(name, options = {})
@@ -25,7 +26,7 @@ module Fog
           end
 
           def destroy(id)
-            user = self.find_by_id(id)
+            user = find_by_id(id)
             user.destroy
           end
         end

@@ -24,16 +24,16 @@ module Fog
         def find_by_uuid(uuid)
           new(service.get_chassis(uuid).body)
         end
-        alias_method :get, :find_by_uuid
+        alias get find_by_uuid
 
         def destroy(uuid)
-          chassis = self.find_by_id(uuid)
+          chassis = find_by_id(uuid)
           chassis.destroy
         end
 
         def method_missing(method_sym, *arguments, &block)
           if method_sym.to_s =~ /^find_by_(.*)$/
-            load(service.list_chassis_detailed({$1 => arguments.first}).body['chassis'])
+            load(service.list_chassis_detailed($1 => arguments.first).body['chassis'])
           else
             super
           end

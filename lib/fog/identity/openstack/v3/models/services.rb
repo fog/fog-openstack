@@ -13,15 +13,16 @@ module Fog
           end
 
           def find_by_id(id)
-            cached_service = self.find { |service| service.id == id }
+            cached_service = find { |service| service.id == id }
             return cached_service if cached_service
             service_hash = service.get_service(id).body['service']
             Fog::Identity::OpenStack::V3::Service.new(
-                service_hash.merge(:service => service))
+              service_hash.merge(:service => service)
+            )
           end
 
           def destroy(id)
-            service = self.find_by_id(id)
+            service = find_by_id(id)
             service.destroy
           end
         end

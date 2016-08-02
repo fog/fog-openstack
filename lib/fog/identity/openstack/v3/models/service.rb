@@ -13,19 +13,20 @@ module Fog
           attribute :links
 
           def to_s
-            self.name
+            name
           end
 
           def destroy
             requires :id
-            service.delete_service(self.id)
+            service.delete_service(id)
             true
           end
 
           def update(attr = nil)
             requires :id
             merge_attributes(
-                service.update_service(self.id, attr || attributes).body['service'])
+              service.update_service(id, attr || attributes).body['service']
+            )
             self
           end
 
@@ -36,10 +37,10 @@ module Fog
 
           def create
             merge_attributes(
-                service.create_service(attributes).body['service'])
+              service.create_service(attributes).body['service']
+            )
             self
           end
-
         end
       end
     end

@@ -14,7 +14,7 @@ module Fog
         def find_by_name(name)
           new(service.get_driver(name).body)
         end
-        alias_method :get, :find_by_name
+        alias get find_by_name
       end
     end
   end

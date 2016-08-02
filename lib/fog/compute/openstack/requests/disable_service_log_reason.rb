@@ -6,10 +6,10 @@ module Fog
           data = {"host" => host, "binary" => binary, "disabled_reason" => disabled_reason}
 
           # Encode all params
-          optional_params = optional_params.each { |k, v| optional_params[k] = URI::encode(v) } if optional_params
+          optional_params = optional_params.each { |k, v| optional_params[k] = URI.encode(v) } if optional_params
 
           request(
-            :body => Fog::JSON.encode(data),
+            :body    => Fog::JSON.encode(data),
             :expects => 200,
             :method  => 'PUT',
             :path    => "os-services/disable-log-reason",
@@ -19,7 +19,7 @@ module Fog
       end
 
       class Mock
-        def disable_service_log_reason(host, binary, disabled_reason, optional_params = nil)
+        def disable_service_log_reason(_host, _binary, _disabled_reason, _optional_params = nil)
           response = Excon::Response.new
           response.status = 200
           response.body = {

@@ -7,7 +7,7 @@ module Fog
       class Resources < Fog::OpenStack::Collection
         model Fog::Metering::OpenStack::Resource
 
-        def all(detailed=true)
+        def all(_detailed = true)
           load_response(service.list_resources)
         end
 

@@ -13,17 +13,17 @@ module Fog
       end # class Real
 
       class Mock
-        def list_nodes(options = {})
+        def list_nodes(_options = {})
           response = Excon::Response.new
           response.status = [200, 204][rand(1)]
           response.body = {
             "nodes" => [{
-              "instance_uuid"    => Fog::UUID.uuid,
-              "maintenance"      => false,
-              "power_state"      => "power on",
-              "provision_state"  => "active",
-              "uuid"             => Fog::UUID.uuid,
-              "links"            => []
+              "instance_uuid"   => Fog::UUID.uuid,
+              "maintenance"     => false,
+              "power_state"     => "power on",
+              "provision_state" => "active",
+              "uuid"            => Fog::UUID.uuid,
+              "links"           => []
             }]
           }
           response

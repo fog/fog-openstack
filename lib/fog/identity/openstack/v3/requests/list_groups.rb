@@ -6,11 +6,11 @@ module Fog
           def list_groups(options = {})
             user_id = options.delete('user_id') || options.delete(:user_id)
 
-            if user_id
-              path = "users/#{user_id}groups"
-            else
-              path = "groups"
-            end
+            path = if user_id
+                     "users/#{user_id}groups"
+                   else
+                     "groups"
+                   end
 
             request(
               :expects => [200],
@@ -23,7 +23,6 @@ module Fog
 
         class Mock
           def list_groups(options = {})
-
           end
         end
       end

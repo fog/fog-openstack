@@ -26,7 +26,7 @@ module Fog
         rescue Fog::Network::OpenStack::NotFound
           nil
         end
-        alias_method :find_by_id, :get
+        alias find_by_id get
       end
     end
   end

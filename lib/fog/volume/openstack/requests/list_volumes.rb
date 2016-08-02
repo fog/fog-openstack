@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       module Real
         def list_volumes(options = true, options_deprecated = {})
-          if options.is_a?(Hash)
+          if options.kind_of?(Hash)
             path  = 'volumes'
             query = options
           else

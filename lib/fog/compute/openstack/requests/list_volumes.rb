@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def list_volumes(options = true)
-          if options.is_a?(Hash)
+          if options.kind_of?(Hash)
             path = 'os-volumes'
             query = options
           else
@@ -18,18 +18,18 @@ module Fog
           end
 
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => path,
-            :query    => query
+            :expects => 200,
+            :method  => 'GET',
+            :path    => path,
+            :query   => query
           )
         end
       end
 
       class Mock
-        def list_volumes(options = true)
+        def list_volumes(_options = true)
           Excon::Response.new(
-            :body   => { 'volumes' => self.data[:volumes].values },
+            :body   => {'volumes' => data[:volumes].values},
             :status => 200
           )
         end

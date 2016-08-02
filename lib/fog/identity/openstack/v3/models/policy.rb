@@ -12,29 +12,30 @@ module Fog
           attribute :links
 
           def to_s
-            self.name
+            name
           end
 
           def destroy
             requires :id
-            service.delete_policy(self.id)
+            service.delete_policy(id)
             true
           end
 
           def update(attr = nil)
             requires :id, :blob, :type
             merge_attributes(
-                service.update_policy(self.id, attr || attributes).body['policy'])
+              service.update_policy(id, attr || attributes).body['policy']
+            )
             self
           end
 
           def create
             requires :blob, :type
             merge_attributes(
-                service.create_policy(attributes).body['policy'])
+              service.create_policy(attributes).body['policy']
+            )
             self
           end
-
         end
       end
     end

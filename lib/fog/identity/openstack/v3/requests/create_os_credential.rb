@@ -5,10 +5,10 @@ module Fog
         class Real
           def create_os_credential(credential)
             request(
-                :expects => [201],
-                :method => 'POST',
-                :path => "credentials",
-                :body => Fog::JSON.encode(:credential => credential)
+              :expects => [201],
+              :method  => 'POST',
+              :path    => "credentials",
+              :body    => Fog::JSON.encode(:credential => credential)
             )
           end
         end

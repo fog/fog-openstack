@@ -7,7 +7,7 @@ module Fog
       class Events < Fog::OpenStack::Collection
         model Fog::Metering::OpenStack::Event
 
-        def all(q=[])
+        def all(q = [])
           load_response(service.list_events(q))
         end
 

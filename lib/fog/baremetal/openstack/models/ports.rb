@@ -24,16 +24,16 @@ module Fog
         def find_by_uuid(uuid)
           new(service.get_port(uuid).body)
         end
-        alias_method :get, :find_by_uuid
+        alias get find_by_uuid
 
         def destroy(uuid)
-          port = self.find_by_id(uuid)
+          port = find_by_id(uuid)
           port.destroy
         end
 
         def method_missing(method_sym, *arguments, &block)
           if method_sym.to_s =~ /^find_by_(.*)$/
-            load(service.list_ports_detailed({$1 => arguments.first}).body['ports'])
+            load(service.list_ports_detailed($1 => arguments.first).body['ports'])
           else
             super
           end

@@ -9,19 +9,19 @@ module Fog
         end
 
         class Mock
-          def get_snapshot_details(detailed=true)
+          def get_snapshot_details(_detailed = true)
             response        = Excon::Response.new
             response.status = 200
             response.body   = {
-                'snapshot' => {
-                    'id'                  => '1',
-                    'name'        => 'Snapshot1',
-                    'description' => 'Volume1 snapshot',
-                    'size'                => 1,
-                    'volume_id'           => '1',
-                    'status'              => 'available',
-                    'created_at'          => Time.now
-                }
+              'snapshot' => {
+                'id'          => '1',
+                'name'        => 'Snapshot1',
+                'description' => 'Volume1 snapshot',
+                'size'        => 1,
+                'volume_id'   => '1',
+                'status'      => 'available',
+                'created_at'  => Time.now
+              }
             }
             response
           end

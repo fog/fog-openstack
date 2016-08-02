@@ -13,10 +13,10 @@ module Fog
       end # class Real
 
       class Mock
-        def list_drivers(options = {})
+        def list_drivers(_options = {})
           response = Excon::Response.new
           response.status = [200, 204][rand(1)]
-          response.body = { "drivers" => self.data[:drivers] }
+          response.body = {"drivers" => data[:drivers]}
           response
         end # def list_drivers
       end # class Mock

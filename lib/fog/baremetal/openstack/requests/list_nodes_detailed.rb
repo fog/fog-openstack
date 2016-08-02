@@ -13,10 +13,10 @@ module Fog
       end # class Real
 
       class Mock
-        def list_nodes_detailed(options = {})
+        def list_nodes_detailed(_options = {})
           response = Excon::Response.new
           response.status = [200, 204][rand(1)]
-          response.body = { "nodes" => self.data[:nodes] }
+          response.body = {"nodes" => data[:nodes]}
           response
         end # def list_nodes
       end # class Mock

@@ -13,24 +13,24 @@ module Fog
       end # class Real
 
       class Mock
-        def list_chassis(parameters=nil)
+        def list_chassis(_parameters = nil)
           response = Excon::Response.new
           response.status = [200, 204][rand(1)]
           response.body = {
             "chassis" => [
               {
                 "description" => "Sample chassis",
-                "links" => [
-                    {
-                        "href" => "http =>//localhost:6385/v1/chassis/eaaca217-e7d8-47b4-bb41-3f99f20eed89",
-                        "rel" => "self"
-                    },
-                    {
-                        "href" => "http =>//localhost:6385/chassis/eaaca217-e7d8-47b4-bb41-3f99f20eed89",
-                        "rel" => "bookmark"
-                    }
+                "links"       => [
+                  {
+                    "href" => "http =>//localhost:6385/v1/chassis/eaaca217-e7d8-47b4-bb41-3f99f20eed89",
+                    "rel"  => "self"
+                  },
+                  {
+                    "href" => "http =>//localhost:6385/chassis/eaaca217-e7d8-47b4-bb41-3f99f20eed89",
+                    "rel"  => "bookmark"
+                  }
                 ],
-                "uuid" => Fog::UUID.uuid
+                "uuid"        => Fog::UUID.uuid
               }
             ]
           }

@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_image_details(image_id)
           request(
-            :expects  => [200, 203],
-            :method   => 'GET',
-            :path     => "images/#{image_id}.json"
+            :expects => [200, 203],
+            :method  => 'GET',
+            :path    => "images/#{image_id}.json"
           )
         end
       end
@@ -14,9 +14,9 @@ module Fog
       class Mock
         def get_image_details(image_id)
           response = Excon::Response.new
-          if image = list_images_detail.body['images'].find {|_| _['id'] == image_id}
+          if image = list_images_detail.body['images'].find { |_| _['id'] == image_id }
             response.status = [200, 203][rand(1)]
-            response.body = { 'image' => image }
+            response.body = {'image' => image}
             response
           else
             raise Fog::Compute::OpenStack::NotFound

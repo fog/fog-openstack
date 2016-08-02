@@ -23,7 +23,7 @@ module Fog
         # Deprecated
         def find_by_id(id)
           Fog::Logger.deprecation("#find_by_id(id) is deprecated, use #get(name, id) instead [light_black](#{caller.first})[/]")
-          self.find {|stack| stack.id == id}
+          find { |stack| stack.id == id }
         end
 
         def get(arg1, arg2 = nil)
@@ -42,15 +42,15 @@ module Fog
           nil
         end
 
-        def adopt(options={})
+        def adopt(options = {})
           service.create_stack(options)
         end
 
-        def create(options={})
+        def create(options = {})
           service.create_stack(options).body['stack']
         end
 
-        def preview(options={})
+        def preview(options = {})
           data = service.preview_stack(options).body['stack']
           new(data)
         end

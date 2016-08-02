@@ -13,10 +13,10 @@ module Fog
       end # class Real
 
       class Mock
-        def list_ports_detailed(options = {})
+        def list_ports_detailed(_options = {})
           response = Excon::Response.new
           response.status = [200, 204][rand(1)]
-          response.body = { "ports" => self.data[:ports] }
+          response.body = {"ports" => data[:ports]}
           response
         end # def list_ports
       end # class Mock

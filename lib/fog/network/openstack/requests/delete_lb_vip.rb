@@ -15,7 +15,7 @@ module Fog
         def delete_lb_vip(vip_id)
           response = Excon::Response.new
           if list_lb_vips.body['vips'].map { |r| r['id'] }.include? vip_id
-            self.data[:lb_vips].delete(vip_id)
+            data[:lb_vips].delete(vip_id)
             response.status = 204
             response
           else

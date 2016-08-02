@@ -14,10 +14,10 @@ module Fog
         def find_by_id(id)
           new(service.get_aggregate(id).body['aggregate'])
         end
-        alias_method :get, :find_by_id
+        alias get find_by_id
 
         def destroy(id)
-          aggregate = self.find_by_id(id)
+          aggregate = find_by_id(id)
           aggregate.destroy
         end
       end

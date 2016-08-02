@@ -11,12 +11,12 @@ module Fog
 
         def properties
           requires :name
-          service.get_driver_properties(self.name).body
+          service.get_driver_properties(name).body
         end
 
         def metadata
           requires :name
-          service.get_driver(self.name).headers
+          service.get_driver(name).headers
         end
       end
     end

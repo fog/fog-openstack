@@ -8,7 +8,7 @@ module Fog
         model Fog::Compute::OpenStack::Volume
 
         def all(options = true)
-          if !options.is_a?(Hash)
+          if !options.kind_of?(Hash)
             if options
               Fog::Logger.deprecation('Calling OpenStack[:compute].volumes.all(true) is deprecated, use .volumes.all')
             else

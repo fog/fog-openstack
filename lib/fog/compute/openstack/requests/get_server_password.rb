@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_server_password(server_id)
           request(
-              :expects  => [200, 203],
-              :method   => 'GET',
-              :path     => "servers/#{server_id}/os-server-password.json"
+            :expects => [200, 203],
+            :method  => 'GET',
+            :path    => "servers/#{server_id}/os-server-password.json"
           )
         end
       end
@@ -14,9 +14,9 @@ module Fog
       class Mock
         def get_server_password(server_id)
           response = Excon::Response.new
-          if server = list_servers_detail.body['servers'].find {|_| _['id'] == server_id}
+          if server = list_servers_detail.body['servers'].find { |_| _['id'] == server_id }
             response.status = [200, 203][rand(1)]
-            response.body = { 'server' => server }
+            response.body = {'server' => server}
             response
           else
             raise Fog::Compute::OpenStack::NotFound

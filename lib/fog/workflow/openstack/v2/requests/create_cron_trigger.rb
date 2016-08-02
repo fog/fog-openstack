@@ -21,7 +21,7 @@ module Fog
             end
             if workflow_input
               data[:workflow_input] = Fog::JSON.encode(workflow_input)
-              end
+            end
             if workflow_params
               data[:workflow_params] = Fog::JSON.encode(workflow_params)
             end

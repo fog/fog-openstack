@@ -4,10 +4,10 @@ module Fog
       class Real
         def update_server(server_id, options = {})
           request(
-            :body     => Fog::JSON.encode({ 'server' => options }),
-            :expects  => 200,
-            :method   => 'PUT',
-            :path     => "servers/#{server_id}.json"
+            :body    => Fog::JSON.encode('server' => options),
+            :expects => 200,
+            :method  => 'PUT',
+            :path    => "servers/#{server_id}.json"
           )
         end
       end
@@ -15,7 +15,7 @@ module Fog
       class Mock
         def update_server(server_id, options = {})
           response = Excon::Response.new
-          if server = list_servers_detail.body['servers'].find {|_| _['id'] == server_id}
+          if server = list_servers_detail.body['servers'].find { |_| _['id'] == server_id }
             if options['name']
               server['name'] = options['name']
             end

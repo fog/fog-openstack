@@ -28,23 +28,23 @@ module Fog
         #       * 'tenant_id'<~String> - Tenant id that owns the security group rule
         def list_security_groups(options = {})
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => 'security-groups',
-            :query    => options
+            :expects => 200,
+            :method  => 'GET',
+            :path    => 'security-groups',
+            :query   => options
           )
         end
       end
 
       class Mock
-        def list_security_groups(options = {})
+        def list_security_groups(_options = {})
           response = Excon::Response.new
 
           sec_groups = []
-          sec_groups = self.data[:security_groups].values unless self.data[:security_groups].nil?
+          sec_groups = data[:security_groups].values unless data[:security_groups].nil?
 
           response.status = 200
-          response.body = { 'security_groups' => sec_groups }
+          response.body = {'security_groups' => sec_groups}
           response
         end
       end

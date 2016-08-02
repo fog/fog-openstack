@@ -4,18 +4,18 @@ module Fog
       class Real
         def get_chassis(chassis_uuid)
           request(
-              :expects => [200, 204],
-              :method  => 'GET',
-              :path    => "chassis/#{chassis_uuid}"
+            :expects => [200, 204],
+            :method  => 'GET',
+            :path    => "chassis/#{chassis_uuid}"
           )
         end
       end # class Real
 
       class Mock
-        def get_chassis(chassis_uuid)
+        def get_chassis(_chassis_uuid)
           response = Excon::Response.new
           response.status = [200, 204][rand(1)]
-          response.body = self.data[:chassis_collection].first
+          response.body = data[:chassis_collection].first
           response
         end # def get_chassis
       end # class Mock

@@ -17,25 +17,25 @@ module Fog
           end
 
           def find_by_id(id)
-            self.find { |user| user.id == id } ||
-                Fog::Identity::OpenStack::V2::User.new(
-                    service.get_user_by_id(id).body['user'].merge(
-                        'service' => service
-                    )
+            find { |user| user.id == id } ||
+              Fog::Identity::OpenStack::V2::User.new(
+                service.get_user_by_id(id).body['user'].merge(
+                  'service' => service
                 )
+              )
           end
 
           def find_by_name(name)
-            self.find { |user| user.name == name } ||
-                Fog::Identity::OpenStack::V2::User.new(
-                    service.get_user_by_name(name).body['user'].merge(
-                        'service' => service
-                    )
+            find { |user| user.name == name } ||
+              Fog::Identity::OpenStack::V2::User.new(
+                service.get_user_by_name(name).body['user'].merge(
+                  'service' => service
                 )
+              )
           end
 
           def destroy(id)
-            user = self.find_by_id(id)
+            user = find_by_id(id)
             user.destroy
           end
         end # class Users

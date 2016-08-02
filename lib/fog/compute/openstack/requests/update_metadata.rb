@@ -4,31 +4,31 @@ module Fog
       class Real
         def update_metadata(collection_name, parent_id, metadata = {})
           request(
-            :body     => Fog::JSON.encode({ 'metadata' => metadata }),
-            :expects  => 200,
-            :method   => 'POST',
-            :path     => "#{collection_name}/#{parent_id}/metadata.json"
+            :body    => Fog::JSON.encode('metadata' => metadata),
+            :expects => 200,
+            :method  => 'POST',
+            :path    => "#{collection_name}/#{parent_id}/metadata.json"
           )
         end
       end
 
       class Mock
         def update_metadata(collection_name, parent_id, metadata = {})
-          if collection_name == "images" then
-            if not list_images_detail.body['images'].find {|_| _['id'] == parent_id}
+          if collection_name == "images"
+            unless list_images_detail.body['images'].find { |_| _['id'] == parent_id }
               raise Fog::Compute::OpenStack::NotFound
             end
           end
 
-          if collection_name == "servers" then
-            if not list_servers_detail.body['servers'].find {|_| _['id'] == parent_id}
+          if collection_name == "servers"
+            unless list_servers_detail.body['servers'].find { |_| _['id'] == parent_id }
               raise Fog::Compute::OpenStack::NotFound
             end
           end
 
-          #FIXME join w/ existing metadata here
+          # FIXME: join w/ existing metadata here
           response = Excon::Response.new
-          response.body = { "metadata" => metadata }
+          response.body = {"metadata" => metadata}
           response.status = 200
           response
         end

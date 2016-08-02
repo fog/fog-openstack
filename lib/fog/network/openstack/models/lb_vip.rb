@@ -22,24 +22,24 @@ module Fog
 
         def create
           requires :subnet_id, :pool_id, :protocol, :protocol_port
-          merge_attributes(service.create_lb_vip(self.subnet_id,
-                                                 self.pool_id,
-                                                 self.protocol,
-                                                 self.protocol_port,
-                                                 self.attributes).body['vip'])
+          merge_attributes(service.create_lb_vip(subnet_id,
+                                                 pool_id,
+                                                 protocol,
+                                                 protocol_port,
+                                                 attributes).body['vip'])
           self
         end
 
         def update
           requires :id, :subnet_id, :pool_id, :protocol, :protocol_port
-          merge_attributes(service.update_lb_vip(self.id,
-                                                 self.attributes).body['vip'])
+          merge_attributes(service.update_lb_vip(id,
+                                                 attributes).body['vip'])
           self
         end
 
         def destroy
           requires :id
-          service.delete_lb_vip(self.id)
+          service.delete_lb_vip(id)
           true
         end
       end

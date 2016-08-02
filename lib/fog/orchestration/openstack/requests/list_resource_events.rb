@@ -14,11 +14,11 @@ module Fog
       end
 
       class Mock
-        def list_resource_events(stack, resource, options={})
-          events = self.data[:events].values
+        def list_resource_events(_stack, _resource, _options = {})
+          events = data[:events].values
 
           Excon::Response.new(
-            :body => { 'events' => events },
+            :body   => {'events' => events},
             :status => 200
           )
         end

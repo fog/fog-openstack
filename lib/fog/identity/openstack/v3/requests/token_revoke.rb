@@ -5,10 +5,10 @@ module Fog
         class Real
           def token_revoke(subject_token)
             request(
-                :expects => [200, 204],
-                :method => 'DELETE',
-                :path => "auth/tokens",
-                :headers => {"X-Subject-Token" => subject_token, "X-Auth-Token" => auth_token, }
+              :expects => [200, 204],
+              :method  => 'DELETE',
+              :path    => "auth/tokens",
+              :headers => {"X-Subject-Token" => subject_token, "X-Auth-Token" => auth_token,}
             )
           end
         end

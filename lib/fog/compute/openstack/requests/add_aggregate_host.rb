@@ -14,13 +14,13 @@ module Fog
       end
 
       class Mock
-        def add_aggregate_host(uuid, host_uuid)
+        def add_aggregate_host(_uuid, _host_uuid)
           response = Excon::Response.new
           response.status = 200
           response.headers = {
-            "Content-Type" => "text/html; charset=UTF-8",
+            "Content-Type"   => "text/html; charset=UTF-8",
             "Content-Length" => "0",
-            "Date" => Date.new
+            "Date"           => Date.new
           }
           response
         end

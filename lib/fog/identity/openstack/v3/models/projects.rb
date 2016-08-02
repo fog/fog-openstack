@@ -22,7 +22,7 @@ module Fog
               @@cache[{:token => service.auth_token, :options => options}] = [project_to_cache,
                                                                               Time.now + service.openstack_cache_ttl]
             end
-            return project_to_cache
+            project_to_cache
           end
 
           def create(attributes)
@@ -34,8 +34,8 @@ module Fog
             load(service.auth_projects(options).body['projects'])
           end
 
-          def find_by_id(id, options=[]) # options can include :subtree_as_ids, :subtree_as_list, :parents_as_ids, :parents_as_list
-            if options.is_a? Symbol # Deal with a single option being passed on its own
+          def find_by_id(id, options = []) # options can include :subtree_as_ids, :subtree_as_list, :parents_as_ids, :parents_as_list
+            if options.kind_of? Symbol # Deal with a single option being passed on its own
               options = [options]
             end
 
@@ -46,20 +46,22 @@ module Fog
             project_hash = service.get_project(id, options).body['project']
             top_project = project_from_hash(project_hash, service)
             if options.include? :subtree_as_list
-              top_project.subtree.map! {|proj_hash| project_from_hash(proj_hash['project'], service)}
+              top_project.subtree.map! { |proj_hash| project_from_hash(proj_hash['project'], service) }
             end
             if options.include? :parents_as_list
-              top_project.parents.map! {|proj_hash| project_from_hash(proj_hash['project'], service)}
+              top_project.parents.map! { |proj_hash| project_from_hash(proj_hash['project'], service) }
             end
 
             if service.openstack_cache_ttl > 0
               @@cache[{:token => service.auth_token, :id => id, :options => options}] = [
-                top_project, Time.now + service.openstack_cache_ttl]
+                top_project, Time.now + service.openstack_cache_ttl
+              ]
             end
-            return top_project
+            top_project
           end
 
           private
+
           def project_from_hash(project_hash, service)
             Fog::Identity::OpenStack::V3::Project.new(project_hash.merge(:service => service))
           end

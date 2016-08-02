@@ -12,15 +12,15 @@ module Fog
           vanilla_options = [:name, :fixed_ips, :mac_address, :admin_state_up,
                              :device_owner, :device_id, :tenant_id, :security_groups,
                              :allowed_address_pairs]
-          vanilla_options.reject{ |o| options[o].nil? }.each do |key|
+          vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['port'][key] = options[key]
           end
 
           request(
-            :body     => Fog::JSON.encode(data),
-            :expects  => [201],
-            :method   => 'POST',
-            :path     => 'ports'
+            :body    => Fog::JSON.encode(data),
+            :expects => [201],
+            :method  => 'POST',
+            :path    => 'ports'
           )
         end
       end
@@ -44,7 +44,7 @@ module Fog
             'allowed_address_pairs' => options[:allowed_address_pairs],
           }
           self.data[:ports][data['id']] = data
-          response.body = { 'port' => data }
+          response.body = {'port' => data}
           response
         end
       end

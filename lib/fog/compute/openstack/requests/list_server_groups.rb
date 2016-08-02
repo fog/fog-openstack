@@ -18,7 +18,7 @@ module Fog
             group.merge('id' => id, 'project_id' => 'test-project', 'user_id' => 'test-user')
           end
           Excon::Response.new(
-            :body   => { 'server_groups' => groups },
+            :body   => {'server_groups' => groups},
             :status => 200
           )
         end

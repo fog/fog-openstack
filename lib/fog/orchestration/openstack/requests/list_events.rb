@@ -18,11 +18,11 @@ module Fog
           resource_name   = options.delete(:resource_name)
           resource_name ||= resource.resource_name if resource && resource.respond_to?(:resource_name)
 
-          if resource_name
-            path = "stacks/#{stack_name}/#{stack_id}/resources/#{resource_name}/events"
-          else
-            path = "stacks/#{stack_name}/#{stack_id}/events"
-          end
+          path = if resource_name
+                   "stacks/#{stack_name}/#{stack_id}/resources/#{resource_name}/events"
+                 else
+                   "stacks/#{stack_name}/#{stack_id}/events"
+                 end
 
           request(:method  => 'GET',
                   :path    => path,
@@ -32,11 +32,11 @@ module Fog
       end
 
       class Mock
-        def list_events(options = {})
-          events = self.data[:events].values
+        def list_events(_options = {})
+          events = data[:events].values
 
           Excon::Response.new(
-            :body => { 'events' => events },
+            :body   => {'events' => events},
             :status => 200
           )
         end

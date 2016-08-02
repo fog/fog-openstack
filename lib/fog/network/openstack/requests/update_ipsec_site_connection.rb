@@ -9,8 +9,7 @@ module Fog
                              :peer_address, :peer_id, :peer_cidrs,
                              :psk, :mtu, :dpd, :initiator,
                              :admin_state_up, :ikepolicy_id,
-                             :ipsecpolicy_id, :vpnservice_id
-                            ]
+                             :ipsecpolicy_id, :vpnservice_id]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['ipsec_site_connection'][key] = options[key]
           end

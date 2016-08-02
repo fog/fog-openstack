@@ -8,8 +8,7 @@ module Fog
           vanilla_options = [:name, :description, :tenant_id,
                              :auth_algorithm, :encryption_algorithm,
                              :pfs, :transform_protocol, :encapsulation_mode,
-                             :lifetime, :ipsec_version
-                            ]
+                             :lifetime, :ipsec_version]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['ipsecpolicy'][key] = options[key]
           end

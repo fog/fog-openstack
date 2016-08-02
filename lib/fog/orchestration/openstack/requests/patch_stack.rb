@@ -16,16 +16,16 @@ module Fog
           stack_id = stack.id
 
           request(
-            :expects  => 202,
-            :path => "stacks/#{stack_name}/#{stack_id}",
-            :method => 'PATCH',
-            :body => Fog::JSON.encode(options)
+            :expects => 202,
+            :path    => "stacks/#{stack_name}/#{stack_id}",
+            :method  => 'PATCH',
+            :body    => Fog::JSON.encode(options)
           )
         end
       end
 
       class Mock
-        def patch_stack(stack, options = {})
+        def patch_stack(_stack, _options = {})
           response = Excon::Response.new
           response.status = 202
           response.body = {}

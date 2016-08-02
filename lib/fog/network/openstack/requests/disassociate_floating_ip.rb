@@ -5,26 +5,26 @@ module Fog
         def disassociate_floating_ip(floating_ip_id, options = {})
           data = {
             'floatingip' => {
-              'port_id'    => nil,
+              'port_id' => nil,
             }
           }
 
           vanilla_options = [:fixed_ip_address]
-          vanilla_options.reject{ |o| options[o].nil? }.each do |key|
+          vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['floatingip'][key] = options[key]
           end
 
           request(
-            :body     => Fog::JSON.encode(data),
-            :expects  => [200],
-            :method   => 'PUT',
-            :path     => "floatingips/#{floating_ip_id}"
+            :body    => Fog::JSON.encode(data),
+            :expects => [200],
+            :method  => 'PUT',
+            :path    => "floatingips/#{floating_ip_id}"
           )
         end
       end
 
       class Mock
-        def disassociate_floating_ip(floating_ip_id, options = {})
+        def disassociate_floating_ip(_floating_ip_id, options = {})
           response = Excon::Response.new
           response.status = 200
           data = {
@@ -38,7 +38,7 @@ module Fog
           }
 
           self.data[:floating_ips][data['floating_ip_id']] = data
-          response.body = { 'floatingip' => data }
+          response.body = {'floatingip' => data}
           response
         end
       end

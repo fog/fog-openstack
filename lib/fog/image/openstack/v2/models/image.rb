@@ -83,7 +83,8 @@ module Fog
               json_patch << {:op => op, :path => "/#{key}", :value => value}
             end
             merge_attributes(
-              service.update_image(id, json_patch).body)
+              service.update_image(id, json_patch).body
+            )
             self
           end
 

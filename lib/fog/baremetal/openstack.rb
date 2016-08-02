@@ -86,113 +86,113 @@ module Fog
       class Mock
         def self.data
           @data ||= Hash.new do |hash, key|
-            chassis_uuid  = Fog::UUID.uuid
-            instance_uuid  = Fog::UUID.uuid
+            chassis_uuid = Fog::UUID.uuid
+            instance_uuid = Fog::UUID.uuid
             node_uuid = Fog::UUID.uuid
 
             hash[key] = {
               :chassis_collection => [
                 {
-                  "created_at" => "2000-01-01T12:00:00",
+                  "created_at"  => "2000-01-01T12:00:00",
                   "description" => "Sample chassis",
-                  "extra" => {},
-                  "links" => [
+                  "extra"       => {},
+                  "links"       => [
                     {
                       "href" => "http://localhost:6385/v1/chassis/eaaca217-e7d8-47b4-bb41-3f99f20eed89",
-                      "rel" => "self"
+                      "rel"  => "self"
                     },
                     {
                       "href" => "http://localhost:6385/chassis/eaaca217-e7d8-47b4-bb41-3f99f20eed89",
-                      "rel" => "bookmark"
+                      "rel"  => "bookmark"
                     }
                   ],
-                  "nodes" => [
+                  "nodes"       => [
                     {
                       "href" => "http://localhost:6385/v1/chassis/eaaca217-e7d8-47b4-bb41-3f99f20eed89/nodes",
-                      "rel" => "self"
+                      "rel"  => "self"
                     },
                     {
                       "href" => "http://localhost:6385/chassis/eaaca217-e7d8-47b4-bb41-3f99f20eed89/nodes",
-                      "rel" => "bookmark"
+                      "rel"  => "bookmark"
                     }
                   ],
-                  "updated_at" => "2000-01-01T12:00:00",
-                  "uuid" => chassis_uuid
-                  }
-                ],
-              :drivers => [
+                  "updated_at"  => "2000-01-01T12:00:00",
+                  "uuid"        => chassis_uuid
+                }
+              ],
+              :drivers            => [
                 {
                   "hosts" => [
                     "fake-host"
                   ],
-                  "name" => "sample-driver"
+                  "name"  => "sample-driver"
                 }
               ],
-              :nodes => [{
-                "chassis_uuid" => chassis_uuid,
-                "console_enabled" => false,
-                "created_at" => "2000-01-01T12:00:00",
-                "driver" => "sample-driver",
-                "driver_info" => {},
-                "extra" => {},
-                "instance_info" => {},
-                "instance_uuid" => instance_uuid,
-                "last_error" => nil,
-                "links" => [
+              :nodes              => [{
+                "chassis_uuid"           => chassis_uuid,
+                "console_enabled"        => false,
+                "created_at"             => "2000-01-01T12:00:00",
+                "driver"                 => "sample-driver",
+                "driver_info"            => {},
+                "extra"                  => {},
+                "instance_info"          => {},
+                "instance_uuid"          => instance_uuid,
+                "last_error"             => nil,
+                "links"                  => [
                   {
                     "href" => "http://localhost:6385/v1/nodes/1be26c0b-03f2-4d2e-ae87-c02d7f33c123",
-                    "rel" => "self"
+                    "rel"  => "self"
                   },
                   {
                     "href" => "http://localhost:6385/nodes/1be26c0b-03f2-4d2e-ae87-c02d7f33c123",
-                    "rel" => "bookmark"
+                    "rel"  => "bookmark"
                   }
                 ],
-                "maintenance" => false,
-                "maintenance_reason" => nil,
-                "ports" => [
+                "maintenance"            => false,
+                "maintenance_reason"     => nil,
+                "ports"                  => [
                   {
                     "href" => "http://localhost:6385/v1/nodes/1be26c0b-03f2-4d2e-ae87-c02d7f33c123/ports",
-                    "rel" => "self"
+                    "rel"  => "self"
                   },
                   {
                     "href" => "http://localhost:6385/nodes/1be26c0b-03f2-4d2e-ae87-c02d7f33c123/ports",
-                    "rel" => "bookmark"
+                    "rel"  => "bookmark"
                   }
                 ],
-                "power_state" => "power on",
-                "properties" => {
-                  "cpus" => "1",
-                  "local_gb" => "10",
+                "power_state"            => "power on",
+                "properties"             => {
+                  "cpus"      => "1",
+                  "local_gb"  => "10",
                   "memory_mb" => "1024"
                 },
-                "provision_state" => "active",
-                "provision_updated_at" => "2000-01-01T12:00:00",
-                "reservation" => nil,
-                "target_power_state" => nil,
+                "provision_state"        => "active",
+                "provision_updated_at"   => "2000-01-01T12:00:00",
+                "reservation"            => nil,
+                "target_power_state"     => nil,
                 "target_provision_state" => nil,
-                "updated_at" => "2000-01-01T12:00:00",
-                "uuid" => node_uuid
+                "updated_at"             => "2000-01-01T12:00:00",
+                "uuid"                   => node_uuid
               }],
-              :ports => [{
-                "address" => "fe:54:00:77:07:d9",
+              :ports              => [{
+                "address"    => "fe:54:00:77:07:d9",
                 "created_at" => "2014-12-23T19:35:30.734116",
-                "extra" => {
+                "extra"      => {
                   "foo" => "bar"
                 },
-                "links" => [
+                "links"      => [
                   {
                     "href" => "http://localhost:6385/v1/ports/27e3153e-d5bf-4b7e-b517-fb518e17f34c",
-                    "rel" => "self"
+                    "rel"  => "self"
                   },
                   {
                     "href" => "http://localhost:6385/ports/27e3153e-d5bf-4b7e-b517-fb518e17f34c",
-                    "rel" => "bookmark"
+                    "rel"  => "bookmark"
                   }
                 ],
-                "node_uuid" => "7ae81bb3-dec3-4289-8d6c-da80bd8001ae",
+                "node_uuid"  => "7ae81bb3-dec3-4289-8d6c-da80bd8001ae",
                 "updated_at" => "2014-12-23T19:35:30.734119",
-                "uuid" => "27e3153e-d5bf-4b7e-b517-fb518e17f34c"
+                "uuid"       => "27e3153e-d5bf-4b7e-b517-fb518e17f34c"
               }]
             }
           end
@@ -202,7 +202,7 @@ module Fog
           @data = nil
         end
 
-        def initialize(options={})
+        def initialize(options = {})
           @openstack_username = options[:openstack_username]
           @openstack_tenant   = options[:openstack_tenant]
           @openstack_auth_uri = URI.parse(options[:openstack_auth_url])
@@ -215,8 +215,8 @@ module Fog
           management_url.path = '/v1'
           @openstack_management_url = management_url.to_s
 
-          @data ||= { :users => {} }
-          unless @data[:users].find {|u| u['name'] == options[:openstack_username]}
+          @data ||= {:users => {}}
+          unless @data[:users].find { |u| u['name'] == options[:openstack_username] }
             id = Fog::Mock.random_numbers(6).to_s
             @data[:users][id] = {
               'id'       => id,
@@ -237,11 +237,11 @@ module Fog
         end
 
         def credentials
-          { :provider                 => 'openstack',
-            :openstack_auth_url       => @openstack_auth_uri.to_s,
-            :openstack_auth_token     => @auth_token,
-            :openstack_region         => @openstack_region,
-            :openstack_management_url => @openstack_management_url }
+          {:provider                 => 'openstack',
+           :openstack_auth_url       => @openstack_auth_uri.to_s,
+           :openstack_auth_token     => @auth_token,
+           :openstack_region         => @openstack_region,
+           :openstack_management_url => @openstack_management_url}
         end
       end
 

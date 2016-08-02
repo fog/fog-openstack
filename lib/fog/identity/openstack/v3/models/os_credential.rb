@@ -14,12 +14,12 @@ module Fog
           attribute :links
 
           def to_s
-            self.name
+            name
           end
 
           def destroy
             requires :id
-            service.delete_os_credential(self.id)
+            service.delete_os_credential(id)
             @parsed_blob = nil
             true
           end
@@ -27,7 +27,8 @@ module Fog
           def update(attr = nil)
             requires :id
             merge_attributes(
-                service.update_os_credential(self.id, attr || attributes).body['credential'])
+              service.update_os_credential(id, attr || attributes).body['credential']
+            )
             @parsed_blob = nil
             self
           end
@@ -40,7 +41,8 @@ module Fog
 
           def create
             merge_attributes(
-                service.create_os_credential(attributes).body['credential'])
+              service.create_os_credential(attributes).body['credential']
+            )
             @parsed_blob = nil
             self
           end
@@ -65,7 +67,6 @@ module Fog
           def private_key
             parsed_blob['private_key'] if blob
           end
-
         end
       end
     end

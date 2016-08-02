@@ -20,7 +20,7 @@ module Fog
           end
 
           def create(attributes = {})
-            if user then
+            if user
               attributes[:user_id] ||= user.id
               attributes[:tenant_id] ||= user.tenant_id
             end
@@ -29,7 +29,7 @@ module Fog
           end
 
           def destroy(access_key)
-            ec2_credential = self.find_by_access_key(access_key)
+            ec2_credential = find_by_access_key(access_key)
             ec2_credential.destroy
           end
 
@@ -37,9 +37,9 @@ module Fog
             user_id = user ? user.id : nil
 
             ec2_credential =
-                self.find { |ec2_credential| ec2_credential.access == access_key }
+              find { |ec2_credential| ec2_credential.access == access_key }
 
-            unless ec2_credential then
+            unless ec2_credential
               response = service.get_ec2_credential(user_id, access_key)
               body = response.body['credential']
               body = body.merge 'service' => service

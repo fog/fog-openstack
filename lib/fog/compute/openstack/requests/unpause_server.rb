@@ -9,13 +9,13 @@ module Fog
         # === Returns
         # * success <~Boolean>
         def unpause_server(server_id)
-          body = { 'unpause' => nil }
+          body = {'unpause' => nil}
           server_action(server_id, body).status == 202
         end # def unpause_server
       end # class Real
 
       class Mock
-        def unpause_server(server_id)
+        def unpause_server(_server_id)
           true
         end # def unpause_server
       end # class Mock

@@ -12,7 +12,7 @@ module Fog
         VALID_SERVER_GROUP_POLICIES = ['affinity', 'anti-affinity'].freeze
 
         def self.validate_server_group_policy(policy)
-          fail ArgumentError, "#{policy} is an invalid policy... must use one of #{VALID_SERVER_GROUP_POLICIES.join(', ')}" \
+          raise ArgumentError, "#{policy} is an invalid policy... must use one of #{VALID_SERVER_GROUP_POLICIES.join(', ')}" \
             unless VALID_SERVER_GROUP_POLICIES.include? policy
           true
         end

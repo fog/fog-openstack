@@ -23,7 +23,7 @@ module Fog
         def files
           @files ||= begin
             Fog::Storage::OpenStack::Files.new(
-              :directory    => self,
+              :directory => self,
               :service   => service
             )
           end

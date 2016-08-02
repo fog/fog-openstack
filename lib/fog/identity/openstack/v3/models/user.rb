@@ -17,63 +17,64 @@ module Fog
           attribute :password
 
           def to_s
-            self.name
+            name
           end
 
           def groups
             requires :id
-            service.list_user_groups(self.id).body['groups']
+            service.list_user_groups(id).body['groups']
           end
 
           def projects
             requires :id
-            service.list_user_projects(self.id).body['projects']
+            service.list_user_projects(id).body['projects']
           end
 
           def roles
             requires :id, :domain_id
-            service.list_domain_user_roles(self.domain_id, self.id).body['roles']
+            service.list_domain_user_roles(domain_id, id).body['roles']
           end
 
           def grant_role(role_id)
             requires :id, :domain_id
-            service.grant_domain_user_role(self.domain_id, self.id, role_id)
+            service.grant_domain_user_role(domain_id, id, role_id)
           end
 
           def check_role(role_id)
             requires :id, :domain_id
             begin
-              service.check_domain_user_role(self.domain_id, self.id, role_id)
+              service.check_domain_user_role(domain_id, id, role_id)
             rescue Fog::Identity::OpenStack::NotFound
               return false
             end
-            return true
+            true
           end
 
           def revoke_role(role_id)
             requires :id, :domain_id
-            service.revoke_domain_user_role(self.domain_id, self.id, role_id)
+            service.revoke_domain_user_role(domain_id, id, role_id)
           end
 
           def destroy
             requires :id
-            service.delete_user(self.id)
+            service.delete_user(id)
             true
           end
 
           def update(attr = nil)
             requires :id
             merge_attributes(
-                service.update_user(self.id, attr || attributes).body['user'])
+              service.update_user(id, attr || attributes).body['user']
+            )
             self
           end
 
           def create
             merge_attributes(
-                service.create_user(attributes).body['user'])
+              service.create_user(attributes).body['user']
+            )
             self
           end
-
         end
       end
     end

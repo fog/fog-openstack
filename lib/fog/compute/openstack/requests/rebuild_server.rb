@@ -2,10 +2,10 @@ module Fog
   module Compute
     class OpenStack
       class Real
-        def rebuild_server(server_id, image_ref, name, admin_pass=nil, metadata=nil, personality=nil)
-          body = { 'rebuild' => {
+        def rebuild_server(server_id, image_ref, name, admin_pass = nil, metadata = nil, personality = nil)
+          body = {'rebuild' => {
             'imageRef' => image_ref,
-            'name' => name
+            'name'     => name
           }}
           body['rebuild']['adminPass'] = admin_pass if admin_pass
           body['rebuild']['metadata'] = metadata if metadata
@@ -13,8 +13,8 @@ module Fog
             body['rebuild']['personality'] = []
             for file in personality
               body['rebuild']['personality'] << {
-                'contents'  => Base64.encode64(file['contents']),
-                'path'      => file['path']
+                'contents' => Base64.encode64(file['contents']),
+                'path'     => file['path']
               }
             end
           end
@@ -23,7 +23,7 @@ module Fog
       end
 
       class Mock
-        def rebuild_server(server_id, image_ref, name, admin_pass=nil, metadata=nil, personality=nil)
+        def rebuild_server(server_id, _image_ref, _name, _admin_pass = nil, _metadata = nil, _personality = nil)
           response = get_server_details(server_id)
           response.body['server']['status'] = "REBUILD"
           response

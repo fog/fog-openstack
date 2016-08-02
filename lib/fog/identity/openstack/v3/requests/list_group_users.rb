@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class V3
         class Real
-          def list_group_users(id, options={})
+          def list_group_users(id, options = {})
             request(
               :expects => [200],
               :method  => 'GET',
@@ -15,7 +15,6 @@ module Fog
 
         class Mock
           def list_group_users
-
           end
         end
       end

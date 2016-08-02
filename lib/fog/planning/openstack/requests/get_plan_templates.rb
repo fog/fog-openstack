@@ -12,12 +12,12 @@ module Fog
       end # class Real
 
       class Mock
-        def get_plan_templates(plan_uuid)
+        def get_plan_templates(_plan_uuid)
           response = Excon::Response.new
           response.status = [200, 204][rand(1)]
           response.body = {
-            "environment.yaml" => "... content of template file ...",
-            "plan.yaml" => "... content of template file ...",
+            "environment.yaml"        => "... content of template file ...",
+            "plan.yaml"               => "... content of template file ...",
             "provider-compute-1.yaml" => "... content of template file ..."
           }
           response

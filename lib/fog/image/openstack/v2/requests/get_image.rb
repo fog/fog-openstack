@@ -5,18 +5,18 @@ module Fog
         class Real
           def get_image(image_id)
             request(
-                :expects => [200, 204],
-                :method => 'HEAD',
-                :path => "images/#{image_id}"
+              :expects => [200, 204],
+              :method  => 'HEAD',
+              :path    => "images/#{image_id}"
             )
           end
         end # class Real
 
         class Mock
-          def get_image(image_id)
+          def get_image(_image_id)
             response = Excon::Response.new
             response.status = [200, 204][rand(1)]
-            response.headers= {"X-Image-Meta-Is_public" => "True",
+            response.headers = {"X-Image-Meta-Is_public" => "True",
                                "X-Image-Meta-Min_disk" => "0",
                                "X-Image-Meta-Property-Ramdisk_id" => "b45aa128-cd36-4ad9-a026-1a1c2bfd8fdc",
                                "X-Image-Meta-Disk_format" => "ami",

@@ -3,19 +3,18 @@ module Fog
     class OpenStack
       class V3
         class Real
-          def auth_domains(options={})
+          def auth_domains(options = {})
             request(
-                :expects => [200],
-                :method => 'GET',
-                :path => "auth/domains",
-                :query => options
+              :expects => [200],
+              :method  => 'GET',
+              :path    => "auth/domains",
+              :query   => options
             )
           end
         end
 
         class Mock
           def auth_domains
-
           end
         end
       end

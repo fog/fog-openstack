@@ -27,34 +27,32 @@ module Fog
         attribute :delete_after, :aliases => ['X-Delete-After']
 
         # @!attribute [rw] content_encoding
-        # When you create an object or update its metadata, you can optionally set the Content-Encoding metadata. 
-        # This metadata enables you to indicate that the object content is compressed without losing the identity of the 
+        # When you create an object or update its metadata, you can optionally set the Content-Encoding metadata.
+        # This metadata enables you to indicate that the object content is compressed without losing the identity of the
         # underlying media type (Content-Type) of the file, such as a video.
         # @see http://docs.openstack.org/developer/swift/api/use_content-encoding_metadata.html#use-content-encoding-metadata
         attribute :content_encoding, :aliases => 'Content-Encoding'
 
         def body
           attributes[:body] ||= if last_modified
-            collection.get(identity).body
-          else
-            ''
-          end
+                                  collection.get(identity).body
+                                else
+                                  ''
+                                end
         end
 
         def body=(new_body)
           attributes[:body] = new_body
         end
 
-        def directory
-          @directory
-        end
+        attr_reader :directory
 
-        def copy(target_directory_key, target_file_key, options={})
+        def copy(target_directory_key, target_file_key, options = {})
           requires :directory, :key
           options['Content-Type'] ||= content_type if content_type
           options['Access-Control-Allow-Origin'] ||= access_control_allow_origin if access_control_allow_origin
           options['Origin'] ||= origin if origin
-          options['Content-Encoding'] ||= content_encoding if content_encoding          
+          options['Content-Encoding'] ||= content_encoding if content_encoding
           service.copy_object(directory.key, key, target_directory_key, target_file_key, options)
           target_directory = service.directories.new(:key => target_directory_key)
           target_directory.files.get(target_file_key)
@@ -93,12 +91,12 @@ module Fog
         #
         def url(expires, options = {})
           requires :directory, :key
-          self.service.create_temp_url(directory.key, key, expires, "GET", options)
+          service.create_temp_url(directory.key, key, expires, "GET", options)
         end
 
         def public_url
           requires :key
-          self.collection.get_url(self.key)
+          collection.get_url(key)
         end
 
         def save(options = {})
@@ -109,7 +107,7 @@ module Fog
           options['Origin'] = origin if origin
           options['X-Delete-At'] = delete_at if delete_at
           options['X-Delete-After'] = delete_after if delete_after
-          options['Content-Encoding'] = content_encoding if content_encoding          
+          options['Content-Encoding'] = content_encoding if content_encoding
           options.merge!(metadata_to_headers)
 
           data = service.put_object(directory.key, key, body, options)
@@ -123,36 +121,34 @@ module Fog
 
         private
 
-        def directory=(new_directory)
-          @directory = new_directory
-        end
+        attr_writer :directory
 
         def refresh_metadata
-          metadata.reject! {|k, v| v.nil? }
+          metadata.reject! { |_k, v| v.nil? }
         end
 
         def headers_to_metadata
           key_map = key_mapping
-          Hash[metadata_attributes.map {|k, v| [key_map[k], v] }]
+          Hash[metadata_attributes.map { |k, v| [key_map[k], v] }]
         end
 
         def key_mapping
           key_map = metadata_attributes
-          key_map.each_pair {|k, v| key_map[k] = header_to_key(k)}
+          key_map.each_pair { |k, _v| key_map[k] = header_to_key(k) }
         end
 
         def header_to_key(opt)
-          opt.gsub(metadata_prefix, '').split('-').map {|k| k[0, 1].downcase + k[1..-1]}.join('_').to_sym
+          opt.gsub(metadata_prefix, '').split('-').map { |k| k[0, 1].downcase + k[1..-1] }.join('_').to_sym
         end
 
         def metadata_to_headers
           header_map = header_mapping
-          Hash[metadata.map {|k, v| [header_map[k], v] }]
+          Hash[metadata.map { |k, v| [header_map[k], v] }]
         end
 
         def header_mapping
           header_map = metadata.dup
-          header_map.each_pair {|k, v| header_map[k] = key_to_header(k)}
+          header_map.each_pair { |k, _v| header_map[k] = key_to_header(k) }
         end
 
         def key_to_header(key)
@@ -161,8 +157,8 @@ module Fog
 
         def metadata_attributes
           if last_modified
-            headers = service.head_object(directory.key, self.key).headers
-            headers.reject! {|k, v| !metadata_attribute?(k)}
+            headers = service.head_object(directory.key, key).headers
+            headers.reject! { |k, _v| !metadata_attribute?(k) }
           else
             {}
           end
@@ -177,7 +173,7 @@ module Fog
         end
 
         def update_attributes_from(data)
-          merge_attributes(data.headers.reject {|key, value| ['Content-Length', 'Content-Type'].include?(key)})
+          merge_attributes(data.headers.reject { |key, _value| ['Content-Length', 'Content-Type'].include?(key) })
         end
       end
     end

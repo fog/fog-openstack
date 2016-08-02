@@ -5,15 +5,15 @@ module Fog
         class Real
           def reactivate_image(image_id)
             request(
-                :expects => 204,
-                :method => 'POST',
-                :path => "images/#{image_id}/actions/reactivate"
+              :expects => 204,
+              :method  => 'POST',
+              :path    => "images/#{image_id}/actions/reactivate"
             )
           end
         end
 
         class Mock
-          def reactivate_image(image_id)
+          def reactivate_image(_image_id)
             response = Excon::Response.new
             response.status = 204
             response

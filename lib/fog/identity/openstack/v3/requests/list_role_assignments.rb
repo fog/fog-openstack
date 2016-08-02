@@ -30,7 +30,6 @@ module Fog
 
         class Mock
           def list_role_assignments(options = {})
-
           end
         end
       end

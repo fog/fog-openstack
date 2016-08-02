@@ -17,7 +17,8 @@ module Fog
             :snapshot_id,
             :availability_zone,
             :volume_type,
-            :metadata]
+            :metadata
+          ]
 
           vanilla_options.select { |o| options[o] }.each do |key|
             data['volume'][key] = options[key]
@@ -46,8 +47,7 @@ module Fog
                   'volumeType' => options[:volume_type] || 'None',
                   'availabilityZone' => options[:availability_zone] || 'nova',
                   'createdAt' => Time.now.strftime('%FT%T.%6N'),
-                  'attachments' => [], 'metadata' => options[:metadata] || {}
-          }
+                  'attachments' => [], 'metadata' => options[:metadata] || {}}
           self.data[:volumes][data['id']] = data
           response.body = {'volume' => data}
           response

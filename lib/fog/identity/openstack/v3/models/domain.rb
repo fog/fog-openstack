@@ -13,13 +13,13 @@ module Fog
           attribute :links
 
           def to_s
-            self.name
+            name
           end
 
           def destroy
             @@cache.clear if @@cache
             requires :id
-            service.delete_domain(self.id)
+            service.delete_domain(id)
             true
           end
 
@@ -27,7 +27,8 @@ module Fog
             @@cache.clear if @@cache
             requires :id, :name
             merge_attributes(
-                service.update_domain(self.id, attr || attributes).body['domain'])
+              service.update_domain(id, attr || attributes).body['domain']
+            )
             self
           end
 
@@ -35,7 +36,8 @@ module Fog
             @@cache.clear if @@cache
             requires :name
             merge_attributes(
-                service.create_domain(attributes).body['domain'])
+              service.create_domain(attributes).body['domain']
+            )
             self
           end
 

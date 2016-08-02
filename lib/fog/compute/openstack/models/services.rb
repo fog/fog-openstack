@@ -11,7 +11,7 @@ module Fog
           load_response(service.list_services(options), 'services')
         end
 
-        alias_method :summary, :all
+        alias summary all
 
         def details(options = {})
           Fog::Logger.deprecation('Calling OpenStack[:compute].services.details is deprecated, use .services.all')

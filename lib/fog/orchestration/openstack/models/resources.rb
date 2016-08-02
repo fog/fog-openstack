@@ -16,8 +16,8 @@ module Fog
           load_response(data, 'resources')
         end
 
-        def get(resource_name, stack=nil)
-          stack = self.first.stack if stack.nil?
+        def get(resource_name, stack = nil)
+          stack = first.stack if stack.nil?
           data  = service.show_resource_data(stack.stack_name, stack.id, resource_name).body['resource']
           new(data)
         rescue Fog::Compute::OpenStack::NotFound
@@ -29,7 +29,6 @@ module Fog
         rescue Fog::Compute::OpenStack::NotFound
           nil
         end
-
       end
     end
   end

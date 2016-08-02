@@ -5,10 +5,10 @@ module Fog
         class Real
           def create_user(user)
             request(
-                :expects => [201],
-                :method => 'POST',
-                :path => "users",
-                :body => Fog::JSON.encode(:user => user)
+              :expects => [201],
+              :method  => 'POST',
+              :path    => "users",
+              :body    => Fog::JSON.encode(:user => user)
             )
           end
         end

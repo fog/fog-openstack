@@ -11,7 +11,6 @@ module Fog
           attribute :created_at, :aliases => 'createdAt'
           attribute :name
           attribute :volume_id, :aliases => 'volumeId'
-
         end
       end
     end

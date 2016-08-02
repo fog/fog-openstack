@@ -19,23 +19,23 @@ module Fog
 
         def create
           requires :network_id, :cidr, :ip_version
-          merge_attributes(service.create_subnet(self.network_id,
-                                                    self.cidr,
-                                                    self.ip_version,
-                                                    self.attributes).body['subnet'])
+          merge_attributes(service.create_subnet(network_id,
+                                                 cidr,
+                                                 ip_version,
+                                                 attributes).body['subnet'])
           self
         end
 
         def update
           requires :id
-          merge_attributes(service.update_subnet(self.id,
-                                                    self.attributes).body['subnet'])
+          merge_attributes(service.update_subnet(id,
+                                                 attributes).body['subnet'])
           self
         end
 
         def destroy
           requires :id
-          service.delete_subnet(self.id)
+          service.delete_subnet(id)
           true
         end
       end

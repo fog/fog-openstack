@@ -24,7 +24,7 @@ module Fog
         end
 
         def update(_options = {})
-          raise Fog::OpenStack::Errors::InterfaceNotImplemented.new("Method 'update' is not supported")
+          raise Fog::OpenStack::Errors::InterfaceNotImplemented, "Method 'update' is not supported"
         end
 
         def save(options = {})

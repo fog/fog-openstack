@@ -10,9 +10,9 @@ module Fog
         # * actions <~Array>
         def server_actions(server_id)
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => "servers/#{server_id}/os-instance-actions"
+            :expects => 200,
+            :method  => 'GET',
+            :path    => "servers/#{server_id}/os-instance-actions"
           ).body['instanceActions']
         end # def server_actions
       end # class Real

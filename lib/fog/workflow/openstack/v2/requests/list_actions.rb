@@ -18,9 +18,9 @@ module Fog
           def list_actions(_params = {})
             response = Excon::Response.new
             response.status = 200
-            response.body = { "actions" =>
-                              [{ "name" => "action1", "description" => "d1" },
-                               { "name" => "action2", "description" => "d2" }] }
+            response.body = {"actions" =>
+                                          [{"name" => "action1", "description" => "d1"},
+                                           {"name" => "action2", "description" => "d2"}]}
             response
           end
         end

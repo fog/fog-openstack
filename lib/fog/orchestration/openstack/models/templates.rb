@@ -8,13 +8,13 @@ module Fog
         model Fog::Orchestration::OpenStack::Template
 
         def get(obj)
-          data = if obj.is_a?(Stack)
-            service.get_stack_template(obj).body
-          else
-            service.show_resource_template(obj.resource_name).body
-          end
+          data = if obj.kind_of?(Stack)
+                   service.get_stack_template(obj).body
+                 else
+                   service.show_resource_template(obj.resource_name).body
+                 end
 
-          if data.has_key?('AWSTemplateFormatVersion')
+          if data.key?('AWSTemplateFormatVersion')
             data['content'] = data.to_json
             data['format'] = 'CFN'
             data['template_version'] = data.delete('AWSTemplateFormatVersion')
@@ -32,7 +32,7 @@ module Fog
           nil
         end
 
-        def validate(options={})
+        def validate(options = {})
           data = service.validate_template(options).body
           temp = new
           temp.parameters  = data['Parameters']

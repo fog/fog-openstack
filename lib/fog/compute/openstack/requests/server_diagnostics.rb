@@ -10,8 +10,8 @@ module Fog
         # * actions <~Array>
         def server_diagnostics(server_id)
           request(
-            :method   => 'GET',
-            :path     => "servers/#{server_id}/diagnostics"
+            :method => 'GET',
+            :path   => "servers/#{server_id}/diagnostics"
           )
         end # def server_diagnostics
       end # class Real

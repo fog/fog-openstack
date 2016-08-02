@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_image(image_id)
           request(
-            :expects  => 204,
-            :method   => 'DELETE',
-            :path     => "images/#{image_id}"
+            :expects => 204,
+            :method  => 'DELETE',
+            :path    => "images/#{image_id}"
           )
         end
       end
@@ -14,13 +14,13 @@ module Fog
       class Mock
         def delete_image(image_id)
           response = Excon::Response.new
-          if image = list_images_detail.body['images'].find {|_| _['id'] == image_id}
+          if image = list_images_detail.body['images'].find { |_| _['id'] == image_id }
             if image['status'] == 'SAVING'
               response.status = 409
               raise(Excon::Errors.status_error({:expects => 202}, response))
             else
-              self.data[:last_modified][:images].delete(image_id)
-              self.data[:images].delete(image_id)
+              data[:last_modified][:images].delete(image_id)
+              data[:images].delete(image_id)
               response.status = 202
             end
             response

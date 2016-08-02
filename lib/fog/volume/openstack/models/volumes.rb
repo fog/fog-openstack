@@ -7,7 +7,7 @@ module Fog
         def all(options = {})
           # the parameter has been "detailed = true" before. Make sure we are
           # backwards compatible
-          detailed = options.is_a?(Hash) ? options.delete(:detailed) : options
+          detailed = options.kind_of?(Hash) ? options.delete(:detailed) : options
           if detailed.nil? || detailed
             # This method gives details by default, unless false or {:detailed => false} is passed
             load_response(service.list_volumes_detailed(options), 'volumes')

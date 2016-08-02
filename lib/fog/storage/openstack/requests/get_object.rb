@@ -10,9 +10,9 @@ module Fog
         #
         def get_object(container, object, &block)
           params = {
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
+            :expects => 200,
+            :method  => 'GET',
+            :path    => "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
           }
 
           if block_given?

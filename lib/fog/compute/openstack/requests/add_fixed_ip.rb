@@ -20,7 +20,7 @@ module Fog
       end # class Real
 
       class Mock
-        def add_fixed_ip(server_id, network_id)
+        def add_fixed_ip(_server_id, _network_id)
           true
         end # def add_fixed_ip
       end # class Mock

@@ -14,28 +14,28 @@ module Fog
           ]
 
           # Filter only allowed creation attributes
-          data = attributes.select { |key, value| desired_options.include?(key.to_sym) }
+          data = attributes.select { |key, _value| desired_options.include?(key.to_sym) }
 
           request(
-            :body => Fog::JSON.encode(data),
-            :expects => [200,201],
-            :method => 'POST',
-            :path => 'chassis'
+            :body    => Fog::JSON.encode(data),
+            :expects => [200, 201],
+            :method  => 'POST',
+            :path    => 'chassis'
           )
         end
       end
 
       class Mock
-        def create_chassis(attributes)
+        def create_chassis(_attributes)
           response = Excon::Response.new
           response.status = 200
           response.headers = {
             "X-Compute-Request-Id" => "req-fdc6f99e-55a2-4ab1-8904-0892753828cf",
-            "Content-Type" => "application/json",
-            "Content-Length" => "356",
-            "Date" => Date.new
+            "Content-Type"         => "application/json",
+            "Content-Length"       => "356",
+            "Date"                 => Date.new
           }
-          response.body =  self.data[:chassis_collection].first
+          response.body = data[:chassis_collection].first
           response
         end
       end # mock

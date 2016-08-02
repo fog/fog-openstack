@@ -4,21 +4,21 @@ module Fog
       class Real
         def delete_key_pair(key_name)
           request(
-            :expects  => 202,
-            :method   => 'DELETE',
-            :path     => "os-keypairs/#{key_name}"
+            :expects => 202,
+            :method  => 'DELETE',
+            :path    => "os-keypairs/#{key_name}"
           )
         end
       end
 
       class Mock
-        def delete_key_pair(key_name)
+        def delete_key_pair(_key_name)
           response = Excon::Response.new
           response.status = 202
           response.headers = {
-            "Content-Type" => "text/html; charset=UTF-8",
+            "Content-Type"   => "text/html; charset=UTF-8",
             "Content-Length" => "0",
-            "Date" => Date.new
+            "Date"           => Date.new
           }
           response.body = {}
           response

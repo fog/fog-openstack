@@ -5,17 +5,18 @@ module Fog
         class Real
           def delete_user(user_id)
             request(
-                :expects => [200, 204],
-                :method => 'DELETE',
-                :path => "users/#{user_id}"
+              :expects => [200, 204],
+              :method  => 'DELETE',
+              :path    => "users/#{user_id}"
             )
           end
         end
 
         class Mock
           def delete_user(user_id)
-            self.data[:users].delete(
-                list_users.body['users'].find { |x| x['id'] == user_id }['id'])
+            data[:users].delete(
+              list_users.body['users'].find { |x| x['id'] == user_id }['id']
+            )
 
             response = Excon::Response.new
             response.status = 204

@@ -9,13 +9,13 @@ module Fog
         # === Returns
         # * success <~Boolean>
         def unshelve_server(server_id)
-          body = { 'unshelve' => nil }
+          body = {'unshelve' => nil}
           server_action(server_id, body).status == 202
         end # def unshelve_server
       end # class Real
 
       class Mock
-        def unshelve_server(server_id)
+        def unshelve_server(_server_id)
           true
         end # def unshelve_server
       end # class Mock

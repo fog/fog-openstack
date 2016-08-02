@@ -14,8 +14,7 @@ module Fog
           vanilla_options = [:name, :description, :tenant_id,
                              :peer_address, :peer_id, :peer_cidrs,
                              :psk, :mtu, :dpd, :initiator,
-                             :admin_state_up
-                            ]
+                             :admin_state_up]
           vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['ipsec_site_connection'][key] = options[key]
           end

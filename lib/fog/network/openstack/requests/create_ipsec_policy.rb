@@ -11,8 +11,7 @@ module Fog
           vanilla_options = [:name, :description, :tenant_id,
                              :auth_algorithm, :encryption_algorithm,
                              :pfs, :transform_protocol,
-                             :lifetime, :encapsulation_mode
-                            ]
+                             :lifetime, :encapsulation_mode]
           vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['ipsecpolicy'][key] = options[key]
           end

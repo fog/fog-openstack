@@ -21,7 +21,7 @@ module Fog
           #       * 'tenant_id'<~String>: The tenant id
 
           def list_ec2_credentials(options = {})
-            if options.is_a?(Hash)
+            if options.kind_of?(Hash)
               user_id = options.delete(:user_id)
               query = options
             else
@@ -41,13 +41,13 @@ module Fog
 
         class Mock
           def list_ec2_credentials(options = {})
-            if options.is_a?(Hash)
-              user_id = options.delete(:user_id)
-            else
-              user_id = options
-            end
+            user_id = if options.kind_of?(Hash)
+                        options.delete(:user_id)
+                      else
+                        options
+                      end
 
-            ec2_credentials = self.data[:ec2_credentials][user_id].values
+            ec2_credentials = data[:ec2_credentials][user_id].values
 
             response = Excon::Response.new
             response.status = 200

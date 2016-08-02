@@ -5,10 +5,10 @@ module Fog
         class Real
           def create_project(project)
             request(
-                :expects => [201],
-                :method => 'POST',
-                :path => "projects",
-                :body => Fog::JSON.encode(:project => project)
+              :expects => [201],
+              :method  => 'POST',
+              :path    => "projects",
+              :body    => Fog::JSON.encode(:project => project)
             )
           end
         end

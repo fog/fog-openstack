@@ -3,19 +3,19 @@ module Fog
     class OpenStack
       class Real
         def update_subnet(subnet_id, options = {})
-          data = { 'subnet' => {} }
+          data = {'subnet' => {}}
 
           vanilla_options = [:name, :gateway_ip, :allocation_pools,
                              :dns_nameservers, :host_routes, :enable_dhcp]
-          vanilla_options.select{ |o| options.key?(o) }.each do |key|
+          vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['subnet'][key] = options[key]
           end
 
           request(
-            :body     => Fog::JSON.encode(data),
-            :expects  => 200,
-            :method   => 'PUT',
-            :path     => "subnets/#{subnet_id}"
+            :body    => Fog::JSON.encode(data),
+            :expects => 200,
+            :method  => 'PUT',
+            :path    => "subnets/#{subnet_id}"
           )
         end
       end
@@ -30,7 +30,7 @@ module Fog
             subnet['host_routes']       = options[:host_routes]       || []
             subnet['allocation_pools']  = options[:allocation_pools]  || []
             subnet['enable_dhcp']       = options[:enable_dhcp]
-            response.body = { 'subnet' => subnet }
+            response.body = {'subnet' => subnet}
             response.status = 200
             response
           else

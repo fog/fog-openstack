@@ -18,7 +18,7 @@ module Fog
         end
 
         def details
-          service.get_host_details(self.host_name).body['host']
+          service.get_host_details(host_name).body['host']
         rescue Fog::Compute::OpenStack::NotFound
           nil
         end

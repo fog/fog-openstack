@@ -12,7 +12,7 @@ module Fog
           }
 
           vanilla_options = [:name, :description, :admin_state_up, :tenant_id]
-          vanilla_options.reject{ |o| options[o].nil? }.each do |key|
+          vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['pool'][key] = options[key]
           end
 
@@ -49,7 +49,7 @@ module Fog
           }
 
           self.data[:lb_pools][data['id']] = data
-          response.body = { 'pool' => data }
+          response.body = {'pool' => data}
           response
         end
       end

@@ -15,7 +15,6 @@ module Fog
 
         class Mock
           def list_os_credentials(options = {})
-
           end
         end
       end

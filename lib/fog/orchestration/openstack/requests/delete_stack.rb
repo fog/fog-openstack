@@ -11,7 +11,7 @@ module Fog
         # @see http://developer.openstack.org/api-ref-orchestration-v1.html
 
         def delete_stack(arg1, arg2 = nil)
-          if arg1.is_a?(Stack)
+          if arg1.kind_of?(Stack)
             # Normal use: delete_stack(stack)
             stack = arg1
             stack_name = stack.stack_name
@@ -24,16 +24,16 @@ module Fog
           end
 
           request(
-            :expects  => 204,
-            :path => "stacks/#{stack_name}/#{stack_id}",
-            :method => 'DELETE'
+            :expects => 204,
+            :path    => "stacks/#{stack_name}/#{stack_id}",
+            :method  => 'DELETE'
           )
         end
       end
 
       class Mock
         def delete_stack(arg1, arg2 = nil)
-          if arg1.is_a?(Stack)
+          if arg1.kind_of?(Stack)
             # Normal use: delete_stack(stack)
             stack = arg1
             stack_name = stack.stack_name
@@ -45,7 +45,7 @@ module Fog
             stack_id = arg2
           end
 
-          self.data[:stacks].delete(stack_id)
+          data[:stacks].delete(stack_id)
 
           response = Excon::Response.new
           response.status = 204

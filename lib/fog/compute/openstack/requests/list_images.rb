@@ -4,9 +4,9 @@ module Fog
       class Real
         def list_images
           request(
-            :expects  => [200, 203],
-            :method   => 'GET',
-            :path     => 'images.json'
+            :expects => [200, 203],
+            :method  => 'GET',
+            :path    => 'images.json'
           )
         end
       end
@@ -17,10 +17,10 @@ module Fog
           data = list_images_detail.body['images']
           images = []
           for image in data
-            images << image.reject { |key, value| !['id', 'name', 'links'].include?(key) }
+            images << image.reject { |key, _value| !['id', 'name', 'links'].include?(key) }
           end
           response.status = [200, 203][rand(1)]
-          response.body = { 'images' => images }
+          response.body = {'images' => images}
           response
         end
       end

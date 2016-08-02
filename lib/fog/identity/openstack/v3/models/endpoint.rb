@@ -16,29 +16,30 @@ module Fog
           attribute :links
 
           def to_s
-            self.name
+            name
           end
 
           def destroy
             requires :id
-            service.delete_endpoint(self.id)
+            service.delete_endpoint(id)
             true
           end
 
           def update(attr = nil)
             requires :id, :name
             merge_attributes(
-                service.update_endpoint(self.id, attr || attributes).body['endpoint'])
+              service.update_endpoint(id, attr || attributes).body['endpoint']
+            )
             self
           end
 
           def create
             requires :name
             merge_attributes(
-                service.create_endpoint(attributes).body['endpoint'])
+              service.create_endpoint(attributes).body['endpoint']
+            )
             self
           end
-
         end
       end
     end

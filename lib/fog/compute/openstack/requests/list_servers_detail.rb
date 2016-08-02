@@ -20,21 +20,21 @@ module Fog
       end
 
       class Mock
-        def list_servers_detail(filters = {})
+        def list_servers_detail(_filters = {})
           response = Excon::Response.new
 
-          servers = self.data[:servers].values
+          servers = data[:servers].values
           for server in servers
             case server['status']
             when 'BUILD'
-              if Time.now - self.data[:last_modified][:servers][server['id']] > Fog::Mock.delay * 2
+              if Time.now - data[:last_modified][:servers][server['id']] > Fog::Mock.delay * 2
                 server['status'] = 'ACTIVE'
               end
             end
           end
 
           response.status = [200, 203][rand(1)]
-          response.body = { 'servers' => servers }
+          response.body = {'servers' => servers}
           response
         end
       end

@@ -54,7 +54,7 @@ module Fog
           @data = nil
         end
 
-        def initialize(options={})
+        def initialize(options = {})
           @openstack_api_key = options[:openstack_api_key]
           @openstack_username = options[:openstack_username]
           @path = '/v1/AUTH_1234'
@@ -86,7 +86,7 @@ module Fog
           Fog::Storage::OpenStack::NotFound
         end
 
-        def initialize(options={})
+        def initialize(options = {})
           initialize_identity options
 
           @openstack_service_type           = options[:openstack_service_type] || ['object-store']

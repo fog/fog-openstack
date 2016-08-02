@@ -44,18 +44,18 @@ module Fog
         #     * "Response Body" [String] - Response body for "Response Status".
         def delete_multiple_objects(container, object_names, options = {})
           body = object_names.map do |name|
-            object_name = container ? "#{ container }/#{ name }" : name
+            object_name = container ? "#{container}/#{name}" : name
             URI.encode(object_name)
           end.join("\n")
 
           response = request({
-            :expects  => 200,
-            :method   => 'DELETE',
-            :headers  => options.merge('Content-Type' => 'text/plain',
-                                       'Accept' => 'application/json'),
-            :body     => body,
-            :query    => { 'bulk-delete' => true }
-          }, false)
+                               :expects => 200,
+                               :method  => 'DELETE',
+                               :headers => options.merge('Content-Type' => 'text/plain',
+                                                         'Accept'       => 'application/json'),
+                               :body    => body,
+                               :query   => {'bulk-delete' => true}
+                             }, false)
           response.body = Fog::JSON.decode(response.body)
           response
         end

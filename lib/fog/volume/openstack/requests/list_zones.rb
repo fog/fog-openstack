@@ -13,12 +13,12 @@ module Fog
       end
 
       module Mock
-        def list_zones(options = {})
+        def list_zones(_options = {})
           Excon::Response.new(
             :body   => {
               "availabilityZoneInfo" => [
                 {
-                  "zoneState" => { "available" => true },
+                  "zoneState" => {"available" => true},
                   "zoneName"  => "nova"
                 }
               ]

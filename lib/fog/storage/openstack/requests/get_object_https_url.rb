@@ -35,7 +35,7 @@ module Fog
         # ==== See Also
         # http://docs.rackspace.com/files/api/v1/cf-devguide/content/Create_TempURL-d1a444.html
         def create_temp_url(container, object, expires, method, options = {})
-          raise ArgumentError, "Insufficient parameters specified." unless (container && object && expires && method)
+          raise ArgumentError, "Insufficient parameters specified." unless container && object && expires && method
           raise ArgumentError, "Storage must be instantiated with the :openstack_temp_url_key option" if @openstack_temp_url_key.nil?
 
           scheme = options[:scheme] || @scheme
@@ -43,13 +43,13 @@ module Fog
           port = options[:port] || @port
 
           # POST not allowed
-          allowed_methods = %w{GET PUT HEAD}
+          allowed_methods = %w(GET PUT HEAD)
           unless allowed_methods.include?(method)
-            raise ArgumentError.new("Invalid method '#{method}' specified. Valid methods are: #{allowed_methods.join(', ')}")
+            raise ArgumentError, "Invalid method '#{method}' specified. Valid methods are: #{allowed_methods.join(', ')}"
           end
 
-          expires        = expires.to_i
-          object_path_escaped   = "#{@path}/#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object,"/")}"
+          expires = expires.to_i
+          object_path_escaped   = "#{@path}/#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object, "/")}"
           object_path_unescaped = "#{@path}/#{Fog::OpenStack.escape(container)}/#{object}"
           string_to_sign = "#{method}\n#{expires}\n#{object_path_unescaped}"
 
@@ -58,10 +58,10 @@ module Fog
 
           temp_url_options = {
             :scheme => scheme,
-            :host => host,
-            :port => port,
-            :path => object_path_escaped,
-            :query => "temp_url_sig=#{sig}&temp_url_expires=#{expires}"
+            :host   => host,
+            :port   => port,
+            :path   => object_path_escaped,
+            :query  => "temp_url_sig=#{sig}&temp_url_expires=#{expires}"
           }
           URI::Generic.build(temp_url_options).to_s
         end
@@ -69,11 +69,11 @@ module Fog
         private
 
         def sig_to_hex(str)
-          str.unpack("C*").map { |c|
+          str.unpack("C*").map do |c|
             c.to_s(16)
-          }.map { |h|
+          end.map do |h|
             h.size == 1 ? "0#{h}" : h
-          }.join
+          end.join
         end
       end
     end

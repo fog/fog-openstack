@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_server_group(group_id)
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => "/os-server-groups/#{group_id}"
+            :expects => 200,
+            :method  => 'GET',
+            :path    => "/os-server-groups/#{group_id}"
           )
         end
       end
@@ -17,11 +17,11 @@ module Fog
           response = Excon::Response.new
           response.status = 200
           response.headers = {
-            "Content-Type" => "text/html; charset=UTF-8",
+            "Content-Type"   => "text/html; charset=UTF-8",
             "Content-Length" => "0",
-            "Date" => Date.new
+            "Date"           => Date.new
           }
-          response.body = { 'server_group' => {
+          response.body = {'server_group' => {
             'id'         => group_id,
             'name'       => grp[:name],
             'policies'   => grp[:policies],
@@ -29,7 +29,7 @@ module Fog
             'metadata'   => {},
             'project_id' => 'test-project',
             'user_id'    => 'test-user'
-          } }
+          }}
           response
         end
       end

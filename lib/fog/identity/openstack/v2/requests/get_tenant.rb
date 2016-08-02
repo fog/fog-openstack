@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_tenant(id)
             request(
-                :expects => [200, 204],
-                :method => 'GET',
-                :path => "tenants/#{id}"
+              :expects => [200, 204],
+              :method  => 'GET',
+              :path    => "tenants/#{id}"
             )
           end
         end # class Real
@@ -17,12 +17,12 @@ module Fog
             response = Excon::Response.new
             response.status = [200, 204][rand(1)]
             response.body = {
-                'tenant' => {
-                    'id' => id,
-                    'description' => 'Has access to everything',
-                    'enabled' => true,
-                    'name' => 'admin'
-                }
+              'tenant' => {
+                'id'          => id,
+                'description' => 'Has access to everything',
+                'enabled'     => true,
+                'name'        => 'admin'
+              }
             }
             response
           end # def list_tenants

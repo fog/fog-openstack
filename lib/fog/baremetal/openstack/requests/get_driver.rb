@@ -4,18 +4,18 @@ module Fog
       class Real
         def get_driver(driver_name)
           request(
-              :expects => [200, 204],
-              :method  => 'GET',
-              :path    => "drivers/#{driver_name}"
+            :expects => [200, 204],
+            :method  => 'GET',
+            :path    => "drivers/#{driver_name}"
           )
         end
       end # class Real
 
       class Mock
-        def get_driver(driver_name)
+        def get_driver(_driver_name)
           response = Excon::Response.new
           response.status = [200, 204][rand(1)]
-          response.body = self.data[:drivers].first
+          response.body = data[:drivers].first
           response
         end # def get_driver
       end # class Mock

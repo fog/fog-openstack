@@ -4,7 +4,7 @@ module Fog
       class Real
         def delete_service(uuid, optional_params = nil)
           # Encode all params
-          optional_params = optional_params.each { |k, v| optional_params[k] = URI::encode(v) } if optional_params
+          optional_params = optional_params.each { |k, v| optional_params[k] = URI.encode(v) } if optional_params
 
           request(
             :expects => [202, 204],
@@ -16,13 +16,13 @@ module Fog
       end
 
       class Mock
-        def delete_service(host, binary, optional_params = nil)
+        def delete_service(_host, _binary, _optional_params = nil)
           response = Excon::Response.new
           response.status = 204
           response.headers = {
-            "Content-Type" => "text/html; charset=UTF-8",
+            "Content-Type"   => "text/html; charset=UTF-8",
             "Content-Length" => "0",
-            "Date" => Date.new
+            "Date"           => Date.new
           }
           response
         end

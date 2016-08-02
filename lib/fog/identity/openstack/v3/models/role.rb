@@ -11,28 +11,29 @@ module Fog
           attribute :links
 
           def to_s
-            self.name
+            name
           end
 
           def destroy
             requires :id
-            service.delete_role(self.id)
+            service.delete_role(id)
             true
           end
 
           def update(attr = nil)
             requires :id
             merge_attributes(
-                service.update_role(self.id, attr || attributes).body['role'])
+              service.update_role(id, attr || attributes).body['role']
+            )
             self
           end
 
           def create
             merge_attributes(
-                service.create_role(attributes).body['role'])
+              service.create_role(attributes).body['role']
+            )
             self
           end
-
         end
       end
     end

@@ -12,7 +12,7 @@ module Fog
         attribute :provision_state
         attribute :uuid
 
-        #detailed
+        # detailed
         attribute :created_at
         attribute :updated_at
         attribute :chassis_uuid
@@ -31,46 +31,46 @@ module Fog
 
         def create
           requires :driver
-          merge_attributes(service.create_node(self.attributes).body)
+          merge_attributes(service.create_node(attributes).body)
           self
         end
 
-        def update(patch=nil)
+        def update(patch = nil)
           requires :uuid, :driver
           if patch
             merge_attributes(service.patch_node(uuid, patch).body)
           else
-            # TODO implement update_node method using PUT method and self.attributes
+            # TODO: implement update_node method using PUT method and self.attributes
             # once it is supported by Ironic
-            raise ArgumentError, ('You need to provide patch attribute. Ironic does '
-                                  'not support update by hash yet, only by jsonpatch.')
+            raise ArgumentError, 'You need to provide patch attribute. Ironic does '
+            'not support update by hash yet, only by jsonpatch.'
           end
           self
         end
 
         def destroy
           requires :uuid
-          service.delete_node(self.uuid)
+          service.delete_node(uuid)
           true
         end
 
         def chassis
           requires :uuid
-          service.get_chassis(self.chassis_uuid).body
+          service.get_chassis(chassis_uuid).body
         end
 
         def ports
           requires :uuid
-          service.list_ports_detailed({:node_uuid => self.uuid}).body['ports']
+          service.list_ports_detailed(:node_uuid => uuid).body['ports']
         end
 
-        def set_node_maintenance(parameters=nil)
+        def set_node_maintenance(parameters = nil)
           requires :uuid
           service.set_node_maintenance(uuid, parameters)
           true
         end
 
-        def unset_node_maintenance(parameters=nil)
+        def unset_node_maintenance(parameters = nil)
           requires :uuid
           service.unset_node_maintenance(uuid, parameters)
           true
@@ -78,17 +78,17 @@ module Fog
 
         def metadata
           requires :uuid
-          service.get_node(self.uuid).headers
+          service.get_node(uuid).headers
         end
 
         def set_power_state(power_state)
           requires :uuid
-          service.set_node_power_state(self.uuid, power_state)
+          service.set_node_power_state(uuid, power_state)
         end
 
         def set_provision_state(provision_state)
           requires :uuid
-          service.set_node_provision_state(self.uuid, provision_state)
+          service.set_node_provision_state(uuid, provision_state)
         end
       end
     end

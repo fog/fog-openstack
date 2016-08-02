@@ -3,10 +3,10 @@ module Fog
     class OpenStack
       class Real
         def update_lb_health_monitor(health_monitor_id, options = {})
-          data = { 'health_monitor' => {} }
+          data = {'health_monitor' => {}}
 
           vanilla_options = [:delay, :timeout, :max_retries, :http_method, :url_path, :expected_codes, :admin_state_up]
-          vanilla_options.select{ |o| options.key?(o) }.each do |key|
+          vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['health_monitor'][key] = options[key]
           end
 
@@ -30,7 +30,7 @@ module Fog
             health_monitor['url_path']       = options[:url_path]
             health_monitor['expected_codes'] = options[:expected_codes]
             health_monitor['admin_state_up'] = options[:admin_state_up]
-            response.body = { 'health_monitor' => health_monitor }
+            response.body = {'health_monitor' => health_monitor}
             response.status = 200
             response
           else

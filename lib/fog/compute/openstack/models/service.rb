@@ -13,27 +13,27 @@ module Fog
         attribute :updated_at
         attribute :zone
 
-        #detailed
+        # detailed
         attribute :disabled_reason
 
         def enable
           requires :binary, :host
-          service.enable_service(self.host, self.binary)
+          service.enable_service(host, binary)
         end
 
         def disable
           requires :binary, :host
-          service.disable_service(self.host, self.binary)
+          service.disable_service(host, binary)
         end
 
         def disable_and_log_reason
           requires :binary, :host, :disabled_reason
-          service.disable_service_log_reason(self.host, self.binary, self.disabled_reason)
+          service.disable_service_log_reason(host, binary, disabled_reason)
         end
 
         def destroy
           requires :id
-          service.delete_service(self.id)
+          service.delete_service(id)
           true
         end
       end

@@ -12,11 +12,10 @@ module Fog
       end
 
       class Mock
-        def get_aggregate(uuid)
+        def get_aggregate(_uuid)
           response = Excon::Response.new
           response.status = 2040
-          response.body = {'aggregate' => self.data[:aggregates].first.merge({
-            "hosts" => []})}
+          response.body = {'aggregate' => data[:aggregates].first.merge("hosts" => [])}
 
           response
         end

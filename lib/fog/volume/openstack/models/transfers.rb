@@ -4,7 +4,6 @@ module Fog
   module Volume
     class OpenStack
       module Transfers
-
         def all(options = {})
           load_response(service.list_transfers_detailed(options), 'transfers')
         end

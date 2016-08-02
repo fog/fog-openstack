@@ -23,9 +23,9 @@ module Fog
 
           def get_ec2_credential(user_id, access)
             request(
-                :expects => [200, 202],
-                :method => 'GET',
-                :path => "users/#{user_id}/credentials/OS-EC2/#{access}"
+              :expects => [200, 202],
+              :method  => 'GET',
+              :path    => "users/#{user_id}/credentials/OS-EC2/#{access}"
             )
           rescue Excon::Errors::Unauthorized
             raise Fog::Identity::OpenStack::NotFound
@@ -34,7 +34,7 @@ module Fog
 
         class Mock
           def get_ec2_credential(user_id, access)
-            ec2_credential = self.data[:ec2_credentials][user_id][access]
+            ec2_credential = data[:ec2_credentials][user_id][access]
 
             raise Fog::OpenStack::Identity::NotFound unless ec2_credential
 

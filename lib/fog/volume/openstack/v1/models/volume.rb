@@ -26,7 +26,8 @@ module Fog
           def update(attr = nil)
             requires :id
             merge_attributes(
-              service.update_volume(id, attr || attributes).body['volume'])
+              service.update_volume(id, attr || attributes).body['volume']
+            )
             self
           end
         end

@@ -41,7 +41,6 @@ module Fog
 
         request_path 'fog/identity/openstack/v3/requests'
 
-
         request :list_users
         request :get_user
         request :create_user
@@ -119,19 +118,16 @@ module Fog
 
         class Mock
           include Fog::OpenStack::Core
-          def initialize(options={})
-
+          def initialize(options = {})
           end
         end
 
-        def self.get_api_version uri, connection_options={}
+        def self.get_api_version(uri, connection_options = {})
           connection = Fog::Core::Connection.new(uri, false, connection_options)
-          response = connection.request({
-                                            :expects => [200],
-                                            :headers => {'Content-Type' => 'application/json',
-                                                         'Accept' => 'application/json'},
-                                            :method => 'GET'
-                                        })
+          response = connection.request(:expects => [200],
+                                        :headers => {'Content-Type' => 'application/json',
+                                                     'Accept'       => 'application/json'},
+                                        :method  => 'GET')
 
           body = Fog::JSON.decode(response.body)
           version = nil
@@ -139,8 +135,7 @@ module Fog
             version = body['version']['id']
           end
           if version.nil?
-            raise Fog::OpenStack::Errors::ServiceUnavailable.new(
-                      "No version available at #{uri}")
+            raise Fog::OpenStack::Errors::ServiceUnavailable, "No version available at #{uri}"
           end
 
           version

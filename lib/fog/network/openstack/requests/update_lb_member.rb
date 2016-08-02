@@ -3,10 +3,10 @@ module Fog
     class OpenStack
       class Real
         def update_lb_member(member_id, options = {})
-          data = { 'member' => {} }
+          data = {'member' => {}}
 
           vanilla_options = [:pool_id, :weight, :admin_state_up]
-          vanilla_options.select{ |o| options.key?(o) }.each do |key|
+          vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['member'][key] = options[key]
           end
 
@@ -26,7 +26,7 @@ module Fog
             member['pool_id']        = options[:pool_id]
             member['weight']         = options[:weight]
             member['admin_state_up'] = options[:admin_state_up]
-            response.body = { 'member' => member }
+            response.body = {'member' => member}
             response.status = 200
             response
           else

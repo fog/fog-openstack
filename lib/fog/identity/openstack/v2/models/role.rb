@@ -30,20 +30,21 @@ module Fog
           end
 
           private
+
           def add_remove_to_user(user, tenant, ops)
             requires :id
             user_id = get_id(user)
             tenant_id = get_id(tenant)
             case ops
-              when :add
-                service.create_user_role(tenant_id, user_id, id).status == 200
-              when :remove
-                service.delete_user_role(tenant_id, user_id, id).status == 204
+            when :add
+              service.create_user_role(tenant_id, user_id, id).status == 200
+            when :remove
+              service.delete_user_role(tenant_id, user_id, id).status == 204
             end
           end
 
           def get_id(_)
-            _.is_a?(String) ? _ : _.id
+            _.kind_of?(String) ? _ : _.id
           end
         end # class Role
       end # class V2

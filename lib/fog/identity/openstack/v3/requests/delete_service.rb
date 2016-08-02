@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_service(id)
             request(
-                :expects => [204],
-                :method => 'DELETE',
-                :path => "services/#{id}"
+              :expects => [204],
+              :method  => 'DELETE',
+              :path    => "services/#{id}"
             )
           end
         end

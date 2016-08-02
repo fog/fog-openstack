@@ -5,13 +5,13 @@ module Fog
         def create_aggregate(name, options = {})
           data = {
             'aggregate' => {
-              'name'       => name
+              'name' => name
             }
           }
 
           vanilla_options = [:availability_zone]
 
-          vanilla_options.select{|o| options[o]}.each do |key|
+          vanilla_options.select { |o| options[o] }.each do |key|
             data['aggregate'][key] = options[key]
           end
 
@@ -25,15 +25,15 @@ module Fog
       end
 
       class Mock
-        def create_aggregate(name, options = {})
+        def create_aggregate(_name, _options = {})
           response = Excon::Response.new
           response.status = 200
           response.headers = {
-            "Content-Type" => "text/html; charset=UTF-8",
+            "Content-Type"   => "text/html; charset=UTF-8",
             "Content-Length" => "0",
-            "Date" => Date.new
+            "Date"           => Date.new
           }
-          response.body = {'aggregate' => self.data[:aggregates].first}
+          response.body = {'aggregate' => data[:aggregates].first}
           response
         end
       end # mock

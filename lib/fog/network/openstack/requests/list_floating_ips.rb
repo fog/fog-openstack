@@ -13,9 +13,9 @@ module Fog
       end
 
       class Mock
-        def list_floating_ips(filters = {})
+        def list_floating_ips(_filters = {})
           Excon::Response.new(
-            :body   => { 'floatingips' => self.data[:floating_ips].values },
+            :body   => {'floatingips' => data[:floating_ips].values},
             :status => 200
           )
         end

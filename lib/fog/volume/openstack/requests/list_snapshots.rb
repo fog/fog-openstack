@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       module Real
         def list_snapshots(options = true, options_deprecated = {})
-          if options.is_a?(Hash)
+          if options.kind_of?(Hash)
             path  = 'snapshots'
             query = options
           else
@@ -18,16 +18,16 @@ module Fog
           end
 
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => path,
-            :query    => query
+            :expects => 200,
+            :method  => 'GET',
+            :path    => path,
+            :query   => query
           )
         end
       end
 
       module Mock
-        def list_snapshots(detailed=true, options={})
+        def list_snapshots(_detailed = true, _options = {})
           response = Excon::Response.new
           response.status = 200
           response.body = {

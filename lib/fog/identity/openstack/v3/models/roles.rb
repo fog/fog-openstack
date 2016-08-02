@@ -21,15 +21,16 @@ module Fog
           end
 
           def find_by_id(id)
-            cached_role = self.find { |role| role.id == id }
+            cached_role = find { |role| role.id == id }
             return cached_role if cached_role
             role_hash = service.get_role(id).body['role']
-            Fog::Identity::OpenStack::V3::role.new(
-                role_hash.merge(:service => service))
+            Fog::Identity::OpenStack::V3.role.new(
+              role_hash.merge(:service => service)
+            )
           end
 
           def destroy(id)
-            role = self.find_by_id(id)
+            role = find_by_id(id)
             role.destroy
           end
         end

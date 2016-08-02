@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def list_snapshots(options = true)
-          if options.is_a?(Hash)
+          if options.kind_of?(Hash)
             path = 'os-snapshots'
             query = options
           else
@@ -18,20 +18,20 @@ module Fog
           end
 
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => path,
-            :query    => query
+            :expects => 200,
+            :method  => 'GET',
+            :path    => path,
+            :query   => query
           )
         end
       end
 
       class Mock
-        def list_snapshots(options = true)
+        def list_snapshots(_options = true)
           response = Excon::Response.new
           response.status = 200
-          snapshots = self.data[:snapshots].values
-          response.body = { 'snapshots' => snapshots }
+          snapshots = data[:snapshots].values
+          response.body = {'snapshots' => snapshots}
           response
         end
       end

@@ -5,11 +5,11 @@ module Fog
         class Real
           def list_projects(options = {})
             user_id = options.delete('user_id') || options.delete(:user_id)
-            if user_id
-              path = "users/#{user_id}/projects"
-            else
-              path = "projects"
-            end
+            path = if user_id
+                     "users/#{user_id}/projects"
+                   else
+                     "projects"
+                   end
 
             request(
               :expects => [200],
@@ -22,7 +22,6 @@ module Fog
 
         class Mock
           def list_projects(options = {})
-
           end
         end
       end

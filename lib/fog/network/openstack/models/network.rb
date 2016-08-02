@@ -18,23 +18,23 @@ module Fog
         attribute :router_external,           :aliases => 'router:external'
 
         def subnets
-          service.subnets.select {|s| s.network_id == self.id }
+          service.subnets.select { |s| s.network_id == id }
         end
 
         def create
-          merge_attributes(service.create_network(self.attributes).body['network'])
+          merge_attributes(service.create_network(attributes).body['network'])
           self
         end
 
         def update
           requires :id
-          merge_attributes(service.update_network(self.id, self.attributes).body['network'])
+          merge_attributes(service.update_network(id, attributes).body['network'])
           self
         end
 
         def destroy
           requires :id
-          service.delete_network(self.id)
+          service.delete_network(id)
           true
         end
       end

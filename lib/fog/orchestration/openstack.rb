@@ -55,7 +55,6 @@ module Fog
       request :validate_template
 
       module Reflectable
-
         REFLECTION_REGEX = /\/stacks\/(\w+)\/([\w|-]+)\/resources\/(\w+)/
 
         def resource
@@ -69,9 +68,9 @@ module Fog
         private
 
         def reflection
-          @reflection ||= REFLECTION_REGEX.match(self.links[0]['href'])
+          @reflection ||= REFLECTION_REGEX.match(links[0]['href'])
         end
-        alias :r :reflection
+        alias r reflection
       end
 
       class Mock
@@ -92,7 +91,7 @@ module Fog
           @data = nil
         end
 
-        def initialize(options={})
+        def initialize(options = {})
           @openstack_username = options[:openstack_username]
           @openstack_auth_uri = URI.parse(options[:openstack_auth_url])
 
@@ -120,11 +119,11 @@ module Fog
         end
 
         def credentials
-          { :provider                 => 'openstack',
-            :openstack_auth_url       => @openstack_auth_uri.to_s,
-            :openstack_auth_token     => @auth_token,
-            :openstack_management_url => @openstack_management_url,
-            :openstack_identity_endpoint => @openstack_identity_public_endpoint }
+          {:provider                    => 'openstack',
+           :openstack_auth_url          => @openstack_auth_uri.to_s,
+           :openstack_auth_token        => @auth_token,
+           :openstack_management_url    => @openstack_management_url,
+           :openstack_identity_endpoint => @openstack_identity_public_endpoint}
         end
       end
 
@@ -135,7 +134,7 @@ module Fog
           Fog::Orchestration::OpenStack::NotFound
         end
 
-        def initialize(options={})
+        def initialize(options = {})
           initialize_identity options
 
           @openstack_identity_service_type = options[:openstack_identity_service_type] || 'identity'

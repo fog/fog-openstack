@@ -23,7 +23,7 @@ module Fog
       end # class Real
 
       class Mock
-        def get_vnc_console(server_id, console_type)
+        def get_vnc_console(_server_id, _console_type)
           response = Excon::Response.new
           response.status = 200
           response.body = {

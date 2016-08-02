@@ -10,7 +10,7 @@ module Fog
       end
 
       class Mock
-        def set_tenant(tenant)
+        def set_tenant(_tenant)
           true
         end
       end

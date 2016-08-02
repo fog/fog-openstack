@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def list_resources(options = {}, options_deprecated = {})
-          if options.is_a?(Hash)
+          if options.kind_of?(Hash)
             if !options.key?(:stack) && !(options.key?(:stack_name) && options.key?(:stack_id))
               raise(ArgumentError, "Missing required options keys: :stack or :stack_name and :stack_id, while calling "\
                                    " .list_resources(options)")
@@ -11,7 +11,7 @@ module Fog
 
             stack        = options.delete(:stack)
             stack_name   = options.delete(:stack_name)
-            stack_name ||=  stack.stack_name if stack && stack.respond_to?(:stack_name)
+            stack_name ||= stack.stack_name if stack && stack.respond_to?(:stack_name)
             stack_id     = options.delete(:stack_id)
             stack_id   ||=  stack.id if stack && stack.respond_to?(:id)
             path         = "stacks/#{stack_name}/#{stack_id}/resources"
@@ -32,11 +32,11 @@ module Fog
       end
 
       class Mock
-        def list_resources(options = {}, options_deprecated = {})
-          resources = self.data[:resources].values
+        def list_resources(_options = {}, _options_deprecated = {})
+          resources = data[:resources].values
 
           Excon::Response.new(
-            :body   => { 'resources' => resources },
+            :body   => {'resources' => resources},
             :status => 200
           )
         end

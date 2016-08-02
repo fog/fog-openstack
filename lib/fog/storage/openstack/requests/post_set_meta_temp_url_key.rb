@@ -22,9 +22,9 @@ module Fog
         # http://docs.rackspace.com/files/api/v1/cf-devguide/content/Set_Account_Metadata-d1a4460.html
         def post_set_meta_temp_url_key(key)
           request(
-            :expects  => [201, 202, 204],
-            :method   => 'POST',
-            :headers  => {'X-Account-Meta-Temp-Url-Key' => key}
+            :expects => [201, 202, 204],
+            :method  => 'POST',
+            :headers => {'X-Account-Meta-Temp-Url-Key' => key}
           )
         end
       end

@@ -19,21 +19,21 @@ module Fog
 
         def create
           requires :network_id
-          merge_attributes(service.create_port(self.network_id,
-                                                  self.attributes).body['port'])
+          merge_attributes(service.create_port(network_id,
+                                               attributes).body['port'])
           self
         end
 
         def update
           requires :id, :network_id
-          merge_attributes(service.update_port(self.id,
-                                                  self.attributes).body['port'])
+          merge_attributes(service.update_port(id,
+                                               attributes).body['port'])
           self
         end
 
         def destroy
           requires :id
-          service.delete_port(self.id)
+          service.delete_port(id)
           true
         end
       end

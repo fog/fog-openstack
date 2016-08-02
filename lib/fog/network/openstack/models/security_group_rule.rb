@@ -23,7 +23,7 @@ module Fog
         end
 
         def save
-          raise Fog::Errors::Error.new('Resaving an existing object may create a duplicate') if persisted?
+          raise Fog::Errors::Error, 'Resaving an existing object may create a duplicate' if persisted?
           merge_attributes(service.create_security_group_rule(security_group_id, direction, attributes).body['security_group_rule'])
           true
         end

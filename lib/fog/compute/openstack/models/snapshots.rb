@@ -8,7 +8,7 @@ module Fog
         model Fog::Compute::OpenStack::Snapshot
 
         def all(options = {})
-          if !options.is_a?(Hash)
+          if !options.kind_of?(Hash)
             if options
               Fog::Logger.deprecation('Calling OpenStack[:compute].snapshots.all(true) is deprecated, use .snapshots.all')
             else

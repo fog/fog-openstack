@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_endpoint(id)
             request(
-                :expects => [204],
-                :method => 'DELETE',
-                :path => "endpoints/#{id}"
+              :expects => [204],
+              :method  => 'DELETE',
+              :path    => "endpoints/#{id}"
             )
           end
         end

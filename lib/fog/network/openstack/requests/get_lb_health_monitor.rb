@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:lb_health_monitors][health_monitor_id]
             response.status = 200
-            response.body = { 'health_monitor' => data }
+            response.body = {'health_monitor' => data}
             response
           else
             raise Fog::Network::OpenStack::NotFound

@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_quotas
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => "/quotas"
+            :expects => 200,
+            :method  => 'GET',
+            :path    => "/quotas"
           )
         end
       end
@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           response.status = 200
           response.body = {
-            'quotas' => self.data[:quotas]
+            'quotas' => data[:quotas]
           }
           response
         end

@@ -41,14 +41,16 @@ module Fog
           merge_attributes(service.associate_floating_ip(
             id,
             port_id,
-            options(fixed_ip_address)).body['floatingip'])
+            options(fixed_ip_address)
+          ).body['floatingip'])
         end
 
         def disassociate(fixed_ip_address = nil)
           requires :id
           merge_attributes(service.disassociate_floating_ip(
             id,
-            options(fixed_ip_address)).body['floatingip'])
+            options(fixed_ip_address)
+          ).body['floatingip'])
         end
 
         private

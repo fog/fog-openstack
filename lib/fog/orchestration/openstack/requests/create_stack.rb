@@ -17,7 +17,7 @@ module Fog
         # @see http://developer.openstack.org/api-ref-orchestration-v1.html
 
         def create_stack(arg1, arg2 = nil)
-          if arg1.is_a?(Hash)
+          if arg1.kind_of?(Hash)
             # Normal use: create_stack(options)
             options = arg1
           else
@@ -29,17 +29,17 @@ module Fog
           end
 
           request(
-            :expects  => 201,
-            :path => 'stacks',
-            :method => 'POST',
-            :body => Fog::JSON.encode(options)
+            :expects => 201,
+            :path    => 'stacks',
+            :method  => 'POST',
+            :body    => Fog::JSON.encode(options)
           )
         end
       end
 
       class Mock
         def create_stack(arg1, arg2 = nil)
-          if arg1.is_a?(Hash)
+          if arg1.kind_of?(Hash)
             # Normal use: create_stack(options)
             options = arg1
           else
@@ -51,22 +51,23 @@ module Fog
           end
 
           stack_id = Fog::Mock.random_hex(32)
-          stack = self.data[:stacks][stack_id] = {
-            'id' => stack_id,
-            'stack_name' => options[:stack_name],
-            'links' => [],
-            'description' => options[:description],
-            'stack_status' => 'CREATE_COMPLETE',
+          stack = data[:stacks][stack_id] = {
+            'id'                  => stack_id,
+            'stack_name'          => options[:stack_name],
+            'links'               => [],
+            'description'         => options[:description],
+            'stack_status'        => 'CREATE_COMPLETE',
             'stack_status_reason' => 'Stack successfully created',
-            'creation_time' => Time.now,
-            'updated_time' => Time.now
+            'creation_time'       => Time.now,
+            'updated_time'        => Time.now
           }
 
           response = Excon::Response.new
           response.status = 201
           response.body = {
-            'id' => stack_id,
-            'links'=>[{"href"=>"http://localhost:8004/v1/fake_tenant_id/stacks/#{options[:stack_name]}/#{stack_id}", "rel"=>"self"}]}
+            'id'    => stack_id,
+            'links' => [{"href" => "http://localhost:8004/v1/fake_tenant_id/stacks/#{options[:stack_name]}/#{stack_id}", "rel" => "self"}]
+          }
           response
         end
       end

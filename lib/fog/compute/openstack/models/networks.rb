@@ -12,16 +12,16 @@ module Fog
         def all
           requires :server
 
-          networks = Array.new
+          networks = []
           server.addresses.each_with_index do |address, index|
             networks << {
-              :id   => index + 1,
-              :name => address[0],
-              :addresses => address[1].map {|a| a['addr'] }
+              :id        => index + 1,
+              :name      => address[0],
+              :addresses => address[1].map { |a| a['addr'] }
             }
           end
 
-          # TODO convert to load_response?
+          # TODO: convert to load_response?
           load(networks)
         end
       end # class Networks

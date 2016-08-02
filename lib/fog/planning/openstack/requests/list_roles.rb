@@ -13,7 +13,7 @@ module Fog
       end # class Real
 
       class Mock
-        def list_roles(options = {})
+        def list_roles(_options = {})
           response = Excon::Response.new
           response.status = [200, 204][rand(1)]
           response.body = [

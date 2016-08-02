@@ -4,16 +4,15 @@ module Fog
   module Orchestration
     class OpenStack
       class Stack < Fog::OpenStack::Model
-
         identity :id
 
-        %w{capabilities description disable_rollback links notification_topics outputs parameters
-            stack_name stack_status stack_status_reason template_description timeout_mins parent
-            creation_time updated_time stack_user_project_id stack_owner}.each do |a|
+        %w(capabilities description disable_rollback links notification_topics outputs parameters
+           stack_name stack_status stack_status_reason template_description timeout_mins parent
+           creation_time updated_time stack_user_project_id stack_owner).each do |a|
           attribute a.to_sym
         end
 
-        def save(options={})
+        def save(options = {})
           if persisted?
             service.update_stack(self, default_options.merge(options)).body['stack']
           else
@@ -43,17 +42,17 @@ module Fog
         def delete
           service.delete_stack(self)
         end
-        alias_method :destroy, :delete
+        alias destroy delete
 
         def details
-          @details ||= service.stacks.get(self.stack_name, self.id)
+          @details ||= service.stacks.get(stack_name, id)
         end
 
-        def resources(options={})
+        def resources(options = {})
           @resources ||= service.resources.all({:stack => self}.merge(options))
         end
 
-        def events(options={})
+        def events(options = {})
           @events ||= service.events.all(self, options)
         end
 
@@ -64,7 +63,6 @@ module Fog
         def abandon
           service.abandon_stack(self)
         end
-
 
         # Deprecated
         def template_url
@@ -99,7 +97,7 @@ module Fog
         # build options to create or update stack
         def default_options
           template_content =
-            if template && template.is_a?(Fog::Orchestration::OpenStack::Template)
+            if template && template.kind_of?(Fog::Orchestration::OpenStack::Template)
               template.content
             else
               template

@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_network(network_id)
           request(
-            :expects  => 204,
-            :method   => 'DELETE',
-            :path     => "networks/#{network_id}"
+            :expects => 204,
+            :method  => 'DELETE',
+            :path    => "networks/#{network_id}"
           )
         end
       end
@@ -15,7 +15,7 @@ module Fog
         def delete_network(network_id)
           response = Excon::Response.new
           if list_networks.body['networks'].map { |r| r['id'] }.include? network_id
-            self.data[:networks].delete(network_id)
+            data[:networks].delete(network_id)
             response.status = 204
             response
           else

@@ -24,33 +24,33 @@ module Fog
 
         def create
           requires :name
-          merge_attributes(service.create_aggregate(self.name, self.attributes).body['aggregate'])
+          merge_attributes(service.create_aggregate(name, attributes).body['aggregate'])
           self
         end
 
         def update
           requires :id
-          merge_attributes(service.update_aggregate(self.id, self.attributes).body['aggregate'])
+          merge_attributes(service.update_aggregate(id, attributes).body['aggregate'])
           self
         end
 
         def add_host(host_uuid)
           requires :id
-          service.add_aggregate_host(self.id, host_uuid)
+          service.add_aggregate_host(id, host_uuid)
         end
 
         def remove_host(host_uuid)
           requires :id
-          service.remove_aggregate_host(self.id, host_uuid)
+          service.remove_aggregate_host(id, host_uuid)
         end
 
         def update_metadata(metadata)
-          service.update_aggregate_metadata(self.id, metadata)
+          service.update_aggregate_metadata(id, metadata)
         end
 
         def destroy
           requires :id
-          service.delete_aggregate(self.id)
+          service.delete_aggregate(id)
           true
         end
       end

@@ -13,7 +13,7 @@ module Fog
       end
 
       class Mock
-        def get_console_output(server_id, log_length)
+        def get_console_output(_server_id, _log_length)
           response = Excon::Response.new
           response.status = 200
           response

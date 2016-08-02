@@ -5,10 +5,10 @@ module Fog
         class Real
           def update_project(id, project)
             request(
-                :expects => [200],
-                :method => 'PATCH',
-                :path => "projects/#{id}",
-                :body => Fog::JSON.encode(:project => project)
+              :expects => [200],
+              :method  => 'PATCH',
+              :path    => "projects/#{id}",
+              :body    => Fog::JSON.encode(:project => project)
             )
           end
         end

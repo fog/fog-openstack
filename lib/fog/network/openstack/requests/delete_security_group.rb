@@ -8,9 +8,9 @@ module Fog
         # * 'security_group_id'<~String> - UUID of the security group to delete
         def delete_security_group(security_group_id)
           request(
-            :expects  => 204,
-            :method   => 'DELETE',
-            :path     => "security-groups/#{security_group_id}"
+            :expects => 204,
+            :method  => 'DELETE',
+            :path    => "security-groups/#{security_group_id}"
           )
         end
       end
@@ -18,8 +18,8 @@ module Fog
       class Mock
         def delete_security_group(security_group_id)
           response = Excon::Response.new
-          if self.data[:security_groups][security_group_id]
-            self.data[:security_groups].delete(security_group_id)
+          if data[:security_groups][security_group_id]
+            data[:security_groups].delete(security_group_id)
             response.status = 204
             response
           else

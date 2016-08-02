@@ -5,10 +5,10 @@ module Fog
         class Real
           def update_os_credential(id, credential)
             request(
-                :expects => [200],
-                :method => 'PATCH',
-                :path => "credentials/#{id}",
-                :body => Fog::JSON.encode(:credential => credential)
+              :expects => [200],
+              :method  => 'PATCH',
+              :path    => "credentials/#{id}",
+              :body    => Fog::JSON.encode(:credential => credential)
             )
           end
         end

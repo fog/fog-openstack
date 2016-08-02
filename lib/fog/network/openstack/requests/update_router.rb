@@ -9,7 +9,7 @@ module Fog
         # the external gateway.
         # @see http://docs.openstack.org/api/openstack-network/2.0/content/router_update.html
         def update_router(router_id, options = {})
-          data = { 'router' => {} }
+          data = {'router' => {}}
 
           [:name, :admin_state_up].each do |key|
             data['router'][key] = options[key] if options[key]
@@ -18,22 +18,22 @@ module Fog
           # remove this in a future
           egi = options[:external_gateway_info]
           if egi
-            if egi.is_a?(Fog::Network::OpenStack::Network)
+            if egi.kind_of?(Fog::Network::OpenStack::Network)
               Fog::Logger.deprecation "Passing a model objects into options[:external_gateway_info] is deprecated. \
               Please pass  external external gateway as follows options[:external_gateway_info] = { :network_id => NETWORK_ID }]"
-              data['router'][:external_gateway_info] = { :network_id => egi.id }
-            elsif egi.is_a?(Hash)
+              data['router'][:external_gateway_info] = {:network_id => egi.id}
+            elsif egi.kind_of?(Hash)
               data['router'][:external_gateway_info] = egi
             else
-              raise ArgumentError.new('Invalid external_gateway_info attribute')
+              raise ArgumentError, 'Invalid external_gateway_info attribute'
             end
           end
 
           request(
-            :body     => Fog::JSON.encode(data),
-            :expects  => 200,
-            :method   => 'PUT',
-            :path     => "routers/#{router_id}.json"
+            :body    => Fog::JSON.encode(data),
+            :expects => 200,
+            :method  => 'PUT',
+            :path    => "routers/#{router_id}.json"
           )
         end
       end
@@ -41,25 +41,25 @@ module Fog
       class Mock
         def update_router(router_id, options = {})
           response = Excon::Response.new
-          router = list_routers.body['routers'].find {|r| r[:id] == router_id}
+          router = list_routers.body['routers'].find { |r| r[:id] == router_id }
 
           raise Fog::Network::OpenStack::NotFound unless router
 
-          options.keys.each {|k| router[k] = options[k] }
+          options.keys.each { |k| router[k] = options[k] }
 
           # remove this in a future
           egi = options[:external_gateway_info]
           if egi
-            if egi.is_a?(Fog::Network::OpenStack::Network)
+            if egi.kind_of?(Fog::Network::OpenStack::Network)
               Fog::Logger.deprecation "Passing a model objects into options[:external_gateway_info] is deprecated. \
               Please pass  external external gateway as follows options[:external_gateway_info] = { :network_id => NETWORK_ID }]"
-              router[:external_gateway_info] = { :network_id => egi.id }
-            else egi.is_a?(Hash) && egi[:network_id]
-              router[:external_gateway_info] = egi
+              router[:external_gateway_info] = {:network_id => egi.id}
+            else egi.kind_of?(Hash) && egi[:network_id]
+                 router[:external_gateway_info] = egi
             end
           end
 
-          response.body = { 'router' => router }
+          response.body = {'router' => router}
           response.status = 200
           response
         end

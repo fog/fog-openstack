@@ -4,18 +4,18 @@ module Fog
       class Real
         def get_port(port_id)
           request(
-              :expects => [200, 204],
-              :method  => 'GET',
-              :path    => "ports/#{port_id}"
+            :expects => [200, 204],
+            :method  => 'GET',
+            :path    => "ports/#{port_id}"
           )
         end
       end # class Real
 
       class Mock
-        def get_port(port_id)
+        def get_port(_port_id)
           response = Excon::Response.new
           response.status = [200, 204][rand(1)]
-          response.body = self.data[:ports].first
+          response.body = data[:ports].first
           response
         end # def get_port
       end # class Mock

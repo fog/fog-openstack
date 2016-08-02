@@ -5,7 +5,6 @@ module Fog
   module Image
     class OpenStack
       class V1
-
         class Images < Fog::OpenStack::Collection
           model Fog::Image::OpenStack::V1::Image
 
@@ -24,28 +23,28 @@ module Fog
           end
 
           def find_by_id(id)
-            all.find {|image| image.id == id}
+            all.find { |image| image.id == id }
           end
-          alias_method :get, :find_by_id
+          alias get find_by_id
 
           def public
             images = load(service.list_public_images_detailed.body['images'])
-            images.delete_if{|image| image.is_public == false}
+            images.delete_if { |image| image.is_public == false }
           end
 
           def private
             images = load(service.list_public_images_detailed.body['images'])
-            images.delete_if{|image| image.is_public}
+            images.delete_if(&:is_public)
           end
 
           def destroy(id)
-            image = self.find_by_id(id)
+            image = find_by_id(id)
             image.destroy
           end
 
           def method_missing(method_sym, *arguments, &block)
             if method_sym.to_s =~ /^find_by_(.*)$/
-              load(service.list_public_images_detailed($1 ,arguments.first).body['images'])
+              load(service.list_public_images_detailed($1, arguments.first).body['images'])
             else
               super
             end
@@ -59,9 +58,9 @@ module Fog
             find_attribute(__method__, size)
           end
 
-          def find_attribute(attribute,value)
+          def find_attribute(attribute, value)
             attribute = attribute.to_s.gsub("find_by_", "")
-            load(service.list_public_images_detailed(attribute , value).body['images'])
+            load(service.list_public_images_detailed(attribute, value).body['images'])
           end
         end
       end

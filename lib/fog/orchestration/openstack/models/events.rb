@@ -8,9 +8,9 @@ module Fog
         model Fog::Orchestration::OpenStack::Event
 
         def all(options = {}, options_deprecated = {})
-          data = if options.is_a?(Stack)
+          data = if options.kind_of?(Stack)
                    service.list_stack_events(options, options_deprecated)
-                 elsif options.is_a?(Hash)
+                 elsif options.kind_of?(Hash)
                    service.list_events(options)
                  else
                    service.list_resource_events(options.stack, options, options_deprecated)

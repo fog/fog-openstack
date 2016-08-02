@@ -4,7 +4,7 @@ module Fog
       class V2
         class Real
           def list_users(options = {})
-            if options.is_a?(Hash)
+            if options.kind_of?(Hash)
               tenant_id = options.delete(:tenant_id)
               query = options
             else
@@ -15,10 +15,10 @@ module Fog
 
             path = tenant_id ? "tenants/#{tenant_id}/users" : 'users'
             request(
-                :expects => [200, 204],
-                :method  => 'GET',
-                :path    => path,
-                :query   => query
+              :expects => [200, 204],
+              :method  => 'GET',
+              :path    => path,
+              :query   => query
             )
           end
         end # class Real
@@ -27,17 +27,17 @@ module Fog
           def list_users(options = {})
             tenant_id = options[:tenant_id]
 
-            users = self.data[:users].values
+            users = data[:users].values
 
             if tenant_id
-              users = users.select {
-                  |user| user['tenantId'] == tenant_id
-              }
+              users = users.select do |user|
+                user['tenantId'] == tenant_id
+              end
             end
 
             Excon::Response.new(
-                :body => {'users' => users},
-                :status => 200
+              :body   => {'users' => users},
+              :status => 200
             )
           end
         end # class Mock

@@ -14,13 +14,13 @@ module Fog
       end
 
       class Mock
-        def update_aggregate_metadata(uuid, metadata = {})
+        def update_aggregate_metadata(_uuid, _metadata = {})
           response = Excon::Response.new
           response.status = 200
           response.headers = {
-            "Content-Type" => "text/html; charset=UTF-8",
+            "Content-Type"   => "text/html; charset=UTF-8",
             "Content-Length" => "0",
-            "Date" => Date.new
+            "Date"           => Date.new
           }
           response
         end

@@ -19,15 +19,15 @@ module Fog
       end
 
       class Mock
-        def list_servers(options = {})
+        def list_servers(_options = {})
           response = Excon::Response.new
           data = list_servers_detail.body['servers']
           servers = []
           for server in data
-            servers << server.reject { |key, value| !['id', 'name', 'links'].include?(key) }
+            servers << server.reject { |key, _value| !['id', 'name', 'links'].include?(key) }
           end
           response.status = [200, 203][rand(1)]
-          response.body = { 'servers' => servers }
+          response.body = {'servers' => servers}
           response
         end
       end

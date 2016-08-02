@@ -6,9 +6,9 @@ module Fog
       module Real
         def get_transfer_details(transfer_id)
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => "os-volume-transfer/#{transfer_id}"
+            :expects => 200,
+            :method  => 'GET',
+            :path    => "os-volume-transfer/#{transfer_id}"
           )
         end
       end

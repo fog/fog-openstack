@@ -12,9 +12,8 @@ module Fog
           attribute :links
 
           def to_s
-            self.links['assignment']
+            links['assignment']
           end
-
         end
       end
     end

@@ -13,9 +13,9 @@ module Fog
       end
 
       class Mock
-        def list_lb_vips(filters = {})
+        def list_lb_vips(_filters = {})
           Excon::Response.new(
-            :body   => { 'vips' => self.data[:lb_vips].values },
+            :body   => {'vips' => data[:lb_vips].values},
             :status => 200
           )
         end

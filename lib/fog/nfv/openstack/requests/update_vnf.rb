@@ -17,7 +17,7 @@ module Fog
             :body    => Fog::JSON.encode(data),
             :expects => 200,
             :method  => "PUT",
-            :path    => "vnfs/#{id}",
+            :path    => "vnfs/#{id}"
           )
         end
       end

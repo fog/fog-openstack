@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def create_network(options = {})
-          data = { 'network' => {} }
+          data = {'network' => {}}
 
           vanilla_options = [
             :name,
@@ -12,7 +12,7 @@ module Fog
             :tenant_id
           ]
 
-          vanilla_options.reject{ |o| options[o].nil? }.each do |key|
+          vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['network'][key] = options[key]
           end
 
@@ -39,16 +39,16 @@ module Fog
             :router_external           => 'router:external'
           }
 
-          provider_options.reject{ |o| options[o].nil? }.each do |key|
+          provider_options.reject { |o| options[o].nil? }.each do |key|
             aliased_key = aliases[key] || key
             data['network'][aliased_key] = options[key]
           end
 
           request(
-            :body     => Fog::JSON.encode(data),
-            :expects  => [201],
-            :method   => 'POST',
-            :path     => 'networks'
+            :body    => Fog::JSON.encode(data),
+            :expects => [201],
+            :method  => 'POST',
+            :path    => 'networks'
           )
         end
       end
@@ -82,13 +82,13 @@ module Fog
             :provider_segmentation_id  => 'provider:segmentation_id',
             :router_external           => 'router:external'
           }
-          provider_options.reject{ |o| options[o].nil? }.each do |key|
+          provider_options.reject { |o| options[o].nil? }.each do |key|
             aliased_key = aliases[key] || key
             data[aliased_key] = options[key]
           end
 
           self.data[:networks][data['id']] = data
-          response.body = { 'network' => data }
+          response.body = {'network' => data}
           response
         end
       end

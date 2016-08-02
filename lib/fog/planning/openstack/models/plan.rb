@@ -4,9 +4,8 @@ module Fog
   module Openstack
     class Planning
       class Plan < Fog::OpenStack::Model
-
-        MASTER_TEMPLATE_NAME = 'plan.yaml'
-        ENVIRONMENT_NAME = 'environment.yaml'
+        MASTER_TEMPLATE_NAME = 'plan.yaml'.freeze
+        ENVIRONMENT_NAME = 'environment.yaml'.freeze
 
         identity :uuid
 
@@ -30,7 +29,7 @@ module Fog
         end
 
         def provider_resource_templates
-          templates.select do |key, template|
+          templates.select do |key, _template|
             ![MASTER_TEMPLATE_NAME, ENVIRONMENT_NAME].include?(key)
           end
         end
@@ -55,11 +54,11 @@ module Fog
 
         def create
           requires :name
-          merge_attributes(service.create_plan(self.attributes).body)
+          merge_attributes(service.create_plan(attributes).body)
           self
         end
 
-        def update(parameters=nil)
+        def update(parameters = nil)
           requires :uuid
           merge_attributes(service.patch_plan(uuid, parameters).body)
           self

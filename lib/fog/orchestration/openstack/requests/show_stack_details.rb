@@ -12,11 +12,11 @@ module Fog
       end
 
       class Mock
-        def show_stack_details(name, id)
-          stack = self.data[:stack].values
+        def show_stack_details(_name, _id)
+          stack = data[:stack].values
 
           Excon::Response.new(
-            :body   => { 'stack' => stack },
+            :body   => {'stack' => stack},
             :status => 200
           )
         end

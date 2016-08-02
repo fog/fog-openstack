@@ -5,9 +5,9 @@ module Fog
         class Real
           def remove_user_from_group(group_id, user_id)
             request(
-                :expects => [204],
-                :method => 'DELETE',
-                :path => "groups/#{group_id}/users/#{user_id}"
+              :expects => [204],
+              :method  => 'DELETE',
+              :path    => "groups/#{group_id}/users/#{user_id}"
             )
           end
         end

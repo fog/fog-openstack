@@ -5,7 +5,6 @@ module Fog
   module Image
     class OpenStack
       class V2
-
         class Images < Fog::OpenStack::Collection
           model Fog::Image::OpenStack::V2::Image
 
@@ -20,10 +19,11 @@ module Fog
           def find_by_id(id)
             image_hash = service.get_image_by_id(id).body
             Fog::Image::OpenStack::V2::Image.new(
-                image_hash.merge(:service => service))
+              image_hash.merge(:service => service)
+            )
           end
 
-          alias_method :get, :find_by_id
+          alias get find_by_id
 
           def public
             images = load(service.list_images.body['images'])
@@ -32,11 +32,11 @@ module Fog
 
           def private
             images = load(service.list_images.body['images'])
-            images.delete_if { |image| image.is_public }
+            images.delete_if(&:is_public)
           end
 
           def destroy(id)
-            image = self.find_by_id(id)
+            image = find_by_id(id)
             image.destroy
           end
 

@@ -5,7 +5,6 @@ module Fog
     class OpenStack
       class V3
         class Token < Fog::OpenStack::Model
-
           attribute :value
           attribute :catalog
           attribute :expires_at
@@ -16,9 +15,8 @@ module Fog
           attribute :user
 
           def to_s
-            self.value
+            value
           end
-
         end
       end
     end

@@ -5,10 +5,10 @@ module Fog
         class Real
           def create_policy(policy)
             request(
-                :expects => [201],
-                :method => 'POST',
-                :path => "policies",
-                :body => Fog::JSON.encode(:policy => policy)
+              :expects => [201],
+              :method  => 'POST',
+              :path    => "policies",
+              :body    => Fog::JSON.encode(:policy => policy)
             )
           end
         end

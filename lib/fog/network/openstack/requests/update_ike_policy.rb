@@ -8,8 +8,7 @@ module Fog
           vanilla_options = [:name, :description, :tenant_id,
                              :auth_algorithm, :encryption_algorithm,
                              :pfs, :phase1_negotiation_mode,
-                             :lifetime, :ike_version
-                            ]
+                             :lifetime, :ike_version]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['ikepolicy'][key] = options[key]
           end

@@ -24,16 +24,16 @@ module Fog
         def find_by_uuid(uuid)
           new(service.get_node(uuid).body)
         end
-        alias_method :get, :find_by_uuid
+        alias get find_by_uuid
 
         def destroy(uuid)
-          node = self.find_by_uuid(uuid)
+          node = find_by_uuid(uuid)
           node.destroy
         end
 
         def method_missing(method_sym, *arguments, &block)
           if method_sym.to_s =~ /^find_by_(.*)$/
-            load(service.list_nodes_detailed({$1 => arguments.first}).body['nodes'])
+            load(service.list_nodes_detailed($1 => arguments.first).body['nodes'])
           else
             super
           end

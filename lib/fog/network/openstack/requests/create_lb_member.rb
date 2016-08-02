@@ -13,7 +13,7 @@ module Fog
           }
 
           vanilla_options = [:admin_state_up, :tenant_id]
-          vanilla_options.reject{ |o| options[o].nil? }.each do |key|
+          vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['member'][key] = options[key]
           end
 
@@ -31,18 +31,18 @@ module Fog
           response = Excon::Response.new
           response.status = 201
           data = {
-            'id'              => Fog::Mock.random_numbers(6).to_s,
-            'pool_id'         => pool_id,
-            'address'         => address,
-            'protocol_port'   => protocol_port,
-            'weight'          => weight,
-            'status'          => 'ACTIVE',
-            'admin_state_up'  => options[:admin_state_up],
-            'tenant_id'       => options[:tenant_id],
+            'id'             => Fog::Mock.random_numbers(6).to_s,
+            'pool_id'        => pool_id,
+            'address'        => address,
+            'protocol_port'  => protocol_port,
+            'weight'         => weight,
+            'status'         => 'ACTIVE',
+            'admin_state_up' => options[:admin_state_up],
+            'tenant_id'      => options[:tenant_id],
           }
 
           self.data[:lb_members][data['id']] = data
-          response.body = { 'member' => data }
+          response.body = {'member' => data}
           response
         end
       end

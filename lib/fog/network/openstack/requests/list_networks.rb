@@ -13,9 +13,9 @@ module Fog
       end
 
       class Mock
-        def list_networks(filters = {})
+        def list_networks(_filters = {})
           Excon::Response.new(
-            :body   => { 'networks' => self.data[:networks].values },
+            :body   => {'networks' => data[:networks].values},
             :status => 200
           )
         end

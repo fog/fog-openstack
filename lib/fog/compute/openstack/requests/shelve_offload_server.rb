@@ -9,13 +9,13 @@ module Fog
         # === Returns
         # * success <~Boolean>
         def shelve_offload_server(server_id)
-          body = { 'shelveOffload' => nil }
+          body = {'shelveOffload' => nil}
           server_action(server_id, body).status == 202
         end # def shelve_off_load_server
       end # class Real
 
       class Mock
-        def shelve_offload_server(server_id)
+        def shelve_offload_server(_server_id)
           true
         end # def shelve_off_load_server
       end # class Mock

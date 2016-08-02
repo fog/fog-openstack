@@ -9,16 +9,16 @@ module Fog
             }
           }
 
-          vanilla_options = [:port_id, :tenant_id, :fixed_ip_address ]
-          vanilla_options.reject{ |o| options[o].nil? }.each do |key|
+          vanilla_options = [:port_id, :tenant_id, :fixed_ip_address]
+          vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['floatingip'][key] = options[key]
           end
 
           request(
-            :body     => Fog::JSON.encode(data),
-            :expects  => [201],
-            :method   => 'POST',
-            :path     => 'floatingips'
+            :body    => Fog::JSON.encode(data),
+            :expects => [201],
+            :method  => 'POST',
+            :path    => 'floatingips'
           )
         end
       end
@@ -36,7 +36,7 @@ module Fog
             'router_id'           => nil,
           }
           self.data[:floating_ips][data['id']] = data
-          response.body = { 'floatingip' => data }
+          response.body = {'floatingip' => data}
           response
         end
       end

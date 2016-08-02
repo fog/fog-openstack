@@ -5,8 +5,8 @@ module Fog
         def live_migrate_server(server_id, host, block_migration, disk_over_commit)
           body = {
             'os-migrateLive' => {
-              'host' => host,
-              'block_migration' => block_migration,
+              'host'             => host,
+              'block_migration'  => block_migration,
               'disk_over_commit' => disk_over_commit,
             }
           }
@@ -15,7 +15,7 @@ module Fog
       end
 
       class Mock
-        def live_migrate_server(server_id, host, block_migration, disk_over_commit)
+        def live_migrate_server(_server_id, _host, _block_migration, _disk_over_commit)
           response = Excon::Response.new
           response.status = 202
           response

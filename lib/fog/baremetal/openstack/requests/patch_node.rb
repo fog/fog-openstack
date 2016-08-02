@@ -14,25 +14,25 @@ module Fog
         # value = Value to set
         def patch_node(node_uuid, patch)
           request(
-            :body => Fog::JSON.encode(patch),
+            :body    => Fog::JSON.encode(patch),
             :expects => 200,
-            :method => 'PATCH',
-            :path => "nodes/#{node_uuid}"
+            :method  => 'PATCH',
+            :path    => "nodes/#{node_uuid}"
           )
         end
       end
 
       class Mock
-        def patch_node(node_uuid, patch)
+        def patch_node(_node_uuid, _patch)
           response = Excon::Response.new
           response.status = 200
           response.headers = {
             "X-Compute-Request-Id" => "req-fdc6f99e-55a2-4ab1-8904-0892753828cf",
-            "Content-Type" => "application/json",
-            "Content-Length" => "356",
-            "Date" => Date.new
+            "Content-Type"         => "application/json",
+            "Content-Length"       => "356",
+            "Date"                 => Date.new
           }
-          response.body =  self.data[:nodes].first
+          response.body = data[:nodes].first
           response
         end
       end # mock

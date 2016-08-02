@@ -4,7 +4,7 @@ module Fog
       class V2
         class Real
           def create_action_execution(action, input = {}, params = {})
-            data = { :name => action }
+            data = {:name => action}
             data[:input] = Fog::JSON.encode(input) unless input.empty?
             data[:params] = Fog::JSON.encode(params) unless params.empty?
             body = Fog::JSON.encode(data)

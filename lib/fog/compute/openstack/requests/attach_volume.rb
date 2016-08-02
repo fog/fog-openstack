@@ -10,10 +10,10 @@ module Fog
             }
           }
           request(
-            :body     => Fog::JSON.encode(data),
-            :expects  => [200, 202],
-            :method   => 'POST',
-            :path     => "servers/%s/os-volume_attachments" % [server_id]
+            :body    => Fog::JSON.encode(data),
+            :expects => [200, 202],
+            :method  => 'POST',
+            :path    => "servers/%s/os-volume_attachments" % [server_id]
           )
         end
       end
@@ -23,14 +23,14 @@ module Fog
           response = Excon::Response.new
           response.status = 200
           data = {
-             'id'       => volume_id,
-             'volumeId' => volume_id,
-             'serverId' => server_id,
-             'device'   => device
+            'id'       => volume_id,
+            'volumeId' => volume_id,
+            'serverId' => server_id,
+            'device'   => device
           }
           self.data[:volumes][volume_id]['attachments'] << data
           self.data[:volumes][volume_id]['status'] = 'in-use'
-          response.body = { 'volumeAttachment' => data }
+          response.body = {'volumeAttachment' => data}
           response
         end
       end

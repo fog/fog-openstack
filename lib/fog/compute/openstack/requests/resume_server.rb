@@ -9,13 +9,13 @@ module Fog
         # === Returns
         # * success <~Boolean>
         def resume_server(server_id)
-          body = { 'resume' => nil }
+          body = {'resume' => nil}
           server_action(server_id, body).status == 202
         end # def resume_server
       end # class Real
 
       class Mock
-        def resume_server(server_id)
+        def resume_server(_server_id)
           true
         end # def resume_server
       end # class Mock

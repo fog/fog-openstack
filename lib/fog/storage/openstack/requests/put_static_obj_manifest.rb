@@ -41,12 +41,12 @@ module Fog
         # @see http://docs.openstack.org/api/openstack-object-storage/1.0/content/static-large-objects.html
         def put_static_obj_manifest(container, object, segments, options = {})
           request(
-            :expects  => 201,
-            :method   => 'PUT',
-            :headers  => options,
-            :body     => Fog::JSON.encode(segments),
-            :path     => "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}",
-            :query    => { 'multipart-manifest' => 'put' }
+            :expects => 201,
+            :method  => 'PUT',
+            :headers => options,
+            :body    => Fog::JSON.encode(segments),
+            :path    => "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}",
+            :query   => {'multipart-manifest' => 'put'}
           )
         end
       end

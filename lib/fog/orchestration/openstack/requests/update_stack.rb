@@ -12,7 +12,7 @@ module Fog
         #   * :parameters [Hash] Hash of providers to supply to template.
         #
         def update_stack(arg1, arg2 = nil, arg3 = nil)
-          if arg1.is_a?(Stack)
+          if arg1.kind_of?(Stack)
             # Normal use, update_stack(stack, options = {})
             stack = arg1
             stack_name = stack.stack_name
@@ -29,17 +29,17 @@ module Fog
           end
 
           request(
-            :expects  => 202,
-            :path => "stacks/#{stack_name}/#{stack_id}",
-            :method => 'PUT',
-            :body => Fog::JSON.encode(params)
+            :expects => 202,
+            :path    => "stacks/#{stack_name}/#{stack_id}",
+            :method  => 'PUT',
+            :body    => Fog::JSON.encode(params)
           )
         end
       end
 
       class Mock
         def update_stack(arg1, arg2 = nil, arg3 = nil)
-          if arg1.is_a?(Stack)
+          if arg1.kind_of?(Stack)
             # Normal use, update_stack(stack, options = {})
             stack = arg1
             stack_name = stack.stack_name

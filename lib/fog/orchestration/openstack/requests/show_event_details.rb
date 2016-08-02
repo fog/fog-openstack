@@ -12,11 +12,11 @@ module Fog
       end
 
       class Mock
-        def show_event_details(stack, event)
-          events = self.data[:events].values
+        def show_event_details(_stack, _event)
+          events = data[:events].values
 
           Excon::Response.new(
-            :body   => { 'events' => events },
+            :body   => {'events' => events},
             :status => 200
           )
         end

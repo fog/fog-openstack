@@ -12,11 +12,11 @@ module Fog
       end
 
       class Mock
-        def show_resource_metadata(stack, resource_name)
-          resources = self.data[:resources].values
+        def show_resource_metadata(_stack, _resource_name)
+          resources = data[:resources].values
 
           Excon::Response.new(
-            :body   => { 'resources' => resources },
+            :body   => {'resources' => resources},
             :status => 200
           )
         end

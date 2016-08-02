@@ -4,16 +4,16 @@ module Fog
       module Real
         def list_snapshots_detailed(options = {})
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => 'snapshots/detail',
-            :query    => options
+            :expects => 200,
+            :method  => 'GET',
+            :path    => 'snapshots/detail',
+            :query   => options
           )
         end
       end
 
       module Mock
-        def list_snapshots_detailed(options = {})
+        def list_snapshots_detailed(_options = {})
           response = Excon::Response.new
           response.status = 200
           response.body = {
