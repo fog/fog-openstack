@@ -6,15 +6,17 @@ require 'fog/openstack/core'
 require 'fog/openstack/errors'
 
 require 'fog/openstack/compute'
+require 'fog/openstack/dns_v1'
+require 'fog/openstack/dns_v2'
 require 'fog/openstack/identity_v2'
 require 'fog/openstack/identity_v3'
 require 'fog/openstack/image_v1'
 require 'fog/openstack/image_v2'
+require 'fog/openstack/monitoring'
+require 'fog/openstack/planning'
 require 'fog/openstack/storage'
 require 'fog/openstack/volume_v1'
 require 'fog/openstack/volume_v2'
-require 'fog/openstack/planning'
-require 'fog/openstack/monitoring'
 
 module Fog
   module Compute
@@ -65,6 +67,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../openstack/workflow', __FILE__)
   end
 
+  module DNS
+    autoload :OpenStack, File.expand_path('../openstack/dns', __FILE__)
+  end
+
   module OpenStack
     extend Fog::Provider
 
@@ -82,6 +88,7 @@ module Fog
     service(:introspection, 'Introspection')
     service(:monitoring,    'Monitoring')
     service(:workflow,      'Workflow')
+    service(:dns,           'DNS')
 
     @@token_cache = {}
 
@@ -528,7 +535,8 @@ module Fog
       body = Fog::JSON.decode(response.body)
       path = nil
       unless body['versions'].empty?
-        supported_version = body['versions'].find do |x|
+        versions = body['versions'].kind_of?(Array) ? body['versions'] : body['versions']['values']
+        supported_version = versions.find do |x|
           x["id"].match(supported_versions) &&
               (x["status"] == "CURRENT" || x["status"] == "SUPPORTED")
         end
