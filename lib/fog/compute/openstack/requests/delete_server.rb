@@ -22,6 +22,8 @@ module Fog
               self.data[:last_modified][:servers].delete(server_id)
               self.data[:servers].delete(server_id)
               response.status = 204
+              group_id, = data[:server_groups].find { |_id, grp| grp[:members].include?(server_id) }
+              data[:server_groups][group_id][:members] -= [server_id] if group_id
             end
             response
           else
