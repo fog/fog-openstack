@@ -1,8 +1,8 @@
 require 'test_helper'
 
-require 'fog/openstack/volume'
-require 'fog/openstack/volume_v1'
-require 'fog/openstack/volume_v2'
+require 'fog/volume/openstack'
+require 'fog/volume/openstack/v1'
+require 'fog/volume/openstack/v2'
 
 describe "Fog::Volume[:openstack], ['openstack', 'volume']" do
   volume = Fog::Volume[:openstack]

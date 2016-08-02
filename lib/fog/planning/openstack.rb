@@ -135,7 +135,7 @@ module Fog
       attributes = attributes.dup # Prevent delete from having side effects
       service = attributes.delete(:service).to_s.downcase.to_sym
       if services.include?(service)
-        require "fog/openstack/#{service}"
+        require "fog/#{service}/openstack"
         return Fog::Openstack.const_get(service.to_s.capitalize).new(attributes)
       end
       raise ArgumentError, "Openstack has no #{service} service"
