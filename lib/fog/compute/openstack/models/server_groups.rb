@@ -1,5 +1,5 @@
 require 'fog/openstack/models/collection'
-require 'fog/openstack/models/compute/server_group'
+require 'fog/compute/openstack/models/server_group'
 
 module Fog
   module Compute
