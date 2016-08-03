@@ -21,6 +21,7 @@ module Fog
         request_path 'fog/dns/openstack/v2/requests'
 
         request :list_zones
+        request :get_zone
 
         request :list_recordsets
         request :get_recordset
