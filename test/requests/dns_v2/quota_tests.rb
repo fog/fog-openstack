@@ -4,7 +4,7 @@ describe "Fog::DNS::OpenStack::V2 | quota requests" do
   before do
     @dns = Fog::DNS::OpenStack::V2.new
 
-    @project_id = Fog::Mock.random_numbers(6).to_s
+    @project_id = @dns.respond_to?(:current_tenant) ? @dns.current_tenant['id'] : Fog::Mock.random_numbers(6).to_s
 
     @quota_format = {
       "api_export_size"   => Integer,
@@ -29,6 +29,8 @@ describe "Fog::DNS::OpenStack::V2 | quota requests" do
 
       @dns.update_quota(@project_id, new_values.clone).status.must_equal 200
       @dns.get_quota(@project_id).body.must_equal new_values
+      # turn back
+      @dns.update_quota(@project_id, @quota)
     end
   end
 end
