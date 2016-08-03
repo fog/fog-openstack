@@ -1,6 +1,6 @@
 require "test_helper"
-require 'fog/openstack/workflow'
-require 'fog/openstack/workflow_v2'
+require 'fog/workflow/openstack'
+require 'fog/workflow/openstack/v2'
 
 describe "Fog::Workflow::OpenStack | Workflow requests" do
   before do
