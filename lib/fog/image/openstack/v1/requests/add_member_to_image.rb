@@ -15,7 +15,7 @@ module Fog
         class Mock
           def add_member_to_image(_image_id, _tenant_id)
             response = Excon::Response.new
-            response.status = [200, 204][rand(1)]
+            response.status = [200, 204][rand(2)]
             response
           end # def list_tenants
         end # class Mock

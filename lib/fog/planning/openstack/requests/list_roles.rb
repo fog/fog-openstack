@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_roles(_options = {})
           response = Excon::Response.new
-          response.status = [200, 204][rand(1)]
+          response.status = [200, 204][rand(2)]
           response.body = [
             {
               "description" => "OpenStack hypervisor node. Can be wrapped in a ResourceGroup for scaling.\n",

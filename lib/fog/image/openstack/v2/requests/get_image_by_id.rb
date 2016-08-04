@@ -15,7 +15,7 @@ module Fog
         class Mock
           def get_image_by_id(_image_id)
             response = Excon::Response.new
-            response.status = [200][rand(1)]
+            response.status = [200][rand(2)]
             response.body = {
               "images" => [{
                 "name"             => "mock-image-name",

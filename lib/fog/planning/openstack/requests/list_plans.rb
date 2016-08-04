@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_plans(_options = {})
           response = Excon::Response.new
-          response.status = [200, 204][rand(1)]
+          response.status = [200, 204][rand(2)]
           response.body = [
             {
               "created_at"  => "2014-09-26T20:23:14.222815",

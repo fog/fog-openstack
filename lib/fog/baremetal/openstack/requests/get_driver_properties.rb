@@ -16,7 +16,7 @@ module Fog
       class Mock
         def get_driver_properties(_driver_name)
           response = Excon::Response.new
-          response.status = [200, 204][rand(1)]
+          response.status = [200, 204][rand(2)]
           response.body = {
             "pxe_deploy_ramdisk"   => "UUID (from Glance) of the ramdisk.",
             "ipmi_transit_address" => "transit address for bridged request.",

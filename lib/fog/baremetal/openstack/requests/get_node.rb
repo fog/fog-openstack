@@ -14,7 +14,7 @@ module Fog
       class Mock
         def get_node(_node_id)
           response = Excon::Response.new
-          response.status = [200, 204][rand(1)]
+          response.status = [200, 204][rand(2)]
           response.body = data[:nodes].first
           response
         end # def get_node

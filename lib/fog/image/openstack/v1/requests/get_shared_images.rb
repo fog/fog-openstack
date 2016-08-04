@@ -15,7 +15,7 @@ module Fog
         class Mock
           def get_shared_images(_tenant_id)
             response = Excon::Response.new
-            response.status = [200, 204][rand(1)]
+            response.status = [200, 204][rand(2)]
             response.body = {
               "shared_images" => [
                 {"image_id"  => "ff528b20431645ebb5fa4b0a71ca002f",

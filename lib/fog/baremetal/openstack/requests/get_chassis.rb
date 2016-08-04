@@ -14,7 +14,7 @@ module Fog
       class Mock
         def get_chassis(_chassis_uuid)
           response = Excon::Response.new
-          response.status = [200, 204][rand(1)]
+          response.status = [200, 204][rand(2)]
           response.body = data[:chassis_collection].first
           response
         end # def get_chassis

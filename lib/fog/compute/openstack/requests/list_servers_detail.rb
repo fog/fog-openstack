@@ -33,7 +33,7 @@ module Fog
             end
           end
 
-          response.status = [200, 203][rand(1)]
+          response.status = [200, 203][rand(2)]
           response.body = {'servers' => servers}
           response
         end

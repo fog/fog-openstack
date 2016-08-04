@@ -18,7 +18,7 @@ module Fog
         class Mock
           def download_image(_image_id, _content_range = nil)
             response = Excon::Response.new
-            response.status = [200, 204][rand(1)]
+            response.status = [200, 204][rand(2)]
             response.body = ""
             response
           end # def list_tenants

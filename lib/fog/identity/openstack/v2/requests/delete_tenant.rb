@@ -15,7 +15,7 @@ module Fog
         class Mock
           def delete_tenant(_attributes)
             response = Excon::Response.new
-            response.status = [200, 204][rand(1)]
+            response.status = [200, 204][rand(2)]
             response.body = {
               'tenant' => {
                 'id'          => '1',
