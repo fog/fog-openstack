@@ -4,7 +4,9 @@ module Fog
       class V2
         class Real
           def update_quota(project_id, options = {})
+            all_projects = options.key?(:all_projects) ? options.delete(:all_projects) : false
             request(
+              :headers => {"X-Auth-All-Projects" => all_projects},
               :body    => Fog::JSON.encode(options),
               :expects => 200,
               :method  => 'PATCH',
