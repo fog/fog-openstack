@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           data = list_images_detail.body['images']
           images = []
-          for image in data
+          data.each do |image|
             images << image.reject { |key, _value| !['id', 'name', 'links'].include?(key) }
           end
           response.status = [200, 203][rand(2)]

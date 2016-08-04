@@ -20,7 +20,7 @@ module Fog
 
           if options['personality']
             data['server']['personality'] = []
-            for file in options['personality']
+            options['personality'].each do |file|
               data['server']['personality'] << {
                 'contents' => Base64.encode64(file['contents']),
                 'path'     => file['path']

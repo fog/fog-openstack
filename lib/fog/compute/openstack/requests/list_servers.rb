@@ -23,7 +23,7 @@ module Fog
           response = Excon::Response.new
           data = list_servers_detail.body['servers']
           servers = []
-          for server in data
+          data.each do |server|
             servers << server.reject { |key, _value| !['id', 'name', 'links'].include?(key) }
           end
           response.status = [200, 203][rand(2)]

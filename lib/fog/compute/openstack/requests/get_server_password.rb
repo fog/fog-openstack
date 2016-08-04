@@ -14,7 +14,8 @@ module Fog
       class Mock
         def get_server_password(server_id)
           response = Excon::Response.new
-          if server = list_servers_detail.body['servers'].find { |_| _['id'] == server_id }
+          server = list_servers_detail.body['servers'].find { |srv| srv['id'] == server_id }
+          if server
             response.status = [200, 203][rand(2)]
             response.body = {'server' => server}
             response

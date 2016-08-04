@@ -17,7 +17,7 @@ module Fog
           response = Excon::Response.new
 
           images = data[:images].values
-          for image in images
+          images.each do |image|
             case image['status']
             when 'SAVING'
               if Time.now - data[:last_modified][:images][image['id']] >= Fog::Mock.delay

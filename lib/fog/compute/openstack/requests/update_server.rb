@@ -15,7 +15,8 @@ module Fog
       class Mock
         def update_server(server_id, options = {})
           response = Excon::Response.new
-          if server = list_servers_detail.body['servers'].find { |_| _['id'] == server_id }
+          server = list_servers_detail.body['servers'].find { |srv| srv['id'] == server_id }
+          if server
             if options['name']
               server['name'] = options['name']
             end

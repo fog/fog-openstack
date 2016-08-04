@@ -15,7 +15,7 @@ module Fog
         def delete_snapshot(snapshot_id)
           response = Excon::Response.new
           response.status = 204
-          if list_snapshots_detail.body['snapshots'].find { |_| _['id'] == snapshot_id }
+          if list_snapshots_detail.body['snapshots'].find { |snap| snap['id'] == snapshot_id }
             data[:snapshots].delete(snapshot_id)
           else
             raise Fog::Compute::OpenStack::NotFound

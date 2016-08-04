@@ -8,7 +8,7 @@ module Fog
             'metadata' => metadata
           }}
           data = server_action(server_id, body)
-          image_id = data.headers["Location"].scan(/.*\/(.*)/).flatten[0]
+          image_id = data.headers["Location"].scan(%r{.*/(.*)}).flatten[0]
           get_image_details(image_id)
         end
       end

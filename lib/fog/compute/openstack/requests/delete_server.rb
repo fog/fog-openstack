@@ -14,7 +14,8 @@ module Fog
       class Mock
         def delete_server(server_id)
           response = Excon::Response.new
-          if server = list_servers_detail.body['servers'].find { |_| _['id'] == server_id }
+          server = list_servers_detail.body['servers'].find { |srv| srv['id'] == server_id }
+          if server
             if server['status'] == 'BUILD'
               response.status = 409
               raise(Excon::Errors.status_error({:expects => 204}, response))

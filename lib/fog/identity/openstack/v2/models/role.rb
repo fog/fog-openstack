@@ -43,8 +43,8 @@ module Fog
             end
           end
 
-          def get_id(_)
-            _.kind_of?(String) ? _ : _.id
+          def get_id(model_or_string)
+            model_or_string.kind_of?(String) ? id : model_or_string.id
           end
         end # class Role
       end # class V2

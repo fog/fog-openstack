@@ -32,7 +32,7 @@ module Fog
           def update(options = {})
             requires :id
             options.merge('id' => id)
-            response = service.update_user(id, options)
+            service.update_user(id, options)
             true
           end
 

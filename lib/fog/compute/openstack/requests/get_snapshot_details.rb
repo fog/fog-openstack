@@ -14,8 +14,8 @@ module Fog
       class Mock
         def get_snapshot_details(snapshot_id)
           response = Excon::Response.new
-          if snapshot = list_snapshots_detail.body['snapshots'].find do |_|
-            _['id'] == snapshot_id
+          if snapshot = list_snapshots_detail.body['snapshots'].find do |snap|
+            snap['id'] == snapshot_id
           end
             response.status = 200
             response.body = {'snapshot' => snapshot}
