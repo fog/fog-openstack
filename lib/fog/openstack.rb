@@ -91,10 +91,14 @@ module Fog
     service(:workflow,      'Workflow')
     service(:dns,           'DNS')
 
-    @@token_cache = {}
+    @token_cache = {}
+
+    class << self
+      attr_accessor :token_cache
+    end
 
     def self.clear_token_cache
-      @@token_cache.clear
+      Fog::OpenStack.token_cache = {}
     end
 
     def self.authenticate(options, connection_options = {})
@@ -447,7 +451,7 @@ module Fog
 
       path     = (uri.path and not uri.path.empty?) ? uri.path : 'v3'
 
-      response, expires = @@token_cache[{:body => request_body, :path => path}] if cache_ttl > 0
+      response, expires = Fog::OpenStack.token_cache[{:body => request_body, :path => path}] if cache_ttl > 0
 
       unless response && expires > Time.now
         request = {
@@ -460,7 +464,11 @@ module Fog
         request[:omit_default_port] = omit_default_port unless omit_default_port.nil?
 
         response = connection.request(request)
-        @@token_cache[{:body => request_body, :path => path}] = response, Time.now + cache_ttl if cache_ttl > 0
+        if cache_ttl > 0
+          cache = Fog::OpenStack.token_cache
+          cache[{:body => request_body, :path => path}] = response, Time.now + cache_ttl
+          Fog::OpenStack.token_cache = cache
+        end
       end
 
       [response.headers["X-Subject-Token"], Fog::JSON.decode(response.body)]
