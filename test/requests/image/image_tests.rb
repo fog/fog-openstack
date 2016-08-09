@@ -124,22 +124,27 @@ describe "Fog::Image[:openstack] | image requests" do
     end
 
     it "#add_member_to_image" do
-      Fog::Image[:openstack].add_member_to_image(
-        @instance['image']['id'], @instance['image']['owner']
-      ).status.must_equal 200
+      [200, 204].must_include(
+        Fog::Image[:openstack].add_member_to_image(
+          @instance['image']['id'], @instance['image']['owner']
+        ).status
+      )
     end
 
     it "#get_image_members" do
-      Fog::Image[:openstack].get_image_members(@instance['image']['id']).status.must_equal 200
+      [200, 204].must_include(Fog::Image[:openstack].get_image_members(@instance['image']['id']).status)
     end
 
     it "#get_shared_images" do
-      Fog::Image[:openstack].get_shared_images(@instance['image']['owner']).status.must_equal 200
+      [200, 204].must_include(Fog::Image[:openstack].get_shared_images(@instance['image']['owner']).status)
     end
 
     it "#remove_member_from_image" do
-      Fog::Image[:openstack].remove_member_from_image(
-        @instance['image']['id'], @instance['image']['owner']).status.must_equal 200
+      [200, 204].must_include(
+        Fog::Image[:openstack].remove_member_from_image(
+          @instance['image']['id'], @instance['image']['owner']
+        ).status
+      )
     end
 
     it "#delete_image" do
