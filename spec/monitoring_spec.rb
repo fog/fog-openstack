@@ -1,6 +1,6 @@
 require 'spec_helper'
 require_relative './shared_context'
-require 'fog/openstack/models/monitoring/metric'
+require 'fog/monitoring/openstack/models/metric'
 require 'time'
 
 describe Fog::Monitoring::OpenStack do
