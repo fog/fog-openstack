@@ -2,7 +2,6 @@ language: ruby
 sudo: false
 script:
   - bundle exec rake test
-  - bundle exec rake minitest
   - bundle exec rake spec
 env:
   - JRUBY_OPTS=--debug
