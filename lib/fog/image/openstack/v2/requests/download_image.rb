@@ -3,12 +3,16 @@ module Fog
     class OpenStack
       class V2
         class Real
-          def download_image(image_id, _content_range = nil, params) # TODO: implement content range handling
+          def download_image(image_id, content_range = nil, params)
+            headers = {}
+            headers["Content-Range"] = content_range if content_range
+
             request_hash = {
               :expects  => [200, 204],
               :method   => 'GET',
               :raw_body => true,
               :path     => "images/#{image_id}/file",
+              :headers  => headers,
             }
             request_hash[:response_block] = params[:response_block] if params[:response_block]
             request(request_hash).body
