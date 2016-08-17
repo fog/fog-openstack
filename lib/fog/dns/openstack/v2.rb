@@ -21,6 +21,13 @@ module Fog
         request_path 'fog/dns/openstack/v2/requests'
 
         request :list_zones
+        request :get_zone
+
+        request :list_recordsets
+        request :get_recordset
+        request :create_recordset
+        request :update_recordset
+        request :delete_recordset
 
         request :get_quota
         request :update_quota
@@ -29,7 +36,7 @@ module Fog
           def self.data
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                :zones => [{
+                :zones      => [{
                   "id"             => "a86dba58-0043-4cc6-a1bb-69d5e86f3ca3",
                   "pool_id"        => "572ba08c-d929-4c70-8e42-03824bb24ca2",
                   "project_id"     => "4335d1f0-f793-11e2-b778-0800200c9a66",
@@ -50,12 +57,42 @@ module Fog
                     "self" => "https://127.0.0.1:9001/v2/zones/a86dba58-0043-4cc6-a1bb-69d5e86f3ca3"
                   }
                 }],
-                :quota => {
+                :quota      => {
                   "api_export_size"   => 1000,
                   "recordset_records" => 20,
                   "zone_records"      => 500,
                   "zone_recordsets"   => 500,
                   "zones"             => 100
+                },
+                :recordsets => {
+                  "recordsets" => [{
+                    "description" => "This is an example record set.",
+                    "links"       => {
+                      "self" => "https://127.0.0.1:9001/v2/zones/2150b1bf-dee2-4221-9d85-11f7886fb15f/recordsets/f7b10e9b-0cae-4a91-b162-562bc6096648"
+                    },
+                    "updated_at"  => '',
+                    "records"     => [
+                      "10.1.0.2"
+                    ],
+                    "ttl"         => 3600,
+                    "id"          => "f7b10e9b-0cae-4a91-b162-562bc6096648",
+                    "name"        => "example.org.",
+                    "project_id"  => "4335d1f0-f793-11e2-b778-0800200c9a66",
+                    "zone_id"     => "2150b1bf-dee2-4221-9d85-11f7886fb15f",
+                    "zone_name"   => "example.com.",
+                    "created_at"  => "2014-10-24T19:59:44.000000",
+                    "version"     => 1,
+                    "type"        => "A",
+                    "status"      => "ACTIVE",
+                    "action"      => "NONE"
+                  }],
+                  "links"      => {
+                    "self" => "http://127.0.0.1:9001/v2/recordsets?limit=1",
+                    "next" => "http://127.0.0.1:9001/v2/recordsets?limit=1&marker=45fd892d-7a67-4f65-9df0-87273f228d6c"
+                  },
+                  "metadata"   => {
+                    "total_count" => 2
+                  }
                 }
               }
             end

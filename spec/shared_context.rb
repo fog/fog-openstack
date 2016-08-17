@@ -67,7 +67,7 @@ class OpenStackVCR
         config.default_cassette_options = {:record => :none}
         config.default_cassette_options.merge! :match_requests_on => [:method, :uri, :body]
       else
-        config.cassette_library_dir = "spec/debug"
+        config.cassette_library_dir = (ENV['SPEC_PATH'] || @vcr_directory)+"/recording"
         config.default_cassette_options = {:record => :all}
       end
     end
