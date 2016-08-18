@@ -142,11 +142,11 @@ module Fog
       request :update_lbaas_loadbalancer
 
       # LBaaS V2 Listener
-      request :list_lbaas_loadbalancers
-      request :create_lbaas_loadbalancer
-      request :delete_lbaas_loadbalancer
-      request :get_lbaas_loadbalancer
-      request :update_lbaas_loadbalancer
+      request :list_lbaas_listeners
+      request :create_lbaas_listener
+      request :delete_lbaas_listener
+      request :get_lbaas_listener
+      request :update_lbaas_listener
 
       # LBaaS V2 Pool
       request :list_lbaas_pools
