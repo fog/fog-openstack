@@ -18,6 +18,7 @@ require 'fog/planning/openstack'
 require 'fog/storage/openstack'
 require 'fog/volume/openstack/v1'
 require 'fog/volume/openstack/v2'
+require 'fog/key_manager/openstack'
 
 module Fog
   module Compute
@@ -72,6 +73,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../dns/openstack', __FILE__)
   end
 
+  module KeyManager
+    autoload :OpenStack, File.expand_path('../key_manager/openstack', __FILE__)
+  end
+
   module OpenStack
     extend Fog::Provider
 
@@ -90,6 +95,7 @@ module Fog
     service(:monitoring,    'Monitoring')
     service(:workflow,      'Workflow')
     service(:dns,           'DNS')
+    service(:key,           'KeyManager')
 
     @token_cache = {}
 
