@@ -8,16 +8,22 @@ module Fog
       class Secret < Fog::OpenStack::Model
         identity :secret_ref
 
+        # create
         attribute :uuid
+        attribute :name
+        attribute :expiration
+        attribute :bit_length, type: Integer
         attribute :algorithm
-        attribute :bit_length
+        attribute :mode
+        attribute :secret_type
+        #
+        attribute :payload
+        attribute :payload_content_type
+        attribute :payload_content_encoding
+
         attribute :content_types
         attribute :created
         attribute :creator_id
-        attribute :expiration
-        attribute :mode
-        attribute :name
-        attribute :secret_type
         attribute :status
         attribute :updated
 
@@ -25,6 +31,12 @@ module Fog
           URI(self.secret_ref).path.split('/').last
         rescue
           nil
+        end
+
+        def create
+          requires :name
+          merge_attributes(service.create_secret(attributes).body)
+          self
         end
 
       end

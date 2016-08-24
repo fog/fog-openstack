@@ -19,7 +19,6 @@ module Fog
       ## MODELS
       #
       model_path 'fog/key_manager/openstack/models'
-
       model       :secret
       collection  :secrets
 
