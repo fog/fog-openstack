@@ -11,8 +11,8 @@ describe Fog::Monitoring::OpenStack do
       :vcr_directory => spec_data_folder,
       :service_class => Fog::Monitoring::OpenStack
     )
-    @service = openstack_vcr.service
-    @timestamp = 146_375_736_714_3
+    @service      = openstack_vcr.service
+    @timestamp    = 146_375_736_714_3
   end
 
   it 'metric crud tests' do
@@ -21,7 +21,7 @@ describe Fog::Monitoring::OpenStack do
       metric_0 = @service.metrics.create(:name       => 'sample_metric_0',
                                          :timestamp  => @timestamp,
                                          :dimensions => {"key1" => "value1"},
-                                         :value      => '42',
+                                         :value      => 42,
                                          :value_meta => {"meta_key1" => "meta_value1"})
 
       metric_0.wont_be_nil
@@ -31,13 +31,13 @@ describe Fog::Monitoring::OpenStack do
       metric_1 = Fog::Monitoring::OpenStack::Metric.new(:name       => 'sample_metric_1',
                                                         :timestamp  => @timestamp,
                                                         :dimensions => {"key1" => "value1"},
-                                                        :value      => '42',
+                                                        :value      => 42,
                                                         :value_meta => {"meta_key1" => "meta_value1"})
 
       metric_2 = Fog::Monitoring::OpenStack::Metric.new(:name       => 'sample_metric_2',
                                                         :timestamp  => @timestamp,
                                                         :dimensions => {"key1" => "value1"},
-                                                        :value      => '42',
+                                                        :value      => 42,
                                                         :value_meta => {"meta_key1" => "meta_value1"})
 
       @service.metrics.create_metric_array([metric_1, metric_2])
@@ -64,6 +64,12 @@ describe Fog::Monitoring::OpenStack do
         metrics_all_identities.must_include(metric_identity)
       end
 
+      # list all metric names
+      metrics_name_list = @service.metrics.list_metric_names
+
+      metrics_name_list.wont_be_nil
+      metrics_name_list.wont_be_empty
+
       # failure cases
       proc { @service.metrics.create(:name => "this won't be created due to insufficient args") }.
         must_raise Fog::Monitoring::OpenStack::ArgumentError
@@ -89,15 +95,6 @@ describe Fog::Monitoring::OpenStack do
     end
   end
 
-  it 'list all metric names' do
-    VCR.use_cassette('metrics_name_list') do
-      metrics_name_list = @service.metrics.list_metric_names
-
-      metrics_name_list.wont_be_nil
-      metrics_name_list.wont_be_empty
-    end
-  end
-
   it 'find statistics specified by name, start_time and statistics' do
     VCR.use_cassette('statistics_list') do
       statistics_list = @service.statistics.all(:name          => 'cpu.system_perc',
@@ -116,7 +113,8 @@ describe Fog::Monitoring::OpenStack do
         # create notification method
         notification_method      = @service.notification_methods.create(:name    => 'important notification',
                                                                         :type    => 'EMAIL',
-                                                                        :address => 'admin@example.com')
+                                                                        :address => 'admin@example.com',
+                                                                        :period  => 0)
 
         # list all notification methods
         notification_methods_all = @service.notification_methods.all
@@ -129,12 +127,14 @@ describe Fog::Monitoring::OpenStack do
 
         notification_method.must_equal notification_method_by_id
 
-        # update specific attributes of an existing notification
+        # update specific an existing notification
         notification_method.update(:name    => notification_method.name,
                                    :address => 'notification_methods@example.com',
-                                   :type    => notification_method.type)
+                                   :type    => notification_method.type,
+                                   :period  => 0)
 
         notification_method.address.must_equal 'notification_methods@example.com'
+        notification_method.period.must_equal 0
 
         # Delete the notification method and make sure it is no longer found in the list
         notification_method.destroy
@@ -176,6 +176,7 @@ describe Fog::Monitoring::OpenStack do
         alarm_definition.id.must_equal alarm_definition_by_id.id
         alarm_definition.name.must_equal alarm_definition_by_id.name
         alarm_definition.expression.must_equal alarm_definition_by_id.expression
+        alarm_definition.deterministic.must_equal false
 
         # create a notification method for the following test
         notification_method       = @service.notification_methods.create(:name    => 'important notification',
@@ -200,7 +201,7 @@ describe Fog::Monitoring::OpenStack do
         alarm_definition_replaced.description.must_equal 'Replaced alarm-definition expression'
         alarm_definition_replaced.expression.must_equal '(avg(cpu.user_perc{hostname=devstack}) > 15)'
         #
-        # update specific attributes of alarm_definition
+        # patch specific attributes of alarm_definition
         alarm_definition_updated = alarm_definition.patch(:description => 'An updated alarm-definition.')
 
         alarm_definition.id.must_equal alarm_definition_updated.id
@@ -249,19 +250,19 @@ describe Fog::Monitoring::OpenStack do
         alarms_all.wont_be_empty
 
         # list all alarms in ALARM state
-        alarms_all_state_filter = @service.alarms.all(:state => 'ALARM')
+        alarms_all_state_filter = @service.alarms.all(:state => 'OK')
 
         alarms_all_state_filter.wont_be_nil
         alarms_all_state_filter.wont_be_empty
 
         # get an alarm by name using list all alarms with filter
-        alarm_list_by_name_filter = @service.alarms.all(:metric_name => 'http_status')
+        alarm_list_by_name_filter = @service.alarms.all(:metric_name => 'cpu.idle_perc')
         alarm_by_name             = alarm_list_by_name_filter.first
 
         alarm_by_name.wont_be_nil
 
         # get the id of this alarm
-        alarm_id = alarm_by_name.id
+        alarm_id    = alarm_by_name.id
 
         # find alarm by id
         alarm_by_id = @service.alarms.find_by_id(alarm_id)
@@ -305,7 +306,7 @@ describe Fog::Monitoring::OpenStack do
 
         (@service.alarms.all.include? alarm_by_id).must_equal false
 
-        alarm_definition = nil
+        alarm_definition    = nil
         notification_method = nil
 
       ensure
@@ -329,7 +330,7 @@ describe Fog::Monitoring::OpenStack do
       alarm_by_name = @service.alarms.all(:name => 'cpu.user_perc')
 
       # get the id of this alarm
-      alarm_id = alarm_by_name.first.id
+      alarm_id      = alarm_by_name.first.id
 
       # find alarm by id
       @service.alarms.find_by_id(alarm_id)
@@ -339,6 +340,31 @@ describe Fog::Monitoring::OpenStack do
 
       alarm_state_history_for_alarm.wont_be_nil
       alarm_state_history_for_alarm.wont_be_empty
+    end
+  end
+
+  it 'list dimension values' do
+    VCR.use_cassette('list_dimension_values') do
+      # list dimension values
+      dimension_values_by_key = @service.metrics.list_dimension_values('hostname').first
+
+      dimension_values_by_key.wont_be_nil
+      dimension_values_by_key.dimension_name.must_equal 'hostname'
+      dimension_values_by_key.id.wont_be_nil
+      dimension_values_by_key.values.wont_be_empty
+    end
+  end
+
+  it 'list notification method types' do
+    VCR.use_cassette('list_notification_method_types') do
+      notification_method_types = @service.notification_methods.list_types
+
+      notification_method_types.wont_be_nil
+      notification_method_types.wont_be_empty
+
+      notification_method_types.must_include :EMAIL
+      notification_method_types.must_include :PAGERDUTY
+      notification_method_types.must_include :WEBHOOK
     end
   end
 

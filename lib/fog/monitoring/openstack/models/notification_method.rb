@@ -10,6 +10,7 @@ module Fog
         attribute :links
         attribute :type
         attribute :address
+        attribute :period
 
         def create
           requires :name, :type, :address
@@ -21,7 +22,13 @@ module Fog
         def update(attr = nil)
           requires :name, :type, :address
           merge_attributes(
-            service.update_notification_method(id, attr || attributes).body
+            service.put_notification_method(id, attr || attributes).body
+          )
+        end
+
+        def patch(attr = nil)
+          merge_attributes(
+            service.patch_notification_method(id, attr || attributes).body
           )
         end
 

@@ -6,7 +6,6 @@ module Fog
       class Alarm < Fog::OpenStack::Model
         identity :id
 
-        attribute :name
         attribute :links
         attribute :link
         attribute :alarm_definition

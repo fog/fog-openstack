@@ -31,6 +31,7 @@ module Fog
       collection  :alarm_states
       model       :alarm_count
       collection  :alarm_counts
+      model       :dimension_value
 
       request_path 'fog/monitoring/openstack/requests'
       request :create_metric
@@ -45,7 +46,8 @@ module Fog
       request :create_notification_method
       request :get_notification_method
       request :list_notification_methods
-      request :update_notification_method
+      request :put_notification_method
+      request :patch_notification_method
       request :delete_notification_method
 
       request :create_alarm_definition
@@ -64,6 +66,10 @@ module Fog
 
       request :list_alarm_state_history_for_specific_alarm
       request :list_alarm_state_history_for_all_alarms
+
+      request :list_dimension_values
+
+      request :list_notification_method_types
 
       class Real
         include Fog::OpenStack::Core

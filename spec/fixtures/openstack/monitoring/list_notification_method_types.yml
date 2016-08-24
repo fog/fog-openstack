@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://devstack.openstack.stack/v2.0/notification-methods/types
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - gAAAAABX4qoraLUDG5z8ipb6H-QNcpTj9ICrYqOVU_m0WrU4f6qazCeGZ8gc2cu9NlAr_txdNfkmo8HP9GTqG5hK5GofphxzVRzHs2-T4ZeYA00qdoS62x-aKbmTqbJUOuuHSl3ziJJH3Fr7LKwZ7sBI0EOjHG4lxucTY7OgfzLPOwCdMYy5HcieDE2qxAfDbCN-gAkaU6eAF8wJ9ICSxDwJ2wRq6ZXHPErIT2zyYY2CLmqF3Nb05hQ
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 21 Sep 2016 15:41:31 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '184'
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+      Connection:
+      - Keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"elements": [{"type": "EMAIL"}, {"type": "PAGERDUTY"}, {"type": "WEBHOOK"}],
+        "links": [{"href": "http://devstack.openstack.stack/v2.0/notification-methods/types",
+        "rel": "self"}]}'
+    http_version: 
+  recorded_at: Wed, 21 Sep 2016 15:41:31 GMT
+recorded_with: VCR 3.0.3
