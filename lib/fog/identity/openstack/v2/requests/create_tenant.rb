@@ -16,7 +16,7 @@ module Fog
         class Mock
           def create_tenant(attributes)
             response = Excon::Response.new
-            response.status = [200, 204][rand(1)]
+            response.status = [200, 204][rand(2)]
             response.body = {
               'tenant' => {
                 'id'          => "df9a815161eba9b76cc748fd5c5af73e",

@@ -17,7 +17,7 @@ module Fog
           response = Excon::Response.new
 
           images = data[:images].values
-          for image in images
+          images.each do |image|
             case image['status']
             when 'SAVING'
               if Time.now - data[:last_modified][:images][image['id']] >= Fog::Mock.delay
@@ -26,7 +26,7 @@ module Fog
             end
           end
 
-          response.status = [200, 203][rand(1)]
+          response.status = [200, 203][rand(2)]
           response.body = {'images' => images.map { |image| image.reject { |key, _value| !['id', 'name', 'links', 'minRam', 'minDisk', 'metadata', 'status', 'updated'].include?(key) } }}
           response
         end

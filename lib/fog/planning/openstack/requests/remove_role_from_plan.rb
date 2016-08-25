@@ -14,7 +14,7 @@ module Fog
       class Mock
         def remove_role_from_plan(_plan_uuid, _role_uuid)
           response = Excon::Response.new
-          response.status = [200][rand(1)]
+          response.status = 200
           response.body = {
             "created_at"  => "2014-09-26T20:23:14.222815",
             "description" => "Development testing cloud",

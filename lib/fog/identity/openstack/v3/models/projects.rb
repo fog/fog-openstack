@@ -8,25 +8,24 @@ module Fog
         class Projects < Fog::OpenStack::Collection
           model Fog::Identity::OpenStack::V3::Project
 
-          @@cache = {}
-          Fog::Identity::OpenStack::V3::Project.use_cache(@@cache)
-
           def all(options = {})
             if service.openstack_cache_ttl > 0
-              cached_project, expires = @@cache[{:token => service.auth_token, :options => options}]
+              cached_project, expires = Fog::Identity::OpenStack::V3::Project.cache[{:token   => service.auth_token,
+                                                                                     :options => options}]
               return cached_project if cached_project && expires > Time.now
             end
 
             project_to_cache = load_response(service.list_projects(options), 'projects')
             if service.openstack_cache_ttl > 0
-              @@cache[{:token => service.auth_token, :options => options}] = [project_to_cache,
-                                                                              Time.now + service.openstack_cache_ttl]
+              cache = Fog::Identity::OpenStack::V3::Project.cache
+              cache[{:token => service.auth_token, :options => options}] = [project_to_cache,
+                                                                            Time.now + service.openstack_cache_ttl]
+              Fog::Identity::OpenStack::V3::Project.cache = cache
             end
             project_to_cache
           end
 
           def create(attributes)
-            @@cache.clear if @@cache
             super(attributes)
           end
 
@@ -40,7 +39,9 @@ module Fog
             end
 
             if service.openstack_cache_ttl > 0
-              cached_project, expires = @@cache[{:token => service.auth_token, :id => id, :options => options}]
+              cached_project, expires = Fog::Identity::OpenStack::V3::Project.cache[{:token   => service.auth_token,
+                                                                                     :id      => id,
+                                                                                     :options => options}]
               return cached_project if cached_project && expires > Time.now
             end
             project_hash = service.get_project(id, options).body['project']
@@ -53,9 +54,11 @@ module Fog
             end
 
             if service.openstack_cache_ttl > 0
-              @@cache[{:token => service.auth_token, :id => id, :options => options}] = [
+              cache = Fog::Identity::OpenStack::V3::Project.cache
+              cache[{:token => service.auth_token, :id => id, :options => options}] = [
                 top_project, Time.now + service.openstack_cache_ttl
               ]
+              Fog::Identity::OpenStack::V3::Project.cache = cache
             end
             top_project
           end

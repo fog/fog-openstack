@@ -37,7 +37,7 @@ module Fog
             user_id = user ? user.id : nil
 
             ec2_credential =
-              find { |ec2_credential| ec2_credential.access == access_key }
+              find { |ec2_cred| ec2_cred.access == access_key }
 
             unless ec2_credential
               response = service.get_ec2_credential(user_id, access_key)

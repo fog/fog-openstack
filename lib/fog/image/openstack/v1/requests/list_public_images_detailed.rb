@@ -26,7 +26,7 @@ module Fog
         class Mock
           def list_public_images_detailed(_options = {}, _query_deprecated = nil)
             response = Excon::Response.new
-            response.status = [200, 204][rand(1)]
+            response.status = [200, 204][rand(2)]
             response.body = {'images' => data[:images].values}
             response
           end # def list_public_images_detailed

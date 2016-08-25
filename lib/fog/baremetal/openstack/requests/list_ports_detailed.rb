@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_ports_detailed(_options = {})
           response = Excon::Response.new
-          response.status = [200, 204][rand(1)]
+          response.status = [200, 204][rand(2)]
           response.body = {"ports" => data[:ports]}
           response
         end # def list_ports

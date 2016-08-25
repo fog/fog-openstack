@@ -11,7 +11,7 @@ module Fog
           body['rebuild']['metadata'] = metadata if metadata
           if personality
             body['rebuild']['personality'] = []
-            for file in personality
+            personality.each do |file|
               body['rebuild']['personality'] << {
                 'contents' => Base64.encode64(file['contents']),
                 'path'     => file['path']

@@ -24,7 +24,7 @@ module Fog
           response = Excon::Response.new
 
           servers = data[:servers].values
-          for server in servers
+          servers.each do |server|
             case server['status']
             when 'BUILD'
               if Time.now - data[:last_modified][:servers][server['id']] > Fog::Mock.delay * 2
@@ -33,7 +33,7 @@ module Fog
             end
           end
 
-          response.status = [200, 203][rand(1)]
+          response.status = [200, 203][rand(2)]
           response.body = {'servers' => servers}
           response
         end

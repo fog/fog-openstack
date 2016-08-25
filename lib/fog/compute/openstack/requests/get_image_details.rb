@@ -14,8 +14,9 @@ module Fog
       class Mock
         def get_image_details(image_id)
           response = Excon::Response.new
-          if image = list_images_detail.body['images'].find { |_| _['id'] == image_id }
-            response.status = [200, 203][rand(1)]
+          image = list_images_detail.body['images'].find { |im| im['id'] == image_id }
+          if image
+            response.status = [200, 203][rand(2)]
             response.body = {'image' => image}
             response
           else

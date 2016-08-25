@@ -19,7 +19,6 @@ module Fog
 
       class Mock
         def list_usages(_date_start = nil, _date_end = nil, _detailed = false)
-          params = {}
           response        = Excon::Response.new
           response.status = 200
           response.body   = {"tenant_usages" => [{

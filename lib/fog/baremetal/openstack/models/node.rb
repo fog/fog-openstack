@@ -42,8 +42,8 @@ module Fog
           else
             # TODO: implement update_node method using PUT method and self.attributes
             # once it is supported by Ironic
-            raise ArgumentError, 'You need to provide patch attribute. Ironic does '
-            'not support update by hash yet, only by jsonpatch.'
+            raise ArgumentError,
+                  'You need to provide patch attribute. Ironic does not support update by hash yet, only by jsonpatch.'
           end
           self
         end

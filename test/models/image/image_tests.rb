@@ -21,7 +21,7 @@ describe "Fog::Image[:openstack] | image" do
     end
 
     it "#add member" do
-      @instance.add_member(@instance.owner).status.must_equal 200
+      [200, 204].must_include(@instance.add_member(@instance.owner).status)
     end
 
     it "#show members" do
@@ -29,7 +29,7 @@ describe "Fog::Image[:openstack] | image" do
     end
 
     it "#remove member" do
-      @instance.remove_member(@instance.owner).status.must_equal 200
+      [200, 204].must_include(@instance.remove_member(@instance.owner).status)
     end
 
     it "#destroy" do

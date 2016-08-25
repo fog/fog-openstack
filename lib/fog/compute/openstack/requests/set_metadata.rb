@@ -15,13 +15,13 @@ module Fog
       class Mock
         def set_metadata(collection_name, parent_id, metadata = {})
           if collection_name == "images"
-            unless list_images_detail.body['images'].find { |_| _['id'] == parent_id }
+            unless list_images_detail.body['images'].find { |image| image['id'] == parent_id }
               raise Fog::Compute::OpenStack::NotFound
             end
           end
 
           if collection_name == "servers"
-            unless list_servers_detail.body['servers'].find { |_| _['id'] == parent_id }
+            unless list_servers_detail.body['servers'].find { |server| server['id'] == parent_id }
               raise Fog::Compute::OpenStack::NotFound
             end
           end

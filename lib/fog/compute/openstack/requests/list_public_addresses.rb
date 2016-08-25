@@ -14,8 +14,9 @@ module Fog
       class Mock
         def list_public_addresses(server_id)
           response = Excon::Response.new
-          if server = list_servers_detail.body['servers'].find { |_| _['id'] == server_id }
-            response.status = [200, 203][rand(1)]
+          server = list_servers_detail.body['servers'].find { |srv| srv['id'] == server_id }
+          if server
+            response.status = [200, 203][rand(2)]
             response.body = {'public' => server['addresses']['public']}
             response
           else

@@ -12,19 +12,25 @@ module Fog
           attribute :name
           attribute :links
 
+          class << self
+            attr_accessor :cache
+          end
+
+          @cache = {}
+
           def to_s
             name
           end
 
           def destroy
-            @@cache.clear if @@cache
+            clear_cache
             requires :id
             service.delete_domain(id)
             true
           end
 
           def update(attr = nil)
-            @@cache.clear if @@cache
+            clear_cache
             requires :id, :name
             merge_attributes(
               service.update_domain(id, attr || attributes).body['domain']
@@ -33,7 +39,7 @@ module Fog
           end
 
           def create
-            @@cache.clear if @@cache
+            clear_cache
             requires :name
             merge_attributes(
               service.create_domain(attributes).body['domain']
@@ -41,8 +47,10 @@ module Fog
             self
           end
 
-          def self.use_cache(cache)
-            @@cache = cache
+          private
+
+          def clear_cache
+            self.class.cache = {}
           end
         end
       end

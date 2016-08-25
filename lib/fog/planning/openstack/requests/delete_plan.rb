@@ -14,7 +14,7 @@ module Fog
       class Mock
         def delete_plan(_plan_uuid)
           response = Excon::Response.new
-          response.status = [204][rand(1)]
+          response.status = 204
           response
         end # def delete_plans
       end # class Mock

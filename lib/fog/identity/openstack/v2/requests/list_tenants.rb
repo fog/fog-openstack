@@ -43,7 +43,7 @@ module Fog
                    'name'        => 'disabled'}
                 ]
               },
-              :status => [200, 204][rand(1)]
+              :status => [200, 204][rand(2)]
             )
           end # def list_tenants
         end # class Mock

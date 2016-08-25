@@ -30,13 +30,11 @@ module Fog
 
       class Mock
         def list_security_groups(options = {})
-          if options.kind_of?(Hash)
-            server_id = options.delete(:server_id)
-            query = options
-          else
-            server_id = options
-            query = {}
-          end
+          server_id = if options.kind_of?(Hash)
+                        options.delete(:server_id)
+                      else
+                        options
+                      end
 
           security_groups = data[:security_groups].values
 

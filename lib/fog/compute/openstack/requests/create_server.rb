@@ -34,7 +34,7 @@ module Fog
 
           if options['personality']
             data['server']['personality'] = []
-            for file in options['personality']
+            options['personality'].each do |file|
               data['server']['personality'] << {
                 'contents' => Base64.encode64(file['contents'] || file[:contents]),
                 'path'     => file['path'] || file[:path]
@@ -122,11 +122,13 @@ module Fog
             'status'       => 'BUILD',
             'created'      => '2012-09-27T00:04:18Z',
             'updated'      => '2012-09-27T00:04:27Z',
-            'user_id'      => @openstack_username,
+            'user_id'      => user_id,
             'config_drive' => options['config_drive'] || '',
           }
 
-          if nics = options['nics']
+          nics = options['nics']
+
+          if nics
             nics.each do |_nic|
               mock_data["addresses"].merge!(
                 "Public" => [{'addr' => Fog::Mock.random_ip}]
@@ -134,16 +136,15 @@ module Fog
             end
           end
 
-          response_data = {}
-          if options['return_reservation_id'] == 'True'
-            response_data = {'reservation_id' => "r-#{Fog::Mock.random_numbers(6)}"}
-          else
-            response_data = {
-              'adminPass' => 'password',
-              'id'        => server_id,
-              'links'     => mock_data['links'],
-            }
-          end
+          response_data = if options['return_reservation_id'] == 'True'
+                            {'reservation_id' => "r-#{Fog::Mock.random_numbers(6)}"}
+                          else
+                            {
+                              'adminPass' => 'password',
+                              'id'        => server_id,
+                              'links'     => mock_data['links'],
+                            }
+                          end
 
           if block_devices = options["block_device_mapping_v2"]
             block_devices.each { |bd| volumes.get(bd[:uuid]).attach(server_id, bd[:device_name]) }
@@ -153,8 +154,9 @@ module Fog
 
           data[:last_modified][:servers][server_id] = Time.now
           data[:servers][server_id] = mock_data
-          if security_groups = options['security_groups']
-            groups = Array(options['security_groups']).map do |sg|
+          security_groups = options['security_groups']
+          if security_groups
+            groups = Array(security_groups).map do |sg|
               if sg.kind_of?(Fog::Compute::OpenStack::SecurityGroup)
                 sg.name
               else

@@ -14,7 +14,8 @@ module Fog
       class Mock
         def delete_image(image_id)
           response = Excon::Response.new
-          if image = list_images_detail.body['images'].find { |_| _['id'] == image_id }
+          image = list_images_detail.body['images'].find { |im| im['id'] == image_id }
+          if image
             if image['status'] == 'SAVING'
               response.status = 409
               raise(Excon::Errors.status_error({:expects => 202}, response))

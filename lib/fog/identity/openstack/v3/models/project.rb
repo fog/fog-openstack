@@ -16,19 +16,25 @@ module Fog
           attribute :subtree
           attribute :parents
 
+          class << self
+            attr_accessor :cache
+          end
+
+          @cache = {}
+
           def to_s
             name
           end
 
           def destroy
-            @@cache.clear if @@cache
+            clear_cache
             requires :id
             service.delete_project(id)
             true
           end
 
           def update(attr = nil)
-            @@cache.clear if @@cache
+            clear_cache
             requires :id
             merge_attributes(
               service.update_project(id, attr || attributes).body['project']
@@ -37,7 +43,7 @@ module Fog
           end
 
           def create
-            @@cache.clear if @@cache
+            clear_cache
             merge_attributes(
               service.create_project(attributes).body['project']
             )
@@ -50,7 +56,7 @@ module Fog
           end
 
           def grant_role_to_user(role_id, user_id)
-            @@cache.clear if @@cache
+            clear_cache
             requires :id
             service.grant_project_user_role(id, user_id, role_id)
           end
@@ -66,7 +72,7 @@ module Fog
           end
 
           def revoke_role_from_user(role_id, user_id)
-            @@cache.clear if @@cache
+            clear_cache
             requires :id
             service.revoke_project_user_role(id, user_id, role_id)
           end
@@ -77,7 +83,7 @@ module Fog
           end
 
           def grant_role_to_group(role_id, group_id)
-            @@cache.clear if @@cache
+            clear_cache
             requires :id
             service.grant_project_group_role(id, group_id, role_id)
           end
@@ -93,13 +99,15 @@ module Fog
           end
 
           def revoke_role_from_group(role_id, group_id)
-            @@cache.clear if @@cache
+            clear_cache
             requires :id
             service.revoke_project_group_role(id, group_id, role_id)
           end
 
-          def self.use_cache(cache)
-            @@cache = cache
+          private
+
+          def clear_cache
+            self.class.cache = {}
           end
         end
       end
