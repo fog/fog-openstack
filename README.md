@@ -59,7 +59,7 @@ If you're using Keystone V2, you don't need to supply domain details but ensure 
 
 ```ruby
 @connection_params = {
-  openstack_auth_url:     "http://devstack.test:5000/v2.0/tokens"
+  openstack_auth_url:     "http://devstack.test:5000/v2.0/tokens",
   openstack_username:     "admin",
   openstack_api_key:      "password",
   openstack_project_name: "admin"
