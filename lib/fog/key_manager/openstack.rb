@@ -21,14 +21,25 @@ module Fog
       model_path 'fog/key_manager/openstack/models'
       model       :secret
       collection  :secrets
+      model       :container
+      collection  :containers
 
       ## REQUESTS
-      #
+
+      # secrets
       request_path 'fog/key_manager/openstack/requests'
       request :create_secret
       request :list_secrets
       request :get_secret
+      request :get_secret_payload
+      request :get_secret_metadata
       request :delete_secret
+
+      # containers
+      request :create_container
+      request :get_container
+      request :list_containers
+      request :delete_container
 
       class Real
         include Fog::OpenStack::Core
