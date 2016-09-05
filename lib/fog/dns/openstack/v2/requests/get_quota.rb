@@ -4,11 +4,13 @@ module Fog
       class V2
         class Real
           def get_quota(project_id = nil)
+            headers, _options = Fog::DNS::OpenStack::V2.setup_headers(:all_projects => !project_id.nil?)
+
             request(
-              :headers => {"X-Auth-All-Projects" => !project_id.nil?},
               :expects => 200,
               :method  => 'GET',
-              :path    => "quotas/#{project_id}"
+              :path    => "quotas/#{project_id}",
+              :headers => headers
             )
           end
         end

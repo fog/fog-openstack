@@ -1,0 +1,472 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://devstack.openstack.stack:9001/v2/zones
+    body:
+      encoding: UTF-8
+      string: '{"name":"example2.org.","email":"hostmaster@example2.org"}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 202
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Mon, 05 Sep 2016 14:56:24 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '563'
+      Connection:
+      - keep-alive
+      Location:
+      - https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f
+      X-Openstack-Request-Id:
+      - req-2a73d263-46b9-43e1-b287-438d5980c52c
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status": "PENDING", "masters": [], "name": "example2.org.", "links":
+        {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f"},
+        "transferred_at": null, "created_at": "2016-09-05T14:56:24.000000", "pool_id":
+        "794ccc2c-d751-44fe-b57f-8894c9f5c842", "updated_at": null, "version": 1,
+        "id": "afacbd2b-6cda-4a05-b4bd-1db06cb3da3f", "ttl": 3600, "action": "CREATE",
+        "attributes": {}, "serial": 1473087384, "project_id": "c60a441e54cd435896a357026aa4050a",
+        "type": "PRIMARY", "email": "hostmaster@example2.org", "description": null}'
+    http_version:
+  recorded_at: Mon, 05 Sep 2016 14:56:24 GMT
+- request:
+    method: post
+    uri: https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets
+    body:
+      encoding: UTF-8
+      string: '{"name":"host.example2.org.","type":"A","records":["10.0.0.1"]}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 202
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Mon, 05 Sep 2016 14:56:24 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '550'
+      Connection:
+      - keep-alive
+      Location:
+      - https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25
+      X-Openstack-Request-Id:
+      - req-90978705-6a48-4df0-8020-2afd4844c6ce
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status": "PENDING", "description": null, "links": {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25"},
+        "created_at": "2016-09-05T14:56:24.000000", "updated_at": null, "records":
+        ["10.0.0.1"], "zone_id": "afacbd2b-6cda-4a05-b4bd-1db06cb3da3f", "version":
+        1, "ttl": null, "action": "CREATE", "zone_name": "example2.org.", "project_id":
+        "c60a441e54cd435896a357026aa4050a", "type": "A", "id": "8af8ef76-2846-4077-973a-b41593bd1e25",
+        "name": "host.example2.org."}'
+    http_version:
+  recorded_at: Mon, 05 Sep 2016 14:56:24 GMT
+- request:
+    method: put
+    uri: https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25
+    body:
+      encoding: UTF-8
+      string: '{"records":["10.0.0.2"]}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+      X-Auth-All-Projects:
+      - 'false'
+  response:
+    status:
+      code: 202
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Mon, 05 Sep 2016 14:56:24 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '574'
+      Connection:
+      - keep-alive
+      X-Openstack-Request-Id:
+      - req-a89b0d4f-eee3-4571-8a68-b60b5e45cf6a
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status": "PENDING", "description": null, "links": {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25"},
+        "created_at": "2016-09-05T14:56:24.000000", "updated_at": "2016-09-05T14:56:24.000000",
+        "records": ["10.0.0.2"], "zone_id": "afacbd2b-6cda-4a05-b4bd-1db06cb3da3f",
+        "version": 2, "ttl": null, "action": "UPDATE", "zone_name": "example2.org.",
+        "project_id": "c60a441e54cd435896a357026aa4050a", "type": "A", "id": "8af8ef76-2846-4077-973a-b41593bd1e25",
+        "name": "host.example2.org."}'
+    http_version:
+  recorded_at: Mon, 05 Sep 2016 14:56:24 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+      X-Auth-All-Projects:
+      - 'false'
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Mon, 05 Sep 2016 14:56:25 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '574'
+      Connection:
+      - keep-alive
+      X-Openstack-Request-Id:
+      - req-f23b4b01-385a-472f-bb61-8a83110b5e9f
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status": "PENDING", "description": null, "links": {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25"},
+        "created_at": "2016-09-05T14:56:24.000000", "updated_at": "2016-09-05T14:56:24.000000",
+        "records": ["10.0.0.2"], "zone_id": "afacbd2b-6cda-4a05-b4bd-1db06cb3da3f",
+        "version": 2, "ttl": null, "action": "UPDATE", "zone_name": "example2.org.",
+        "project_id": "c60a441e54cd435896a357026aa4050a", "type": "A", "id": "8af8ef76-2846-4077-973a-b41593bd1e25",
+        "name": "host.example2.org."}'
+    http_version:
+  recorded_at: Mon, 05 Sep 2016 14:56:24 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+      X-Auth-All-Projects:
+      - 'false'
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Mon, 05 Sep 2016 14:56:25 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '574'
+      Connection:
+      - keep-alive
+      X-Openstack-Request-Id:
+      - req-b8efb862-3230-4485-8667-ee8d5760957a
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status": "PENDING", "description": null, "links": {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25"},
+        "created_at": "2016-09-05T14:56:24.000000", "updated_at": "2016-09-05T14:56:24.000000",
+        "records": ["10.0.0.2"], "zone_id": "afacbd2b-6cda-4a05-b4bd-1db06cb3da3f",
+        "version": 2, "ttl": null, "action": "UPDATE", "zone_name": "example2.org.",
+        "project_id": "c60a441e54cd435896a357026aa4050a", "type": "A", "id": "8af8ef76-2846-4077-973a-b41593bd1e25",
+        "name": "host.example2.org."}'
+    http_version:
+  recorded_at: Mon, 05 Sep 2016 14:56:25 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets?name=host.example2.org.
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+      X-Auth-All-Projects:
+      - 'false'
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Mon, 05 Sep 2016 14:56:25 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '763'
+      Connection:
+      - keep-alive
+      X-Openstack-Request-Id:
+      - req-f6432d09-ea08-403d-a118-c80ba3b2cf87
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"recordsets": [{"status": "PENDING", "description": null, "links":
+        {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25"},
+        "created_at": "2016-09-05T14:56:24.000000", "updated_at": "2016-09-05T14:56:24.000000",
+        "records": ["10.0.0.2"], "zone_id": "afacbd2b-6cda-4a05-b4bd-1db06cb3da3f",
+        "version": 2, "ttl": null, "action": "UPDATE", "zone_name": "example2.org.",
+        "project_id": "c60a441e54cd435896a357026aa4050a", "type": "A", "id": "8af8ef76-2846-4077-973a-b41593bd1e25",
+        "name": "host.example2.org."}], "links": {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets?name=host.example2.org."},
+        "metadata": {"total_count": 1}}'
+    http_version:
+  recorded_at: Mon, 05 Sep 2016 14:56:25 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets?name=host.example2.org.
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+      X-Auth-All-Projects:
+      - 'false'
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Mon, 05 Sep 2016 14:56:25 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '763'
+      Connection:
+      - keep-alive
+      X-Openstack-Request-Id:
+      - req-06225afa-4ef3-4203-9471-fbe3a4ff9685
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"recordsets": [{"status": "PENDING", "description": null, "links":
+        {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25"},
+        "created_at": "2016-09-05T14:56:24.000000", "updated_at": "2016-09-05T14:56:24.000000",
+        "records": ["10.0.0.2"], "zone_id": "afacbd2b-6cda-4a05-b4bd-1db06cb3da3f",
+        "version": 2, "ttl": null, "action": "UPDATE", "zone_name": "example2.org.",
+        "project_id": "c60a441e54cd435896a357026aa4050a", "type": "A", "id": "8af8ef76-2846-4077-973a-b41593bd1e25",
+        "name": "host.example2.org."}], "links": {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets?name=host.example2.org."},
+        "metadata": {"total_count": 1}}'
+    http_version:
+  recorded_at: Mon, 05 Sep 2016 14:56:25 GMT
+- request:
+    method: delete
+    uri: https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+      X-Auth-All-Projects:
+      - 'false'
+  response:
+    status:
+      code: 202
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Mon, 05 Sep 2016 14:56:25 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '574'
+      Connection:
+      - keep-alive
+      X-Openstack-Request-Id:
+      - req-f3975db6-2814-448b-9a8a-0891a7484096
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status": "PENDING", "description": null, "links": {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f/recordsets/8af8ef76-2846-4077-973a-b41593bd1e25"},
+        "created_at": "2016-09-05T14:56:24.000000", "updated_at": "2016-09-05T14:56:25.000000",
+        "records": ["10.0.0.2"], "zone_id": "afacbd2b-6cda-4a05-b4bd-1db06cb3da3f",
+        "version": 3, "ttl": null, "action": "DELETE", "zone_name": "example2.org.",
+        "project_id": "c60a441e54cd435896a357026aa4050a", "type": "A", "id": "8af8ef76-2846-4077-973a-b41593bd1e25",
+        "name": "host.example2.org."}'
+    http_version:
+  recorded_at: Mon, 05 Sep 2016 14:56:25 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:9001/v2/zones?name=example2.org.
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+      X-Auth-All-Projects:
+      - 'false'
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Mon, 05 Sep 2016 14:56:25 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '718'
+      Connection:
+      - keep-alive
+      X-Openstack-Request-Id:
+      - req-da823136-97f6-4759-8f4e-10583a05638e
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"zones": [{"status": "PENDING", "masters": [], "name": "example2.org.",
+        "links": {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f"},
+        "transferred_at": null, "created_at": "2016-09-05T14:56:24.000000", "pool_id":
+        "794ccc2c-d751-44fe-b57f-8894c9f5c842", "updated_at": "2016-09-05T14:56:25.000000",
+        "version": 4, "id": "afacbd2b-6cda-4a05-b4bd-1db06cb3da3f", "ttl": 3600, "action":
+        "UPDATE", "attributes": {}, "serial": 1473087387, "project_id": "c60a441e54cd435896a357026aa4050a",
+        "type": "PRIMARY", "email": "hostmaster@example2.org", "description": null}],
+        "links": {"self": "https://devstack.openstack.stack:9001/v2/zones?name=example2.org."},
+        "metadata": {"total_count": 1}}'
+    http_version:
+  recorded_at: Mon, 05 Sep 2016 14:56:25 GMT
+- request:
+    method: delete
+    uri: https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+      X-Auth-All-Projects:
+      - 'false'
+  response:
+    status:
+      code: 202
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Mon, 05 Sep 2016 14:56:25 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '587'
+      Connection:
+      - keep-alive
+      X-Openstack-Request-Id:
+      - req-3d1b4785-76ce-425a-899e-4719729102b1
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"status": "PENDING", "masters": [], "name": "example2.org.", "links":
+        {"self": "https://devstack.openstack.stack:9001/v2/zones/afacbd2b-6cda-4a05-b4bd-1db06cb3da3f"},
+        "transferred_at": null, "created_at": "2016-09-05T14:56:24.000000", "pool_id":
+        "794ccc2c-d751-44fe-b57f-8894c9f5c842", "updated_at": "2016-09-05T14:56:25.000000",
+        "version": 5, "id": "afacbd2b-6cda-4a05-b4bd-1db06cb3da3f", "ttl": 3600, "action":
+        "DELETE", "attributes": {}, "serial": 1473087387, "project_id": "c60a441e54cd435896a357026aa4050a",
+        "type": "PRIMARY", "email": "hostmaster@example2.org", "description": null}'
+    http_version:
+  recorded_at: Mon, 05 Sep 2016 14:56:25 GMT
+recorded_with: VCR 3.0.1

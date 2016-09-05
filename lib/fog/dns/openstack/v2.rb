@@ -18,6 +18,12 @@ module Fog
                    :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
                    :openstack_identity_prefix, :openstack_temp_url_key, :openstack_cache_ttl
 
+        model_path 'fog/dns/openstack/v2/models'
+        model       :zone
+        collection  :zones
+        model       :recordset
+        collection  :recordsets
+
         request_path 'fog/dns/openstack/v2/requests'
 
         request :list_zones
@@ -34,6 +40,20 @@ module Fog
 
         request :get_quota
         request :update_quota
+
+        def self.setup_headers(options)
+          # user needs to have admin privileges to ask for all projects
+          all_projects = options.delete(:all_projects) || false
+
+          # user needs to have admin privileges to impersonate another project
+          # don't ask for all and one project at the same time
+          project_id = options.delete(:project_id) unless all_projects
+
+          headers = {'X-Auth-All-Projects' => all_projects}
+          headers['X-Auth-Sudo-Project-Id'] = project_id unless project_id.nil?
+
+          [headers, options]
+        end
 
         class Mock
           def self.data

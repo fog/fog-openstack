@@ -4,11 +4,14 @@ module Fog
       class V2
         class Real
           def list_zones(options = {})
+            headers, options = Fog::DNS::OpenStack::V2.setup_headers(options)
+
             request(
               :expects => 200,
               :method  => 'GET',
               :path    => 'zones',
-              :query   => options
+              :query   => options,
+              :headers => headers
             )
           end
         end

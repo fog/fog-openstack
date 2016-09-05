@@ -4,13 +4,14 @@ module Fog
       class V2
         class Real
           def update_quota(project_id, options = {})
-            all_projects = options.key?(:all_projects) ? options.delete(:all_projects) : false
+            headers, options = Fog::DNS::OpenStack::V2.setup_headers(options)
+
             request(
-              :headers => {"X-Auth-All-Projects" => all_projects},
               :body    => Fog::JSON.encode(options),
               :expects => 200,
               :method  => 'PATCH',
-              :path    => "quotas/#{project_id}"
+              :path    => "quotas/#{project_id}",
+              :headers => headers
             )
           end
         end
