@@ -601,9 +601,10 @@ module Fog
       body = Fog::JSON.decode(response.body)
       version = nil
       unless body['versions'].empty?
-        supported_version = body['versions'].find do |x|
+        versions = body['versions'].kind_of?(Array) ? body['versions'] : body['versions']['values']
+        supported_version = versions.find do |x|
           x["id"].match(supported_versions) &&
-              (x["status"] == "CURRENT" || x["status"] == "SUPPORTED")
+            (x["status"] == "CURRENT" || x["status"] == "SUPPORTED" || x["status"] == "stable")
         end
         version = supported_version["id"] if supported_version
       end

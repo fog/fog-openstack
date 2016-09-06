@@ -147,7 +147,11 @@ module Fog
 
         def public_ip_addresses
           if floating_ip_addresses.empty?
-            addresses.select { |s| s[0] =~ /public/i }.collect { |a| a[1][0]['addr'] }
+            if addresses
+              addresses.select { |s| s[0] =~ /public/i }.collect { |a| a[1][0]['addr'] }
+            else
+              []
+            end
           else
             floating_ip_addresses
           end

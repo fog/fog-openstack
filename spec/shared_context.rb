@@ -47,6 +47,7 @@ class OpenStackVCR
                          Fog::Image::OpenStack,
                          Fog::Image::OpenStack::V1,
                          Fog::Network::OpenStack,
+                         Fog::DNS::OpenStack,
                          Fog::Monitoring::OpenStack].include? @service_class
                        'http://devstack.openstack.stack:5000/v3'
                      else
@@ -84,6 +85,7 @@ class OpenStackVCR
       username      = 'admin'
       # keep in sync with the token obtained in the "common_setup.yml"
       token         = '5c28403cf669414d8ee179f1e7f205ee'
+      interface     = 'adminURL'
       domain_name   = 'Default'
       @project_name = 'admin'
 
@@ -92,16 +94,18 @@ class OpenStackVCR
         password      = ENV['OS_PASSWORD']          || options[:password]     || password
         username      = ENV['OS_USERNAME']          || options[:username]     || username
         token         = ENV['OS_TOKEN']             || options[:token]        || token
+        interface     = ENV['OS_INTERFACE']         || options[:interface]    || interface
         domain_name   = ENV['OS_USER_DOMAIN_NAME']  || options[:domain_name]  || domain_name
         @project_name = ENV['OS_PROJECT_NAME']      || options[:project_name] || @project_name
       end
 
       if @service_class == Fog::Identity::OpenStack::V3 || @os_auth_url.end_with?('/v3')
         connection_options = {
-          :openstack_auth_url    => "#{@os_auth_url}/auth/tokens",
-          :openstack_region      => region,
-          :openstack_domain_name => domain_name,
-          :openstack_cache_ttl   => 0
+          :openstack_auth_url      => "#{@os_auth_url}/auth/tokens",
+          :openstack_region        => region,
+          :openstack_domain_name   => domain_name,
+          :openstack_endpoint_type => interface,
+          :openstack_cache_ttl     => 0
         }
         connection_options[:openstack_project_name] = @project_name if @with_project_scope
         connection_options[:openstack_service_type] = [ENV['OS_AUTH_SERVICE']] if ENV['OS_AUTH_SERVICE']

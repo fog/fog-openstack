@@ -4,11 +4,14 @@ module Fog
       class V2
         class Real
           def update_recordset(zone_id, id, options = {})
+            headers, options = Fog::DNS::OpenStack::V2.setup_headers(options)
+
             request(
               :body    => Fog::JSON.encode(options),
               :expects => 202,
               :method  => 'PUT',
-              :path    => "zones/#{zone_id}/recordsets/#{id}"
+              :path    => "zones/#{zone_id}/recordsets/#{id}",
+              :headers => headers
             )
           end
         end
