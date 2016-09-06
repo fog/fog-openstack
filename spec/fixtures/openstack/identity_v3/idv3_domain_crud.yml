@@ -1,6 +1,234 @@
 ---
 http_interactions:
 - request:
+    method: patch
+    uri: http://devstack.openstack.stack:35357/v3/domains/0c88c3266b2b48d4afd86eba83381321
+    body:
+      encoding: UTF-8
+      string: '{"domain":{"name":"baz","enabled":false}}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - f60f978b45374bea831b5dd55e994a91
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Fri, 15 Jul 2016 10:14:39 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-d724458e-f7df-4c24-b3a1-b32c38704bc7
+      Content-Length:
+      - '179'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"domain": {"enabled": false, "id": "0c88c3266b2b48d4afd86eba83381321",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/0c88c3266b2b48d4afd86eba83381321"},
+        "name": "baz"}}'
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 10:14:11 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:35357/v3/domains/0c88c3266b2b48d4afd86eba83381321
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - f60f978b45374bea831b5dd55e994a91
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Fri, 15 Jul 2016 10:14:39 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-19e58d30-8760-4eff-8b6a-d69b61485e05
+      Content-Length:
+      - '179'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"domain": {"enabled": false, "id": "0c88c3266b2b48d4afd86eba83381321",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/0c88c3266b2b48d4afd86eba83381321"},
+        "name": "baz"}}'
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 10:14:11 GMT
+- request:
+    method: patch
+    uri: http://devstack.openstack.stack:35357/v3/domains/0c88c3266b2b48d4afd86eba83381321
+    body:
+      encoding: UTF-8
+      string: '{"domain":{"enabled":false}}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - f60f978b45374bea831b5dd55e994a91
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Fri, 15 Jul 2016 10:14:40 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-8fcc438b-493d-4c20-a35a-d64526f42381
+      Content-Length:
+      - '179'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"domain": {"enabled": false, "id": "0c88c3266b2b48d4afd86eba83381321",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/0c88c3266b2b48d4afd86eba83381321"},
+        "name": "baz"}}'
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 10:14:11 GMT
+- request:
+    method: delete
+    uri: http://devstack.openstack.stack:35357/v3/domains/0c88c3266b2b48d4afd86eba83381321
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - f60f978b45374bea831b5dd55e994a91
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Date:
+      - Fri, 15 Jul 2016 10:14:40 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-85b42562-406e-4b2c-8d39-dddadde322c5
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 10:14:12 GMT
+- request:
+    method: patch
+    uri: http://devstack.openstack.stack:35357/v3/domains/0c88c3266b2b48d4afd86eba83381321
+    body:
+      encoding: UTF-8
+      string: '{"domain":{"enabled":false}}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - f60f978b45374bea831b5dd55e994a91
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Date:
+      - Fri, 15 Jul 2016 10:14:40 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-4501beb0-5b6d-4491-a8a3-646f20e6c669
+      Content-Length:
+      - '116'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"error": {"message": "Could not find domain: 0c88c3266b2b48d4afd86eba83381321",
+        "code": 404, "title": "Not Found"}}'
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 10:14:12 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:35357/v3/domains/0c88c3266b2b48d4afd86eba83381321
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - f60f978b45374bea831b5dd55e994a91
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Date:
+      - Fri, 15 Jul 2016 10:14:40 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-2dbfd126-1b28-4053-bada-54165e2c7e79
+      Content-Length:
+      - '116'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"error": {"message": "Could not find domain: 0c88c3266b2b48d4afd86eba83381321",
+        "code": 404, "title": "Not Found"}}'
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 10:14:12 GMT
+- request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/domains
     body:
@@ -8,47 +236,37 @@ http_interactions:
       string: '{"domain":{"name":"foobar"}}'
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 6c68027dce55403e88f153fdd604a1b7
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:56 GMT
+      - Fri, 15 Jul 2016 12:06:02 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-b2cc2b52-88da-478f-8b9a-6916191bd2e6
+      - req-4bc49c15-db1e-4db1-93ca-bf4b0b45276b
       Content-Length:
       - '181'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"domain": {"enabled": true, "id": "9a032c5d2f2440399dbcb2953d568c93",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93"},
+      string: '{"domain": {"enabled": true, "id": "f3accfe055234f92bd03c25e45ac0c93",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93"},
         "name": "foobar"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:56 GMT
+  recorded_at: Fri, 15 Jul 2016 12:05:35 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/domains?name=foobar
@@ -57,97 +275,77 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 6c68027dce55403e88f153fdd604a1b7
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:56 GMT
+      - Fri, 15 Jul 2016 12:06:03 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-b6fa3995-e302-42e4-ab72-6ff4a6f4637b
+      - req-68e6c2c4-851c-4912-bc65-b900bc094f24
       Content-Length:
       - '287'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"domains": [{"enabled": true, "id": "9a032c5d2f2440399dbcb2953d568c93",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93"},
+      string: '{"domains": [{"enabled": true, "id": "f3accfe055234f92bd03c25e45ac0c93",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93"},
         "name": "foobar"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/domains?name=foobar",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:56 GMT
+  recorded_at: Fri, 15 Jul 2016 12:05:35 GMT
 - request:
     method: patch
-    uri: http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93
+    uri: http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93
     body:
       encoding: UTF-8
       string: '{"domain":{"name":"baz","enabled":false}}'
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 6c68027dce55403e88f153fdd604a1b7
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:56 GMT
+      - Fri, 15 Jul 2016 12:06:03 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-7253be4c-a67e-4f5a-95d9-02e4e5cfa31d
+      - req-4c445bfa-1406-4f7b-acba-2c7683411a8e
       Content-Length:
       - '179'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"domain": {"enabled": false, "id": "9a032c5d2f2440399dbcb2953d568c93",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93"},
+      string: '{"domain": {"enabled": false, "id": "f3accfe055234f92bd03c25e45ac0c93",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93"},
         "name": "baz"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:56 GMT
+  recorded_at: Fri, 15 Jul 2016 12:05:35 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/domains?name=baz
@@ -156,287 +354,227 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 6c68027dce55403e88f153fdd604a1b7
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:56 GMT
+      - Fri, 15 Jul 2016 12:06:03 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-3ae28dac-5be5-41f8-b373-b264c1d73be8
+      - req-2a03c4c5-c3d9-4d01-bf47-41c0bbb687ba
       Content-Length:
       - '282'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"domains": [{"enabled": false, "id": "9a032c5d2f2440399dbcb2953d568c93",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93"},
+      string: '{"domains": [{"enabled": false, "id": "f3accfe055234f92bd03c25e45ac0c93",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93"},
         "name": "baz"}], "links": {"self": "http://devstack.openstack.stack:35357/v3/domains?name=baz",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:56 GMT
+  recorded_at: Fri, 15 Jul 2016 12:05:35 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93
+    uri: http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 6c68027dce55403e88f153fdd604a1b7
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:56 GMT
+      - Fri, 15 Jul 2016 12:06:03 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-40403609-2508-4660-9e45-645bba87b623
+      - req-eb290909-c367-42da-8f7d-527b06494fce
       Content-Length:
       - '179'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"domain": {"enabled": false, "id": "9a032c5d2f2440399dbcb2953d568c93",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93"},
+      string: '{"domain": {"enabled": false, "id": "f3accfe055234f92bd03c25e45ac0c93",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93"},
         "name": "baz"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:57 GMT
+  recorded_at: Fri, 15 Jul 2016 12:05:35 GMT
 - request:
     method: patch
-    uri: http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93
+    uri: http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93
     body:
       encoding: UTF-8
       string: '{"domain":{"enabled":false}}'
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 6c68027dce55403e88f153fdd604a1b7
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:57 GMT
+      - Fri, 15 Jul 2016 12:06:03 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-4973a0ee-91a6-43eb-895e-2539826e8b05
+      - req-97293cc8-2775-4dd9-8351-b70100231fec
       Content-Length:
       - '179'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"domain": {"enabled": false, "id": "9a032c5d2f2440399dbcb2953d568c93",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93"},
+      string: '{"domain": {"enabled": false, "id": "f3accfe055234f92bd03c25e45ac0c93",
+        "links": {"self": "http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93"},
         "name": "baz"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:57 GMT
+  recorded_at: Fri, 15 Jul 2016 12:05:35 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93
+    uri: http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 6c68027dce55403e88f153fdd604a1b7
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:57 GMT
+      - Fri, 15 Jul 2016 12:06:03 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-1c091159-0f33-449f-a7a0-6a8c8bd73624
+      - req-7b1374f4-d609-4892-b795-7f28f8903c52
       Content-Length:
       - '0'
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:57 GMT
+  recorded_at: Fri, 15 Jul 2016 12:05:35 GMT
 - request:
     method: patch
-    uri: http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93
+    uri: http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93
     body:
       encoding: UTF-8
       string: '{"domain":{"enabled":false}}'
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 6c68027dce55403e88f153fdd604a1b7
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:57 GMT
+      - Fri, 15 Jul 2016 12:06:03 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-e2aee918-c842-49ac-9c31-a40c074afa85
+      - req-d00dd5f9-75ef-4ea4-9aa6-d5fd48c75654
       Content-Length:
       - '116'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"error": {"message": "Could not find domain: 9a032c5d2f2440399dbcb2953d568c93",
+      string: '{"error": {"message": "Could not find domain: f3accfe055234f92bd03c25e45ac0c93",
         "code": 404, "title": "Not Found"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:57 GMT
+  recorded_at: Fri, 15 Jul 2016 12:05:36 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:35357/v3/domains/9a032c5d2f2440399dbcb2953d568c93
+    uri: http://devstack.openstack.stack:35357/v3/domains/f3accfe055234f92bd03c25e45ac0c93
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 6c68027dce55403e88f153fdd604a1b7
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:57 GMT
+      - Fri, 15 Jul 2016 12:06:04 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-d512e7ff-65fd-4164-892d-762e5c822df9
+      - req-95849d84-8e34-43e9-a068-972c919ef444
       Content-Length:
       - '116'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"error": {"message": "Could not find domain: 9a032c5d2f2440399dbcb2953d568c93",
+      string: '{"error": {"message": "Could not find domain: f3accfe055234f92bd03c25e45ac0c93",
         "code": 404, "title": "Not Found"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:57 GMT
+  recorded_at: Fri, 15 Jul 2016 12:05:36 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/domains?name=foobar
@@ -445,46 +583,36 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 6c68027dce55403e88f153fdd604a1b7
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:57 GMT
+      - Fri, 15 Jul 2016 12:06:04 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-c4dc83a1-64b3-4db7-82c3-5635449a9042
+      - req-9a881ff7-338b-438b-bf1d-ce5baabdbfcc
       Content-Length:
       - '118'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"domains": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/domains?name=foobar",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:57 GMT
+  recorded_at: Fri, 15 Jul 2016 12:05:36 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/domains?name=baz
@@ -493,44 +621,34 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 6c68027dce55403e88f153fdd604a1b7
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:57 GMT
+      - Fri, 15 Jul 2016 12:06:04 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-20521c79-6324-4e1f-aafa-f7ae5ab3e7da
+      - req-6f752cfb-cf03-4634-ae01-3bf72f310d18
       Content-Length:
       - '115'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"domains": [], "links": {"self": "http://devstack.openstack.stack:35357/v3/domains?name=baz",
         "previous": null, "next": null}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:57 GMT
+  recorded_at: Fri, 15 Jul 2016 12:05:36 GMT
 recorded_with: VCR 3.0.1
