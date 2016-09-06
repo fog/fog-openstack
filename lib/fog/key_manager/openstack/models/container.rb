@@ -12,6 +12,7 @@ module Fog
         attribute :name
         attribute :type
         attribute :status
+        attribute :creator_id
 
         attribute :secret_refs
         attribute :consumers

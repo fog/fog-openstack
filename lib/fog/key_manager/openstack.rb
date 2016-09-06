@@ -84,7 +84,7 @@ module Fog
           versions =  body.fetch('versions',{}).fetch('values',[])
           versions.each do |v|
             if v.fetch('id', "").match(supported_versions) &&
-              (v.fetch('status','').downcase == 'current' || v.fetch('status','').downcase == 'supported' || v.fetch('status','').downcase == 'stable')
+              ['current', 'supported', 'stable'].include?(v.fetch('status','').downcase)
               version = v['id']
             end
           end
