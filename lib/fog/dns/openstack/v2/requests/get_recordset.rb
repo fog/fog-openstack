@@ -3,11 +3,13 @@ module Fog
     class OpenStack
       class V2
         class Real
-          def get_recordset(zone_id, id)
+          def get_recordset(zone_id, id, options = {})
+            headers, _options = Fog::DNS::OpenStack::V2.setup_headers(options)
             request(
               :expects => 200,
               :method  => 'GET',
-              :path    => "zones/#{zone_id}/recordsets/#{id}"
+              :path    => "zones/#{zone_id}/recordsets/#{id}",
+              :headers => headers
             )
           end
         end

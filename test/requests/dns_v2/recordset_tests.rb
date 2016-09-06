@@ -25,24 +25,32 @@ describe "Fog::DNS::OpenStack::V2 | recordset requests" do
       "action"      => String
     }
 
-    @recordset_links_format = {
+    recordset_links_format = {
       "self" => String,
       "next" => String
     }
 
-    @recordset_metadata_format = {
+    recordset_metadata_format = {
       "total_count" => Integer
+    }
+
+    @recordset_list_format = {
+      "recordsets" => [@recordset_format],
+      "links"      => recordset_links_format,
+      "metadata"   => recordset_metadata_format
     }
   end
 
   describe "success" do
-    it "#list_recordsets" do
+    it "#list_recordsets deprecated" do
       recordset_list_body = @dns.list_recordsets(@zone_id).body
-      recordset_list_body.must_match_schema(
-        "recordsets" => [@recordset_format],
-        "links"      => @recordset_links_format,
-        "metadata"   => @recordset_metadata_format
-      )
+      recordset_list_body.must_match_schema(@recordset_list_format)
+      recordset_list_body['recordsets'].sample['zone_id'].must_equal(@zone_id)
+    end
+
+    it "#list_recordsets" do
+      recordset_list_body = @dns.list_recordsets(:zone_id => @zone_id).body
+      recordset_list_body.must_match_schema(@recordset_list_format)
       recordset_list_body['recordsets'].sample['zone_id'].must_equal(@zone_id)
     end
 

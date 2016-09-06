@@ -3,17 +3,19 @@ module Fog
     class OpenStack
       class V2
         class Real
-          def delete_zone(id)
+          def delete_zone(id, options = {})
+            headers, _options = Fog::DNS::OpenStack::V2.setup_headers(options)
             request(
               :expects => 202,
               :method  => 'DELETE',
-              :path    => "zones/#{id}"
+              :path    => "zones/#{id}",
+              :headers => headers
             )
           end
         end
 
         class Mock
-          def delete_zone(id)
+          def delete_zone(id, _options = {})
             response = Excon::Response.new
             response.status = 202
 

@@ -4,11 +4,14 @@ module Fog
       class V2
         class Real
           def update_zone(id, options = {})
+            headers, options = Fog::DNS::OpenStack::V2.setup_headers(options)
+
             request(
               :body    => Fog::JSON.encode(options),
               :expects => 202,
               :method  => 'PATCH',
-              :path    => "zones/#{id}"
+              :path    => "zones/#{id}",
+              :headers => headers
             )
           end
         end
