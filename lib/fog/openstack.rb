@@ -88,6 +88,10 @@ module Fog
     end
   end
 
+  module Share
+    autoload :OpenStack, File.expand_path('../share/openstack', __FILE__)
+  end
+
   module OpenStack
     extend Fog::Provider
 
@@ -106,6 +110,7 @@ module Fog
     service(:monitoring,    'Monitoring')
     service(:workflow,      'Workflow')
     service(:dns,           'DNS')
+    service(:share,         'Share')
 
     @token_cache = {}
 
