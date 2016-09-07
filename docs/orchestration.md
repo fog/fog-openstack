@@ -316,3 +316,22 @@ service.templates.validate(:template => content)
     content=nil
   >
 ```
+
+## Cancel Update
+When the stack is updating, you can cancel the update:
+
+```ruby
+# stack.stack_status == 'UPDATE_IN_PROGRESS'
+stack.cancel_update
+=> nil
+```
+
+Then you can see the status changed to ROLLBACK_IN_PROGRESS:
+
+```ruby
+stack = service.stacks.get(stack.stack_name, stack.id)
+stack.stack_status
+=> "ROLLBACK_IN_PROGRESS"
+```
+
+
