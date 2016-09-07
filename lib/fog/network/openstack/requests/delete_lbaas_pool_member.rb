@@ -12,10 +12,10 @@ module Fog
       end
 
       class Mock
-        def delete_lbaas_pool_member(member_id)
+        def delete_lbaas_pool_member(pool_id, member_id)
           response = Excon::Response.new
-          if list_lb_members.body['members'].map { |r| r['id'] }.include? member_id
-            data[:lb_members].delete(member_id)
+          if list_lbaas_pool_members(pool_id).body['members'].map { |r| r['id'] }.include? member_id
+            data[:members].delete(member_id)
             response.status = 204
             response
           else

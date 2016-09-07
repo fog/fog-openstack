@@ -5,7 +5,7 @@ module Fog
         def update_lbaas_pool(pool_id, options = {})
           data = {'pool' => {}}
 
-          vanilla_options = [:name, :description, :lb_method, :admin_state_up]
+          vanilla_options = [:name, :description, :lb_algorithm, :admin_state_up]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['pool'][key] = options[key]
           end
@@ -14,7 +14,7 @@ module Fog
             :body    => Fog::JSON.encode(data),
             :expects => 200,
             :method  => 'PUT',
-            :path    => "lb/pools/#{pool_id}"
+            :path    => "lbaas/pools/#{pool_id}"
           )
         end
       end
@@ -44,7 +44,7 @@ module Fog
           if pool = list_lb_pools.body['pools'].find { |_| _['id'] == pool_id }
             pool['name']            = options[:name]
             pool['description']     = options[:description]
-            pool['lb_method']       = options[:lb_method]
+            pool['lb_algorithm']    = options[:lb_algorithm]
             pool['admin_state_up']  = options[:admin_state_up]
             response.body = {'pool' => pool}
             response.status = 200
