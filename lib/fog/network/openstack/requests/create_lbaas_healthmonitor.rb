@@ -2,7 +2,7 @@ module Fog
   module Network
     class OpenStack
       class Real
-        def create_lb_healthmonitor(pool_id, type, delay, timeout, max_retries, options = {})
+        def create_lbaas_healthmonitor(pool_id, type, delay, timeout, max_retries, options = {})
           data = {
             'healthmonitor' => {
               'pool_id'     => pool_id,

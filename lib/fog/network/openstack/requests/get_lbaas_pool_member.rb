@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => [200],
             :method  => 'GET',
-            :path    => "lbaas/pools/#{pool_id}members/#{member_id}"
+            :path    => "lbaas/pools/#{pool_id}/members/#{member_id}"
           )
         end
       end
