@@ -6,15 +6,8 @@ RuboCop::RakeTask.new
 
 task :default => :test
 
-# To be removed once after Minitest migration
-desc 'Run fog-openstack unit tests with Shindo'
-task :test do
-  mock = ENV['FOG_MOCK'] || 'true'
-  sh("export FOG_MOCK=#{mock} && bundle exec shindont")
-end
-
 desc 'Run fog-openstack unit tests with Minitest'
-task :minitest do
+task :test do
   mock = ENV['FOG_MOCK'] || 'true'
   sh("export FOG_MOCK=#{mock} && bundle exec rake tests:unit")
 end

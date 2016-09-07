@@ -43,7 +43,7 @@ module Fog
         def self.data
           @data ||= Hash.new do |hash, key|
             # Introspection data is *huge* we load it from a yaml file
-            file = "../../../../tests/fixtures/introspection.yaml"
+            file = "../../../../test/fixtures/introspection.yaml"
             hash[key] = YAML.load(File.read(File.expand_path(file, __FILE__)))
           end
         end
