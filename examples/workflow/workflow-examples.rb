@@ -1,5 +1,5 @@
 require 'fog/openstack'
-require 'fog/openstack/workflow_v2'
+require 'fog/workflow/openstack/v2'
 
 auth_url = "http://192.0.2.1:5000/v3/auth/tokens"
 username = "admin"
