@@ -65,6 +65,10 @@ module Fog
           service.abandon_stack(self)
         end
 
+        def cancel_update
+          service.cancel_update(self)
+        end
+
 
         # Deprecated
         def template_url
