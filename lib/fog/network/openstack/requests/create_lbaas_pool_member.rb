@@ -25,31 +25,20 @@ module Fog
       end
 
       class Mock
-        def create_lbaas_pool_member(pool_id, address, protocol_port, weight, options = {})
-          {
-              "member": {
-                  "address": "10.0.0.244",
-                  "admin_state_up": true,
-                  "id": "e9e42f7b-42e3-48b0-8f85-dbf1e8ba358e",
-                  "protocol_port": 9000,
-                  "subnet_id": "6f6282ba-bae1-46af-8575-d8bacdbc0e32",
-                  "tenant_id": "f2f13e79a68b441ebe99c8272a7ccd27",
-                  "weight": 1
-              }
-          }
+        def create_lbaas_pool_member(pool_id, address, protocol_port, options = {})
           response = Excon::Response.new
           response.status = 201
           data = {
-              'id' => Fog::Mock.random_numbers(6).to_s,
-              'pool_id' => pool_id,
-              'address' => address,
-              'protocol_port' => protocol_port,
-              'weight' => weight,
-              'status' => 'ACTIVE',
-              'admin_state_up' => options[:admin_state_up],
-              'tenant_id' => options[:tenant_id],
+              'id'              => Fog::Mock.random_numbers(6).to_s,
+              'pool_id'         => pool_id,
+              'address'         => address,
+              'protocol_port'   => protocol_port,
+              'weight'          => options[:weight],
+              'status'          => 'ACTIVE',
+              'admin_state_up'  => options[:admin_state_up],
+              'tenant_id'       => options[:tenant_id],
+              'subnet_id'       => ptions[:subnet_id]
           }
-
           self.data[:lb_members][data['id']] = data
           response.body = {'member' => data}
           response

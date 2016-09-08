@@ -24,33 +24,13 @@ module Fog
 
       class Mock
         def update_lbaas_listener(listener_id, options = {})
-          {
-              "listener": {
-                  "admin_state_up": true,
-                  "connection_limit": -1,
-                  "default_pool_id": null,
-                  "default_tls_container_ref": null,
-                  "description": "",
-                  "id": "a824b9dc-5c61-4610-a68f-ff9cbd49facb",
-                  "loadbalancers": [
-                      {
-                          "id": "70286877-bceb-4aab-a3db-b14bf11c8d3c"
-                      }
-                  ],
-                  "name": "list-hase",
-                  "protocol": "HTTP",
-                  "protocol_port": 90,
-                  "sni_container_refs": [],
-                  "tenant_id": "f2f13e79a68b441ebe99c8272a7ccd27"
-              }
-          }
           response = Excon::Response.new
           if listener = list_lbaas_listeners.body['listeners'].find { |_| _['id'] == listener_id }
             listener['name']                = options[:name]
             listener['description']         = options[:description]
-            listener['connection_limit'] = options[:connection_limit]
+            listener['connection_limit']    = options[:connection_limit]
             listener['default_tls_container_ref']    = options[:default_tls_container_ref]
-            listener['sni_container_refs']    = options[:sni_container_refs]
+            listener['sni_container_refs']  = options[:sni_container_refs]
             listener['admin_state_up']      = options[:admin_state_up]
             response.body = {'listener' => listener}
             response.status = 200

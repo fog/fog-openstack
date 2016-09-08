@@ -21,28 +21,8 @@ module Fog
 
       class Mock
         def update_lbaas_healthmonitor(healthmonitor_id, options = {})
-          {
-              "healthmonitor": {
-                  "admin_state_up": true,
-                  "delay": 7,
-                  "expected_codes": "200",
-                  "http_method": "GET",
-                  "id": "ccf0ff20-7027-445d-88a5-9ff4806ab0b4",
-                  "max_retries": 7,
-                  "name": "hasenhealth",
-                  "pools": [
-                      {
-                          "id": "e0fabc88-7e9f-4402-848a-8b339e003f89"
-                      }
-                  ],
-                  "tenant_id": "f2f13e79a68b441ebe99c8272a7ccd27",
-                  "timeout": 7,
-                  "type": "PING",
-                  "url_path": "/"
-              }
-          }
           response = Excon::Response.new
-          if healthmonitor = list_lb_health_monitors.body['healthmonitors'].find { |_| _['id'] == healthmonitor_id }
+          if healthmonitor = list_lbaas_health_monitors.body['healthmonitors'].find { |_| _['id'] == healthmonitor_id }
             healthmonitor['delay']          = options[:delay]
             healthmonitor['timeout']        = options[:timeout]
             healthmonitor['max_retries']    = options[:max_retries]

@@ -21,20 +21,8 @@ module Fog
 
       class Mock
         def update_lbaas_pool_member(pool_id, member_id, options = {})
-          {
-              "member": {
-                  "address": "10.0.0.244",
-                  "admin_state_up": true,
-                  "id": "e9e42f7b-42e3-48b0-8f85-dbf1e8ba358e",
-                  "name": "",
-                  "protocol_port": 9000,
-                  "subnet_id": "6f6282ba-bae1-46af-8575-d8bacdbc0e32",
-                  "tenant_id": "f2f13e79a68b441ebe99c8272a7ccd27",
-                  "weight": 2
-              }
-          }
           response = Excon::Response.new
-          if member = list_lb_members.body['members'].find { |_| _['id'] == member_id }
+          if member = list_lbaas_pool_members.body['members'].find { |_| _['id'] == member_id }
             member['pool_id']        = options[:pool_id]
             member['weight']         = options[:weight]
             member['admin_state_up'] = options[:admin_state_up]
