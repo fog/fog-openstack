@@ -5,7 +5,7 @@ module Fog
         def update_lbaas_pool(pool_id, options = {})
           data = {'pool' => {}}
 
-          vanilla_options = [:name, :description, :lb_algorithm, :admin_state_up]
+          vanilla_options = [:name, :description, :lb_algorithm, :session_persistence, :admin_state_up]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['pool'][key] = options[key]
           end
