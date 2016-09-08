@@ -18,6 +18,7 @@ require 'fog/planning/openstack'
 require 'fog/storage/openstack'
 require 'fog/volume/openstack/v1'
 require 'fog/volume/openstack/v2'
+require 'fog/workflow/openstack/v2'
 
 module Fog
   module Compute
