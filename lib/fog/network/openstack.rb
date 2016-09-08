@@ -95,6 +95,10 @@ module Fog
       request :add_router_interface
       request :remove_router_interface
 
+      #
+      # LBaaS V1
+      #
+
       # LBaaS Pool CRUD
       request :list_lb_pools
       request :create_lb_pool
@@ -125,6 +129,46 @@ module Fog
       request :delete_lb_vip
       request :get_lb_vip
       request :update_lb_vip
+
+      #
+      # LBaaS V2
+      #
+
+      # LBaaS V2 Loadbanacer
+      request :list_lbaas_loadbalancers
+      request :create_lbaas_loadbalancer
+      request :delete_lbaas_loadbalancer
+      request :get_lbaas_loadbalancer
+      request :update_lbaas_loadbalancer
+
+      # LBaaS V2 Listener
+      request :list_lbaas_listeners
+      request :create_lbaas_listener
+      request :delete_lbaas_listener
+      request :get_lbaas_listener
+      request :update_lbaas_listener
+
+      # LBaaS V2 Pool
+      request :list_lbaas_pools
+      request :create_lbaas_pool
+      request :delete_lbaas_pool
+      request :get_lbaas_pool
+      request :update_lbaas_pool
+
+      # LBaaS V2 Pool_Member
+      request :list_lbaas_pool_members
+      request :create_lbaas_pool_member
+      request :delete_lbaas_pool_member
+      request :get_lbaas_pool_member
+      request :update_lbaas_pool_member
+
+      # LBaaS V2 Healthmonitor
+      request :list_lbaas_healthmonitors
+      request :create_lbaas_healthmonitor
+      request :delete_lbaas_healthmonitor
+      request :get_lbaas_healthmonitor
+      request :update_lbaas_healthmonitor
+
 
       # VPNaaS VPN Service CRUD
       request :list_vpn_services
@@ -191,7 +235,7 @@ module Fog
 
             hash[key] = {
               :networks               => {
-                network_id                             => {
+                network_id                => {
                   'id'                    => network_id,
                   'name'                  => 'Public',
                   'subnets'               => [subnet_id],
@@ -234,6 +278,11 @@ module Fog
               :lb_members             => {},
               :lb_health_monitors     => {},
               :lb_vips                => {},
+              :lbaas_loadbalancers    => {},
+              :lbaas_listeners        => {},
+              :lbaas_pools            => {},
+              :lbaas_pool_members     => {},
+              :lbaas_health_monitorss => {},
               :vpn_services           => {},
               :ike_policies           => {},
               :ipsec_policies         => {},
