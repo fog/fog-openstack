@@ -27,7 +27,7 @@ module Fog
       end
 
       class Mock
-        def create_lb_vip(loadbalancer_id, protocol, protocol_port, options = {})
+        def create_lbaas_listener(loadbalancer_id, protocol, protocol_port, options = {})
           {
               "listener": {
                   "admin_state_up": true,
