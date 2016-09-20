@@ -2,14 +2,35 @@ module Fog
   module Network
     class OpenStack
       class Real
-        def update_network(network_id, options = {})
-          data = {'network' => {}}
+        # Not all options can be updated
+        UPDATE_OPTIONS = [
+          :name,
+          :shared,
+          :admin_state_up,
+          :qos_policy_id,
+          :port_security_enabled
+        ].freeze
 
-          vanilla_options = [:name, :shared, :admin_state_up]
-          vanilla_options.select { |o| options.key?(o) }.each do |key|
-            data['network'][key] = options[key]
+        # Not all extra options can be updated
+        UPDATE_EXTENTED_OPTIONS = [
+          :router_external
+        ].freeze
+
+        def self.update(options)
+          data = {}
+          UPDATE_OPTIONS.select { |o| options.key?(o) }.each do |key|
+            data[key.to_s] = options[key]
           end
 
+          UPDATE_EXTENTED_OPTIONS.reject { |o| options[o].nil? }.each do |key|
+            aliased_key = ALIASES[key] || key
+            data[aliased_key] = options[key]
+          end
+          data
+        end
+
+        def update_network(network_id, options = {})
+          data = {'network' => self.class.update(options)}
           request(
             :body    => Fog::JSON.encode(data),
             :expects => 200,
@@ -23,9 +44,7 @@ module Fog
         def update_network(network_id, options = {})
           response = Excon::Response.new
           if network = list_networks.body['networks'].find { |_| _['id'] == network_id }
-            network['name']           = options[:name]
-            network['shared']         = options[:shared]
-            network['admin_state_up'] = options[:admin_state_up]
+            network.merge!(Fog::Network::OpenStack::Real.update(options))
             response.body = {'network' => network}
             response.status = 200
             response

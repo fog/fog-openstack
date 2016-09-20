@@ -185,6 +185,7 @@ module Fog
       class Mock
         def self.data
           @data ||= Hash.new do |hash, key|
+            qos_policy_id = Fog::UUID.uuid
             network_id = Fog::UUID.uuid
             subnet_id  = Fog::UUID.uuid
             tenant_id  = Fog::Mock.random_hex(8)
@@ -198,18 +199,21 @@ module Fog
                   'shared'                => true,
                   'status'                => 'ACTIVE',
                   'tenant_id'             => tenant_id,
-                  'provider_network_type' => 'vlan',
+                  'provider:network:type' => 'vlan',
                   'router:external'       => false,
                   'admin_state_up'        => true,
+                  'qos_policy_id'         => qos_policy_id,
+                  'port_security_enabled' => 'port_security_enabled'
                 },
                 'e624a36d-762b-481f-9b50-4154ceb78bbb' => {
-                  'id'             => 'e624a36d-762b-481f-9b50-4154ceb78bbb',
-                  'name'           => 'network_1',
-                  'subnets'        => ['2e4ec6a4-0150-47f5-8523-e899ac03026e'],
-                  'shared'         => false,
-                  'status'         => 'ACTIVE',
-                  'admin_state_up' => true,
-                  'tenant_id'      => 'f8b26a6032bc47718a7702233ac708b9',
+                  'id'              => 'e624a36d-762b-481f-9b50-4154ceb78bbb',
+                  'name'            => 'network_1',
+                  'subnets'         => ['2e4ec6a4-0150-47f5-8523-e899ac03026e'],
+                  'shared'          => false,
+                  'status'          => 'ACTIVE',
+                  'admin_state_up'  => true,
+                  'tenant_id'       => 'f8b26a6032bc47718a7702233ac708b9',
+                  'router:external' => false,
                 }
               },
               :ports                  => {},
