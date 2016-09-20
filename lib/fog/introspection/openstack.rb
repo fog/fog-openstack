@@ -43,7 +43,7 @@ module Fog
         def self.data
           @data ||= Hash.new do |hash, key|
             # Introspection data is *huge* we load it from a yaml file
-            file = "../../../../tests/fixtures/introspection.yaml"
+            file = "../../../../test/fixtures/introspection.yaml"
             hash[key] = YAML.load(File.read(File.expand_path(file, __FILE__)))
           end
         end
@@ -80,7 +80,7 @@ module Fog
         def initialize(options = {})
           initialize_identity options
 
-          @openstack_service_type  = options[:openstack_service_type] || ['introspection']
+          @openstack_service_type  = options[:openstack_service_type] || ['baremetal-introspection']
           @openstack_service_name  = options[:openstack_service_name]
 
           @connection_options = options[:connection_options] || {}
@@ -94,12 +94,7 @@ module Fog
 
         def set_api_path
           unless @path.match(SUPPORTED_VERSIONS)
-            @path = "/" + Fog::OpenStack.get_supported_version(
-              SUPPORTED_VERSIONS,
-              @openstack_management_uri,
-              @auth_token,
-              @connection_options
-            )
+            @path = "/v1"
           end
         end
       end

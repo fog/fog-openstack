@@ -64,6 +64,10 @@ module Fog
           service.abandon_stack(self)
         end
 
+        def cancel_update
+          service.cancel_update(self)
+        end
+
         # Deprecated
         def template_url
           Fog::Logger.deprecation("#template_url is deprecated, use it in options for #save(options) instead [light_black](#{caller.first})[/]")

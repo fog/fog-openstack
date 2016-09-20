@@ -53,6 +53,7 @@ module Fog
       request :update_stack
       request :patch_stack
       request :validate_template
+      request :cancel_update
 
       module Reflectable
         REFLECTION_REGEX = /\/stacks\/(\w+)\/([\w|-]+)\/resources\/(\w+)/

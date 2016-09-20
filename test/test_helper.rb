@@ -1,6 +1,5 @@
-# To do: uncomment after last step of shindo removal
-# require 'coveralls'
-# Coveralls.wear!
+require 'coveralls'
+Coveralls.wear!
 
 require 'minitest/autorun'
 require "minitest/spec"

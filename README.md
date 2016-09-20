@@ -59,7 +59,7 @@ If you're using Keystone V2, you don't need to supply domain details but ensure 
 
 ```ruby
 @connection_params = {
-  openstack_auth_url:     "http://devstack.test:5000/v2.0/tokens"
+  openstack_auth_url:     "http://devstack.test:5000/v2.0/tokens",
   openstack_username:     "admin",
   openstack_api_key:      "password",
   openstack_project_name: "admin"
@@ -514,7 +514,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/fog-openstack. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/fog/fog-openstack. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

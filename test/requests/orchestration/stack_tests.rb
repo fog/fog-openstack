@@ -66,5 +66,9 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     it "#delete_stack" do
       @orchestration.delete_stack("teststack", "id").body.must_match_schema({})
     end
+
+    it "#cancel_update" do
+      @orchestration.cancel_update(@stack).body.must_match_schema({})
+    end
   end
 end
