@@ -2,7 +2,7 @@ module Fog
   module Monitoring
     class OpenStack
       class Real
-        def update_notification_method(id, notification)
+        def put_notification_method(id, notification)
           request(
             :expects => [200],
             :method  => 'PUT',

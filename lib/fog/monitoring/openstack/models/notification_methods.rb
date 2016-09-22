@@ -28,6 +28,10 @@ module Fog
           )
         end
 
+        def list_types
+          service.list_notification_method_types.body['elements'].map { |x| x['type'].to_sym }
+        end
+
         def destroy(id)
           notification_method = find_by_id(id)
           notification_method.destroy

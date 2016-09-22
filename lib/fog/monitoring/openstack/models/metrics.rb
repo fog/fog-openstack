@@ -1,5 +1,6 @@
 require 'fog/openstack/models/collection'
 require 'fog/monitoring/openstack/models/metric'
+require 'fog/monitoring/openstack/models/dimension_values'
 
 module Fog
   module Monitoring
@@ -21,6 +22,13 @@ module Fog
 
         def create_metric_array(metrics_list = [])
           service.create_metric_array(metrics_list)
+        end
+
+        def list_dimension_values(dimension_name, options = {})
+          dimension_value = Fog::Monitoring::OpenStack::DimensionValues.new
+          dimension_value.load_response(
+            service.list_dimension_values(dimension_name, options), 'elements'
+          )
         end
       end
     end
