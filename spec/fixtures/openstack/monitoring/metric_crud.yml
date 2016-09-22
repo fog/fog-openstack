@@ -5,67 +5,67 @@ http_interactions:
     uri: http://devstack.openstack.stack/v2.0/metrics
     body:
       encoding: UTF-8
-      string: '{"name":"sample_metric_0","timestamp":1463757367143,"dimensions":{"key1":"value1"},"value":"42","value_meta":{"meta_key1":"meta_value1"}}'
+      string: '{"name":"sample_metric_0","timestamp":1463757367143,"dimensions":{"key1":"value1"},"value":42,"value_meta":{"meta_key1":"meta_value1"}}'
     headers:
       User-Agent:
-      - fog-core/1.40.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.42.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 6937d71ea659405f98b2184dcd462bdc
+      - gAAAAABX4qotZOQ-yud5LU7YJTArhSf6esgjcc0rNZ7-1Pjg87IGm4InZycCGN_8fZVpphpCWEVwL3KYNIBCb0eWkQD4nRy9lcYKzOH4y1c8dodzJ6ETrurcm-ydtNz3vmpmIFr9LUz_N3Yb7OoHheWA28AN7wTdkE1KWvo-FfHkuFyAzfd8bReLxUorQT4q2B_NP8eSFV4zgQ2J-Nk_s3QL-4dlRhVX1ND8nY10OBtad7OMCIBeTzk
   response:
     status:
       code: 204
       message: ''
     headers:
       Server:
-      - nginx/1.9.13
+      - nginx/1.11.3
       Date:
-      - Fri, 03 Jun 2016 14:39:26 GMT
+      - Wed, 21 Sep 2016 15:41:33 GMT
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
       Connection:
-      - keep-alive
+      - Keep-alive
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: ''
     http_version: 
-  recorded_at: Fri, 03 Jun 2016 14:39:26 GMT
+  recorded_at: Wed, 21 Sep 2016 15:41:33 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack/v2.0/metrics
     body:
       encoding: UTF-8
-      string: '[{"name":"sample_metric_1","timestamp":1463757367143,"dimensions":{"key1":"value1"},"value":"42","value_meta":{"meta_key1":"meta_value1"}},{"name":"sample_metric_2","timestamp":1463757367143,"dimensions":{"key1":"value1"},"value":"42","value_meta":{"meta_key1":"meta_value1"}}]'
+      string: '[{"name":"sample_metric_1","timestamp":1463757367143,"dimensions":{"key1":"value1"},"value":42,"value_meta":{"meta_key1":"meta_value1"}},{"name":"sample_metric_2","timestamp":1463757367143,"dimensions":{"key1":"value1"},"value":42,"value_meta":{"meta_key1":"meta_value1"}}]'
     headers:
       User-Agent:
-      - fog-core/1.40.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.42.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 6937d71ea659405f98b2184dcd462bdc
+      - gAAAAABX4qotZOQ-yud5LU7YJTArhSf6esgjcc0rNZ7-1Pjg87IGm4InZycCGN_8fZVpphpCWEVwL3KYNIBCb0eWkQD4nRy9lcYKzOH4y1c8dodzJ6ETrurcm-ydtNz3vmpmIFr9LUz_N3Yb7OoHheWA28AN7wTdkE1KWvo-FfHkuFyAzfd8bReLxUorQT4q2B_NP8eSFV4zgQ2J-Nk_s3QL-4dlRhVX1ND8nY10OBtad7OMCIBeTzk
   response:
     status:
       code: 204
       message: ''
     headers:
       Server:
-      - nginx/1.9.13
+      - nginx/1.11.3
       Date:
-      - Fri, 03 Jun 2016 14:39:26 GMT
+      - Wed, 21 Sep 2016 15:41:33 GMT
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
       Connection:
-      - keep-alive
+      - Keep-alive
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: ''
     http_version: 
-  recorded_at: Fri, 03 Jun 2016 14:39:26 GMT
+  recorded_at: Wed, 21 Sep 2016 15:41:33 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_0
@@ -74,35 +74,37 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.40.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.42.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 6937d71ea659405f98b2184dcd462bdc
+      - gAAAAABX4qotZOQ-yud5LU7YJTArhSf6esgjcc0rNZ7-1Pjg87IGm4InZycCGN_8fZVpphpCWEVwL3KYNIBCb0eWkQD4nRy9lcYKzOH4y1c8dodzJ6ETrurcm-ydtNz3vmpmIFr9LUz_N3Yb7OoHheWA28AN7wTdkE1KWvo-FfHkuFyAzfd8bReLxUorQT4q2B_NP8eSFV4zgQ2J-Nk_s3QL-4dlRhVX1ND8nY10OBtad7OMCIBeTzk
   response:
     status:
       code: 200
       message: ''
     headers:
       Server:
-      - nginx/1.9.13
+      - nginx/1.11.3
       Date:
-      - Fri, 03 Jun 2016 14:39:26 GMT
+      - Wed, 21 Sep 2016 15:41:33 GMT
       Content-Type:
-      - application/json
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '197'
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
       Connection:
-      - keep-alive
-      Vary:
-      - Accept-Encoding, Accept-Encoding
+      - Keep-alive
     body:
-      encoding: UTF-8
-      string: '{"links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_0"}],"elements":[{"id":"0","name":"sample_metric_0","dimensions":{"key1":"value1"}}]}'
+      encoding: ASCII-8BIT
+      string: '{"elements": [{"dimensions": {"key1": "value1"}, "id": "0", "name":
+        "sample_metric_0"}], "links": [{"href": "http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_0",
+        "rel": "self"}]}'
     http_version: 
-  recorded_at: Fri, 03 Jun 2016 14:39:26 GMT
+  recorded_at: Wed, 21 Sep 2016 15:41:33 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_1
@@ -111,35 +113,37 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.40.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.42.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 6937d71ea659405f98b2184dcd462bdc
+      - gAAAAABX4qotZOQ-yud5LU7YJTArhSf6esgjcc0rNZ7-1Pjg87IGm4InZycCGN_8fZVpphpCWEVwL3KYNIBCb0eWkQD4nRy9lcYKzOH4y1c8dodzJ6ETrurcm-ydtNz3vmpmIFr9LUz_N3Yb7OoHheWA28AN7wTdkE1KWvo-FfHkuFyAzfd8bReLxUorQT4q2B_NP8eSFV4zgQ2J-Nk_s3QL-4dlRhVX1ND8nY10OBtad7OMCIBeTzk
   response:
     status:
       code: 200
       message: ''
     headers:
       Server:
-      - nginx/1.9.13
+      - nginx/1.11.3
       Date:
-      - Fri, 03 Jun 2016 14:39:26 GMT
+      - Wed, 21 Sep 2016 15:41:34 GMT
       Content-Type:
-      - application/json
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '197'
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
       Connection:
-      - keep-alive
-      Vary:
-      - Accept-Encoding, Accept-Encoding
+      - Keep-alive
     body:
-      encoding: UTF-8
-      string: '{"links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_1"}],"elements":[{"id":"0","name":"sample_metric_1","dimensions":{"key1":"value1"}}]}'
+      encoding: ASCII-8BIT
+      string: '{"elements": [{"dimensions": {"key1": "value1"}, "id": "0", "name":
+        "sample_metric_1"}], "links": [{"href": "http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_1",
+        "rel": "self"}]}'
     http_version: 
-  recorded_at: Fri, 03 Jun 2016 14:39:26 GMT
+  recorded_at: Wed, 21 Sep 2016 15:41:34 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_2
@@ -148,33 +152,246 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.40.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.42.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 6937d71ea659405f98b2184dcd462bdc
+      - gAAAAABX4qotZOQ-yud5LU7YJTArhSf6esgjcc0rNZ7-1Pjg87IGm4InZycCGN_8fZVpphpCWEVwL3KYNIBCb0eWkQD4nRy9lcYKzOH4y1c8dodzJ6ETrurcm-ydtNz3vmpmIFr9LUz_N3Yb7OoHheWA28AN7wTdkE1KWvo-FfHkuFyAzfd8bReLxUorQT4q2B_NP8eSFV4zgQ2J-Nk_s3QL-4dlRhVX1ND8nY10OBtad7OMCIBeTzk
   response:
     status:
       code: 200
       message: ''
     headers:
       Server:
-      - nginx/1.9.13
+      - nginx/1.11.3
       Date:
-      - Fri, 03 Jun 2016 14:39:26 GMT
+      - Wed, 21 Sep 2016 15:41:34 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '197'
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+      Connection:
+      - Keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"elements": [{"dimensions": {"key1": "value1"}, "id": "0", "name":
+        "sample_metric_2"}], "links": [{"href": "http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_2",
+        "rel": "self"}]}'
+    http_version: 
+  recorded_at: Wed, 21 Sep 2016 15:41:34 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack/v2.0/metrics/names
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
       Content-Type:
       - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - gAAAAABX4qmlKsBF3BILw83dieMyyXSMG25F94-dBG7NGu4nuuaQTNRcxnGHRxlcr93sySDWtFhI1dc0KxZkh-sXNjxwCbpJmiZDDqmf0yLtcsRBh7a15n2Jrb7irRJ3Oq72OLyFBy6fIOy8y9Cs9JEQiCkCWVb0xf9rES-dfDNX7NKsBKJjpl8E_7L-3RsUM_Uhn33LsQ6JFlX411ZugrZN3K1Yh1aXKyyOagmHqJd5FU64IX3Phjg
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 21 Sep 2016 15:39:18 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '15448'
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
       Connection:
-      - keep-alive
-      Vary:
-      - Accept-Encoding, Accept-Encoding
+      - Keep-alive
     body:
-      encoding: UTF-8
-      string: '{"links":[{"rel":"self","href":"http://devstack.openstack.stack/v2.0/metrics?name=sample_metric_2"}],"elements":[{"id":"0","name":"sample_metric_2","dimensions":{"key1":"value1"}}]}'
-    http_version: 
-  recorded_at: Fri, 03 Jun 2016 14:39:26 GMT
+      encoding: ASCII-8BIT
+      string: '{"elements": [{"id": "1", "name": "account-auditor.passes"}, {"id":
+        "2", "name": "account-auditor.timing.95percentile"}, {"id": "3", "name": "account-auditor.timing.avg"},
+        {"id": "4", "name": "account-auditor.timing.count"}, {"id": "5", "name": "account-auditor.timing.max"},
+        {"id": "6", "name": "account-auditor.timing.median"}, {"id": "7", "name":
+        "account-replicator.attempts"}, {"id": "8", "name": "account-replicator.diffs"},
+        {"id": "9", "name": "account-replicator.failures"}, {"id": "10", "name": "account-replicator.no_changes"},
+        {"id": "11", "name": "account-replicator.rsyncs"}, {"id": "12", "name": "account-replicator.successes"},
+        {"id": "13", "name": "account-replicator.timing.95percentile"}, {"id": "14",
+        "name": "account-replicator.timing.avg"}, {"id": "15", "name": "account-replicator.timing.count"},
+        {"id": "16", "name": "account-replicator.timing.max"}, {"id": "17", "name":
+        "account-replicator.timing.median"}, {"id": "18", "name": "account-server.GET.timing.95percentile"},
+        {"id": "19", "name": "account-server.GET.timing.avg"}, {"id": "20", "name":
+        "account-server.GET.timing.count"}, {"id": "21", "name": "account-server.GET.timing.max"},
+        {"id": "22", "name": "account-server.GET.timing.median"}, {"id": "23", "name":
+        "account-server.HEAD.timing.95percentile"}, {"id": "24", "name": "account-server.HEAD.timing.avg"},
+        {"id": "25", "name": "account-server.HEAD.timing.count"}, {"id": "26", "name":
+        "account-server.HEAD.timing.max"}, {"id": "27", "name": "account-server.HEAD.timing.median"},
+        {"id": "28", "name": "account-server.PUT.timing.95percentile"}, {"id": "29",
+        "name": "account-server.PUT.timing.avg"}, {"id": "30", "name": "account-server.PUT.timing.count"},
+        {"id": "31", "name": "account-server.PUT.timing.max"}, {"id": "32", "name":
+        "account-server.PUT.timing.median"}, {"id": "33", "name": "account-server.REPLICATE.timing.95percentile"},
+        {"id": "34", "name": "account-server.REPLICATE.timing.avg"}, {"id": "35",
+        "name": "account-server.REPLICATE.timing.count"}, {"id": "36", "name": "account-server.REPLICATE.timing.max"},
+        {"id": "37", "name": "account-server.REPLICATE.timing.median"}, {"id": "38",
+        "name": "aggregation-bolt.execute-count.filtering-bolt_alarm-creation-stream"},
+        {"id": "39", "name": "blackbox.compute_status"}, {"id": "40", "name": "blackbox.dns_status"},
+        {"id": "41", "name": "blackbox.identity_status"}, {"id": "42", "name": "blackbox.image_status"},
+        {"id": "43", "name": "blackbox.monitor_status"}, {"id": "44", "name": "blackbox.network_status"},
+        {"id": "45", "name": "blackbox.object_status"}, {"id": "46", "name": "blackbox.router_status"},
+        {"id": "47", "name": "blackbox.volume_status"}, {"id": "48", "name": "container-auditor.passes"},
+        {"id": "49", "name": "container-auditor.timing.95percentile"}, {"id": "50",
+        "name": "container-auditor.timing.avg"}, {"id": "51", "name": "container-auditor.timing.count"},
+        {"id": "52", "name": "container-auditor.timing.max"}, {"id": "53", "name":
+        "container-auditor.timing.median"}, {"id": "54", "name": "container-replicator.attempts"},
+        {"id": "55", "name": "container-replicator.diffs"}, {"id": "56", "name": "container-replicator.failures"},
+        {"id": "57", "name": "container-replicator.no_changes"}, {"id": "58", "name":
+        "container-replicator.remote_merges"}, {"id": "59", "name": "container-replicator.removes.rhel-swift"},
+        {"id": "60", "name": "container-replicator.rsyncs"}, {"id": "61", "name":
+        "container-replicator.successes"}, {"id": "62", "name": "container-replicator.timing.95percentile"},
+        {"id": "63", "name": "container-replicator.timing.avg"}, {"id": "64", "name":
+        "container-replicator.timing.count"}, {"id": "65", "name": "container-replicator.timing.max"},
+        {"id": "66", "name": "container-replicator.timing.median"}, {"id": "67", "name":
+        "container-server.DELETE.errors.timing.95percentile"}, {"id": "68", "name":
+        "container-server.DELETE.errors.timing.avg"}, {"id": "69", "name": "container-server.DELETE.errors.timing.count"},
+        {"id": "70", "name": "container-server.DELETE.errors.timing.max"}, {"id":
+        "71", "name": "container-server.DELETE.errors.timing.median"}, {"id": "72",
+        "name": "container-server.DELETE.timing.95percentile"}, {"id": "73", "name":
+        "container-server.DELETE.timing.avg"}, {"id": "74", "name": "container-server.DELETE.timing.count"},
+        {"id": "75", "name": "container-server.DELETE.timing.max"}, {"id": "76", "name":
+        "container-server.DELETE.timing.median"}, {"id": "77", "name": "container-server.GET.timing.95percentile"},
+        {"id": "78", "name": "container-server.GET.timing.avg"}, {"id": "79", "name":
+        "container-server.GET.timing.count"}, {"id": "80", "name": "container-server.GET.timing.max"},
+        {"id": "81", "name": "container-server.GET.timing.median"}, {"id": "82", "name":
+        "container-server.HEAD.timing.95percentile"}, {"id": "83", "name": "container-server.HEAD.timing.avg"},
+        {"id": "84", "name": "container-server.HEAD.timing.count"}, {"id": "85", "name":
+        "container-server.HEAD.timing.max"}, {"id": "86", "name": "container-server.HEAD.timing.median"},
+        {"id": "87", "name": "container-server.POST.timing.95percentile"}, {"id":
+        "88", "name": "container-server.POST.timing.avg"}, {"id": "89", "name": "container-server.POST.timing.count"},
+        {"id": "90", "name": "container-server.POST.timing.max"}, {"id": "91", "name":
+        "container-server.POST.timing.median"}, {"id": "92", "name": "container-server.PUT.timing.95percentile"},
+        {"id": "93", "name": "container-server.PUT.timing.avg"}, {"id": "94", "name":
+        "container-server.PUT.timing.count"}, {"id": "95", "name": "container-server.PUT.timing.max"},
+        {"id": "96", "name": "container-server.PUT.timing.median"}, {"id": "97", "name":
+        "container-server.REPLICATE.timing.95percentile"}, {"id": "98", "name": "container-server.REPLICATE.timing.avg"},
+        {"id": "99", "name": "container-server.REPLICATE.timing.count"}, {"id": "100",
+        "name": "container-server.REPLICATE.timing.max"}, {"id": "101", "name": "container-server.REPLICATE.timing.median"},
+        {"id": "102", "name": "container-sync.deletes"}, {"id": "103", "name": "container-sync.failures"},
+        {"id": "104", "name": "container-sync.puts"}, {"id": "105", "name": "container-sync.skips"},
+        {"id": "106", "name": "container-sync.syncs"}, {"id": "107", "name": "container-updater.no_changes"},
+        {"id": "108", "name": "container-updater.successes"}, {"id": "109", "name":
+        "container-updater.timing.95percentile"}, {"id": "110", "name": "container-updater.timing.avg"},
+        {"id": "111", "name": "container-updater.timing.count"}, {"id": "112", "name":
+        "container-updater.timing.max"}, {"id": "113", "name": "container-updater.timing.median"},
+        {"id": "114", "name": "cpu.idle_perc"}, {"id": "115", "name": "cpu.stolen_perc"},
+        {"id": "116", "name": "cpu.system_perc"}, {"id": "117", "name": "cpu.user_perc"},
+        {"id": "118", "name": "cpu.wait_perc"}, {"id": "119", "name": "crash.dump_count"},
+        {"id": "120", "name": "datapath.file_transfer_object_store_status"}, {"id":
+        "121", "name": "datapath.nslookup_common_status"}, {"id": "122", "name": "datapath.nslookup_kvm_instance_status"},
+        {"id": "123", "name": "datapath.nslookup_vmware_instance_status"}, {"id":
+        "124", "name": "datapath.tcp_connect_to_kvm_instance_status"}, {"id": "125",
+        "name": "datapath.tcp_connect_to_vmware_instance_status"}, {"id": "126", "name":
+        "disk.inode_used_perc"}, {"id": "127", "name": "disk.space_used_perc"}, {"id":
+        "128", "name": "dns.bind.incoming_queries"}, {"id": "129", "name": "dns.bind.responses"},
+        {"id": "130", "name": "dns.bind.up"}, {"id": "131", "name": "elasticsearch.active_primary_shards"},
+        {"id": "132", "name": "elasticsearch.active_shards"}, {"id": "133", "name":
+        "elasticsearch.cluster_status"}, {"id": "134", "name": "elasticsearch.docs.count"},
+        {"id": "135", "name": "elasticsearch.docs.deleted"}, {"id": "136", "name":
+        "elasticsearch.fielddata.evictions"}, {"id": "137", "name": "elasticsearch.fielddata.size"},
+        {"id": "138", "name": "elasticsearch.flush.total"}, {"id": "139", "name":
+        "elasticsearch.flush.total.time"}, {"id": "140", "name": "elasticsearch.fs.total.available_in_bytes"},
+        {"id": "141", "name": "elasticsearch.fs.total.free_in_bytes"}, {"id": "142",
+        "name": "elasticsearch.fs.total.total_in_bytes"}, {"id": "143", "name": "elasticsearch.get.current"},
+        {"id": "144", "name": "elasticsearch.get.exists.time"}, {"id": "145", "name":
+        "elasticsearch.get.exists.total"}, {"id": "146", "name": "elasticsearch.get.missing.time"},
+        {"id": "147", "name": "elasticsearch.get.missing.total"}, {"id": "148", "name":
+        "elasticsearch.get.time"}, {"id": "149", "name": "elasticsearch.get.total"},
+        {"id": "150", "name": "elasticsearch.http.current_open"}, {"id": "151", "name":
+        "elasticsearch.http.total_opened"}, {"id": "152", "name": "elasticsearch.indexing.delete.current"},
+        {"id": "153", "name": "elasticsearch.indexing.delete.time"}, {"id": "154",
+        "name": "elasticsearch.indexing.delete.total"}, {"id": "155", "name": "elasticsearch.indexing.index.current"},
+        {"id": "156", "name": "elasticsearch.indexing.index.time"}, {"id": "157",
+        "name": "elasticsearch.indexing.index.total"}, {"id": "158", "name": "elasticsearch.indices.segments.count"},
+        {"id": "159", "name": "elasticsearch.indices.segments.fixed_bit_set_memory_in_bytes"},
+        {"id": "160", "name": "elasticsearch.indices.segments.index_writer_max_memory_in_bytes"},
+        {"id": "161", "name": "elasticsearch.indices.segments.index_writer_memory_in_bytes"},
+        {"id": "162", "name": "elasticsearch.indices.segments.memory_in_bytes"}, {"id":
+        "163", "name": "elasticsearch.indices.segments.version_map_memory_in_bytes"},
+        {"id": "164", "name": "elasticsearch.indices.translog.operations"}, {"id":
+        "165", "name": "elasticsearch.indices.translog.size_in_bytes"}, {"id": "166",
+        "name": "elasticsearch.initializing_shards"}, {"id": "167", "name": "elasticsearch.merges.current"},
+        {"id": "168", "name": "elasticsearch.merges.current.docs"}, {"id": "169",
+        "name": "elasticsearch.merges.current.size"}, {"id": "170", "name": "elasticsearch.merges.total"},
+        {"id": "171", "name": "elasticsearch.merges.total.docs"}, {"id": "172", "name":
+        "elasticsearch.merges.total.size"}, {"id": "173", "name": "elasticsearch.merges.total.time"},
+        {"id": "174", "name": "elasticsearch.number_of_data_nodes"}, {"id": "175",
+        "name": "elasticsearch.number_of_nodes"}, {"id": "176", "name": "elasticsearch.pending_tasks_priority_high"},
+        {"id": "177", "name": "elasticsearch.pending_tasks_priority_urgent"}, {"id":
+        "178", "name": "elasticsearch.pending_tasks_total"}, {"id": "179", "name":
+        "elasticsearch.process.open_fd"}, {"id": "180", "name": "elasticsearch.refresh.total"},
+        {"id": "181", "name": "elasticsearch.refresh.total.time"}, {"id": "182", "name":
+        "elasticsearch.relocating_shards"}, {"id": "183", "name": "elasticsearch.search.fetch.current"},
+        {"id": "184", "name": "elasticsearch.search.fetch.open_contexts"}, {"id":
+        "185", "name": "elasticsearch.search.fetch.time"}, {"id": "186", "name": "elasticsearch.search.fetch.total"},
+        {"id": "187", "name": "elasticsearch.search.query.current"}, {"id": "188",
+        "name": "elasticsearch.search.query.time"}, {"id": "189", "name": "elasticsearch.search.query.total"},
+        {"id": "190", "name": "elasticsearch.store.size"}, {"id": "191", "name": "elasticsearch.thread_pool.bulk.active"},
+        {"id": "192", "name": "elasticsearch.thread_pool.bulk.queue"}, {"id": "193",
+        "name": "elasticsearch.thread_pool.bulk.rejected"}, {"id": "194", "name":
+        "elasticsearch.thread_pool.bulk.threads"}, {"id": "195", "name": "elasticsearch.thread_pool.flush.active"},
+        {"id": "196", "name": "elasticsearch.thread_pool.flush.queue"}, {"id": "197",
+        "name": "elasticsearch.thread_pool.flush.threads"}, {"id": "198", "name":
+        "elasticsearch.thread_pool.generic.active"}, {"id": "199", "name": "elasticsearch.thread_pool.generic.queue"},
+        {"id": "200", "name": "elasticsearch.thread_pool.generic.threads"}, {"id":
+        "201", "name": "elasticsearch.thread_pool.get.active"}, {"id": "202", "name":
+        "elasticsearch.thread_pool.get.queue"}, {"id": "203", "name": "elasticsearch.thread_pool.get.threads"},
+        {"id": "204", "name": "elasticsearch.thread_pool.index.active"}, {"id": "205",
+        "name": "elasticsearch.thread_pool.index.queue"}, {"id": "206", "name": "elasticsearch.thread_pool.index.threads"},
+        {"id": "207", "name": "elasticsearch.thread_pool.management.active"}, {"id":
+        "208", "name": "elasticsearch.thread_pool.management.queue"}, {"id": "209",
+        "name": "elasticsearch.thread_pool.management.threads"}, {"id": "210", "name":
+        "elasticsearch.thread_pool.percolate.active"}, {"id": "211", "name": "elasticsearch.thread_pool.percolate.queue"},
+        {"id": "212", "name": "elasticsearch.thread_pool.percolate.threads"}, {"id":
+        "213", "name": "elasticsearch.thread_pool.refresh.active"}, {"id": "214",
+        "name": "elasticsearch.thread_pool.refresh.queue"}, {"id": "215", "name":
+        "elasticsearch.thread_pool.refresh.threads"}, {"id": "216", "name": "elasticsearch.thread_pool.search.active"},
+        {"id": "217", "name": "elasticsearch.thread_pool.search.queue"}, {"id": "218",
+        "name": "elasticsearch.thread_pool.search.threads"}, {"id": "219", "name":
+        "elasticsearch.thread_pool.snapshot.active"}, {"id": "220", "name": "elasticsearch.thread_pool.snapshot.queue"},
+        {"id": "221", "name": "elasticsearch.thread_pool.snapshot.threads"}, {"id":
+        "222", "name": "elasticsearch.transport.rx_count"}, {"id": "223", "name":
+        "elasticsearch.transport.rx_size"}, {"id": "224", "name": "elasticsearch.transport.server_open"},
+        {"id": "225", "name": "elasticsearch.transport.tx_count"}, {"id": "226", "name":
+        "elasticsearch.transport.tx_size"}, {"id": "227", "name": "elasticsearch.unassigned_shards"},
+        {"id": "228", "name": "filtering-bolt.execute-count.event-bolt_metric-alarm-events"},
+        {"id": "229", "name": "http_response_time"}, {"id": "230", "name": "http_status"},
+        {"id": "231", "name": "influxdb.httpd.ping_req"}, {"id": "232", "name": "influxdb.httpd.points_write_ok"},
+        {"id": "233", "name": "influxdb.httpd.query_req"}, {"id": "234", "name": "influxdb.httpd.query_resp_bytes"},
+        {"id": "235", "name": "influxdb.httpd.req"}, {"id": "236", "name": "influxdb.httpd.write_req"},
+        {"id": "237", "name": "influxdb.httpd.write_req_bytes"}, {"id": "238", "name":
+        "influxdb.shard.fields_create"}, {"id": "239", "name": "influxdb.shard.series_create"},
+        {"id": "240", "name": "influxdb.shard.write_points_ok"}, {"id": "241", "name":
+        "influxdb.shard.write_req"}, {"id": "242", "name": "io.read_kbytes_sec"},
+        {"id": "243", "name": "io.read_req_sec"}, {"id": "244", "name": "io.read_time_sec"},
+        {"id": "245", "name": "io.write_kbytes_sec"}, {"id": "246", "name": "io.write_req_sec"},
+        {"id": "247", "name": "io.write_time_sec"}, {"id": "248", "name": "jvm.gc.collectors.old.collection_time"},
+        {"id": "249", "name": "jvm.gc.collectors.old.count"}, {"id": "250", "name":
+        "jvm.gc.collectors.young.collection_time"}, {"id": "251", "name": "jvm.gc.collectors.young.count"},
+        {"id": "252", "name": "jvm.mem.heap_committed"}, {"id": "253", "name": "jvm.mem.heap_in_use"},
+        {"id": "254", "name": "jvm.mem.heap_max"}, {"id": "255", "name": "jvm.mem.heap_used"},
+        {"id": "256", "name": "jvm.mem.non_heap_committed"}, {"id": "257", "name":
+        "jvm.mem.non_heap_used"}, {"id": "258", "name": "jvm.threads.count"}, {"id":
+        "259", "name": "jvm.threads.peak_count"}, {"id": "260", "name": "kube.health.kube_healthz_api_status"},
+        {"id": "261", "name": "kube.healthz.api.status.kube_healthz_api_status"},
+        {"id": "262", "name": "kubernetes.container_cpu_usage_sec"}], "links": [{"href":
+        "http://devstack.openstack.stack/v2.0/metrics/names", "rel": "self"}]}'
+    http_version:
+  recorded_at: Wed, 21 Sep 2016 15:39:18 GMT
 recorded_with: VCR 3.0.3

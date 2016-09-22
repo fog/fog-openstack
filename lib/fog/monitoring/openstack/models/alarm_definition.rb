@@ -10,6 +10,7 @@ module Fog
         attribute :name
         attribute :description
         attribute :expression
+        attribute :deterministic
         attribute :expression_data
         attribute :match_by
         attribute :severity

@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://devstack.openstack.stack/v2.0/metrics/dimensions/names/values?dimension_name=hostname
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - gAAAAABX4qorz7ntHahCReTKZNWR34v0oBZQXG3lrq0adj0Dpb5fMGiHezskjHu1IZLyZ4iGcwGNM1rF2p96ffOcJPyLkhoh5EhKhoMnjhqw0KRfKzWMHvCeI5mCMt6bun8XeTPKEQQjm1FsjaArbpewu7Sxh-4hOnyyKPTK5iVv5Jfi0LZSjFLrgYkE0jW3rvQeDgz1DMLelxxPwWKRhDmt280yo1pFmpBMJ-Lx305V8_WWAk8l_rg
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 21 Sep 2016 15:41:33 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '3344'
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+      Connection:
+      - Keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"elements": [{"dimension_name": "hostname", "values": ["10.44.8.140",
+        "10.44.8.148", "10.44.8.156", "10.44.8.172", "monasca-api-1yefj",
+        "monasca-api-3u7ja", "monasca-api-41ko7", "monasca-api-4d3ah", "monasca-api-5knjk",
+        "monasca-api-6enai", "monasca-api-6nf2q", "monasca-api-9fiza", "monasca-api-dpz8w",
+        "monasca-api-ebnjw", "monasca-api-gr908", "monasca-api-i4y49", "monasca-api-ju6tq",
+        "monasca-api-pst0m", "monasca-api-qlzve", "monasca-api-v6x1l", "monasca-api-wgbzg",
+        "monasca-api-zl0yf", "monasca-es-client-v29xg", "monasca-influxdb-1a6cv",
+        "monasca-influxdb-241n1", "monasca-influxdb-di7mv", "monasca-influxdb-jyum1",
+        "monasca-kafka-1-5g7e4", "monasca-kafka-1-8yljp", "monasca-kafka-1-c82f8",
+        "monasca-kafka-1-c9yb9", "monasca-kafka-1-d8dvd", "monasca-kafka-1-g3foy",
+        "monasca-kafka-1-gcl99", "monasca-kafka-1-khn5k", "monasca-kafka-1-omoj0",
+        "monasca-kafka-2-1ir3z", "monasca-kafka-2-dcbfy", "monasca-kafka-2-dd49f",
+        "monasca-kafka-2-q8fz8", "monasca-kafka-2-vsn4p", "monasca-kafka-3-2z7rm",
+        "monasca-kafka-3-81g0p", "monasca-kafka-3-dszs4", "monasca-kafka-3-ne5ih",
+        "monasca-kafka-3-pjzio", "monasca-kibana-22ffh", "monasca-kibana-43kck", "monasca-kibana-cawjq",
+        "monasca-kibana-if4vy", "monasca-kibana-j6ckg", "monasca-kibana-km278", "monasca-log-api-52nty",
+        "monasca-log-api-62p7s", "monasca-log-api-al5in", "monasca-log-api-bo3nn",
+        "monasca-log-api-o0qcd", "monasca-log-api-wivrc", "monasca-mysql-91tqz", "monasca-mysql-c3e6t",
+        "monasca-mysql-hzxyv", "monasca-mysql-oxj36", "monasca-mysql-py89d", "monasca-mysql-qh6m9",
+        "monasca-mysql-ut3zx", "monasca-notification-3mgbt", "monasca-notification-82jns",
+        "monasca-notification-a8s6y", "monasca-notification-b0y4d", "monasca-notification-drkb0",
+        "monasca-notification-idjjt", "monasca-notification-q0q0v", "monasca-notification-r2gmo",
+        "monasca-notification-r4ssr", "monasca-notification-y0yoh", "monasca-persister-785pt",
+        "monasca-persister-ae7ax", "monasca-persister-bmkuj", "monasca-persister-egg2p",
+        "monasca-persister-rlr9q", "monasca-persister-t0udm", "monasca-storm-thresh-4vgfu",
+        "monasca-storm-thresh-7a97c", "monasca-storm-thresh-aian0", "monasca-storm-thresh-jiwgx",
+        "monasca-storm-thresh-ng977", "monasca-storm-thresh-pl8pu", "monasca-storm-thresh-qgm5m",
+        "monasca-storm-thresh-t2c2g", "monasca-zookeeper-1-7q5e6", "monasca-zookeeper-1-jp573",
+        "monasca-zookeeper-1-mpmo1", "monasca-zookeeper-1-q1qq7", "monasca-zookeeper-1-sz2vl",
+        "monasca-zookeeper-1-z3px8", "monasca-zookeeper-2-5jqtk", "monasca-zookeeper-2-c3ufl",
+        "monasca-zookeeper-2-kvuye", "monasca-zookeeper-2-xxxcq", "monasca-zookeeper-2-zerk6",
+        "monasca-zookeeper-3-0kqdv", "monasca-zookeeper-3-16yhi", "monasca-zookeeper-3-bxozx",
+        "monasca-zookeeper-3-wz2wf"],
+        "id": "1527d86c32cac7858865cf2ae82bbfca14d06478"}], "links": [{"href": "http://devstack.openstack.stack/v2.0/metrics/dimensions/names/values?dimension_name=hostname",
+        "rel": "self"}]}'
+    http_version: 
+  recorded_at: Wed, 21 Sep 2016 15:41:33 GMT
+recorded_with: VCR 3.0.3
