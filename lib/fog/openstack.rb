@@ -5,72 +5,87 @@ require 'fog/json'
 require 'fog/openstack/core'
 require 'fog/openstack/errors'
 
-require 'fog/compute/openstack'
-require 'fog/dns/openstack/v1'
-require 'fog/dns/openstack/v2'
-require 'fog/identity/openstack/v2'
-require 'fog/identity/openstack/v3'
-require 'fog/image/openstack/v1'
-require 'fog/image/openstack/v2'
-require 'fog/monitoring/openstack'
-require 'fog/network/openstack'
 require 'fog/planning/openstack'
-require 'fog/storage/openstack'
-require 'fog/volume/openstack/v1'
-require 'fog/volume/openstack/v2'
-require 'fog/workflow/openstack/v2'
 
 module Fog
+  module Baremetal
+    autoload :OpenStack, File.expand_path('../baremetal/openstack', __FILE__)
+  end
+
   module Compute
     autoload :OpenStack, File.expand_path('../compute/openstack', __FILE__)
   end
 
+  module DNS
+    autoload :OpenStack, File.expand_path('../dns/openstack', __FILE__)
+
+    class OpenStack
+      autoload :V1, File.expand_path('../dns/openstack/v1', __FILE__)
+      autoload :V2, File.expand_path('../dns/openstack/v2', __FILE__)
+    end
+  end
+
   module Identity
     autoload :OpenStack, File.expand_path('../identity/openstack', __FILE__)
+
+    class OpenStack
+      autoload :V2, File.expand_path('../identity/openstack/v2', __FILE__)
+      autoload :V3, File.expand_path('../identity/openstack/v3', __FILE__)
+    end
   end
 
   module Image
     autoload :OpenStack, File.expand_path('../image/openstack', __FILE__)
-  end
 
-  module Metering
-    autoload :OpenStack, File.expand_path('../metering/openstack', __FILE__)
-  end
-
-  module Network
-    autoload :OpenStack, File.expand_path('../network/openstack', __FILE__)
-  end
-
-  module Orchestration
-    autoload :OpenStack, File.expand_path('../orchestration/openstack', __FILE__)
-  end
-
-  module NFV
-    autoload :OpenStack, File.expand_path('../nfv/openstack', __FILE__)
-  end
-
-  module Volume
-    autoload :OpenStack, File.expand_path('../volume/openstack', __FILE__)
-  end
-
-  module Baremetal
-    autoload :OpenStack, File.expand_path('../baremetal/openstack', __FILE__)
+    class OpenStack
+      autoload :V1, File.expand_path('../image/openstack/v1', __FILE__)
+      autoload :V2, File.expand_path('../image/openstack/v2', __FILE__)
+    end
   end
 
   module Introspection
     autoload :OpenStack, File.expand_path('../introspection/openstack', __FILE__)
   end
 
+  module Metering
+    autoload :OpenStack, File.expand_path('../metering/openstack', __FILE__)
+  end
+
   module Monitoring
     autoload :OpenStack, File.expand_path('../monitoring/openstack', __FILE__)
   end
 
-  module Workflow
-    autoload :OpenStack, File.expand_path('../workflow/openstack', __FILE__)
+  module Network
+    autoload :OpenStack, File.expand_path('../network/openstack', __FILE__)
   end
 
-  module DNS
-    autoload :OpenStack, File.expand_path('../dns/openstack', __FILE__)
+  module NFV
+    autoload :OpenStack, File.expand_path('../nfv/openstack', __FILE__)
+  end
+
+  module Orchestration
+    autoload :OpenStack, File.expand_path('../orchestration/openstack', __FILE__)
+  end
+
+  module Storage
+    autoload :OpenStack, File.expand_path('../storage/openstack', __FILE__)
+  end
+
+  module Volume
+    autoload :OpenStack, File.expand_path('../volume/openstack', __FILE__)
+
+    class OpenStack
+      autoload :V1, File.expand_path('../volume/openstack/v1', __FILE__)
+      autoload :V2, File.expand_path('../volume/openstack/v2', __FILE__)
+    end
+  end
+
+  module Workflow
+    autoload :OpenStack, File.expand_path('../workflow/openstack', __FILE__)
+
+    class OpenStack
+      autoload :V2, File.expand_path('../workflow/openstack/v2', __FILE__)
+    end
   end
 
   module OpenStack
