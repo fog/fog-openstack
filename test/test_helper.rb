@@ -1,5 +1,6 @@
-require 'coveralls'
-Coveralls.wear!
+# TODO: remove when https://github.com/fog/fog-openstack/issues/202 is fixed
+# require 'coveralls'
+# Coveralls.wear!
 
 require 'minitest/autorun'
 require "minitest/spec"
