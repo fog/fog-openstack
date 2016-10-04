@@ -20,6 +20,8 @@ module Fog
       ## MODELS
       #
       model_path 'fog/network/openstack/models'
+      model       :extension
+      collection  :extensions
       model       :network
       collection  :networks
       model       :port
@@ -56,6 +58,10 @@ module Fog
       ## REQUESTS
       #
       request_path 'fog/network/openstack/requests'
+
+      # Neutron Extensions
+      request :list_extensions
+      request :get_extension
 
       # Network CRUD
       request :list_networks
@@ -186,11 +192,21 @@ module Fog
         def self.data
           @data ||= Hash.new do |hash, key|
             qos_policy_id = Fog::UUID.uuid
-            network_id = Fog::UUID.uuid
-            subnet_id  = Fog::UUID.uuid
-            tenant_id  = Fog::Mock.random_hex(8)
+            network_id   = Fog::UUID.uuid
+            extension_id = Fog::UUID.uuid
+            subnet_id    = Fog::UUID.uuid
+            tenant_id    = Fog::Mock.random_hex(8)
 
             hash[key] = {
+              :extensions             => {
+                extension_id => {
+                  'id'          => extension_id,
+                  'alias'       => 'dvr',
+                  'description' => 'Enables configuration of Distributed Virtual Routers.',
+                  'links'       => [],
+                  'name'        => 'Distributed Virtual Router'
+                }
+              },
               :networks               => {
                 network_id                             => {
                   'id'                    => network_id,
