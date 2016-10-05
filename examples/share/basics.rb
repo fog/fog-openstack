@@ -54,6 +54,15 @@ example_share = share_service.shares.create(
 
 pp example_share
 
-puts 'Removing share network and share'
+puts 'Create snapshot'
+example_snap = share_service.snapshots.create(
+  :share_id => example_share.id,
+  :name     => 'fog_share_snapshot'
+)
+
+pp example_snap
+
+puts 'Removing snapshot, share and share network'
+example_snap.destroy
 example_share.destroy
 share_network.destroy

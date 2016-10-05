@@ -150,6 +150,45 @@ module Fog
                   "network_type"      => '',
                   "description"       => "descr"
                 }
+              ],
+              :snapshots             => [
+                {
+                  "id"    => "086a1aa6-c425-4ecd-9612-391a3b1b9375",
+                  "links" => [
+                    {
+                      "href" => "http://172.18.198.54:8786/v1/16e1ab15c35a457e9c2b2aa189f544e1/snapshots/086a1aa6-c425-4ecd-9612-391a3b1b9375",
+                      "rel"  => "self"
+                    },
+                    {
+                      "href" => "http://172.18.198.54:8786/16e1ab15c35a457e9c2b2aa189f544e1/snapshots/086a1aa6-c425-4ecd-9612-391a3b1b9375",
+                      "rel"  => "bookmark"
+                    }
+                  ],
+                  "name"  => "snapshot_My_share"
+                }
+              ],
+              :snapshots_detail      => [
+                {
+                  "status"      => "available",
+                  "share_id"    => "d94a8548-2079-4be0-b21c-0a887acd31ca",
+                  "name"        => "snapshot_My_share",
+                  "links"       => [
+                    {
+                      "href" => "http://172.18.198.54:8786/v1/16e1ab15c35a457e9c2b2aa189f544e1/snapshots/086a1aa6-c425-4ecd-9612-391a3b1b9375",
+                      "rel"  => "self"
+                    },
+                    {
+                      "href" => "http://172.18.198.54:8786/16e1ab15c35a457e9c2b2aa189f544e1/snapshots/086a1aa6-c425-4ecd-9612-391a3b1b9375",
+                      "rel"  => "bookmark"
+                    }
+                  ],
+                  "created_at"  => "2015-09-07T11:55:09.000000",
+                  "description" => "Here is a snapshot of share My_share",
+                  "share_proto" => "NFS",
+                  "share_size"  => 1,
+                  "id"          => "086a1aa6-c425-4ecd-9612-391a3b1b9375",
+                  "size"        => 1
+                }
               ]
             }
           end
