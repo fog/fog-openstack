@@ -53,6 +53,10 @@ module Fog
           service.delete_share(id)
           true
         end
+
+        def ready?
+          status == 'available'
+        end
       end
     end
   end

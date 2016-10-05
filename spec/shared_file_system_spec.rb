@@ -116,4 +116,90 @@ describe Fog::SharedFileSystem::OpenStack do
       end
     end
   end
+
+  it "CRUD & list share_snapshots" do
+    VCR.use_cassette('share_snap_crud') do
+      share_protocol            = 'NFS'
+      share_size                = 1
+      share_name                = 'fog_share'
+      share_net_name            = 'fog_share_net'
+      snap_name                 = 'fog_snap'
+      snap_updated_name         = 'fog_snap_updated'
+
+      begin
+        # assuming a network exists
+        net = @network_service.networks.first
+
+        # create a share network
+        share_network = @service.networks.create(
+          :neutron_net_id    => net.id,
+          :neutron_subnet_id => net.subnets.first.id,
+          :name              => share_net_name
+        )
+
+        # create share
+        example_share = @service.shares.create(
+          :share_proto      => share_protocol,
+          :size             => share_size,
+          :name             => share_name,
+          :share_network_id => share_network.id
+        )
+
+        example_share.wait_for { ready? }
+
+        # create snapshot
+        snap = @service.snapshots.create(
+          :share_id => example_share.id,
+          :name     => snap_name
+        )
+
+        snap.name.must_equal snap_name
+        snap_id = snap.id
+        snap.wait_for { ready? }
+
+        # get by ID
+        snap_by_id = @service.snapshots.find_by_id snap_id
+        snap_by_id.wont_equal nil
+        snap_by_id.name.must_equal snap_name
+
+        # update name via display_name
+        snap_by_id.update(:display_name => snap_updated_name)
+        snap_by_id.reload.name.must_equal snap_updated_name
+
+        # get by filtering list by name
+        snaps = @service.snapshots.all(:name => snap_updated_name)
+        snaps.length.must_equal 1
+        snaps.first.id.must_equal snap_id
+      ensure
+        # delete the snapshot(s)
+        @service.snapshots.all(:name => snap_updated_name).each(&:destroy)
+        # check delete action
+        @service.snapshots.all(:name => snap_updated_name).each do |s|
+          s.status.must_equal 'deleting'
+        end
+
+        # only can go on when the snapshots are gone
+        Fog.wait_for do
+          begin
+            snaps = @service.snapshots.all(:name => snap_updated_name)
+            snaps.length.zero?
+          end
+        end
+
+        # delete the share(s)
+        @service.shares.all(:name => share_name).each(&:destroy)
+
+        # only can go on when the shares are gone
+        Fog.wait_for do
+          begin
+            shares = @service.shares.all(:name => share_name)
+            shares.length.zero?
+          end
+        end
+
+        # delete the share network(s)
+        @service.networks.all(:name => share_net_name).each(&:destroy)
+      end
+    end
+  end
 end
