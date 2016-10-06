@@ -172,6 +172,7 @@ module Fog
       request :delete_security_group
       request :get_security_group
       request :list_security_groups
+      request :update_security_group
 
       # Security Group Rules
       request :create_security_group_rule
