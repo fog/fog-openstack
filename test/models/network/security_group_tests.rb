@@ -16,6 +16,11 @@ describe "Fog::Network[:openstack] | security_group model" do
       @secgroup.id.wont_be_nil
     end
 
+    it "#update" do
+      @secgroup.name = 'new_sg_name'
+      @secgroup.name.must_equal 'new_sg_name'
+    end
+
     it "#destroy" do
       @secgroup.destroy.must_equal true
     end

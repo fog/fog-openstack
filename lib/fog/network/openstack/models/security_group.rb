@@ -22,9 +22,14 @@ module Fog
         end
 
         def save
-          raise Fog::Errors::Error, 'Resaving an existing object may create a duplicate' if persisted?
           merge_attributes(service.create_security_group(attributes).body['security_group'])
-          true
+          self
+        end
+
+        def update
+          requires :id
+          merge_attributes(service.update_security_group(id, attributes).body['security_group'])
+          self
         end
       end
     end
