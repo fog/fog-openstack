@@ -537,63 +537,25 @@ module Fog
     end
 
     def self.get_supported_version(supported_versions, uri, auth_token, connection_options = {})
-      connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}", false, connection_options)
-      response = connection.request({
-                                        :expects => [200, 204, 300],
-                                        :headers => {'Content-Type' => 'application/json',
-                                                     'Accept' => 'application/json',
-                                                     'X-Auth-Token' => auth_token},
-                                        :method => 'GET'
-                                    })
-
-      body = Fog::JSON.decode(response.body)
-      version = nil
-      unless body['versions'].empty?
-        versions = body['versions'].kind_of?(Array) ? body['versions'] : body['versions']['values']
-        supported_version = versions.find do |x|
-          x["id"].match(supported_versions) &&
-            (x["status"] == "CURRENT" || x["status"] == "SUPPORTED" || x["status"] == "stable")
-        end
-        version = supported_version["id"] if supported_version
-      end
-      if version.nil?
-        raise Fog::OpenStack::Errors::ServiceUnavailable.new(
-                  "OpenStack service only supports API versions #{supported_versions.inspect}")
-      end
+      supported_version = get_version(supported_versions, uri, auth_token, connection_options)
+      version = supported_version['id'] if supported_version
+      version_raise(supported_versions) if version.nil?
 
       version
     end
 
     def self.get_supported_version_path(supported_versions, uri, auth_token, connection_options = {})
-      # Find a version in the path (e.g. the v1 in /xyz/v1/tenantid/abc) and get the path up until that version (e.g. /xyz))
-      path_components = uri.path.split '/'
-      version_component_index = path_components.index{|comp| comp.match(/v[0-9].?[0-9]?/) }
-      versionless_path = (path_components.take(version_component_index).join '/' if version_component_index) || uri.path
-      connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}#{versionless_path}", false, connection_options)
-      response = connection.request({
-                                        :expects => [200, 204, 300],
-                                        :headers => {'Content-Type' => 'application/json',
-                                                     'Accept' => 'application/json',
-                                                     'X-Auth-Token' => auth_token},
-                                        :method => 'GET'
-                                    })
-
-      body = Fog::JSON.decode(response.body)
-      path = nil
-      unless body['versions'].empty?
-        versions = body['versions'].kind_of?(Array) ? body['versions'] : body['versions']['values']
-        supported_version = versions.find do |x|
-          x["id"].match(supported_versions) &&
-              (x["status"] == "CURRENT" || x["status"] == "SUPPORTED")
-        end
-        path = URI.parse(supported_version['links'].first['href']).path if supported_version
-      end
-      if path.nil?
-        raise Fog::OpenStack::Errors::ServiceUnavailable.new(
-                  "OpenStack service only supports API versions #{supported_versions.inspect}")
-      end
+      supported_version = get_version(supported_versions, uri, auth_token, connection_options)
+      link = supported_version['links'].find { |l| l['rel'] == 'self' } if supported_version
+      path = URI.parse(link['href']).path if link
+      version_raise(supported_versions) if path.nil?
 
       path.chomp '/'
+    end
+
+    def self.get_supported_microversion(supported_versions, uri, auth_token, connection_options = {})
+      supported_version = get_version(supported_versions, uri, auth_token, connection_options)
+      supported_version['version'] if supported_version
     end
 
     # CGI.escape, but without special treatment on spaces
@@ -614,6 +576,41 @@ module Fog
       end
 
     end
-  end
 
+    def self.get_version(supported_versions, uri, auth_token, connection_options = {})
+      version_cache = "#{uri}#{supported_versions}"
+      return @version[version_cache] if @version && @version[version_cache]
+      connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}", false, connection_options)
+      response = connection.request(
+        :expects => [200, 204, 300],
+        :headers => {'Content-Type' => 'application/json',
+                     'Accept'       => 'application/json',
+                     'X-Auth-Token' => auth_token},
+        :method  => 'GET'
+      )
+
+      body = Fog::JSON.decode(response.body)
+
+      @version                = {} unless @version
+      @version[version_cache] = extract_version_from_body(body, supported_versions)
+    end
+
+    def self.extract_version_from_body(body, supported_versions)
+      return nil if body['versions'].empty?
+      versions = body['versions'].kind_of?(Array) ? body['versions'] : body['versions']['values']
+      version = nil
+      # order is important, preffered status should be first
+      %w(CURRENT stable SUPPORTED DEPRECATED).each do |status|
+        version = versions.find { |x| x['id'].match(supported_versions) && (x['status'] == status) }
+        break if version
+      end
+
+      version
+    end
+
+    def self.version_raise(supported_versions)
+      raise Fog::OpenStack::Errors::ServiceUnavailable,
+            "OpenStack service only supports API versions #{supported_versions.inspect}"
+    end
+  end
 end
