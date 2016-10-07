@@ -264,6 +264,7 @@ module Fog
 
           authenticate
           set_api_path
+          set_microversion
 
           @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
