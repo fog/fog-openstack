@@ -23,6 +23,8 @@ module Fog
       collection  :shares
       model       :snapshot
       collection  :snapshots
+      model       :share_access_rule
+      collection  :share_access_rules
 
       request_path 'fog/share/openstack/requests'
       # share networks
@@ -40,6 +42,12 @@ module Fog
       request :create_share
       request :update_share
       request :delete_share
+      request :share_action
+      request :grant_share_access
+      request :revoke_share_access
+      request :list_share_access_rules
+      request :extend_share
+      request :shrink_share
 
       # snapshots
       request :list_snapshots
@@ -190,6 +198,18 @@ module Fog
                   "id"          => "086a1aa6-c425-4ecd-9612-391a3b1b9375",
                   "size"        => 1
                 }
+              ],
+              :access_rules          => [
+                {
+                  "share_id"     => "406ea93b-32e9-4907-a117-148b3945749f",
+                  "created_at"   => "2015-09-07T09:14:48.000000",
+                  "updated_at"   => '',
+                  "access_type"  => "ip",
+                  "access_to"    => "0.0.0.0/0",
+                  "access_level" => "rw",
+                  "access_key"   => '',
+                  "id"           => "a25b2df3-90bd-4add-afa6-5f0dbbd50452"
+                }
               ]
             }
           end
@@ -295,6 +315,10 @@ module Fog
         def request(options = {})
           options[:headers] = {'X-Openstack-Manila-Api-Version' => @microversion} unless @microversion.empty?
           super(options)
+        end
+
+        def action_prefix
+          microversion_newer_than?('2.6') ? '' : 'os-'
         end
       end
     end
