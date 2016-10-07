@@ -34,33 +34,16 @@ http_interactions:
       - max-age=15724800; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: |-
-        {
-          "versions": {
-            "values": [
-              {
-                "id": "v1",
-                "links": [
-                  {
-                    "href": "https://devstack.openstack.stack:8786/v1",
-                    "rel": "self"
-                  }
-                ],
-                "status": "DEPRECATED"
-              },
-              {
-                "id": "v2",
-                "links": [
-                  {
-                    "href": "https://devstack.openstack.stack:8786/v2",
-                    "rel": "self"
-                  }
-                ],
-                "status": "CURRENT"
-              }
-            ]
-          }
-        }
+      string: '{"versions": [{"status": "SUPPORTED", "updated": "2015-08-27T11:33:21Z",
+        "links": [{"href": "http://docs.openstack.org/", "type": "text/html", "rel":
+        "describedby"}, {"href": "https://devstack.openstack.stack:8786/v1/", "rel": "self"}],
+        "min_version": "", "version": "", "media-types": [{"base": "application/json",
+        "type": "application/vnd.openstack.share+json;version=1"}], "id": "v1.0"},
+        {"status": "CURRENT", "updated": "2015-08-27T11:33:21Z", "links": [{"href":
+        "http://docs.openstack.org/", "type": "text/html", "rel": "describedby"},
+        {"href": "https://devstack.openstack.stack:8786/v2/", "rel": "self"}], "min_version":
+        "2.0", "version": "2.15", "media-types": [{"base": "application/json", "type":
+        "application/vnd.openstack.share+json;version=1"}], "id": "v2.0"}]}'
     http_version:
   recorded_at: Mon, 05 Sep 2016 14:56:23 GMT
 - request:
