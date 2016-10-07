@@ -20,7 +20,7 @@ describe Fog::SharedFileSystem::OpenStack do
     @network_service = net_openstack_vcr.service
   end
 
-  it "CRUD & list shares" do
+  it 'CRUD & list shares' do
     VCR.use_cassette('share_crud') do
       share_protocol            = 'NFS'
       share_size                = 1
@@ -117,7 +117,7 @@ describe Fog::SharedFileSystem::OpenStack do
     end
   end
 
-  it "CRUD & list share_snapshots" do
+  it 'CRUD & list share_snapshots' do
     VCR.use_cassette('share_snap_crud') do
       share_protocol            = 'NFS'
       share_size                = 1
@@ -186,6 +186,77 @@ describe Fog::SharedFileSystem::OpenStack do
           end
         end
 
+        # delete the share(s)
+        @service.shares.all(:name => share_name).each(&:destroy)
+
+        # only can go on when the shares are gone
+        Fog.wait_for do
+          begin
+            shares = @service.shares.all(:name => share_name)
+            shares.length.zero?
+          end
+        end
+
+        # delete the share network(s)
+        @service.networks.all(:name => share_net_name).each(&:destroy)
+      end
+    end
+  end
+
+  it 'acts on shares' do
+    VCR.use_cassette('share_actions') do
+      share_protocol    = 'NFS'
+      share_size_small  = 1
+      share_size_big    = 2
+      share_name        = 'fog_share_action'
+      share_net_name    = 'fog_share_action_net'
+      share_access_type = 'ip'
+
+      begin
+        # assuming a network exists
+        net = @network_service.networks.first
+        # create a share network
+        share_network = @service.networks.create(
+          :neutron_net_id    => net.id,
+          :neutron_subnet_id => net.subnets.first.id,
+          :name              => share_net_name
+        )
+
+        # create share
+        share = @service.shares.create(
+          :share_proto      => share_protocol,
+          :size             => share_size_small,
+          :name             => share_name,
+          :share_network_id => share_network.id
+        )
+        share.wait_for { ready? }
+
+        # modify share sizes
+        share.size.must_equal share_size_small
+        share.extend(share_size_big)
+        share.wait_for { ready? }
+        share.size.must_equal share_size_big
+        share.shrink(share_size_small)
+        share.wait_for { ready? }
+        share.size.must_equal share_size_small
+
+        # modify share access
+        share.access_rules.length.must_equal 0
+        access_rule = share.access_rules.create(
+          :access_type  => share_access_type,
+          :access_to    => '10.0.0.2',
+          :access_level => 'ro'
+        )
+        rules = share.access_rules
+        rules.length.must_equal 1
+        new_rule = rules.first
+        new_rule.wait_for { ready? }
+        new_rule.access_type.must_equal share_access_type
+        new_rule.id.must_equal access_rule.id
+        share.revoke_access(access_rule.id)
+        Fog.wait_for { share.access_rules.empty? }
+
+      ensure
         # delete the share(s)
         @service.shares.all(:name => share_name).each(&:destroy)
 
