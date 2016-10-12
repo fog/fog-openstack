@@ -34,7 +34,7 @@ gem 'fog-openstack'
 
 After creating your `Gemfile` execute the following command to install the libraries:
 
-	bundle install	
+	bundle install
 
 ## Next Steps
 
@@ -43,7 +43,7 @@ Now that you have installed Fog and obtained your credentials, you are ready to 
 Start by executing the following command:
 
 	irb
-	
+
 Once `irb` has launched you will need to require the Fog library.
 
 If using Ruby 1.8.x execute the following command:
@@ -68,14 +68,14 @@ Fog::OpenStack.services
 These services can be explored in further depth in the following documents:
 
 * [Compute](compute.md)
+* [Introspection](introspection.md)
+* [Metering](metering.md)
+* [Network](network.md)
+* [NFV](nfv.md)
+* [Orchestration](orchestration.md)
+* [Planning](planning.md)
 * [Storage (Swift)](storage.md)
+* [Workflow](workflow.md)
 
 ## Additional Resources
-* [fog.io](http://fog.io)
-* [Fog rdoc](http://rubydoc.info/gems/fog)
-* [Fog Github repo](https://github.com/fog/fog)
-* [Release Notes](https://github.com/fog/fog/blob/master/changelog.txt)
-
-
-## Support and Feedback
-Your feedback is appreciated! If you have specific issues with the **fog** SDK, you should file an [issue via Github](https://github.com/fog/fog/issues).
+[resources and feedback](common/resources.md)

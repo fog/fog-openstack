@@ -18,6 +18,8 @@ service = Fog::Workflow::OpenStack.new({
 })
 ```
 
+Read more about the [Optional Connection Parameters](common/connection_params.md)
+
 ## Executions
 
 A Workflow is a composition of one or more actions.
@@ -120,10 +122,10 @@ In addition to workflows, the following Mistral resources are also supported:
 For examples on how to interact with these resources, please refer to
 https://github.com/fog/fog-openstack/tree/master/examples/workflow/workflow-examples.rb
 
-## Information about Mistral
+## Additional Resources
 
 * [Mistral Wiki](https://wiki.openstack.org/wiki/Mistral)
 * [Mistral DSL v2](http://docs.openstack.org/developer/mistral/dsl/dsl_v2.html)
 * [Mistral API v2](http://docs.openstack.org/developer/mistral/developer/webapi/v2.html)
 * [Mistral python client](https://github.com/openstack/python-mistralclient) Can be useful to see how to interact with the API.
-
+* [more resources and feedback](common/resources.md)

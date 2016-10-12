@@ -35,6 +35,8 @@ service = Fog::Orchestration::OpenStack.new({
 ```
 We will use this `service` to interact with the Orchestration resources, `stack`, `event`,  `resource`, and `template`
 
+Read more about the [Optional Connection Parameters](common/connection_params.md)
+
 ## Stacks
 
 Get a list of stacks you own:
@@ -333,5 +335,3 @@ stack = service.stacks.get(stack.stack_name, stack.id)
 stack.stack_status
 => "ROLLBACK_IN_PROGRESS"
 ```
-
-
