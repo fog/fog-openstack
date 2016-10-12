@@ -67,6 +67,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../orchestration/openstack', __FILE__)
   end
 
+  module SharedFileSystem
+    autoload :OpenStack, File.expand_path('../shared_file_system/openstack', __FILE__)
+  end
+
   module Storage
     autoload :OpenStack, File.expand_path('../storage/openstack', __FILE__)
   end
@@ -91,21 +95,22 @@ module Fog
   module OpenStack
     extend Fog::Provider
 
-    service(:compute,       'Compute')
-    service(:image,         'Image')
-    service(:identity,      'Identity')
-    service(:network,       'Network')
-    service(:storage,       'Storage')
-    service(:volume,        'Volume')
-    service(:metering,      'Metering')
-    service(:orchestration, 'Orchestration')
-    service(:nfv,           'NFV')
-    service(:baremetal,     'Baremetal')
-    service(:planning,      'Planning')
-    service(:introspection, 'Introspection')
-    service(:monitoring,    'Monitoring')
-    service(:workflow,      'Workflow')
-    service(:dns,           'DNS')
+    service(:compute,            'Compute')
+    service(:image,              'Image')
+    service(:identity,           'Identity')
+    service(:network,            'Network')
+    service(:storage,            'Storage')
+    service(:volume,             'Volume')
+    service(:metering,           'Metering')
+    service(:orchestration,      'Orchestration')
+    service(:nfv,                'NFV')
+    service(:baremetal,          'Baremetal')
+    service(:planning,           'Planning')
+    service(:introspection,      'Introspection')
+    service(:monitoring,         'Monitoring')
+    service(:workflow,           'Workflow')
+    service(:dns,                'DNS')
+    service(:shared_file_system, 'SharedFileSystem')
 
     @token_cache = {}
 
