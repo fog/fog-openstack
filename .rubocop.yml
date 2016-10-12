@@ -82,6 +82,8 @@ SpaceBeforeFirstArg:
   Enabled: false
 SpecialGlobalVars:
   AutoCorrect: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
 StringLiterals:
   Enabled: false
 StringLiteralsInInterpolation:
