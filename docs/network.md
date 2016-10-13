@@ -26,44 +26,7 @@ service = Fog::Network::OpenStack.new(
 )
 ```
 
-### Optional Connection Parameters
-
-Fog supports passing additional connection parameters to its underlying HTTP library (Excon) using the `:connection_options` parameter.
-
-<table>
-	<tr>
-		<th>Key</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>:connect_timeout</td>
-		<td>Connection timeout (default: 60 seconds)</td>
-	</tr>
-	<tr>
-		<td>:read_timeout</td>
-		<td>Read timeout for connection (default: 60 seconds)</td>	</tr>
-	<tr>
-		<td>:write_timeout</td>
-		<td>Write timeout for connection (default: 60 seconds)</td>
-	</tr>
-	<tr>
-		<td>:proxy</td>
-		<td>Proxy for HTTP and HTTPS connections</td>
-	</tr>
-	<tr>
-		<td>:ssl_ca_path</td>
-		<td>Path to SSL certificate authorities</td>
-	</tr>
-	<tr>
-		<td>:ssl_ca_file</td>
-		<td>SSL certificate authority file</td>
-	</tr>
-	<tr>
-		<td>:ssl_verify_peer</td>
-		<td>SSL verify peer (default: true)</td>
-	</tr>
-</table>
-
+Read more about the [Optional Connection Parameters](common/connection_params.md)
 
 ## Fog Abstractions
 
@@ -271,13 +234,5 @@ Example code using Network can be found [here](https://github.com/fog/fog-openst
 
 ## Additional Resources
 
-* [fog.io](http://fog.io/)
-* [fog-openstack rdoc](http://rubydoc.info/gems/fog-openstack)
-* [fog-openstack Github repo](https://github.com/fog/fog-openstack)
-* [fog-openstack Github Issues](https://github.com/fog/fog-openstack/issues)
-* [Excon Github repo](https://github.com/geemus/excon)
 * [OpenStack Network API](http://developer.openstack.org/api-ref-networking-v2.html)
-
-## Support and Feedback
-
-Your feedback is appreciated! If you have specific issues with the **fog-openstack** SDK, you should file an [issue via Github](https://github.com/fog/fog-openstack/issues).
+* [more resources and feedback](common/resources.md)
