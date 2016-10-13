@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://devstack.openstack.stack:9696/v2.0/networks
+    body:
+      encoding: UTF-8
+      string: '{"network":{"name":"foo-net12","shared":false}}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 7f29bd411ff64dc283247f07ffab4c11
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '378'
+      X-Openstack-Request-Id:
+      - req-7ae613a9-4314-49bc-9209-ba7c5548434e
+      Date:
+      - Fri, 15 Jul 2016 11:17:52 GMT
+    body:
+      encoding: UTF-8
+      string: '{"network": {"status": "ACTIVE", "subnets": [], "name": "foo-net12",
+        "provider:physical_network": null, "admin_state_up": true, "tenant_id": "f17a4813648d4b0bb82124ca1f5f1fd0",
+        "mtu": 1450, "router:external": false, "shared": false, "port_security_enabled":
+        true, "provider:network_type": "vxlan", "id": "8e051d5b-d5bb-4852-a2fc-d70278280e97",
+        "provider:segmentation_id": 1013}}'
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 11:17:23 GMT
+- request:
+    method: post
+    uri: http://devstack.openstack.stack:9696/v2.0/subnets
+    body:
+      encoding: UTF-8
+      string: '{"subnet":{"network_id":"8e051d5b-d5bb-4852-a2fc-d70278280e97","cidr":"172.16.0.0/16","ip_version":4,"name":"my-network","gateway_ip":null}}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 7f29bd411ff64dc283247f07ffab4c11
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '452'
+      X-Openstack-Request-Id:
+      - req-488b6868-9575-4c8a-b606-26d5336b9dd4
+      Date:
+      - Fri, 15 Jul 2016 11:17:52 GMT
+    body:
+      encoding: UTF-8
+      string: '{"subnet": {"name": "my-network", "enable_dhcp": true, "network_id":
+        "8e051d5b-d5bb-4852-a2fc-d70278280e97", "tenant_id": "f17a4813648d4b0bb82124ca1f5f1fd0",
+        "dns_nameservers": [], "gateway_ip": null, "ipv6_ra_mode": null, "allocation_pools":
+        [{"start": "172.16.0.1", "end": "172.16.255.254"}], "host_routes": [], "ip_version":
+        4, "ipv6_address_mode": null, "cidr": "172.16.0.0/16", "id": "11bc2c31-7b21-4d5d-8955-bcadd0a0e6c5",
+        "subnetpool_id": null}}'
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 11:17:24 GMT
+- request:
+    method: delete
+    uri: http://devstack.openstack.stack:9696/v2.0/subnets/11bc2c31-7b21-4d5d-8955-bcadd0a0e6c5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 7f29bd411ff64dc283247f07ffab4c11
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Content-Length:
+      - '0'
+      X-Openstack-Request-Id:
+      - req-9b644619-5914-48d2-8c55-d9a0c5976ca3
+      Date:
+      - Fri, 15 Jul 2016 11:17:53 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 11:17:24 GMT
+- request:
+    method: delete
+    uri: http://devstack.openstack.stack:9696/v2.0/networks/8e051d5b-d5bb-4852-a2fc-d70278280e97
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 7f29bd411ff64dc283247f07ffab4c11
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Content-Length:
+      - '0'
+      X-Openstack-Request-Id:
+      - req-cf593088-f10b-4a07-828d-9b1f62aa89a8
+      Date:
+      - Fri, 15 Jul 2016 11:17:53 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 11:17:24 GMT
+recorded_with: VCR 3.0.1
