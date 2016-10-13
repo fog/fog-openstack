@@ -48,6 +48,7 @@ class OpenStackVCR
                          Fog::Image::OpenStack::V1,
                          Fog::Network::OpenStack,
                          Fog::DNS::OpenStack,
+                         Fog::Share::OpenStack,
                          Fog::Monitoring::OpenStack].include? @service_class
                        'http://devstack.openstack.stack:5000/v3'
                      else

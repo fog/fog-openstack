@@ -220,17 +220,20 @@ module Fog
                   'router:external'       => false,
                   'admin_state_up'        => true,
                   'qos_policy_id'         => qos_policy_id,
-                  'port_security_enabled' => 'port_security_enabled'
+                  'port_security_enabled' => true
                 },
                 'e624a36d-762b-481f-9b50-4154ceb78bbb' => {
-                  'id'              => 'e624a36d-762b-481f-9b50-4154ceb78bbb',
-                  'name'            => 'network_1',
-                  'subnets'         => ['2e4ec6a4-0150-47f5-8523-e899ac03026e'],
-                  'shared'          => false,
-                  'status'          => 'ACTIVE',
-                  'admin_state_up'  => true,
-                  'tenant_id'       => 'f8b26a6032bc47718a7702233ac708b9',
-                  'router:external' => false,
+                  'id'                    => 'e624a36d-762b-481f-9b50-4154ceb78bbb',
+                  'name'                  => 'network_1',
+                  'subnets'               => ['2e4ec6a4-0150-47f5-8523-e899ac03026e'],
+                  'shared'                => false,
+                  'status'                => 'ACTIVE',
+                  'tenant_id'             => 'f8b26a6032bc47718a7702233ac708b9',
+                  'provider:network:type' => 'vlan',
+                  'router:external'       => false,
+                  'admin_state_up'        => true,
+                  'qos_policy_id'         => qos_policy_id,
+                  'port_security_enabled' => true
                 }
               },
               :ports                  => {},
