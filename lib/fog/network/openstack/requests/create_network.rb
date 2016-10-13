@@ -69,13 +69,13 @@ module Fog
           data = {
             'id'                    => Fog::Mock.random_numbers(6).to_s,
             'name'                  => options[:name],
-            'shared'                => options[:shared],
+            'shared'                => options[:shared] || false,
             'subnets'               => [],
             'status'                => 'ACTIVE',
-            'admin_state_up'        => options[:admin_state_up],
+            'admin_state_up'        => options[:admin_state_up] || false,
             'tenant_id'             => options[:tenant_id],
             'qos_policy_id'         => options[:qos_policy_id],
-            'port_security_enabled' => options[:port_security_enabled]
+            'port_security_enabled' => options[:port_security_enabled] || false
           }
           data.merge!(Fog::Network::OpenStack::Real.create(options))
           self.data[:networks][data['id']] = data
