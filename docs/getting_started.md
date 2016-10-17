@@ -74,6 +74,7 @@ These services can be explored in further depth in the following documents:
 * [NFV](nfv.md)
 * [Orchestration](orchestration.md)
 * [Planning](planning.md)
+* [Shared File System](shared_file_system.md)
 * [Storage (Swift)](storage.md)
 * [Workflow](workflow.md)
 
