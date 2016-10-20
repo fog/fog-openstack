@@ -66,7 +66,6 @@ describe Fog::Image::OpenStack do
     VCR.use_cassette('image_v2_create_id') do
       image_name = 'foobar_id'
 
-      # Here be dragons - highly recommend not to supply an ID when creating
       begin
         # increment this identifier when running test more than once, unless the VCR recording is being used
         identifier = '11111111-2222-3333-aaaa-bbbbbbcccce1'
@@ -83,6 +82,75 @@ describe Fog::Image::OpenStack do
 
       ensure
         cleanup_image foobar_image, image_name, foobar_id
+      end
+    end
+  end
+
+  it "Image saving when image has been created with ID" do
+    VCR.use_cassette('image_v2_save_id') do
+      identifier = "11111111-2222-3333-aaaa-bbbbbbcccce2"
+      begin
+        # Create an image with a specified ID
+        foobar_image = Fog::Image::OpenStack::V2::Image.new(
+          :name               => 'original_name',
+          :id                 => identifier,
+          :service            => @service,
+          :property_to_delete => 'bar'
+        )
+        foobar_image.save
+
+        foobar_image.status.must_equal 'queued'
+        foobar_image.id.must_equal identifier
+        foobar_image.name.must_equal 'original_name'
+        foobar_image.property_to_delete.must_equal 'bar'
+        foobar_image.respond_to?(:property_to_add).must_equal false
+
+        get_image = @service.images.find_by_id(identifier)
+        get_image.name = 'updated_name'
+        get_image.property_to_add = 'bar'
+        get_image.property_to_delete = nil
+        get_image.save
+
+        updated_image = @service.images.find_by_id(identifier)
+        updated_image.name.must_equal 'updated_name'
+        updated_image.property_to_add.must_equal 'bar'
+        updated_image.respond_to?(:property_to_delete).must_equal false
+      ensure
+        cleanup_image nil, nil, identifier
+      end
+    end
+  end
+
+  it "Reloads image state from the server" do
+    VCR.use_cassette('image_v2_reload') do
+      image_name = 'reloaded_image'
+      begin
+        created_image = @service.images.create(
+          :name                => image_name,
+          :service             => @service,
+          :reloadable_property => 'original'
+        )
+        identifier = created_image.id
+
+        found_image = @service.images.find_by_id(identifier)
+
+        # verify an image provided by `create` can be reloaded
+        found_image.reloadable_property = 'updated'
+        found_image.save
+
+        created_image.reloadable_property.must_equal 'original'
+        created_image.reload
+        created_image.reloadable_property.must_equal 'updated'
+
+        # verify an image provided by `find_by_id` can be reloaded
+        created_image.reloadable_property = 'updated_again'
+        created_image.save
+
+        found_image.reloadable_property.must_equal 'updated'
+        found_image.reload
+        found_image.reloadable_property.must_equal 'updated_again'
+      ensure
+        cleanup_image nil, image_name
       end
     end
   end
@@ -105,8 +173,7 @@ describe Fog::Image::OpenStack do
 
         foobar_image = @service.images.create(:name             => image_name,
                                               :container_format => 'ovf',
-                                              :disk_format      => 'vmdk'
-                                             )
+                                              :disk_format      => 'vmdk')
         foobar_id = foobar_image.id
 
         # Status should be queued
@@ -144,8 +211,7 @@ describe Fog::Image::OpenStack do
         # Create an image called foobar2
         foobar_image = @service.images.create(:name             => image_name,
                                               :container_format => 'ovf',
-                                              :disk_format      => 'vmdk'
-                                             )
+                                              :disk_format      => 'vmdk')
         foobar_id = foobar_image.id
         foobar_image.upload_data File.new(image_path, 'r')
         while @service.images.find_by_id(foobar_id).status == 'saving'
@@ -170,8 +236,7 @@ describe Fog::Image::OpenStack do
         # Create an image
         foobar_image = @service.images.create(:name             => image_name,
                                               :container_format => 'ovf',
-                                              :disk_format      => 'vmdk'
-                                             )
+                                              :disk_format      => 'vmdk')
         foobar_id = foobar_image.id
 
         foobar_image.add_tag 'tag1'

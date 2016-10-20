@@ -14,6 +14,7 @@ module Fog
 
           attribute :self
           attribute :size
+          attribute :virtual_size
           attribute :disk_format
           attribute :container_format
           attribute :id
@@ -45,6 +46,8 @@ module Fog
               attributes[method_sym]
             elsif attributes.key?(method_sym.to_s)
               attributes[method_sym.to_s]
+            elsif method_sym.to_s.end_with?('=')
+              attributes[method_sym.to_s.gsub(/=$/, '')] = arguments[0]
             else
               super
             end
@@ -54,6 +57,8 @@ module Fog
             if attributes.key?(method_sym)
               true
             elsif attributes.key?(method_sym.to_s)
+              true
+            elsif method_sym.to_s.end_with?('=')
               true
             else
               super
@@ -66,26 +71,30 @@ module Fog
             self
           end
 
-          # This overrides the behaviour of Fog::OpenStack::Model::save() which tries to be clever and
-          #  assumes save=update if an ID is present - but Image V2 allows ID to specified on creation
-          def identity
-            nil
-          end
-
-          # Hash of attributes to update is passed in. Setting value to nil will delete that attribute.
-          #  Here we convert that hash into a form suitable for Glance's usage of JSON Patch (RFC6902)
-          def update(attr = {})
+          # Here we convert 'attributes' into a form suitable for Glance's usage of JSON Patch (RFC6902).
+          #  We fetch the existing attributes from the server to compute the delta (difference)
+          #  Setting value to nil will delete that attribute from the server.
+          def update(attr = nil)
             requires :id
-            json_patch = []
-            attr.each do |key, value|
-              op = (@attributes.keys.include? key) ? 'replace' : 'add'
-              op = 'remove' if value.nil?
-              json_patch << {:op => op, :path => "/#{key}", :value => value}
-            end
+            client_attributes = attr || @attributes
+            server_attributes = service.images.get(id).attributes
+
+            json_patch = build_update_json_patch(client_attributes, server_attributes)
+
             merge_attributes(
               service.update_image(id, json_patch).body
             )
             self
+          end
+
+          # This overrides the behaviour of Fog::OpenStack::Model::save() which tries to be clever and
+          #  assumes save=update if an ID is present - but Image V2 allows ID to be specified on creation
+          def save
+            if @attributes[:self].nil?
+              create
+            else
+              update
+            end
           end
 
           def destroy
@@ -161,6 +170,42 @@ module Fog
           def remove_tag(tag)
             requires :id
             service.remove_tag_from_image(id, tag)
+          end
+
+          private
+
+          def build_update_json_patch(client_attributes, server_attributes)
+            [
+              build_patch_operation('remove', patch_attributes_to_remove(client_attributes, server_attributes)),
+              build_patch_operation('add', patch_attributes_to_add(client_attributes, server_attributes)),
+              build_patch_operation('replace', patch_attributes_to_replace(client_attributes, server_attributes)),
+            ].flatten
+          end
+
+          def patch_attributes_to_remove(client_attributes, server_attributes)
+            client_attributes.select do |key, value|
+              value.nil? && !server_attributes[key].nil?
+            end
+          end
+
+          def patch_attributes_to_add(client_attributes, server_attributes)
+            client_attributes.reject do |key, _|
+              server_attributes.key?(key)
+            end
+          end
+
+          def patch_attributes_to_replace(client_attributes, server_attributes)
+            client_attributes.reject do |key, value|
+              value.nil? || server_attributes[key] == value
+            end
+          end
+
+          def build_patch_operation(op_name, attributes)
+            json_patch = []
+            attributes.each do |key, value|
+              json_patch << {:op => op_name, :path => "/#{key}", :value => value}
+            end
+            json_patch
           end
         end
       end
