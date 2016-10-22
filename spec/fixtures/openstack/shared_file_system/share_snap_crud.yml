@@ -1,0 +1,1508 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:9696/v2.0/networks
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:10 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '2322'
+      Connection:
+      - keep-alive
+      X-Openstack-Request-Id:
+      - req-b70dfde3-ed50-434f-8063-7a967ca5c838
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"networks": [{"status": "ACTIVE", "subnets": ["f8215b4c-b788-4c56-bfc9-11dce4f88d37"],
+        "availability_zone_hints": [], "availability_zones": ["nova"], "name": "private",
+        "admin_state_up": true, "tenant_id": "c60a441e54cd435896a357026aa4050a", "created_at":
+        "2016-09-08T13:28:54", "tags": [],
+        "updated_at": "2016-09-08T13:28:54", "ipv6_address_scope": null, "router:external":
+        false, "ipv4_address_scope": null, "shared": false, "mtu": 1450, "id": "169636be-3aa3-4b23-8e48-96a81198085f",
+        "description": ""}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:12 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:9696/v2.0/subnets
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:10 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1719'
+      Connection:
+      - keep-alive
+      X-Openstack-Request-Id:
+      - req-81284898-d772-4592-912c-8558a20521ea
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"subnets": [{"description": "", "enable_dhcp": true, "network_id":
+        "169636be-3aa3-4b23-8e48-96a81198085f", "tenant_id": "c60a441e54cd435896a357026aa4050a",
+        "created_at": "2016-09-08T13:28:54", "dns_nameservers": [], "updated_at":
+        "2016-09-08T13:28:54", "gateway_ip": "10.10.42.1", "ipv6_ra_mode": null, "allocation_pools":
+        [{"start": "10.10.42.2", "end": "10.10.42.14"}], "host_routes": [], "ip_version":
+        4, "ipv6_address_mode": null, "cidr": "10.10.42.0/28", "id": "f8215b4c-b788-4c56-bfc9-11dce4f88d37",
+        "subnetpool_id": null, "name": "private_sub"}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:12 GMT
+- request:
+    method: post
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/share-networks
+    body:
+      encoding: UTF-8
+      string: '{"share_network":{"name":"fog_share_net","neutron_net_id":"169636be-3aa3-4b23-8e48-96a81198085f","neutron_subnet_id":"f8215b4c-b788-4c56-bfc9-11dce4f88d37"}}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:11 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '446'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-57f2a382-13aa-42c3-b0da-58432597c0c6
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"share_network": {"name": "fog_share_net", "segmentation_id": null,
+        "created_at": "2016-10-05T07:27:10.969175", "neutron_subnet_id": "f8215b4c-b788-4c56-bfc9-11dce4f88d37",
+        "updated_at": null, "network_type": null, "neutron_net_id": "169636be-3aa3-4b23-8e48-96a81198085f",
+        "ip_version": null, "nova_net_id": null, "cidr": null, "project_id": "c60a441e54cd435896a357026aa4050a",
+        "id": "008f76ad-d8bc-46dc-8ab6-9c364ec6622b", "description": null}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:12 GMT
+- request:
+    method: post
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares
+    body:
+      encoding: UTF-8
+      string: '{"share":{"share_proto":"NFS","size":1,"name":"fog_share","share_network_id":"008f76ad-d8bc-46dc-8ab6-9c364ec6622b"}}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:11 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '847'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-7a2f3b6f-b214-4204-a802-49053b7d4466
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"share": {"status": "creating", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": null, "name": "fog_share", "share_type":
+        "default_share_type", "availability_zone": null, "created_at": "2016-10-05T07:27:11.178081",
+        "description": null, "export_locations": [], "share_proto": "NFS", "share_network_id":
+        "008f76ad-d8bc-46dc-8ab6-9c364ec6622b", "metadata": {}, "share_server_id":
+        null, "host": "", "volume_type": "default_share_type", "snapshot_id": null,
+        "is_public": false, "project_id": "c60a441e54cd435896a357026aa4050a", "id":
+        "271133e2-c2ad-4268-9792-6798c6d03f61", "size": 1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:13 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:11 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '901'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-7824b3e5-5c91-42dd-a948-3cfdc48f6fd6
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"share": {"status": "creating", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": null, "name": "fog_share", "share_type":
+        "default_share_type", "availability_zone": null, "created_at": "2016-10-05T07:27:11.178081",
+        "description": null, "export_locations": [], "share_proto": "NFS", "share_network_id":
+        "008f76ad-d8bc-46dc-8ab6-9c364ec6622b", "metadata": {}, "share_server_id":
+        null, "host": "manila-share-netapp-bb98@netapp-multi#aggr_sas01_30010", "volume_type":
+        "default_share_type", "snapshot_id": null, "is_public": false, "project_id":
+        "c60a441e54cd435896a357026aa4050a", "id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "size": 1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:13 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:12 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '937'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-a2e2bb73-ab2a-4818-8e12-7ec9e042fc8a
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"share": {"status": "creating", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": null, "name": "fog_share", "share_type":
+        "default_share_type", "availability_zone": "nova", "created_at": "2016-10-05T07:27:11.178081",
+        "description": null, "export_locations": [], "share_proto": "NFS", "share_network_id":
+        "008f76ad-d8bc-46dc-8ab6-9c364ec6622b", "metadata": {}, "share_server_id":
+        "196115c8-45d7-4cc1-b531-0cf7971def71", "host": "manila-share-netapp-bb98@netapp-multi#aggr_sas01_30010",
+        "volume_type": "default_share_type", "snapshot_id": null, "is_public": false,
+        "project_id": "c60a441e54cd435896a357026aa4050a", "id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "size": 1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:14 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:14 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '937'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-8c33844d-0f1f-4bda-bfce-22f18cec04ac
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"share": {"status": "creating", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": null, "name": "fog_share", "share_type":
+        "default_share_type", "availability_zone": "nova", "created_at": "2016-10-05T07:27:11.178081",
+        "description": null, "export_locations": [], "share_proto": "NFS", "share_network_id":
+        "008f76ad-d8bc-46dc-8ab6-9c364ec6622b", "metadata": {}, "share_server_id":
+        "196115c8-45d7-4cc1-b531-0cf7971def71", "host": "manila-share-netapp-bb98@netapp-multi#aggr_sas01_30010",
+        "volume_type": "default_share_type", "snapshot_id": null, "is_public": false,
+        "project_id": "c60a441e54cd435896a357026aa4050a", "id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "size": 1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:16 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:18 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '937'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-851668bf-881d-4291-bdb0-b650e83b0e92
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"share": {"status": "creating", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": null, "name": "fog_share", "share_type":
+        "default_share_type", "availability_zone": "nova", "created_at": "2016-10-05T07:27:11.178081",
+        "description": null, "export_locations": [], "share_proto": "NFS", "share_network_id":
+        "008f76ad-d8bc-46dc-8ab6-9c364ec6622b", "metadata": {}, "share_server_id":
+        "196115c8-45d7-4cc1-b531-0cf7971def71", "host": "manila-share-netapp-bb98@netapp-multi#aggr_sas01_30010",
+        "volume_type": "default_share_type", "snapshot_id": null, "is_public": false,
+        "project_id": "c60a441e54cd435896a357026aa4050a", "id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "size": 1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:20 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:27 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '937'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-ac05c5b2-c960-47ba-bbd7-51858a25a78f
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"share": {"status": "creating", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": null, "name": "fog_share", "share_type":
+        "default_share_type", "availability_zone": "nova", "created_at": "2016-10-05T07:27:11.178081",
+        "description": null, "export_locations": [], "share_proto": "NFS", "share_network_id":
+        "008f76ad-d8bc-46dc-8ab6-9c364ec6622b", "metadata": {}, "share_server_id":
+        "196115c8-45d7-4cc1-b531-0cf7971def71", "host": "manila-share-netapp-bb98@netapp-multi#aggr_sas01_30010",
+        "volume_type": "default_share_type", "snapshot_id": null, "is_public": false,
+        "project_id": "c60a441e54cd435896a357026aa4050a", "id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "size": 1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:28 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:43 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1104'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-cb0ee03b-178a-40c5-9d8e-a65ece9bda72
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"share": {"status": "available", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": "10.0.9.175:/share_793c890e_4597_4927_95ea_c53bdf67a8b7",
+        "name": "fog_share", "share_type": "default_share_type", "availability_zone":
+        "nova", "created_at": "2016-10-05T07:27:11.178081", "description": null, "export_locations":
+        ["10.0.9.175:/share_793c890e_4597_4927_95ea_c53bdf67a8b7", "10.0.9.176:/share_793c890e_4597_4927_95ea_c53bdf67a8b7"],
+        "share_proto": "NFS", "share_network_id": "008f76ad-d8bc-46dc-8ab6-9c364ec6622b",
+        "metadata": {}, "share_server_id": "196115c8-45d7-4cc1-b531-0cf7971def71",
+        "host": "manila-share-netapp-bb98@netapp-multi#aggr_sas01_30010", "volume_type":
+        "default_share_type", "snapshot_id": null, "is_public": false, "project_id":
+        "c60a441e54cd435896a357026aa4050a", "id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "size": 1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:44 GMT
+- request:
+    method: post
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots
+    body:
+      encoding: UTF-8
+      string: '{"snapshot":{"share_id":"271133e2-c2ad-4268-9792-6798c6d03f61","name":"fog_snap"}}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 202
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:43 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '571'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-30d1703c-2910-4650-b25f-598c8eb4d3c1
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"snapshot": {"status": "creating", "size": 1, "share_id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "name": "fog_snap", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "bookmark"}], "share_proto": "NFS", "created_at": "2016-10-05T07:27:43.374871",
+        "description": null, "id": "3718b110-4d33-4942-807d-9804981050cc", "share_size":
+        1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:45 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:43 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '571'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-6cff8008-c9fa-4f43-afb4-20524c695877
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"snapshot": {"status": "creating", "size": 1, "share_id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "name": "fog_snap", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "bookmark"}], "share_proto": "NFS", "created_at": "2016-10-05T07:27:43.374871",
+        "description": null, "id": "3718b110-4d33-4942-807d-9804981050cc", "share_size":
+        1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:45 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:44 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '572'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-9c35f9bb-e673-45bb-9a16-e108675ba428
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"snapshot": {"status": "available", "size": 1, "share_id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "name": "fog_snap", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "bookmark"}], "share_proto": "NFS", "created_at": "2016-10-05T07:27:43.374871",
+        "description": null, "id": "3718b110-4d33-4942-807d-9804981050cc", "share_size":
+        1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:46 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:44 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '572'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-25238b18-f115-4966-8d65-297ebb09c00e
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"snapshot": {"status": "available", "size": 1, "share_id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "name": "fog_snap", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "bookmark"}], "share_proto": "NFS", "created_at": "2016-10-05T07:27:43.374871",
+        "description": null, "id": "3718b110-4d33-4942-807d-9804981050cc", "share_size":
+        1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:46 GMT
+- request:
+    method: put
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc
+    body:
+      encoding: UTF-8
+      string: '{"snapshot":{"display_name":"fog_snap_updated"}}'
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:44 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '580'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-e2a9ac4e-1c0c-4524-a499-7c6225d3199d
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"snapshot": {"status": "available", "size": 1, "share_id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "name": "fog_snap_updated", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "bookmark"}], "share_proto": "NFS", "created_at": "2016-10-05T07:27:43.374871",
+        "description": null, "id": "3718b110-4d33-4942-807d-9804981050cc", "share_size":
+        1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:46 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:45 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '580'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-2dad0cee-e65a-4e8f-82f5-8c11c93b7204
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"snapshot": {"status": "available", "size": 1, "share_id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "name": "fog_snap_updated", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "bookmark"}], "share_proto": "NFS", "created_at": "2016-10-05T07:27:43.374871",
+        "description": null, "id": "3718b110-4d33-4942-807d-9804981050cc", "share_size":
+        1}}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:46 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/detail?name=fog_snap_updated
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:45 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '583'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-4005c028-33f3-4695-899b-88425370a759
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"snapshots": [{"status": "available", "size": 1, "share_id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "name": "fog_snap_updated", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "bookmark"}], "share_proto": "NFS", "created_at": "2016-10-05T07:27:43.374871",
+        "description": null, "id": "3718b110-4d33-4942-807d-9804981050cc", "share_size":
+        1}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:46 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/detail?name=fog_snap_updated
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:45 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '583'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-2f68a766-28dc-4fd7-b736-e827da0825a7
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"snapshots": [{"status": "available", "size": 1, "share_id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "name": "fog_snap_updated", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "bookmark"}], "share_proto": "NFS", "created_at": "2016-10-05T07:27:43.374871",
+        "description": null, "id": "3718b110-4d33-4942-807d-9804981050cc", "share_size":
+        1}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:47 GMT
+- request:
+    method: delete
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 202
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:46 GMT
+      Content-Type:
+      - text/html; charset=UTF-8
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:48 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/detail?name=fog_snap_updated
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:47 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '582'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-2b26eacf-1ab5-40b5-9050-d7f0a2e6bd58
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"snapshots": [{"status": "deleting", "size": 1, "share_id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "name": "fog_snap_updated", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "bookmark"}], "share_proto": "NFS", "created_at": "2016-10-05T07:27:43.374871",
+        "description": null, "id": "3718b110-4d33-4942-807d-9804981050cc", "share_size":
+        1}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:48 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/detail?name=fog_snap_updated
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:47 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '582'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-ad847563-a62b-453d-b903-f094d2958379
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"snapshots": [{"status": "deleting", "size": 1, "share_id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "name": "fog_snap_updated", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/snapshots/3718b110-4d33-4942-807d-9804981050cc",
+        "rel": "bookmark"}], "share_proto": "NFS", "created_at": "2016-10-05T07:27:43.374871",
+        "description": null, "id": "3718b110-4d33-4942-807d-9804981050cc", "share_size":
+        1}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:49 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/snapshots/detail?name=fog_snap_updated
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:48 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '17'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-cc6fc2b3-321d-4795-8dfe-ac1f319b5c54
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"snapshots": []}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:50 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/detail?name=fog_share
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:48 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1107'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-b1f5c817-87da-45a6-9c25-a461237a4d4c
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"shares": [{"status": "available", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": "10.0.9.175:/share_793c890e_4597_4927_95ea_c53bdf67a8b7",
+        "name": "fog_share", "share_type": "default_share_type", "availability_zone":
+        "nova", "created_at": "2016-10-05T07:27:11.178081", "description": null, "export_locations":
+        ["10.0.9.175:/share_793c890e_4597_4927_95ea_c53bdf67a8b7", "10.0.9.176:/share_793c890e_4597_4927_95ea_c53bdf67a8b7"],
+        "share_proto": "NFS", "share_network_id": "008f76ad-d8bc-46dc-8ab6-9c364ec6622b",
+        "metadata": {}, "share_server_id": "196115c8-45d7-4cc1-b531-0cf7971def71",
+        "host": "manila-share-netapp-bb98@netapp-multi#aggr_sas01_30010", "volume_type":
+        "default_share_type", "snapshot_id": null, "is_public": false, "project_id":
+        "c60a441e54cd435896a357026aa4050a", "id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "size": 1}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:50 GMT
+- request:
+    method: delete
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 202
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:48 GMT
+      Content-Type:
+      - text/html; charset=UTF-8
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:50 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/detail?name=fog_share
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:48 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '992'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-f112174d-8ae1-4512-a526-2d23e29b3300
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"shares": [{"status": "deleting", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": "10.0.9.175:/share_793c890e_4597_4927_95ea_c53bdf67a8b7",
+        "name": "fog_share", "share_type": "default_share_type", "availability_zone":
+        "nova", "created_at": "2016-10-05T07:27:11.178081", "description": null, "export_locations":
+        [], "share_proto": "NFS", "share_network_id": "008f76ad-d8bc-46dc-8ab6-9c364ec6622b",
+        "metadata": {}, "share_server_id": "196115c8-45d7-4cc1-b531-0cf7971def71",
+        "host": "manila-share-netapp-bb98@netapp-multi#aggr_sas01_30010", "volume_type":
+        "default_share_type", "snapshot_id": null, "is_public": false, "project_id":
+        "c60a441e54cd435896a357026aa4050a", "id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "size": 1}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:50 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/detail?name=fog_share
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:50 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '992'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-65848d84-9d91-4cb4-a8b2-c6451c83d1da
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"shares": [{"status": "deleting", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": "10.0.9.175:/share_793c890e_4597_4927_95ea_c53bdf67a8b7",
+        "name": "fog_share", "share_type": "default_share_type", "availability_zone":
+        "nova", "created_at": "2016-10-05T07:27:11.178081", "description": null, "export_locations":
+        [], "share_proto": "NFS", "share_network_id": "008f76ad-d8bc-46dc-8ab6-9c364ec6622b",
+        "metadata": {}, "share_server_id": "196115c8-45d7-4cc1-b531-0cf7971def71",
+        "host": "manila-share-netapp-bb98@netapp-multi#aggr_sas01_30010", "volume_type":
+        "default_share_type", "snapshot_id": null, "is_public": false, "project_id":
+        "c60a441e54cd435896a357026aa4050a", "id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "size": 1}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:51 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/detail?name=fog_share
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:52 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '992'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-87e796b7-0438-49e2-9b24-3be024dd5f68
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"shares": [{"status": "deleting", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": "10.0.9.175:/share_793c890e_4597_4927_95ea_c53bdf67a8b7",
+        "name": "fog_share", "share_type": "default_share_type", "availability_zone":
+        "nova", "created_at": "2016-10-05T07:27:11.178081", "description": null, "export_locations":
+        [], "share_proto": "NFS", "share_network_id": "008f76ad-d8bc-46dc-8ab6-9c364ec6622b",
+        "metadata": {}, "share_server_id": "196115c8-45d7-4cc1-b531-0cf7971def71",
+        "host": "manila-share-netapp-bb98@netapp-multi#aggr_sas01_30010", "volume_type":
+        "default_share_type", "snapshot_id": null, "is_public": false, "project_id":
+        "c60a441e54cd435896a357026aa4050a", "id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "size": 1}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:53 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/detail?name=fog_share
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:27:56 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '992'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-177f817a-3bb8-478e-b069-af2d1f641a75
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"shares": [{"status": "deleting", "links": [{"href": "https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "self"}, {"href": "https://devstack.openstack.stack:8786/c60a441e54cd435896a357026aa4050a/shares/271133e2-c2ad-4268-9792-6798c6d03f61",
+        "rel": "bookmark"}], "export_location": "10.0.9.175:/share_793c890e_4597_4927_95ea_c53bdf67a8b7",
+        "name": "fog_share", "share_type": "default_share_type", "availability_zone":
+        "nova", "created_at": "2016-10-05T07:27:11.178081", "description": null, "export_locations":
+        [], "share_proto": "NFS", "share_network_id": "008f76ad-d8bc-46dc-8ab6-9c364ec6622b",
+        "metadata": {}, "share_server_id": "196115c8-45d7-4cc1-b531-0cf7971def71",
+        "host": "manila-share-netapp-bb98@netapp-multi#aggr_sas01_30010", "volume_type":
+        "default_share_type", "snapshot_id": null, "is_public": false, "project_id":
+        "c60a441e54cd435896a357026aa4050a", "id": "271133e2-c2ad-4268-9792-6798c6d03f61",
+        "size": 1}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:27:58 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/shares/detail?name=fog_share
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:28:04 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '14'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-e6ff78a2-80a5-4c9d-8895-4878c101c0e7
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"shares": []}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:28:06 GMT
+- request:
+    method: get
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/share-networks/detail?name=fog_share_net
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:28:04 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '481'
+      Connection:
+      - keep-alive
+      X-Compute-Request-Id:
+      - req-55673418-d738-4949-8f07-f809026c9bed
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"share_networks": [{"name": "fog_share_net", "segmentation_id": 2277,
+        "created_at": "2016-10-05T07:27:10.969175", "neutron_subnet_id": "f8215b4c-b788-4c56-bfc9-11dce4f88d37",
+        "updated_at": "2016-10-05T07:27:14.597082", "network_type": "vlan", "neutron_net_id":
+        "169636be-3aa3-4b23-8e48-96a81198085f", "ip_version": 4, "nova_net_id": null,
+        "cidr": "10.0.0.0/16", "project_id": "c60a441e54cd435896a357026aa4050a", "id":
+        "008f76ad-d8bc-46dc-8ab6-9c364ec6622b", "description": null}]}'
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:28:06 GMT
+- request:
+    method: delete
+    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/share-networks/008f76ad-d8bc-46dc-8ab6-9c364ec6622b
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 833aba07925148f9bac2bc047e858727
+  response:
+    status:
+      code: 202
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 05 Oct 2016 07:28:04 GMT
+      Content-Type:
+      - text/html; charset=UTF-8
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Openstack-Manila-Api-Version:
+      - '2.0'
+      Vary:
+      - X-OpenStack-Manila-API-Version
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Wed, 05 Oct 2016 07:28:06 GMT
+recorded_with: VCR 3.0.1
