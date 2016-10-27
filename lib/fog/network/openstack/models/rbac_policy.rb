@@ -7,7 +7,6 @@ module Fog
         identity :id
 
         attribute :object_type
-        attribute :object_id
         attribute :tenant_id
         attribute :target_tenant
         attribute :action
