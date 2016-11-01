@@ -116,12 +116,6 @@ module Fog
         request :update_policy
         request :delete_policy
 
-        class Mock
-          include Fog::OpenStack::Core
-          def initialize(options = {})
-          end
-        end
-
         def self.get_api_version(uri, connection_options = {})
           connection = Fog::Core::Connection.new(uri, false, connection_options)
           response = connection.request(:expects => [200],
