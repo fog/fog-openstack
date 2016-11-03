@@ -3,7 +3,7 @@
 require 'fog/openstack'
 require 'pp'
 
-auth_url = "https://example.net:35357/v3/auth"
+auth_url = "https://example.net:35357/v3/auth/tokens"
 username = 'admin@example.net'
 password = 'secret'
 project = 'admin'
