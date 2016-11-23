@@ -16,6 +16,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../compute/openstack', __FILE__)
   end
 
+  module ContainerInfra
+    autoload :OpenStack, File.expand_path('../container_infra/openstack', __FILE__)
+  end
+
   module DNS
     autoload :OpenStack, File.expand_path('../dns/openstack', __FILE__)
 
@@ -121,6 +125,7 @@ module Fog
     service(:dns,                'DNS')
     service(:key,                'KeyManager')
     service(:shared_file_system, 'SharedFileSystem')
+    service(:container_infra,    'ContainerInfra')
 
     @token_cache = {}
 
