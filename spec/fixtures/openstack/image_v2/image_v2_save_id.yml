@@ -1,0 +1,328 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://devstack.openstack.stack:9292/v2/images
+    body:
+      encoding: UTF-8
+      string: '{"name":"original_name","id":"11111111-2222-3333-aaaa-bbbbbbcccce2","property_to_delete":"bar"}'
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      Content-Length:
+      - '599'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Location:
+      - http://devstack.openstack.stack:9292/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2
+      X-Openstack-Request-Id:
+      - req-f1e04a12-da92-4e45-bbe1-e69920de9da4
+      Date:
+      - Fri, 26 Aug 2016 00:36:35 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status": "queued", "property_to_delete": "bar", "name": "original_name",
+        "tags": [], "container_format": null, "created_at": "2016-08-26T00:36:35Z",
+        "size": null, "disk_format": null, "updated_at": "2016-08-26T00:36:35Z", "visibility":
+        "private", "locations": [], "self": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "min_disk": 0, "protected": false, "id": "11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "file": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2/file", "checksum":
+        null, "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778", "virtual_size": null, "min_ram":
+        0, "schema": "/v2/schemas/image"}'
+    http_version:
+  recorded_at: Fri, 26 Aug 2016 00:36:35 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9292/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Length:
+      - '599'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Openstack-Request-Id:
+      - req-1a94bfaf-41b3-4373-b1fe-1c729a3d7937
+      Date:
+      - Fri, 26 Aug 2016 00:36:35 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status": "queued", "property_to_delete": "bar", "name": "original_name",
+        "tags": [], "container_format": null, "created_at": "2016-08-26T00:36:35Z",
+        "size": null, "disk_format": null, "updated_at": "2016-08-26T00:36:35Z", "visibility":
+        "private", "locations": [], "self": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "min_disk": 0, "protected": false, "id": "11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "file": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2/file", "checksum":
+        null, "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778", "virtual_size": null, "min_ram":
+        0, "schema": "/v2/schemas/image"}'
+    http_version:
+  recorded_at: Fri, 26 Aug 2016 00:36:35 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9292/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Length:
+      - '599'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Openstack-Request-Id:
+      - req-b3de5526-6d35-4cf4-8626-67a905417e84
+      Date:
+      - Fri, 26 Aug 2016 00:36:35 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status": "queued", "property_to_delete": "bar", "name": "original_name",
+        "tags": [], "container_format": null, "created_at": "2016-08-26T00:36:35Z",
+        "size": null, "disk_format": null, "updated_at": "2016-08-26T00:36:35Z", "visibility":
+        "private", "locations": [], "self": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "min_disk": 0, "protected": false, "id": "11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "file": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2/file", "checksum":
+        null, "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778", "virtual_size": null, "min_ram":
+        0, "schema": "/v2/schemas/image"}'
+    http_version:
+  recorded_at: Fri, 26 Aug 2016 00:36:35 GMT
+- request:
+    method: patch
+    uri: http://devstack.openstack.stack:9292/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2
+    body:
+      encoding: UTF-8
+      string: '[{"op":"remove","path":"/property_to_delete","value":null},{"op":"add","path":"/property_to_add","value":"bar"},{"op":"replace","path":"/name","value":"updated_name"},{"op":"replace","path":"/property_to_add","value":"bar"}]'
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/openstack-images-v2.1-json-patch
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Length:
+      - '595'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Openstack-Request-Id:
+      - req-604d4b5a-63e3-4e87-bbaa-be3487c80b5d
+      Date:
+      - Fri, 26 Aug 2016 00:36:35 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status": "queued", "name": "updated_name", "property_to_add": "bar",
+        "tags": [], "container_format": null, "created_at": "2016-08-26T00:36:35Z",
+        "size": null, "disk_format": null, "updated_at": "2016-08-26T00:36:36Z", "visibility":
+        "private", "locations": [], "self": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "min_disk": 0, "protected": false, "id": "11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "file": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2/file", "checksum":
+        null, "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778", "virtual_size": null, "min_ram":
+        0, "schema": "/v2/schemas/image"}'
+    http_version:
+  recorded_at: Fri, 26 Aug 2016 00:36:36 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9292/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Length:
+      - '595'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Openstack-Request-Id:
+      - req-241c2c01-ea23-411e-9000-87e0c3a36584
+      Date:
+      - Fri, 26 Aug 2016 00:36:36 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status": "queued", "name": "updated_name", "property_to_add": "bar",
+        "tags": [], "container_format": null, "created_at": "2016-08-26T00:36:35Z",
+        "size": null, "disk_format": null, "updated_at": "2016-08-26T00:36:36Z", "visibility":
+        "private", "locations": [], "self": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "min_disk": 0, "protected": false, "id": "11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "file": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2/file", "checksum":
+        null, "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778", "virtual_size": null, "min_ram":
+        0, "schema": "/v2/schemas/image"}'
+    http_version:
+  recorded_at: Fri, 26 Aug 2016 00:36:36 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9292/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Length:
+      - '595'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Openstack-Request-Id:
+      - req-9bb9a41d-9bb7-42a0-afb2-aeb4ef91cee5
+      Date:
+      - Fri, 26 Aug 2016 00:36:36 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status": "queued", "name": "updated_name", "property_to_add": "bar",
+        "tags": [], "container_format": null, "created_at": "2016-08-26T00:36:35Z",
+        "size": null, "disk_format": null, "updated_at": "2016-08-26T00:36:36Z", "visibility":
+        "private", "locations": [], "self": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "min_disk": 0, "protected": false, "id": "11111111-2222-3333-aaaa-bbbbbbcccce2",
+        "file": "/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2/file", "checksum":
+        null, "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778", "virtual_size": null, "min_ram":
+        0, "schema": "/v2/schemas/image"}'
+    http_version:
+  recorded_at: Fri, 26 Aug 2016 00:36:36 GMT
+- request:
+    method: delete
+    uri: http://devstack.openstack.stack:9292/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Content-Type:
+      - text/html; charset=UTF-8
+      Content-Length:
+      - '0'
+      X-Openstack-Request-Id:
+      - req-80b2da40-db23-4f5c-ad25-a894a1fb7355
+      Date:
+      - Fri, 26 Aug 2016 00:36:37 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Fri, 26 Aug 2016 00:36:37 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9292/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Content-Length:
+      - '79'
+      Content-Type:
+      - text/plain; charset=UTF-8
+      X-Openstack-Request-Id:
+      - req-28577b1e-64c3-463c-b9eb-540fb24ce017
+      Date:
+      - Fri, 26 Aug 2016 00:36:37 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "404 Not Found\n\nNo image found with ID 11111111-2222-3333-aaaa-bbbbbbcccce2\n\n
+        \  "
+    http_version:
+  recorded_at: Fri, 26 Aug 2016 00:36:37 GMT
+recorded_with: VCR 3.0.3

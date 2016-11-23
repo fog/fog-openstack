@@ -26,43 +26,7 @@ Next, create a connection to the Compute Service:
 
 **Note** `openstack_username` and `openstack_tenant` default to `admin` if omitted.
 
-### Optional Connection Parameters
-
-Fog supports passing additional connection parameters to its underlying HTTP library (Excon) using the `:connection_options` parameter.
-
-<table>
-	<tr>
-		<th>Key</th>
-		<th>Description</th>
-	</tr>
-	<tr>
-		<td>:connect_timeout</td>
-		<td>Connection timeout (default: 60 seconds)</td>
-	</tr>
-	<tr>
-		<td>:read_timeout</td>
-		<td>Read timeout for connection (default: 60 seconds)</td>	</tr>
-	<tr>
-		<td>:write_timeout</td>
-		<td>Write timeout for connection (default: 60 seconds)</td>
-	</tr>
-	<tr>
-		<td>:proxy</td>
-		<td>Proxy for HTTP and HTTPS connections</td>
-	</tr>
-	<tr>
-		<td>:ssl_ca_path</td>
-		<td>Path to SSL certificate authorities</td>
-	</tr>
-	<tr>
-		<td>:ssl_ca_file</td>
-		<td>SSL certificate authority file</td>
-	</tr>
-	<tr>
-		<td>:ssl_verify_peer</td>
-		<td>SSL verify peer (default: true)</td>
-	</tr>
-</table>
+Read more about the [Optional Connection Parameters](common/connection_params.md)
 
 
 ## Fog Abstractions
@@ -668,13 +632,5 @@ Example code using Compute can be found [here](https://github.com/fog/fog/tree/m
 
 ## Additional Resources
 
-* [fog.io](http://fog.io/)
-* [Fog rdoc](http://rubydoc.info/gems/fog/)
-* [Fog Github repo](https://github.com/fog/fog)
-* [Fog Github Issues](https://github.com/fog/fog/issues)
-* [Excon Github repo](https://github.com/geemus/excon)
 * [OpenStack Compute API](http://docs.openstack.org/api/openstack-compute/2/content/)
-
-## Support and Feedback
-
-Your feedback is appreciated! If you have specific issues with the **fog** SDK, you should file an [issue via Github](https://github.com/fog/fog/issues).
+* [more resources and feedback](common/resources.md)

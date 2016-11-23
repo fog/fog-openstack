@@ -32,9 +32,12 @@ Next, create a connection to Swift:
 service = Fog::Storage::OpenStack.new({
   :openstack_username  => USERNAME,      # Your OpenStack Username
   :openstack_api_key   => PASSWORD,      # Your OpenStack Password
-  :openstack_auth_url  => 'http://YOUR_OPENSTACK_ENDPOINT:PORT/v2.0/tokens'
+  :openstack_auth_url  => 'http://YOUR_OPENSTACK_ENDPOINT:PORT/v2.0/tokens',
+  :connection_options  => {}
 })
 ```
+
+Read more about the [Optional Connection Parameters](common/connection_params.md)
 
 Alternative regions are specified using the key `:openstack_region `. A list of regions available for Swift can be found by executing the following:
 
@@ -72,46 +75,6 @@ The Storage service supports the following additional parameters:
 <td></td>
 </tr>
 </table>
-
-
-### Optional Connection Parameters
-
-Fog supports passing additional connection parameters to its underlying HTTP library (Excon) using the `:connection_options` parameter.
-
-<table>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-<tr>
-<td>:connect_timeout</td>
-<td>Connection timeout (default: 60 seconds)</td>
-</tr>
-<tr>
-
-</tr>
-<tr>
-<td>:write_timeout</td>
-<td>Write timeout for connection (default: 60 seconds)</td>
-</tr>
-<tr>
-<td>:proxy</td>
-<td>Proxy for HTTP and HTTPS connections</td>
-</tr>
-<tr>
-<td>:ssl_ca_path</td>
-<td>Path to SSL certificate authorities</td>
-</tr>
-<tr>
-<td>:ssl_ca_file</td>
-<td>SSL certificate authority file</td>
-</tr>
-<tr>
-<td>:ssl_verify_peer</td>
-<td>SSL verify peer (default: true)</td>
-
-</table>
-
 
 ## Fog Abstractions
 
@@ -439,14 +402,5 @@ file.destroy
 
 ## Additional Resources
 
-* [fog.io](http://fog.io/)
-* [Fog rdoc](http://rubydoc.info/gems/fog/)
-* [Fog Github repo](https://github.com/fog/fog)
-* [Fog Github Issues](https://github.com/fog/fog/issues)
-* [Excon Github repo](https://github.com/geemus/excon)
 * [Swift API](http://docs.openstack.org/api/openstack-object-storage/1.0/content/index.html)
-
-## Support and Feedback
-
-Your feedback is appreciated! If you have specific issues with the **fog** SDK, you should file an [issue via Github](https://github.com/fog/fog/issues).
-
+* [more resources and feedback](common/resources.md)

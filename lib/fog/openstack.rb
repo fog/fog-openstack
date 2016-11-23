@@ -5,72 +5,99 @@ require 'fog/json'
 require 'fog/openstack/core'
 require 'fog/openstack/errors'
 
-require 'fog/compute/openstack'
-require 'fog/dns/openstack/v1'
-require 'fog/dns/openstack/v2'
-require 'fog/identity/openstack/v2'
-require 'fog/identity/openstack/v3'
-require 'fog/image/openstack/v1'
-require 'fog/image/openstack/v2'
-require 'fog/monitoring/openstack'
-require 'fog/network/openstack'
 require 'fog/planning/openstack'
-require 'fog/storage/openstack'
-require 'fog/volume/openstack/v1'
-require 'fog/volume/openstack/v2'
-require 'fog/key_manager/openstack'
 
 module Fog
+  module Baremetal
+    autoload :OpenStack, File.expand_path('../baremetal/openstack', __FILE__)
+  end
+
   module Compute
     autoload :OpenStack, File.expand_path('../compute/openstack', __FILE__)
   end
 
+  module DNS
+    autoload :OpenStack, File.expand_path('../dns/openstack', __FILE__)
+
+    class OpenStack
+      autoload :V1, File.expand_path('../dns/openstack/v1', __FILE__)
+      autoload :V2, File.expand_path('../dns/openstack/v2', __FILE__)
+    end
+  end
+
   module Identity
     autoload :OpenStack, File.expand_path('../identity/openstack', __FILE__)
+
+    class OpenStack
+      autoload :V2, File.expand_path('../identity/openstack/v2', __FILE__)
+      autoload :V3, File.expand_path('../identity/openstack/v3', __FILE__)
+    end
   end
 
   module Image
     autoload :OpenStack, File.expand_path('../image/openstack', __FILE__)
-  end
 
-  module Metering
-    autoload :OpenStack, File.expand_path('../metering/openstack', __FILE__)
-  end
-
-  module Network
-    autoload :OpenStack, File.expand_path('../network/openstack', __FILE__)
-  end
-
-  module Orchestration
-    autoload :OpenStack, File.expand_path('../orchestration/openstack', __FILE__)
-  end
-
-  module NFV
-    autoload :OpenStack, File.expand_path('../nfv/openstack', __FILE__)
-  end
-
-  module Volume
-    autoload :OpenStack, File.expand_path('../volume/openstack', __FILE__)
-  end
-
-  module Baremetal
-    autoload :OpenStack, File.expand_path('../baremetal/openstack', __FILE__)
+    class OpenStack
+      autoload :V1, File.expand_path('../image/openstack/v1', __FILE__)
+      autoload :V2, File.expand_path('../image/openstack/v2', __FILE__)
+    end
   end
 
   module Introspection
     autoload :OpenStack, File.expand_path('../introspection/openstack', __FILE__)
   end
 
+  module Metering
+    autoload :OpenStack, File.expand_path('../metering/openstack', __FILE__)
+  end
+
+  module Metric
+    autoload :OpenStack, File.expand_path('../metric/openstack', __FILE__)
+  end
+
   module Monitoring
     autoload :OpenStack, File.expand_path('../monitoring/openstack', __FILE__)
   end
 
-  module Workflow
-    autoload :OpenStack, File.expand_path('../workflow/openstack', __FILE__)
+  module Network
+    autoload :OpenStack, File.expand_path('../network/openstack', __FILE__)
   end
 
-  module DNS
-    autoload :OpenStack, File.expand_path('../dns/openstack', __FILE__)
+  module NFV
+    autoload :OpenStack, File.expand_path('../nfv/openstack', __FILE__)
+  end
+
+  module Orchestration
+    autoload :OpenStack, File.expand_path('../orchestration/openstack', __FILE__)
+  end
+
+  module SharedFileSystem
+    autoload :OpenStack, File.expand_path('../shared_file_system/openstack', __FILE__)
+  end
+
+  module Storage
+    autoload :OpenStack, File.expand_path('../storage/openstack', __FILE__)
+  end
+
+  module Volume
+    autoload :OpenStack, File.expand_path('../volume/openstack', __FILE__)
+
+    class OpenStack
+      autoload :V1, File.expand_path('../volume/openstack/v1', __FILE__)
+      autoload :V2, File.expand_path('../volume/openstack/v2', __FILE__)
+    end
+  end
+
+  module Workflow
+    autoload :OpenStack, File.expand_path('../workflow/openstack', __FILE__)
+
+    class OpenStack
+      autoload :V2, File.expand_path('../workflow/openstack/v2', __FILE__)
+    end
+  end
+
+  module KeyManager
+    autoload :OpenStack, File.expand_path('../key_manager/openstack', __FILE__)
   end
 
   module KeyManager
@@ -80,22 +107,24 @@ module Fog
   module OpenStack
     extend Fog::Provider
 
-    service(:compute, 'Compute')
-    service(:image, 'Image')
-    service(:identity, 'Identity')
-    service(:network, 'Network')
-    service(:storage, 'Storage')
-    service(:volume, 'Volume')
-    service(:metering, 'Metering')
-    service(:orchestration, 'Orchestration')
-    service(:nfv, 'NFV')
-    service(:baremetal, 'Baremetal')
-    service(:planning, 'Planning')
-    service(:introspection, 'Introspection')
-    service(:monitoring,    'Monitoring')
-    service(:workflow,      'Workflow')
-    service(:dns,           'DNS')
-    service(:key,           'KeyManager')
+    service(:compute,            'Compute')
+    service(:image,              'Image')
+    service(:identity,           'Identity')
+    service(:network,            'Network')
+    service(:storage,            'Storage')
+    service(:volume,             'Volume')
+    service(:metering,           'Metering')
+    service(:metric,             'Metric')
+    service(:orchestration,      'Orchestration')
+    service(:nfv,                'NFV')
+    service(:baremetal,          'Baremetal')
+    service(:planning,           'Planning')
+    service(:introspection,      'Introspection')
+    service(:monitoring,         'Monitoring')
+    service(:workflow,           'Workflow')
+    service(:dns,                'DNS')
+    service(:key,                'KeyManager')
+    service(:shared_file_system, 'SharedFileSystem')
 
     @token_cache = {}
 

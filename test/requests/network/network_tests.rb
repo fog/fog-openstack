@@ -1,76 +1,96 @@
 require 'test_helper'
+require 'helpers/network_helper.rb'
 
 describe "Fog::Network[:openstack] | network requests" do
-  before do
-    @network_format = {
-      'id'             => String,
-      'name'           => String,
-      'subnets'        => Array,
-      'shared'         => Fog::Boolean,
-      'status'         => String,
-      'admin_state_up' => Fog::Boolean,
-      'tenant_id'      => String
-    }
-
-    @network_format_extensions = {
-      'router:external'           => Fog::Boolean,
-      'provider:network_type'     => String,
-      'provider:physical_network' => Fog::Nullable::String,
-      'provider:segmentation_id'  => Integer
-    }
-  end
-
   describe "success" do
-    before do
-      attributes = {
-        :name           => 'net_name',
-        :shared         => false,
-        :admin_state_up => true,
-        :tenant_id      => 'tenant_id'
+    let(:network_format) do
+      {
+        "id"                    => String,
+        "subnets"               => Array,
+        "status"                => String,
+        "name"                  => String,
+        "shared"                => Fog::Boolean,
+        "admin_state_up"        => Fog::Boolean,
+        "qos_policy_id"         => Fog::Nullable::String,
+        "port_security_enabled" => Fog::Boolean,
+        "tenant_id"             => String,
       }
+    end
 
-      @network_create = network.create_network(attributes).body
+    let(:network_extentions_format) do
+      {
+        "router:external"           => Fog::Boolean,
+        "provider:network_type"     => String,
+        "provider:physical_network" => Fog::Nullable::String,
+        "provider:segmentation_id"  => Integer,
+      }
+    end
+
+    let(:created_network) do
+      attributes = {
+        :name                  => "net_name1",
+        :shared                => false,
+        :admin_state_up        => true,
+        :tenant_id             => "tenant_id",
+        :qos_policy_id         => "qos_policy_id1",
+        :port_security_enabled => false
+      }
+      network.create_network(attributes).body
+    end
+
+    before do
+      created_network
     end
 
     it "#create_network" do
-      @network_create.must_match_schema('network' => @network_format)
+      created_network.must_match_schema("network" => network_format)
     end
 
     it "#create_network+provider extensions" do
       attributes = {
-        :name                     => 'net_name',
+        :name                     => "net_name2",
         :shared                   => false,
         :admin_state_up           => true,
-        :tenant_id                => 'tenant_id',
-        :router_external          => true,
+        :tenant_id                => "tenant_id",
+        :qos_policy_id            => "qos_policy_id1",
+        :port_security_enabled    => false,
         # local, gre, vlan. Depends on the provider.
-        # May rise an exception if the network_type isn't valid:
+        # May rise an exception if the network_type isn"t valid:
         # QuantumError: "Invalid input for operation: provider:physical_network"
-        :provider_network_type    => 'gre',
+        :provider_network_type    => "gre",
         :provider_segmentation_id => 22,
+        :router_external          => true,
       }
 
       network.create_network(attributes).body.
-        must_match_schema('network' => @network_format.merge(@network_format_extensions))
+        must_match_schema('network' => network_format.merge(network_extentions_format))
     end
 
     it "#list_networks" do
       network.list_networks.body.
-        must_match_schema('networks' => [@network_format])
+        must_match_schema('networks' => [network_format])
     end
 
     it "#get_network" do
-      network_id = network.networks.all.first.id
+      network_id = created_network["network"]["id"]
       network.get_network(network_id).body.
-        must_match_schema('network' => @network_format)
+        must_match_schema('network' => network_format)
     end
 
     it "#update_network" do
+      attributes = {
+        :name                  => 'net_name',
+        :shared                => false,
+        :admin_state_up        => true,
+        :qos_policy_id         => 'new_policy_id',
+        :port_security_enabled => true,
+        :router_external       => false
+      }
+
       network_id = network.networks.all.first.id
-      attributes = {:name => 'net_name', :shared => false,
-                    :admin_state_up => true}
+      network_update_extentions_format = {"router:external" => Fog::Boolean}
       network.update_network(network_id, attributes).body.
-        must_match_schema('network' => @network_format)
+        must_match_schema('network' => network_format.merge(network_update_extentions_format))
     end
 
     it "#delete_network" do

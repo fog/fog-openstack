@@ -20,6 +20,8 @@ module Fog
       ## MODELS
       #
       model_path 'fog/network/openstack/models'
+      model       :extension
+      collection  :extensions
       model       :network
       collection  :networks
       model       :port
@@ -56,6 +58,10 @@ module Fog
       ## REQUESTS
       #
       request_path 'fog/network/openstack/requests'
+
+      # Neutron Extensions
+      request :list_extensions
+      request :get_extension
 
       # Network CRUD
       request :list_networks
@@ -210,6 +216,7 @@ module Fog
       request :delete_security_group
       request :get_security_group
       request :list_security_groups
+      request :update_security_group
 
       # Security Group Rules
       request :create_security_group_rule
@@ -229,11 +236,22 @@ module Fog
       class Mock
         def self.data
           @data ||= Hash.new do |hash, key|
-            network_id = Fog::UUID.uuid
-            subnet_id  = Fog::UUID.uuid
-            tenant_id  = Fog::Mock.random_hex(8)
+            qos_policy_id = Fog::UUID.uuid
+            network_id   = Fog::UUID.uuid
+            extension_id = Fog::UUID.uuid
+            subnet_id    = Fog::UUID.uuid
+            tenant_id    = Fog::Mock.random_hex(8)
 
             hash[key] = {
+              :extensions             => {
+                extension_id => {
+                  'id'          => extension_id,
+                  'alias'       => 'dvr',
+                  'description' => 'Enables configuration of Distributed Virtual Routers.',
+                  'links'       => [],
+                  'name'        => 'Distributed Virtual Router'
+                }
+              },
               :networks               => {
                 network_id                => {
                   'id'                    => network_id,
@@ -242,18 +260,24 @@ module Fog
                   'shared'                => true,
                   'status'                => 'ACTIVE',
                   'tenant_id'             => tenant_id,
-                  'provider_network_type' => 'vlan',
+                  'provider:network:type' => 'vlan',
                   'router:external'       => false,
                   'admin_state_up'        => true,
+                  'qos_policy_id'         => qos_policy_id,
+                  'port_security_enabled' => true
                 },
                 'e624a36d-762b-481f-9b50-4154ceb78bbb' => {
-                  'id'             => 'e624a36d-762b-481f-9b50-4154ceb78bbb',
-                  'name'           => 'network_1',
-                  'subnets'        => ['2e4ec6a4-0150-47f5-8523-e899ac03026e'],
-                  'shared'         => false,
-                  'status'         => 'ACTIVE',
-                  'admin_state_up' => true,
-                  'tenant_id'      => 'f8b26a6032bc47718a7702233ac708b9',
+                  'id'                    => 'e624a36d-762b-481f-9b50-4154ceb78bbb',
+                  'name'                  => 'network_1',
+                  'subnets'               => ['2e4ec6a4-0150-47f5-8523-e899ac03026e'],
+                  'shared'                => false,
+                  'status'                => 'ACTIVE',
+                  'tenant_id'             => 'f8b26a6032bc47718a7702233ac708b9',
+                  'provider:network:type' => 'vlan',
+                  'router:external'       => false,
+                  'admin_state_up'        => true,
+                  'qos_policy_id'         => qos_policy_id,
+                  'port_security_enabled' => true
                 }
               },
               :ports                  => {},
