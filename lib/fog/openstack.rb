@@ -96,6 +96,10 @@ module Fog
     end
   end
 
+  module KeyManager
+    autoload :OpenStack, File.expand_path('../key_manager/openstack', __FILE__)
+  end
+
   module OpenStack
     extend Fog::Provider
 
@@ -115,6 +119,7 @@ module Fog
     service(:monitoring,         'Monitoring')
     service(:workflow,           'Workflow')
     service(:dns,                'DNS')
+    service(:key,                'KeyManager')
     service(:shared_file_system, 'SharedFileSystem')
 
     @token_cache = {}
