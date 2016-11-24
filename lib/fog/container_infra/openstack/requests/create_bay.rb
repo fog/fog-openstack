@@ -4,7 +4,7 @@ module Fog
       class Real
         def create_bay(params)
           request(
-            :expects => [202, 200],
+            :expects => [202, 201, 200],
             :method  => 'POST',
             :path    => "bays",
             :body    => Fog::JSON.encode(params)
