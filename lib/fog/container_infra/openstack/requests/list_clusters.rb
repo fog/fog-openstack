@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => [200],
             :method  => 'GET',
-            :path    => "clusters"
+            :path    => "clusters/detail"
           )
         end
       end
