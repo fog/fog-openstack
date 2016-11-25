@@ -34,7 +34,6 @@ params = {
   master_flavor_id:    'm1.small',
   flavor_id:           'm1.small',
   coe:                 'swarm',
-  docker_volume_size:  3
   docker_volume_size:  3,
   dns_nameserver:      '8.8.8.8',
   tls_disabled:        true
