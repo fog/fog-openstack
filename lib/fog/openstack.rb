@@ -55,6 +55,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../metering/openstack', __FILE__)
   end
 
+  module Metric
+    autoload :OpenStack, File.expand_path('../metric/openstack', __FILE__)
+  end
+
   module Monitoring
     autoload :OpenStack, File.expand_path('../monitoring/openstack', __FILE__)
   end
@@ -106,6 +110,7 @@ module Fog
     service(:storage,            'Storage')
     service(:volume,             'Volume')
     service(:metering,           'Metering')
+    service(:metric,             'Metric')
     service(:orchestration,      'Orchestration')
     service(:nfv,                'NFV')
     service(:baremetal,          'Baremetal')
@@ -114,8 +119,8 @@ module Fog
     service(:monitoring,         'Monitoring')
     service(:workflow,           'Workflow')
     service(:dns,                'DNS')
-    service(:shared_file_system, 'SharedFileSystem')
     service(:key,                'KeyManager')
+    service(:shared_file_system, 'SharedFileSystem')
 
     @token_cache = {}
 

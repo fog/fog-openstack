@@ -7,7 +7,7 @@ module Fog
             user_id = options.delete('user_id') || options.delete(:user_id)
 
             path = if user_id
-                     "users/#{user_id}groups"
+                     "users/#{user_id}/groups"
                    else
                      "groups"
                    end

@@ -17,10 +17,7 @@ module Fog
           end
 
           def find_by_id(id)
-            image_hash = service.get_image_by_id(id).body
-            Fog::Image::OpenStack::V2::Image.new(
-              image_hash.merge(:service => service)
-            )
+            new(service.get_image_by_id(id).body)
           end
 
           alias get find_by_id

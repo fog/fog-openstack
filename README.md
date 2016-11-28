@@ -340,11 +340,42 @@ end
 Excon.get cirros_location, response_block: streamer
 image_out.close
 
-image.images.create name:             "cirros",
-                    disk_format:      "qcow2",
-                    container_format: "bare"
+image_handle = image.images.create name:             "cirros",
+                                   disk_format:      "qcow2",
+                                   container_format: "bare"
 
-image.upload_data File.binread(image_out.path)
+# => <Fog::Image::OpenStack::V2::Image
+#      id="67c4d02c-5601-4619-bd14-d2f7f96a046c",
+#      name="cirros",
+#      visibility="private",
+#      tags=[],
+#      self="/v2/images/67c4d02c-5601-4619-bd14-d2f7f96a046c",
+#      size=nil,
+#      disk_format="qcow2",
+#      container_format="bare",
+#      id="67c4d02c-5601-4619-bd14-d2f7f96a046c",
+#      checksum=nil,
+#      self="/v2/images/67c4d02c-5601-4619-bd14-d2f7f96a046c",
+#      file="/v2/images/67c4d02c-5601-4619-bd14-d2f7f96a046c/file",
+#      min_disk=0,
+#      created_at="2016-10-31T03:38:28Z",
+#      updated_at="2016-10-31T03:38:28Z",
+#      protected=false,
+#      status="queued",
+#      min_ram=0,
+#      owner="6b9ec8080b8443c5afe2267a39b9bf74",
+#      properties=nil,
+#      metadata=nil,
+#      location=nil,
+#      network_allocated=nil,
+#      base_image_ref=nil,
+#      image_type=nil,
+#      instance_uuid=nil,
+#      user_id=nil
+#    >
+
+
+image_handle.upload_data File.binread(image_out.path)
 
 ```
 

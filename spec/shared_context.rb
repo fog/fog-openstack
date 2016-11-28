@@ -19,7 +19,18 @@ require 'vcr'
 #
 
 class OpenStackVCR
-  attr_reader :service, :os_auth_url, :project_name
+  attr_reader :service,
+              :os_auth_url,
+              :project_name,
+              :user_id,
+              :username,
+              :password,
+              :domain_name,
+              :domain_id,
+              :region,
+              :region_other,
+              :interface
+
   # This method should be called in a "before :all" call to set everything up.
   # A properly configured instance of the service class (e.g.
   # Fog::Volume::OpenStack) is then made available in @service.
@@ -81,31 +92,37 @@ class OpenStackVCR
     VCR.use_cassette('common_setup') do
       Fog::OpenStack.clear_token_cache
 
-      region        = 'RegionOne'
-      password      = 'password'
-      username      = 'admin'
+      @region        = 'RegionOne'
+      @region_other  = 'europe'
+      @password      = 'password'
+      @user_id       = '205e0e39a2534743b517ed0aa2fbcda7'
+      @username      = 'admin'
       # keep in sync with the token obtained in the "common_setup.yml"
-      token         = '5c28403cf669414d8ee179f1e7f205ee'
-      interface     = 'adminURL'
-      domain_name   = 'Default'
-      @project_name = 'admin'
+      @token         = '5c28403cf669414d8ee179f1e7f205ee'
+      @interface     = 'adminURL'
+      @domain_id     = 'default'
+      @domain_name   = 'Default'
+      @project_name  = 'admin'
 
       unless use_recorded
-        region        = ENV['OS_REGION_NAME']       || options[:region_name]  || region
-        password      = ENV['OS_PASSWORD']          || options[:password]     || password
-        username      = ENV['OS_USERNAME']          || options[:username]     || username
-        token         = ENV['OS_TOKEN']             || options[:token]        || token
-        interface     = ENV['OS_INTERFACE']         || options[:interface]    || interface
-        domain_name   = ENV['OS_USER_DOMAIN_NAME']  || options[:domain_name]  || domain_name
-        @project_name = ENV['OS_PROJECT_NAME']      || options[:project_name] || @project_name
+        @region        = ENV['OS_REGION_NAME']       || options[:region_name]  || @region
+        @region_other  = ENV['OS_REGION_OTHER']      || options[:region_other] || @region_other
+        @password      = ENV['OS_PASSWORD']          || options[:password]     || @password
+        @username      = ENV['OS_USERNAME']          || options[:username]     || @username
+        @user_id       = ENV['OS_USER_ID']           || options[:user_id]      || @user_id
+        @token         = ENV['OS_TOKEN']             || options[:token]        || @token
+        @interface     = ENV['OS_INTERFACE']         || options[:interface]    || @interface
+        @domain_name   = ENV['OS_USER_DOMAIN_NAME']  || options[:domain_name]  || @domain_name
+        @domain_id     = ENV['OS_USER_DOMAIN_ID']    || options[:domain_id]    || @domain_id
+        @project_name  = ENV['OS_PROJECT_NAME']      || options[:project_name] || @project_name
       end
 
       if @service_class == Fog::Identity::OpenStack::V3 || @os_auth_url.end_with?('/v3')
         connection_options = {
           :openstack_auth_url      => "#{@os_auth_url}/auth/tokens",
-          :openstack_region        => region,
-          :openstack_domain_name   => domain_name,
-          :openstack_endpoint_type => interface,
+          :openstack_region        => @region,
+          :openstack_domain_name   => @domain_name,
+          :openstack_endpoint_type => @interface,
           :openstack_cache_ttl     => 0
         }
         connection_options[:openstack_project_name] = @project_name if @with_project_scope
@@ -113,7 +130,7 @@ class OpenStackVCR
       else
         connection_options = {
           :openstack_auth_url  => "#{@os_auth_url}/tokens",
-          :openstack_region    => region,
+          :openstack_region    => @region,
           :openstack_tenant    => @project_name,
           :openstack_cache_ttl => 0
           # FIXME: Identity V3 not properly supported by other services yet
@@ -123,10 +140,10 @@ class OpenStackVCR
       end
 
       if @with_token_auth
-        connection_options[:openstack_auth_token] = token
+        connection_options[:openstack_auth_token] = @token
       else
-        connection_options[:openstack_username] = username
-        connection_options[:openstack_api_key]  = password
+        connection_options[:openstack_username] = @username
+        connection_options[:openstack_api_key]  = @password
       end
 
       @service = @service_class.new(connection_options)
