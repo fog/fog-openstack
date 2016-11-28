@@ -12,6 +12,7 @@ module Fog
           attribute :display_description
           attribute :metadata
           attribute :force
+          attribute :size
 
           def save
             requires :display_name

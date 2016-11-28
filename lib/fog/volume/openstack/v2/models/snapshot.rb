@@ -12,6 +12,7 @@ module Fog
           attribute :description
           attribute :metadata
           attribute :force
+          attribute :size
 
           def save
             requires :name
