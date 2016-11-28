@@ -2,6 +2,7 @@ module Fog
   module SharedFileSystem
     class OpenStack < Fog::Service
       SUPPORTED_VERSIONS = /v2(\.0)*/
+      SUPPORTED_MICROVERSION = '2.15'.freeze
 
       requires :openstack_auth_url
       recognizes :openstack_auth_token, :openstack_management_url,
@@ -22,6 +23,8 @@ module Fog
       collection  :shares
       model       :snapshot
       collection  :snapshots
+      model       :share_access_rule
+      collection  :share_access_rules
 
       request_path 'fog/shared_file_system/openstack/requests'
       # share networks
@@ -39,6 +42,12 @@ module Fog
       request :create_share
       request :update_share
       request :delete_share
+      request :share_action
+      request :grant_share_access
+      request :revoke_share_access
+      request :list_share_access_rules
+      request :extend_share
+      request :shrink_share
 
       # snapshots
       request :list_snapshots
@@ -189,6 +198,18 @@ module Fog
                   "id"          => "086a1aa6-c425-4ecd-9612-391a3b1b9375",
                   "size"        => 1
                 }
+              ],
+              :access_rules          => [
+                {
+                  "share_id"     => "406ea93b-32e9-4907-a117-148b3945749f",
+                  "created_at"   => "2015-09-07T09:14:48.000000",
+                  "updated_at"   => '',
+                  "access_type"  => "ip",
+                  "access_to"    => "0.0.0.0/0",
+                  "access_level" => "rw",
+                  "access_key"   => '',
+                  "id"           => "a25b2df3-90bd-4add-afa6-5f0dbbd50452"
+                }
               ]
             }
           end
@@ -259,6 +280,7 @@ module Fog
 
           authenticate
           set_api_path
+          set_microversion
 
           @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
@@ -271,6 +293,32 @@ module Fog
                                                               @auth_token,
                                                               @connection_options)
           end
+        end
+
+        def set_microversion
+          @microversion = Fog::OpenStack.get_supported_microversion(
+            SUPPORTED_VERSIONS,
+            @openstack_management_uri,
+            @auth_token,
+            @connection_options
+          ).to_s
+
+          if microversion_newer_than?(SUPPORTED_MICROVERSION)
+            @microversion = SUPPORTED_MICROVERSION
+          end
+        end
+
+        def microversion_newer_than?(version)
+          Gem::Version.new(version) < Gem::Version.new(@microversion)
+        end
+
+        def request(options = {})
+          options[:headers] = {'X-Openstack-Manila-Api-Version' => @microversion} unless @microversion.empty?
+          super(options)
+        end
+
+        def action_prefix
+          microversion_newer_than?('2.6') ? '' : 'os-'
         end
       end
     end
