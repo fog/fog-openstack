@@ -1,6 +1,12 @@
 module Fog
   module Storage
     class OpenStack
+      class Mock
+        def get_object_http_url(container, object, expires, options = {})
+          fail "Mock Not Implemented (#get_object_http_url) in: #{__FILE__}:#{__LINE__}"
+        end
+      end
+
       class Real
         # Get an expiring object http url
         #

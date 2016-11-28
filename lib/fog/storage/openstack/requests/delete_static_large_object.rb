@@ -1,6 +1,12 @@
 module Fog
   module Storage
     class OpenStack
+      class Mock
+        def delete_static_large_object(container, object, options = {})
+          fail "Mock Not Implemented (#delete_static_large_object) in: #{__FILE__}:#{__LINE__}"
+        end
+      end
+
       class Real
         # Delete a static large object.
         #

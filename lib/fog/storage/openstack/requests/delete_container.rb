@@ -1,6 +1,12 @@
 module Fog
   module Storage
     class OpenStack
+      class Mock
+        def delete_container(name)
+          fail "Mock Not Implemented (#delete_container) in: #{__FILE__}:#{__LINE__}"
+        end
+      end
+
       class Real
         # Delete an existing container
         #

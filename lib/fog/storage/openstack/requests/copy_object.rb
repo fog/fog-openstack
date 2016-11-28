@@ -1,6 +1,27 @@
 module Fog
   module Storage
     class OpenStack
+      class Mock
+        def copy_object(source_container_name, source_object_name, target_container_name, target_object_name, options = {})
+          source_container = mock_container!(source_container_name)
+          source_object = source_container.mock_object!(source_object_name)
+
+          target_container = mock_container!(target_container_name)
+          target_object = target_container.add_object(target_object_name, source_object.dup)
+
+          response = Excon::Response.new
+
+          if source_object && target_container
+            response.status = 200
+          else
+            response.status = 404
+            raise(Excon::Errors.status_error({:expects => 200}, response))
+          end
+
+          response
+        end
+      end
+
       class Real
         # Copy object
         #
