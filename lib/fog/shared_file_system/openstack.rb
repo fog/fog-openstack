@@ -25,6 +25,8 @@ module Fog
       collection  :snapshots
       model       :share_access_rule
       collection  :share_access_rules
+      model       :share_export_location
+      collection  :share_export_locations
 
       request_path 'fog/shared_file_system/openstack/requests'
       # share networks
@@ -46,6 +48,7 @@ module Fog
       request :grant_share_access
       request :revoke_share_access
       request :list_share_access_rules
+      request :list_share_export_locations
       request :extend_share
       request :shrink_share
 
