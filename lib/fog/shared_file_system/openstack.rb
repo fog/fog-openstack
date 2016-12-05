@@ -25,6 +25,8 @@ module Fog
       collection  :snapshots
       model       :share_access_rule
       collection  :share_access_rules
+      model       :share_export_location
+      collection  :share_export_locations
 
       request_path 'fog/shared_file_system/openstack/requests'
       # share networks
@@ -46,6 +48,7 @@ module Fog
       request :grant_share_access
       request :revoke_share_access
       request :list_share_access_rules
+      request :list_share_export_locations
       request :extend_share
       request :shrink_share
 
@@ -199,6 +202,23 @@ module Fog
                   "size"        => 1
                 }
               ],
+              :export_locations      => [
+                {
+                  "path"              => "10.254.0.3:/shares/share-e1c2d35e-fe67-4028-ad7a-45f668732b1d",
+                  "share_instance_id" => "e1c2d35e-fe67-4028-ad7a-45f668732b1d",
+                  "is_admin_only"     => false,
+                  "id"                => "b6bd76ce-12a2-42a9-a30a-8a43b503867d",
+                  "preferred"         => false
+                },
+                {
+                  "path"              => "10.0.0.3:/shares/share-e1c2d35e-fe67-4028-ad7a-45f668732b1d",
+                  "share_instance_id" => "e1c2d35e-fe67-4028-ad7a-45f668732b1d",
+                  "is_admin_only"     => true,
+                  "id"                => "6921e862-88bc-49a5-a2df-efeed9acd583",
+                  "preferred"         => false
+                }
+              ],
+                 
               :access_rules          => [
                 {
                   "share_id"     => "406ea93b-32e9-4907-a117-148b3945749f",
