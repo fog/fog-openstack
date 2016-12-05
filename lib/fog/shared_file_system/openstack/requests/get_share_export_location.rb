@@ -18,7 +18,7 @@ module Fog
         def get_share_export_location(id)
           response = Excon::Response.new
           response.status = 200
-          share_export_location = data[:share_export_location]
+          share_export_location = data[:export_locations].first
           share_export_location['id'] = id
           response.body = share_export_location
           response

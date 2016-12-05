@@ -18,13 +18,7 @@ module Fog
         def list_share_export_locations(share_id)
           response = Excon::Response.new
           response.status = 200
-
-          locations = data[:export_locations]
-          locations.each do |location|
-            location[:share_instance_id] = share_id
-          end
-
-          response.body = {'export_locations' => locations}
+          response.body = {'export_locations' => data[:export_locations]}
           response
         end
       end
