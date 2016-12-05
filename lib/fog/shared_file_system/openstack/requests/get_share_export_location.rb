@@ -2,6 +2,9 @@ module Fog
   module SharedFileSystem
     class OpenStack
       class Real
+        # For older versions v1.0-2.8 the export locations are responsed as an attribute of share (export_locations). 
+        # For newer API versions (>= 2.9) it is available in separate APIs.
+        # This method returns the export location detail.
         def get_share_export_location(share_id,export_location_id)
           request(
             :expects => 200,
