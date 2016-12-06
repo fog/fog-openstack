@@ -21,7 +21,7 @@ describe Fog::Image::OpenStack do
       @service.images.all(:name => image_name).each(&:destroy)
     end
     # Check that the deletion worked
-    proc { @service.images.find_by_id image_id }.must_raise Fog::Image::OpenStack::NotFound if image_id
+    proc { @service.images.find_by_id(image_id).must_equal nil } if image_id
     @service.images.all(:name => image_name).length.must_equal 0 if image_name
   end
 

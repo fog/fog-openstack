@@ -18,6 +18,8 @@ module Fog
 
           def find_by_id(id)
             new(service.get_image_by_id(id).body)
+          rescue Fog::Image::OpenStack::NotFound
+            nil
           end
 
           alias get find_by_id
