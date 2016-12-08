@@ -332,4 +332,19 @@ describe Fog::Image::OpenStack do
       skip 'Creates, lists & gets tasks: to be implemented'
     end
   end
+
+  describe 'find_by_id' do
+    it 'finds image' do
+      existing_image_id = 'fe05659e-d433-4e09-aa78-19e0b7f5e497'
+      VCR.use_cassette('images_v2_find_by_id') do
+        @service.images.find_by_id(existing_image_id).id.must_equal existing_image_id
+      end
+    end
+
+    it 'returns nil when image is not found' do
+      VCR.use_cassette('images_v2_find_by_id') do
+        assert_nil @service.images.find_by_id('11111111-2222-3333-aaaa-bbbbbbcccce2')
+      end
+    end
+  end
 end

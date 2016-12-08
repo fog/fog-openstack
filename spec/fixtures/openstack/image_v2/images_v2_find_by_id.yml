@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9292/v2/images/fe05659e-d433-4e09-aa78-19e0b7f5e497
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Length:
+      - '563'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Openstack-Request-Id:
+      - req-3ff0af92-827c-4e9d-bf1b-da27d93e4acb
+      Date:
+      - Thu, 25 Aug 2016 17:09:02 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status": "queued", "name": "foobar", "tags": [], "container_format":
+        null, "created_at": "2016-08-25T17:09:00Z", "size": null, "disk_format": null,
+        "updated_at": "2016-08-25T17:09:00Z", "visibility": "private", "locations":
+        [], "self": "/v2/images/fe05659e-d433-4e09-aa78-19e0b7f5e497", "min_disk":
+        0, "protected": false, "id": "fe05659e-d433-4e09-aa78-19e0b7f5e497", "file":
+        "/v2/images/fe05659e-d433-4e09-aa78-19e0b7f5e497/file", "checksum": null,
+        "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778", "virtual_size": null, "min_ram":
+        0, "schema": "/v2/schemas/image"}'
+    http_version:
+  recorded_at: Thu, 25 Aug 2016 17:09:02 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:9292/v2/images/11111111-2222-3333-aaaa-bbbbbbcccce2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Content-Length:
+      - '79'
+      Content-Type:
+      - text/plain; charset=UTF-8
+      X-Openstack-Request-Id:
+      - req-28577b1e-64c3-463c-b9eb-540fb24ce017
+      Date:
+      - Fri, 26 Aug 2016 00:36:37 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "404 Not Found\n\nNo image found with ID 11111111-2222-3333-aaaa-bbbbbbcccce2\n\n
+        \  "
+    http_version:
+  recorded_at: Fri, 26 Aug 2016 00:36:37 GMT
+recorded_with: VCR 3.0.3
