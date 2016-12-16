@@ -28,6 +28,8 @@ module Fog
       collection  :ports
       model       :subnet
       collection  :subnets
+      model       :subnet_pool
+      collection  :subnet_pools
       model       :floating_ip
       collection  :floating_ips
       model       :router
@@ -83,6 +85,13 @@ module Fog
       request :delete_subnet
       request :get_subnet
       request :update_subnet
+
+      # Subnet Pools CRUD
+      request :list_subnet_pools
+      request :create_subnet_pool
+      request :delete_subnet_pool
+      request :get_subnet_pool
+      request :update_subnet_pool
 
       # FloatingIp CRUD
       request :list_floating_ips
@@ -296,6 +305,7 @@ module Fog
                   'tenant_id'        => tenant_id,
                 }
               },
+              :subnet_pools           => {},
               :floating_ips           => {},
               :routers                => {},
               :lb_pools               => {},
