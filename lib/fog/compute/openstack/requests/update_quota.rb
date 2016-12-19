@@ -3,7 +3,6 @@ module Fog
     class OpenStack
       class Real
         def update_quota(tenant_id, options = {})
-          options['tenant_id'] = tenant_id
           request(
             :body    => Fog::JSON.encode('quota_set' => options),
             :expects => 200,
