@@ -1,0 +1,100 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: http://devstack.openstack.stack:9292/v1/images/ea20c966-d2fb-4287-a2eb-7bece9af4263
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Length:
+      - '0'
+      X-Image-Meta-Checksum:
+      - 8a40c862b5735975d82605c1dd395796',
+      X-Image-Meta-Container_format:
+      - aki
+      X-Image-Meta-Created_at:
+      - '2016-01-06T03:22:20.000000'
+      X-Image-Meta-Deleted:
+      - 'False'
+      X-Image-Meta-Disk_format:
+      - aki
+      X-Image-Meta-Id:
+      - ea20c966-d2fb-4287-a2eb-7bece9af4263
+      X-Image-Meta-Is_public:
+      - 'True'
+      X-Image-Meta-Min_disk:
+      - '0'
+      X-Image-Meta-Min_ram:
+      - '0'
+      X-Image-Meta-Name:
+      - cirros-0.3.4-x86_64-uec-kernel
+      X-Image-Meta-Owner:
+      - 13cc6052265b41529e2fd0fc461fa8ef
+      X-Image-Meta-Protected:
+      - 'False'
+      X-Image-Meta-Size:
+      - '4979632'
+      X-Image-Meta-Status:
+      - deactivated
+      X-Image-Meta-Updated_at:
+      - '2016-02-25T03:02:05.000000'
+      X-Openstack-Request-Id:
+      - req-3ff0af92-827c-4e9d-bf1b-da27d93e4acb
+      Date:
+      - Thu, 25 Aug 2016 17:09:02 GMT
+      Connection:
+      - close
+    body: ''
+    http_version:
+  recorded_at: Thu, 25 Aug 2016 17:09:02 GMT
+- request:
+    method: head
+    uri: http://devstack.openstack.stack:9292/v1/images/non-existing-id
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.42.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 1e843e1adc5342dab74687f6b359185c
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Content-Length:
+      - '79'
+      Content-Type:
+      - text/plain; charset=UTF-8
+      X-Openstack-Request-Id:
+      - req-28577b1e-64c3-463c-b9eb-540fb24ce017
+      Date:
+      - Fri, 26 Aug 2016 00:36:37 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "404 Not Found\n\nNo image found with ID 11111111-2222-3333-aaaa-bbbbbbcccce2\n\n
+        \  "
+    http_version:
+  recorded_at: Fri, 26 Aug 2016 00:36:37 GMT
+recorded_with: VCR 3.0.3
