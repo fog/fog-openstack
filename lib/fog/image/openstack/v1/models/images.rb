@@ -23,7 +23,12 @@ module Fog
           end
 
           def find_by_id(id)
-            all.find { |image| image.id == id }
+            marker = 'X-Image-Meta-'
+            params = service.get_image_by_id(id).headers.select{|h,_| h.include?(marker) }
+            params = params.map{|k,v| [k.gsub(marker,'').downcase, convert_to_type(v)]}
+            new(Hash[params])
+          rescue Fog::Image::OpenStack::NotFound
+            nil
           end
           alias get find_by_id
 
@@ -61,6 +66,23 @@ module Fog
           def find_attribute(attribute, value)
             attribute = attribute.to_s.gsub("find_by_", "")
             load(service.list_public_images_detailed(attribute, value).body['images'])
+          end
+
+          private
+
+          def convert_to_type(v)
+            case v
+            when /^\d+$/
+              v.to_i
+            when 'True'
+              true
+            when 'False'
+              false
+            when /^\d\d\d\d\-\d\d\-\d\dT/
+              ::Time.parse(v)
+            else
+              v
+            end
           end
         end
       end
