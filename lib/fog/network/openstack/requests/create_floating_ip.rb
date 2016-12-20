@@ -9,7 +9,7 @@ module Fog
             }
           }
 
-          vanilla_options = [:port_id, :tenant_id, :fixed_ip_address, :floating_ip_address]
+          vanilla_options = [:port_id, :tenant_id, :fixed_ip_address, :floating_ip_address, :subnet_id]
           vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['floatingip'][key] = options[key]
           end
