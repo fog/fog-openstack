@@ -9,7 +9,7 @@ module Fog
               'email' => email
             }
 
-            vanilla_options = [:ttl, :description, :type, :masters]
+            vanilla_options = [:ttl, :description, :type, :masters, :attributes]
 
             vanilla_options.select { |o| options[o] }.each do |key|
               data[key] = options[key]
