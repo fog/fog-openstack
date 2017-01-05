@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => 200,
             :method  => 'GET',
-            :path    => "os-keypairs/#{key_name}"
+            :path    => "os-keypairs/#{Fog::OpenStack.escape(key_name)}"
           )
         end
       end
