@@ -27,6 +27,8 @@ module Fog
       collection  :share_access_rules
       model       :share_export_location
       collection  :share_export_locations
+      model       :availability_zone
+      collection  :availability_zones
 
       request_path 'fog/shared_file_system/openstack/requests'
       # share networks
@@ -64,6 +66,9 @@ module Fog
       request :get_limits
       request :get_quota
       request :update_quota
+
+      # availability zones
+      request :list_availability_zones
 
       # rubocop:disable LineLength, Metrics/MethodLength, Metrics/ClassLength, Metrics/AbcSize
       class Mock
@@ -184,6 +189,14 @@ module Fog
                   "name"  => "snapshot_My_share"
                 }
               ],
+              :availability_zones => [
+                  {
+                      "name"        => "nova",
+                      "created_at"  => "2015-09-18T09:50:55.000000",
+                      "updated_at"  => nil,
+                      "id"          => "388c983d-258e-4a0e-b1ba-10da37d766db"
+                  }
+              ],
               :snapshots_detail      => [
                 {
                   "status"      => "available",
@@ -223,7 +236,7 @@ module Fog
                   "preferred"         => false
                 }
               ],
-                 
+
               :access_rules          => [
                 {
                   "share_id"     => "406ea93b-32e9-4907-a117-148b3945749f",
