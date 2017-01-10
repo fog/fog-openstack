@@ -57,6 +57,38 @@ module Fog
         def ready?
           status == 'available'
         end
+
+        def extend(size)
+          requires :id
+          service.extend_share(id, size)
+          true
+        end
+
+        def shrink(size)
+          requires :id
+          service.shrink_share(id, size)
+          true
+        end
+
+        def grant_access(access_to, access_type, access_level)
+          requires :id
+          service.grant_share_access(id, access_to, access_type, access_level)
+          true
+        end
+
+        def revoke_access(access_id)
+          requires :id
+          service.revoke_share_access(id, access_id)
+          true
+        end
+
+        def access_rules
+          service.share_access_rules(:share => self)
+        end
+        
+        def export_locations
+          service.share_export_locations(:share => self)
+        end
       end
     end
   end

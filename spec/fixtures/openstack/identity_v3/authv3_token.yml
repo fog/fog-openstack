@@ -1,6 +1,111 @@
 ---
 http_interactions:
 - request:
+    method: put
+    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/fca58cc2d1784da99d42f8cb8e22a94c/roles/60cc738031a84548937e47230f1dc00f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2f4e6042604944b98bd46f6941129328
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Date:
+      - Fri, 15 Jul 2016 10:14:25 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-e0000393-8008-4d66-969e-2ad4b308a755
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 10:13:57 GMT
+- request:
+    method: delete
+    uri: http://devstack.openstack.stack:35357/v3/users/fca58cc2d1784da99d42f8cb8e22a94c
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2f4e6042604944b98bd46f6941129328
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Date:
+      - Fri, 15 Jul 2016 10:14:26 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-2cc1164d-6447-46d9-9512-64dc5364365a
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 10:13:58 GMT
+- request:
+    method: delete
+    uri: http://devstack.openstack.stack:35357/v3/roles/60cc738031a84548937e47230f1dc00f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 2f4e6042604944b98bd46f6941129328
+  response:
+    status:
+      code: 204
+      message: ''
+    headers:
+      Date:
+      - Fri, 15 Jul 2016 10:14:26 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-0d6bfd66-e286-4779-860b-b16fb9680d02
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 10:13:58 GMT
+- request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/users
     body:
@@ -8,47 +113,37 @@ http_interactions:
       string: '{"user":{"name":"foobar_385","email":"foobar_demo@example.com","domain_id":"default","password":"s3cret!"}}'
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - d6975307b8fa4cc6899f27ae2561658e
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:53 GMT
+      - Fri, 15 Jul 2016 12:06:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-d61f7128-718f-4c60-8169-3bb4c1cfbf3f
+      - req-1e4dbeee-771e-42e5-a3ff-5c4fc885d073
       Content-Length:
       - '241'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"user": {"name": "foobar_385", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/304d38f9e15c4603b70326120db88a7d"},
+      string: '{"user": {"name": "foobar_385", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/45a926679d254a329c59309083b840dc"},
         "domain_id": "default", "enabled": true, "email": "foobar_demo@example.com",
-        "id": "304d38f9e15c4603b70326120db88a7d"}}'
+        "id": "45a926679d254a329c59309083b840dc"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:54 GMT
+  recorded_at: Fri, 15 Jul 2016 12:06:10 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:35357/v3/roles
@@ -57,92 +152,72 @@ http_interactions:
       string: '{"role":{"name":"foobar_role390"}}'
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - d6975307b8fa4cc6899f27ae2561658e
   response:
     status:
       code: 201
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:54 GMT
+      - Fri, 15 Jul 2016 12:06:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-3244136c-4a15-49e7-a83f-7a9ff9005bc6
+      - req-2c98422c-8947-4829-8cae-00ddee43152c
       Content-Length:
       - '168'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"role": {"id": "d121bd07dec845f29915ae2956249e34", "links": {"self":
-        "http://devstack.openstack.stack:35357/v3/roles/d121bd07dec845f29915ae2956249e34"}, "name":
+      string: '{"role": {"id": "24c4a3b9306944a0b18bd60e30b78779", "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/roles/24c4a3b9306944a0b18bd60e30b78779"}, "name":
         "foobar_role390"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:54 GMT
+  recorded_at: Fri, 15 Jul 2016 12:06:10 GMT
 - request:
     method: put
-    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/304d38f9e15c4603b70326120db88a7d/roles/d121bd07dec845f29915ae2956249e34
+    uri: http://devstack.openstack.stack:35357/v3/domains/default/users/45a926679d254a329c59309083b840dc/roles/24c4a3b9306944a0b18bd60e30b78779
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - d6975307b8fa4cc6899f27ae2561658e
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:54 GMT
+      - Fri, 15 Jul 2016 12:06:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-28a48abb-effa-4e94-b357-d2f9162a43fc
+      - req-4d05ff0f-d3d4-4563-8e45-29cce09dde27
       Content-Length:
       - '0'
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:54 GMT
+  recorded_at: Fri, 15 Jul 2016 12:06:10 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
@@ -151,7 +226,7 @@ http_interactions:
       string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"s3cret!","domain":{"id":"default"},"name":"foobar_385"}}},"scope":{"domain":{"id":"default"}}}}'
     headers:
       User-Agent:
-      - fog-core/1.38.0
+      - fog-core/1.40.0
       Content-Type:
       - application/json
   response:
@@ -160,15 +235,15 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:54 GMT
+      - Fri, 15 Jul 2016 12:06:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       X-Subject-Token:
-      - 305c9b5e8d3b48a38dcd8ee2fdf96f8e
+      - cddc0c804da6459db84681b1c4c73a26
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-f98fcaa3-78a2-4dc3-a584-94e2f46531b2
+      - req-0de3fb5d-6c29-4ac0-9ac9-87011d504fd9
       Content-Length:
       - '4611'
       Content-Type:
@@ -176,8 +251,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"token": {"domain": {"id": "default", "name": "Default"}, "methods":
-        ["password"], "roles": [{"id": "d121bd07dec845f29915ae2956249e34", "name":
-        "foobar_role390"}], "expires_at": "2016-05-03T14:51:54.629181Z", "catalog":
+        ["password"], "roles": [{"id": "24c4a3b9306944a0b18bd60e30b78779", "name":
+        "foobar_role390"}], "expires_at": "2016-07-15T13:06:38.771301Z", "catalog":
         [{"endpoints": [], "type": "volumev2", "id": "1766683b2f9f4ef2acf7f9e4e359fb9a",
         "name": "cinderv2"}, {"endpoints": [], "type": "metering", "id": "18dbb2f0ddeb45b99d11ed0568f153ab",
         "name": "ceilometer"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
@@ -228,175 +303,144 @@ http_interactions:
         "region": "RegionOne", "interface": "admin", "id": "b91bd1a6c34b4973b3d48f94516358bc"}],
         "type": "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1", "name":
         "swift"}], "extras": {}, "user": {"domain": {"id": "default", "name": "Default"},
-        "id": "304d38f9e15c4603b70326120db88a7d", "name": "foobar_385"}, "audit_ids":
-        ["oQ8CEopyS3mQECayU-uUow"], "issued_at": "2016-05-03T13:51:54.629230Z"}}'
+        "id": "45a926679d254a329c59309083b840dc", "name": "foobar_385"}, "audit_ids":
+        ["fBjV6q6eQRujYJbhCI7dCw"], "issued_at": "2016-07-15T12:06:38.771349Z"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:54 GMT
-- request:
-    method: post
-    uri: http://devstack.openstack.stack:5000/v3/auth/tokens
-    body:
-      encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["token"],"token":{"id":"305c9b5e8d3b48a38dcd8ee2fdf96f8e"}}}}'
-    headers:
-      User-Agent:
-      - fog-core/1.38.0
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 201
-      message: ''
-    headers:
-      Date:
-      - Tue, 03 May 2016 13:51:54 GMT
-      Server:
-      - Apache/2.4.7 (Ubuntu)
-      X-Subject-Token:
-      - 53f379ea05744daeb13417e3df4dafe8
-      Vary:
-      - X-Auth-Token
-      X-Openstack-Request-Id:
-      - req-c7a5351f-061b-4182-b5bb-718cfb9f16d7
-      Content-Length:
-      - '337'
-      Content-Type:
-      - application/json
-    body:
-      encoding: UTF-8
-      string: '{"token": {"methods": ["token", "password"], "expires_at": "2016-05-03T14:51:54.629181Z",
-        "extras": {}, "user": {"domain": {"id": "default", "name": "Default"}, "id":
-        "304d38f9e15c4603b70326120db88a7d", "name": "foobar_385"}, "audit_ids": ["4ALKzx4mQtW74Rmu30d2AQ",
-        "oQ8CEopyS3mQECayU-uUow"], "issued_at": "2016-05-03T13:51:54.844344Z"}}'
-    http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:55 GMT
+  recorded_at: Fri, 15 Jul 2016 12:06:10 GMT
 - request:
     method: get
-    uri: http://devstack.openstack.stack:5000/v3/users/304d38f9e15c4603b70326120db88a7d/projects
+    uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
+      - fog-core/1.40.0
       Content-Type:
       - application/json
-      Accept:
-      - application/json
       X-Auth-Token:
-      - 53f379ea05744daeb13417e3df4dafe8
+      - cddc0c804da6459db84681b1c4c73a26
+      X-Subject-Token:
+      - cddc0c804da6459db84681b1c4c73a26
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:55 GMT
-      Server:
-      - Apache/2.4.7 (Ubuntu)
-      Vary:
-      - X-Auth-Token
-      X-Openstack-Request-Id:
-      - req-fe44d74c-bc02-4f77-898b-e77fd5d01d4d
-      Content-Length:
-      - '158'
-      Content-Type:
-      - application/json
-    body:
-      encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:5000/v3/users/304d38f9e15c4603b70326120db88a7d/projects",
-        "previous": null, "next": null}, "projects": []}'
-    http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:55 GMT
-- request:
-    method: post
-    uri: http://devstack.openstack.stack:5000/v3/auth/tokens
-    body:
-      encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["token"],"token":{"id":"305c9b5e8d3b48a38dcd8ee2fdf96f8e"}},"scope":{"domain":{"id":"default"}}}}'
-    headers:
-      User-Agent:
-      - fog-core/1.38.0
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 201
-      message: ''
-    headers:
-      Date:
-      - Tue, 03 May 2016 13:51:55 GMT
+      - Fri, 15 Jul 2016 12:06:38 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       X-Subject-Token:
-      - 113fc5a7836948ac9b0207e67b87ce9b
+      - cddc0c804da6459db84681b1c4c73a26
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-fa7bd1b1-92d0-427f-bd8f-986da5b5da26
+      - req-79f2291a-61ad-43a6-8111-124f53e434bc
       Content-Length:
-      - '4646'
+      - '4611'
       Content-Type:
       - application/json
     body:
       encoding: UTF-8
       string: '{"token": {"domain": {"id": "default", "name": "Default"}, "methods":
-        ["token", "password"], "roles": [{"id": "d121bd07dec845f29915ae2956249e34",
-        "name": "foobar_role390"}], "expires_at": "2016-05-03T14:51:54.629181Z", "catalog":
+        ["password"], "roles": [{"id": "24c4a3b9306944a0b18bd60e30b78779", "name":
+        "foobar_role390"}], "expires_at": "2016-07-15T13:06:38.771301Z", "catalog":
         [{"endpoints": [], "type": "volumev2", "id": "1766683b2f9f4ef2acf7f9e4e359fb9a",
         "name": "cinderv2"}, {"endpoints": [], "type": "metering", "id": "18dbb2f0ddeb45b99d11ed0568f153ab",
-        "name": "ceilometer"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
-        "region": "RegionOne", "interface": "admin", "id": "6f44eb5bf4e646f9a7afebb1f32501f1"},
-        {"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
-        "region": "RegionOne", "interface": "public", "id": "9bb4f1c83833484e9d53ce2b57d6308b"},
-        {"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
-        "region": "RegionOne", "interface": "internal", "id": "e62f1c8709554031ace717700c431635"}],
-        "type": "metering", "id": "261a2c1f467c4b148f38822ae9f179a3", "name": "ceilometer"},
-        {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:35357/v3",
-        "region": "RegionOne", "interface": "admin", "id": "634d57ce5d534c808afb24127b7ac355"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:5000/v3", "region":
-        "RegionOne", "interface": "public", "id": "8a7a2620740c4c2fb6fabf15746c101f"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:5000/v3", "region":
-        "RegionOne", "interface": "internal", "id": "b53b60875b214e7f925f96d3a2a57464"}],
-        "type": "identity", "id": "311850187e5a47108ac9b43ec5346658", "name": "keystone"},
-        {"endpoints": [], "type": "compute", "id": "3fd114ff2cff43be8bd3ecc5bc117ec8",
+        "name": "ceilometer"}, {"endpoints": [{"url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
+        "interface": "admin", "region": "RegionOne", "region_id": "RegionOne", "id":
+        "6f44eb5bf4e646f9a7afebb1f32501f1"}, {"url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
+        "interface": "public", "region": "RegionOne", "region_id": "RegionOne", "id":
+        "9bb4f1c83833484e9d53ce2b57d6308b"}, {"url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
+        "interface": "internal", "region": "RegionOne", "region_id": "RegionOne",
+        "id": "e62f1c8709554031ace717700c431635"}], "type": "metering", "id": "261a2c1f467c4b148f38822ae9f179a3",
+        "name": "ceilometer"}, {"endpoints": [{"url": "http://devstack.openstack.stack:35357/v3",
+        "interface": "admin", "region": "RegionOne", "region_id": "RegionOne", "id":
+        "634d57ce5d534c808afb24127b7ac355"}, {"url": "http://devstack.openstack.stack:5000/v3",
+        "interface": "public", "region": "RegionOne", "region_id": "RegionOne", "id":
+        "8a7a2620740c4c2fb6fabf15746c101f"}, {"url": "http://devstack.openstack.stack:5000/v3",
+        "interface": "internal", "region": "RegionOne", "region_id": "RegionOne",
+        "id": "b53b60875b214e7f925f96d3a2a57464"}], "type": "identity", "id": "311850187e5a47108ac9b43ec5346658",
+        "name": "keystone"}, {"endpoints": [], "type": "compute", "id": "3fd114ff2cff43be8bd3ecc5bc117ec8",
         "name": "nova"}, {"endpoints": [], "type": "volume", "id": "4a6033d57e30494a9577358d90d08123",
-        "name": "cinder"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8773/",
-        "region": "RegionOne", "interface": "internal", "id": "54546c7c383a4d6abc2b93c94d75e2f7"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8773/", "region": "RegionOne",
-        "interface": "admin", "id": "b253dd3d3f7d43d8ab35ad97c68440c3"}, {"region_id":
-        "RegionOne", "url": "http://devstack.openstack.stack:8773/", "region": "RegionOne", "interface":
-        "public", "id": "e7287110f01248d49cef8447d0f8d2cb"}], "type": "ec2", "id":
-        "5eff43878c134ae7a5f405cf0d191aff", "name": "ec2"}, {"endpoints": [{"region_id":
-        "RegionOne", "url": "http://i056593.dev.mo.sap.corp:8080/v2.0", "region":
-        "RegionOne", "interface": "internal", "id": "11d18be7930947f696db531c9bbdf245"},
-        {"region_id": "RegionOne", "url": "http://i056593.dev.mo.sap.corp:8080/v2.0",
-        "region": "RegionOne", "interface": "admin", "id": "a603e6ffd0804c4f82a8770d71dede64"},
-        {"region_id": "RegionOne", "url": "http://i056593.dev.mo.sap.corp:8080/v2.0",
-        "region": "RegionOne", "interface": "public", "id": "cf084db111ad4818a4f94080e0ed7819"}],
+        "name": "cinder"}, {"endpoints": [{"url": "http://devstack.openstack.stack:8773/", "interface":
+        "internal", "region": "RegionOne", "region_id": "RegionOne", "id": "54546c7c383a4d6abc2b93c94d75e2f7"},
+        {"url": "http://devstack.openstack.stack:8773/", "interface": "admin", "region": "RegionOne",
+        "region_id": "RegionOne", "id": "b253dd3d3f7d43d8ab35ad97c68440c3"}, {"url":
+        "http://devstack.openstack.stack:8773/", "interface": "public", "region": "RegionOne",
+        "region_id": "RegionOne", "id": "e7287110f01248d49cef8447d0f8d2cb"}], "type":
+        "ec2", "id": "5eff43878c134ae7a5f405cf0d191aff", "name": "ec2"}, {"endpoints":
+        [{"url": "http://i056593.dev.mo.sap.corp:8080/v2.0", "interface": "internal",
+        "region": "RegionOne", "region_id": "RegionOne", "id": "11d18be7930947f696db531c9bbdf245"},
+        {"url": "http://i056593.dev.mo.sap.corp:8080/v2.0", "interface": "admin",
+        "region": "RegionOne", "region_id": "RegionOne", "id": "a603e6ffd0804c4f82a8770d71dede64"},
+        {"url": "http://i056593.dev.mo.sap.corp:8080/v2.0", "interface": "public",
+        "region": "RegionOne", "region_id": "RegionOne", "id": "cf084db111ad4818a4f94080e0ed7819"}],
         "type": "monitoring", "id": "73e3bfb0b1b944f0ace3a078baad1fcc", "name": "Monitoring"},
         {"endpoints": [], "type": "compute_legacy", "id": "92e80becd6d8462b8f51fb227eb11999",
-        "name": "nova_legacy"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:9292",
-        "region": "RegionOne", "interface": "admin", "id": "acebdcb3418045b9a62ed295349327c3"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:9292", "region": "RegionOne",
-        "interface": "public", "id": "b3b24c2c4ef44ff48049caff79149091"}, {"region_id":
-        "RegionOne", "url": "http://devstack.openstack.stack:9292", "region": "RegionOne", "interface":
-        "internal", "id": "b9d30173e66148baa3ab2dc2df33cb5e"}], "type": "image", "id":
-        "b936e5bfd38e4a3b97fcb8d08840881f", "name": "glance"}, {"endpoints": [{"region_id":
-        "RegionOne", "url": "http://devstack.openstack.stack:9696/", "region": "RegionOne", "interface":
-        "admin", "id": "1a6718d75cd94e24993a27d275442a17"}, {"region_id": "RegionOne",
-        "url": "http://devstack.openstack.stack:9696/", "region": "RegionOne", "interface": "public",
-        "id": "5cfedecf28a54bd38031380dd0c255b1"}, {"region_id": "RegionOne", "url":
-        "http://devstack.openstack.stack:9696/", "region": "RegionOne", "interface": "internal",
-        "id": "e1be91e12d5646a8830c32146a3ed1aa"}], "type": "network", "id": "c626cfc79ed34e3699c2d96c58d105cd",
-        "name": "neutron"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8090",
-        "region": "RegionOne", "interface": "admin", "id": "b91bd1a6c34b4973b3d48f94516358bc"}],
-        "type": "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1", "name":
-        "swift"}], "extras": {}, "user": {"domain": {"id": "default", "name": "Default"},
-        "id": "304d38f9e15c4603b70326120db88a7d", "name": "foobar_385"}, "audit_ids":
-        ["jxnOeLmfQgKVzWBXzZcadg", "oQ8CEopyS3mQECayU-uUow"], "issued_at": "2016-05-03T13:51:55.299668Z"}}'
+        "name": "nova_legacy"}, {"endpoints": [{"url": "http://devstack.openstack.stack:9292",
+        "interface": "admin", "region": "RegionOne", "region_id": "RegionOne", "id":
+        "acebdcb3418045b9a62ed295349327c3"}, {"url": "http://devstack.openstack.stack:9292", "interface":
+        "public", "region": "RegionOne", "region_id": "RegionOne", "id": "b3b24c2c4ef44ff48049caff79149091"},
+        {"url": "http://devstack.openstack.stack:9292", "interface": "internal", "region": "RegionOne",
+        "region_id": "RegionOne", "id": "b9d30173e66148baa3ab2dc2df33cb5e"}], "type":
+        "image", "id": "b936e5bfd38e4a3b97fcb8d08840881f", "name": "glance"}, {"endpoints":
+        [{"url": "http://devstack.openstack.stack:9696/", "interface": "admin", "region": "RegionOne",
+        "region_id": "RegionOne", "id": "1a6718d75cd94e24993a27d275442a17"}, {"url":
+        "http://devstack.openstack.stack:9696/", "interface": "public", "region": "RegionOne",
+        "region_id": "RegionOne", "id": "5cfedecf28a54bd38031380dd0c255b1"}, {"url":
+        "http://devstack.openstack.stack:9696/", "interface": "internal", "region": "RegionOne",
+        "region_id": "RegionOne", "id": "e1be91e12d5646a8830c32146a3ed1aa"}], "type":
+        "network", "id": "c626cfc79ed34e3699c2d96c58d105cd", "name": "neutron"}, {"endpoints":
+        [{"url": "http://devstack.openstack.stack:8090", "interface": "admin", "region": "RegionOne",
+        "region_id": "RegionOne", "id": "b91bd1a6c34b4973b3d48f94516358bc"}], "type":
+        "object-store", "id": "e6a92b95728740ea9bda0c348a89f0f1", "name": "swift"}],
+        "extras": {}, "user": {"domain": {"id": "default", "name": "Default"}, "id":
+        "45a926679d254a329c59309083b840dc", "name": "foobar_385"}, "audit_ids": ["fBjV6q6eQRujYJbhCI7dCw"],
+        "issued_at": "2016-07-15T12:06:38.771349Z"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:55 GMT
+  recorded_at: Fri, 15 Jul 2016 12:06:11 GMT
+- request:
+    method: get
+    uri: http://devstack.openstack.stack:5000/v3/auth/tokens
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.40.0
+      Content-Type:
+      - application/json
+      X-Auth-Token:
+      - blahblahblah
+      X-Subject-Token:
+      - blahblahblah
+  response:
+    status:
+      code: 401
+      message: ''
+    headers:
+      Date:
+      - Fri, 15 Jul 2016 12:06:39 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-3c86be05-8d81-4ee3-8c5b-0435fbed5a7e
+      Www-Authenticate:
+      - Keystone uri="http://devstack.openstack.stack:5000"
+      Content-Length:
+      - '162'
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"error": {"message": "The request you have made requires authentication.
+        (Disable debug mode to suppress these details.)", "code": 401, "title": "Unauthorized"}}'
+    http_version: 
+  recorded_at: Fri, 15 Jul 2016 12:06:11 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
@@ -405,7 +449,7 @@ http_interactions:
       string: '{"auth":{"identity":{"methods":["token"],"token":{"id":"blahblahblah"}}}}'
     headers:
       User-Agent:
-      - fog-core/1.38.0
+      - fog-core/1.40.0
       Content-Type:
       - application/json
   response:
@@ -414,13 +458,13 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:55 GMT
+      - Fri, 15 Jul 2016 12:06:39 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-72c38b89-f49f-4d4a-b4a0-1425827b5b8d
+      - req-2510b0d2-05bf-4112-a675-576b98eb2385
       Content-Length:
       - '95'
       Content-Type:
@@ -430,95 +474,75 @@ http_interactions:
       string: '{"error": {"message": "Could not find token: blahblahblah", "code":
         404, "title": "Not Found"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:55 GMT
+  recorded_at: Fri, 15 Jul 2016 12:06:11 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/users/304d38f9e15c4603b70326120db88a7d
+    uri: http://devstack.openstack.stack:35357/v3/users/45a926679d254a329c59309083b840dc
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - d6975307b8fa4cc6899f27ae2561658e
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:55 GMT
+      - Fri, 15 Jul 2016 12:06:39 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-3123f15e-d856-44a4-95f8-61e4d1eb2299
+      - req-2a7a4bbc-c2ba-46c8-8fa5-7648a8a6a769
       Content-Length:
       - '0'
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:55 GMT
+  recorded_at: Fri, 15 Jul 2016 12:06:11 GMT
 - request:
     method: delete
-    uri: http://devstack.openstack.stack:35357/v3/roles/d121bd07dec845f29915ae2956249e34
+    uri: http://devstack.openstack.stack:35357/v3/roles/24c4a3b9306944a0b18bd60e30b78779
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - d6975307b8fa4cc6899f27ae2561658e
   response:
     status:
       code: 204
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:51:55 GMT
+      - Fri, 15 Jul 2016 12:06:39 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-f568dfa5-ae0a-4613-ace8-8205f6a25546
+      - req-4376d4ad-50be-43c6-b5e4-4e6beb5fdff1
       Content-Length:
       - '0'
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:51:56 GMT
+  recorded_at: Fri, 15 Jul 2016 12:06:11 GMT
 recorded_with: VCR 3.0.1

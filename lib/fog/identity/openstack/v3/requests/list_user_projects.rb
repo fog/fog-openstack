@@ -3,11 +3,12 @@ module Fog
     class OpenStack
       class V3
         class Real
-          def list_user_projects(user_id)
+          def list_user_projects(user_id, options = {})
             request(
               :expects => [200],
               :method  => 'GET',
-              :path    => "users/#{user_id}/projects"
+              :path    => "users/#{user_id}/projects",
+              :query   => options
             )
           end
         end

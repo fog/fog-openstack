@@ -28,7 +28,7 @@ namespace :tests do
   Rake::TestTask.new do |t|
     t.name = 'spec'
     t.libs.push [ "lib", "spec" ]
-    t.pattern = 'spec/**/*_spec.rb'
+    t.pattern = ENV["SPEC"] || 'spec/**/*_spec.rb'
     t.verbose = true
   end
 end
