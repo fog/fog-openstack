@@ -12,7 +12,7 @@ describe Fog::Network::OpenStack do
     @current_project  = openstack_vcr.project_name
 
     openstack_vcr = OpenStackVCR.new(
-      :vcr_directory => 'spec/fixtures/openstack/network',
+      :vcr_directory => 'spec/fixtures/openstack/network/identity',
       :service_class => Fog::Identity::OpenStack::V3
     )
     @identity_service = openstack_vcr.service

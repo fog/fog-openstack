@@ -11,7 +11,7 @@ module Fog
             }
           }
 
-          vanilla_options = [:name, :description, :admin_state_up, :session_persistence, :tenant_id]
+          vanilla_options = [:name, :description, :admin_state_up, :session_persistence, :tenant_id, :loadbalancer_id]
           vanilla_options.reject { |o| options[o].nil? }.each do |key|
             data['pool'][key] = options[key]
           end

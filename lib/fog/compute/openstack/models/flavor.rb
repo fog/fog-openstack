@@ -58,6 +58,19 @@ module Fog
         rescue Fog::Compute::OpenStack::NotFound
           nil
         end
+
+        def update_metadata(key,value)
+          service.update_flavor_metadata(self.id, key,value)
+        rescue Fog::Compute::OpenStack::NotFound
+          nil
+        end
+
+        def delete_metadata(key)
+          service.delete_flavor_metadata(self.id, key)
+        rescue Fog::Compute::OpenStack::NotFound
+          nil
+        end
+
       end
     end
   end
