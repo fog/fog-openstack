@@ -8,40 +8,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1a80fd5b34e64a138d40b4085bbee32f
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:05 GMT
+      - Fri, 15 Jul 2016 13:12:22 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-15106c27-9f6b-42d9-9487-6ee7d090a56d
+      - req-9abe4ba9-f958-479c-bb54-37c3648014be
       Content-Length:
       - '3930'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects", "previous":
@@ -90,98 +80,7 @@ http_interactions:
         "enabled": true, "id": "fb52f89781a64375a826ad12fc174534", "parent_id": null,
         "domain_id": "default", "name": "ertertert"}]}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:05 GMT
-- request:
-    method: get
-    uri: http://devstack.openstack.stack:35357/v3/projects
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
-      Content-Type:
-      - application/json
-      Accept:
-      - application/json
-      X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Date:
-      - Tue, 03 May 2016 13:52:05 GMT
-      Server:
-      - Apache/2.4.7 (Ubuntu)
-      Vary:
-      - X-Auth-Token
-      X-Openstack-Request-Id:
-      - req-4dd754c8-56f9-4186-93fe-a28945d7f330
-      Content-Length:
-      - '3930'
-      Content-Type:
-      - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: '{"links": {"self": "http://devstack.openstack.stack:35357/v3/projects", "previous":
-        null, "next": null}, "projects": [{"is_domain": false, "description": "",
-        "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8"},
-        "enabled": true, "id": "2ab82e30d7984631874def67813dffd8", "parent_id": null,
-        "domain_id": "default", "name": "service"}, {"is_domain": false, "description":
-        "Monasca Monitoring Project", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/30079dd13fb1488a88e6ee32f3e0b9ac"},
-        "enabled": true, "id": "30079dd13fb1488a88e6ee32f3e0b9ac", "parent_id": null,
-        "domain_id": "default", "name": "monitoring"}, {"is_domain": false, "description":
-        "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/5c2f4406e91248ac9c1406b795385725"},
-        "enabled": true, "id": "5c2f4406e91248ac9c1406b795385725", "parent_id": null,
-        "domain_id": "default", "name": "invisible_to_admin"}, {"is_domain": false,
-        "description": "Monasca self-monitoring project", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/650778a984b040d2bc7acd45d9e7940f"},
-        "enabled": true, "id": "650778a984b040d2bc7acd45d9e7940f", "parent_id": null,
-        "domain_id": "36ba5b83865d482296b6d0682e983d77", "name": "service"}, {"is_domain":
-        false, "description": "from cmdline", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/775d0f75213049008cadd749d864b034"},
-        "enabled": true, "id": "775d0f75213049008cadd749d864b034", "parent_id": null,
-        "domain_id": "default", "name": "cmdlineproj2"}, {"is_domain": false, "description":
-        "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/7abd4b01ef62438bb79d7bd78fcbf9c8"},
-        "enabled": true, "id": "7abd4b01ef62438bb79d7bd78fcbf9c8", "parent_id": null,
-        "domain_id": "default", "name": "BillingProject"}, {"is_domain": false, "description":
-        "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/8248851af6d54c689198bf2db30c5ed9"},
-        "enabled": true, "id": "8248851af6d54c689198bf2db30c5ed9", "parent_id": null,
-        "domain_id": "default", "name": "swifttenanttest1"}, {"is_domain": false,
-        "description": "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/9eed0d548eb943fc88ac5a49df3a6911"},
-        "enabled": true, "id": "9eed0d548eb943fc88ac5a49df3a6911", "parent_id": null,
-        "domain_id": "default", "name": "swifttenanttest2"}, {"is_domain": false,
-        "description": "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/a5db6ff5a6274dd589b6a05945d7f34d"},
-        "enabled": true, "id": "a5db6ff5a6274dd589b6a05945d7f34d", "parent_id": null,
-        "domain_id": "default", "name": "demo"}, {"is_domain": false, "description":
-        "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/ac812327c9b84a3cb1cabd56f251f5da"},
-        "enabled": true, "id": "ac812327c9b84a3cb1cabd56f251f5da", "parent_id": null,
-        "domain_id": "1617829d043b41858253a9a6e848615d", "name": "swifttenanttest4"},
-        {"is_domain": false, "description": "Monasca self-monitoring project", "links":
-        {"self": "http://devstack.openstack.stack:35357/v3/projects/e9c90636e1b048df86267ca7c54782eb"},
-        "enabled": true, "id": "e9c90636e1b048df86267ca7c54782eb", "parent_id": null,
-        "domain_id": "77e438db79474d5d90ab5f2c5c4942e2", "name": "monitoring"}, {"is_domain":
-        false, "description": "", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/f17a4813648d4b0bb82124ca1f5f1fd0"},
-        "enabled": true, "id": "f17a4813648d4b0bb82124ca1f5f1fd0", "parent_id": null,
-        "domain_id": "default", "name": "admin"}, {"is_domain": false, "description":
-        "from cmdline", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/f2eb3fbfdd8849729a1e0c0dbf188dda"},
-        "enabled": true, "id": "f2eb3fbfdd8849729a1e0c0dbf188dda", "parent_id": null,
-        "domain_id": "default", "name": "cmdlineproj1"}, {"is_domain": false, "description":
-        "ertertert", "links": {"self": "http://devstack.openstack.stack:35357/v3/projects/fb52f89781a64375a826ad12fc174534"},
-        "enabled": true, "id": "fb52f89781a64375a826ad12fc174534", "parent_id": null,
-        "domain_id": "default", "name": "ertertert"}]}'
-    http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:05 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:53 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/projects/2ab82e30d7984631874def67813dffd8
@@ -190,40 +89,30 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1a80fd5b34e64a138d40b4085bbee32f
   response:
     status:
       code: 200
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:05 GMT
+      - Fri, 15 Jul 2016 13:12:22 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-9b7c0170-9244-415b-a2d0-f8ca7332ba36
+      - req-2579c590-4772-4483-85a8-2d4969507bd4
       Content-Length:
       - '266'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"project": {"is_domain": false, "description": "", "links": {"self":
@@ -231,7 +120,7 @@ http_interactions:
         "enabled": true, "id": "2ab82e30d7984631874def67813dffd8", "parent_id": null,
         "domain_id": "default", "name": "service"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:05 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:53 GMT
 - request:
     method: get
     uri: http://devstack.openstack.stack:35357/v3/projects/atlantis
@@ -240,44 +129,34 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - fog-core/1.38.0
-      Proxy-Connection:
-      - Keep-Alive
+      - fog-core/1.40.0
       Content-Type:
       - application/json
       Accept:
       - application/json
       X-Auth-Token:
-      - 7f72291092a647578b115b853d129693
+      - 1a80fd5b34e64a138d40b4085bbee32f
   response:
     status:
       code: 404
       message: ''
     headers:
       Date:
-      - Tue, 03 May 2016 13:52:05 GMT
+      - Fri, 15 Jul 2016 13:12:22 GMT
       Server:
       - Apache/2.4.7 (Ubuntu)
       Vary:
       - X-Auth-Token
       X-Openstack-Request-Id:
-      - req-7040a0fa-295b-4590-869e-f94a753c450f
+      - req-f0292127-7b10-46c3-bf22-50495e9108ea
       Content-Length:
       - '93'
       Content-Type:
       - application/json
-      X-Cache:
-      - MISS from i056593-u1404
-      X-Cache-Lookup:
-      - MISS from i056593-u1404:3128
-      Via:
-      - 1.1 i056593-u1404 (squid/3.3.8)
-      Connection:
-      - keep-alive
     body:
       encoding: UTF-8
       string: '{"error": {"message": "Could not find project: atlantis", "code": 404,
         "title": "Not Found"}}'
     http_version: 
-  recorded_at: Tue, 03 May 2016 13:52:05 GMT
+  recorded_at: Fri, 15 Jul 2016 13:11:53 GMT
 recorded_with: VCR 3.0.1
