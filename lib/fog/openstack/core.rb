@@ -50,9 +50,9 @@ module Fog
           @openstack_can_reauthenticate = true
         end
 
-        @current_user = options[:current_user]
+        @current_user    = options[:current_user]
         @current_user_id = options[:current_user_id]
-        @current_tenant = options[:current_tenant]
+        @current_tenant  = options[:current_tenant]
       end
 
       def credentials
@@ -79,11 +79,7 @@ module Fog
         retried = false
         begin
           response = @connection.request(params.merge(
-                                           :headers => {
-                                             'Content-Type' => 'application/json',
-                                             'Accept'       => 'application/json',
-                                             'X-Auth-Token' => @auth_token
-                                           }.merge!(params[:headers] || {}),
+                                           :headers => headers(params.delete(:headers)),
                                            :path    => "#{@path}/#{params[:path]}"
           ))
         rescue Excon::Errors::Unauthorized => error
@@ -117,6 +113,53 @@ module Fog
 
       def set_api_path
         # if the service supports multiple versions, do the selection here
+      end
+
+      def set_microversion
+        @microversion_key          ||= 'Openstack-API-Version'.freeze
+        @microversion_service_type ||= @openstack_service_type.first
+
+        @microversion = Fog::OpenStack.get_supported_microversion(
+          @supported_versions,
+          @openstack_management_uri,
+          @auth_token,
+          @connection_options
+        ).to_s
+
+        # choose minimum out of reported and supported version
+        if microversion_newer_than?(@supported_microversion)
+          @microversion = @supported_microversion
+        end
+
+        # choose minimum out of set and wished version
+        if @fixed_microversion && microversion_newer_than?(@fixed_microversion)
+          @microversion = @fixed_microversion
+        elsif @fixed_microversion && @microversion != @fixed_microversion
+          Fog::Logger.warning("Microversion #{@fixed_microversion} not supported")
+        end
+      end
+
+      def microversion_newer_than?(version)
+        Gem::Version.new(version) < Gem::Version.new(@microversion)
+      end
+
+      def headers(additional_headers)
+        additional_headers ||= {}
+        if @microversion
+          microversion_value = if @microversion_key == 'Openstack-API-Version'
+                                 "#{@microversion_service_type} #{@microversion}"
+                               else
+                                 @microversion
+                               end
+          microversion_header = {@microversion_key => microversion_value}
+          additional_headers.merge!(microversion_header)
+        end
+
+        {
+          'Content-Type' => 'application/json',
+          'Accept'       => 'application/json',
+          'X-Auth-Token' => @auth_token
+        }.merge!(additional_headers)
       end
 
       def openstack_options
@@ -164,6 +207,9 @@ module Fog
             false, @connection_options
           )
         end
+
+        # both need to be set in service's initialize for microversions to work
+        set_microversion if @supported_microversion && @supported_versions
 
         true
       end
