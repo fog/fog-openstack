@@ -259,7 +259,7 @@ module Fog
 
     # Keystone Style Auth
     def self.authenticate_v3(options, connection_options = {})
-      uri = options[:openstack_auth_uri]
+      uri                   = options[:openstack_auth_uri]
       project_name          = options[:openstack_project_name]
       service_type          = options[:openstack_service_type]
       service_name          = options[:openstack_service_name]
@@ -300,6 +300,26 @@ module Fog
 
         token, body = retrieve_tokens_v3(options, connection_options)
         service = get_service_v3(body, service_type, service_name, openstack_region, options)
+      end
+
+      # If no identity endpoint is found, try the auth uri (slicing /auth/tokens)
+      # It covers the case where identityv3 endpoint is not present in the catalog but we have to use it
+      unless service
+        if service_type.include? "identity"
+          identity_uri = uri.to_s.sub('/auth/tokens', '')
+          response = Fog::Core::Connection.new(identity_uri, false, connection_options).request({:method => 'GET'})
+          if response.status == 200
+            service = {
+              "endpoints" => [{
+                 "url"       => identity_uri,
+                 "region"    => openstack_region,
+                 "interface" => endpoint_type
+              }],
+              "type"      => service_type,
+              "name"      => service_name
+            }
+          end
+        end
       end
 
       unless service
