@@ -57,6 +57,11 @@ module Fog
       request :update_snapshot
       request :delete_snapshot
 
+      # quota + limits
+      request :get_limits
+      request :get_quota
+      request :update_quota
+
       # rubocop:disable LineLength, Metrics/MethodLength, Metrics/ClassLength, Metrics/AbcSize
       class Mock
         def self.data
@@ -210,7 +215,15 @@ module Fog
                   "access_key"   => '',
                   "id"           => "a25b2df3-90bd-4add-afa6-5f0dbbd50452"
                 }
-              ]
+              ],
+              :quota                 => {
+                "gigabytes"          => 1000,
+                "shares"             => 50,
+                "snapshot_gigabytes" => 1000,
+                "snapshots"          => 50,
+                "share_networks"     => 10,
+                "id"                 => "16e1ab15c35a457e9c2b2aa189f544e1"
+              }
             }
           end
         end
