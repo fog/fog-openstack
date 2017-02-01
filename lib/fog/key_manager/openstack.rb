@@ -89,7 +89,7 @@ module Fog
             end
           end
 
-          if version.blank?
+          if !version  || version.empty?
             raise Fog::OpenStack::Errors::ServiceUnavailable.new(
                     "OpenStack service only supports API versions #{supported_versions.inspect}")
           end
