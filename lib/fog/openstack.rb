@@ -51,6 +51,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../introspection/openstack', __FILE__)
   end
 
+  module KeyManager
+    autoload :OpenStack, File.expand_path('../key_manager/openstack', __FILE__)
+  end
+
   module Metering
     autoload :OpenStack, File.expand_path('../metering/openstack', __FILE__)
   end
@@ -98,10 +102,6 @@ module Fog
     class OpenStack
       autoload :V2, File.expand_path('../workflow/openstack/v2', __FILE__)
     end
-  end
-
-  module KeyManager
-    autoload :OpenStack, File.expand_path('../key_manager/openstack', __FILE__)
   end
 
   module OpenStack
