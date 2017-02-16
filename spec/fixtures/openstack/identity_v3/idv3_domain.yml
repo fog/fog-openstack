@@ -59,6 +59,63 @@ http_interactions:
   recorded_at: Tue, 03 May 2016 13:51:56 GMT
 - request:
     method: get
+    uri: http://devstack.openstack.stack:35357/v3/domains
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - fog-core/1.38.0
+      Proxy-Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      X-Auth-Token:
+      - 7f72291092a647578b115b853d129693
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Tue, 03 May 2016 13:51:55 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Vary:
+      - X-Auth-Token
+      X-Openstack-Request-Id:
+      - req-1060d3e9-1be9-4e46-885a-3602551def93
+      Content-Length:
+      - '968'
+      Content-Type:
+      - application/json
+      X-Cache:
+      - MISS from i056593-u1404
+      X-Cache-Lookup:
+      - MISS from i056593-u1404:3128
+      Via:
+      - 1.1 i056593-u1404 (squid/3.3.8)
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"domains": [{"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/1617829d043b41858253a9a6e848615d"},
+        "enabled": true, "description": "Used for swift functional testing", "name":
+        "swift_test", "id": "1617829d043b41858253a9a6e848615d"}, {"links": {"self":
+        "http://devstack.openstack.stack:35357/v3/domains/36ba5b83865d482296b6d0682e983d77"},
+        "enabled": true, "description": "domain for services", "name": "monsooncc",
+        "id": "36ba5b83865d482296b6d0682e983d77"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/77e438db79474d5d90ab5f2c5c4942e2"},
+        "enabled": true, "description": "domain for user projects", "name": "monsoon2",
+        "id": "77e438db79474d5d90ab5f2c5c4942e2"}, {"links": {"self": "http://devstack.openstack.stack:35357/v3/domains/default"},
+        "enabled": true, "description": "Owns users and tenants (i.e. projects) available
+        on Identity API v2.", "name": "Default", "id": "default"}], "links": {"self":
+        "http://devstack.openstack.stack:35357/v3/domains", "previous": null, "next": null}}'
+    http_version:
+  recorded_at: Tue, 03 May 2016 13:51:56 GMT
+- request:
+    method: get
     uri: http://devstack.openstack.stack:35357/v3/domains/default
     body:
       encoding: US-ASCII
