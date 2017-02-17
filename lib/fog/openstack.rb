@@ -55,6 +55,10 @@ module Fog
     autoload :OpenStack, File.expand_path('../introspection/openstack', __FILE__)
   end
 
+  module KeyManager
+    autoload :OpenStack, File.expand_path('../key_manager/openstack', __FILE__)
+  end
+
   module Metering
     autoload :OpenStack, File.expand_path('../metering/openstack', __FILE__)
   end
@@ -104,32 +108,29 @@ module Fog
     end
   end
 
-  module KeyManager
-    autoload :OpenStack, File.expand_path('../key_manager/openstack', __FILE__)
-  end
-
   module OpenStack
     extend Fog::Provider
 
+    service(:baremetal,          'Baremetal')
     service(:compute,            'Compute')
-    service(:image,              'Image')
+    service(:container_infra,    'ContainerInfra')
+    service(:dns,                'DNS')
+    service(:event,              'Event')
     service(:identity,           'Identity')
-    service(:network,            'Network')
-    service(:storage,            'Storage')
-    service(:volume,             'Volume')
+    service(:image,              'Image')
+    service(:introspection,      'Introspection')
+    service(:key,                'KeyManager')
     service(:metering,           'Metering')
     service(:metric,             'Metric')
-    service(:orchestration,      'Orchestration')
-    service(:nfv,                'NFV')
-    service(:baremetal,          'Baremetal')
-    service(:planning,           'Planning')
-    service(:introspection,      'Introspection')
     service(:monitoring,         'Monitoring')
-    service(:workflow,           'Workflow')
-    service(:dns,                'DNS')
-    service(:key,                'KeyManager')
+    service(:network,            'Network')
+    service(:nfv,                'NFV')
+    service(:orchestration,      'Orchestration')
+    service(:planning,           'Planning')
     service(:shared_file_system, 'SharedFileSystem')
-    service(:container_infra,    'ContainerInfra')
+    service(:storage,            'Storage')
+    service(:volume,             'Volume')
+    service(:workflow,           'Workflow')
 
     @token_cache = {}
 
