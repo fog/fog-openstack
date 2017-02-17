@@ -1,7 +1,5 @@
-
-
 module Fog
-  module Metering
+  module Event
     class OpenStack < Fog::Service
       SUPPORTED_VERSIONS = /v2/
 
@@ -17,25 +15,15 @@ module Fog
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
                  :openstack_identity_prefix
 
-      model_path 'fog/metering/openstack/models'
+      model_path 'fog/event/openstack/models'
 
-      model       :resource
-      collection  :resources
-
-      # Events extracted from Ceilometer (metering service) to Panko (event service) since Ocata release
       model       :event
       collection  :events
 
-      request_path 'fog/metering/openstack/requests'
+      request_path 'fog/event/openstack/requests'
 
-      # Metering
       request :get_event
-      request :get_resource
-      request :get_samples
-      request :get_statistics
       request :list_events
-      request :list_meters
-      request :list_resources
 
       class Mock
         def self.data
@@ -60,8 +48,8 @@ module Fog
           @auth_token_expiration = (Time.now.utc + 86400).iso8601
 
           management_url = URI.parse(options[:openstack_auth_url])
-          management_url.port = 8776
-          management_url.path = '/v1'
+          management_url.port = 8779
+          management_url.path = '/v2'
           @openstack_management_url = management_url.to_s
 
           @data ||= {:users => {}}
@@ -97,15 +85,15 @@ module Fog
         include Fog::OpenStack::Core
 
         def self.not_found_class
-          Fog::Metering::OpenStack::NotFound
+          Fog::Event::OpenStack::NotFound
         end
 
         def initialize(options = {})
           initialize_identity options
 
-          @openstack_service_type           = options[:openstack_service_type] || ['metering']
+          @openstack_service_type           = options[:openstack_service_type] || ['event']
           @openstack_service_name           = options[:openstack_service_name]
-          @openstack_endpoint_type          = options[:openstack_endpoint_type] || 'adminURL'
+          @openstack_endpoint_type          = options[:openstack_endpoint_type] || 'publicURL'
 
           @connection_options               = options[:connection_options] || {}
 
