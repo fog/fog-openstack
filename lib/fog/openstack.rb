@@ -29,6 +29,10 @@ module Fog
     end
   end
 
+  module Event
+    autoload :OpenStack, File.expand_path('../event/openstack', __FILE__)
+  end
+
   module Identity
     autoload :OpenStack, File.expand_path('../identity/openstack', __FILE__)
 
