@@ -1,6 +1,6 @@
 module Fog
   module Openstack
-    VERSION = "0.1.19"
+    VERSION = "0.1.20"
 
     def self.included(base)
       if RUBY_VERSION < "2"
