@@ -23,6 +23,8 @@ module Fog
         collection  :zones
         model       :recordset
         collection  :recordsets
+        model       :pool
+        collection  :pools
         model       :zone_transfer_request
         collection  :zone_transfer_requests
         model       :zone_transfer_accept
@@ -41,6 +43,9 @@ module Fog
         request :create_recordset
         request :update_recordset
         request :delete_recordset
+
+        request :list_pools
+        request :get_pool
 
         request :get_quota
         request :update_quota
@@ -95,6 +100,52 @@ module Fog
                     "self" => "https://127.0.0.1:9001/v2/zones/a86dba58-0043-4cc6-a1bb-69d5e86f3ca3"
                   }
                 }],
+                :pools      => {
+                  "metadata" => {
+                    "total_count" => 2
+                  },
+                  "links"    => {
+                    "self" => "http://127.0.0.1:9001/v2/pools"
+                  },
+                  "pools"    => [
+                    {
+                      "description" => '',
+                      "id"          => "794ccc2c-d751-44fe-b57f-8894c9f5c842",
+                      "project_id"  => '',
+                      "created_at"  => "2015-02-18T22:18:58.000000",
+                      "attributes"  => '',
+                      "ns_records"  => [
+                        {
+                          "hostname" => "ns1.example.org.",
+                          "priority" => 1
+                        }
+                      ],
+                      "links"       => {
+                        "self" => "http://127.0.0.1:9001/v2/pools/794ccc2c-d751-44fe-b57f-8894c9f5c842"
+                      },
+                      "name"        => "default",
+                      "updated_at"  => "2015-02-19T15:59:44.000000"
+                    },
+                    {
+                      "description" => '',
+                      "id"          => "d1716333-8c16-490f-85ee-29af36907605",
+                      "project_id"  => "noauth-project",
+                      "created_at"  => "2015-02-23T21:56:33.000000",
+                      "attributes"  => '',
+                      "ns_records"  => [
+                        {
+                          "hostname" => "ns2.example.org.",
+                          "priority" => 1
+                        }
+                      ],
+                      "links"       => {
+                        "self" => "http://127.0.0.1:9001/v2/pools/d1716333-8c16-490f-85ee-29af36907605"
+                      },
+                      "name"        => "example_pool",
+                      "updated_at"  => ''
+                    }
+                  ]
+                },
                 :quota      => {
                   "api_export_size"   => 1000,
                   "recordset_records" => 20,
