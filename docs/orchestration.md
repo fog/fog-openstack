@@ -116,6 +116,29 @@ It can be also obtained through the details method of a simple stack object
 stack.details
 ```
 
+To update a stack while manipulating a Stack object from the Stack Collection:
+
+```ruby
+heat_template = { "template": { "description": "Updated description" } }
+stack.save(heat_template)
+```
+
+`save` uses the `update_stack` request method, although it expects a Stack object as well:
+
+```ruby
+heat_template = { "template": { "description": "Updated description" } }
+service.update_stack(stack, heat_template)
+```
+
+Alternatively a request only approach can be used, providing a stack id and name:
+
+```ruby
+id = "49b83314-d341-468a-aef4-44bbccce251e"
+name = "stack_name"
+heat_template = { "template": { "description": "Other update description" } }
+service.update_stack(id, name, heat_template)
+```
+
 A stack knows about related `events`:
 
 ```ruby

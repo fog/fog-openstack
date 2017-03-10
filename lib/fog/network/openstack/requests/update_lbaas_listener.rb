@@ -3,13 +3,12 @@ module Fog
     class OpenStack
       class Real
         def update_lbaas_listener(listener_id, options = {})
-          data = {
-              'listener' => {}
-          }
+
+          data = { 'listener' => {} }
 
           vanilla_options = [:name, :description, :connection_limit, :default_tls_container_ref, :sni_container_refs,
                              :admin_state_up]
-          vanilla_options.reject { |o| options[o].nil? }.each do |key|
+          vanilla_options.select { |o| options.key?(o) }.each do |key|
             data['listener'][key] = options[key]
           end
 

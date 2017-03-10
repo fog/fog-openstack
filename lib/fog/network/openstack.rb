@@ -184,6 +184,19 @@ module Fog
       request :get_lbaas_healthmonitor
       request :update_lbaas_healthmonitor
 
+      # LBaaS V2 L7Policy
+      request :list_lbaas_l7policies
+      request :create_lbaas_l7policy
+      request :delete_lbaas_l7policy
+      request :get_lbaas_l7policy
+      request :update_lbaas_l7policy
+
+      # LBaaS V2 L7Rule
+      request :list_lbaas_l7rules
+      request :create_lbaas_l7rule
+      request :delete_lbaas_l7rule
+      request :get_lbaas_l7rule
+      request :update_lbaas_l7rule
 
       # VPNaaS VPN Service CRUD
       request :list_vpn_services
@@ -317,6 +330,8 @@ module Fog
               :lbaas_pools            => {},
               :lbaas_pool_members     => {},
               :lbaas_health_monitorss => {},
+              :lbaas_l7policies       => {},
+              :lbaas_l7rules          => {},
               :vpn_services           => {},
               :ike_policies           => {},
               :ipsec_policies         => {},

@@ -108,6 +108,11 @@ module Fog
           @all_addresses ||= service.list_all_addresses.body["floating_ips"].select { |data| data['instance_id'] == id }
         end
 
+        def os_interfaces
+          requires :id
+          service.os_interfaces(:server => self)
+        end
+
         def reload
           @all_addresses = nil
           super
