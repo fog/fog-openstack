@@ -15,7 +15,6 @@ module Fog
             data['router'][key] = options[key] if options[key]
           end
 
-          # remove this in a future
           egi = options[:external_gateway_info]
           if egi
             if egi.kind_of?(Fog::Network::OpenStack::Network)
@@ -27,6 +26,9 @@ module Fog
             else
               raise ArgumentError, 'Invalid external_gateway_info attribute'
             end
+          else
+            # Allow to clear gateway
+            data['router'][:external_gateway_info] = nil
           end
 
           request(
