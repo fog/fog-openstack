@@ -2,6 +2,12 @@ require "test_helper"
 describe "Fog::Image[:openstack] | images" do
   before do
     @instance = Fog::Image[:openstack].create_image(:name => "model test image").body
+    @private = Fog::Image[:openstack].create_image(
+      :name => "private test image",
+      :visibility => "private").body
+    @public = Fog::Image[:openstack].create_image(
+      :name => "public test image",
+      :visibility => "public").body
   end
 
   describe "success" do
