@@ -26,12 +26,12 @@ module Fog
 
           def public
             images = load(service.list_images.body['images'])
-            images.delete_if { |image| image.is_public == false }
+            images.delete_if { |image| image.visibility == "private" }
           end
 
           def private
             images = load(service.list_images.body['images'])
-            images.delete_if(&:is_public)
+            images.delete_if { |image| image.visibility == "public" }
           end
 
           def destroy(id)

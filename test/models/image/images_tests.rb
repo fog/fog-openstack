@@ -15,6 +15,16 @@ describe "Fog::Image[:openstack] | images" do
       image.id.must_equal @instance['image']['id']
     end
 
+    it "#public" do
+      image = Fog::Image[:openstack].images.public.first
+      image.visibility.must_equal "public"
+    end
+
+    it "#private" do
+      image = Fog::Image[:openstack].images.private.first
+      image.visibility.must_equal "private"
+    end
+
     it "#destroy" do
       Fog::Image[:openstack].images.destroy(@instance['image']['id']).must_equal true
     end
