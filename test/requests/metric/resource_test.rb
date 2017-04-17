@@ -10,6 +10,10 @@ describe "Fog::Metric::OpenStack | metric requests" do
       @metric.list_resources.status.must_equal 200
     end
 
+    it "#list_resources where type = instance_network_interface" do
+      @metric.list_resources("instance_network_interface").status.must_equal 200
+    end
+
     it "#get_resource" do
       @metric.get_resource('uuid1234').status.must_equal 200
     end
