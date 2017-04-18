@@ -11,7 +11,11 @@ module Fog
         # Delete it index if it's there, so we don't store response with data twice, but we store only metadata
         objects = index ? response.body.delete(index) : response.body
 
-        clear && objects.each { |object| self << new(object) }
+        if objects.empty?
+          clear
+        else
+          clear && objects.each { |object| self << new(object) }
+        end
         self.response = response
         self
       end
