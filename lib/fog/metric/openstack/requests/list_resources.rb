@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => 200,
             :method  => 'GET',
-            :path    => "resource/#{type}",
+            :path    => "resource/#{Fog::OpenStack.escape(type)}",
             :query   => options
           )
         end
