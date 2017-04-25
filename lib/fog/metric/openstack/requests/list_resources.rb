@@ -2,18 +2,18 @@ module Fog
   module Metric
     class OpenStack
       class Real
-        def list_resources(options = {})
+        def list_resources(type = "generic", options = {})
           request(
             :expects => 200,
             :method  => 'GET',
-            :path    => 'resource/generic',
+            :path    => "resource/#{Fog::OpenStack.escape(type)}",
             :query   => options
           )
         end
       end
 
       class Mock
-        def list_resources(_options = {})
+        def list_resources(_type = "generic", _options = {})
           response = Excon::Response.new
           response.status = 200
           response.body = [

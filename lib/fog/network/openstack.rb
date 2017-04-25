@@ -56,6 +56,8 @@ module Fog
       collection  :security_groups
       model       :security_group_rule
       collection  :security_group_rules
+      model       :network_ip_availability
+      collection  :network_ip_availabilities
 
       ## REQUESTS
       #
@@ -64,6 +66,10 @@ module Fog
       # Neutron Extensions
       request :list_extensions
       request :get_extension
+
+      # IP Availability
+      request :get_network_ip_availability
+      request :list_network_ip_availabilities
 
       # Network CRUD
       request :list_networks
@@ -184,6 +190,19 @@ module Fog
       request :get_lbaas_healthmonitor
       request :update_lbaas_healthmonitor
 
+      # LBaaS V2 L7Policy
+      request :list_lbaas_l7policies
+      request :create_lbaas_l7policy
+      request :delete_lbaas_l7policy
+      request :get_lbaas_l7policy
+      request :update_lbaas_l7policy
+
+      # LBaaS V2 L7Rule
+      request :list_lbaas_l7rules
+      request :create_lbaas_l7rule
+      request :delete_lbaas_l7rule
+      request :get_lbaas_l7rule
+      request :update_lbaas_l7rule
 
       # VPNaaS VPN Service CRUD
       request :list_vpn_services
@@ -317,6 +336,8 @@ module Fog
               :lbaas_pools            => {},
               :lbaas_pool_members     => {},
               :lbaas_health_monitorss => {},
+              :lbaas_l7policies       => {},
+              :lbaas_l7rules          => {},
               :vpn_services           => {},
               :ike_policies           => {},
               :ipsec_policies         => {},
@@ -339,8 +360,62 @@ module Fog
                   "port"       => 30
                 }
               ],
-              :security_groups        => {},
-              :security_group_rules   => {},
+              :security_groups            => {},
+              :security_group_rules       => {},
+              :network_ip_availabilities  => [
+                {
+                  "network_id"              => "4cf895c9-c3d1-489e-b02e-59b5c8976809",
+                  "network_name"            => "public",
+                  "subnet_ip_availability"  => [
+                    {
+                      "cidr"          => "2001:db8::/64",
+                      "ip_version"    => 6,
+                      "subnet_id"     => "ca3f46c4-c6ff-4272-9be4-0466f84c6077",
+                      "subnet_name"   => "ipv6-public-subnet",
+                      "total_ips"     => 18446744073709552000,
+                      "used_ips"      => 1
+                    },
+                    {
+                      "cidr"          => "172.24.4.0/24",
+                      "ip_version"    => 4,
+                      "subnet_id"     => "cc02efc1-9d47-46bd-bab6-760919c836b5",
+                      "subnet_name"   => "public-subnet",
+                      "total_ips"     => 253,
+                      "used_ips"      => 1
+                    }
+                  ],
+                  "project_id"  => "1a02cc95f1734fcc9d3c753818f03002",
+                  "tenant_id"   => "1a02cc95f1734fcc9d3c753818f03002",
+                  "total_ips"   => 253,
+                  "used_ips"    => 2
+                },
+                {
+                  "network_id"              => "6801d9c8-20e6-4b27-945d-62499f00002e",
+                  "network_name"            => "private",
+                  "subnet_ip_availability"  => [
+                    {
+                      "cidr"        => "10.0.0.0/24",
+                      "ip_version"  => 4,
+                      "subnet_id"   => "44e70d00-80a2-4fb1-ab59-6190595ceb61",
+                      "subnet_name" => "private-subnet",
+                      "total_ips"   => 253,
+                      "used_ips"    => 2
+                    },
+                    {
+                      "ip_version"  => 6,
+                      "cidr"        => "fdbf:ac66:9be8::/64",
+                      "subnet_id"   => "a90623df-00e1-4902-a675-40674385d74c",
+                      "subnet_name" => "ipv6-private-subnet",
+                      "total_ips"   => 18446744073709552000,
+                      "used_ips"    => 2
+                    }
+                  ],
+                  "project_id"  => "d56d3b8dd6894a508cf41b96b522328c",
+                  "tenant_id"   => "d56d3b8dd6894a508cf41b96b522328c",
+                  "total_ips"   => 18446744073709552000,
+                  "used_ips"    => 4
+                }
+              ]
             }
           end
         end

@@ -22,6 +22,7 @@ module Fog
       model       :resource
       collection  :resources
 
+      # Events extracted from Ceilometer (metering service) to Panko (event service) since Ocata release
       model       :event
       collection  :events
 

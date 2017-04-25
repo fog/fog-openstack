@@ -9,7 +9,7 @@ module Fog
 
           request(
             :body    => Fog::JSON.encode(data),
-            :expects => [200],
+            :expects => [200,202],
             :method  => 'POST',
             :path    => "volumes/#{volume_id}/metadata"
           )

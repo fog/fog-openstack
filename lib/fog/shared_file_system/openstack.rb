@@ -23,6 +23,10 @@ module Fog
       collection  :shares
       model       :snapshot
       collection  :snapshots
+      model       :share_access_rule
+      collection  :share_access_rules
+      model       :share_export_location
+      collection  :share_export_locations
 
       request_path 'fog/shared_file_system/openstack/requests'
       # share networks
@@ -40,6 +44,13 @@ module Fog
       request :create_share
       request :update_share
       request :delete_share
+      request :share_action
+      request :grant_share_access
+      request :revoke_share_access
+      request :list_share_access_rules
+      request :list_share_export_locations
+      request :extend_share
+      request :shrink_share
 
       # snapshots
       request :list_snapshots
@@ -48,6 +59,11 @@ module Fog
       request :create_snapshot
       request :update_snapshot
       request :delete_snapshot
+
+      # quota + limits
+      request :get_limits
+      request :get_quota
+      request :update_quota
 
       # rubocop:disable LineLength, Metrics/MethodLength, Metrics/ClassLength, Metrics/AbcSize
       class Mock
@@ -190,7 +206,44 @@ module Fog
                   "id"          => "086a1aa6-c425-4ecd-9612-391a3b1b9375",
                   "size"        => 1
                 }
-              ]
+              ],
+              :export_locations      => [
+                {
+                  "path"              => "10.254.0.3:/shares/share-e1c2d35e-fe67-4028-ad7a-45f668732b1d",
+                  "share_instance_id" => "e1c2d35e-fe67-4028-ad7a-45f668732b1d",
+                  "is_admin_only"     => false,
+                  "id"                => "b6bd76ce-12a2-42a9-a30a-8a43b503867d",
+                  "preferred"         => false
+                },
+                {
+                  "path"              => "10.0.0.3:/shares/share-e1c2d35e-fe67-4028-ad7a-45f668732b1d",
+                  "share_instance_id" => "e1c2d35e-fe67-4028-ad7a-45f668732b1d",
+                  "is_admin_only"     => true,
+                  "id"                => "6921e862-88bc-49a5-a2df-efeed9acd583",
+                  "preferred"         => false
+                }
+              ],
+                 
+              :access_rules          => [
+                {
+                  "share_id"     => "406ea93b-32e9-4907-a117-148b3945749f",
+                  "created_at"   => "2015-09-07T09:14:48.000000",
+                  "updated_at"   => '',
+                  "access_type"  => "ip",
+                  "access_to"    => "0.0.0.0/0",
+                  "access_level" => "rw",
+                  "access_key"   => '',
+                  "id"           => "a25b2df3-90bd-4add-afa6-5f0dbbd50452"
+                }
+              ],
+              :quota                 => {
+                "gigabytes"          => 1000,
+                "shares"             => 50,
+                "snapshot_gigabytes" => 1000,
+                "snapshots"          => 50,
+                "share_networks"     => 10,
+                "id"                 => "16e1ab15c35a457e9c2b2aa189f544e1"
+              }
             }
           end
         end
@@ -264,6 +317,7 @@ module Fog
 
           authenticate
           set_api_path
+          set_microversion
 
           @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)

@@ -23,6 +23,12 @@ module Fog
         collection  :zones
         model       :recordset
         collection  :recordsets
+        model       :pool
+        collection  :pools
+        model       :zone_transfer_request
+        collection  :zone_transfer_requests
+        model       :zone_transfer_accept
+        collection  :zone_transfer_accepts
 
         request_path 'fog/dns/openstack/v2/requests'
 
@@ -38,8 +44,22 @@ module Fog
         request :update_recordset
         request :delete_recordset
 
+        request :list_pools
+        request :get_pool
+
         request :get_quota
         request :update_quota
+
+        request :create_zone_transfer_request
+        request :get_zone_transfer_request
+        request :list_zone_transfer_requests
+        request :update_zone_transfer_request
+        request :delete_zone_transfer_request
+
+        request :create_zone_transfer_accept
+        request :get_zone_transfer_accept
+        request :list_zone_transfer_accepts
+
 
         def self.setup_headers(options)
           # user needs to have admin privileges to ask for all projects
@@ -80,6 +100,52 @@ module Fog
                     "self" => "https://127.0.0.1:9001/v2/zones/a86dba58-0043-4cc6-a1bb-69d5e86f3ca3"
                   }
                 }],
+                :pools      => {
+                  "metadata" => {
+                    "total_count" => 2
+                  },
+                  "links"    => {
+                    "self" => "http://127.0.0.1:9001/v2/pools"
+                  },
+                  "pools"    => [
+                    {
+                      "description" => '',
+                      "id"          => "794ccc2c-d751-44fe-b57f-8894c9f5c842",
+                      "project_id"  => '',
+                      "created_at"  => "2015-02-18T22:18:58.000000",
+                      "attributes"  => '',
+                      "ns_records"  => [
+                        {
+                          "hostname" => "ns1.example.org.",
+                          "priority" => 1
+                        }
+                      ],
+                      "links"       => {
+                        "self" => "http://127.0.0.1:9001/v2/pools/794ccc2c-d751-44fe-b57f-8894c9f5c842"
+                      },
+                      "name"        => "default",
+                      "updated_at"  => "2015-02-19T15:59:44.000000"
+                    },
+                    {
+                      "description" => '',
+                      "id"          => "d1716333-8c16-490f-85ee-29af36907605",
+                      "project_id"  => "noauth-project",
+                      "created_at"  => "2015-02-23T21:56:33.000000",
+                      "attributes"  => '',
+                      "ns_records"  => [
+                        {
+                          "hostname" => "ns2.example.org.",
+                          "priority" => 1
+                        }
+                      ],
+                      "links"       => {
+                        "self" => "http://127.0.0.1:9001/v2/pools/d1716333-8c16-490f-85ee-29af36907605"
+                      },
+                      "name"        => "example_pool",
+                      "updated_at"  => ''
+                    }
+                  ]
+                },
                 :quota      => {
                   "api_export_size"   => 1000,
                   "recordset_records" => 20,
@@ -116,7 +182,77 @@ module Fog
                   "metadata"   => {
                     "total_count" => 2
                   }
-                }
+                },
+                :zone_transfer_requests => {
+                  "transfer_requests" => [
+                    {
+                      "created_at" => "2014-07-17T20:34:40.882579",
+                      "description" => "This was created by the requesting project",
+                      "id" => "f2ad17b5-807a-423f-a991-e06236c247be",
+                      "key" => "9Z2R50Y0",
+                      "project_id" => "1",
+                      "status" => "ACTIVE",
+                      "target_project_id" => "123456",
+                      "updated_at" => nil,
+                      "zone_id" => "6b78734a-aef1-45cd-9708-8eb3c2d26ff8",
+                      "zone_name" => "qa.dev.example.com.",
+                      "links" => {
+                        "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_requests/f2ad17b5-807a-423f-a991-e06236c247be"
+                      }
+                    },
+                    {
+                      "description" => "This is scoped to the requesting project",
+                      "id" => "efd2d720-b0c4-43d4-99f7-d9b53e08860d",
+                      "zone_id" => "2c4d5e37-f823-4bee-9859-031cb44f80e7",
+                      "zone_name" => "subdomain.example.com.",
+                      "status" => "ACTIVE",
+                      "links" => {
+                        "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_requests/efd2d720-b0c4-43d4-99f7-d9b53e08860d"
+                      }
+                    }
+                  ],
+                  "links" => {
+                    "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_requests"
+                  }
+                },
+                :zone_transfer_accepts => {
+                  "metadata" => {
+                     "total_count" => 2
+                   },
+                   "links" => {
+                     "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts"
+                   },
+                   "transfer_accepts" => [
+                     {
+                       "status" => "COMPLETE",
+                       "zone_id" => "8db93d1a-59e3-4143-a393-5821abea0a46",
+                       "links" => {
+                           "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts/afb4222b-18b3-44b3-9f54-e0dfdba1be44",
+                           "zone" => "http://127.0.0.1:9001/v2/zones/8db93d1a-59e3-4143-a393-5821abea0a46"
+                       },
+                       "created_at" => "2016-06-01 05:35:35",
+                       "updated_at" => "2016-06-01 05:35:35",
+                       "key" => nil,
+                       "project_id" => "85604ecfb5334b50bd40ca53fc1d710f",
+                       "id" => "afb4222b-18b3-44b3-9f54-e0dfdba1be44",
+                       "zone_transfer_request_id" => "d223f7ef-77a6-459e-abd3-b4dbc97338e7"
+                     },
+                     {
+                       "status" => "COMPLETE",
+                       "zone_id" => "925bfc45-8901-4aca-aa12-18afaf0879e2",
+                       "links" => {
+                           "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts/ecbc7091-c498-4ec4-9893-68b06297fe50",
+                           "zone" => "http://127.0.0.1:9001/v2/zones/925bfc45-8901-4aca-aa12-18afaf0879e2"
+                       },
+                       "created_at" => "2016-06-01 10:06:36",
+                       "updated_at" => "2016-06-01 10:06:37",
+                       "key" => nil,
+                       "project_id" => "85604ecfb5334b50bd40ca53fc1d710f",
+                       "id" => "ecbc7091-c498-4ec4-9893-68b06297fe50",
+                       "zone_transfer_request_id" => "94cf9bd3-4137-430b-bf75-4e690430258c"
+                     }
+                   ]
+                 }
               }
             end
           end

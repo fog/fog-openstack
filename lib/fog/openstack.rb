@@ -29,6 +29,10 @@ module Fog
     end
   end
 
+  module Event
+    autoload :OpenStack, File.expand_path('../event/openstack', __FILE__)
+  end
+
   module Identity
     autoload :OpenStack, File.expand_path('../identity/openstack', __FILE__)
 
@@ -49,6 +53,10 @@ module Fog
 
   module Introspection
     autoload :OpenStack, File.expand_path('../introspection/openstack', __FILE__)
+  end
+
+  module KeyManager
+    autoload :OpenStack, File.expand_path('../key_manager/openstack', __FILE__)
   end
 
   module Metering
@@ -100,32 +108,29 @@ module Fog
     end
   end
 
-  module KeyManager
-    autoload :OpenStack, File.expand_path('../key_manager/openstack', __FILE__)
-  end
-
   module OpenStack
     extend Fog::Provider
 
+    service(:baremetal,          'Baremetal')
     service(:compute,            'Compute')
-    service(:image,              'Image')
+    service(:container_infra,    'ContainerInfra')
+    service(:dns,                'DNS')
+    service(:event,              'Event')
     service(:identity,           'Identity')
-    service(:network,            'Network')
-    service(:storage,            'Storage')
-    service(:volume,             'Volume')
+    service(:image,              'Image')
+    service(:introspection,      'Introspection')
+    service(:key,                'KeyManager')
     service(:metering,           'Metering')
     service(:metric,             'Metric')
-    service(:orchestration,      'Orchestration')
-    service(:nfv,                'NFV')
-    service(:baremetal,          'Baremetal')
-    service(:planning,           'Planning')
-    service(:introspection,      'Introspection')
     service(:monitoring,         'Monitoring')
-    service(:workflow,           'Workflow')
-    service(:dns,                'DNS')
-    service(:key,                'KeyManager')
+    service(:network,            'Network')
+    service(:nfv,                'NFV')
+    service(:orchestration,      'Orchestration')
+    service(:planning,           'Planning')
     service(:shared_file_system, 'SharedFileSystem')
-    service(:container_infra,    'ContainerInfra')
+    service(:storage,            'Storage')
+    service(:volume,             'Volume')
+    service(:workflow,           'Workflow')
 
     @token_cache = {}
 
@@ -259,7 +264,7 @@ module Fog
 
     # Keystone Style Auth
     def self.authenticate_v3(options, connection_options = {})
-      uri = options[:openstack_auth_uri]
+      uri                   = options[:openstack_auth_uri]
       project_name          = options[:openstack_project_name]
       service_type          = options[:openstack_service_type]
       service_name          = options[:openstack_service_name]
@@ -300,6 +305,26 @@ module Fog
 
         token, body = retrieve_tokens_v3(options, connection_options)
         service = get_service_v3(body, service_type, service_name, openstack_region, options)
+      end
+
+      # If no identity endpoint is found, try the auth uri (slicing /auth/tokens)
+      # It covers the case where identityv3 endpoint is not present in the catalog but we have to use it
+      unless service
+        if service_type.include? "identity"
+          identity_uri = uri.to_s.sub('/auth/tokens', '')
+          response = Fog::Core::Connection.new(identity_uri, false, connection_options).request({:method => 'GET'})
+          if response.status == 200
+            service = {
+              "endpoints" => [{
+                 "url"       => identity_uri,
+                 "region"    => openstack_region,
+                 "interface" => endpoint_type
+              }],
+              "type"      => service_type,
+              "name"      => service_name
+            }
+          end
+        end
       end
 
       unless service

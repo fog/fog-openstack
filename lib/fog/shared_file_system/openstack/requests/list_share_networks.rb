@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => 200,
             :method  => 'GET',
-            :path    => 'share_networks',
+            :path    => 'share-networks',
             :query   => options
           )
         end
