@@ -23,6 +23,7 @@ module Fog
       collection  :secrets
       model       :container
       collection  :containers
+      model       :acl
 
       ## REQUESTS
 
@@ -40,6 +41,12 @@ module Fog
       request :get_container
       request :list_containers
       request :delete_container
+
+      #acl
+      request :get_acl
+      request :update_acl
+      request :replace_acl
+      request :delete_acl
 
       class Real
         include Fog::OpenStack::Core
