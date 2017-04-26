@@ -1,12 +1,11 @@
 
 require 'fog/openstack/models/model'
-require 'uri'
 
 module Fog
   module KeyManager
     class OpenStack
 
-      class Acl < Fog::OpenStack::Model
+      class ACL < Fog::OpenStack::Model
         identity :acl_ref
 
         attribute :uuid

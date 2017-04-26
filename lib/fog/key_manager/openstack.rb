@@ -42,11 +42,17 @@ module Fog
       request :list_containers
       request :delete_container
 
-      #acl
-      request :get_acl
-      request :update_acl
-      request :replace_acl
-      request :delete_acl
+      #ACL
+      request :get_secret_acl
+      request :update_secret_acl
+      request :replace_secret_acl
+      request :delete_secret_acl
+
+      request :get_container_acl
+      request :update_container_acl
+      request :replace_container_acl
+      request :delete_container_acl
+
 
       class Real
         include Fog::OpenStack::Core

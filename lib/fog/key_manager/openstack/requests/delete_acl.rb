@@ -21,6 +21,26 @@ module Fog
       end
 
       class Mock
+        def delete_secret_acl(_uuid)
+          response = Excon::Response.new
+          response.status = 200
+          response.body = {
+              "data" => {
+                  "body" => "null"
+              }
+          }
+        end
+
+        def delete_container_acl(_uuid)
+          response = Excon::Response.new
+          response.status = 200
+          response.body = {
+              "data" => {
+                  "body" => "null"
+              }
+          }
+        end
+
       end
     end
   end
