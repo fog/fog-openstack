@@ -23,6 +23,7 @@ module Fog
       collection  :secrets
       model       :container
       collection  :containers
+      model       :acl
 
       ## REQUESTS
 
@@ -40,6 +41,53 @@ module Fog
       request :get_container
       request :list_containers
       request :delete_container
+
+      #ACL
+      request :get_secret_acl
+      request :update_secret_acl
+      request :replace_secret_acl
+      request :delete_secret_acl
+
+      request :get_container_acl
+      request :update_container_acl
+      request :replace_container_acl
+      request :delete_container_acl
+
+      class Mock
+        def initialize(options = {})
+          @openstack_username = options[:openstack_username]
+          @openstack_tenant   = options[:openstack_tenant]
+          @openstack_auth_uri = URI.parse(options[:openstack_auth_url])
+
+          @auth_token = Fog::Mock.random_base64(64)
+          @auth_token_expiration = (Time.now.utc + 86400).iso8601
+
+          management_url = URI.parse(options[:openstack_auth_url])
+          management_url.port = 9311
+          management_url.path = '/v1'
+          @openstack_management_url = management_url.to_s
+
+          @data ||= {:users => {}}
+          unless @data[:users].detect { |u| u['name'] == options[:openstack_username] }
+            id = Fog::Mock.random_numbers(6).to_s
+            @data[:users][id] = {
+              'id'       => id,
+              'name'     => options[:openstack_username],
+              'email'    => "#{options[:openstack_username]}@mock.com",
+              'tenantId' => Fog::Mock.random_numbers(6).to_s,
+              'enabled'  => true
+            }
+          end
+        end
+
+        def credentials
+          {:provider                 => 'openstack',
+           :openstack_auth_url       => @openstack_auth_uri.to_s,
+           :openstack_auth_token     => @auth_token,
+           :openstack_region         => @openstack_region,
+           :openstack_management_url => @openstack_management_url}
+        end
+      end
 
       class Real
         include Fog::OpenStack::Core
