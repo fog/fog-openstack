@@ -2,11 +2,11 @@ module Fog
   module KeyManager
     class OpenStack
       class Real
-	      def delete_container_acl(uuid)
+        def delete_container_acl(uuid)
           request(
-              :expects => [200],
-              :method  => 'DELETE',
-              :path    => "containers/#{uuid}/acl",
+            :expects => [200],
+            :method  => 'DELETE',
+            :path    => "containers/#{uuid}/acl"
           )
         end
       end
@@ -16,6 +16,7 @@ module Fog
           response = Excon::Response.new
           response.status = 200
           response.body = "null"
+          response
         end
       end
     end

@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_secret_acl(uuid)
           request(
-              :expects => [200],
-              :method  => 'DELETE',
-              :path    => "secrets/#{uuid}/acl",
+            :expects => [200],
+            :method  => 'DELETE',
+            :path    => "secrets/#{uuid}/acl"
           )
         end
       end
@@ -16,6 +16,7 @@ module Fog
           response = Excon::Response.new
           response.status = 200
           response.body = "null"
+          response
         end
       end
     end
