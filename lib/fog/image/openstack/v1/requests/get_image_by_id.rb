@@ -31,7 +31,8 @@ module Fog
               'X-Image-Meta-Protected'        => 'False',
               'X-Image-Meta-Size'             => 4979632,
               'X-Image-Meta-Status'           => 'deactivated',
-              'X-Image-Meta-Updated_at'       => '2016-02-25T03:02:05.000000'
+              'X-Image-Meta-Updated_at'       => '2016-02-25T03:02:05.000000',
+              'X-Image-Meta-Property-foo'     => 'bar'
             }
             response.body = {}
             response
