@@ -54,6 +54,8 @@ http_interactions:
       - '2016-02-25T03:02:05.000000'
       X-Openstack-Request-Id:
       - req-3ff0af92-827c-4e9d-bf1b-da27d93e4acb
+      X-Image-Meta-Property-foo:
+      - 'bar'
       Date:
       - Thu, 25 Aug 2016 17:09:02 GMT
       Connection:

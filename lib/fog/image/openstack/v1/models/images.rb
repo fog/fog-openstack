@@ -23,10 +23,21 @@ module Fog
           end
 
           def find_by_id(id)
-            marker = 'X-Image-Meta-'
-            params = service.get_image_by_id(id).headers.select{|h,_| h.include?(marker) }
-            params = params.map{|k,v| [k.gsub(marker,'').downcase, convert_to_type(v)]}
-            new(Hash[params])
+            marker          = 'X-Image-Meta-'
+            property_marker = 'X-Image-Meta-Property-'
+            headers = service.get_image_by_id(id).headers.select { |h, _| h.start_with?(marker) }
+
+            # partioning on the longer prefix, leaving X-Image-Meta
+            # headers in the second returned hash.
+            custom_properties, params = headers.partition do |k, _|
+              k.start_with?(property_marker)
+            end.map { |p| Hash[p] }
+
+            params            = remove_prefix_and_convert_type(params, marker)
+            custom_properties = remove_prefix_and_convert_type(custom_properties, property_marker)
+
+            params['properties'] = custom_properties
+            new(params)
           rescue Fog::Image::OpenStack::NotFound
             nil
           end
@@ -83,6 +94,10 @@ module Fog
             else
               v
             end
+          end
+
+          def remove_prefix_and_convert_type(hash, prefix)
+            Hash[hash.map { |k, v| [k.gsub(prefix, '').downcase, convert_to_type(v)] }]
           end
         end
       end

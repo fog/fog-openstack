@@ -29,5 +29,13 @@ describe Fog::Image::OpenStack do
         assert_nil @service.images.find_by_id('non-existing-id')
       end
     end
+
+    it 'returns custom properties' do
+      existing_image_id = 'ea20c966-d2fb-4287-a2eb-7bece9af4263'
+      expected_value = 'bar'
+      VCR.use_cassette('images_v1_find_by_id') do
+        @service.images.find_by_id(existing_image_id).properties['foo'].must_equal expected_value
+      end
+    end
   end
 end
