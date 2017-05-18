@@ -23,8 +23,11 @@ module Fog
               data[:last_modified][:servers].delete(server_id)
               data[:servers].delete(server_id)
               response.status = 204
-              group_id, = data[:server_groups].find { |_id, grp| grp[:members].include?(server_id) }
-              data[:server_groups][group_id][:members] -= [server_id] if group_id
+              server_groups = data[:server_groups]
+              if server_groups
+                group_id, = server_groups.find { |_id, grp| grp[:members].include?(server_id) }
+                server_groups[group_id][:members] -= [server_id] if group_id
+              end
             end
             response
           else
