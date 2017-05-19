@@ -61,7 +61,7 @@ module Fog
             data['server']['block_device_mapping_v2'] = [block_device_mapping].flatten.collect do |mapping|
               entered_block_device_mapping = {}
               [:boot_index, :delete_on_termination, :destination_type, :device_name, :device_type, :disk_bus,
-               :guest_format, :source_type, :uuid, :virtual_name, :volume_size].each do |index|
+               :guest_format, :source_type, :uuid, :volume_size].each do |index|
                 entered_block_device_mapping[index.to_s] = mapping[index] if mapping.key?(index)
               end
               entered_block_device_mapping
