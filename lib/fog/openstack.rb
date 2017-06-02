@@ -413,11 +413,13 @@ module Fog
 
       identity_v2_connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
       request_body = {:auth => Hash.new}
+      request_headers = {'Content-Type' => 'application/json'}
 
       if auth_token
         request_body[:auth][:token] = {
           :id => auth_token
         }
+        request_headers['X-Auth-Token'] = auth_token
       else
         request_body[:auth][:passwordCredentials] = {
           :username => username,
@@ -428,7 +430,7 @@ module Fog
 
       request = {
         :expects => [200, 204],
-        :headers => {'Content-Type' => 'application/json'},
+        :headers => request_headers,
         :body    => Fog::JSON.encode(request_body),
         :method  => 'POST',
         :path    => (uri.path and not uri.path.empty?) ? uri.path : 'v2.0'
