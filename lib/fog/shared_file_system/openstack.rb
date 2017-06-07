@@ -36,6 +36,9 @@ module Fog
       request :create_share_network
       request :update_share_network
       request :delete_share_network
+      request :share_network_action
+      request :add_security_service_to_share_network
+      request :remove_security_service_from_share_network
 
       # shares
       request :list_shares
