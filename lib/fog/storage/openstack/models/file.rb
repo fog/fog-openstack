@@ -33,6 +33,11 @@ module Fog
         # @see http://docs.openstack.org/developer/swift/api/use_content-encoding_metadata.html#use-content-encoding-metadata
         attribute :content_encoding, :aliases => 'Content-Encoding'
 
+        def initialize(new_attributes = {})
+          super
+          @dirty = if last_modified then false else true end
+        end
+
         def body
           attributes[:body] ||= if last_modified
                                   collection.get(identity).body
@@ -43,6 +48,7 @@ module Fog
 
         def body=(new_body)
           attributes[:body] = new_body
+          @dirty = true
         end
 
         attr_reader :directory
@@ -61,6 +67,7 @@ module Fog
         def destroy
           requires :directory, :key
           service.delete_object(directory.key, key)
+          @dirty = true
           true
         end
 
@@ -100,7 +107,7 @@ module Fog
         end
 
         def save(options = {})
-          requires :body, :directory, :key
+          requires :directory, :key
           options['Content-Type'] = content_type if content_type
           options['Content-Disposition'] = content_disposition if content_disposition
           options['Access-Control-Allow-Origin'] = access_control_allow_origin if access_control_allow_origin
@@ -110,12 +117,17 @@ module Fog
           options['Content-Encoding'] = content_encoding if content_encoding
           options.merge!(metadata_to_headers)
 
-          data = service.put_object(directory.key, key, body, options)
+          if not @dirty
+            data = service.post_object(directory.key, key, options)
+          else
+            requires :body
+            data = service.put_object(directory.key, key, body, options)
+            self.content_length = Fog::Storage.get_body_size(body)
+            self.content_type ||= Fog::Storage.get_content_type(body)
+          end
           update_attributes_from(data)
           refresh_metadata
 
-          self.content_length = Fog::Storage.get_body_size(body)
-          self.content_type ||= Fog::Storage.get_content_type(body)
           true
         end
 

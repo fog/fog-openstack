@@ -79,6 +79,15 @@ describe "Fog::Storage[:openstack] | object requests" do
       Fog::Storage[:openstack].head_object('fogobjecttests', 'fog_object')
     end
 
+    it "#post_object('fogobjecttests', 'fog_object')" do
+      skip if Fog.mocking?
+      Fog::Storage[:openstack].post_object('fogobjecttests', 'fog_object',
+        'X-Object-Meta-test-header' => 'fog-test-value')
+      resp = Fog::Storage[:openstack].head_object('fogobjecttests', 'fog_object')
+      resp.headers.include?('X-Object-Meta-test-header')
+      resp.headers['X-Object-Meta-test-header'] == 'fog-test-value'
+    end
+
     it "#delete_object('fogobjecttests', 'fog_object')" do
       skip if Fog.mocking?
       Fog::Storage[:openstack].delete_object('fogobjecttests', 'fog_object')
@@ -184,6 +193,13 @@ describe "Fog::Storage[:openstack] | object requests" do
       skip if Fog.mocking?
       proc do
         Fog::Storage[:openstack].head_object('fognoncontainer', 'fog_non_object')
+      end.must_raise(Fog::Storage::OpenStack::NotFound)
+    end
+
+    it "#post_object('fognoncontainer', 'fog_non_object')" do
+      skip if Fog.mocking?
+      proc do
+        Fog::Storage[:openstack].post_object('fognoncontainer', 'fog_non_object')
       end.must_raise(Fog::Storage::OpenStack::NotFound)
     end
 
