@@ -9,7 +9,7 @@ module Fog
                                          }),
             :expects => [200, 203],
             :method  => 'POST',
-            :path    => "flavors/#{flavor_ref}/action.json"
+            :path    => "flavors/#{flavor_ref}/action"
           )
         end
       end

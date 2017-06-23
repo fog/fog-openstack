@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => [200, 203],
             :method  => 'GET',
-            :path    => "servers/#{server_id}/ips/public.json"
+            :path    => "servers/#{server_id}/ips/public"
           )
         end
       end

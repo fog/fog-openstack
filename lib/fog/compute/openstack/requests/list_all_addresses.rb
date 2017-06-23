@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => [200, 203],
             :method  => 'GET',
-            :path    => "os-floating-ips.json",
+            :path    => "os-floating-ips",
             :query   => options
           )
         end
