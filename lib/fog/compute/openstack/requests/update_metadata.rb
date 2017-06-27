@@ -7,7 +7,7 @@ module Fog
             :body    => Fog::JSON.encode('metadata' => metadata),
             :expects => 200,
             :method  => 'POST',
-            :path    => "#{collection_name}/#{parent_id}/metadata.json"
+            :path    => "#{collection_name}/#{parent_id}/metadata"
           )
         end
       end

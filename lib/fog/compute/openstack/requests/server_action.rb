@@ -7,7 +7,7 @@ module Fog
             :body    => Fog::JSON.encode(body),
             :expects => expects,
             :method  => 'POST',
-            :path    => "servers/#{server_id}/action.json"
+            :path    => "servers/#{server_id}/action"
           )
         end
       end

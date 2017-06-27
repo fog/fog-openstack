@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => [200, 203],
             :method  => 'GET',
-            :path    => "/#{collection_name}/#{parent_id}/metadata.json"
+            :path    => "/#{collection_name}/#{parent_id}/metadata"
           )
         end
       end

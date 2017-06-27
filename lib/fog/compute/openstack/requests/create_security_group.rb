@@ -14,7 +14,7 @@ module Fog
             :body    => Fog::JSON.encode(data),
             :expects => 200,
             :method  => 'POST',
-            :path    => 'os-security-groups.json'
+            :path    => 'os-security-groups'
           )
         end
       end

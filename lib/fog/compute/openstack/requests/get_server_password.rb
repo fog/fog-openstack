@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => [200, 203],
             :method  => 'GET',
-            :path    => "servers/#{server_id}/os-server-password.json"
+            :path    => "servers/#{server_id}/os-server-password"
           )
         end
       end

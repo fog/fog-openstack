@@ -7,7 +7,7 @@ module Fog
             :body    => Fog::JSON.encode('pool' => pool),
             :expects => [200, 202],
             :method  => 'POST',
-            :path    => 'os-floating-ips.json'
+            :path    => 'os-floating-ips'
           )
         end
       end

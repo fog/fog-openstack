@@ -7,7 +7,7 @@ module Fog
             :body    => Fog::JSON.encode('server' => options),
             :expects => 200,
             :method  => 'PUT',
-            :path    => "servers/#{server_id}.json"
+            :path    => "servers/#{server_id}"
           )
         end
       end

@@ -15,7 +15,7 @@ module Fog
             :body    => Fog::JSON.encode(data),
             :expects => 200,
             :method  => 'POST',
-            :path    => 'os-keypairs.json'
+            :path    => 'os-keypairs'
           )
         end
       end
