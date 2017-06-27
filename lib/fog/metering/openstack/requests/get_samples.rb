@@ -2,7 +2,7 @@ module Fog
   module Metering
     class OpenStack
       class Real
-        def get_samples(meter_id, options = [])
+        def get_samples(meter_id, options = [], limit = 10000000)
           data = {
             'q' => []
           }
@@ -15,6 +15,7 @@ module Fog
             end
 
             data['q'] << filter unless filter.empty?
+            data['limit'] = limit
           end
 
           request(
