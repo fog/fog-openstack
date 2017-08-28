@@ -106,6 +106,14 @@ describe "Fog::Storage[:openstack] | object requests" do
         url_s = Fog::Storage[:openstack].get_object_https_url(@directory.identity, 'fog_object', ts)
         test_temp_url(url_s, ts, 'https')
       end
+
+      it "#get_object_https_url_numeric('directory.identity', 'fog_object', expiration_timestamp)" do
+        skip if Fog.mocking?
+        ts = Time.at(1500000000)
+        fog = Fog::Storage.new(provider: :openstack, openstack_temp_url_key: '12345')
+        url_s = fog.get_object_https_url(@directory.identity, 'fog_object', ts)
+        test_temp_url(url_s, ts, 'https')
+      end
     end
 
     describe "put_object with block" do

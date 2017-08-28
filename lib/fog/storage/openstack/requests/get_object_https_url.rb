@@ -53,7 +53,7 @@ module Fog
           object_path_unescaped = "#{@path}/#{Fog::OpenStack.escape(container)}/#{object}"
           string_to_sign = "#{method}\n#{expires}\n#{object_path_unescaped}"
 
-          hmac = Fog::HMAC.new('sha1', @openstack_temp_url_key)
+          hmac = Fog::HMAC.new('sha1', @openstack_temp_url_key.to_s)
           sig  = sig_to_hex(hmac.sign(string_to_sign))
 
           temp_url_options = {
