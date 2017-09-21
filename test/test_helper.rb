@@ -68,6 +68,14 @@ def array_differences(array_a, array_b)
   (array_a - array_b) | (array_b - array_a)
 end
 
+def prefix_with_url(files, base_url)
+  files.map { |fname| File.join(base_url.to_s, fname) }.compact
+end
+
+def assert_equal_set(a, b)
+  assert_equal(Set.new(a), Set.new(b))
+end
+
 module Minitest
   class Test
     # Some tests need to be fixed. There are skipped unless the following is true

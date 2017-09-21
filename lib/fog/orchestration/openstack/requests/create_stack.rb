@@ -1,3 +1,5 @@
+require "fog/orchestration/util/recursive_hot_file_loader"  # FIXME is there a better way to require this file?
+
 module Fog
   module Orchestration
     class OpenStack
@@ -27,6 +29,19 @@ module Fog
               :stack_name => arg1
             }.merge(arg2.nil? ? {} : arg2)
           end
+
+          # Templates should always:
+          #  - be strings
+          #  - contain URI references instead of relative paths.
+          # Passing :template_url may not work well with `get_files` and remote `type`:
+          #  the python client implementation in shade retrieves from :template_uri
+          #  and replaces it with :template.
+          #  see https://github.com/openstack-infra/shade/blob/master/shade/openstackcloud.py#L1201
+          #  see https://developer.openstack.org/api-ref/orchestration/v1/index.html#create-stack
+          hot_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new(options[:template] || options[:template_url])
+          files = hot_resolver.get_files()
+          options[:template] = hot_resolver.template
+          options[:files] = files if files
 
           request(
             :expects => 201,
@@ -68,6 +83,17 @@ module Fog
             'id'    => stack_id,
             'links' => [{"href" => "http://localhost:8004/v1/fake_tenant_id/stacks/#{options[:stack_name]}/#{stack_id}", "rel" => "self"}]
           }
+
+          if options.key?(:files)
+            response.body['files'] = { 'foo.sh' => 'hello' }
+          end
+
+          if options.key?(:template) or options.key?(:template_url)
+            hot_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new(options[:template] || options[:template_url])
+            files = hot_resolver.get_files()
+            response.body['files'] = files if files
+          end
+
           response
         end
       end
