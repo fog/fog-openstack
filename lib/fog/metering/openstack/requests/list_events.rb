@@ -18,7 +18,7 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
+            :query   => data,
             :expects => 200,
             :method  => 'GET',
             :path    => 'events'
