@@ -4,6 +4,11 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
   before do
     @orchestration = Fog::Orchestration[:openstack]
 
+    @stack_mock = Fog::Orchestration::OpenStack::Stack.new(
+      :template_name => "stack_mock",
+      :id            => "stack_id"
+    )
+
     @stack_format = {
       'links'               => Array,
       'id'                  => String,
@@ -44,7 +49,7 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
 
   describe "success" do
     it "#create_stack" do
-      @stack = @orchestration.create_stack("teststack").body.must_match_schema(@create_format)
+      @stack = @orchestration.create_stack(:stack_name => "teststack").body.must_match_schema(@create_format)
     end
 
     it "#list_stack_data" do
@@ -56,19 +61,19 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     end
 
     it "#update_stack" do
-      @orchestration.update_stack("teststack").body.must_match_schema({})
+      @orchestration.update_stack(@stack_mock).body.must_match_schema({})
     end
 
     it "#patch_stack" do
-      @orchestration.patch_stack(@stack).body.must_match_schema({})
+      @orchestration.patch_stack(@stack_mock).body.must_match_schema({})
     end
 
     it "#delete_stack" do
-      @orchestration.delete_stack("teststack", "id").body.must_match_schema({})
+      @orchestration.delete_stack(@stack_mock).body.must_match_schema({})
     end
 
     it "#cancel_update" do
-      @orchestration.cancel_update(@stack).body.must_match_schema({})
+      @orchestration.cancel_update(@stack_mock).body.must_match_schema({})
     end
   end
 end
