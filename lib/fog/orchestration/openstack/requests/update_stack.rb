@@ -17,13 +17,13 @@ module Fog
             stack = arg1
             stack_name = stack.stack_name
             stack_id = stack.id
-            params = arg2.nil? ? {} : arg2
+            options = arg2.nil? ? {} : arg2
           else
             # Deprecated, update_stack(stack_id, stack_name, options = {})
             Fog::Logger.deprecation("#update_stack(stack_id, stack_name, options) is deprecated, use #update_stack(stack, options) instead [light_black](#{caller.first})[/]")
             stack_id = arg1
             stack_name = arg2
-            params = {
+            options = {
               :stack_name => stack_name
             }.merge(arg3.nil? ? {} : arg3)
           end
@@ -32,7 +32,7 @@ module Fog
             :expects => 202,
             :path    => "stacks/#{stack_name}/#{stack_id}",
             :method  => 'PUT',
-            :body    => Fog::JSON.encode(params)
+            :body    => Fog::JSON.encode(options)
           )
         end
       end
@@ -44,13 +44,13 @@ module Fog
             stack = arg1
             stack_name = stack.stack_name
             stack_id = stack.id
-            params = arg2.nil? ? {} : arg2
+            options = arg2.nil? ? {} : arg2
           else
             # Deprecated, update_stack(stack_id, stack_name, options = {})
             Fog::Logger.deprecation("#update_stack(stack_id, stack_name, options) is deprecated, use #update_stack(stack, options) instead [light_black](#{caller.first})[/]")
             stack_id = arg1
             stack_name = arg2
-            params = {
+            options = {
               :stack_name => stack_name
             }.merge(arg3.nil? ? {} : arg3)
           end
