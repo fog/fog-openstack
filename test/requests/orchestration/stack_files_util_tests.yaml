@@ -1,4 +1,12 @@
 
+get_file_contents_local_template:
+  - input: {"type": "local.yaml"}
+    expected: ["local.yaml", "hot_1.yaml"]
+  - input: {"type": "no_recursion.yaml"}
+    expected: ["no_recursion.yaml"]
+  - input: {"type": "local_fullpath.yaml"}
+    expected: ["local_fullpath.yaml", "local.yaml", "hot_1.yaml"]
+
 get_file_contents_http_template:
   - input: "https://raw.githubusercontent.com/ioggstream/heat-templates/test_fog/hot/fog_1.yaml"
     expected:

@@ -1,4 +1,4 @@
-require "fog/orchestration/util/recursive_hot_file_loader"  # FIXME is there a better way to require this file?
+require "fog/orchestration/util/recursive_hot_file_loader"
 
 module Fog
   module Orchestration
@@ -12,6 +12,7 @@ module Fog
         #   * :template [String] Structure containing the template body.
         #   or (one of the two Template parameters is required)
         #   * :template_url [String] URL of file containing the template body.
+        #   * :files [Hash] Hash with files resources.
         #   * :disable_rollback [Boolean] Controls rollback on stack creation failure, defaults to false.
         #   * :parameters [Hash] Hash of providers to supply to template
         #   * :timeout_mins [Integer] Minutes to wait before status is set to CREATE_FAILED
@@ -38,9 +39,9 @@ module Fog
           #  and replaces it with :template.
           #  see https://github.com/openstack-infra/shade/blob/master/shade/openstackcloud.py#L1201
           #  see https://developer.openstack.org/api-ref/orchestration/v1/index.html#create-stack
-          hot_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new(options[:template] || options[:template_url])
-          files = hot_resolver.get_files()
-          options[:template] = hot_resolver.template
+          file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new(options[:template] || options[:template_url], options[:files])
+          files = file_resolver.get_files
+          options[:template] = file_resolver.template
           options[:files] = files if files
 
           request(
@@ -85,12 +86,12 @@ module Fog
           }
 
           if options.key?(:files)
-            response.body['files'] = { 'foo.sh' => 'hello' }
+            response.body['files'] = {'foo.sh' => 'hello'}
           end
 
-          if options.key?(:template) or options.key?(:template_url)
-            hot_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new(options[:template] || options[:template_url])
-            files = hot_resolver.get_files()
+          if options.key?(:template) || options.key?(:template_url)
+            file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new(options[:template] || options[:template_url], options[:files])
+            files = file_resolver.get_files
             response.body['files'] = files if files
           end
 

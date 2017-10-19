@@ -5,8 +5,7 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
   before do
     @oldcwd = Dir.pwd
     Dir.chdir("test/requests/orchestration")
-    @base_url = URI.join("file:", File.absolute_path("."))
-    @base_url.host = ""
+    @base_url = "file://" + File.absolute_path(".")
 
     @orchestration = Fog::Orchestration[:openstack]
 
@@ -71,10 +70,24 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     end
 
     it "#create_stack_resolve_files" do
-      expected = prefix_with_url(["local.yaml", "hot_1.yaml"], @base_url.to_s)
+      expected = prefix_with_url(["local.yaml", "hot_1.yaml"], @base_url)
       args = {
         :stack_name => "teststack_files",
-        :template   => YAML.safe_load(open("local.yaml")),
+        :template   => YAML.load(open("local.yaml")),
+      }
+      response = @orchestration.create_stack(args)
+      response.body.must_match_schema(@create_format_files)
+      files = response.body['files']
+      Fog::Logger.warning("Request processed: #{files.keys}")
+      assert_equal_set(expected, files.keys)
+    end
+
+    it "#create_stack_merge_files" do
+      expected = prefix_with_url(["local.yaml", "hot_1.yaml", "file.txt"], @base_url)
+      args = {
+        :stack_name => "teststack_files",
+        :template   => YAML.load(open("local.yaml")),
+        :files      => {expected[-1] => "# just a mock"}
       }
       response = @orchestration.create_stack(args)
       response.body.must_match_schema(@create_format_files)
