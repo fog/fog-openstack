@@ -540,23 +540,12 @@ neutron.add_router_interface router.id, subnet.id
 ## Development
 
 ```
-# 1. Clone repository
-$ git clone https://github.com/fog/fog-openstack.git
-
-# 2. Make sure rake is installed
-$ gem install rake
-
-# 3. Install dependencies from project directory
-$ cd fog-openstack; bin/setup
-
-# 4. Run tests
-$ rake spec
-
-# 5. Run interactive prompt that allows you to experiment (optional)
-$ bin/console
-
-# 6. Install gem to your local machine (optional)
-$ bundle exec rake Install
+$ git clone https://github.com/fog/fog-openstack.git # Clone repository
+$ gem install rake   # Make sure rake is installed
+$ cd fog-openstack; bin/setup   # Install dependencies from project directory
+$ rake spec   # Run tests
+$ bin/console   # Run interactive prompt that allows you to experiment (optional)
+$ bundle exec rake Install   # Install gem to your local machine (optional)
 ```
 
 In order to release a new version, perform the following steps:
