@@ -1,4 +1,13 @@
 
+get_files_invalid:
+  - input: {"get_file": "|ls"}
+    expected: []
+  - input: {"get_file": "http:/../../../../../etc/passwd"}
+    expected: []
+  - input: {"type": "|ls.yaml"}
+    expected: []
+
+
 get_file_contents_local_template:
   - input: {"type": "local.yaml"}
     expected: ["local.yaml", "hot_1.yaml"]
