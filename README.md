@@ -544,7 +544,7 @@ $ git clone https://github.com/fog/fog-openstack.git # Clone repository
 $ cd fog-openstack; bin/setup   # Install dependencies from project directory
 $ rake spec   # Run tests
 $ bin/console   # Run interactive prompt that allows you to experiment (optional)
-$ bundle exec rake Install   # Install gem to your local machine (optional)
+$ bundle exec rake install   # Install gem to your local machine (optional)
 ```
 
 In order to release a new version, perform the following steps:
