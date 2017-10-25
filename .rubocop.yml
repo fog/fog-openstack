@@ -9,6 +9,7 @@ AlignHash:
 BlockNesting:
   Severity: refactor
 ClassLength:
+  Max: 150
   Severity: refactor
 ClassCheck:
   EnforcedStyle: kind_of?
