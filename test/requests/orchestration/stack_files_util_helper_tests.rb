@@ -31,25 +31,25 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
       refute(@file_resolver.send(:template_is_url?, @template_yaml))
     end
 
-    it "#get_content_local" do
-      content = @file_resolver.send(:get_content, "template.yaml")
+    it "#read_uri_local" do
+      content = @file_resolver.send(:read_uri, "template.yaml")
       assert_includes(content, "heat_template_version")
     end
 
-    it "#get_content_remote" do
+    it "#read_uri_remote" do
       skip if Fog.mocking?
-      content = @file_resolver.send(:get_content, "https://www.google.com/robots.txt")
+      content = @file_resolver.send(:read_uri, "https://www.google.com/robots.txt")
       assert_includes(content, "Disallow:")
     end
 
-    it "#get_content_404" do
+    it "#read_uri_404" do
       skip if Fog.mocking?
       assert_raises OpenURI::HTTPError do
-        @file_resolver.send(:get_content, "https://www.google.com/NOOP")
+        @file_resolver.send(:read_uri, "https://www.google.com/NOOP")
       end
     end
 
-    it "#get_content_bad_uri" do
+    it "#read_uri_bad_uri" do
       test_cases = %w[
         |no_command_execution
         |neither;\nhttp://localhost
@@ -57,7 +57,7 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
       ]
       test_cases.each do |uri|
         assert_raises ArgumentError do
-          @file_resolver.send(:get_content, uri)
+          @file_resolver.send(:read_uri, uri)
         end
       end
     end

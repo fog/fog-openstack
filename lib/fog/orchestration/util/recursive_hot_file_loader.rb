@@ -12,29 +12,22 @@ module Fog
       #  a files Hash conforming to Heat Specs
       #  https://developer.openstack.org/api-ref/orchestration/v1/index.html?expanded=create-stack-detail#stacks
       #
-      # Files present in :files are not processed further. The others
-      #   are added to the Hash. This behavior is the same implemented in openstack-infra/shade
-      #   see https://github.com/openstack-infra/shade/blob/1d16f64fbf376a956cafed1b3edd8e51ccc16f2c/shade/openstackcloud.py#L1200
-
-      #
       # This implementation just process nested templates but not resource
       #  registries.
       class RecursiveHotFileLoader
         attr_reader :files
         attr_reader :template
-        attr_reader :template_ori
         attr_reader :visited
-        attr_reader :max_files_size
 
         def initialize(template, files = nil)
           @template = template
-          @template_ori = template
-          @template_base_url = nil
           @files = files || {}
           @visited = Set.new
         end
 
         def get_files
+          return @files unless @files.empty?
+
           Fog::Logger.debug("Processing template #{@template}")
           @template = get_template_contents(@template)
           Fog::Logger.debug("Template processed. Populated #{@files}")
@@ -44,11 +37,12 @@ module Fog
         # Return string
         def url_join(prefix, suffix)
           if prefix
-            prefix += '/' if prefix && !prefix.to_s.end_with?("/")
+            # URI.join replaces prefix parts before a
+            #  trailing slash. See https://docs.ruby-lang.org/en/2.3.0/URI.html.
+            prefix += '/' unless prefix.to_s.end_with?("/")
             suffix = URI.join(prefix, suffix)
             # Force URI to use traditional file scheme representation.
             suffix.host = "" if suffix.scheme == "file"
-            suffix = suffix.to_s
           end
           suffix.to_s
         end
@@ -68,7 +62,7 @@ module Fog
           raise "template_file should be Hash or String" unless
             template_file.kind_of?(String) || template_file.kind_of?(Hash)
 
-          local_base_url = base_url_for_url(normalise_file_path_to_url(Dir.pwd + "/TEMPLATE"))
+          local_base_url = url_join("file:/", File.absolute_path(Dir.pwd))
 
           if template_file.kind_of?(Hash)
             template_base_url = local_base_url
@@ -82,7 +76,7 @@ module Fog
           elsif template_is_url?(template_file)
             template_file = normalise_file_path_to_url(template_file)
             template_base_url = base_url_for_url(template_file)
-            raw_template = get_content(template_file)
+            raw_template = read_uri(template_file)
 
             Fog::Logger.debug("Template visited: #{@visited}")
             @visited.add(template_file)
@@ -123,10 +117,8 @@ module Fog
             str_url = url_join(base_url, value)
 
             next if @files.key?(str_url)
-            # Don't process file:// outside our base_url. TODO raise an exception here?
-            next if file_outside_base_url?(base_url, str_url)
 
-            file_content = get_content(str_url)
+            file_content = read_uri(str_url)
 
             # get_file should not recurse hot templates.
             if key == "type" && template_is_raw?(file_content) && !@visited.include?(str_url)
@@ -153,7 +145,7 @@ module Fog
         # Protect open-uri from malign arguments like
         #  - "|ls"
         #  - multiline strings
-        def get_content(uri_or_filename)
+        def read_uri(uri_or_filename)
           remote_schemes = %w[http https ftp]
           Fog::Logger.debug("Opening #{uri_or_filename}")
 
@@ -193,14 +185,6 @@ module Fog
           true
         rescue ArgumentError, URI::InvalidURIError
           false
-        end
-
-        def file_outside_base_url?(base_url, str_url)
-          ret = base_url && str_url.start_with?("file://") && !str_url.start_with?(base_url)
-          if ret
-            Fog::Logger.debug("Trying to reference a file outside #{base_url}: #{str_url}")
-          end
-          ret
         end
 
         # Return true if I should I process this this file.

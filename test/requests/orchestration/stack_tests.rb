@@ -82,8 +82,8 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
       assert_equal_set(expected, files.keys)
     end
 
-    it "#create_stack_merge_files" do
-      expected = prefix_with_url(["local.yaml", "hot_1.yaml", "file.txt"], @base_url)
+    it "#create_stack_retain_files" do
+      expected = prefix_with_url(["file.txt"], @base_url)
       args = {
         :stack_name => "teststack_files",
         :template   => YAML.load_file("local.yaml"),
