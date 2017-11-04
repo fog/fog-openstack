@@ -81,6 +81,7 @@ module Fog
 
   module Orchestration
     autoload :OpenStack, File.expand_path('../orchestration/openstack', __FILE__)
+    autoload :Util, File.expand_path('../orchestration/util/recursive_hot_file_loader', __FILE__)
   end
 
   module SharedFileSystem
