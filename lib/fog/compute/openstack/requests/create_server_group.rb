@@ -11,6 +11,7 @@ module Fog
           }}
           request(
             :body    => Fog::JSON.encode(body),
+            :headers => { "OpenStack-API-Version" => "compute latest" },
             :expects => 200,
             :method  => 'POST',
             :path    => 'os-server-groups'
