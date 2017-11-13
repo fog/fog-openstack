@@ -1,0 +1,5 @@
+heat_template_version: newton
+
+resources:
+  a_file:
+    type: hot_1.yaml

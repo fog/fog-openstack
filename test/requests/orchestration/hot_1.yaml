@@ -1,0 +1,8 @@
+heat_template_version: "2014-10-16"
+
+resources:
+  a_file:
+    type: OS::Heat::SoftwareConfig
+    properties:
+      group: script
+      config: {get_file: "local.yaml"}

@@ -10,6 +10,7 @@ module Fog
         #   * :template [String] Structure containing the template body.
         #   or (one of the two Template parameters is required)
         #   * :template_url [String] URL of file containing the template body.
+        #   * :files [Hash] Hash with files resources.
         #   * :disable_rollback [Boolean] Controls rollback on stack creation failure, defaults to false.
         #   * :parameters [Hash] Hash of providers to supply to template
         #   * :timeout_mins [Integer] Minutes to wait before status is set to CREATE_FAILED
@@ -27,6 +28,18 @@ module Fog
               :stack_name => arg1
             }.merge(arg2.nil? ? {} : arg2)
           end
+
+          # Templates should always:
+          #  - be strings
+          #  - contain URI references instead of relative paths.
+          # Passing :template_url may not work well with `get_file` and remote `type`:
+          #  the python client implementation in shade retrieves from :template_uri
+          #  and replaces it with :template.
+          #  see https://github.com/openstack-infra/shade/blob/master/shade/openstackcloud.py#L1201
+          #  see https://developer.openstack.org/api-ref/orchestration/v1/index.html#create-stack
+          file_resolver = Util::RecursiveHotFileLoader.new(options[:template] || options[:template_url], options[:files])
+          options[:template] = file_resolver.template
+          options[:files] = file_resolver.files unless file_resolver.files.empty?
 
           request(
             :expects => 201,
@@ -68,6 +81,16 @@ module Fog
             'id'    => stack_id,
             'links' => [{"href" => "http://localhost:8004/v1/fake_tenant_id/stacks/#{options[:stack_name]}/#{stack_id}", "rel" => "self"}]
           }
+
+          if options.key?(:files)
+            response.body['files'] = {'foo.sh' => 'hello'}
+          end
+
+          if options.key?(:template) || options.key?(:template_url)
+            file_resolver = Util::RecursiveHotFileLoader.new(options[:template] || options[:template_url], options[:files])
+            response.body['files'] = file_resolver.files unless file_resolver.files.empty?
+          end
+
           response
         end
       end

@@ -8,7 +8,7 @@ module Fog
 
         %w(capabilities description disable_rollback links notification_topics outputs parameters
            stack_name stack_status stack_status_reason template_description timeout_mins parent
-           creation_time updated_time stack_user_project_id stack_owner).each do |a|
+           creation_time updated_time stack_user_project_id stack_owner files).each do |a|
           attribute a.to_sym
         end
 
@@ -118,6 +118,7 @@ module Fog
           }
           options[:template] = template_content if template_content
           options[:template_url] = @template_url if @template_url
+          options[:files] = @files if @files
           options
         end
         private :default_options

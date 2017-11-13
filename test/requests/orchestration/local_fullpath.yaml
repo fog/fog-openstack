@@ -1,0 +1,11 @@
+heat_template_version: newton
+
+resources:
+  no_recursion:
+    type: local_fullpath.yaml
+  recurse_yaml_template:
+    type: local.yaml
+  add_yaml_file:
+    get_file: "file:///home/travis/build/fog/fog-openstack/test/requests/orchestration/local.yaml"
+  recurse_yaml_template_too:
+    type: "file:///home/travis/build/fog/fog-openstack/test/requests/orchestration/local.yaml"
