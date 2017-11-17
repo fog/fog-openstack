@@ -58,6 +58,9 @@ module Fog
         def initialize(options = {})
           @openstack_api_key = options[:openstack_api_key]
           @openstack_username = options[:openstack_username]
+          @openstack_management_url = options[:openstack_management_url] || 'http://example:8774/v2/AUTH_1234'
+          # XXX path should be loaded thatnks to parsing or use of openstack_management_url option
+          # need feedback loop with maintainers in pull request
           @path = '/v1/AUTH_1234'
         end
 
