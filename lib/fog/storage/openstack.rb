@@ -59,9 +59,14 @@ module Fog
           @openstack_api_key = options[:openstack_api_key]
           @openstack_username = options[:openstack_username]
           @openstack_management_url = options[:openstack_management_url] || 'http://example:8774/v2/AUTH_1234'
-          # XXX path should be loaded thatnks to parsing or use of openstack_management_url option
-          # need feedback loop with maintainers in pull request
-          @path = '/v1/AUTH_1234'
+
+          @openstack_management_uri = URI.parse(@openstack_management_url)
+
+          @host   = @openstack_management_uri.host
+          @path   = @openstack_management_uri.path
+          @path.sub!(%r{/$}, '')
+          @port   = @openstack_management_uri.port
+          @scheme = @openstack_management_uri.scheme
         end
 
         def data
