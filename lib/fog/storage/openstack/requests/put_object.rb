@@ -36,6 +36,15 @@ module Fog
           request(params)
         end
       end
+
+      class Mock
+        def put_object(container, object, data, options = {}, &block)
+          response = Excon::Response.new
+          response.status = 201
+          response.body = ""
+          response
+        end
+      end
     end
   end
 end
