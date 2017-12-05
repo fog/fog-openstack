@@ -1,7 +1,7 @@
 module Fog
   module Compute
     class OpenStack < Fog::Service
-      SUPPORTED_VERSIONS = /v2\.0|v2\.1/
+      SUPPORTED_VERSIONS = /v2\.0|v2\.1/.freeze
       SUPPORTED_MICROVERSION = '2.15'.freeze
 
       requires :openstack_auth_url
@@ -383,7 +383,7 @@ module Fog
         def initialize(options = {})
           @supported_versions = SUPPORTED_VERSIONS
           @supported_microversion = SUPPORTED_MICROVERSION
-          @microversion_key = 'X-OpenStack-Nova-API-Version'.freeze
+          @microversion_key = 'X-OpenStack-Nova-API-Version'
 
           initialize_identity options
 
