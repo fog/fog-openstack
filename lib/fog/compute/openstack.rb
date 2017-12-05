@@ -1,7 +1,7 @@
 module Fog
   module Compute
     class OpenStack < Fog::Service
-      SUPPORTED_VERSIONS = /v2\.0|v2\.1/.freeze
+      SUPPORTED_VERSIONS = /v2\.0|v2\.1/
       SUPPORTED_MICROVERSION = '2.15'.freeze
 
       requires :openstack_auth_url
