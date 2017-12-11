@@ -1,8 +1,9 @@
-
-
 module Fog
   module Compute
     class OpenStack < Fog::Service
+      SUPPORTED_VERSIONS = /v2\.0|v2\.1/
+      SUPPORTED_MICROVERSION = '2.15'.freeze
+
       requires :openstack_auth_url
       recognizes :openstack_auth_token, :openstack_management_url,
                  :persistent, :openstack_service_type, :openstack_service_name,
@@ -380,6 +381,10 @@ module Fog
         end
 
         def initialize(options = {})
+          @supported_versions = SUPPORTED_VERSIONS
+          @supported_microversion = SUPPORTED_MICROVERSION
+          @microversion_key = 'X-OpenStack-Nova-API-Version'
+
           initialize_identity options
 
           @openstack_identity_service_type = options[:openstack_identity_service_type] || 'identity'
@@ -391,9 +396,9 @@ module Fog
 
           authenticate
 
-          unless @path =~ /1\.1|v2/
+          unless @path =~ %r{/(v2|v2\.0|v2\.1)/}
             raise Fog::OpenStack::Errors::ServiceUnavailable,
-                  "OpenStack compute binding only supports version 2 (a.k.a. 1.1)"
+                  "OpenStack compute binding only supports version v2 and v2.1"
           end
 
           @persistent = options[:persistent] || false
