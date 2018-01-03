@@ -396,7 +396,7 @@ module Fog
 
           authenticate
 
-          unless @path =~ %r{/(v2|v2\.0|v2\.1)/}
+          unless @path =~ %r{/(v2|v2\.0|v2\.1)}
             raise Fog::OpenStack::Errors::ServiceUnavailable,
                   "OpenStack compute binding only supports version v2 and v2.1"
           end
