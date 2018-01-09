@@ -31,6 +31,12 @@ module Fog
           nil
         end
 
+        def each_pair
+          requires :parent
+          data = service.list_metadata(collection_name, @parent.id).body['metadata']
+          data.each_pair { |k, v| yield(k, v) } unless data.nil?
+        end
+
         def update(data = nil)
           requires :parent
           service.update_metadata(collection_name, @parent.id, to_hash(data))
