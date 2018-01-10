@@ -542,9 +542,17 @@ neutron.add_router_interface router.id, subnet.id
 ```
 $ git clone https://github.com/fog/fog-openstack.git # Clone repository
 $ cd fog-openstack; bin/setup   # Install dependencies from project directory
-$ rake spec   # Run tests
+$ bundle exec rake test   # Run tests
+$ bundle exec rake spec   # Run tests
 $ bin/console   # Run interactive prompt that allows you to experiment (optional)
 $ bundle exec rake install   # Install gem to your local machine (optional)
+```
+
+You can also use a docker image for development and running tests. Once you have
+cloned the repository, it can be run with:
+```
+$ docker-compose up test
+$ docker-compose up ruby # Start a container with the ruby environment
 ```
 
 In order to release a new version, perform the following steps:
