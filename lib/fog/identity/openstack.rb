@@ -73,6 +73,8 @@ module Fog
             @path = "/#{options[:openstack_identity_prefix]}/#{@path}"
           end
 
+          @path = "/#{options[:openstack_identity_prefix]}/" if options[:openstack_identity_prefix] == "v2.0"
+
           @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
         end
