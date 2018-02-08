@@ -1,6 +1,18 @@
 module Fog
   module Storage
     class OpenStack
+      class Mock
+        def delete_object(container, object)
+          cc = mock_container!(container)
+          cc.mock_object!(object)
+          cc.remove_object(object)
+
+          response = Excon::Response.new
+          response.status = 204
+          response
+        end
+      end
+
       class Real
         # Delete an existing object
         #

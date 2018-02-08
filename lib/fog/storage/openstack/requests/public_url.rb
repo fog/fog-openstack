@@ -1,6 +1,12 @@
 module Fog
   module Storage
     class OpenStack
+      class Mock
+        def public_url(container = nil, object = nil)
+          fail "Mock Not Implemented (#public_url) in: #{__FILE__}:#{__LINE__}"
+        end
+      end
+
       class Real
         # Get public_url for an object
         #

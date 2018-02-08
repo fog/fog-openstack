@@ -1,6 +1,12 @@
 module Fog
   module Storage
     class OpenStack
+      class Mock
+        def put_dynamic_obj_manifest(container, object, options = {})
+          fail "Mock Not Implemented (#put_dynamic_obj_manifest) in: #{__FILE__}:#{__LINE__}"
+        end
+      end
+
       class Real
         # Create a new dynamic large object manifest
         #

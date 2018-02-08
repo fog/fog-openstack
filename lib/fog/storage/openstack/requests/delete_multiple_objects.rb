@@ -1,6 +1,12 @@
 module Fog
   module Storage
     class OpenStack
+      class Mock
+        def delete_multiple_objects(container, object_names, options = {})
+          fail "Mock Not Implemented (#delete_multiple_objects) in #{__FILE__}:#{__LINE__}"
+        end
+      end
+
       class Real
         # Deletes multiple objects or containers with a single request.
         #

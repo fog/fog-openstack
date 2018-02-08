@@ -1,7 +1,7 @@
 module Fog
   module Storage
     class OpenStack
-      class Real
+      module Common
         # Get an expiring object https url from Cloud Files
         #
         # ==== Parameters
@@ -63,7 +63,8 @@ module Fog
             :path   => object_path_escaped,
             :query  => "temp_url_sig=#{sig}&temp_url_expires=#{expires}"
           }
-          URI::Generic.build(temp_url_options).to_s
+
+          CGI.unescape(URI::Generic.build(temp_url_options).to_s)
         end
 
         private
@@ -75,6 +76,14 @@ module Fog
             h.size == 1 ? "0#{h}" : h
           end.join
         end
+      end
+
+      class Mock
+        include Common
+      end
+
+      class Real
+        include Common
       end
     end
   end

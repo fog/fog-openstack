@@ -1,6 +1,12 @@
 module Fog
   module Storage
     class OpenStack
+      class Mock
+        def post_set_meta_temp_url_key(key)
+          fail "Mock Not Implemented (#post_set_meta_temp_url_key) in: #{__FILE__}:#{__LINE__}"
+        end
+      end
+
       class Real
         # Set the account wide Temp URL Key. This is a secret key that's
         # used to generate signed expiring URLs.

@@ -1,6 +1,12 @@
 module Fog
   module Storage
     class OpenStack
+      class Mock
+        def put_static_obj_manifest(container, object, segments, options = {})
+          fail "Mock Not Implemented (#put_static_obj_manifest) in: #{__FILE__}:#{__LINE__}"
+        end
+      end
+
       class Real
         # Create a new static large object manifest.
         #

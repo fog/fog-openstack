@@ -1,6 +1,12 @@
 module Fog
   module Storage
     class OpenStack
+      class Mock
+        def head_container(container)
+          fail "Mock Not Implemented (#head_container) in: #{__FILE__}:#{__LINE__}"
+        end
+      end
+
       class Real
         # List number of objects and total bytes stored
         #
