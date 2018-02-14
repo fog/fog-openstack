@@ -2,6 +2,10 @@ require "test_helper"
 require "yaml"
 require "open-uri"
 
+def travis?
+  File.exist?('/home/travis/build/fog/fog-openstack')
+end
+
 describe "Fog::Orchestration[:openstack] | stack requests" do
   @create_format_files = {
     'id'    => String,
@@ -39,6 +43,7 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     end
 
     it "#get_file_contents_local_template" do
+      skip unless travis?
       # Heat files parameter is populated with URI-like syntax. The expected
       #  values are absolute paths uri and should be resolved with the local
       #  directory.
@@ -77,6 +82,7 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     end
 
     it "#recurse_template_and_file" do
+      skip unless travis?
       test_cases = @data["get_file_contents_local_template"].map do |testcase|
         [testcase['input'], testcase['expected']]
       end.compact
