@@ -12,27 +12,27 @@ describe "Fog::Compute[:openstack] | limits requests" do
       'next-available' => String,
       'unit'           => String,
       'verb'           => String,
-      'remaining'      => Fixnum,
-      'value'          => Fixnum
+      'remaining'      => Integer,
+      'value'          => Integer
     }
 
     @absolute_limits_format = {
-      'maxServerMeta'           => Fixnum,
-      'maxTotalInstances'       => Fixnum,
-      'maxPersonality'          => Fixnum,
-      'maxImageMeta'            => Fixnum,
-      'maxPersonalitySize'      => Fixnum,
-      'maxSecurityGroupRules'   => Fixnum,
-      'maxTotalKeypairs'        => Fixnum,
-      'maxSecurityGroups'       => Fixnum,
-      'maxTotalCores'           => Fixnum,
-      'maxTotalFloatingIps'     => Fixnum,
-      'maxTotalRAMSize'         => Fixnum,
-      'totalCoresUsed'          => Fixnum,
-      'totalRAMUsed'            => Fixnum,
-      'totalInstancesUsed'      => Fixnum,
-      'totalSecurityGroupsUsed' => Fixnum,
-      'totalFloatingIpsUsed'    => Fixnum
+      'maxServerMeta'           => Integer,
+      'maxTotalInstances'       => Integer,
+      'maxPersonality'          => Integer,
+      'maxImageMeta'            => Integer,
+      'maxPersonalitySize'      => Integer,
+      'maxSecurityGroupRules'   => Integer,
+      'maxTotalKeypairs'        => Integer,
+      'maxSecurityGroups'       => Integer,
+      'maxTotalCores'           => Integer,
+      'maxTotalFloatingIps'     => Integer,
+      'maxTotalRAMSize'         => Integer,
+      'totalCoresUsed'          => Integer,
+      'totalRAMUsed'            => Integer,
+      'totalInstancesUsed'      => Integer,
+      'totalSecurityGroupsUsed' => Integer,
+      'totalFloatingIpsUsed'    => Integer
     }
 
     @limits_format = {
