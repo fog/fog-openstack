@@ -145,7 +145,7 @@ module Fog
 
       def headers(additional_headers)
         additional_headers ||= {}
-        if @microversion
+        unless @microversion.nil? || @microversion.empty?
           microversion_value = if @microversion_key == 'Openstack-API-Version'
                                  "#{@microversion_service_type} #{@microversion}"
                                else
