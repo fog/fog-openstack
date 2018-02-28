@@ -31,14 +31,12 @@ describe "Fog::Storage[:openstack] | object requests" do
 
   describe "success" do
     it "#put_object('fogobjecttests', 'fog_object')" do
-      skip if Fog.mocking?
       resp = Fog::Storage[:openstack].put_object('fogobjecttests', 'fog_object', lorem_file)
       resp.headers['ETag'].must_equal '80d7930fe13ff4e45156b6581656a247'
     end
 
     describe "with_object" do
       before do
-        skip if Fog.mocking?
         file = lorem_file
         resp = Fog::Storage[:openstack].put_object('fogobjecttests', 'fog_object', file)
         file.close
@@ -118,7 +116,6 @@ describe "Fog::Storage[:openstack] | object requests" do
 
     describe "put_object with block" do
       it "#put_object('fogobjecttests', 'fog_object', &block)" do
-        skip if Fog.mocking?
         begin
           file = lorem_file
           buffer_size = file.stat.size / 2 # chop it up into two buffers
@@ -133,13 +130,11 @@ describe "Fog::Storage[:openstack] | object requests" do
 
       describe "with_object" do
         before do
-          unless Fog.mocking?
-            file = lorem_file
-            Fog::Storage[:openstack].put_object('fogobjecttests', 'fog_block_object', nil) do
-              file.read(file.stat.size).to_s
-            end
-            file.close
+          file = lorem_file
+          Fog::Storage[:openstack].put_object('fogobjecttests', 'fog_block_object', nil) do
+            file.read(file.stat.size).to_s
           end
+          file.close
         end
 
         it "#get_object" do
