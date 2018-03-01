@@ -11,12 +11,6 @@ require 'fog/test_helpers/minitest/expectations'
 
 require File.expand_path('../../lib/fog/openstack', __FILE__)
 
-# Load all service specific Mock classes
-require File.expand_path('../../test/lib/fog/identity/openstack', __FILE__)
-require File.expand_path('../../test/lib/fog/identity/openstack/v2', __FILE__)
-require File.expand_path('../../test/lib/fog/identity/openstack/v3', __FILE__)
-require File.expand_path('../../test/lib/fog/network/openstack', __FILE__)
-
 Fog.mock! if ENV["FOG_MOCK"] == "true"
 Bundler.require(:test)
 
