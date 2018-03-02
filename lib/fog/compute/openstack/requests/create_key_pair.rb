@@ -13,7 +13,7 @@ module Fog
 
           request(
             :body    => Fog::JSON.encode(data),
-            :expects => 200,
+            :expects => [200, 201],
             :method  => 'POST',
             :path    => 'os-keypairs'
           )
