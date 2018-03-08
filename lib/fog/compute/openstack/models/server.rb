@@ -236,7 +236,7 @@ module Fog
               Fog::Compute::OpenStack::SecurityGroup.new group.merge(:service => service)
             end
           else
-            service.security_groups.all()
+            service.security_groups.all
           end
         end
 
