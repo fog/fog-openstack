@@ -40,7 +40,7 @@ module Fog
 
         def body
           attributes[:body] ||= if last_modified
-                                  collection.get(identity).body
+                                  collection.get(identity).try(:body) || ''
                                 else
                                   ''
                                 end
