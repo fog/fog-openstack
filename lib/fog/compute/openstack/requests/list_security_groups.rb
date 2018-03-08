@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def list_security_groups(options = {})
-          path = "os-security-groups.json"
+          path = "os-security-groups"
 
           if options.kind_of?(Hash)
             server_id = options.delete(:server_id)

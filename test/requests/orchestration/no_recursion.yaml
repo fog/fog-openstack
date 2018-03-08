@@ -1,0 +1,11 @@
+heat_template_version: newton
+
+resources:
+  self:
+    type: "no_recursion.yaml"
+  self_file:
+    get_file: "no_recursion.yaml"
+  yaml_file:
+    get_file: "no_recursion.yaml"
+  yaml_template:
+    type: "no_recursion.yaml"

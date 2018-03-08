@@ -1,0 +1,80 @@
+
+get_files_invalid:
+  - input: {"get_file": "|ls"}
+    expected: []
+  - input: {"get_file": "http:/../../../../../etc/passwd"}
+    expected: []
+  - input: {"type": "|ls.yaml"}
+    expected: []
+
+
+get_file_contents_local_template:
+  - input: {"type": "local.yaml"}
+    expected: ["local.yaml", "hot_1.yaml"]
+  - input: {"type": "no_recursion.yaml"}
+    expected: ["no_recursion.yaml"]
+  - input: {"type": "local_fullpath.yaml"}
+    expected: ["local_fullpath.yaml", "local.yaml", "hot_1.yaml"]
+
+get_file_contents_http_template:
+  - input: "https://raw.githubusercontent.com/ioggstream/heat-templates/test_fog/hot/fog_1.yaml"
+    expected:
+    - "https://raw.githubusercontent.com/ioggstream/heat-templates/test_fog/hot/fog_2.yaml"
+  - input:
+      type:
+        "https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/openshift.yaml"
+    expected:
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/bastion-boot.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/bastion-node-cleanup.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/roles/reboot/tasks/main.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/ifcfg-eth
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/group_vars/nodes.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/templates/etc/haproxy/router.cfg.j2
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/update_dns.py
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/set-extra-docker-repos.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/collect-config-setup/fragments/configure_config_agent.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/host_vars/loadbalancer.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/ca_cert.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/merge_dict.py
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/infra-boot.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/group_vars/OSv3.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/add_dns_record.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/playbooks/haproxy.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/common_openshift_functions.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/playbooks/scaledown.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/set-extra-repos.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/playbooks/scaleup.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/openshift.yaml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/playbooks/flannel.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/node.yaml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/rhn-register.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/retry.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/collect-config-setup/install_config_agent_centos_yum.yaml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/collect-config-setup/fragments/install_config_agent_yum.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/group_vars/masters.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/node-boot.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/tune-ansible.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/playbooks/quota.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/master-boot.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/infra.yaml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/roles/xfs_grub_quota/tasks/main.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/bastion.yaml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/master.yaml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/playbooks/main.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/collect-config-setup/fragments/start_config_agent.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/playbooks/ipfailover.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/playbooks/registry.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/bastion-ansible.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/common_functions.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/host-update.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/fragments/bastion-node-add.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/roles/fstab_mount_options/tasks/main.yml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/templates/var/lib/ansible/inventory
+  - input:
+      type: >-
+        https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/collect-config-setup/install_config_agent_centos_yum.yaml
+    expected:
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/collect-config-setup/fragments/configure_config_agent.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/collect-config-setup/install_config_agent_centos_yum.yaml
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/collect-config-setup/fragments/install_config_agent_yum.sh
+    - https://raw.githubusercontent.com/redhat-openstack/openshift-on-openstack/master/collect-config-setup/fragments/start_config_agent.sh

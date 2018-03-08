@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => 200,
             :method  => 'GET',
-            :path    => 'os-availability-zone.json',
+            :path    => 'os-availability-zone',
             :query   => options
           )
         end

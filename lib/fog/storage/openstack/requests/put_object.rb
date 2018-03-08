@@ -36,6 +36,30 @@ module Fog
           request(params)
         end
       end
+
+      class Mock
+        require 'digest'
+
+        def put_object(container, object, data, options = {}, &block)
+          dgst = Digest::MD5.new
+          if block_given?
+            Kernel.loop do
+              chunk = yield
+              break if chunk.empty?
+              dgst.update chunk
+            end
+          elsif data.kind_of?(String)
+            dgst.update data
+          else
+            dgst.file data
+          end
+          response = Excon::Response.new
+          response.status = 201
+          response.body = ''
+          response.headers = {'ETag' => dgst.hexdigest}
+          response
+        end
+      end
     end
   end
 end

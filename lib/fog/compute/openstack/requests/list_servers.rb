@@ -12,7 +12,7 @@ module Fog
           request(
             :expects => [200, 203],
             :method  => 'GET',
-            :path    => 'servers.json',
+            :path    => 'servers',
             :query   => params
           )
         end

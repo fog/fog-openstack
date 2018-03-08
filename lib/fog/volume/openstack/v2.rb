@@ -84,6 +84,7 @@ module Fog
 
         request :set_tenant
         request :action
+        request :snapshot_action
 
         class Mock
           def self.data

@@ -42,17 +42,19 @@ describe "Fog::Storage[:openstack] | large object requests" do
 
   after do
     unless Fog.mocking?
+      @directory.files.each(&:destroy)
       @directory.destroy
+      @directory2.files.each(&:destroy)
       @directory2.destroy
     end
   end
 
   describe "success" do
-    it "upload test segments" do
-      skip if Fog.mocking?
-
-      @segments.each_value do |segment|
-        @storage.put_object(segment[:container], segment[:name], segment[:data])
+    before do
+      unless Fog.mocking?
+        @segments.each_value do |segment|
+          @storage.put_object(segment[:container], segment[:name], segment[:data])
+        end
       end
     end
 
@@ -68,53 +70,74 @@ describe "Fog::Storage[:openstack] | large object requests" do
           @storage.put_dynamic_obj_manifest(@directory.identity, 'fog_large_object')
         end
 
-        it "#get_object streams all segments matching the default prefix" do
-          skip if Fog.mocking?
-          expected = @segments[:a][:data] + @segments[:b][:data] + @segments[:c][:data]
-          @storage.get_object(@directory.identity, 'fog_large_object').body.must_equal expected
-        end
+        describe "with large object" do
+          before do
+            unless Fog.mocking?
+              @segments.each_value do |segment|
+                @storage.put_object(segment[:container], segment[:name], segment[:data])
+              end
+              @storage.put_dynamic_obj_manifest(@directory.identity, 'fog_large_object')
+            end
+          end
 
-        # When the manifest object name is equal to the segment prefix,
-        # OpenStack treats it as if it's the first segment.
-        # So you must prepend the manifest object's Etag - Digest::MD5.hexdigest('')
-        it "#head_object returns Etag that includes manifest object in calculation" do
-          skip if Fog.mocking?
-          etags = ['d41d8cd98f00b204e9800998ecf8427e', @segments[:a][:etag], @segments[:b][:etag], @segments[:c][:etag]]
-          # returned in quotes "\"2577f38428e895c50de6ea78ccc7da2a"\"
-          expected = %["#{Digest::MD5.hexdigest(etags.join)}"]
-          @storage.head_object(@directory.identity, 'fog_large_object').headers['Etag'].must_equal expected
+          it "#get_object streams all segments matching the default prefix" do
+            skip if Fog.mocking?
+            expected = @segments[:a][:data] + @segments[:b][:data] + @segments[:c][:data]
+            @storage.get_object(@directory.identity, 'fog_large_object').body.must_equal expected
+          end
+
+          # When the manifest object name is equal to the segment prefix,
+          # OpenStack treats it as if it's the first segment.
+          # So you must prepend the manifest object's Etag - Digest::MD5.hexdigest('')
+          it "#head_object returns Etag that includes manifest object in calculation" do
+            skip if Fog.mocking?
+            etags = ['d41d8cd98f00b204e9800998ecf8427e',
+                     @segments[:a][:etag], @segments[:b][:etag], @segments[:c][:etag]]
+            # returned in quotes "\"2577f38428e895c50de6ea78ccc7da2a"\"
+            expected = %("#{Digest::MD5.hexdigest(etags.join)}")
+            @storage.head_object(@directory.identity, 'fog_large_object').headers['Etag'].must_equal expected
+          end
         end
       end
 
-      describe "uspecifying X-Object-Manifest segment prefix" do
+      describe "specifying X-Object-Manifest segment prefix" do
         it "#put_dynamic_obj_manifest" do
           skip if Fog.mocking?
           options = {'X-Object-Manifest' => "#{@directory.identity}/fog_large_object/"}
           @storage.put_dynamic_obj_manifest(@directory.identity, 'fog_large_object', options)
         end
+        describe "with large object" do
+          before do
+            unless Fog.mocking?
+              options = {'X-Object-Manifest' => "#{@directory.identity}/fog_large_object/"}
+              @storage.put_dynamic_obj_manifest(@directory.identity, 'fog_large_object', options)
+            end
+          end
 
-        it "#get_object streams segments only matching the specified prefix" do
-          skip if Fog.mocking?
-          expected = @segments[:a][:data] + @segments[:b][:data]
-          @storage.get_object(@directory.identity, 'fog_large_object').body == expected
-        end
+          it "#get_object streams segments only matching the specified prefix" do
+            skip if Fog.mocking?
+            expected = @segments[:a][:data] + @segments[:b][:data]
+            resp = @storage.get_object(@directory.identity, 'fog_large_object')
+            resp.body.must_equal expected
+          end
 
-        it "#head_object returns Etag that does not include manifest object in calculation" do
-          skip if Fog.mocking?
-          etags = [@segments[:a][:etag], @segments[:b][:etag]]
-          # returned in quotes "\"0f035ed3cc38aa0ef46dda3478fad44d"\"
-          expected = %["#{Digest::MD5.hexdigest(etags.join)}"]
-          @storage.head_object(@directory.identity, 'fog_large_object').headers['Etag'].must_equal expected
+          it "#head_object returns Etag that does not include manifest object in calculation" do
+            skip if Fog.mocking?
+            etags = [@segments[:a][:etag], @segments[:b][:etag]]
+            # returned in quotes "\"0f035ed3cc38aa0ef46dda3478fad44d"\"
+            expected = %("#{Digest::MD5.hexdigest(etags.join)}")
+            @storage.head_object(@directory.identity, 'fog_large_object').headers['Etag'].must_equal expected
+          end
         end
       end
 
       describe "storing manifest in a different container than the segments" do
-        it "#put_dynamic_obj_manifest" do
-          skip if Fog.mocking?
-          options = {'X-Object-Manifest' => "#{@directory.identity}/fog_large_object/"}
-          @storage.put_dynamic_obj_manifest(@directory2.identity, 'fog_large_object', options)
+        before do
+          unless Fog.mocking?
+            options = {'X-Object-Manifest' => "#{@directory.identity}/fog_large_object/"}
+            @storage.put_dynamic_obj_manifest(@directory2.identity, 'fog_large_object', options)
+          end
         end
-
         it "#get_object" do
           skip if Fog.mocking?
           expected = @segments[:a][:data] + @segments[:b][:data]
@@ -125,40 +148,42 @@ describe "Fog::Storage[:openstack] | large object requests" do
 
     describe "static large object requests" do
       describe "single container" do
-        it "#put_static_obj_manifest" do
-          skip if Fog.mocking?
-          segments = [
-            {
-              :path       => "#{@segments[:a][:container]}/#{@segments[:a][:name]}",
-              :etag       => @segments[:a][:etag],
-              :size_bytes => @segments[:a][:size]
-            },
-            {
-              :path       => "#{@segments[:c][:container]}/#{@segments[:c][:name]}",
-              :etag       => @segments[:c][:etag],
-              :size_bytes => @segments[:c][:size]
-            }
-          ]
-          @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments)
+        before do
+          unless Fog.mocking?
+            segments = [
+              {
+                :path       => "#{@segments[:a][:container]}/#{@segments[:a][:name]}",
+                :etag       => @segments[:a][:etag],
+                :size_bytes => @segments[:a][:size]
+              },
+              {
+                :path       => "#{@segments[:c][:container]}/#{@segments[:c][:name]}",
+                :etag       => @segments[:c][:etag],
+                :size_bytes => @segments[:c][:size]
+              }
+            ]
+            @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments)
+          end
         end
 
         it "#head_object" do
           skip if Fog.mocking?
           etags = [@segments[:a][:etag], @segments[:c][:etag]]
           # "\"ad7e633a12e8a4915b45e6dd1d4b0b4b\""
-          etag = %["#{Digest::MD5.hexdigest(etags.join)}"]
-          content_length = (@segments[:a][:size] + @segments[:c][:size]).to_s
+          etag = %("#{Digest::MD5.hexdigest(etags.join)}")
+          content_length = @segments[:a][:size] + @segments[:c][:size]
           response = @storage.head_object(@directory.identity, 'fog_large_object')
 
-          returns(etag, 'returns ETag computed from segments') { response.headers['Etag'] }
-          returns(content_length, 'returns Content-Length for all segments') { response.headers['Content-Length'] }
-          returns('True', 'returns X-Static-Large-Object header') { response.headers['X-Static-Large-Object'] }
+          response.headers['Etag'].must_equal etag
+          response.headers['Content-Length'].to_i.must_equal content_length
+          response.headers['X-Static-Large-Object'].must_equal 'True'
         end
 
         it "#get_object" do
           skip if Fog.mocking?
           expected = @segments[:a][:data] + @segments[:c][:data]
-          @storage.get_object(@directory.identity, 'fog_large_object').body == expected
+          resp = @storage.get_object(@directory.identity, 'fog_large_object')
+          resp.body.must_equal expected
         end
 
         describe "#delete_static_large_object" do
@@ -171,49 +196,48 @@ describe "Fog::Storage[:openstack] | large object requests" do
               'Number Deleted'   => 3,
               'Response Body'    => ''
             }
-            @storage.delete_static_large_object(
-              @directory.identity,
-              'fog_large_object'
-            ).body.must_equal expected
+            @storage.delete_static_large_object(@directory.identity, 'fog_large_object').body.must_equal expected
           end
         end
       end
 
       describe "multiple containers" do
-        it "#put_static_obj_manifest" do
-          skip if Fog.mocking?
-          segments = [
-            {
-              :path       => "#{@segments[:b][:container]}/#{@segments[:b][:name]}",
-              :etag       => @segments[:b][:etag],
-              :size_bytes => @segments[:b][:size]
-            },
-            {
-              :path       => "#{@segments[:d][:container]}/#{@segments[:d][:name]}",
-              :etag       => @segments[:d][:etag],
-              :size_bytes => @segments[:d][:size]
-            }
-          ]
-          @storage.put_static_obj_manifest(@directory2.identity, 'fog_large_object', segments)
+        before do
+          unless Fog.mocking?
+            segments = [
+              {
+                :path       => "#{@segments[:b][:container]}/#{@segments[:b][:name]}",
+                :etag       => @segments[:b][:etag],
+                :size_bytes => @segments[:b][:size]
+              },
+              {
+                :path       => "#{@segments[:d][:container]}/#{@segments[:d][:name]}",
+                :etag       => @segments[:d][:etag],
+                :size_bytes => @segments[:d][:size]
+              }
+            ]
+            @storage.put_static_obj_manifest(@directory2.identity, 'fog_large_object', segments)
+          end
         end
 
         it "#head_object" do
           skip if Fog.mocking?
           etags = [@segments[:b][:etag], @segments[:d][:etag]]
           # "\"9801a4cc4472896a1e975d03f0d2c3f8\""
-          etag = %["#{Digest::MD5.hexdigest(etags.join)}"]
-          content_length = (@segments[:b][:size] + @segments[:d][:size]).to_s
+          etag = %("#{Digest::MD5.hexdigest(etags.join)}")
+          content_length = (@segments[:b][:size] + @segments[:d][:size])
           response = @storage.head_object(@directory2.identity, 'fog_large_object')
 
-          returns(etag, 'returns ETag computed from segments') { response.headers['Etag'] }
-          returns(content_length, 'returns Content-Length for all segments') { response.headers['Content-Length'] }
-          returns('True', 'returns X-Static-Large-Object header') { response.headers['X-Static-Large-Object'] }
+          response.headers['Etag'].must_equal etag
+          response.headers['Content-Length'].to_i.must_equal content_length
+          response.headers['X-Static-Large-Object'].must_equal 'True'
         end
 
         it "#get_object" do
           skip if Fog.mocking?
           expected = @segments[:b][:data] + @segments[:d][:data]
-          @storage.get_object(@directory2.identity, 'fog_large_object').body == expected
+          resp = @storage.get_object(@directory2.identity, 'fog_large_object')
+          resp.body.must_equal expected
         end
 
         it "#delete_static_large_object" do
@@ -225,9 +249,8 @@ describe "Fog::Storage[:openstack] | large object requests" do
             'Number Deleted'   => 3,
             'Response Body'    => ''
           }
-          returns(expected, 'deletes manifest and segments') do
-            @storage.delete_static_large_object(@directory2.identity, 'fog_large_object').body
-          end
+          resp = @storage.delete_static_large_object(@directory2.identity, 'fog_large_object')
+          resp.body.must_equal expected
         end
       end
     end
@@ -244,12 +267,6 @@ describe "Fog::Storage[:openstack] | large object requests" do
     end
 
     describe "static large object requests" do
-      it "upload test segments" do
-        skip if Fog.mocking?
-        @storage.put_object(@segments[:a][:container], @segments[:a][:name], @segments[:a][:data])
-        @storage.put_object(@segments[:b][:container], @segments[:b][:name], @segments[:b][:data])
-      end
-
       it "#put_static_obj_manifest with missing container" do
         skip if Fog.mocking?
         proc do
@@ -266,69 +283,85 @@ describe "Fog::Storage[:openstack] | large object requests" do
         }]
         expected = {'Errors' => [[segments[0][:path], '404 Not Found']]}
 
-        error = nil
-        begin
+        err = proc do
           @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments)
-        rescue => err
-          error = err
-        end
-
-        raises(Excon::Errors::BadRequest) do
-          raise error if error
-        end
-
-        returns(expected, 'returns error information') do
-          Fog::JSON.decode(error.response.body)
-        end
+        end.must_raise Excon::Errors::BadRequest
+        Fog::JSON.decode(err.response.body).must_equal expected
       end
 
-      it "#put_static_obj_manifest with invalid etag" do
-        skip if Fog.mocking?
-        segments = [{
-          :path       => "#{@segments[:a][:container]}/#{@segments[:a][:name]}",
-          :etag       => @segments[:b][:etag],
-          :size_bytes => @segments[:a][:size]
-        }]
-        expected = {'Errors' => [[segments[0][:path], 'Etag Mismatch']]}
-
-        error = nil
-        begin
-          @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments)
-        rescue => err
-          error = err
+      describe "with segments" do
+        before do
+          unless Fog.mocking?
+            @segments.each_value do |segment|
+              @storage.put_object(segment[:container], segment[:name], segment[:data])
+            end
+          end
         end
 
-        raises(Excon::Errors::BadRequest) do
-          raise error if error
+        it "#put_static_obj_manifest with invalid etag" do
+          skip if Fog.mocking?
+
+          segments = [{
+            :path       => "#{@segments[:a][:container]}/#{@segments[:a][:name]}",
+            :etag       => @segments[:b][:etag],
+            :size_bytes => @segments[:a][:size]
+          }]
+          expected = {'Errors' => [[segments[0][:path], 'Etag Mismatch']]}
+
+          err = proc do
+            @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments)
+          end.must_raise Excon::Errors::BadRequest
+
+          Fog::JSON.decode(err.response.body).must_equal expected
         end
 
-        returns(expected, 'returns error information') do
-          Fog::JSON.decode(error.response.body)
-        end
-      end
+        it "#put_static_obj_manifest with invalid byte_size" do
+          skip if Fog.mocking?
+          segments = [{
+            :path       => "#{@segments[:a][:container]}/#{@segments[:a][:name]}",
+            :etag       => @segments[:a][:etag],
+            :size_bytes => @segments[:b][:size]
+          }]
+          expected = {'Errors' => [[segments[0][:path], 'Size Mismatch']]}
 
-      it "#put_static_obj_manifest with invalid byte_size" do
-        skip if Fog.mocking?
-        segments = [{
-          :path       => "#{@segments[:a][:container]}/#{@segments[:a][:name]}",
-          :etag       => @segments[:a][:etag],
-          :size_bytes => @segments[:b][:size]
-        }]
-        expected = {'Errors' => [[segments[0][:path], 'Size Mismatch']]}
+          err = proc do
+            @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments)
+          end.must_raise Excon::Errors::BadRequest
 
-        error = nil
-        begin
-          @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments)
-        rescue => err
-          error = err
+          Fog::JSON.decode(err.response.body).must_equal expected
         end
 
-        raises(Excon::Errors::BadRequest) do
-          raise error if error
-        end
+        describe "#delete_static_large_object with missing segment" do
+          before do
+            unless Fog.mocking?
+              segments = [
+                {
+                  :path       => "#{@segments[:a][:container]}/#{@segments[:a][:name]}",
+                  :etag       => @segments[:a][:etag],
+                  :size_bytes => @segments[:a][:size]
+                },
+                {
+                  :path       => "#{@segments[:b][:container]}/#{@segments[:b][:name]}",
+                  :etag       => @segments[:b][:etag],
+                  :size_bytes => @segments[:b][:size]
+                }
+              ]
+              @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments)
+              @storage.delete_object(@segments[:b][:container], @segments[:b][:name])
+            end
+          end
 
-        returns(expected, 'returns error information') do
-          Fog::JSON.decode(error.response.body)
+          it "deletes manifest and segment :a, and reports missing segment :b" do
+            skip if Fog.mocking?
+            expected = {
+              'Number Not Found' => 1,
+              'Response Status'  => '200 OK',
+              'Errors'           => [],
+              'Number Deleted'   => 2,
+              'Response Body'    => ''
+            }
+            @storage.delete_static_large_object(@directory.identity, 'fog_large_object').body.must_equal expected
+          end
         end
       end
 
@@ -342,9 +375,8 @@ describe "Fog::Storage[:openstack] | large object requests" do
           'Response Body'    => ''
         }
 
-        returns(expected, 'reports missing object') do
-          @storage.delete_static_large_object('fognoncontainer', 'fog_large_object').body
-        end
+        resp = @storage.delete_static_large_object('fognoncontainer', 'fog_large_object')
+        resp.body.must_equal expected
       end
 
       it "#delete_static_large_object with missing manifest" do
@@ -357,50 +389,7 @@ describe "Fog::Storage[:openstack] | large object requests" do
           'Response Body'    => ''
         }
 
-        returns(expected, 'reports missing manifest') do
-          @storage.delete_static_large_object(@directory.identity, 'fog_non_object').body
-        end
-      end
-
-      describe "#delete_static_large_object with missing segment" do
-        it "#put_static_obj_manifest for segments :a and :b" do
-          skip if Fog.mocking?
-          segments = [
-            {
-              :path       => "#{@segments[:a][:container]}/#{@segments[:a][:name]}",
-              :etag       => @segments[:a][:etag],
-              :size_bytes => @segments[:a][:size]
-            },
-            {
-              :path       => "#{@segments[:b][:container]}/#{@segments[:b][:name]}",
-              :etag       => @segments[:b][:etag],
-              :size_bytes => @segments[:b][:size]
-            }
-          ]
-
-          @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments).status.must_equal 200
-        end
-
-        it "#delete_object segment :b" do
-          skip if Fog.mocking?
-          @storage.delete_object(@segments[:b][:container], @segments[:b][:name]).status.must_equal 200
-        end
-
-        describe "#delete_static_large_object" do
-          it "deletes manifest and segment :a, and reports missing segment :b" do
-            skip if Fog.mocking?
-            expected = {
-              'Number Not Found' => 1,
-              'Response Status'  => '200 OK',
-              'Errors'           => [],
-              'Number Deleted'   => 2,
-              'Response Body'    => ''
-            }
-            @storage.delete_static_large_object(
-              @directory.identity, 'fog_large_object'
-            ).body.must_equal expected
-          end
-        end
+        @storage.delete_static_large_object(@directory.identity, 'fog_non_object').body.must_equal expected
       end
     end
   end

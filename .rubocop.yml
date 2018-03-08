@@ -9,6 +9,7 @@ AlignHash:
 BlockNesting:
   Severity: refactor
 ClassLength:
+  Max: 150
   Severity: refactor
 ClassCheck:
   EnforcedStyle: kind_of?
@@ -30,6 +31,17 @@ LineLength:
 MethodLength:
   Max: 25
   Severity: refactor
+# Exclude test methods from BlockLength.
+Metrics/BlockLength:
+  ExcludedMethods:
+  - after
+  - before
+  - context
+  - describe
+  - it
+  - model_tests
+  - namespace
+  - draw  
 ParameterLists:
   Severity: refactor
 PerceivedComplexity:

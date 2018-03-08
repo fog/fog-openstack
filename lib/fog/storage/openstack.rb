@@ -37,13 +37,29 @@ module Fog
       request :head_object
       request :put_container
       request :put_object
+      request :post_object
       request :put_object_manifest
       request :put_dynamic_obj_manifest
       request :put_static_obj_manifest
       request :post_set_meta_temp_url_key
       request :public_url
 
+      module Utils
+        def require_mime_types
+          # Use mime/types/columnar if available, for reduced memory usage
+          require 'mime/types/columnar'
+          rescue LoadError
+            begin
+              require 'mime/types'
+            rescue LoadError
+              Fog::Logger.warning("'mime-types' missing, please install and try again.")
+              exit(1)
+            end
+          end
+      end
+
       class Mock
+        include Utils
         def self.data
           @data ||= Hash.new do |hash, key|
             hash[key] = {}
@@ -55,9 +71,18 @@ module Fog
         end
 
         def initialize(options = {})
+          require_mime_types
           @openstack_api_key = options[:openstack_api_key]
           @openstack_username = options[:openstack_username]
-          @path = '/v1/AUTH_1234'
+          @openstack_management_url = options[:openstack_management_url] || 'http://example:8774/v2/AUTH_1234'
+
+          @openstack_management_uri = URI.parse(@openstack_management_url)
+
+          @host   = @openstack_management_uri.host
+          @path   = @openstack_management_uri.path
+          @path.sub!(%r{/$}, '')
+          @port   = @openstack_management_uri.port
+          @scheme = @openstack_management_uri.scheme
         end
 
         def data
@@ -80,6 +105,7 @@ module Fog
       end
 
       class Real
+        include Utils
         include Fog::OpenStack::Core
 
         def self.not_found_class
@@ -87,6 +113,7 @@ module Fog
         end
 
         def initialize(options = {})
+          require_mime_types
           initialize_identity options
 
           @openstack_service_type           = options[:openstack_service_type] || ['object-store']

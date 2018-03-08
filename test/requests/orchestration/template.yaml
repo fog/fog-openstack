@@ -1,0 +1,5 @@
+heat_template_version: newton
+
+resources:
+  a_file:
+    type: https://gist.githubusercontent.com/ioggstream/55135a3c886802dedaac833ce4f87bfa/raw/b320d97756da702797d76b85b0a8c630d5589889/case_01891685.yaml

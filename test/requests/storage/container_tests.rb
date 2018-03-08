@@ -1,9 +1,20 @@
 require "test_helper"
 
 describe "Fog::Storage[:openstack] | container requests" do
+  def cleanup_container
+    return if Fog.mocking?
+    if @storage.head_container(@container_name)
+      @storage.delete_container(@container_name)
+    end
+  rescue Fog::Storage::OpenStack::NotFound
+  end
+
   before do
     @storage = Fog::Storage[:openstack]
     @container_format = [String]
+    @container_name = 'fogcontainertests'
+
+    cleanup_container
 
     @containers_format = [{
       'bytes' => Integer,
@@ -12,37 +23,54 @@ describe "Fog::Storage[:openstack] | container requests" do
     }]
   end
 
+  after do
+    cleanup_container
+  end
+
   describe "success" do
     it "#put_container('fogcontainertests')" do
       skip if Fog.mocking?
-      @storage.put_container('fogcontainertests').status.must_equal 202
+      @storage.put_container('fogcontainertests').status.must_equal 201
     end
 
-    it "#get_container('fogcontainertests')" do
-      skip if Fog.mocking?
-      @storage.get_container('fogcontainertests').body.
-        must_match_schema(@container_format)
-    end
+    describe "using container" do
+      before do
+        unless Fog.mocking?
+          @storage.put_container(@container_name).status.must_equal 201
+        end
+      end
 
-    it "#get_containers" do
-      skip if Fog.mocking?
-      @storage.get_containers.body.
-        must_match_schema(@containers_format)
-    end
+      after do
+        cleanup_container
+      end
 
-    it "#head_container('fogcontainertests')" do
-      skip if Fog.mocking?
-      @storage.head_container('fogcontainertests').status.must_equal 202
-    end
+      it "#get_container('fogcontainertests')" do
+        skip if Fog.mocking?
+        @storage.get_container('fogcontainertests').body.must_match_schema(@container_format)
+      end
 
-    it "#head_containers" do
-      skip if Fog.mocking?
-      @storage.head_containers.status.must_equal 202
-    end
+      it "#get_containers" do
+        skip if Fog.mocking?
+        @storage.get_containers.body.must_match_schema(@containers_format)
+      end
 
-    it "#delete_container('fogcontainertests')" do
-      skip if Fog.mocking?
-      @storage.delete_container('fogcontainertests').status.must_equal 202
+      it "#head_container('fogcontainertests')" do
+        skip if Fog.mocking?
+        resp = @storage.head_container('fogcontainertests')
+        resp.status.must_equal 204
+        resp.headers['X-Container-Object-Count'].to_i.must_equal 0
+      end
+
+      it "#head_containers" do
+        skip if Fog.mocking?
+        resp = @storage.head_containers
+        resp.status.must_equal 204
+        resp.headers['X-Account-Container-Count'].to_i.must_equal 1
+      end
+      it "#delete_container('fogcontainertests')" do
+        skip if Fog.mocking?
+        @storage.delete_container('fogcontainertests').status.must_equal 204
+      end
     end
   end
 

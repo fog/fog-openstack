@@ -1,7 +1,7 @@
 module Fog
   module Storage
     class OpenStack
-      class Real
+      module PublicUrl
         # Get public_url for an object
         #
         # ==== Parameters
@@ -20,6 +20,14 @@ module Fog
         def url
           "#{@scheme}://#{@host}:#{@port}#{@path}"
         end
+      end
+
+      class Real
+        include PublicUrl
+      end
+
+      class Mock
+        include PublicUrl
       end
     end
   end

@@ -113,7 +113,7 @@ p compute.flavors
 #         disk=1,
 #         vcpus=1,
 #         ...
-#       >, 
+#       >,
 #                   <Fog::Compute::OpenStack::Flavor
 #         id="2",
 #         name="m1.small",
@@ -182,7 +182,7 @@ security_group = compute.security_groups.create name:  "Test SSH",
 #     description="Allow access to port 22",
 #     security_group_rules=    <Fog::Compute::OpenStack::SecurityGroupRules
 #       [
-              
+
 #       ]
 #     >,
 #     tenant_id="06a9a90c60074cdeae5f7fdd0048d9ac"
@@ -418,7 +418,7 @@ identity.projects
 #         description="Project 1",
 #         enabled=true,
 #         name="project_1",
-#       >, 
+#       >,
 #        ...
 #        ]
 
@@ -539,9 +539,28 @@ neutron.add_router_interface router.id, subnet.id
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```
+$ git clone https://github.com/fog/fog-openstack.git # Clone repository
+$ cd fog-openstack; bin/setup   # Install dependencies from project directory
+$ bundle exec rake test   # Run tests
+$ bundle exec rake spec   # Run tests
+$ bin/console   # Run interactive prompt that allows you to experiment (optional)
+$ bundle exec rake install   # Install gem to your local machine (optional)
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+You can also use a docker image for development and running tests. Once you have
+cloned the repository, it can be run with:
+```
+$ docker-compose up test
+$ docker-compose up ruby # Start a container with the ruby environment
+```
+
+In order to release a new version, perform the following steps:
+
+1. Update version number in `version.rb`.
+2. Run `bundle exec rake release`, which will create a git tag for the version.
+3. Push git commits and tags.
+4. Push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
@@ -551,4 +570,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/fog/fo
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
