@@ -227,12 +227,16 @@ module Fog
         end
 
         def security_groups
-          requires :id
+          if id
+            requires :id
 
-          groups = service.list_security_groups(:server_id => id).body['security_groups']
+            groups = service.list_security_groups(:server_id => id).body['security_groups']
 
-          groups.map do |group|
-            Fog::Compute::OpenStack::SecurityGroup.new group.merge(:service => service)
+            groups.map do |group|
+              Fog::Compute::OpenStack::SecurityGroup.new group.merge(:service => service)
+            end
+          else
+            service.security_groups.all
           end
         end
 
