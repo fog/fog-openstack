@@ -38,6 +38,9 @@ module Fog
       request :create_share_network
       request :update_share_network
       request :delete_share_network
+      request :share_network_action
+      request :add_security_service_to_share_network
+      request :remove_security_service_from_share_network
 
       # shares
       request :list_shares
@@ -62,6 +65,14 @@ module Fog
       request :update_snapshot
       request :delete_snapshot
 
+      # security services
+      request :list_security_services
+      request :list_security_services_detail
+      request :get_security_service
+      request :create_security_service
+      request :update_security_service
+      request :delete_security_service
+
       # quota + limits
       request :get_limits
       request :get_quota
@@ -75,7 +86,7 @@ module Fog
         def self.data
           @data ||= Hash.new do |hash, key|
             hash[key] = {
-              :shares                => [
+              :shares                   => [
                 {
                   "id"    => "d94a8548-2079-4be0-b21c-0a887acd31ca",
                   "links" => [
@@ -105,7 +116,7 @@ module Fog
                   "name"  => "Share1"
                 }
               ],
-              :shares_detail         => [
+              :shares_detail            => [
                 {
                   "links"                       => [
                     {
@@ -146,7 +157,7 @@ module Fog
                   "source_cgsnapshot_member_id" => ''
                 }
               ],
-              :share_networks        => [
+              :share_networks           => [
                 {
                   "id"   => "32763294-e3d4-456a-998d-60047677c2fb",
                   "name" => "net_my1"
@@ -156,7 +167,7 @@ module Fog
                   "name" => "net_my"
                 }
               ],
-              :share_networks_detail => [
+              :share_networks_detail    => [
                 {
                   "name"              => "net_my1",
                   "segmentation_id"   => '',
@@ -173,7 +184,7 @@ module Fog
                   "description"       => "descr"
                 }
               ],
-              :snapshots             => [
+              :snapshots                => [
                 {
                   "id"    => "086a1aa6-c425-4ecd-9612-391a3b1b9375",
                   "links" => [
@@ -187,6 +198,31 @@ module Fog
                     }
                   ],
                   "name"  => "snapshot_My_share"
+                }
+              ],
+              :security_services_detail => [
+                {
+                  "status"      => "new",
+                  "domain"      => "",
+                  "project_id"  => "16e1ab15c35a457e9c2b2aa189f544e1",
+                  "name"        => "SecServ1",
+                  "created_at"  => "2015-09-07T12:19:10.000000",
+                  "updated_at"  => "",
+                  "server"      => "",
+                  "dns_ip"      => "10.0.0.0/24",
+                  "user"        => "demo",
+                  "password"    => "supersecret",
+                  "type"        => "kerberos",
+                  "id"          => "3c829734-0679-4c17-9637-801da48c0d5f",
+                  "description" => "Creating my first Security Service"
+                }
+              ],
+              :security_services        => [
+                {
+                  "status" => "new",
+                  "type"   => "ldap",
+                  "id"     => "5a1d3a12-34a7-4087-8983-50e9ed03509a",
+                  "name"   => "SecServ2"
                 }
               ],
               :availability_zones => [
@@ -220,7 +256,7 @@ module Fog
                   "size"        => 1
                 }
               ],
-              :export_locations      => [
+              :export_locations         => [
                 {
                   "path"              => "10.254.0.3:/shares/share-e1c2d35e-fe67-4028-ad7a-45f668732b1d",
                   "share_instance_id" => "e1c2d35e-fe67-4028-ad7a-45f668732b1d",
@@ -236,8 +272,7 @@ module Fog
                   "preferred"         => false
                 }
               ],
-
-              :access_rules          => [
+              :access_rules             => [
                 {
                   "share_id"     => "406ea93b-32e9-4907-a117-148b3945749f",
                   "created_at"   => "2015-09-07T09:14:48.000000",
@@ -249,7 +284,7 @@ module Fog
                   "id"           => "a25b2df3-90bd-4add-afa6-5f0dbbd50452"
                 }
               ],
-              :quota                 => {
+              :quota                    => {
                 "gigabytes"          => 1000,
                 "shares"             => 50,
                 "snapshot_gigabytes" => 1000,
