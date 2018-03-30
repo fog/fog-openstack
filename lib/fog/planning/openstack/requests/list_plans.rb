@@ -1,5 +1,5 @@
 module Fog
-  module Openstack
+  module OpenStack
     class Planning
       class Real
         def list_plans(options = {})
@@ -57,5 +57,5 @@ module Fog
         end # def list_plans
       end # class Mock
     end # class Planning
-  end # module Openstack
+  end # module OpenStack
 end # module Fog

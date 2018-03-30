@@ -1,5 +1,5 @@
 module Fog
-  module Openstack
+  module OpenStack
     class Planning
       class Real
         def add_role_to_plan(plan_uuid, role_uuid)
@@ -36,5 +36,5 @@ module Fog
         end # def add_role_to_plans
       end # class Mock
     end # class Planning
-  end # module Openstack
+  end # module OpenStack
 end # module Fog

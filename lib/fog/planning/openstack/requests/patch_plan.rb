@@ -1,5 +1,5 @@
 module Fog
-  module Openstack
+  module OpenStack
     class Planning
       class Real
         def patch_plan(plan_uuid, parameters)
@@ -47,5 +47,5 @@ module Fog
         end # def patch_plans
       end # class Mock
     end # class Planning
-  end # module Openstack
+  end # module OpenStack
 end # module Fog

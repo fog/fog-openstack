@@ -1,7 +1,7 @@
 
 
 module Fog
-  module Openstack
+  module OpenStack
     class Planning < Fog::Service
       SUPPORTED_VERSIONS = /v2/
 
@@ -136,7 +136,7 @@ module Fog
       service = attributes.delete(:service).to_s.downcase.to_sym
       if services.include?(service)
         require "fog/#{service}/openstack"
-        return Fog::Openstack.const_get(service.to_s.capitalize).new(attributes)
+        return Fog::OpenStack.const_get(service.to_s.capitalize).new(attributes)
       end
       raise ArgumentError, "Openstack has no #{service} service"
     end

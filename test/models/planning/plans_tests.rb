@@ -1,9 +1,9 @@
 require "test_helper"
 
-describe "Fog::Openstack[:planning] | plans" do
+describe "Fog::OpenStack[:planning] | plans" do
   describe "success" do
     before do
-      @planning = Fog::Openstack[:planning]
+      @planning = Fog::OpenStack[:planning]
       @instance = @planning.plans.all.first
     end
 

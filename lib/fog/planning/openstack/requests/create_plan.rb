@@ -1,5 +1,5 @@
 module Fog
-  module Openstack
+  module OpenStack
     class Planning
       class Real
         def create_plan(parameters)
@@ -29,5 +29,5 @@ module Fog
         end # def create_plans
       end # class Mock
     end # class Planning
-  end # module Openstack
+  end # module OpenStack
 end # module Fog

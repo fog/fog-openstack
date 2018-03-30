@@ -1,6 +1,8 @@
 module Fog
   module Workflow
     class OpenStack < Fog::Service
+      autoload :V2, File.expand_path('../openstack/v2', __FILE__)
+
       # Fog::Workflow::OpenStack.new() will return a Fog::Workflow::OpenStack::V2
       #  Will choose the latest available once Mistral V3 is released.
       def self.new(args = {})

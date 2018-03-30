@@ -11,3 +11,4 @@ gemfiles/Gemfile-1.9.lock
 .DS_Store
 .idea/
 vendor/bundle
+test/lorem.txt

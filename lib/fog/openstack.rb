@@ -2,11 +2,6 @@ require 'fog/openstack/version'
 require 'fog/core'
 require 'fog/json'
 
-require 'fog/openstack/core'
-require 'fog/openstack/errors'
-
-require 'fog/planning/openstack'
-
 module Fog
   module Baremetal
     autoload :OpenStack, File.expand_path('../baremetal/openstack', __FILE__)
@@ -22,11 +17,6 @@ module Fog
 
   module DNS
     autoload :OpenStack, File.expand_path('../dns/openstack', __FILE__)
-
-    class OpenStack
-      autoload :V1, File.expand_path('../dns/openstack/v1', __FILE__)
-      autoload :V2, File.expand_path('../dns/openstack/v2', __FILE__)
-    end
   end
 
   module Event
@@ -35,20 +25,10 @@ module Fog
 
   module Identity
     autoload :OpenStack, File.expand_path('../identity/openstack', __FILE__)
-
-    class OpenStack
-      autoload :V2, File.expand_path('../identity/openstack/v2', __FILE__)
-      autoload :V3, File.expand_path('../identity/openstack/v3', __FILE__)
-    end
   end
 
   module Image
     autoload :OpenStack, File.expand_path('../image/openstack', __FILE__)
-
-    class OpenStack
-      autoload :V1, File.expand_path('../image/openstack/v1', __FILE__)
-      autoload :V2, File.expand_path('../image/openstack/v2', __FILE__)
-    end
   end
 
   module Introspection
@@ -94,22 +74,17 @@ module Fog
 
   module Volume
     autoload :OpenStack, File.expand_path('../volume/openstack', __FILE__)
-
-    class OpenStack
-      autoload :V1, File.expand_path('../volume/openstack/v1', __FILE__)
-      autoload :V2, File.expand_path('../volume/openstack/v2', __FILE__)
-    end
   end
 
   module Workflow
     autoload :OpenStack, File.expand_path('../workflow/openstack', __FILE__)
-
-    class OpenStack
-      autoload :V2, File.expand_path('../workflow/openstack/v2', __FILE__)
-    end
   end
 
   module OpenStack
+    autoload :Core, File.expand_path('../openstack/core', __FILE__)
+    autoload :Errors, File.expand_path('../openstack/errors', __FILE__)
+    autoload :Planning, File.expand_path('../planning/openstack', __FILE__)
+
     extend Fog::Provider
 
     service(:baremetal,          'Baremetal')
