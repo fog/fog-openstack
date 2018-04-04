@@ -4,10 +4,10 @@ module Fog
       module Real
         def update_snapshot(snapshot_id, data = {})
           request(
-            :body    => Fog::JSON.encode('snapshot' => data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "snapshots/#{snapshot_id}"
+            body: Fog::JSON.encode('snapshot' => data),
+            expects: 200,
+            method: 'PUT',
+            path: "snapshots/#{snapshot_id}"
           )
         end
       end

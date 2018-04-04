@@ -10,9 +10,9 @@ module Fog
         #
         def delete_object(container, object)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
+            expects: 204,
+            method: 'DELETE',
+            path: "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
           )
         end
       end

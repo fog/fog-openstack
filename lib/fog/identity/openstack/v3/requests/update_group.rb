@@ -5,10 +5,10 @@ module Fog
         class Real
           def update_group(id, group)
             request(
-              :expects => [200],
-              :method  => 'PATCH',
-              :path    => "groups/#{id}",
-              :body    => Fog::JSON.encode(:group => group)
+              expects: [200],
+              method: 'PATCH',
+              path: "groups/#{id}",
+              body: Fog::JSON.encode(group: group)
             )
           end
         end

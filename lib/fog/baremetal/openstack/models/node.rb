@@ -61,7 +61,7 @@ module Fog
 
         def ports
           requires :uuid
-          service.list_ports_detailed(:node_uuid => uuid).body['ports']
+          service.list_ports_detailed(node_uuid: uuid).body['ports']
         end
 
         def set_node_maintenance(parameters = nil)

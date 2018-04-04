@@ -82,11 +82,11 @@ module Fog
 
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                :users                  => @users,
-                :roles                  => @roles,
-                :tenants                => @tenants,
-                :ec2_credentials        => @ec2_credentials,
-                :user_tenant_membership => @user_tenant_membership
+                users: @users,
+                roles: @roles,
+                tenants: @tenants,
+                ec2_credentials: @ec2_credentials,
+                user_tenant_membership: @user_tenant_membership
               }
             end
           end
@@ -158,13 +158,13 @@ module Fog
           end
 
           def credentials
-            { :provider => 'openstack',
-              :openstack_auth_url        => @openstack_auth_uri.to_s,
-              :openstack_auth_token      => @auth_token,
-              :openstack_management_url  => @openstack_management_url,
-              :openstack_current_user_id => @openstack_current_user_id,
-              :current_user              => @current_user,
-              :current_tenant            => @current_tenant }
+            { provider: 'openstack',
+              openstack_auth_url: @openstack_auth_uri.to_s,
+              openstack_auth_token: @auth_token,
+              openstack_management_url: @openstack_management_url,
+              openstack_current_user_id: @openstack_current_user_id,
+              current_user: @current_user,
+              current_tenant: @current_tenant }
           end
         end
 

@@ -6,7 +6,7 @@ module Fog
       class ServerGroup < Fog::OpenStack::Model
         identity  :id
         attribute :name
-        attribute :policies, :type => :array
+        attribute :policies, type: :array
         attribute :members
 
         VALID_SERVER_GROUP_POLICIES = ['affinity', 'anti-affinity', 'soft-affinity', 'soft-anti-affinity'].freeze

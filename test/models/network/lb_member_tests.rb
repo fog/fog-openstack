@@ -4,12 +4,12 @@ describe "Fog::Network[:openstack] | lb_member" do
   describe "success" do
     before do
       @instance = network.lb_members.create(
-        :pool_id        => 'pool_id',
-        :address        => '10.0.0.1',
-        :protocol_port  => 80,
-        :weight         => 100,
-        :admin_state_up => true,
-        :tenant_id      => 'tenant_id'
+        pool_id: 'pool_id',
+        address: '10.0.0.1',
+        protocol_port: 80,
+        weight: 100,
+        admin_state_up: true,
+        tenant_id: 'tenant_id'
       )
     end
 

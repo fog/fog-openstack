@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_workflow(identifier)
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "workflows/#{identifier}"
+              expects: 200,
+              method: "GET",
+              path: "workflows/#{identifier}"
             )
           end
         end

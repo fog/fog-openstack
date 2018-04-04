@@ -6,10 +6,10 @@ module Fog
           def create_workflow(definition)
             body = Fog::JSON.encode(definition)
             request(
-              :body    => body,
-              :expects => 201,
-              :method  => "POST",
-              :path    => "workflows"
+              body: body,
+              expects: 201,
+              method: "POST",
+              path: "workflows"
             )
           end
         end

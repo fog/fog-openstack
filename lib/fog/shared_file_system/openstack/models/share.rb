@@ -83,11 +83,11 @@ module Fog
         end
 
         def access_rules
-          service.share_access_rules(:share => self)
+          service.share_access_rules(share: self)
         end
 
         def export_locations
-          service.share_export_locations(:share => self)
+          service.share_export_locations(share: self)
         end
       end
     end

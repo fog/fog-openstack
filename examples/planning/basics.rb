@@ -9,11 +9,11 @@ password = 'secret'
 tenant   = 'My Compute Tenant' # String
 
 planning ||= ::Fog::Openstack.new(
-  :service            => :planning,
-  :openstack_api_key  => password,
-  :openstack_username => username,
-  :openstack_auth_url => auth_url,
-  :openstack_tenant   => tenant
+  service: :planning,
+  openstack_api_key: password,
+  openstack_username: username,
+  openstack_auth_url: auth_url,
+  openstack_tenant: tenant
 )
 
 pp planning
@@ -36,8 +36,8 @@ end
 # Creating new Tuskar plan
 #
 plan = planning.plans.new(
-  :name        => 'New Plan Name',
-  :description => 'New Plan Description'
+  name: 'New Plan Name',
+  description: 'New Plan Description'
 )
 pp plan
 

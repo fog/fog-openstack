@@ -5,10 +5,10 @@ module Fog
         def extend_volume(volume_id, size)
           body = { 'os-extend' => { 'new_size' => size } }
           request(
-            :expects => 202,
-            :method  => 'POST',
-            :path    => "volumes/#{volume_id}/action",
-            :body    => Fog::JSON.encode(body)
+            expects: 202,
+            method: 'POST',
+            path: "volumes/#{volume_id}/action",
+            body: Fog::JSON.encode(body)
           )
         end
       end

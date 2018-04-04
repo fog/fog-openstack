@@ -5,9 +5,9 @@ module Fog
         class Real
           def remove_tag_from_image(image_id, tag)
             request(
-              :expects => [204],
-              :method  => 'DELETE',
-              :path    => "images/#{image_id}/tags/#{tag}"
+              expects: [204],
+              method: 'DELETE',
+              path: "images/#{image_id}/tags/#{tag}"
             )
           end
         end

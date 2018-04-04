@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_security_group_rule(security_group_rule_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "os-security-group-rules/#{security_group_rule_id}"
+            expects: [200],
+            method: 'GET',
+            path: "os-security-group-rules/#{security_group_rule_id}"
           )
         end
       end

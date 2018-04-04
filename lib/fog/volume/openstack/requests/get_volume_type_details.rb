@@ -4,9 +4,9 @@ module Fog
       module Real
         def get_volume_type_details(volume_type_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "types/#{volume_type_id}"
+            expects: 200,
+            method: 'GET',
+            path: "types/#{volume_type_id}"
           )
         end
       end

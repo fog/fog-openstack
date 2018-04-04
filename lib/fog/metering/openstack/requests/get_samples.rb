@@ -19,10 +19,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "meters/#{meter_id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'GET',
+            path: "meters/#{meter_id}"
           )
         end
       end

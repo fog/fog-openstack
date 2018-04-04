@@ -33,17 +33,17 @@ describe "Fog::Network[:openstack] | ipsec_site_connection requests" do
       ipsecpolicy_id = "ipsec"
 
       attributes = {
-        :name           => 'test-ipsec-site-connection',
-        :description    => 'Test VPN IPSec Site Connection',
-        :tenant_id      => 'tenant_id',
-        :peer_address   => "172.24.4.226",
-        :peer_id        => "172.24.4.226",
-        :peer_cidrs     => [],
-        :psk            => "secret",
-        :mtu            => 1500,
-        :dpd            => { "action" => "hold", "interval" => 30, "timeout" => 120 },
-        :initiator      => "bi-directional",
-        :admin_state_up => true
+        name: 'test-ipsec-site-connection',
+        description: 'Test VPN IPSec Site Connection',
+        tenant_id: 'tenant_id',
+        peer_address: "172.24.4.226",
+        peer_id: "172.24.4.226",
+        peer_cidrs: [],
+        psk: "secret",
+        mtu: 1500,
+        dpd: { "action" => "hold", "interval" => 30, "timeout" => 120 },
+        initiator: "bi-directional",
+        admin_state_up: true
       }
 
       @ipsec_site_connection = network.create_ipsec_site_connection(
@@ -73,17 +73,17 @@ describe "Fog::Network[:openstack] | ipsec_site_connection requests" do
       ipsec_site_connection_id = network.ipsec_site_connections.all.first.id
 
       attributes = {
-        :name           => 'rename-test-ipsec-site-connection',
-        :description    => 'Test VPN IPSec Site Connection',
-        :tenant_id      => 'tenant_id',
-        :peer_address   => "172.24.4.226",
-        :peer_id        => "172.24.4.226",
-        :peer_cidrs     => [],
-        :psk            => "secret",
-        :mtu            => 1500,
-        :dpd            => { "action" => "hold", "interval" => 30, "timeout" => 120 },
-        :initiator      => "bi-directional",
-        :admin_state_up => true
+        name: 'rename-test-ipsec-site-connection',
+        description: 'Test VPN IPSec Site Connection',
+        tenant_id: 'tenant_id',
+        peer_address: "172.24.4.226",
+        peer_id: "172.24.4.226",
+        peer_cidrs: [],
+        psk: "secret",
+        mtu: 1500,
+        dpd: { "action" => "hold", "interval" => 30, "timeout" => 120 },
+        initiator: "bi-directional",
+        admin_state_up: true
       }
 
       network.update_ipsec_site_connection(ipsec_site_connection_id, attributes).body

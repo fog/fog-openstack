@@ -5,10 +5,10 @@ module Fog
         class Real
           def list_users(options = {})
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "users",
-              :query   => options
+              expects: [200],
+              method: 'GET',
+              path: "users",
+              query: options
             )
           end
         end

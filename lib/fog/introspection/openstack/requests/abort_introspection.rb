@@ -4,10 +4,10 @@ module Fog
       class Real
         def abort_introspection(node_id)
           request(
-            :body    => "",
-            :expects => 202,
-            :method  => "POST",
-            :path    => "introspection/#{node_id}/abort"
+            body: "",
+            expects: 202,
+            method: "POST",
+            path: "introspection/#{node_id}/abort"
           )
         end
       end

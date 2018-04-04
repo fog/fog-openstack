@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_security_services_detail(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'security-services/detail',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'security-services/detail',
+            query: options
           )
         end
       end

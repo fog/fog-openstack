@@ -6,10 +6,10 @@ module Fog
           def list_actions(params = {})
             body = Fog::JSON.encode(params)
             request(
-              :body    => body,
-              :expects => 200,
-              :method  => "GET",
-              :path    => "actions"
+              body: body,
+              expects: 200,
+              method: "GET",
+              path: "actions"
             )
           end
         end

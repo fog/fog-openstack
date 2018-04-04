@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_group(id)
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "groups/#{id}"
+              expects: [200],
+              method: 'GET',
+              path: "groups/#{id}"
             )
           end
         end

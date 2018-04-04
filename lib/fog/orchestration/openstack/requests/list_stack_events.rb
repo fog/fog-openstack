@@ -8,7 +8,7 @@ module Fog
                                   ' .list_events(:stack_name => value, :stack_id => value) instead')
 
           uri = "stacks/#{stack.stack_name}/#{stack.id}/events"
-          request(:method => 'GET', :path => uri, :expects => 200, :query => options)
+          request(method: 'GET', path: uri, expects: 200, query: options)
         end
       end
 
@@ -17,8 +17,8 @@ module Fog
           events = data[:events].values
 
           Excon::Response.new(
-            :body   => { 'events' => events },
-            :status => 200
+            body: { 'events' => events },
+            status: 200
           )
         end
       end

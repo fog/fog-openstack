@@ -4,9 +4,9 @@ module Fog
       class Real
         def list_bay_models
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "baymodels/detail"
+            expects: [200],
+            method: 'GET',
+            path: "baymodels/detail"
           )
         end
       end

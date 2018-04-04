@@ -4,10 +4,10 @@ module Fog
       class Real
         def find_measurements(options = {})
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "metrics/measurements",
-            :query   => options
+            expects: [200],
+            method: 'GET',
+            path: "metrics/measurements",
+            query: options
           )
         end
       end

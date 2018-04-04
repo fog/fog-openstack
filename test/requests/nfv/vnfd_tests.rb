@@ -14,7 +14,7 @@ describe "@vnfd | NFV vnfds requests" do
       "name"          => String
     }
     @nfv, @vnf_data, @auth = set_nfv_data
-    @vnfd_body = @nfv.create_vnfd(:vnfd => @vnfd_data, :auth => @auth).body
+    @vnfd_body = @nfv.create_vnfd(vnfd: @vnfd_data, auth: @auth).body
   end
 
   describe "success" do

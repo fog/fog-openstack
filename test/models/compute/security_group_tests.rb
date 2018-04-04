@@ -5,8 +5,8 @@ describe "Fog::Compute[:openstack] | security_group" do
     let(:fog) { Fog::Compute[:openstack] }
     let(:security_group) do
       fog.security_groups.create(
-        :name        => 'my_group',
-        :description => 'my group'
+        name: 'my_group',
+        description: 'my group'
       )
     end
 
@@ -36,11 +36,11 @@ describe "Fog::Compute[:openstack] | security_group" do
       it "#create" do
         rules_count = security_group.security_group_rules.count
         rule = security_group.security_group_rules.create(
-          :parent_group_id => security_group.id,
-          :ip_protocol     => 'tcp',
-          :from_port       => 1234,
-          :to_port         => 1234,
-          :ip_range        => { "cidr" => "0.0.0.0/0" }
+          parent_group_id: security_group.id,
+          ip_protocol: 'tcp',
+          from_port: 1234,
+          to_port: 1234,
+          ip_range: { "cidr" => "0.0.0.0/0" }
         )
         security_group.security_group_rules.count.must_equal(rules_count + 1)
         security_group_rule = security_group.security_group_rules.find { |r| r.id == rule.id }
@@ -51,11 +51,11 @@ describe "Fog::Compute[:openstack] | security_group" do
         # Sometimes the reload comes not empty!
         skip unless Minitest::Test::UNIT_TESTS_CLEAN
         rule = security_group.security_group_rules.create(
-          :parent_group_id => security_group.id,
-          :ip_protocol     => 'tcp',
-          :from_port       => 1234,
-          :to_port         => 1234,
-          :ip_range        => { "cidr" => "0.0.0.0/0" }
+          parent_group_id: security_group.id,
+          ip_protocol: 'tcp',
+          from_port: 1234,
+          to_port: 1234,
+          ip_range: { "cidr" => "0.0.0.0/0" }
         )
         rule.destroy
         rule.reload.must_equal nil

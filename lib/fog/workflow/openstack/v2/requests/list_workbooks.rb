@@ -5,9 +5,9 @@ module Fog
         class Real
           def list_workbooks
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "workbooks"
+              expects: 200,
+              method: "GET",
+              path: "workbooks"
             )
           end
         end

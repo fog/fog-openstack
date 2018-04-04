@@ -18,9 +18,9 @@ module Fog
 
           def delete_ec2_credential(user_id, access)
             request(
-              :expects => [200, 204],
-              :method  => 'DELETE',
-              :path    => "users/#{user_id}/credentials/OS-EC2/#{access}"
+              expects: [200, 204],
+              method: 'DELETE',
+              path: "users/#{user_id}/credentials/OS-EC2/#{access}"
             )
           end
         end

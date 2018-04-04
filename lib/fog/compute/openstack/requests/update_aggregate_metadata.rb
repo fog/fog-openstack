@@ -5,10 +5,10 @@ module Fog
         def update_aggregate_metadata(uuid, metadata = {})
           data = { 'set_metadata' => { 'metadata' => metadata } }
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200],
-            :method  => 'POST',
-            :path    => "os-aggregates/#{uuid}/action"
+            body: Fog::JSON.encode(data),
+            expects: [200],
+            method: 'POST',
+            path: "os-aggregates/#{uuid}/action"
           )
         end
       end

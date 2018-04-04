@@ -32,10 +32,10 @@ module Fog
         def update_network(network_id, options = {})
           data = { 'network' => self.class.update(options) }
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "networks/#{network_id}.json"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "networks/#{network_id}.json"
           )
         end
       end

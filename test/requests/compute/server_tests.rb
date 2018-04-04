@@ -65,10 +65,10 @@ describe "Fog::Compute[:openstack] | server requests" do
 
       @volume1_id = compute.create_volume('test', 'this is a test volume', 1).body["volume"]["id"]
       volume_data = {
-        :delete_on_termination => true,
-        :device_name           => "vda",
-        :volume_id             => @volume1_id,
-        :volume_size           => 1
+        delete_on_termination: true,
+        device_name: "vda",
+        volume_id: @volume1_id,
+        volume_size: 1
       }
 
       @data = compute.create_server("test", nil, @flavor_id, "block_device_mapping" => volume_data).body['server']
@@ -78,16 +78,16 @@ describe "Fog::Compute[:openstack] | server requests" do
     it "#create_server('test', nil, #{@flavor_id}) with a block_device_mapping" do
       @data.must_match_schema(@create_format,
                               nil,
-                              :allow_extra_keys     => true,
-                              :allow_optional_rules => true)
+                              allow_extra_keys: true,
+                              allow_optional_rules: true)
     end
 
     it "#get_server_details(#{@server_id})" do
       compute.get_server_details(@server_id).body['server']
              .must_match_schema(@base_server_format,
                                 nil,
-                                :allow_extra_keys     => true,
-                                :allow_optional_rules => true)
+                                allow_extra_keys: true,
+                                allow_optional_rules: true)
     end
 
     it "#block_device_mapping" do
@@ -99,22 +99,22 @@ describe "Fog::Compute[:openstack] | server requests" do
         @volume2_id = compute.create_volume('test', 'this is a test volume', 1).body["volume"]["id"]
         volume_data = [
           {
-            :boot_index            => 0,
-            :uuid                  => @volume1_id,
-            :device_name           => "vda",
-            :source_type           => "volume",
-            :destination_type      => "volume",
-            :delete_on_termination => true,
-            :volume_size           => 20
+            boot_index: 0,
+            uuid: @volume1_id,
+            device_name: "vda",
+            source_type: "volume",
+            destination_type: "volume",
+            delete_on_termination: true,
+            volume_size: 20
           },
           {
-            :boot_index            => 1,
-            :uuid                  => @volume2_id,
-            :device_name           => "vdb",
-            :source_type           => "volume",
-            :destination_type      => "volume",
-            :delete_on_termination => true,
-            :volume_size           => 10
+            boot_index: 1,
+            uuid: @volume2_id,
+            device_name: "vdb",
+            source_type: "volume",
+            destination_type: "volume",
+            delete_on_termination: true,
+            volume_size: 10
           }
         ]
         data = compute.create_server("test",
@@ -127,16 +127,16 @@ describe "Fog::Compute[:openstack] | server requests" do
       it "#create_server('test', nil, #{@flavor_id})" do
         @data.must_match_schema(@create_format,
                                 nil,
-                                :allow_extra_keys     => true,
-                                :allow_optional_rules => true)
+                                allow_extra_keys: true,
+                                allow_optional_rules: true)
       end
 
       it "#get_server_details(#{@server_id})" do
         compute.get_server_details(@server_id).body['server']
                .must_match_schema(@base_server_format,
                                   nil,
-                                  :allow_extra_keys     => true,
-                                  :allow_optional_rules => true)
+                                  allow_extra_keys: true,
+                                  allow_optional_rules: true)
       end
 
       it "#block_device_mapping_v2" do
@@ -158,16 +158,16 @@ describe "Fog::Compute[:openstack] | server requests" do
       it "#create_server('test', #{@image_id}, 19)" do
         @data.must_match_schema(@create_format,
                                 nil,
-                                :allow_extra_keys     => true,
-                                :allow_optional_rules => true)
+                                allow_extra_keys: true,
+                                allow_optional_rules: true)
       end
 
       it "#get_server_details(#{@server_id})" do
         compute.get_server_details(@server_id).body['server']
                .must_match_schema(@server_from_image_format,
                                   nil,
-                                  :allow_extra_keys     => true,
-                                  :allow_optional_rules => true)
+                                  allow_extra_keys: true,
+                                  allow_optional_rules: true)
       end
     end
 
@@ -191,8 +191,8 @@ describe "Fog::Compute[:openstack] | server requests" do
       it "#create_server('test', @image_id , 19, {'min_count' => 2, 'return_reservation_id' => 'True'})" do
         @data.must_match_schema(@reservation_format,
                                 nil,
-                                :allow_extra_keys     => true,
-                                :allow_optional_rules => true)
+                                allow_extra_keys: true,
+                                allow_optional_rules: true)
       end
 
       it "#validate_multi_create" do
@@ -205,8 +205,8 @@ describe "Fog::Compute[:openstack] | server requests" do
       compute.list_servers.body
              .must_match_schema({ 'servers' => [OpenStack::Compute::Formats::SUMMARY] },
                                 nil,
-                                :allow_extra_keys     => true,
-                                :allow_optional_rules => true)
+                                allow_extra_keys: true,
+                                allow_optional_rules: true)
     end
 
     # DETAILS
@@ -214,8 +214,8 @@ describe "Fog::Compute[:openstack] | server requests" do
       compute.list_servers_detail.body["servers"][0]
              .must_match_schema(@server_from_image_format,
                                 nil,
-                                :allow_extra_keys     => true,
-                                :allow_optional_rules => true)
+                                allow_extra_keys: true,
+                                allow_optional_rules: true)
     end
 
     # CHANGE PASSWORD
@@ -228,7 +228,7 @@ describe "Fog::Compute[:openstack] | server requests" do
 
     # UPDATE SERVER NAME
     it "#update_server(#{@server_id}, :name => 'fogupdatedserver')" do
-      compute.update_server(@server_id, :name => 'fogupdatedserver').status.must_equal 200
+      compute.update_server(@server_id, name: 'fogupdatedserver').status.must_equal 200
       compute.servers.get(@server_id).wait_for { ready? } unless Fog.mocking?
     end
 
@@ -258,8 +258,8 @@ describe "Fog::Compute[:openstack] | server requests" do
           @server_id, @snapshot_id, 'fog', 'newpass', "foo" => "bar"
         ).body.must_match_schema({ 'server' => @server_from_image_format },
                                  nil,
-                                 :allow_extra_keys     => true,
-                                 :allow_optional_rules => true)
+                                 allow_extra_keys: true,
+                                 allow_optional_rules: true)
 
         compute.servers.get(@server_id).wait_for { ready? } unless Fog.mocking?
       end
@@ -351,7 +351,7 @@ describe "Fog::Compute[:openstack] | server requests" do
 
     it "#update_server(0, :name => 'fogupdatedserver', :adminPass => 'fogupdatedserver')" do
       proc do
-        self.class.compute.update_server(0, :name => 'fogupdatedserver', :adminPass => 'fogupdatedserver')
+        self.class.compute.update_server(0, name: 'fogupdatedserver', adminPass: 'fogupdatedserver')
       end.must_raise Fog::Compute::OpenStack::NotFound
     end
 

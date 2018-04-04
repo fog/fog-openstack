@@ -4,9 +4,9 @@ module Fog
       module Real
         def delete_transfer(transfer_id)
           request(
-            :expects => 202,
-            :method  => 'DELETE',
-            :path    => "os-volume-transfer/#{transfer_id}"
+            expects: 202,
+            method: 'DELETE',
+            path: "os-volume-transfer/#{transfer_id}"
           )
         end
       end

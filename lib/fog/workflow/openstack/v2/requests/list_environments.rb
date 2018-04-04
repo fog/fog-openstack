@@ -5,9 +5,9 @@ module Fog
         class Real
           def list_environments
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "environments"
+              expects: 200,
+              method: "GET",
+              path: "environments"
             )
           end
         end

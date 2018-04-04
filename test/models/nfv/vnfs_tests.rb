@@ -5,9 +5,9 @@ describe "Fog::NFV[:openstack] | vnfs" do
   describe "success" do
     before do
       @nfv, @vnf_data, @auth = set_nfv_data
-      @vnfd = @nfv.vnfds.create(:vnfd => @vnfd_data, :auth => @auth)
-      vnf_data = { :vnfd_id => @vnfd.id, :name => 'Test' }
-      @vnfs = @nfv.vnfs.create(:vnf => vnf_data, :auth => @auth)
+      @vnfd = @nfv.vnfds.create(vnfd: @vnfd_data, auth: @auth)
+      vnf_data = { vnfd_id: @vnfd.id, name: 'Test' }
+      @vnfs = @nfv.vnfs.create(vnf: vnf_data, auth: @auth)
 
       @nfv.vnfs.get(@vnfs.id).wait_for { ready? } unless Fog.mocking?
     end

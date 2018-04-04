@@ -6,9 +6,9 @@ username = 'admin'
 password = 'D78JVyRnzJG8j7Mb6fgpeUMp7'
 
 @connection_params = {
-  :openstack_auth_url     => auth_url,
-  :openstack_username     => username,
-  :openstack_api_key      => password
+  openstack_auth_url: auth_url,
+  openstack_username: username,
+  openstack_api_key: password
 }
 
 puts "### SERVICE CONNECTION ###"

@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_image_by_id(image_id)
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "images/#{image_id}"
+              expects: [200],
+              method: 'GET',
+              path: "images/#{image_id}"
             )
           end
         end

@@ -5,10 +5,10 @@ module Fog
         class Real
           def update_quota(project_id, options = {})
             request(
-              :body    => Fog::JSON.encode(options),
-              :expects => 200,
-              :method  => 'PUT',
-              :path    => "quotas/#{project_id}"
+              body: Fog::JSON.encode(options),
+              expects: 200,
+              method: 'PUT',
+              path: "quotas/#{project_id}"
             )
           end
         end

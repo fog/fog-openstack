@@ -16,7 +16,7 @@ module Fog
           return cached_alarm if cached_alarm
           alarm_hash = service.get_alarm(id).body
           Fog::Monitoring::OpenStack::Alarm.new(
-            alarm_hash.merge(:service => service)
+            alarm_hash.merge(service: service)
           )
         end
 

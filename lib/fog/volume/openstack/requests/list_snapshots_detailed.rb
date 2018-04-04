@@ -4,10 +4,10 @@ module Fog
       module Real
         def list_snapshots_detailed(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'snapshots/detail',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'snapshots/detail',
+            query: options
           )
         end
       end

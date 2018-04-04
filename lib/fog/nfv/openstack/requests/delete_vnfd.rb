@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_vnfd(vnfd_id)
           request(
-            :expects => 204,
-            :method  => "DELETE",
-            :path    => "vnfds/#{vnfd_id}"
+            expects: 204,
+            method: "DELETE",
+            path: "vnfds/#{vnfd_id}"
           )
         end
       end

@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_lbaas_loadbalancer(loadbalancer_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "lbaas/loadbalancers/#{loadbalancer_id}"
+            expects: [200],
+            method: 'GET',
+            path: "lbaas/loadbalancers/#{loadbalancer_id}"
           )
         end
       end

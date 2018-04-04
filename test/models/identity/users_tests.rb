@@ -5,11 +5,11 @@ describe "Fog::Identity[:openstack] | users" do
     @identity = Fog::Identity[:openstack]
     tenant_id = @identity.list_tenants.body['tenants'].first['id']
     @instance = @identity.users.create(
-      :name      => 'foobar',
-      :email     => 'foo@bar.com',
-      :tenant_id => tenant_id,
-      :password  => 'spoof',
-      :enabled   => true
+      name: 'foobar',
+      email: 'foo@bar.com',
+      tenant_id: tenant_id,
+      password: 'spoof',
+      enabled: true
     )
   end
 

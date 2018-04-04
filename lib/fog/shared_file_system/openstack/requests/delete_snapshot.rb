@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_snapshot(id)
           request(
-            :expects => 202,
-            :method  => 'DELETE',
-            :path    => "snapshots/#{id}"
+            expects: 202,
+            method: 'DELETE',
+            path: "snapshots/#{id}"
           )
         end
       end

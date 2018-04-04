@@ -4,24 +4,24 @@ describe "Fog::Network[:openstack] | ipsec_site_connection" do
   describe "success" do
     before do
       params = {
-        :name           => 'test-ipsec-site-connection',
-        :vpnservice_id  => 'vpn',
-        :ikepolicy_id   => 'ike',
-        :ipsecpolicy_id => 'ipsec',
-        :description    => 'Test VPN IPSec Site Connection',
-        :tenant_id      => 'tenant_id',
-        :peer_address   => "172.24.4.226",
-        :peer_id        => "172.24.4.226",
-        :peer_cidrs     => [],
-        :psk            => "secret",
-        :mtu            => 1500,
-        :dpd            => {
+        name: 'test-ipsec-site-connection',
+        vpnservice_id: 'vpn',
+        ikepolicy_id: 'ike',
+        ipsecpolicy_id: 'ipsec',
+        description: 'Test VPN IPSec Site Connection',
+        tenant_id: 'tenant_id',
+        peer_address: "172.24.4.226",
+        peer_id: "172.24.4.226",
+        peer_cidrs: [],
+        psk: "secret",
+        mtu: 1500,
+        dpd: {
           "action"   => "hold",
           "interval" => 30,
           "timeout"  => 120
         },
-        :initiator      => "bi-directional",
-        :admin_state_up => true
+        initiator: "bi-directional",
+        admin_state_up: true
       }
       @instance = network.ipsec_site_connections.create(params)
     end

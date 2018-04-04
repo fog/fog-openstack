@@ -139,19 +139,19 @@ module Fog
       @openstack_username = options[:openstack_username]
 
       response = connection.request(
-        :expects  => [200, 204],
-        :headers  => {
+        expects: [200, 204],
+        headers: {
           'X-Auth-Key'  => @openstack_api_key,
           'X-Auth-User' => @openstack_username
         },
-        :method   => 'GET',
-        :path     =>  (uri.path && (not uri.path.empty?)) ? uri.path : 'v1.0'
+        method: 'GET',
+        path: (uri.path && (not uri.path.empty?)) ? uri.path : 'v1.0'
       )
 
       return {
-        :token => response.headers['X-Auth-Token'],
-        :server_management_url => response.headers['X-Server-Management-Url'] || response.headers['X-Storage-Url'],
-        :identity_public_endpoint => response.headers['X-Keystone']
+        token: response.headers['X-Auth-Token'],
+        server_management_url: response.headers['X-Server-Management-Url'] || response.headers['X-Storage-Url'],
+        identity_public_endpoint: response.headers['X-Keystone']
       }
     end
 
@@ -175,11 +175,11 @@ module Fog
           response = Fog::Core::Connection.new(
             "#{uri.scheme}://#{uri.host}:#{uri.port}/v2.0/tenants", false, connection_options
           ).request(
-            :expects => [200, 204],
-            :headers => { 'Content-Type' => 'application/json',
-                          'Accept' => 'application/json',
-                          'X-Auth-Token' => body['access']['token']['id'] },
-            :method  => 'GET'
+            expects: [200, 204],
+            headers: { 'Content-Type' => 'application/json',
+                       'Accept' => 'application/json',
+                       'X-Auth-Token' => body['access']['token']['id'] },
+            method: 'GET'
           )
 
           body = Fog::JSON.decode(response.body)
@@ -228,14 +228,14 @@ module Fog
       identity_url   = identity_service['endpoints'].find { |s| s['publicURL'] }['publicURL'] if identity_service
 
       {
-        :user                     => user,
-        :tenant                   => tenant,
-        :identity_public_endpoint => identity_url,
-        :server_management_url    => management_url,
-        :token                    => body['access']['token']['id'],
-        :expires                  => body['access']['token']['expires'],
-        :current_user_id          => body['access']['user']['id'],
-        :unscoped_token           => options[:unscoped_token]
+        user: user,
+        tenant: tenant,
+        identity_public_endpoint: identity_url,
+        server_management_url: management_url,
+        token: body['access']['token']['id'],
+        expires: body['access']['token']['expires'],
+        current_user_id: body['access']['user']['id'],
+        unscoped_token: options[:unscoped_token]
       }
     end
 
@@ -258,11 +258,11 @@ module Fog
       unless service
         unless project_name
           request_body = {
-            :expects => [200],
-            :headers => { 'Content-Type' => 'application/json',
-                          'Accept' => 'application/json',
-                          'X-Auth-Token' => token },
-            :method => 'GET'
+            expects: [200],
+            headers: { 'Content-Type' => 'application/json',
+                       'Accept' => 'application/json',
+                       'X-Auth-Token' => token },
+            method: 'GET'
           }
           user_id = body['token']['user']['id']
           project_uri = uri.clone
@@ -289,7 +289,7 @@ module Fog
       unless service
         if service_type.include? "identity"
           identity_uri = uri.to_s.sub('/auth/tokens', '')
-          response = Fog::Core::Connection.new(identity_uri, false, connection_options).request(:method => 'GET')
+          response = Fog::Core::Connection.new(identity_uri, false, connection_options).request(method: 'GET')
           if response.status == 200
             service = {
               "endpoints" => [{
@@ -336,7 +336,7 @@ module Fog
         raise Fog::Errors::NotFound.new("Multiple regions available choose one of these '#{regions.join(',')}'")
       end
 
-      identity_service = get_service_v3(body, identity_service_type, nil, nil, :openstack_endpoint_path_matches => /\/v3/) if identity_service_type
+      identity_service = get_service_v3(body, identity_service_type, nil, nil, openstack_endpoint_path_matches: /\/v3/) if identity_service_type
 
       management_url = service['endpoints'].find { |e| e['interface'] == endpoint_type }['url']
       identity_url = identity_service['endpoints'].find { |e| e['interface'] == 'public' }['url'] if identity_service
@@ -348,14 +348,14 @@ module Fog
       end
 
       return {
-        :user                     => body['token']['user']['name'],
-        :tenant                   => tenant,
-        :identity_public_endpoint => identity_url,
-        :server_management_url    => management_url,
-        :token                    => token,
-        :expires                  => body['token']['expires_at'],
-        :current_user_id          => body['token']['user']['id'],
-        :unscoped_token           => options[:unscoped_token]
+        user: body['token']['user']['name'],
+        tenant: tenant,
+        identity_public_endpoint: identity_url,
+        server_management_url: management_url,
+        token: token,
+        expires: body['token']['expires_at'],
+        current_user_id: body['token']['user']['id'],
+        unscoped_token: options[:unscoped_token]
       }
     end
 
@@ -389,26 +389,26 @@ module Fog
       omit_default_port = options[:openstack_auth_omit_default_port]
 
       identity_v2_connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
-      request_body = { :auth => {} }
+      request_body = { auth: {} }
 
       if auth_token
         request_body[:auth][:token] = {
-          :id => auth_token
+          id: auth_token
         }
       else
         request_body[:auth][:passwordCredentials] = {
-          :username => username,
-          :password => api_key
+          username: username,
+          password: api_key
         }
       end
       request_body[:auth][:tenantName] = tenant_name if tenant_name
 
       request = {
-        :expects => [200, 204],
-        :headers => { 'Content-Type' => 'application/json' },
-        :body    => Fog::JSON.encode(request_body),
-        :method  => 'POST',
-        :path    => (uri.path && (not uri.path.empty?)) ? uri.path : 'v2.0'
+        expects: [200, 204],
+        headers: { 'Content-Type' => 'application/json' },
+        body: Fog::JSON.encode(request_body),
+        method: 'POST',
+        path: (uri.path && (not uri.path.empty?)) ? uri.path : 'v2.0'
       }
       request[:omit_default_port] = omit_default_port unless omit_default_port.nil?
 
@@ -435,37 +435,37 @@ module Fog
       cache_ttl         = options[:openstack_cache_ttl] || 0
 
       connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
-      request_body = { :auth => {} }
+      request_body = { auth: {} }
 
       scope = {}
 
       if project_name || project_id
         scope[:project] = if project_id.nil? then
                             if project_domain || project_domain_id
-                              { :name => project_name, :domain => project_domain_id.nil? ? { :name => project_domain } : { :id => project_domain_id } }
+                              { name: project_name, domain: project_domain_id.nil? ? { name: project_domain } : { id: project_domain_id } }
                             else
-                              { :name => project_name, :domain => domain_id.nil? ? { :name => domain_name } : { :id => domain_id } }
+                              { name: project_name, domain: domain_id.nil? ? { name: domain_name } : { id: domain_id } }
                             end
                           else
-                            { :id => project_id }
+                            { id: project_id }
                           end
       elsif domain_name || domain_id
-        scope[:domain] = domain_id.nil? ? { :name => domain_name } : { :id => domain_id }
+        scope[:domain] = domain_id.nil? ? { name: domain_name } : { id: domain_id }
       end
 
       if auth_token
         request_body[:auth][:identity] = {
-          :methods => %w{token},
-          :token => {
-            :id => auth_token
+          methods: %w{token},
+          token: {
+            id: auth_token
           }
         }
       else
         request_body[:auth][:identity] = {
-          :methods => %w{password},
-          :password => {
-            :user => {
-              :password => api_key
+          methods: %w{password},
+          password: {
+            user: {
+              password: api_key
             }
           }
         }
@@ -474,9 +474,9 @@ module Fog
           request_body[:auth][:identity][:password][:user][:id] = userid
         else
           if user_domain || user_domain_id
-            request_body[:auth][:identity][:password][:user][:domain] = user_domain_id.nil? ? { :name => user_domain } : { :id => user_domain_id }
+            request_body[:auth][:identity][:password][:user][:domain] = user_domain_id.nil? ? { name: user_domain } : { id: user_domain_id }
           elsif domain_name || domain_id
-            request_body[:auth][:identity][:password][:user][:domain] = domain_id.nil? ? { :name => domain_name } : { :id => domain_id }
+            request_body[:auth][:identity][:password][:user][:domain] = domain_id.nil? ? { name: domain_name } : { id: domain_id }
           end
           request_body[:auth][:identity][:password][:user][:name] = username
         end
@@ -486,22 +486,22 @@ module Fog
 
       path = (uri.path && (not uri.path.empty?)) ? uri.path : 'v3'
 
-      response, expires = Fog::OpenStack.token_cache[{ :body => request_body, :path => path }] if cache_ttl > 0
+      response, expires = Fog::OpenStack.token_cache[{ body: request_body, path: path }] if cache_ttl > 0
 
       unless response && expires > Time.now
         request = {
-          :expects => [201],
-          :headers => { 'Content-Type' => 'application/json' },
-          :body    => Fog::JSON.encode(request_body),
-          :method  => 'POST',
-          :path    => path
+          expects: [201],
+          headers: { 'Content-Type' => 'application/json' },
+          body: Fog::JSON.encode(request_body),
+          method: 'POST',
+          path: path
         }
         request[:omit_default_port] = omit_default_port unless omit_default_port.nil?
 
         response = connection.request(request)
         if cache_ttl > 0
           cache = Fog::OpenStack.token_cache
-          cache[{ :body => request_body, :path => path }] = response, Time.now + cache_ttl
+          cache[{ body: request_body, path: path }] = response, Time.now + cache_ttl
           Fog::OpenStack.token_cache = cache
         end
       end
@@ -578,11 +578,11 @@ module Fog
       return @version[version_cache] if @version && @version[version_cache]
       connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}", false, connection_options)
       response = connection.request(
-        :expects => [200, 204, 300],
-        :headers => { 'Content-Type' => 'application/json',
-                      'Accept'       => 'application/json',
-                      'X-Auth-Token' => auth_token },
-        :method  => 'GET'
+        expects: [200, 204, 300],
+        headers: { 'Content-Type' => 'application/json',
+                   'Accept'       => 'application/json',
+                   'X-Auth-Token' => auth_token },
+        method: 'GET'
       )
 
       body = Fog::JSON.decode(response.body)

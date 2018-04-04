@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_lbaas_listeners(filters = {})
           request(
-            :expects => 200,
-            :method => 'GET',
-            :path => 'lbaas/listeners',
-            :query => filters
+            expects: 200,
+            method: 'GET',
+            path: 'lbaas/listeners',
+            query: filters
           )
         end
       end
@@ -15,8 +15,8 @@ module Fog
       class Mock
         def list_lbaas_listeners(_filters = {})
           Excon::Response.new(
-            :body => { 'listeners' => data[:lbaas_listeners].values },
-            :status => 200
+            body: { 'listeners' => data[:lbaas_listeners].values },
+            status: 200
           )
         end
       end

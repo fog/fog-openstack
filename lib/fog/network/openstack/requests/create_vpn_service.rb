@@ -16,10 +16,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [201],
-            :method  => 'POST',
-            :path    => 'vpn/vpnservices'
+            body: Fog::JSON.encode(data),
+            expects: [201],
+            method: 'POST',
+            path: 'vpn/vpnservices'
           )
         end
       end

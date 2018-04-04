@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_ports(options = {})
           request(
-            :expects => [200, 204],
-            :method  => 'GET',
-            :path    => 'ports',
-            :query   => options
+            expects: [200, 204],
+            method: 'GET',
+            path: 'ports',
+            query: options
           )
         end
       end

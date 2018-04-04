@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_os_credential(id)
             request(
-              :expects => [204],
-              :method  => 'DELETE',
-              :path    => "credentials/#{id}"
+              expects: [204],
+              method: 'DELETE',
+              path: "credentials/#{id}"
             )
           end
         end

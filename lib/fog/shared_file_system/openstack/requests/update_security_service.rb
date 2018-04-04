@@ -4,10 +4,10 @@ module Fog
       class Real
         def update_security_service(id, options = {})
           request(
-            :body    => Fog::JSON.encode('security_service' => options),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "security-services/#{id}"
+            body: Fog::JSON.encode('security_service' => options),
+            expects: 200,
+            method: 'PUT',
+            path: "security-services/#{id}"
           )
         end
       end

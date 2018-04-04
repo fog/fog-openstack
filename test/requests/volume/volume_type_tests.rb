@@ -10,7 +10,7 @@ describe "Fog::Volume[:openstack] | volume_type requests" do
       'id'          => String
     }
 
-    @volume_type = @volume.create_volume_type(:name => 'test_volume_type').body['volume_type']
+    @volume_type = @volume.create_volume_type(name: 'test_volume_type').body['volume_type']
   end
 
   describe "success" do
@@ -21,7 +21,7 @@ describe "Fog::Volume[:openstack] | volume_type requests" do
     it "#update_volume_type" do
       @volume.update_volume_type(
         @volume_type['id'],
-        :name => 'test_volume_type_1'
+        name: 'test_volume_type_1'
       ).body['volume_type'].must_match_schema(@volume_type_format)
     end
 

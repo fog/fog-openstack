@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_ipsec_policy(ipsec_policy_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "vpn/ipsecpolicies/#{ipsec_policy_id}"
+            expects: [200],
+            method: 'GET',
+            path: "vpn/ipsecpolicies/#{ipsec_policy_id}"
           )
         end
       end

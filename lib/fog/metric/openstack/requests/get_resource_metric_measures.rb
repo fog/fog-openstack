@@ -4,10 +4,10 @@ module Fog
       class Real
         def get_resource_metric_measures(resource_id, metric_name, options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "resource/generic/#{resource_id}/metric/#{metric_name}/measures",
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: "resource/generic/#{resource_id}/metric/#{metric_name}/measures",
+            query: options
           )
         end
       end

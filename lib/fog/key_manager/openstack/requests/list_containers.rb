@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_containers(options = {})
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => 'containers',
-            :query   => options
+            expects: [200],
+            method: 'GET',
+            path: 'containers',
+            query: options
           )
         end
       end

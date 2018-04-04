@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_alarm_state_history_for_all_alarms(options = {})
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "alarms/state-history",
-            :query   => options
+            expects: [200],
+            method: 'GET',
+            path: "alarms/state-history",
+            query: options
           )
         end
       end

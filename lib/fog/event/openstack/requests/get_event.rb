@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_event(message_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "events/#{message_id}"
+            expects: 200,
+            method: 'GET',
+            path: "events/#{message_id}"
           )
         end
       end

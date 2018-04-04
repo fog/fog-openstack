@@ -18,10 +18,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode('share' => data),
-            :expects => 200,
-            :method  => 'POST',
-            :path    => 'shares'
+            body: Fog::JSON.encode('share' => data),
+            expects: 200,
+            method: 'POST',
+            path: 'shares'
           )
         end
       end

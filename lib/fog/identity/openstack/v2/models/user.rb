@@ -10,14 +10,14 @@ module Fog
           attribute :email
           attribute :enabled
           attribute :name
-          attribute :tenant_id, :aliases => 'tenantId'
+          attribute :tenant_id, aliases: 'tenantId'
           attribute :password
 
           attr_accessor :email, :name, :tenant_id, :enabled, :password
 
           def ec2_credentials
             requires :id
-            service.ec2_credentials(:user => self)
+            service.ec2_credentials(user: self)
           end
 
           def save

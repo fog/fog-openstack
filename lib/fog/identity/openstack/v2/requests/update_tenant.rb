@@ -5,10 +5,10 @@ module Fog
         class Real
           def update_tenant(id, attributes)
             request(
-              :expects => [200],
-              :method  => 'PUT',
-              :path    => "tenants/#{id}",
-              :body    => Fog::JSON.encode('tenant' => attributes)
+              expects: [200],
+              method: 'PUT',
+              path: "tenants/#{id}",
+              body: Fog::JSON.encode('tenant' => attributes)
             )
           end
         end

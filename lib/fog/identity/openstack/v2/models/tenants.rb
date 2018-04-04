@@ -17,7 +17,7 @@ module Fog
             return cached_tenant if cached_tenant
             tenant_hash = service.get_tenant(id).body['tenant']
             Fog::Identity::OpenStack::V2::Tenant.new(
-              tenant_hash.merge(:service => service)
+              tenant_hash.merge(service: service)
             )
           end
 

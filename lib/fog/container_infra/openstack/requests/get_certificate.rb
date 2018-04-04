@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_certificate(_bay_uuid)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "certificates/#{cluster_uuid}"
+            expects: [200],
+            method: 'GET',
+            path: "certificates/#{cluster_uuid}"
           )
         end
       end

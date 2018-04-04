@@ -5,16 +5,16 @@ describe "Fog::Image[:openstack] | image requests" do
     openstack = Fog::Identity[:openstack]
 
     @image_attributes = {
-      :name             => 'new image',
-      :owner            => openstack.current_tenant['id'],
-      :is_public        => true,
-      :copy_from        => 'http://website.com/image.iso',
-      :disk_format      => 'iso',
-      :properties       => {
-        :user_id  => openstack.current_user['id'],
-        :owner_id => openstack.current_tenant['id']
+      name: 'new image',
+      owner: openstack.current_tenant['id'],
+      is_public: true,
+      copy_from: 'http://website.com/image.iso',
+      disk_format: 'iso',
+      properties: {
+        user_id: openstack.current_user['id'],
+        owner_id: openstack.current_tenant['id']
       },
-      :container_format => 'bare'
+      container_format: 'bare'
     }
 
     @image_format = {
@@ -118,8 +118,8 @@ describe "Fog::Image[:openstack] | image requests" do
 
     it "#update_image" do
       Fog::Image[:openstack].update_image(
-        :id   => @instance['image']['id'],
-        :name => 'edit image'
+        id: @instance['image']['id'],
+        name: 'edit image'
       ).body['image'].must_match_schema(@detailed_image_format)
     end
 

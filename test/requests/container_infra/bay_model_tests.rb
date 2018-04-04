@@ -40,15 +40,15 @@ describe "Fog::ContainerInfra[:openstack] | bay model requests" do
   describe "success" do
     before do
       attributes = {
-        :tls_disabled          => true,
-        :keypair_id            => "kp",
-        :server_type           => "vm",
-        :external_network_id   => "public",
-        :image_id              => "fedora-atomic-latest",
-        :name                  => "k8s-bm2",
-        :coe                   => "kubernetes",
-        :flavor_id             => "m1.small",
-        :docker_volume_size    => 3
+        tls_disabled: true,
+        keypair_id: "kp",
+        server_type: "vm",
+        external_network_id: "public",
+        image_id: "fedora-atomic-latest",
+        name: "k8s-bm2",
+        coe: "kubernetes",
+        flavor_id: "m1.small",
+        docker_volume_size: 3
       }
 
       @bay = container_infra.create_bay_model(attributes).body

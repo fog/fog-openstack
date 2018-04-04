@@ -13,7 +13,7 @@ describe "Fog::Volume[:openstack] | backup requests" do
       'container'    => String
     }
 
-    @backup = @volume.create_backup(:name => 'test_backup', :volume_id => '2').body['backup']
+    @backup = @volume.create_backup(name: 'test_backup', volume_id: '2').body['backup']
   end
 
   describe "success" do

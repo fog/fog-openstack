@@ -17,20 +17,20 @@ module Fog
         #
         def put_object(container, object, data, options = {}, &block)
           if block_given?
-            params = { :request_block => block }
+            params = { request_block: block }
             headers = options
           else
             data = Fog::Storage.parse_data(data)
             headers = data[:headers].merge!(options)
-            params = { :body => data[:body] }
+            params = { body: data[:body] }
           end
 
           params.merge!(
-            :expects    => 201,
-            :idempotent => !params[:request_block],
-            :headers    => headers,
-            :method     => 'PUT',
-            :path       => "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
+            expects: 201,
+            idempotent: !params[:request_block],
+            headers: headers,
+            method: 'PUT',
+            path: "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
           )
 
           request(params)

@@ -18,10 +18,10 @@ module Fog
           end
 
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => path,
-            :query   => query
+            expects: 200,
+            method: 'GET',
+            path: path,
+            query: query
           )
         end
       end
@@ -29,8 +29,8 @@ module Fog
       class Mock
         def list_volumes(_options = true)
           Excon::Response.new(
-            :body   => { 'volumes' => data[:volumes].values },
-            :status => 200
+            body: { 'volumes' => data[:volumes].values },
+            status: 200
           )
         end
       end

@@ -41,7 +41,7 @@ module Fog
 
             subset.each_file_this_page { |f| yield f }
             while subset.length == (subset.limit || 10000)
-              subset = subset.all(:marker => subset.last.key)
+              subset = subset.all(marker: subset.last.key)
               subset.each_file_this_page { |f| yield f }
             end
 
@@ -52,8 +52,8 @@ module Fog
         def get(key, &block)
           requires :directory
           data = service.get_object(directory.key, key, &block)
-          file_data = data.headers.merge(:body => data.body,
-                                         :key  => key)
+          file_data = data.headers.merge(body: data.body,
+                                         key: key)
           new(file_data)
         rescue Fog::Storage::OpenStack::NotFound
           nil
@@ -79,7 +79,7 @@ module Fog
         def head(key, _options = {})
           requires :directory
           data = service.head_object(directory.key, key)
-          file_data = data.headers.merge(:key => key)
+          file_data = data.headers.merge(key: key)
           new(file_data)
         rescue Fog::Storage::OpenStack::NotFound
           nil
@@ -87,7 +87,7 @@ module Fog
 
         def new(attributes = {})
           requires :directory
-          super({ :directory => directory }.merge!(attributes))
+          super({ directory: directory }.merge!(attributes))
         end
       end
     end

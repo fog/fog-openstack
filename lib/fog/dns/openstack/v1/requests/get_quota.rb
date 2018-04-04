@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_quota(project_id)
             request(
-              :expects => 200,
-              :method  => 'GET',
-              :path    => "quotas/#{project_id}"
+              expects: 200,
+              method: 'GET',
+              path: "quotas/#{project_id}"
             )
           end
         end

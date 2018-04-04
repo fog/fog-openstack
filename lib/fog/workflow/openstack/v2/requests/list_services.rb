@@ -5,9 +5,9 @@ module Fog
         class Real
           def list_services
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "services"
+              expects: 200,
+              method: "GET",
+              path: "services"
             )
           end
         end

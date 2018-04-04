@@ -4,9 +4,9 @@ module Fog
       class Real
         def list_availability_zones()
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => microversion_newer_than?('2.6') ? 'availability-zones' : 'os-availability-zone'
+            expects: 200,
+            method: 'GET',
+            path: microversion_newer_than?('2.6') ? 'availability-zones' : 'os-availability-zone'
           )
         end
       end

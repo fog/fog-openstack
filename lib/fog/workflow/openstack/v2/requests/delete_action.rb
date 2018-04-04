@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_action(name)
             request(
-              :expects => 204,
-              :method  => "DELETE",
-              :path    => "actions/#{URI.encode(name)}"
+              expects: 204,
+              method: "DELETE",
+              path: "actions/#{URI.encode(name)}"
             )
           end
         end

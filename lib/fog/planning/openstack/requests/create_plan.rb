@@ -4,10 +4,10 @@ module Fog
       class Real
         def create_plan(parameters)
           request(
-            :expects => [201],
-            :method  => 'POST',
-            :path    => "plans",
-            :body    => Fog::JSON.encode(parameters)
+            expects: [201],
+            method: 'POST',
+            path: "plans",
+            body: Fog::JSON.encode(parameters)
           )
         end
       end

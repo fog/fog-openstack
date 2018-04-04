@@ -34,8 +34,8 @@ describe "Fog::OpenStack[:planning] | Planning plan requests" do
 
     it "#create_plan" do
       plan_attributes = {
-        :name        => 'test-plan-name',
-        :description => 'test-plan-desc'
+        name: 'test-plan-name',
+        description: 'test-plan-desc'
       }
       @instance = Fog::OpenStack[:planning].create_plan(plan_attributes).body
       @instance.must_match_schema(@plan_format)

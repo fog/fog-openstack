@@ -19,10 +19,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [201],
-            :method  => 'POST',
-            :path    => 'lb/vips'
+            body: Fog::JSON.encode(data),
+            expects: [201],
+            method: 'POST',
+            path: 'lb/vips'
           )
         end
       end

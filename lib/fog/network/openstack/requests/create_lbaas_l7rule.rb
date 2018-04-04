@@ -17,10 +17,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [201],
-            :method  => 'POST',
-            :path    => "lbaas/l7policies/#{l7policy_id}/rules"
+            body: Fog::JSON.encode(data),
+            expects: [201],
+            method: 'POST',
+            path: "lbaas/l7policies/#{l7policy_id}/rules"
           )
         end
       end

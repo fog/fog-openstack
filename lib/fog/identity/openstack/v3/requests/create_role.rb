@@ -5,10 +5,10 @@ module Fog
         class Real
           def create_role(role)
             request(
-              :expects => [201],
-              :method  => 'POST',
-              :path    => "roles",
-              :body    => Fog::JSON.encode(:role => role)
+              expects: [201],
+              method: 'POST',
+              path: "roles",
+              body: Fog::JSON.encode(role: role)
             )
           end
         end

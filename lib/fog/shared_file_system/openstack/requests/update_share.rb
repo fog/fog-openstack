@@ -4,10 +4,10 @@ module Fog
       class Real
         def update_share(id, options = {})
           request(
-            :body    => Fog::JSON.encode('share' => options),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "shares/#{id}"
+            body: Fog::JSON.encode('share' => options),
+            expects: 200,
+            method: 'PUT',
+            path: "shares/#{id}"
           )
         end
       end

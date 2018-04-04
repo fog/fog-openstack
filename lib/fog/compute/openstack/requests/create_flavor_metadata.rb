@@ -8,10 +8,10 @@ module Fog
           }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'POST',
-            :path    => "flavors/#{flavor_ref}/os-extra_specs"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'POST',
+            path: "flavors/#{flavor_ref}/os-extra_specs"
           )
         end
       end

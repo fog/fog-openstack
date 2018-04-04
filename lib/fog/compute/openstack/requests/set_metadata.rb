@@ -4,10 +4,10 @@ module Fog
       class Real
         def set_metadata(collection_name, parent_id, metadata = {})
           request(
-            :body    => Fog::JSON.encode('metadata' => metadata),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "#{collection_name}/#{parent_id}/metadata"
+            body: Fog::JSON.encode('metadata' => metadata),
+            expects: 200,
+            method: 'PUT',
+            path: "#{collection_name}/#{parent_id}/metadata"
           )
         end
       end

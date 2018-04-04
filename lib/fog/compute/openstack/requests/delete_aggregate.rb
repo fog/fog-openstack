@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_aggregate(uuid)
           request(
-            :expects => [200, 202, 204],
-            :method  => 'DELETE',
-            :path    => "os-aggregates/#{uuid}"
+            expects: [200, 202, 204],
+            method: 'DELETE',
+            path: "os-aggregates/#{uuid}"
           )
         end
       end

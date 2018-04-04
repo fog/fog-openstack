@@ -4,10 +4,10 @@ module Fog
       module Real
         def list_zones(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'os-availability-zone.json',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'os-availability-zone.json',
+            query: options
           )
         end
       end
@@ -15,7 +15,7 @@ module Fog
       module Mock
         def list_zones(_options = {})
           Excon::Response.new(
-            :body => {
+            body: {
               "availabilityZoneInfo" => [
                 {
                   "zoneState" => { "available" => true },
@@ -23,7 +23,7 @@ module Fog
                 }
               ]
             },
-            :status => 200
+            status: 200
           )
         end
       end

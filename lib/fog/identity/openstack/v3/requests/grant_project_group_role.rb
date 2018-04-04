@@ -5,9 +5,9 @@ module Fog
         class Real
           def grant_project_group_role(id, group_id, role_id)
             request(
-              :expects => [204],
-              :method  => 'PUT',
-              :path    => "projects/#{id}/groups/#{group_id}/roles/#{role_id}"
+              expects: [204],
+              method: 'PUT',
+              path: "projects/#{id}/groups/#{group_id}/roles/#{role_id}"
             )
           end
         end

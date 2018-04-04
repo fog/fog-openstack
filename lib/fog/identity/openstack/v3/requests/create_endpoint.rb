@@ -5,10 +5,10 @@ module Fog
         class Real
           def create_endpoint(endpoint)
             request(
-              :expects => [201],
-              :method  => 'POST',
-              :path    => "endpoints",
-              :body    => Fog::JSON.encode(:endpoint => endpoint)
+              expects: [201],
+              method: 'POST',
+              path: "endpoints",
+              body: Fog::JSON.encode(endpoint: endpoint)
             )
           end
         end

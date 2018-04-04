@@ -5,10 +5,10 @@ module Fog
         class Real
           def auth_projects(options = {})
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "auth/projects",
-              :query   => options
+              expects: [200],
+              method: 'GET',
+              path: "auth/projects",
+              query: options
             )
           end
         end

@@ -28,10 +28,10 @@ module Fog
         #       * 'tenant_id'<~String> - Tenant id that owns the security group rule
         def list_security_groups(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'security-groups',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'security-groups',
+            query: options
           )
         end
       end

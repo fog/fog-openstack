@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_limits
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'limits'
+            expects: 200,
+            method: 'GET',
+            path: 'limits'
           )
         end
       end
@@ -30,8 +30,8 @@ module Fog
           }
 
           Excon::Response.new(
-            :status => 200,
-            :body   => {
+            status: 200,
+            body: {
               'limits' => {
                 'rate'     => [],
                 'absolute' => absolute_limits

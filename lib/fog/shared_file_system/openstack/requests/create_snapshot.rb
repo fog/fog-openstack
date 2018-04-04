@@ -16,10 +16,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode('snapshot' => data),
-            :expects => 202,
-            :method  => 'POST',
-            :path    => 'snapshots'
+            body: Fog::JSON.encode('snapshot' => data),
+            expects: 202,
+            method: 'POST',
+            path: 'snapshots'
           )
         end
       end

@@ -4,9 +4,9 @@ module Fog
       class Real
         def list_rules
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "rules"
+            expects: 200,
+            method: 'GET',
+            path: "rules"
           )
         end
       end

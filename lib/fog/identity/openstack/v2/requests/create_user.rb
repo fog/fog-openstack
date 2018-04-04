@@ -15,10 +15,10 @@ module Fog
             }
 
             request(
-              :body    => Fog::JSON.encode(data),
-              :expects => [200, 202],
-              :method  => 'POST',
-              :path    => '/users'
+              body: Fog::JSON.encode(data),
+              expects: [200, 202],
+              method: 'POST',
+              path: '/users'
             )
           end
         end

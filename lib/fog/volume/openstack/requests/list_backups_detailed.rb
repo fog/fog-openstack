@@ -4,10 +4,10 @@ module Fog
       module Real
         def list_backups_detailed(options = {})
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => 'backups/detail',
-            :query    => options
+            expects: 200,
+            method: 'GET',
+            path: 'backups/detail',
+            query: options
           )
         end
       end

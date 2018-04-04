@@ -4,9 +4,9 @@ module Fog
       class Real
         def list_notification_method_types
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "notification-methods/types"
+            expects: [200],
+            method: 'GET',
+            path: "notification-methods/types"
           )
         end
       end

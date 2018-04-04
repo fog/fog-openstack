@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_rbac_policy(rbac_policy_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "rbac-policies/#{rbac_policy_id}"
+            expects: [200],
+            method: 'GET',
+            path: "rbac-policies/#{rbac_policy_id}"
           )
         end
       end

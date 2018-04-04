@@ -5,10 +5,10 @@ module Fog
         def remove_aggregate_host(uuid, host_uuid)
           data = { 'remove_host' => { 'host' => host_uuid } }
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200],
-            :method  => 'POST',
-            :path    => "os-aggregates/#{uuid}/action"
+            body: Fog::JSON.encode(data),
+            expects: [200],
+            method: 'POST',
+            path: "os-aggregates/#{uuid}/action"
           )
         end
       end

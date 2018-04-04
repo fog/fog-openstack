@@ -14,10 +14,10 @@ module Fog
         # value = Value to set
         def patch_port(port_uuid, patch)
           request(
-            :body    => Fog::JSON.encode(patch),
-            :expects => 200,
-            :method  => 'PATCH',
-            :path    => "ports/#{port_uuid}"
+            body: Fog::JSON.encode(patch),
+            expects: 200,
+            method: 'PATCH',
+            path: "ports/#{port_uuid}"
           )
         end
       end

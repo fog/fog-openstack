@@ -13,10 +13,10 @@ module Fog
                    end
 
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => path,
-              :query   => options
+              expects: [200],
+              method: 'GET',
+              path: path,
+              query: options
             )
           end
         end

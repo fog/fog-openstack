@@ -3,14 +3,14 @@ require "test_helper"
 describe "Fog::Network[:openstack] | ports" do
   before do
     @port = network.ports.create(
-      :name           => 'port_name',
-      :network_id     => 'net_id',
-      :fixed_ips      => [],
-      :mac_address    => 'fa:16:3e:62:91:7f',
-      :admin_state_up => true,
-      :device_owner   => 'device_owner',
-      :device_id      => 'device_id',
-      :tenant_id      => 'tenant_id'
+      name: 'port_name',
+      network_id: 'net_id',
+      fixed_ips: [],
+      mac_address: 'fa:16:3e:62:91:7f',
+      admin_state_up: true,
+      device_owner: 'device_owner',
+      device_id: 'device_id',
+      tenant_id: 'tenant_id'
     )
 
     @ports = network.ports

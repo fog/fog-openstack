@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_vpn_service(vpn_service_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "vpn/vpnservices/#{vpn_service_id}"
+            expects: [200],
+            method: 'GET',
+            path: "vpn/vpnservices/#{vpn_service_id}"
           )
         end
       end

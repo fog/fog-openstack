@@ -10,7 +10,7 @@ module Fog
           superclass.attributes.each { |attrib| attribute attrib }
           attribute :name
           attribute :description
-          attribute :tenant_id, :aliases => 'os-vol-tenant-attr:tenant_id'
+          attribute :tenant_id, aliases: 'os-vol-tenant-attr:tenant_id'
 
           def save
             requires :name, :size

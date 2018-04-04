@@ -5,10 +5,10 @@ module Fog
         class Real
           def list_zone_transfer_accepts(options = {})
             request(
-              :expects => 200,
-              :method  => 'GET',
-              :path    => "zones/tasks/transfer_accepts",
-              :query   => options
+              expects: 200,
+              method: 'GET',
+              path: "zones/tasks/transfer_accepts",
+              query: options
             )
           end
         end

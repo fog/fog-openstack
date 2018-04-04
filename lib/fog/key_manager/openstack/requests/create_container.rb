@@ -4,10 +4,10 @@ module Fog
       class Real
         def create_container(options)
           request(
-            :body    => Fog::JSON.encode(options),
-            :expects => [201],
-            :method  => 'POST',
-            :path    => 'containers'
+            body: Fog::JSON.encode(options),
+            expects: [201],
+            method: 'POST',
+            path: 'containers'
           )
         end
       end

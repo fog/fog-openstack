@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_os_credential(id)
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "credentials/#{id}"
+              expects: [200],
+              method: 'GET',
+              path: "credentials/#{id}"
             )
           end
         end

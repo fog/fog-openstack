@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_floating_ip(floating_ip_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "floatingips/#{floating_ip_id}"
+            expects: [200],
+            method: 'GET',
+            path: "floatingips/#{floating_ip_id}"
           )
         end
       end

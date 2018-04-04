@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_floating_ip(floating_ip_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "floatingips/#{floating_ip_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "floatingips/#{floating_ip_id}"
           )
         end
       end

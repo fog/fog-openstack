@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_container_acl(uuid)
           request(
-            :expects => [200],
-            :method  => 'DELETE',
-            :path    => "containers/#{uuid}/acl"
+            expects: [200],
+            method: 'DELETE',
+            path: "containers/#{uuid}/acl"
           )
         end
       end

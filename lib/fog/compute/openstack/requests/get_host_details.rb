@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_host_details(host)
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => "os-hosts/#{host}"
+            expects: [200, 203],
+            method: 'GET',
+            path: "os-hosts/#{host}"
           )
         end
       end

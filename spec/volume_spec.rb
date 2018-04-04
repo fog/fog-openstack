@@ -13,8 +13,8 @@ require_relative './shared_context'
       vcr_directory = 'spec/fixtures/openstack/volume_v2' if service_class == Fog::Volume::OpenStack::V2
 
       openstack_vcr = OpenStackVCR.new(
-        :vcr_directory => vcr_directory,
-        :service_class => service_class
+        vcr_directory: vcr_directory,
+        service_class: service_class
       )
       @service           = openstack_vcr.service
       @os_auth_url       = openstack_vcr.os_auth_url
@@ -47,7 +47,7 @@ require_relative './shared_context'
         puts "Checking for leftovers..." if ENV['DEBUG_VERBOSE']
         transfer_name = options[:name]
         # if this fails, cleanup this object (it was left over from a failed test run)
-        @service.transfers.all(:name => transfer_name).length.must_equal 0
+        @service.transfers.all(name: transfer_name).length.must_equal 0
 
         puts "Creating transfer #{transfer_name}..." if ENV['DEBUG_VERBOSE']
         return @service.transfers.create(options)
@@ -247,9 +247,9 @@ require_relative './shared_context'
           volume.wait_for { ready? }
 
           # create transfer object
-          transfer = setup_test_object(:type      => :transfer,
-                                       :name      => transfer_name,
-                                       :volume_id => volume.id)
+          transfer = setup_test_object(type: :transfer,
+                                       name: transfer_name,
+                                       volume_id: volume.id)
           # we need to save the auth_key NOW, it's only present in the response
           # from the create_transfer request
           auth_key    = transfer.auth_key
@@ -268,7 +268,7 @@ require_relative './shared_context'
           # check retrieval of transfer by name
           puts 'Retrieving transfer by name...' if ENV['DEBUG_VERBOSE']
 
-          transfers = @service.transfers.all(:name => transfer_name)
+          transfers = @service.transfers.all(name: transfer_name)
           transfers.length.must_equal 1
           transfer = transfers[0]
           transfer.must_be_kind_of Fog::Volume::OpenStack::Transfer
@@ -280,17 +280,17 @@ require_relative './shared_context'
           # to accept the transfer, we need a second connection to a different project
           puts 'Checking object visibility from different projects...' if ENV['DEBUG_VERBOSE']
           other_service = service_class.new(
-            :openstack_auth_url     => "#{@os_auth_url}/auth/tokens",
-            :openstack_region       => ENV['OS_REGION_NAME'] || 'RegionOne',
-            :openstack_api_key      => ENV['OS_PASSWORD_OTHER'] || 'password',
-            :openstack_username     => ENV['OS_USERNAME_OTHER'] || 'demo',
-            :openstack_domain_name  => ENV['OS_USER_DOMAIN_NAME'] || 'Default',
-            :openstack_project_name => ENV['OS_PROJECT_NAME_OTHER'] || 'demo'
+            openstack_auth_url: "#{@os_auth_url}/auth/tokens",
+            openstack_region: ENV['OS_REGION_NAME'] || 'RegionOne',
+            openstack_api_key: ENV['OS_PASSWORD_OTHER'] || 'password',
+            openstack_username: ENV['OS_USERNAME_OTHER'] || 'demo',
+            openstack_domain_name: ENV['OS_USER_DOMAIN_NAME'] || 'Default',
+            openstack_project_name: ENV['OS_PROJECT_NAME_OTHER'] || 'demo'
           )
 
           # check that recipient cannot see the transfer object
           other_service.transfers.get(transfer.id).must_equal nil
-          other_service.transfers.all(:name => transfer_name).length.must_equal 0
+          other_service.transfers.all(name: transfer_name).length.must_equal 0
 
           # # check that recipient cannot see the volume before transfer
           # proc { other_service.volumes.get(volume.id) }.must_raise Fog::Compute::OpenStack::NotFound
@@ -330,7 +330,7 @@ require_relative './shared_context'
           # check that the transfer object is gone on both sides
           [@service, other_service].each do |service|
             service.transfers.get(transfer.id).must_equal nil
-            service.transfers.all(:name => transfer_name).length.must_equal 0
+            service.transfers.all(name: transfer_name).length.must_equal 0
           end
         ensure
           # cleanup volume
@@ -351,9 +351,9 @@ require_relative './shared_context'
             volume.wait_for { ready? }
 
             # create transfer object
-            transfer = setup_test_object(:type      => :transfer,
-                                         :name      => 'fog-testtransfer-1',
-                                         :volume_id => volume.id)
+            transfer = setup_test_object(type: :transfer,
+                                         name: 'fog-testtransfer-1',
+                                         volume_id: volume.id)
             # we need to save the auth_key NOW, it's only present in the response
             # from the create_transfer request
             auth_key      = transfer.auth_key
@@ -361,12 +361,12 @@ require_relative './shared_context'
 
             # to try to accept the transfer, we need a second connection to a different project
             other_service = service_class.new(
-              :openstack_auth_url     => "#{@os_auth_url}/auth/tokens",
-              :openstack_region       => ENV['OS_REGION_NAME'] || 'RegionOne',
-              :openstack_api_key      => ENV['OS_PASSWORD_OTHER'] || 'password',
-              :openstack_username     => ENV['OS_USERNAME_OTHER'] || 'demo',
-              :openstack_domain_name  => ENV['OS_USER_DOMAIN_NAME'] || 'Default',
-              :openstack_project_name => ENV['OS_PROJECT_NAME_OTHER'] || 'demo'
+              openstack_auth_url: "#{@os_auth_url}/auth/tokens",
+              openstack_region: ENV['OS_REGION_NAME'] || 'RegionOne',
+              openstack_api_key: ENV['OS_PASSWORD_OTHER'] || 'password',
+              openstack_username: ENV['OS_USERNAME_OTHER'] || 'demo',
+              openstack_domain_name: ENV['OS_USER_DOMAIN_NAME'] || 'Default',
+              openstack_project_name: ENV['OS_PROJECT_NAME_OTHER'] || 'demo'
             )
 
             # delete transfer again

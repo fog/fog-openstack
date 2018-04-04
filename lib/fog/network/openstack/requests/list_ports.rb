@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_ports(filters = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'ports',
-            :query   => filters
+            expects: 200,
+            method: 'GET',
+            path: 'ports',
+            query: filters
           )
         end
       end
@@ -15,8 +15,8 @@ module Fog
       class Mock
         def list_ports(_filters = {})
           Excon::Response.new(
-            :body   => { 'ports' => data[:ports].values },
-            :status => 200
+            body: { 'ports' => data[:ports].values },
+            status: 200
           )
         end
       end

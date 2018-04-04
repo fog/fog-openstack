@@ -15,10 +15,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "vpn/ipsec-site-connections/#{ipsec_site_connection_id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "vpn/ipsec-site-connections/#{ipsec_site_connection_id}"
           )
         end
       end

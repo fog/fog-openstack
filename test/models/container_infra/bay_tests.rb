@@ -5,8 +5,8 @@ describe "Fog::ContainerInfra[:openstack] | bay" do
   describe "success" do
     before do
       @instance = container_infra.bays.create(
-        :name => "test-cluster",
-        :baymodel_id => "0562d357-8641-4759-8fed-8173f02c9633"
+        name: "test-cluster",
+        baymodel_id: "0562d357-8641-4759-8fed-8173f02c9633"
       )
     end
 

@@ -13,7 +13,7 @@ module Fog
         # * response<~Excon::Response>:
         #   * body<~String> - url for object
         def get_object_https_url(container, object, expires, options = {})
-          create_temp_url(container, object, expires, "GET", { :port => 443 }.merge(options).merge(:scheme => "https"))
+          create_temp_url(container, object, expires, "GET", { port: 443 }.merge(options).merge(scheme: "https"))
         end
 
         # creates a temporary url
@@ -57,11 +57,11 @@ module Fog
           sig  = sig_to_hex(hmac.sign(string_to_sign))
 
           temp_url_options = {
-            :scheme => scheme,
-            :host   => host,
-            :port   => port,
-            :path   => object_path_escaped,
-            :query  => "temp_url_sig=#{sig}&temp_url_expires=#{expires}"
+            scheme: scheme,
+            host: host,
+            port: port,
+            path: object_path_escaped,
+            query: "temp_url_sig=#{sig}&temp_url_expires=#{expires}"
           }
           URI::Generic.build(temp_url_options).to_s
         end

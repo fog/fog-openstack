@@ -11,10 +11,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "lbaas/healthmonitors/#{healthmonitor_id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "lbaas/healthmonitors/#{healthmonitor_id}"
           )
         end
       end

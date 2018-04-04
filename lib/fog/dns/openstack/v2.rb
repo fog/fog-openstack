@@ -78,7 +78,7 @@ module Fog
           def self.data
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                :zones => [{
+                zones: [{
                   "id"             => "a86dba58-0043-4cc6-a1bb-69d5e86f3ca3",
                   "pool_id"        => "572ba08c-d929-4c70-8e42-03824bb24ca2",
                   "project_id"     => "4335d1f0-f793-11e2-b778-0800200c9a66",
@@ -99,7 +99,7 @@ module Fog
                     "self" => "https://127.0.0.1:9001/v2/zones/a86dba58-0043-4cc6-a1bb-69d5e86f3ca3"
                   }
                 }],
-                :pools => {
+                pools: {
                   "metadata" => {
                     "total_count" => 2
                   },
@@ -145,14 +145,14 @@ module Fog
                     }
                   ]
                 },
-                :quota => {
+                quota: {
                   "api_export_size"   => 1000,
                   "recordset_records" => 20,
                   "zone_records"      => 500,
                   "zone_recordsets"   => 500,
                   "zones"             => 100
                 },
-                :recordsets => {
+                recordsets: {
                   "recordsets" => [{
                     "description" => "This is an example record set.",
                     "links"       => {
@@ -182,7 +182,7 @@ module Fog
                     "total_count" => 2
                   }
                 },
-                :zone_transfer_requests => {
+                zone_transfer_requests: {
                   "transfer_requests" => [
                     {
                       "created_at" => "2014-07-17T20:34:40.882579",
@@ -214,7 +214,7 @@ module Fog
                     "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_requests"
                   }
                 },
-                :zone_transfer_accepts => {
+                zone_transfer_accepts: {
                   "metadata" => {
                     "total_count" => 2
                   },
@@ -273,7 +273,7 @@ module Fog
             management_url.path = '/v2'
             @openstack_management_url = management_url.to_s
 
-            @data ||= { :users => {} }
+            @data ||= { users: {} }
             unless @data[:users].detect { |u| u['name'] == options[:openstack_username] }
               id = Fog::Mock.random_numbers(6).to_s
               @data[:users][id] = {
@@ -295,11 +295,11 @@ module Fog
           end
 
           def credentials
-            { :provider => 'openstack',
-              :openstack_auth_url       => @openstack_auth_uri.to_s,
-              :openstack_auth_token     => @auth_token,
-              :openstack_region         => @openstack_region,
-              :openstack_management_url => @openstack_management_url }
+            { provider: 'openstack',
+              openstack_auth_url: @openstack_auth_uri.to_s,
+              openstack_auth_token: @auth_token,
+              openstack_region: @openstack_region,
+              openstack_management_url: @openstack_management_url }
           end
         end
 

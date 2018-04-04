@@ -19,8 +19,8 @@ describe "Fog::Network[:openstack] | lb_member requests" do
       protocol_port = 80
       weight = 100
       attributes = {
-        :admin_state_up => true,
-        :tenant_id      => 'tenant_id'
+        admin_state_up: true,
+        tenant_id: 'tenant_id'
       }
       @lb_member = network.create_lb_member(pool_id, address, protocol_port,
                                             weight, attributes).body
@@ -44,9 +44,9 @@ describe "Fog::Network[:openstack] | lb_member requests" do
     it "#update_lb_member" do
       lb_member_id = network.lb_members.all.first.id
       attributes = {
-        :pool_id        => "new_pool_id",
-        :weight         => 50,
-        :admin_state_up => false
+        pool_id: "new_pool_id",
+        weight: 50,
+        admin_state_up: false
       }
 
       network.update_lb_member(lb_member_id, attributes).body

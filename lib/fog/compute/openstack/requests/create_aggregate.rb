@@ -16,10 +16,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200],
-            :method  => 'POST',
-            :path    => "os-aggregates"
+            body: Fog::JSON.encode(data),
+            expects: [200],
+            method: 'POST',
+            path: "os-aggregates"
           )
         end
       end

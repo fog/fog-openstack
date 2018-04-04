@@ -11,10 +11,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200],
-            :method  => 'PUT',
-            :path    => "os-aggregates/#{uuid}"
+            body: Fog::JSON.encode(data),
+            expects: [200],
+            method: 'PUT',
+            path: "os-aggregates/#{uuid}"
           )
         end
       end

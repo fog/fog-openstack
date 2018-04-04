@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_lbaas_l7rule(l7policy_id, l7rule_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "lbaas/l7policies/#{l7policy_id}/rules/#{l7rule_id}"
+            expects: [200],
+            method: 'GET',
+            path: "lbaas/l7policies/#{l7policy_id}/rules/#{l7rule_id}"
           )
         end
       end

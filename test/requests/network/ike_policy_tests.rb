@@ -17,15 +17,15 @@ describe "Fog::Network[:openstack] | ike_policy requests" do
       }
 
       attributes = {
-        :name                    => 'test-ike-policy',
-        :description             => 'Test VPN IKE Policy',
-        :tenant_id               => 'tenant_id',
-        :auth_algorithm          => 'sha1',
-        :encryption_algorithm    => 'aes-256',
-        :pfs                     => 'group5',
-        :phase1_negotiation_mode => 'main',
-        :lifetime                => { 'units' => 'seconds', 'value' => 3600 },
-        :ike_version             => 'v1'
+        name: 'test-ike-policy',
+        description: 'Test VPN IKE Policy',
+        tenant_id: 'tenant_id',
+        auth_algorithm: 'sha1',
+        encryption_algorithm: 'aes-256',
+        pfs: 'group5',
+        phase1_negotiation_mode: 'main',
+        lifetime: { 'units' => 'seconds', 'value' => 3600 },
+        ike_version: 'v1'
       }
 
       @ike_policy = network.create_ike_policy(attributes).body
@@ -49,15 +49,15 @@ describe "Fog::Network[:openstack] | ike_policy requests" do
     it "#update_ike_policy" do
       ike_policy_id = network.ike_policies.all.first.id
       attributes = {
-        :name                    => 'rename-test-ike-policy',
-        :description             => 'Test VPN IKE Policy',
-        :tenant_id               => 'tenant_id',
-        :auth_algorithm          => 'sha1',
-        :encryption_algorithm    => 'aes-256',
-        :pfs                     => 'group5',
-        :phase1_negotiation_mode => 'main',
-        :lifetime                => { 'units' => 'seconds', 'value' => 3600 },
-        :ike_version             => 'v1'
+        name: 'rename-test-ike-policy',
+        description: 'Test VPN IKE Policy',
+        tenant_id: 'tenant_id',
+        auth_algorithm: 'sha1',
+        encryption_algorithm: 'aes-256',
+        pfs: 'group5',
+        phase1_negotiation_mode: 'main',
+        lifetime: { 'units' => 'seconds', 'value' => 3600 },
+        ike_version: 'v1'
       }
 
       network.update_ike_policy(ike_policy_id, attributes).body

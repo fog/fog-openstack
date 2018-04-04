@@ -45,10 +45,10 @@ module Fog
           selected_options.each { |key| data["security_group_rule"][key] = options[key] }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 201,
-            :method  => "POST",
-            :path    => "security-group-rules"
+            body: Fog::JSON.encode(data),
+            expects: 201,
+            method: "POST",
+            path: "security-group-rules"
           )
         end
       end

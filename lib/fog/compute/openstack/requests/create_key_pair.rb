@@ -12,10 +12,10 @@ module Fog
           data['keypair']['public_key'] = public_key unless public_key.nil?
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 201],
-            :method  => 'POST',
-            :path    => 'os-keypairs'
+            body: Fog::JSON.encode(data),
+            expects: [200, 201],
+            method: 'POST',
+            path: 'os-keypairs'
           )
         end
       end

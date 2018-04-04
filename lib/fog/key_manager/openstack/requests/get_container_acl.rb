@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_container_acl(uuid)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "containers/#{uuid}/acl"
+            expects: [200],
+            method: 'GET',
+            path: "containers/#{uuid}/acl"
           )
         end
       end

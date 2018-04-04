@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_vnfs(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "vnfs",
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: "vnfs",
+            query: options
           )
         end
       end

@@ -35,10 +35,10 @@ describe "Fog::Network[:openstack] | lb_pool requests" do
       protocol = 'HTTP'
       lb_method = 'ROUND_ROBIN'
       attributes = {
-        :name           => 'test-pool',
-        :description    => 'Test Pool',
-        :admin_state_up => true,
-        :tenant_id      => 'tenant_id'
+        name: 'test-pool',
+        description: 'Test Pool',
+        admin_state_up: true,
+        tenant_id: 'tenant_id'
       }
       @lb_pool = network.create_lb_pool(subnet_id, protocol, lb_method, attributes).body
     end
@@ -67,10 +67,10 @@ describe "Fog::Network[:openstack] | lb_pool requests" do
     it "#update_lb_pool" do
       lb_pool_id = network.lb_pools.all.first.id
       attributes = {
-        :name           => 'new-test-pool',
-        :description    => 'New Test Pool',
-        :lb_method      => 'LEAST_CONNECTIONS',
-        :admin_state_up => false
+        name: 'new-test-pool',
+        description: 'New Test Pool',
+        lb_method: 'LEAST_CONNECTIONS',
+        admin_state_up: false
       }
       network.update_lb_pool(lb_pool_id, attributes).body
              .must_match_schema('pool' => @lb_pool_format)

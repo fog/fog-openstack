@@ -43,7 +43,7 @@ module Fog
 
         def new(attributes = {})
           requires :parent
-          super({ :parent => @parent }.merge!(attributes))
+          super({ parent: @parent }.merge!(attributes))
         end
 
         def to_hash(data = nil)

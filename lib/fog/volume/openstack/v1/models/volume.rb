@@ -8,9 +8,9 @@ module Fog
           identity :id
 
           superclass.attributes.each { |attrib| attribute attrib }
-          attribute :display_name, :aliases => 'displayName'
-          attribute :display_description, :aliases => 'displayDescription'
-          attribute :tenant_id, :aliases => 'os-vol-tenant-attr:tenant_id'
+          attribute :display_name, aliases: 'displayName'
+          attribute :display_description, aliases: 'displayDescription'
+          attribute :tenant_id, aliases: 'os-vol-tenant-attr:tenant_id'
 
           def save
             requires :display_name, :size

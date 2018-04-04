@@ -14,10 +14,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200],
-            :method  => 'PUT',
-            :path    => "routers/#{router_id}/add_router_interface"
+            body: Fog::JSON.encode(data),
+            expects: [200],
+            method: 'PUT',
+            path: "routers/#{router_id}/add_router_interface"
           )
         end
       end

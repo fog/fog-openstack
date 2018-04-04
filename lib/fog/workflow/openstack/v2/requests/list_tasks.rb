@@ -5,9 +5,9 @@ module Fog
         class Real
           def list_tasks(workflow_execution_id)
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "executions/#{workflow_execution_id}/tasks"
+              expects: 200,
+              method: "GET",
+              path: "executions/#{workflow_execution_id}/tasks"
             )
           end
         end

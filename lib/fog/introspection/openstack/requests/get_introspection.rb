@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_introspection(node_id)
           request(
-            :expects => 200,
-            :method  => "GET",
-            :path    => "introspection/#{node_id}"
+            expects: 200,
+            method: "GET",
+            path: "introspection/#{node_id}"
           )
         end
       end

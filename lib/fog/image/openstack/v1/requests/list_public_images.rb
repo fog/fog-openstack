@@ -5,10 +5,10 @@ module Fog
         class Real
           def list_public_images(options = {})
             request(
-              :expects => [200, 204],
-              :method  => 'GET',
-              :path    => 'images',
-              :query   => options
+              expects: [200, 204],
+              method: 'GET',
+              path: 'images',
+              query: options
             )
           end
         end

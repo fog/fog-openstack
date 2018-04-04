@@ -12,10 +12,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "subnetpools/#{subnet_pool_id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "subnetpools/#{subnet_pool_id}"
           )
         end
       end

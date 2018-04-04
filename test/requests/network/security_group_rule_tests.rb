@@ -18,16 +18,16 @@ describe "Fog::Network[:openstack] | security_grouprule requests" do
 
   describe "success" do
     before do
-      attributes          = { :name => "my_security_group", :description => "tests group" }
+      attributes          = { name: "my_security_group", description: "tests group" }
       security_group      = network.create_security_group(attributes).body["security_group"]
       @sec_group_id       = security_group["id"]
       @sec_group_rule_id  = nil
 
       attributes = {
-        :remote_ip_prefix => "0.0.0.0/0",
-        :protocol         => "tcp",
-        :port_range_min   => 22,
-        :port_range_max   => 22
+        remote_ip_prefix: "0.0.0.0/0",
+        protocol: "tcp",
+        port_range_min: 22,
+        port_range_max: 22
       }
       @security_group_rule = network.create_security_group_rule(
         @sec_group_id, 'ingress', attributes

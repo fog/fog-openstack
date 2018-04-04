@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_bay_model(uuid_or_name)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "baymodels/#{uuid_or_name}"
+            expects: [200],
+            method: 'GET',
+            path: "baymodels/#{uuid_or_name}"
           )
         end
       end

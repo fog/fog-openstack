@@ -10,9 +10,9 @@ module Fog
         #
         def head_object(container, object)
           request({
-                    :expects => 200,
-                    :method  => 'HEAD',
-                    :path    => "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
+                    expects: 200,
+                    method: 'HEAD',
+                    path: "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
                   }, false)
         end
       end

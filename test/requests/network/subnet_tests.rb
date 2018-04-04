@@ -23,13 +23,13 @@ describe "Fog::Network[:openstack] | subnet requests" do
       cidr = '10.2.2.0/24'
       ip_version = 4
       attributes = {
-        :name             => 'subnet_name',
-        :gateway_ip       => '10.2.2.1',
-        :allocation_pools => [],
-        :dns_nameservers  => [],
-        :host_routes      => [],
-        :enable_dhcp      => true,
-        :tenant_id        => 'tenant_id'
+        name: 'subnet_name',
+        gateway_ip: '10.2.2.1',
+        allocation_pools: [],
+        dns_nameservers: [],
+        host_routes: [],
+        enable_dhcp: true,
+        tenant_id: 'tenant_id'
       }
       @subnet = network.create_subnet(network_id, cidr, ip_version, attributes).body
     end
@@ -49,12 +49,12 @@ describe "Fog::Network[:openstack] | subnet requests" do
     it "#update_subnet" do
       subnet_id = network.subnets.all.first.id
       attributes = {
-        :name             => 'subnet_name',
-        :gateway_ip       => '10.2.2.1',
-        :allocation_pools => [],
-        :dns_nameservers  => [],
-        :host_routes      => [],
-        :enable_dhcp      => true
+        name: 'subnet_name',
+        gateway_ip: '10.2.2.1',
+        allocation_pools: [],
+        dns_nameservers: [],
+        host_routes: [],
+        enable_dhcp: true
       }
 
       network.update_subnet(subnet_id, attributes).body.must_match_schema('subnet' => @subnet_format)

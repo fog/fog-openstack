@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_hypervisor_servers(hypervisor_id, options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "os-hypervisors/#{hypervisor_id}/servers",
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: "os-hypervisors/#{hypervisor_id}/servers",
+            query: options
           )
         end
       end

@@ -5,10 +5,10 @@ module Fog
         class Real
           def list_roles(options = {})
             request(
-              :expects => 200,
-              :method  => 'GET',
-              :path    => '/OS-KSADM/roles',
-              :query   => options
+              expects: 200,
+              method: 'GET',
+              path: '/OS-KSADM/roles',
+              query: options
             )
           end
         end
@@ -23,8 +23,8 @@ module Fog
             end
 
             Excon::Response.new(
-              :body   => { 'roles' => data[:roles].values },
-              :status => 200
+              body: { 'roles' => data[:roles].values },
+              status: 200
             )
           end
         end

@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_flavors(options = {})
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => 'flavors',
-            :query   => options
+            expects: [200, 203],
+            method: 'GET',
+            path: 'flavors',
+            query: options
           )
         end
       end

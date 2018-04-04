@@ -4,10 +4,10 @@ module Fog
       module Real
         def update_volume(volume_id, data = {})
           request(
-            :body    => Fog::JSON.encode('volume' => data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "volumes/#{volume_id}"
+            body: Fog::JSON.encode('volume' => data),
+            expects: 200,
+            method: 'PUT',
+            path: "volumes/#{volume_id}"
           )
         end
       end

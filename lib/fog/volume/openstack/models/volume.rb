@@ -7,11 +7,11 @@ module Fog
         attribute :metadata
         attribute :status
         attribute :size
-        attribute :volume_type, :aliases => %w(volumeType type)
-        attribute :snapshot_id, :aliases => 'snapshotId'
-        attribute :imageRef, :aliases => 'image_id'
-        attribute :availability_zone, :aliases => 'availabilityZone'
-        attribute :created_at, :aliases => 'createdAt'
+        attribute :volume_type, aliases: %w(volumeType type)
+        attribute :snapshot_id, aliases: 'snapshotId'
+        attribute :imageRef, aliases: 'image_id'
+        attribute :availability_zone, aliases: 'availabilityZone'
+        attribute :created_at, aliases: 'createdAt'
         attribute :attachments
         attribute :source_volid
 
@@ -33,7 +33,7 @@ module Fog
 
         def reset_status(status)
           requires :id
-          service.action(id, 'os-reset_status' => { :status => status })
+          service.action(id, 'os-reset_status' => { status: status })
         end
 
         def create_metadata(metadata)

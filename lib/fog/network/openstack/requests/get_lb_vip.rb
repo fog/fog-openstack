@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_lb_vip(vip_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "lb/vips/#{vip_id}"
+            expects: [200],
+            method: 'GET',
+            path: "lb/vips/#{vip_id}"
           )
         end
       end

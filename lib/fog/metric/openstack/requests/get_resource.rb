@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_resource(resource_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "resource/generic/#{resource_id}"
+            expects: 200,
+            method: 'GET',
+            path: "resource/generic/#{resource_id}"
           )
         end
       end

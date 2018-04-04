@@ -17,7 +17,7 @@ module Fog
             return cached_policy if cached_policy
             policy_hash = service.get_policy(id).body['policy']
             Fog::Identity::OpenStack::V3::Policy.new(
-              policy_hash.merge(:service => service)
+              policy_hash.merge(service: service)
             )
           end
 

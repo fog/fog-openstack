@@ -28,13 +28,13 @@ module Fog
         # Map Fog::Network::OpenStack::Network
         # model attributes to OpenStack provider attributes
         ALIASES = {
-          :provider_network_type     => 'provider:network_type',
+          provider_network_type: 'provider:network_type',
 
           # Not applicable to the "local" or "gre" network types
-          :provider_physical_network => 'provider:physical_network',
-          :provider_segmentation_id  => 'provider:segmentation_id',
+          provider_physical_network: 'provider:physical_network',
+          provider_segmentation_id: 'provider:segmentation_id',
 
-          :router_external           => 'router:external'
+          router_external: 'router:external'
         }.freeze
 
         def self.create(options)
@@ -54,10 +54,10 @@ module Fog
           data = {}
           data['network'] = self.class.create(options)
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [201],
-            :method  => 'POST',
-            :path    => 'networks'
+            body: Fog::JSON.encode(data),
+            expects: [201],
+            method: 'POST',
+            path: 'networks'
           )
         end
       end

@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_image_members(image_id)
             request(
-              :expects => [200, 204],
-              :method  => 'GET',
-              :path    => "images/#{image_id}/members"
+              expects: [200, 204],
+              method: 'GET',
+              path: "images/#{image_id}/members"
             )
           end
         end

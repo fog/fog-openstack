@@ -4,10 +4,10 @@ module Fog
       module Real
         def action(id, data)
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 202],
-            :method  => 'POST',
-            :path    => "volumes/#{id}/action"
+            body: Fog::JSON.encode(data),
+            expects: [200, 202],
+            method: 'POST',
+            path: "volumes/#{id}/action"
           )
         end
       end

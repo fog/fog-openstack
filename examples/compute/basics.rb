@@ -7,19 +7,19 @@ username = 'admin@example.net'
 password = 'secret'
 tenant   = 'My Compute Tenant' # String
 
-compute_client ||= ::Fog::Compute.new(:provider           => :openstack,
-                                      :openstack_api_key  => password,
-                                      :openstack_username => username,
-                                      :openstack_auth_url => auth_url,
-                                      :openstack_tenant   => tenant)
+compute_client ||= ::Fog::Compute.new(provider: :openstack,
+                                      openstack_api_key: password,
+                                      openstack_username: username,
+                                      openstack_auth_url: auth_url,
+                                      openstack_tenant: tenant)
 
 # Create VM
 # Options include metadata, availability zone, etc...
 
 begin
-  vm = compute_client.servers.create(:name => 'lucky',
-                                     :image_ref => 'fcd8f8a9',
-                                     :flavor_ref => 4)
+  vm = compute_client.servers.create(name: 'lucky',
+                                     image_ref: 'fcd8f8a9',
+                                     flavor_ref: 4)
 rescue => e
   puts JSON.parse(e.response.body)['badRequest']['message']
 end

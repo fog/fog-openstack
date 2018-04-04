@@ -5,10 +5,10 @@ module Fog
         class Real
           def list_roles(options = {})
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "roles",
-              :query   => options
+              expects: [200],
+              method: 'GET',
+              path: "roles",
+              query: options
             )
           end
         end

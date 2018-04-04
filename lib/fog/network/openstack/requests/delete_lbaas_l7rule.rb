@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_lbaas_l7rule(l7policy_id, l7rule_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "lbaas/l7policies/#{l7policy_id}/rules/#{l7rule_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "lbaas/l7policies/#{l7policy_id}/rules/#{l7rule_id}"
           )
         end
       end

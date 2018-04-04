@@ -30,12 +30,12 @@ describe "Fog::Baremetal[:openstack] | Baremetal port requests" do
     end
 
     before do
-      node_attributes = { :driver => 'pxe_ipmitool' }
+      node_attributes = { driver: 'pxe_ipmitool' }
       @instance = Fog::Baremetal[:openstack].create_node(node_attributes).body
 
       port_attributes = {
-        :address   => '00:c2:08:85:de:ca',
-        :node_uuid => @instance['uuid']
+        address: '00:c2:08:85:de:ca',
+        node_uuid: @instance['uuid']
       }
       @port = Fog::Baremetal[:openstack].create_port(port_attributes).body
     end

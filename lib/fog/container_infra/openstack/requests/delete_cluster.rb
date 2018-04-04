@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_cluster(uuid_or_name)
           request(
-            :expects => [204],
-            :method  => 'DELETE',
-            :path    => "clusters/#{uuid_or_name}"
+            expects: [204],
+            method: 'DELETE',
+            path: "clusters/#{uuid_or_name}"
           )
         end
       end

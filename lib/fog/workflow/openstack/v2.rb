@@ -69,7 +69,7 @@ module Fog
           def self.data
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                :workflows => {}
+                workflows: {}
               }
             end
           end
@@ -125,11 +125,11 @@ module Fog
           def request(params)
             response = @connection.request(
               params.merge(
-                :headers => {
+                headers: {
                   'Content-Type' => 'application/json',
                   'X-Auth-Token' => @auth_token
                 }.merge!(params[:headers] || {}),
-                :path => "#{@path}/#{params[:path]}"
+                path: "#{@path}/#{params[:path]}"
               )
             )
           rescue Excon::Errors::Unauthorized    => error

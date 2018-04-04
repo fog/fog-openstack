@@ -25,7 +25,7 @@ module Fog
             return cached_role if cached_role
             role_hash = service.get_role(id).body['role']
             Fog::Identity::OpenStack::V3.role.new(
-              role_hash.merge(:service => service)
+              role_hash.merge(service: service)
             )
           end
 

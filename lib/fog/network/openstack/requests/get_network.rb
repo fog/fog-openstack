@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_network(network_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "networks/#{network_id}"
+            expects: [200],
+            method: 'GET',
+            path: "networks/#{network_id}"
           )
         end
       end

@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_rules(rule_id)
           request(
-            :expects => 204,
-            :method  => "DELETE",
-            :path    => "rules/#{rule_id}"
+            expects: 204,
+            method: "DELETE",
+            path: "rules/#{rule_id}"
           )
         end
       end

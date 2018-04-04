@@ -28,7 +28,7 @@ module Fog
                        else
                          sg
                        end
-                { :name => name }
+                { name: name }
               end
           end
 
@@ -80,10 +80,10 @@ module Fog
           path = options['block_device_mapping'] ? 'os-volumes_boot' : 'servers'
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 202],
-            :method  => 'POST',
-            :path    => path
+            body: Fog::JSON.encode(data),
+            expects: [200, 202],
+            method: 'POST',
+            path: path
           )
         end
       end
@@ -94,7 +94,7 @@ module Fog
           response.status = 202
 
           server_id = Fog::Mock.random_numbers(6).to_s
-          identity = Fog::Identity::OpenStack.new :openstack_auth_url => credentials[:openstack_auth_url]
+          identity = Fog::Identity::OpenStack.new openstack_auth_url: credentials[:openstack_auth_url]
           user = identity.users.find do |u|
             u.name == @openstack_username
           end

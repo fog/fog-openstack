@@ -6,10 +6,10 @@ module Fog
           def update_user(user_id, options = {})
             url = options.delete('url') || "/users/#{user_id}"
             request(
-              :body    => Fog::JSON.encode('user' => options),
-              :expects => 200,
-              :method  => 'PUT',
-              :path    => url
+              body: Fog::JSON.encode('user' => options),
+              expects: 200,
+              method: 'PUT',
+              path: url
             )
           end
         end

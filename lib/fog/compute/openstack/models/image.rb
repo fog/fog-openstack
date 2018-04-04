@@ -8,21 +8,21 @@ module Fog
         identity :id
 
         attribute :name
-        attribute :created_at,  :aliases => 'created'
-        attribute :updated_at,  :aliases => 'updated'
+        attribute :created_at,  aliases: 'created'
+        attribute :updated_at,  aliases: 'updated'
         attribute :progress
         attribute :status
         attribute :minDisk
         attribute :minRam
-        attribute :server,   :aliases => 'server'
-        attribute :size,     :aliases => 'OS-EXT-IMG-SIZE:size'
+        attribute :server,   aliases: 'server'
+        attribute :size,     aliases: 'OS-EXT-IMG-SIZE:size'
         attribute :metadata
         attribute :links
 
         def metadata
           @metadata ||= begin
-            Fog::Compute::OpenStack::Metadata.new(:service => service,
-                                                  :parent  => self)
+            Fog::Compute::OpenStack::Metadata.new(service: service,
+                                                  parent: self)
           end
         end
 

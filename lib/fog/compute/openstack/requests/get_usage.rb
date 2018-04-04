@@ -7,10 +7,10 @@ module Fog
           params[:start] = date_start.utc.iso8601.chop!
           params[:end]   = date_end.utc.iso8601.chop!
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => "os-simple-tenant-usage/#{tenant_id}",
-            :query   => params
+            expects: [200, 203],
+            method: 'GET',
+            path: "os-simple-tenant-usage/#{tenant_id}",
+            query: params
           )
         end
       end

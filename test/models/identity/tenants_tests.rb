@@ -3,7 +3,7 @@ require "test_helper"
 describe "Fog::Compute[:openstack] | tenants" do
   before do
     @identity = Fog::Identity[:openstack]
-    @instance = @identity.tenants.create(:name => 'test')
+    @instance = @identity.tenants.create(name: 'test')
   end
 
   describe "success" do

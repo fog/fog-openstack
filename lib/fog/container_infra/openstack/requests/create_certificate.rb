@@ -4,10 +4,10 @@ module Fog
       class Real
         def create_certificate(params)
           request(
-            :expects => [201, 200],
-            :method  => 'POST',
-            :path    => "certificates",
-            :body    => Fog::JSON.encode(params)
+            expects: [201, 200],
+            method: 'POST',
+            path: "certificates",
+            body: Fog::JSON.encode(params)
           )
         end
       end

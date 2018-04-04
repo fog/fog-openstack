@@ -5,7 +5,7 @@ describe "Fog::NFV[:openstack] | vnfs" do
   describe "success" do
     before do
       @nfv, @vnf_data, @auth = set_nfv_data
-      @vnfd = @nfv.vnfds.create(:vnfd => @vnfd_data, :auth => @auth)
+      @vnfd = @nfv.vnfds.create(vnfd: @vnfd_data, auth: @auth)
     end
 
     it "#find_by_id" do

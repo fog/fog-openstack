@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_flavor_metadata(flavor_ref, key)
           request(
-            :expects => 200,
-            :method  => 'DELETE',
-            :path    => "flavors/#{flavor_ref}/os-extra_specs/#{key}"
+            expects: 200,
+            method: 'DELETE',
+            path: "flavors/#{flavor_ref}/os-extra_specs/#{key}"
           )
         end
       end

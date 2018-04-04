@@ -14,10 +14,10 @@ module Fog
         # value = Value to set
         def patch_chassis(chassis_uuid, patch)
           request(
-            :body    => Fog::JSON.encode(patch),
-            :expects => 200,
-            :method  => 'PATCH',
-            :path    => "chassis/#{chassis_uuid}"
+            body: Fog::JSON.encode(patch),
+            expects: 200,
+            method: 'PATCH',
+            path: "chassis/#{chassis_uuid}"
           )
         end
       end

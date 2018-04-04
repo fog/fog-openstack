@@ -14,10 +14,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode('share_network' => data),
-            :expects => 200,
-            :method  => 'POST',
-            :path    => 'share-networks'
+            body: Fog::JSON.encode('share_network' => data),
+            expects: 200,
+            method: 'POST',
+            path: 'share-networks'
           )
         end
       end

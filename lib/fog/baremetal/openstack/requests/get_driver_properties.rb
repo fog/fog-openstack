@@ -3,12 +3,12 @@ module Fog
     class OpenStack
       class Real
         def get_driver_properties(driver_name)
-          data = { :driver_name => driver_name }
+          data = { driver_name: driver_name }
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 204],
-            :method  => 'GET',
-            :path    => "drivers/properties"
+            body: Fog::JSON.encode(data),
+            expects: [200, 204],
+            method: 'GET',
+            path: "drivers/properties"
           )
         end
       end

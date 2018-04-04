@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_notification_method(id)
           request(
-            :expects => [204],
-            :method  => 'DELETE',
-            :path    => "notification-methods/#{id}"
+            expects: [204],
+            method: 'DELETE',
+            path: "notification-methods/#{id}"
           )
         end
       end

@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_role(id)
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "roles/#{id}"
+              expects: [200],
+              method: 'GET',
+              path: "roles/#{id}"
             )
           end
         end

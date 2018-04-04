@@ -14,7 +14,7 @@ module Fog
 
           def find_by_id(id)
             zone_transfer_accept_hash = service.get_zone_transfer_accept(id).body
-            new(zone_transfer_accept_hash.merge(:service => service))
+            new(zone_transfer_accept_hash.merge(service: service))
           end
 
           alias get find_by_id

@@ -7,9 +7,9 @@ auth_url = "https://example.net/v2.0/tokens"
 username = 'admin@example.net'
 password = 'secret'
 
-keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
-                                        :openstack_username => username,
-                                        :openstack_api_key  => password
+keystone = Fog::Identity::OpenStack.new openstack_auth_url: auth_url,
+                                        openstack_username: username,
+                                        openstack_api_key: password
 # Optional, self-signed certs
 #:connection_options => { :ssl_verify_peer => false }
 
@@ -45,16 +45,16 @@ end
 #
 # Create a new tenant
 #
-tenant = keystone.tenants.create :name        => 'rubiojr@example.net',
-                                 :description => 'My foo tenant'
+tenant = keystone.tenants.create name: 'rubiojr@example.net',
+                                 description: 'My foo tenant'
 
 #
 # Create a new user
 #
-user = keystone.users.create :name      => 'rubiojr@example.net',
-                             :tenant_id => tenant.id,
-                             :password  => 'rubiojr@example.net',
-                             :email     => 'rubiojr@example.net'
+user = keystone.users.create name: 'rubiojr@example.net',
+                             tenant_id: tenant.id,
+                             password: 'rubiojr@example.net',
+                             email: 'rubiojr@example.net'
 
 # Find the recently created tenant
 tenant = keystone.tenants.find { |t| t.name == 'rubiojr@example.net' }

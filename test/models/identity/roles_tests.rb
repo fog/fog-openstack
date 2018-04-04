@@ -4,10 +4,10 @@ describe "Fog::Identity[:openstack] | roles" do
   before do
     @identity = Fog::Identity[:openstack]
 
-    @tenant   = @identity.tenants.create(:name => 'test_user')
-    @user     = @identity.users.create(:name => 'test_user', :tenant_id => @tenant.id, :password => 'spoof')
-    @role     = @identity.roles(:user => @user, :tenant => @tenant).create(:name => 'test_role')
-    @roles    = @identity.roles(:user => @user, :tenant => @tenant)
+    @tenant   = @identity.tenants.create(name: 'test_user')
+    @user     = @identity.users.create(name: 'test_user', tenant_id: @tenant.id, password: 'spoof')
+    @role     = @identity.roles(user: @user, tenant: @tenant).create(name: 'test_role')
+    @roles    = @identity.roles(user: @user, tenant: @tenant)
   end
 
   after do

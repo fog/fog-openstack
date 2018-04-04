@@ -14,7 +14,7 @@ module Fog
 
           def find_by_id(id, options = {})
             pool_hash = service.get_pool(id, options).body
-            new(pool_hash.merge(:service => service))
+            new(pool_hash.merge(service: service))
           end
 
           alias get find_by_id

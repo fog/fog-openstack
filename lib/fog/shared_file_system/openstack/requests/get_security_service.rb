@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_security_service(id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "security-services/#{id}"
+            expects: 200,
+            method: 'GET',
+            path: "security-services/#{id}"
           )
         end
       end

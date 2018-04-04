@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_lbaas_healthmonitor(healthmonitor_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "lbaas/healthmonitors/#{healthmonitor_id}"
+            expects: [200],
+            method: 'GET',
+            path: "lbaas/healthmonitors/#{healthmonitor_id}"
           )
         end
       end

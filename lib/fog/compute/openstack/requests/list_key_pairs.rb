@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_key_pairs(options = {})
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => 'os-keypairs',
-            :query   => options
+            expects: [200, 203],
+            method: 'GET',
+            path: 'os-keypairs',
+            query: options
           )
         end
       end

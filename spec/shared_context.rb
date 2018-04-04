@@ -77,11 +77,11 @@ class OpenStackVCR
 
       if use_recorded
         config.cassette_library_dir = ENV['SPEC_PATH'] || @vcr_directory
-        config.default_cassette_options = { :record => :none }
-        config.default_cassette_options.merge! :match_requests_on => [:method, :uri, :body]
+        config.default_cassette_options = { record: :none }
+        config.default_cassette_options.merge! match_requests_on: [:method, :uri, :body]
       else
         config.cassette_library_dir = "spec/debug"
-        config.default_cassette_options = { :record => :all }
+        config.default_cassette_options = { record: :all }
       end
     end
 
@@ -119,20 +119,20 @@ class OpenStackVCR
 
       if @service_class == Fog::Identity::OpenStack::V3 || @os_auth_url.end_with?('/v3')
         connection_options = {
-          :openstack_auth_url      => "#{@os_auth_url}/auth/tokens",
-          :openstack_region        => @region,
-          :openstack_domain_name   => @domain_name,
-          :openstack_endpoint_type => @interface,
-          :openstack_cache_ttl     => 0
+          openstack_auth_url: "#{@os_auth_url}/auth/tokens",
+          openstack_region: @region,
+          openstack_domain_name: @domain_name,
+          openstack_endpoint_type: @interface,
+          openstack_cache_ttl: 0
         }
         connection_options[:openstack_project_name] = @project_name if @with_project_scope
         connection_options[:openstack_service_type] = [ENV['OS_AUTH_SERVICE']] if ENV['OS_AUTH_SERVICE']
       else
         connection_options = {
-          :openstack_auth_url  => "#{@os_auth_url}/tokens",
-          :openstack_region    => @region,
-          :openstack_tenant    => @project_name,
-          :openstack_cache_ttl => 0
+          openstack_auth_url: "#{@os_auth_url}/tokens",
+          openstack_region: @region,
+          openstack_tenant: @project_name,
+          openstack_cache_ttl: 0
           # FIXME: Identity V3 not properly supported by other services yet
           # :openstack_user_domain    => ENV['OS_USER_DOMAIN_NAME']    || 'Default',
           # :openstack_project_domain => ENV['OS_PROJECT_DOMAIN_NAME'] || 'Default',

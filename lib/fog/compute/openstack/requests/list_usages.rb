@@ -9,10 +9,10 @@ module Fog
           params[:detailed] = (detailed ? '1' : '0')           if detailed
 
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => 'os-simple-tenant-usage',
-            :query   => params
+            expects: [200, 203],
+            method: 'GET',
+            path: 'os-simple-tenant-usage',
+            query: params
           )
         end
       end

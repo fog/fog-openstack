@@ -48,7 +48,7 @@ describe "Fog::Baremetal[:openstack] | Baremetal node requests" do
     end
 
     before do
-      node_attributes = { :driver => 'pxe_ipmitool' }
+      node_attributes = { driver: 'pxe_ipmitool' }
       @instance = @baremetal.create_node(node_attributes).body
     end
 

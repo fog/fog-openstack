@@ -5,10 +5,10 @@ module Fog
         class Real
           def create_tenant(attributes)
             request(
-              :expects => [200],
-              :method  => 'POST',
-              :path    => "tenants",
-              :body    => Fog::JSON.encode('tenant' => attributes)
+              expects: [200],
+              method: 'POST',
+              path: "tenants",
+              body: Fog::JSON.encode('tenant' => attributes)
             )
           end
         end

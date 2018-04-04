@@ -49,7 +49,7 @@ describe "Fog::DNS::OpenStack::V2 | recordset requests" do
     end
 
     it "#list_recordsets" do
-      recordset_list_body = @dns.list_recordsets(:zone_id => @zone_id).body
+      recordset_list_body = @dns.list_recordsets(zone_id: @zone_id).body
       recordset_list_body.must_match_schema(@recordset_list_format)
       recordset_list_body['recordsets'].sample['zone_id'].must_equal(@zone_id)
     end

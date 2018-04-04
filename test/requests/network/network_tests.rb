@@ -28,12 +28,12 @@ describe "Fog::Network[:openstack] | network requests" do
 
     let(:created_network) do
       attributes = {
-        :name                  => "net_name1",
-        :shared                => false,
-        :admin_state_up        => true,
-        :tenant_id             => "tenant_id",
-        :qos_policy_id         => "qos_policy_id1",
-        :port_security_enabled => false
+        name: "net_name1",
+        shared: false,
+        admin_state_up: true,
+        tenant_id: "tenant_id",
+        qos_policy_id: "qos_policy_id1",
+        port_security_enabled: false
       }
       network.create_network(attributes).body
     end
@@ -48,18 +48,18 @@ describe "Fog::Network[:openstack] | network requests" do
 
     it "#create_network+provider extensions" do
       attributes = {
-        :name                     => "net_name2",
-        :shared                   => false,
-        :admin_state_up           => true,
-        :tenant_id                => "tenant_id",
-        :qos_policy_id            => "qos_policy_id1",
-        :port_security_enabled    => false,
+        name: "net_name2",
+        shared: false,
+        admin_state_up: true,
+        tenant_id: "tenant_id",
+        qos_policy_id: "qos_policy_id1",
+        port_security_enabled: false,
         # local, gre, vlan. Depends on the provider.
         # May rise an exception if the network_type isn"t valid:
         # QuantumError: "Invalid input for operation: provider:physical_network"
-        :provider_network_type    => "gre",
-        :provider_segmentation_id => 22,
-        :router_external          => true
+        provider_network_type: "gre",
+        provider_segmentation_id: 22,
+        router_external: true
       }
 
       network.create_network(attributes).body
@@ -79,12 +79,12 @@ describe "Fog::Network[:openstack] | network requests" do
 
     it "#update_network" do
       attributes = {
-        :name                  => 'net_name',
-        :shared                => false,
-        :admin_state_up        => true,
-        :qos_policy_id         => 'new_policy_id',
-        :port_security_enabled => true,
-        :router_external       => false
+        name: 'net_name',
+        shared: false,
+        admin_state_up: true,
+        qos_policy_id: 'new_policy_id',
+        port_security_enabled: true,
+        router_external: false
       }
 
       network_id = network.networks.all.first.id
@@ -104,16 +104,16 @@ describe "Fog::Network[:openstack] | network requests" do
       skip if Fog.mocking?
       proc do
         attributes = {
-          :name                     => 'net_name',
-          :shared                   => false,
-          :admin_state_up           => true,
-          :tenant_id                => 'tenant_id',
-          :router_external          => true,
+          name: 'net_name',
+          shared: false,
+          admin_state_up: true,
+          tenant_id: 'tenant_id',
+          router_external: true,
           # local, gre, vlan. Depends on the provider.
           # May rise an exception if the network_type isn't valid:
           # QuantumError: "Invalid input for operation: provider:physical_network"
-          :provider_network_type    => 'foobar',
-          :provider_segmentation_id => 22
+          provider_network_type: 'foobar',
+          provider_segmentation_id: 22
         }
 
         network.create_network(attributes)

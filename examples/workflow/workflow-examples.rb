@@ -7,11 +7,11 @@ password = "1b1d81f7e25b53e497246b168971823c5754f395"
 project  = "admin"
 
 @connection_params = {
-  :openstack_auth_url     => auth_url,
-  :openstack_username     => username,
-  :openstack_api_key      => password,
-  :openstack_project_name => project,
-  :openstack_domain_id    => "default"
+  openstack_auth_url: auth_url,
+  openstack_username: username,
+  openstack_api_key: password,
+  openstack_project_name: project,
+  openstack_domain_id: "default"
 }
 
 mistral = Fog::Workflow::OpenStack.new(@connection_params)
@@ -19,7 +19,7 @@ mistral = Fog::Workflow::OpenStack.new(@connection_params)
 puts "INFO: create_execution"
 
 workflow = "tripleo.plan_management.v1.create_default_deployment_plan"
-input = { :container => 'default' }
+input = { container: 'default' }
 
 response = mistral.create_execution(workflow, input)
 
@@ -74,7 +74,7 @@ puts response.body
 
 puts "INFO: create_action_execution"
 
-input = { :container => 'default' }
+input = { container: 'default' }
 response = mistral.create_action_execution("tripleo.get_capabilities", input)
 
 puts response.body
@@ -95,9 +95,9 @@ puts response.body
 puts "INFO: create_workbook"
 
 workbook_def = {
-  :version => "2.0",
-  :name => "workbook name",
-  :description => "workbook description"
+  version: "2.0",
+  name: "workbook name",
+  description: "workbook description"
 }
 response = mistral.create_workbook(workbook_def)
 workbook_name = response.body["name"]
@@ -119,9 +119,9 @@ puts response.body
 puts "INFO: update_workbook"
 
 workbook_def = {
-  :version => "2.0",
-  :name => "workbook name",
-  :description => "workbook description2"
+  version: "2.0",
+  name: "workbook name",
+  description: "workbook description2"
 }
 
 response = mistral.update_workbook(workbook_def)
@@ -148,13 +148,13 @@ puts response.body
 puts "INFO: create_workflow"
 
 workflow_def = {
-  :version => "2.0",
-  :myworkflow => {
-    :type        => "direct",
-    :description => "description1",
-    :tasks => {
-      :create_vm => {
-        :description => "create vm"
+  version: "2.0",
+  myworkflow: {
+    type: "direct",
+    description: "description1",
+    tasks: {
+      create_vm: {
+        description: "create vm"
       }
     }
   }
@@ -178,7 +178,7 @@ puts response.body
 
 puts "INFO: list_workflows with params"
 
-params = { :limit => 1 }
+params = { limit: 1 }
 response = mistral.list_workflows(params)
 perm_workflow_id = response.body["workflows"][0]["id"]
 
@@ -187,13 +187,13 @@ puts response.body
 puts "INFO: update_workflow"
 
 workflow_def = {
-  :version => "2.0",
-  :myworkflow => {
-    :type        => "direct",
-    :description => "description2",
-    :tasks => {
-      :create_vm => {
-        :description => "create vm"
+  version: "2.0",
+  myworkflow: {
+    type: "direct",
+    description: "description2",
+    tasks: {
+      create_vm: {
+        description: "create vm"
       }
     }
   }
@@ -222,17 +222,17 @@ puts response.body
 puts "INFO: create_action"
 
 action_def = {
-  :version => "2.0",
-  :myaction => {
+  version: "2.0",
+  myaction: {
     :input => ['execution_id'],
     :base  => "std.email",
     "base-input" => {
-      :to_addrs      => ['admin@mywebsite.org'],
-      :subject       => "subject1",
-      :body          => "body1",
-      :from_addr     => "mistral@openstack.org",
-      :smtp_server   => "smtp.test.com",
-      :smtp_password => "secret"
+      to_addrs: ['admin@mywebsite.org'],
+      subject: "subject1",
+      body: "body1",
+      from_addr: "mistral@openstack.org",
+      smtp_server: "smtp.test.com",
+      smtp_password: "secret"
     }
   }
 }
@@ -255,7 +255,7 @@ puts response.body
 
 puts "INFO: list_actions with params"
 
-params = { :limit => 1 }
+params = { limit: 1 }
 response = mistral.list_actions(params)
 
 puts response.body
@@ -263,17 +263,17 @@ puts response.body
 puts "INFO: update_action"
 
 action_def = {
-  :version => "2.0",
-  :myaction => {
+  version: "2.0",
+  myaction: {
     :input => ['execution_id'],
     :base  => "std.email",
     "base-input" => {
-      :to_addrs      => ['admin@mywebsite.org'],
-      :subject       => "subject updated",
-      :body          => "body1",
-      :from_addr     => "mistral@openstack.org",
-      :smtp_server   => "smtp.test.com",
-      :smtp_password => "secret"
+      to_addrs: ['admin@mywebsite.org'],
+      subject: "subject updated",
+      body: "body1",
+      from_addr: "mistral@openstack.org",
+      smtp_server: "smtp.test.com",
+      smtp_password: "secret"
     }
   }
 }

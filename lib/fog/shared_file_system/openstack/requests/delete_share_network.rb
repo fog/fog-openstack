@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_share_network(id)
           request(
-            :expects => 202,
-            :method  => 'DELETE',
-            :path    => "share-networks/#{id}"
+            expects: 202,
+            method: 'DELETE',
+            path: "share-networks/#{id}"
           )
         end
       end

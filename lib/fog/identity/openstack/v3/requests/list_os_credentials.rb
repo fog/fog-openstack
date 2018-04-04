@@ -5,10 +5,10 @@ module Fog
         class Real
           def list_os_credentials(options = {})
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "credentials",
-              :query   => options
+              expects: [200],
+              method: 'GET',
+              path: "credentials",
+              query: options
             )
           end
         end

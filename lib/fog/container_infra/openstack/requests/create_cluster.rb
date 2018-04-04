@@ -4,10 +4,10 @@ module Fog
       class Real
         def create_cluster(params)
           request(
-            :expects => [202, 201, 200],
-            :method  => 'POST',
-            :path    => "clusters",
-            :body    => Fog::JSON.encode(params)
+            expects: [202, 201, 200],
+            method: 'POST',
+            path: "clusters",
+            body: Fog::JSON.encode(params)
           )
         end
       end

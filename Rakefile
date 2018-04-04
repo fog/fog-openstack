@@ -4,7 +4,7 @@ require 'rake/testtask'
 
 RuboCop::RakeTask.new
 
-task :default => :test
+task default: :test
 
 desc 'Run fog-openstack unit tests with Minitest'
 task :test do
@@ -13,7 +13,7 @@ task :test do
 end
 
 desc 'Run fog-openstack spec/ tests (VCR)'
-task :spec => "tests:spec"
+task spec: "tests:spec"
 
 namespace :tests do
   desc "Run fog-openstack test/"

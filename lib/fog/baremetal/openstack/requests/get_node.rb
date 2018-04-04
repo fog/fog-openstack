@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_node(node_id)
           request(
-            :expects => [200, 204],
-            :method  => 'GET',
-            :path    => "nodes/#{node_id}"
+            expects: [200, 204],
+            method: 'GET',
+            path: "nodes/#{node_id}"
           )
         end
       end

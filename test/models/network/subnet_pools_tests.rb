@@ -4,12 +4,12 @@ describe 'Fog::Network[:openstack] | subnet_pools' do
   describe 'success' do
     before do
       @subnet_pool = network.subnet_pools.create(
-        :name              => 'fog_subnetpool',
-        :prefixes          => ['10.0.0.0/16'],
-        :description       => 'fog_subnetpool_description',
-        :min_prefixlen     => 64,
-        :max_prefixlen     => 64,
-        :default_prefixlen => 64
+        name: 'fog_subnetpool',
+        prefixes: ['10.0.0.0/16'],
+        description: 'fog_subnetpool_description',
+        min_prefixlen: 64,
+        max_prefixlen: 64,
+        default_prefixlen: 64
       )
 
       @subnet_pools = network.subnet_pools

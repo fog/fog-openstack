@@ -5,9 +5,9 @@ module Fog
         class Real
           def list_domain_user_roles(id, user_id)
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "domains/#{id}/users/#{user_id}/roles"
+              expects: [200],
+              method: 'GET',
+              path: "domains/#{id}/users/#{user_id}/roles"
             )
           end
         end

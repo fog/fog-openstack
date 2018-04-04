@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_all_addresses(options = {})
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => "os-floating-ips",
-            :query   => options
+            expects: [200, 203],
+            method: 'GET',
+            path: "os-floating-ips",
+            query: options
           )
         end
       end

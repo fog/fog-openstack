@@ -123,10 +123,10 @@ module Fog
 
         def self.get_api_version(uri, connection_options = {})
           connection = Fog::Core::Connection.new(uri, false, connection_options)
-          response = connection.request(:expects => [200],
-                                        :headers => { 'Content-Type' => 'application/json',
-                                                      'Accept' => 'application/json' },
-                                        :method  => 'GET')
+          response = connection.request(expects: [200],
+                                        headers: { 'Content-Type' => 'application/json',
+                                                   'Accept' => 'application/json' },
+                                        method: 'GET')
 
           body = Fog::JSON.decode(response.body)
           version = nil

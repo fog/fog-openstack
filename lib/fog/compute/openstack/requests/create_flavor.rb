@@ -12,7 +12,7 @@ module Fog
         def create_flavor(attributes)
           # Get last flavor id
           flavor_ids = []
-          flavors = list_flavors_detail.body['flavors'] + list_flavors_detail(:is_public => false).body['flavors']
+          flavors = list_flavors_detail.body['flavors'] + list_flavors_detail(is_public: false).body['flavors']
           flavors.each do |flavor|
             flavor_ids << flavor['id'].to_i
           end
@@ -35,10 +35,10 @@ module Fog
           }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'POST',
-            :path    => 'flavors'
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'POST',
+            path: 'flavors'
           )
         end
       end

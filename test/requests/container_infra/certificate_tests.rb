@@ -14,27 +14,27 @@ describe "Fog::ContainerInfra[:openstack] | certificate requests" do
   describe "success" do
     before do
       attributes = {
-        :tls_disabled          => true,
-        :keypair_id            => "kp",
-        :server_type           => "vm",
-        :external_network_id   => "public",
-        :image_id              => "fedora-atomic-latest",
-        :name                  => "k8s-bm2",
-        :coe                   => "kubernetes",
-        :flavor_id             => "m1.small",
-        :docker_volume_size    => 3
+        tls_disabled: true,
+        keypair_id: "kp",
+        server_type: "vm",
+        external_network_id: "public",
+        image_id: "fedora-atomic-latest",
+        name: "k8s-bm2",
+        coe: "kubernetes",
+        flavor_id: "m1.small",
+        docker_volume_size: 3
       }
       @cluster_template = container_infra.create_cluster_template(attributes).body
       attributes = {
-        :name                => "k8s",
-        :cluster_template_id => @cluster_template['uuid'],
-        :create_timeout => 1
+        name: "k8s",
+        cluster_template_id: @cluster_template['uuid'],
+        create_timeout: 1
       }
 
       @cluster = container_infra.create_cluster(attributes).body
       attributes = {
-        :cluster_uuid => @cluster['uuid'],
-        :csr => "-----BEGIN CERTIFICATE REQUEST-----\nMIIEfzCCAmcCAQAwFDESMBAGA1UEAxMJWW91ciBOYW1lMIICIjANBgkqhkiG9w0B\n-----END CERTIFICATE REQUEST-----\n"
+        cluster_uuid: @cluster['uuid'],
+        csr: "-----BEGIN CERTIFICATE REQUEST-----\nMIIEfzCCAmcCAQAwFDESMBAGA1UEAxMJWW91ciBOYW1lMIICIjANBgkqhkiG9w0B\n-----END CERTIFICATE REQUEST-----\n"
       }
 
       @certificate = container_infra.create_certificate(attributes).body

@@ -6,8 +6,8 @@ describe Fog::Image::OpenStack do
 
   before :all do
     openstack_vcr = OpenStackVCR.new(
-      :vcr_directory => spec_data_folder,
-      :service_class => Fog::Image::OpenStack # Fog to choose latest available version
+      vcr_directory: spec_data_folder,
+      service_class: Fog::Image::OpenStack # Fog to choose latest available version
     )
     @service = openstack_vcr.service
   end
@@ -18,11 +18,11 @@ describe Fog::Image::OpenStack do
     image_by_id = @service.images.find_by_id(image_id) rescue false if image_id
     image_by_id.destroy if image_by_id
     if image_name
-      @service.images.all(:name => image_name).each(&:destroy)
+      @service.images.all(name: image_name).each(&:destroy)
     end
     # Check that the deletion worked
     proc { @service.images.find_by_id(image_id).must_equal nil } if image_id
-    @service.images.all(:name => image_name).length.must_equal 0 if image_name
+    @service.images.all(name: image_name).length.must_equal 0 if image_name
   end
 
   it "CRUD & list images" do
@@ -33,14 +33,14 @@ describe Fog::Image::OpenStack do
       @service.images.all.wont_equal nil
       begin
         # Create an image called foobar
-        foobar_image = @service.images.create(:name => image_name)
+        foobar_image = @service.images.create(name: image_name)
         foobar_id = foobar_image.id
-        @service.images.all(:name => image_name).length.must_equal 1
+        @service.images.all(name: image_name).length.must_equal 1
         foobar_image.status.must_equal 'queued'
 
         # Rename it to baz
         # see "Patch images" test below - for now this will be a simple synthesis of a JSON patch with op = 'replace'
-        foobar_image.update(:name => image_rename)
+        foobar_image.update(name: image_rename)
 
         foobar_image.name.must_equal image_rename
         baz_image = @service.images.find_by_id foobar_id
@@ -49,7 +49,7 @@ describe Fog::Image::OpenStack do
         baz_image.name.must_equal image_rename
 
         # Read the image freshly by listing images filtered by the new name
-        images = @service.images.all(:name => image_rename)
+        images = @service.images.all(name: image_rename)
         images.length.must_equal 1
         images.first.id.must_equal baz_image.id
       ensure
@@ -70,9 +70,9 @@ describe Fog::Image::OpenStack do
         identifier = '11111111-2222-3333-aaaa-bbbbbbcccce1'
 
         # Create an image with a specified ID
-        foobar_image = @service.images.create(:name => 'foobar_id', :id => identifier)
+        foobar_image = @service.images.create(name: 'foobar_id', id: identifier)
         foobar_id = foobar_image.id
-        @service.images.all(:name => image_name).length.must_equal 1
+        @service.images.all(name: image_name).length.must_equal 1
         foobar_image.status.must_equal 'queued'
         foobar_id.must_equal identifier
 
@@ -90,10 +90,10 @@ describe Fog::Image::OpenStack do
       begin
         # Create an image with a specified ID
         foobar_image = Fog::Image::OpenStack::V2::Image.new(
-          :name               => 'original_name',
-          :id                 => identifier,
-          :service            => @service,
-          :property_to_delete => 'bar'
+          name: 'original_name',
+          id: identifier,
+          service: @service,
+          property_to_delete: 'bar'
         )
         foobar_image.save
 
@@ -124,9 +124,9 @@ describe Fog::Image::OpenStack do
       image_name = 'reloaded_image'
       begin
         created_image = @service.images.create(
-          :name                => image_name,
-          :service             => @service,
-          :reloadable_property => 'original'
+          name: image_name,
+          service: @service,
+          reloadable_property: 'original'
         )
         identifier = created_image.id
 
@@ -169,9 +169,9 @@ describe Fog::Image::OpenStack do
         # minimal.ova is a "no-op" virtual machine image, 80kB .ova file containing 64Mb dynamic disk
         image_path = "#{spec_data_folder}/minimal.ova"
 
-        foobar_image = @service.images.create(:name             => image_name,
-                                              :container_format => 'ovf',
-                                              :disk_format      => 'vmdk')
+        foobar_image = @service.images.create(name: image_name,
+                                              container_format: 'ovf',
+                                              disk_format: 'vmdk')
         foobar_id = foobar_image.id
 
         # Status should be queued
@@ -206,9 +206,9 @@ describe Fog::Image::OpenStack do
 
       begin
         # Create an image called foobar2
-        foobar_image = @service.images.create(:name             => image_name,
-                                              :container_format => 'ovf',
-                                              :disk_format      => 'vmdk')
+        foobar_image = @service.images.create(name: image_name,
+                                              container_format: 'ovf',
+                                              disk_format: 'vmdk')
         foobar_id = foobar_image.id
         foobar_image.upload_data File.new(image_path, 'r')
         while @service.images.find_by_id(foobar_id).status == 'saving'
@@ -231,9 +231,9 @@ describe Fog::Image::OpenStack do
       image_name = 'foobar3'
       begin
         # Create an image
-        foobar_image = @service.images.create(:name             => image_name,
-                                              :container_format => 'ovf',
-                                              :disk_format      => 'vmdk')
+        foobar_image = @service.images.create(name: image_name,
+                                              container_format: 'ovf',
+                                              disk_format: 'vmdk')
         foobar_id = foobar_image.id
 
         foobar_image.add_tag 'tag1'
@@ -259,7 +259,7 @@ describe Fog::Image::OpenStack do
       tenant_id = 'tenant1'
       begin
         # Create an image called foobar
-        foobar_image = @service.images.create(:name => image_name)
+        foobar_image = @service.images.create(name: image_name)
 
         foobar_image.members.size.must_equal 0
         foobar_image.add_member tenant_id

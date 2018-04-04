@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_action_execution(execution_id)
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "action_executions/#{execution_id}"
+              expects: 200,
+              method: "GET",
+              path: "action_executions/#{execution_id}"
             )
           end
         end

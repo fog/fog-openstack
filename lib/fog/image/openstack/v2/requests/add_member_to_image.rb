@@ -5,10 +5,10 @@ module Fog
         class Real
           def add_member_to_image(image_id, tenant_id)
             request(
-              :expects => [200],
-              :method  => 'POST',
-              :path    => "images/#{image_id}/members",
-              :body    => Fog::JSON.encode(:member => tenant_id)
+              expects: [200],
+              method: 'POST',
+              path: "images/#{image_id}/members",
+              body: Fog::JSON.encode(member: tenant_id)
             )
           end
         end

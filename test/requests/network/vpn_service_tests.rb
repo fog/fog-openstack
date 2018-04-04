@@ -22,10 +22,10 @@ describe "Fog::Network[:openstack] | vpn_service requests" do
       router_id = 'router_id'
 
       attributes = {
-        :name           => 'test-vpn-service',
-        :description    => 'Test VPN Service',
-        :admin_state_up => true,
-        :tenant_id      => 'tenant_id'
+        name: 'test-vpn-service',
+        description: 'Test VPN Service',
+        admin_state_up: true,
+        tenant_id: 'tenant_id'
       }
 
       @vpn_service = network.create_vpn_service(subnet_id, router_id, attributes).body
@@ -47,12 +47,12 @@ describe "Fog::Network[:openstack] | vpn_service requests" do
     it "#update_vpn_service" do
       vpn_service_id = network.vpn_services.all.first.id
       attributes = {
-        :name           => 'renamed-test-vpn-service',
-        :description    => 'Test VPN Service',
-        :admin_state_up => true,
-        :tenant_id      => 'tenant_id',
-        :subnet_id      => 'subnet_id',
-        :router_id      => 'router_id'
+        name: 'renamed-test-vpn-service',
+        description: 'Test VPN Service',
+        admin_state_up: true,
+        tenant_id: 'tenant_id',
+        subnet_id: 'subnet_id',
+        router_id: 'router_id'
       }
 
       network.update_vpn_service(vpn_service_id, attributes).body.must_match_schema('vpnservice' => @vpn_service_format)

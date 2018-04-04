@@ -3,11 +3,11 @@ require "test_helper"
 require "helpers/model_helper"
 
 describe "Fog::Network[:openstack] | security_group model" do
-  model_tests(network.security_groups, :name => "fogsecgroup")
+  model_tests(network.security_groups, name: "fogsecgroup")
 
   describe "success" do
     before do
-      attributes = { :name => "my_secgroup", :description => "my sec group desc" }
+      attributes = { name: "my_secgroup", description: "my sec group desc" }
       @secgroup = network.security_groups.create(attributes)
       @secgroup.wait_for { ready? } unless Fog.mocking?
     end

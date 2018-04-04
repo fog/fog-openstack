@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_router(router_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "routers/#{router_id}"
+            expects: [200],
+            method: 'GET',
+            path: "routers/#{router_id}"
           )
         end
       end

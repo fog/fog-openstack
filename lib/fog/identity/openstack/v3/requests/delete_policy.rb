@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_policy(id)
             request(
-              :expects => [204],
-              :method  => 'DELETE',
-              :path    => "policies/#{id}"
+              expects: [204],
+              method: 'DELETE',
+              path: "policies/#{id}"
             )
           end
         end

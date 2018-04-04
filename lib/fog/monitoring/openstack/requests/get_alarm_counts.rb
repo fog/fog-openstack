@@ -4,10 +4,10 @@ module Fog
       class Real
         def get_alarm_counts(options = {})
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "alarms/count",
-            :query   => options
+            expects: [200],
+            method: 'GET',
+            path: "alarms/count",
+            query: options
           )
         end
       end

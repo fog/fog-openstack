@@ -12,7 +12,7 @@ end
 describe "Fog::Storage[:openstack] | object requests" do
   before do
     unless Fog.mocking?
-      @directory = Fog::Storage[:openstack].directories.create(:key => 'fogobjecttests')
+      @directory = Fog::Storage[:openstack].directories.create(key: 'fogobjecttests')
     end
 
     module OpenStackStorageHelpers
@@ -156,7 +156,7 @@ describe "Fog::Storage[:openstack] | object requests" do
         unless Fog.mocking?
           Fog::Storage[:openstack].put_object('fogobjecttests', 'fog_object', lorem_file)
           Fog::Storage[:openstack].put_object('fogobjecttests', 'fog_object2', lorem_file)
-          Fog::Storage[:openstack].directories.create(:key => 'fogobjecttests2')
+          Fog::Storage[:openstack].directories.create(key: 'fogobjecttests2')
           Fog::Storage[:openstack].put_object('fogobjecttests2', 'fog_object', lorem_file)
         end
 

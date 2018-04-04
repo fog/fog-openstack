@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_hosts(options = {})
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => 'os-hosts',
-            :query   => options
+            expects: [200, 203],
+            method: 'GET',
+            path: 'os-hosts',
+            query: options
           )
         end
       end

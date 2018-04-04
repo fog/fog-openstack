@@ -255,14 +255,14 @@ module Fog
         def self.data
           @data ||= Hash.new do |hash, key|
             hash[key] = {
-              :last_modified => {
-                :images          => {},
-                :servers         => {},
-                :key_pairs       => {},
-                :security_groups => {},
-                :addresses       => {}
+              last_modified: {
+                images: {},
+                servers: {},
+                key_pairs: {},
+                security_groups: {},
+                addresses: {}
               },
-              :aggregates => [{
+              aggregates: [{
                 "availability_zone" => "nova",
                 "created_at"        => "2012-11-16T06:22:23.032493",
                 "deleted"           => false,
@@ -271,7 +271,7 @@ module Fog
                 "name"              => "name",
                 "updated_at"        => nil
               }],
-              :images => {
+              images: {
                 "0e09fbd6-43c5-448a-83e9-0d3d05f9747e" => {
                   "id"       => "0e09fbd6-43c5-448a-83e9-0d3d05f9747e",
                   "name"     => "cirros-0.3.0-x86_64-blank",
@@ -285,9 +285,9 @@ module Fog
                                  { "href" => "http://nova1:8774/admin/images/2", "rel" => "bookmark" }]
                 }
               },
-              :servers                   => {},
-              :key_pairs                 => {},
-              :security_groups           => {
+              servers: {},
+              key_pairs: {},
+              security_groups: {
                 '0' => {
                   "id"          => 0,
                   "tenant_id"   => Fog::Mock.random_hex(8),
@@ -304,10 +304,10 @@ module Fog
                   ]
                 }
               },
-              :server_groups             => {},
-              :server_security_group_map => {},
-              :addresses                 => {},
-              :quota                     => {
+              server_groups: {},
+              server_security_group_map: {},
+              addresses: {},
+              quota: {
                 'security_group_rules'        => 20,
                 'security_groups'             => 10,
                 'injected_file_content_bytes' => 10240,
@@ -322,9 +322,9 @@ module Fog
                 'cores'                       => 20,
                 'ram'                         => 51200
               },
-              :volumes                   => {},
-              :snapshots                 => {},
-              :os_interfaces             => [
+              volumes: {},
+              snapshots: {},
+              os_interfaces: [
                 {
                   "fixed_ips" => [
                     {

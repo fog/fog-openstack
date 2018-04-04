@@ -3,7 +3,7 @@ require "test_helper"
 describe "Fog::Image[:openstack] | image" do
   describe "success" do
     before do
-      @instance = Fog::Image[:openstack].images.create(:name => 'test image')
+      @instance = Fog::Image[:openstack].images.create(name: 'test image')
     end
 
     it "#create" do

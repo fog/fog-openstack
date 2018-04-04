@@ -4,34 +4,34 @@ module Fog
   module Storage
     class OpenStack
       class File < Fog::OpenStack::Model
-        identity  :key, :aliases => 'name'
+        identity  :key, aliases: 'name'
 
-        attribute :access_control_allow_origin, :aliases => ['Access-Control-Allow-Origin']
-        attribute :content_length,  :aliases => ['bytes', 'Content-Length'], :type => :integer
-        attribute :content_type,    :aliases => ['content_type', 'Content-Type']
-        attribute :content_disposition, :aliases => ['content_disposition', 'Content-Disposition']
-        attribute :etag,            :aliases => ['hash', 'Etag']
-        attribute :last_modified,   :aliases => ['last_modified', 'Last-Modified'], :type => :time
+        attribute :access_control_allow_origin, aliases: ['Access-Control-Allow-Origin']
+        attribute :content_length,  aliases: ['bytes', 'Content-Length'], type: :integer
+        attribute :content_type,    aliases: ['content_type', 'Content-Type']
+        attribute :content_disposition, aliases: ['content_disposition', 'Content-Disposition']
+        attribute :etag,            aliases: ['hash', 'Etag']
+        attribute :last_modified,   aliases: ['last_modified', 'Last-Modified'], type: :time
         attribute :metadata
-        attribute :origin, :aliases => ['Origin']
+        attribute :origin, aliases: ['Origin']
         # @!attribute [rw] delete_at
         # A Unix Epoch Timestamp, in integer form, representing the time when this object will be automatically deleted.
         # @return [Integer] the unix epoch timestamp of when this object will be automatically deleted
         # @see http://docs.openstack.org/developer/swift/overview_expiring_objects.html
-        attribute :delete_at, :aliases => ['X-Delete-At']
+        attribute :delete_at, aliases: ['X-Delete-At']
 
         # @!attribute [rw] delete_after
         # A number of seconds representing how long from now this object will be automatically deleted.
         # @return [Integer] the number of seconds until this object will be automatically deleted
         # @see http://docs.openstack.org/developer/swift/overview_expiring_objects.html
-        attribute :delete_after, :aliases => ['X-Delete-After']
+        attribute :delete_after, aliases: ['X-Delete-After']
 
         # @!attribute [rw] content_encoding
         # When you create an object or update its metadata, you can optionally set the Content-Encoding metadata.
         # This metadata enables you to indicate that the object content is compressed without losing the identity of the
         # underlying media type (Content-Type) of the file, such as a video.
         # @see http://docs.openstack.org/developer/swift/api/use_content-encoding_metadata.html#use-content-encoding-metadata
-        attribute :content_encoding, :aliases => 'Content-Encoding'
+        attribute :content_encoding, aliases: 'Content-Encoding'
 
         def initialize(new_attributes = {})
           super
@@ -60,7 +60,7 @@ module Fog
           options['Origin'] ||= origin if origin
           options['Content-Encoding'] ||= content_encoding if content_encoding
           service.copy_object(directory.key, key, target_directory_key, target_file_key, options)
-          target_directory = service.directories.new(:key => target_directory_key)
+          target_directory = service.directories.new(key: target_directory_key)
           target_directory.files.get(target_file_key)
         end
 
@@ -78,8 +78,8 @@ module Fog
         def owner=(new_owner)
           if new_owner
             attributes[:owner] = {
-              :display_name => new_owner['DisplayName'],
-              :id           => new_owner['ID']
+              display_name: new_owner['DisplayName'],
+              id: new_owner['ID']
             }
           end
         end

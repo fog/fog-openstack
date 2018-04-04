@@ -9,11 +9,11 @@ module Fog
             headers["Location"] = location if location
 
             request(
-              :headers => headers,
-              :expects => [201],
-              :method  => 'POST',
-              :path    => "images",
-              :body    => Fog::JSON.encode(image)
+              headers: headers,
+              expects: [201],
+              method: 'POST',
+              path: "images",
+              body: Fog::JSON.encode(image)
             )
           end
         end

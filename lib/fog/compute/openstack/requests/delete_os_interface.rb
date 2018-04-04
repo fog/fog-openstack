@@ -7,9 +7,9 @@ module Fog
         # * port_id <~String>
         def delete_os_interface(server_id, port_id)
           request(
-            :expects => [200, 202, 204],
-            :method  => 'DELETE',
-            :path    => "servers/#{server_id}/os-interface/#{port_id}"
+            expects: [200, 202, 204],
+            method: 'DELETE',
+            path: "servers/#{server_id}/os-interface/#{port_id}"
           )
         end
       end

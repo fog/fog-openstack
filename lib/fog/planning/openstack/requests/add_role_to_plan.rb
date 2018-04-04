@@ -4,10 +4,10 @@ module Fog
       class Real
         def add_role_to_plan(plan_uuid, role_uuid)
           request(
-            :expects => [201],
-            :method  => 'POST',
-            :path    => "plans/#{plan_uuid}/roles",
-            :body    => Fog::JSON.encode('uuid' => role_uuid)
+            expects: [201],
+            method: 'POST',
+            path: "plans/#{plan_uuid}/roles",
+            body: Fog::JSON.encode('uuid' => role_uuid)
           )
         end
       end

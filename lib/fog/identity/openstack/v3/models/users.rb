@@ -17,12 +17,12 @@ module Fog
             return cached_user if cached_user
             user_hash = service.get_user(id).body['user']
             Fog::Identity::OpenStack::V3::User.new(
-              user_hash.merge(:service => service)
+              user_hash.merge(service: service)
             )
           end
 
           def find_by_name(name, options = {})
-            load(service.list_users(options.merge(:name => name)).body["users"])
+            load(service.list_users(options.merge(name: name)).body["users"])
           end
 
           def destroy(id)

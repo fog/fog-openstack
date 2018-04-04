@@ -4,9 +4,9 @@ module Fog
       module Real
         def delete_backup(backup_id)
           request(
-            :expects => 202,
-            :method  => 'DELETE',
-            :path    => "backups/#{backup_id}"
+            expects: 202,
+            method: 'DELETE',
+            path: "backups/#{backup_id}"
           )
         end
       end

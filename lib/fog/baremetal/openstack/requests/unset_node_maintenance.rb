@@ -4,10 +4,10 @@ module Fog
       class Real
         def unset_node_maintenance(node_uuid, parameters = nil)
           request(
-            :expects => [200, 202, 204],
-            :method  => 'DELETE',
-            :path    => "nodes/#{node_uuid}/maintenance",
-            :query   => parameters
+            expects: [200, 202, 204],
+            method: 'DELETE',
+            path: "nodes/#{node_uuid}/maintenance",
+            query: parameters
           )
         end
       end

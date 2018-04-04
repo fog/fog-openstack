@@ -40,8 +40,8 @@ module Fog
 
         def default_options
           {
-            :vnf  => vnf,
-            :auth => auth
+            vnf: vnf,
+            auth: auth
           }
         end
 

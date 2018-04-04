@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_aggregate(uuid)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "os-aggregates/#{uuid}"
+            expects: [200],
+            method: 'GET',
+            path: "os-aggregates/#{uuid}"
           )
         end
       end

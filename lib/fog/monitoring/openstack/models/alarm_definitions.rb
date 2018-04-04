@@ -28,7 +28,7 @@ module Fog
           return cached_alarm_definition if cached_alarm_definition
           alarm_definition_hash = service.get_alarm_definition(id).body
           Fog::Monitoring::OpenStack::AlarmDefinition.new(
-            alarm_definition_hash.merge(:service => service)
+            alarm_definition_hash.merge(service: service)
           )
         end
 

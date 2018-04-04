@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_lbaas_pool(pool_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "lbaas/pools/#{pool_id}"
+            expects: [200],
+            method: 'GET',
+            path: "lbaas/pools/#{pool_id}"
           )
         end
       end

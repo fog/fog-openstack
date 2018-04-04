@@ -12,10 +12,10 @@ module Fog
             data = { 'memberships' => members }
 
             request(
-              :body    => Fog::JSON.encode(data),
-              :expects => [204],
-              :method  => 'PUT',
-              :path    => "images/#{image_id}/members"
+              body: Fog::JSON.encode(data),
+              expects: [204],
+              method: 'PUT',
+              path: "images/#{image_id}/members"
             )
           end
         end

@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_environment(name)
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "environments/#{URI.encode(name)}"
+              expects: 200,
+              method: "GET",
+              path: "environments/#{URI.encode(name)}"
             )
           end
         end

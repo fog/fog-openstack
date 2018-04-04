@@ -27,10 +27,10 @@ module Fog
           data = attributes.select { |key, _value| desired_options.include?(key.to_sym) }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 201],
-            :method  => 'POST',
-            :path    => 'nodes'
+            body: Fog::JSON.encode(data),
+            expects: [200, 201],
+            method: 'POST',
+            path: 'nodes'
           )
         end
       end

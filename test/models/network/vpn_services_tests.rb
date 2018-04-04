@@ -3,12 +3,12 @@ require "test_helper"
 describe "Fog::Network[:openstack] | vpn_services" do
   before do
     @vpn_service = network.vpn_services.create(
-      :subnet_id      => 'foo',
-      :router_id      => 'bar',
-      :name           => 'test',
-      :description    => 'test',
-      :admin_state_up => true,
-      :tenant_id      => 'tenant'
+      subnet_id: 'foo',
+      router_id: 'bar',
+      name: 'test',
+      description: 'test',
+      admin_state_up: true,
+      tenant_id: 'tenant'
     )
 
     @vpn_services = network.vpn_services

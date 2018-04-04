@@ -7,10 +7,10 @@ module Fog
       class Snapshot < Fog::OpenStack::Model
         identity :id
 
-        attribute :name,        :aliases => 'displayName'
-        attribute :description, :aliases => 'displayDescription'
-        attribute :volume_id,   :aliases => 'volumeId'
-        attribute :created_at,  :aliases => 'createdAt'
+        attribute :name,        aliases: 'displayName'
+        attribute :description, aliases: 'displayDescription'
+        attribute :volume_id,   aliases: 'volumeId'
+        attribute :created_at,  aliases: 'createdAt'
         attribute :status
         attribute :size
 

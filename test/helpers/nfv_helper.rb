@@ -2,8 +2,8 @@ def set_nfv_data
   @nfv = Fog::NFV::OpenStack.new
 
   @vnfd_data = {
-    :attributes => {
-      :vnfd => "template_name: sample-vnfd\ndescription: demo-example\n\nservice_prop"\
+    attributes: {
+      vnfd: "template_name: sample-vnfd\ndescription: demo-example\n\nservice_prop"\
       "erties:\n  Id: sample-vnfd\n  vendor: tacker\n  version: 1\n\nvdus:\n"\
       "  vdu1:\n    id: vdu1\n    vm_image: cirros\n    instance_type: m1.ti"\
       "ny\n\n    network_interfaces:\n      management:\n        network: ne"\
@@ -12,9 +12,9 @@ def set_nfv_data
       "    availability_zone: nova\n\n    auto-scaling: noop\n\n    config:"\
       "\n      param0: key0\n      param1: key1\n"
     },
-    :service_types => [{ :service_type => "vnfd" }],
-    :mgmt_driver   => "noop",
-    :infra_driver  => "heat"
+    service_types: [{ service_type: "vnfd" }],
+    mgmt_driver: "noop",
+    infra_driver: "heat"
   }
 
   @auth = {

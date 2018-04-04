@@ -7,9 +7,9 @@ module Fog
         # This method returns a list of the export locations.
         def list_share_export_locations(share_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "shares/#{share_id}/export_locations"
+            expects: 200,
+            method: 'GET',
+            path: "shares/#{share_id}/export_locations"
           )
         end
       end

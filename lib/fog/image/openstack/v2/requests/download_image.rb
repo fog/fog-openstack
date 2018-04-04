@@ -6,10 +6,10 @@ module Fog
           # TODO: implement content range handling
           def download_image(image_id, _content_range = nil, params)
             request_hash = {
-              :expects  => [200, 204],
-              :method   => 'GET',
-              :raw_body => true,
-              :path     => "images/#{image_id}/file"
+              expects: [200, 204],
+              method: 'GET',
+              raw_body: true,
+              path: "images/#{image_id}/file"
             }
             request_hash[:response_block] = params[:response_block] if params[:response_block]
             request(request_hash).body

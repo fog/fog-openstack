@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_hypervisor(hypervisor_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "os-hypervisors/#{hypervisor_id}"
+            expects: 200,
+            method: 'GET',
+            path: "os-hypervisors/#{hypervisor_id}"
           )
         end
       end

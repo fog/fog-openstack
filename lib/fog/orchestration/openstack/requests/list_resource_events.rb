@@ -9,7 +9,7 @@ module Fog
                                   ' instead')
 
           uri = "stacks/#{stack.stack_name}/#{stack.id}/resources/#{resource.resource_name}/events"
-          request(:method => 'GET', :path => uri, :expects => 200, :query => options)
+          request(method: 'GET', path: uri, expects: 200, query: options)
         end
       end
 
@@ -18,8 +18,8 @@ module Fog
           events = data[:events].values
 
           Excon::Response.new(
-            :body   => { 'events' => events },
-            :status => 200
+            body: { 'events' => events },
+            status: 200
           )
         end
       end

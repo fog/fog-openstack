@@ -10,8 +10,8 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     @orchestration = Fog::Orchestration[:openstack]
 
     @stack_mock = Fog::Orchestration::OpenStack::Stack.new(
-      :template_name => "stack_mock",
-      :id            => "stack_id"
+      template_name: "stack_mock",
+      id: "stack_id"
     )
 
     @stack_format = {
@@ -63,13 +63,13 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
 
   describe "success" do
     it "#create_stack" do
-      @stack = @orchestration.create_stack(:stack_name => "teststack").body.must_match_schema(@create_format)
+      @stack = @orchestration.create_stack(stack_name: "teststack").body.must_match_schema(@create_format)
     end
 
     it "#create_stack_with_files" do
       args = {
-        :stack_name => "teststack_files",
-        :files      => { 'foo.sh' => 'hello' }
+        stack_name: "teststack_files",
+        files: { 'foo.sh' => 'hello' }
       }
       @stack = @orchestration.create_stack(args).body.must_match_schema(@create_format_files)
     end
@@ -77,8 +77,8 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     it "#create_stack_resolve_files" do
       expected = prefix_with_url(["local.yaml", "hot_1.yaml"], @base_url)
       args = {
-        :stack_name => "teststack_files",
-        :template   => YAML.load_file("local.yaml")
+        stack_name: "teststack_files",
+        template: YAML.load_file("local.yaml")
       }
       response = @orchestration.create_stack(args)
       response.body.must_match_schema(@create_format_files)
@@ -90,9 +90,9 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     it "#create_stack_merge_files" do
       expected = prefix_with_url(["local.yaml", "hot_1.yaml", "file.txt"], @base_url)
       args = {
-        :stack_name => "teststack_files",
-        :template   => YAML.load_file("local.yaml"),
-        :files      => { expected[-1] => "# just a mock" }
+        stack_name: "teststack_files",
+        template: YAML.load_file("local.yaml"),
+        files: { expected[-1] => "# just a mock" }
       }
       response = @orchestration.create_stack(args)
       response.body.must_match_schema(@create_format_files)

@@ -4,10 +4,10 @@ module Fog
       module Real
         def list_volume_types(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'types',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'types',
+            query: options
           )
         end
       end

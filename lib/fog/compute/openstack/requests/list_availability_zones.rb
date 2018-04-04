@@ -6,10 +6,10 @@ module Fog
           params = options
 
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "os-availability-zone",
-            :query   => params
+            expects: [200],
+            method: 'GET',
+            path: "os-availability-zone",
+            query: params
           )
         end
       end

@@ -11,10 +11,10 @@ module Fog
         #
         def post_object(container, object, headers = {})
           params = {
-            :expects    => 202,
-            :headers    => headers,
-            :method     => 'POST',
-            :path       => "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
+            expects: 202,
+            headers: headers,
+            method: 'POST',
+            path: "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
           }
 
           request(params)

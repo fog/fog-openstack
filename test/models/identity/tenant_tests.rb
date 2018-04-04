@@ -22,7 +22,7 @@ describe "Fog::Identity[:openstack] | tenant" do
 
   describe "CRUD" do
     before do
-      @instance = @identity.tenants.create(:name => 'test')
+      @instance = @identity.tenants.create(name: 'test')
     end
 
     it "#create" do
@@ -30,7 +30,7 @@ describe "Fog::Identity[:openstack] | tenant" do
     end
 
     it "#update" do
-      @instance.update(:name => 'test2')
+      @instance.update(name: 'test2')
       @instance.name.must_equal 'test2'
     end
 

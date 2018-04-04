@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_aggregates(options = {})
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => 'os-aggregates',
-            :query   => options
+            expects: [200, 203],
+            method: 'GET',
+            path: 'os-aggregates',
+            query: options
           )
         end
       end

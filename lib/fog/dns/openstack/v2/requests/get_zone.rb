@@ -6,10 +6,10 @@ module Fog
           def get_zone(id, options = {})
             headers, _options = Fog::DNS::OpenStack::V2.setup_headers(options)
             request(
-              :expects => 200,
-              :method  => 'GET',
-              :path    => "zones/#{id}",
-              :headers => headers
+              expects: 200,
+              method: 'GET',
+              path: "zones/#{id}",
+              headers: headers
             )
           end
         end

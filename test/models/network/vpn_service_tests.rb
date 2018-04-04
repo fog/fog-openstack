@@ -4,12 +4,12 @@ describe "Fog::Network[:openstack] | vpn_service" do
   describe "success" do
     before do
       @instance = network.vpn_services.create(
-        :subnet_id      => 'foo',
-        :router_id      => 'bar',
-        :name           => 'test',
-        :description    => 'test',
-        :admin_state_up => true,
-        :tenant_id      => 'tenant'
+        subnet_id: 'foo',
+        router_id: 'bar',
+        name: 'test',
+        description: 'test',
+        admin_state_up: true,
+        tenant_id: 'tenant'
       )
     end
 

@@ -21,10 +21,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(body),
-            :expects => [200, 201, 202, 204],
-            :method  => 'POST',
-            :path    => "servers/#{server_id}/os-interface"
+            body: Fog::JSON.encode(body),
+            expects: [200, 201, 202, 204],
+            method: 'POST',
+            path: "servers/#{server_id}/os-interface"
           )
         end
       end
@@ -32,8 +32,8 @@ module Fog
       class Mock
         def create_os_interface(_server_id, _options = {})
           Excon::Response.new(
-            :body   => { 'interfaceAttachment' => data[:os_interfaces].first },
-            :status => 200
+            body: { 'interfaceAttachment' => data[:os_interfaces].first },
+            status: 200
           )
         end
       end

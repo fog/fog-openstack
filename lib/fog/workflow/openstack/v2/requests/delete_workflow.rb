@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_workflow(identifier)
             request(
-              :expects => 204,
-              :method  => "DELETE",
-              :path    => "workflows/#{identifier}"
+              expects: 204,
+              method: "DELETE",
+              path: "workflows/#{identifier}"
             )
           end
         end

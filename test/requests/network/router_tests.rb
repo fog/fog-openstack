@@ -3,20 +3,20 @@ require 'test_helper'
 describe "Fog::Network[:openstack] | router requests" do
   before do
     @router_format = {
-      :id                    => String,
-      :name                  => String,
-      :status                => String,
-      :admin_state_up        => Fog::Boolean,
-      :tenant_id             => String,
-      :external_gateway_info => Fog::Nullable::Hash
+      id: String,
+      name: String,
+      status: String,
+      admin_state_up: Fog::Boolean,
+      tenant_id: String,
+      external_gateway_info: Fog::Nullable::Hash
     }
   end
 
   describe "success" do
     before do
       attributes = {
-        :admin_state_up => true,
-        :tenant_id      => 'tenant_id'
+        admin_state_up: true,
+        tenant_id: 'tenant_id'
       }
 
       @router = network.create_router('router_name', attributes).body
@@ -38,10 +38,10 @@ describe "Fog::Network[:openstack] | router requests" do
     it "#update_router" do
       router_id = network.routers.all.first.id
       attributes = {
-        :name                  => 'net_name',
-        :external_gateway_info => { :network_id => 'net_id' },
-        :status                => 'ACTIVE',
-        :admin_state_up        => true
+        name: 'net_name',
+        external_gateway_info: { network_id: 'net_id' },
+        status: 'ACTIVE',
+        admin_state_up: true
       }
       network.update_router(router_id, attributes).body.must_match_schema('router' => @router_format)
     end
@@ -50,10 +50,10 @@ describe "Fog::Network[:openstack] | router requests" do
       router_id = network.routers.all.first.id
       net = network.networks.first
       attributes = {
-        :name                  => 'net_name',
-        :external_gateway_info => net,
-        :status                => 'ACTIVE',
-        :admin_state_up        => true
+        name: 'net_name',
+        external_gateway_info: net,
+        status: 'ACTIVE',
+        admin_state_up: true
       }
 
       network.update_router(router_id, attributes).body.must_match_schema('router' => @router_format)

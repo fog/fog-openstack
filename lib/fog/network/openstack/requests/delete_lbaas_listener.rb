@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_lbaas_listener(listener_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "lbaas/listeners/#{listener_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "lbaas/listeners/#{listener_id}"
           )
         end
       end

@@ -3,9 +3,9 @@ require "test_helper"
 describe "Fog::Network[:openstack] | lb_pools" do
   before do
     @lb_pool = network.lb_pools.create(
-      :subnet_id => 'subnet_id',
-      :protocol  => 'HTTP',
-      :lb_method => 'ROUND_ROBIN'
+      subnet_id: 'subnet_id',
+      protocol: 'HTTP',
+      lb_method: 'ROUND_ROBIN'
     )
 
     @lb_pools = network.lb_pools

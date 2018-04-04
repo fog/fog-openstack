@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_rbac_policy(rbac_policy_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "rbac-policies/#{rbac_policy_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "rbac-policies/#{rbac_policy_id}"
           )
         end
       end

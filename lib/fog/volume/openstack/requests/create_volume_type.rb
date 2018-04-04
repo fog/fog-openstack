@@ -12,10 +12,10 @@ module Fog
             data['volume_type'][key] = options[key]
           end
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 202],
-            :method  => 'POST',
-            :path    => "types"
+            body: Fog::JSON.encode(data),
+            expects: [200, 202],
+            method: 'POST',
+            path: "types"
           )
         end
       end

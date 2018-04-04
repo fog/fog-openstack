@@ -3,7 +3,7 @@ require "test_helper"
 describe "Fog::Network[:openstack] | floating_ips" do
   before do
     @floating_ip = network.floating_ips.create(
-      :floating_network_id => 'f0000000-0000-0000-0000-000000000000'
+      floating_network_id: 'f0000000-0000-0000-0000-000000000000'
     )
     @floating_ips = network.floating_ips
   end

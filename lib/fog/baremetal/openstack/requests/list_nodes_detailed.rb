@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_nodes_detailed(options = {})
           request(
-            :expects => [200, 204],
-            :method  => 'GET',
-            :path    => 'nodes/detail',
-            :query   => options
+            expects: [200, 204],
+            method: 'GET',
+            path: 'nodes/detail',
+            query: options
           )
         end
       end

@@ -17,10 +17,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode('security_service' => data),
-            :expects => 200,
-            :method  => 'POST',
-            :path    => 'security-services'
+            body: Fog::JSON.encode('security_service' => data),
+            expects: 200,
+            method: 'POST',
+            path: 'security-services'
           )
         end
       end

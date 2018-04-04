@@ -8,11 +8,11 @@ module Fog
           }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 202,
-            :method  => 'PUT',
-            :path    => "nodes/#{node_id}/states/provision",
-            :headers => {
+            body: Fog::JSON.encode(data),
+            expects: 202,
+            method: 'PUT',
+            path: "nodes/#{node_id}/states/provision",
+            headers: {
               :'X-OpenStack-Ironic-API-Version' => 'latest'
             }
           )

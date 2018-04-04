@@ -25,7 +25,7 @@ describe "Fog::Identity[:openstack] | user requests" do
 
   describe "success" do
     it "#create_user(#{@user_name}, 'mypassword', 'morph@example.com', 't3n4nt1d', true)" do
-      @user.must_match_schema(@user_format, nil, :allow_optional_rules => false)
+      @user.must_match_schema(@user_format, nil, allow_optional_rules: false)
     end
 
     it "#list_users" do
@@ -42,7 +42,7 @@ describe "Fog::Identity[:openstack] | user requests" do
 
     it "#update_user" do
       @identity.update_user(
-        @user['id'], :name => @user_name_update, :email => 'fog@test.com'
+        @user['id'], name: @user_name_update, email: 'fog@test.com'
       ).status.must_equal 200
     end
 

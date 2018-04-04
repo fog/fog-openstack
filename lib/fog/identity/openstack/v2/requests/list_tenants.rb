@@ -15,10 +15,10 @@ module Fog
             end
 
             request(
-              :expects => [200, 204],
-              :method  => 'GET',
-              :path    => "tenants",
-              :query   => params
+              expects: [200, 204],
+              method: 'GET',
+              path: "tenants",
+              query: params
             )
           end
         end
@@ -26,7 +26,7 @@ module Fog
         class Mock
           def list_tenants(_options = nil, _marker = nil)
             Excon::Response.new(
-              :body => {
+              body: {
                 'tenants_links' => [],
                 'tenants'       => [
                   { 'id'          => '1',
@@ -43,7 +43,7 @@ module Fog
                     'name'        => 'disabled' }
                 ]
               },
-              :status => [200, 204][rand(2)]
+              status: [200, 204][rand(2)]
             )
           end
         end

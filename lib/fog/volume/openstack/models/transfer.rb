@@ -6,7 +6,7 @@ module Fog
       class Transfer < Fog::OpenStack::Model
         def save
           requires :name, :volume_id
-          data = service.create_transfer(volume_id, :name => name)
+          data = service.create_transfer(volume_id, name: name)
           merge_attributes(data.body['transfer'])
           true
         end

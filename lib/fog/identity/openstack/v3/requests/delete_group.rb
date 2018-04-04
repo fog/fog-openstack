@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_group(id)
             request(
-              :expects => [204],
-              :method  => 'DELETE',
-              :path    => "groups/#{id}"
+              expects: [204],
+              method: 'DELETE',
+              path: "groups/#{id}"
             )
           end
         end

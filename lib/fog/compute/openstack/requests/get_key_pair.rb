@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_key_pair(key_name)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "os-keypairs/#{Fog::OpenStack.escape(key_name)}"
+            expects: 200,
+            method: 'GET',
+            path: "os-keypairs/#{Fog::OpenStack.escape(key_name)}"
           )
         end
       end

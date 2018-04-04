@@ -4,9 +4,9 @@ module Fog
       class Real
         def list_tenants_with_flavor_access(flavor_ref)
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => "flavors/#{flavor_ref}/os-flavor-access"
+            expects: [200, 203],
+            method: 'GET',
+            path: "flavors/#{flavor_ref}/os-flavor-access"
           )
         end
       end

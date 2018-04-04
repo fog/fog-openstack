@@ -11,10 +11,10 @@ module Fog
             end
 
             request(
-              :expects => 200,
-              :method  => 'PATCH',
-              :path    => "zones/tasks/transfer_requests/#{zone_transfer_request_id}",
-              :body    => Fog::JSON.encode(data)
+              expects: 200,
+              method: 'PATCH',
+              path: "zones/tasks/transfer_requests/#{zone_transfer_request_id}",
+              body: Fog::JSON.encode(data)
             )
           end
         end

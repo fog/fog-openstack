@@ -26,21 +26,21 @@ describe "Fog::ContainerInfra[:openstack] | bay requests" do
   describe "success" do
     before do
       attributes = {
-        :tls_disabled          => true,
-        :keypair_id            => "kp",
-        :server_type           => "vm",
-        :external_network_id   => "public",
-        :image_id              => "fedora-atomic-latest",
-        :name                  => "k8s-bm2",
-        :coe                   => "kubernetes",
-        :flavor_id             => "m1.small",
-        :docker_volume_size    => 3
+        tls_disabled: true,
+        keypair_id: "kp",
+        server_type: "vm",
+        external_network_id: "public",
+        image_id: "fedora-atomic-latest",
+        name: "k8s-bm2",
+        coe: "kubernetes",
+        flavor_id: "m1.small",
+        docker_volume_size: 3
       }
       @bay_model = container_infra.create_bay_model(attributes).body
       attributes = {
-        :name               => "k8s",
-        :baymodel_id        => @bay_model['uuid'],
-        :bay_create_timeout => 1
+        name: "k8s",
+        baymodel_id: @bay_model['uuid'],
+        bay_create_timeout: 1
       }
 
       @bay = container_infra.create_bay(attributes).body

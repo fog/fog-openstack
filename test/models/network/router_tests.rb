@@ -4,8 +4,8 @@ describe "Fog::Network[:openstack] | router" do
   describe "success" do
     before do
       @instance = network.routers.create(
-        :name           => 'router_name',
-        :admin_state_up => true
+        name: 'router_name',
+        admin_state_up: true
       )
     end
 

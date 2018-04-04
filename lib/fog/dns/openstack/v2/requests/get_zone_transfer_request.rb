@@ -6,9 +6,9 @@ module Fog
         class Real
           def get_zone_transfer_request(zone_transfer_request_id)
             request(
-              :expects => 200,
-              :method  => 'GET',
-              :path    => "zones/tasks/transfer_requests/#{zone_transfer_request_id}"
+              expects: 200,
+              method: 'GET',
+              path: "zones/tasks/transfer_requests/#{zone_transfer_request_id}"
             )
           end
         end

@@ -57,14 +57,14 @@ module Fog
 
       def credentials
         options = {
-          :provider                    => 'openstack',
-          :openstack_auth_url          => @openstack_auth_uri.to_s,
-          :openstack_auth_token        => @auth_token,
-          :openstack_identity_endpoint => @openstack_identity_public_endpoint,
-          :current_user                => @current_user,
-          :current_user_id             => @current_user_id,
-          :current_tenant              => @current_tenant,
-          :unscoped_token              => @unscoped_token
+          provider: 'openstack',
+          openstack_auth_url: @openstack_auth_uri.to_s,
+          openstack_auth_token: @auth_token,
+          openstack_identity_endpoint: @openstack_identity_public_endpoint,
+          current_user: @current_user,
+          current_user_id: @current_user_id,
+          current_tenant: @current_tenant,
+          unscoped_token: @unscoped_token
         }
         openstack_options.merge options
       end
@@ -79,8 +79,8 @@ module Fog
         retried = false
         begin
           response = @connection.request(params.merge(
-                                           :headers => headers(params.delete(:headers)),
-                                           :path    => "#{@path}/#{params[:path]}"
+                                           headers: headers(params.delete(:headers)),
+                                           path: "#{@path}/#{params[:path]}"
           ))
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible

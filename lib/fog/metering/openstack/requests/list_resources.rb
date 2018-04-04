@@ -4,9 +4,9 @@ module Fog
       class Real
         def list_resources(_options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'resources'
+            expects: 200,
+            method: 'GET',
+            path: 'resources'
           )
         end
       end

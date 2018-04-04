@@ -6,10 +6,10 @@ module Fog
           def create_workbook(definition)
             body = Fog::JSON.encode(definition)
             request(
-              :body    => body,
-              :expects => 201,
-              :method  => "POST",
-              :path    => "workbooks"
+              body: body,
+              expects: 201,
+              method: "POST",
+              path: "workbooks"
             )
           end
         end

@@ -8,8 +8,8 @@ describe Fog::Monitoring::OpenStack do
 
   before :all do
     openstack_vcr = OpenStackVCR.new(
-      :vcr_directory => spec_data_folder,
-      :service_class => Fog::Monitoring::OpenStack
+      vcr_directory: spec_data_folder,
+      service_class: Fog::Monitoring::OpenStack
     )
     @service      = openstack_vcr.service
     @timestamp    = 146_375_736_714_3
@@ -18,47 +18,47 @@ describe Fog::Monitoring::OpenStack do
   it 'metric crud tests' do
     VCR.use_cassette('metric_crud') do
       # create single metric
-      metric_0 = @service.metrics.create(:name       => 'sample_metric_0',
-                                         :timestamp  => @timestamp,
-                                         :dimensions => { "key1" => "value1" },
-                                         :value      => 42,
-                                         :value_meta => { "meta_key1" => "meta_value1" })
+      metric_0 = @service.metrics.create(name: 'sample_metric_0',
+                                         timestamp: @timestamp,
+                                         dimensions: { "key1" => "value1" },
+                                         value: 42,
+                                         value_meta: { "meta_key1" => "meta_value1" })
 
       metric_0.wont_be_nil
 
       # create multiple metrics
 
-      metric_1 = Fog::Monitoring::OpenStack::Metric.new(:name       => 'sample_metric_1',
-                                                        :timestamp  => @timestamp,
-                                                        :dimensions => { "key1" => "value1" },
-                                                        :value      => 42,
-                                                        :value_meta => { "meta_key1" => "meta_value1" })
+      metric_1 = Fog::Monitoring::OpenStack::Metric.new(name: 'sample_metric_1',
+                                                        timestamp: @timestamp,
+                                                        dimensions: { "key1" => "value1" },
+                                                        value: 42,
+                                                        value_meta: { "meta_key1" => "meta_value1" })
 
-      metric_2 = Fog::Monitoring::OpenStack::Metric.new(:name       => 'sample_metric_2',
-                                                        :timestamp  => @timestamp,
-                                                        :dimensions => { "key1" => "value1" },
-                                                        :value      => 42,
-                                                        :value_meta => { "meta_key1" => "meta_value1" })
+      metric_2 = Fog::Monitoring::OpenStack::Metric.new(name: 'sample_metric_2',
+                                                        timestamp: @timestamp,
+                                                        dimensions: { "key1" => "value1" },
+                                                        value: 42,
+                                                        value_meta: { "meta_key1" => "meta_value1" })
 
       @service.metrics.create_metric_array([metric_1, metric_2])
 
-      metric_0_identity = { :name       => 'sample_metric_0',
-                            :dimensions => { "key1" => "value1" } }
+      metric_0_identity = { name: 'sample_metric_0',
+                            dimensions: { "key1" => "value1" } }
 
-      metric_1_identity = { :name       => 'sample_metric_1',
-                            :dimensions => { "key1" => "value1" } }
+      metric_1_identity = { name: 'sample_metric_1',
+                            dimensions: { "key1" => "value1" } }
 
-      metric_2_identity = { :name       => 'sample_metric_2',
-                            :dimensions => { "key1" => "value1" } }
+      metric_2_identity = { name: 'sample_metric_2',
+                            dimensions: { "key1" => "value1" } }
 
       # list metrics filtered by name and search for previuosly created metrics by unique identifier of name,dimensions
       [metric_0_identity, metric_1_identity, metric_2_identity].each do |metric_identity|
-        metrics_all = @service.metrics.all(:name => metric_identity[:name])
+        metrics_all = @service.metrics.all(name: metric_identity[:name])
         metrics_all.wont_be_nil
         metrics_all.wont_be_empty
         metrics_all_identities = metrics_all.collect do |_metric|
-          { :name => metric_identity[:name],
-            :dimensions => metric_identity[:dimensions] }
+          { name: metric_identity[:name],
+            dimensions: metric_identity[:dimensions] }
         end
 
         metrics_all_identities.must_include(metric_identity)
@@ -71,25 +71,25 @@ describe Fog::Monitoring::OpenStack do
       metrics_name_list.wont_be_empty
 
       # failure cases
-      proc { @service.metrics.create(:name => "this won't be created due to insufficient args") }
+      proc { @service.metrics.create(name: "this won't be created due to insufficient args") }
         .must_raise Fog::Monitoring::OpenStack::ArgumentError
-      proc { @service.metrics.create(:name => "this wont't be created due to invalid timestamp", :timestamp => 1234) }
+      proc { @service.metrics.create(name: "this wont't be created due to invalid timestamp", timestamp: 1234) }
         .must_raise Fog::Monitoring::OpenStack::ArgumentError
     end
   end
 
   it 'list measurements by name and start_time' do
     VCR.use_cassette('metric_measurement_list') do
-      measurement_list = @service.measurements.find(:name          => 'cpu.user_perc',
-                                                    :start_time    => '2016-04-01T14:43:00Z',
-                                                    :merge_metrics => true)
+      measurement_list = @service.measurements.find(name: 'cpu.user_perc',
+                                                    start_time: '2016-04-01T14:43:00Z',
+                                                    merge_metrics: true)
 
       measurement_list.wont_be_nil
       measurement_list.wont_be_empty
 
       # should return an empty list
-      measurement_list_empty = @service.measurements.find(:name       => 'non.existing.metric_name',
-                                                          :start_time => '2016-04-01T14:43:00Z')
+      measurement_list_empty = @service.measurements.find(name: 'non.existing.metric_name',
+                                                          start_time: '2016-04-01T14:43:00Z')
 
       measurement_list_empty.must_be_empty
     end
@@ -97,10 +97,10 @@ describe Fog::Monitoring::OpenStack do
 
   it 'find statistics specified by name, start_time and statistics' do
     VCR.use_cassette('statistics_list') do
-      statistics_list = @service.statistics.all(:name          => 'cpu.system_perc',
-                                                :start_time    => '2016-04-01T14:43:00Z',
-                                                :statistics    => 'avg,min,max,sum,count',
-                                                :merge_metrics => true)
+      statistics_list = @service.statistics.all(name: 'cpu.system_perc',
+                                                start_time: '2016-04-01T14:43:00Z',
+                                                statistics: 'avg,min,max,sum,count',
+                                                merge_metrics: true)
 
       statistics_list.wont_be_nil
       statistics_list.wont_be_empty
@@ -111,10 +111,10 @@ describe Fog::Monitoring::OpenStack do
     VCR.use_cassette('notification-methods_crud') do
       begin
         # create notification method
-        notification_method      = @service.notification_methods.create(:name    => 'important notification',
-                                                                        :type    => 'EMAIL',
-                                                                        :address => 'admin@example.com',
-                                                                        :period  => 0)
+        notification_method      = @service.notification_methods.create(name: 'important notification',
+                                                                        type: 'EMAIL',
+                                                                        address: 'admin@example.com',
+                                                                        period: 0)
 
         # list all notification methods
         notification_methods_all = @service.notification_methods.all
@@ -128,10 +128,10 @@ describe Fog::Monitoring::OpenStack do
         notification_method.must_equal notification_method_by_id
 
         # update specific an existing notification
-        notification_method.update(:name    => notification_method.name,
-                                   :address => 'notification_methods@example.com',
-                                   :type    => notification_method.type,
-                                   :period  => 0)
+        notification_method.update(name: notification_method.name,
+                                   address: 'notification_methods@example.com',
+                                   type: notification_method.type,
+                                   period: 0)
 
         notification_method.address.must_equal 'notification_methods@example.com'
         notification_method.period.must_equal 0
@@ -142,7 +142,7 @@ describe Fog::Monitoring::OpenStack do
         notification_method = nil
 
         # failure cases
-        proc { @service.notification_methods.create(:name => "this won't be created due to insufficient args") }
+        proc { @service.notification_methods.create(name: "this won't be created due to insufficient args") }
           .must_raise Fog::Monitoring::OpenStack::ArgumentError
         proc { @service.notification_methods.find_by_id('bogus_id') }.must_raise Fog::Monitoring::OpenStack::NotFound
       ensure
@@ -156,10 +156,10 @@ describe Fog::Monitoring::OpenStack do
       begin
         # create an alarm defintion
         alarm_definition = @service.alarm_definitions.create(
-          :name        => 'average cpu usage in perc',
-          :match_by    => ['hostname'],
-          :expression  => '(avg(cpu.user_perc{hostname=devstack}) > 10)',
-          :description => 'Definition for an important alarm'
+          name: 'average cpu usage in perc',
+          match_by: ['hostname'],
+          expression: '(avg(cpu.user_perc{hostname=devstack}) > 10)',
+          description: 'Definition for an important alarm'
         )
 
         # list all alarm definitions
@@ -177,21 +177,21 @@ describe Fog::Monitoring::OpenStack do
         alarm_definition.deterministic.must_equal false
 
         # create a notification method for the following test
-        notification_method       = @service.notification_methods.create(:name    => 'important notification',
-                                                                         :type    => 'EMAIL',
-                                                                         :address => 'admin@example.com')
+        notification_method       = @service.notification_methods.create(name: 'important notification',
+                                                                         type: 'EMAIL',
+                                                                         address: 'admin@example.com')
 
         # replace an alarm_definition
         alarm_definition_replaced = alarm_definition.update(
-          :name                 => 'CPU percent greater than 15',
-          :match_by             => ['hostname'],
-          :description          => 'Replaced alarm-definition expression',
-          :expression           => '(avg(cpu.user_perc{hostname=devstack}) > 15)',
-          :severity             => 'LOW',
-          :alarm_actions        => [notification_method.id],
-          :ok_actions           => [notification_method.id],
-          :undetermined_actions => [notification_method.id],
-          :actions_enabled      => true
+          name: 'CPU percent greater than 15',
+          match_by: ['hostname'],
+          description: 'Replaced alarm-definition expression',
+          expression: '(avg(cpu.user_perc{hostname=devstack}) > 15)',
+          severity: 'LOW',
+          alarm_actions: [notification_method.id],
+          ok_actions: [notification_method.id],
+          undetermined_actions: [notification_method.id],
+          actions_enabled: true
         )
 
         alarm_definition_replaced.id.must_equal alarm_definition.id
@@ -200,7 +200,7 @@ describe Fog::Monitoring::OpenStack do
         alarm_definition_replaced.expression.must_equal '(avg(cpu.user_perc{hostname=devstack}) > 15)'
         #
         # patch specific attributes of alarm_definition
-        alarm_definition_updated = alarm_definition.patch(:description => 'An updated alarm-definition.')
+        alarm_definition_updated = alarm_definition.patch(description: 'An updated alarm-definition.')
 
         alarm_definition.id.must_equal alarm_definition_updated.id
         alarm_definition_updated.description.must_equal 'An updated alarm-definition.'
@@ -217,7 +217,7 @@ describe Fog::Monitoring::OpenStack do
         notification_method = nil
 
         # failure cases
-        proc { @service.alarm_definitions.create(:name => "this won't be created due to insufficient args") }
+        proc { @service.alarm_definitions.create(name: "this won't be created due to insufficient args") }
           .must_raise Fog::Monitoring::OpenStack::ArgumentError
       ensure
         alarm_definition.destroy if alarm_definition
@@ -230,14 +230,14 @@ describe Fog::Monitoring::OpenStack do
     VCR.use_cassette('alarm_crud') do
       begin
         # create notification method
-        notification_method = @service.notification_methods.create(:name    => 'another notification',
-                                                                   :type    => 'EMAIL',
-                                                                   :address => 'admin@example.com')
+        notification_method = @service.notification_methods.create(name: 'another notification',
+                                                                   type: 'EMAIL',
+                                                                   address: 'admin@example.com')
 
         # create an alarm definition which ensures an alarm is thrown
-        alarm_definition = @service.alarm_definitions.create(:name        => 'avg cpu.user_per ge 0',
-                                                             :expression  => '(avg(cpu.user_perc) >= 0)',
-                                                             :description => 'ensure an alarm is thrown in crud test.')
+        alarm_definition = @service.alarm_definitions.create(name: 'avg cpu.user_per ge 0',
+                                                             expression: '(avg(cpu.user_perc) >= 0)',
+                                                             description: 'ensure an alarm is thrown in crud test.')
 
         # list all alarms
         alarms_all = @service.alarms.all
@@ -246,13 +246,13 @@ describe Fog::Monitoring::OpenStack do
         alarms_all.wont_be_empty
 
         # list all alarms in ALARM state
-        alarms_all_state_filter = @service.alarms.all(:state => 'OK')
+        alarms_all_state_filter = @service.alarms.all(state: 'OK')
 
         alarms_all_state_filter.wont_be_nil
         alarms_all_state_filter.wont_be_empty
 
         # get an alarm by name using list all alarms with filter
-        alarm_list_by_name_filter = @service.alarms.all(:metric_name => 'cpu.idle_perc')
+        alarm_list_by_name_filter = @service.alarms.all(metric_name: 'cpu.idle_perc')
         alarm_by_name             = alarm_list_by_name_filter.first
 
         alarm_by_name.wont_be_nil
@@ -268,9 +268,9 @@ describe Fog::Monitoring::OpenStack do
         alarm_by_name.lifecycle_state.must_equal alarm_by_id.lifecycle_state
 
         # replace the entire state of the specified alarm
-        alarm_by_id.update(:state           => 'ALARM',
-                           :lifecycle_state => 'OPEN',
-                           :link            => 'http://pagerduty.com/')
+        alarm_by_id.update(state: 'ALARM',
+                           lifecycle_state: 'OPEN',
+                           link: 'http://pagerduty.com/')
 
         alarm_by_id.state.must_equal 'ALARM'
         alarm_by_id.lifecycle_state.must_equal 'OPEN'
@@ -280,13 +280,13 @@ describe Fog::Monitoring::OpenStack do
         alarm_by_id.link.wont_equal 'http://somesite.com/this-alarm-info'
 
         # patch specific attributes of an existing alarm
-        alarm_by_id.patch(:link => 'http://somesite.com/this-alarm-info')
+        alarm_by_id.patch(link: 'http://somesite.com/this-alarm-info')
 
         # check the link afterwards
         alarm_by_id.link.must_equal 'http://somesite.com/this-alarm-info'
 
         # list alarm state history for all alarms but limit history to 5
-        alarm_state_history_all = @service.alarm_states.all(:limit => 5)
+        alarm_state_history_all = @service.alarm_states.all(limit: 5)
 
         alarm_state_history_all.wont_be_nil
         alarm_state_history_all.length.must_equal 5
@@ -321,7 +321,7 @@ describe Fog::Monitoring::OpenStack do
       alarm_state_history_all.wont_be_empty
 
       # get an alarm by name using list all alarms with filter
-      alarm_by_name = @service.alarms.all(:name => 'cpu.user_perc')
+      alarm_by_name = @service.alarms.all(name: 'cpu.user_perc')
 
       # get the id of this alarm
       alarm_id      = alarm_by_name.first.id

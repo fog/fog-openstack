@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_plan(plan_uuid)
           request(
-            :expects => [200, 204],
-            :method  => 'GET',
-            :path    => "plans/#{plan_uuid}"
+            expects: [200, 204],
+            method: 'GET',
+            path: "plans/#{plan_uuid}"
           )
         end
       end

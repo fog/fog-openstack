@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_flavor(flavor_id)
           request(
-            :expects => 202,
-            :method  => 'DELETE',
-            :path    => "flavors/#{flavor_id}"
+            expects: 202,
+            method: 'DELETE',
+            path: "flavors/#{flavor_id}"
           )
         end
       end

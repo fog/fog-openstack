@@ -31,10 +31,10 @@ module Fog
             end
 
             request(
-              :expects => [200, 202],
-              :method  => 'GET',
-              :path    => "users/#{user_id}/credentials/OS-EC2",
-              :query   => query
+              expects: [200, 202],
+              method: 'GET',
+              path: "users/#{user_id}/credentials/OS-EC2",
+              query: query
             )
           end
         end

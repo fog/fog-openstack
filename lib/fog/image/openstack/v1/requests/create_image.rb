@@ -32,11 +32,11 @@ module Fog
             end
 
             request(
-              :headers => data,
-              :body    => body,
-              :expects => 201,
-              :method  => 'POST',
-              :path    => "images"
+              headers: data,
+              body: body,
+              expects: 201,
+              method: 'POST',
+              path: "images"
             )
           ensure
             body.close if body.respond_to?(:close)

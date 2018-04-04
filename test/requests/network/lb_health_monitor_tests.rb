@@ -20,9 +20,9 @@ describe "Fog::Network[:openstack] | lb_health_monitor requests" do
   describe "success" do
     before do
       @lb_pool = network.lb_pools.create(
-        :subnet_id => 'subnet_id',
-        :protocol  => 'HTTP',
-        :lb_method => 'ROUND_ROBIN'
+        subnet_id: 'subnet_id',
+        protocol: 'HTTP',
+        lb_method: 'ROUND_ROBIN'
       )
 
       type = 'PING'
@@ -31,11 +31,11 @@ describe "Fog::Network[:openstack] | lb_health_monitor requests" do
       max_retries = 10
 
       attributes = {
-        :http_method    => 'GET',
-        :url_path       => '/',
-        :expected_codes => '200, 201',
-        :admin_state_up => true,
-        :tenant_id      => 'tenant_id'
+        http_method: 'GET',
+        url_path: '/',
+        expected_codes: '200, 201',
+        admin_state_up: true,
+        tenant_id: 'tenant_id'
       }
 
       @lb_health_monitor = network.create_lb_health_monitor(
@@ -65,13 +65,13 @@ describe "Fog::Network[:openstack] | lb_health_monitor requests" do
     it "#update_lb_health_monitor" do
       lb_health_monitor_id = network.lb_health_monitors.all.first.id
       attributes = {
-        :delay          => 5,
-        :timeout        => 10,
-        :max_retries    => 20,
-        :http_method    => 'POST',
-        :url_path       => '/varz',
-        :expected_codes => '200',
-        :admin_state_up => false
+        delay: 5,
+        timeout: 10,
+        max_retries: 20,
+        http_method: 'POST',
+        url_path: '/varz',
+        expected_codes: '200',
+        admin_state_up: false
       }
 
       network.update_lb_health_monitor(lb_health_monitor_id, attributes).body

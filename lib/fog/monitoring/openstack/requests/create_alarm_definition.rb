@@ -4,10 +4,10 @@ module Fog
       class Real
         def create_alarm_definition(options)
           request(
-            :body    => Fog::JSON.encode(options),
-            :expects => [201, 204],
-            :method  => 'POST',
-            :path    => 'alarm-definitions'
+            body: Fog::JSON.encode(options),
+            expects: [201, 204],
+            method: 'POST',
+            path: 'alarm-definitions'
           )
         end
       end

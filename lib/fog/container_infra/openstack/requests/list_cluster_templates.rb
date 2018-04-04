@@ -4,9 +4,9 @@ module Fog
       class Real
         def list_cluster_templates
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "clustertemplates/detail"
+            expects: [200],
+            method: 'GET',
+            path: "clustertemplates/detail"
           )
         end
       end

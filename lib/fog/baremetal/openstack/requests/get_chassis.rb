@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_chassis(chassis_uuid)
           request(
-            :expects => [200, 204],
-            :method  => 'GET',
-            :path    => "chassis/#{chassis_uuid}"
+            expects: [200, 204],
+            method: 'GET',
+            path: "chassis/#{chassis_uuid}"
           )
         end
       end

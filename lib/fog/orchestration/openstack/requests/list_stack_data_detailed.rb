@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_stack_data_detailed(options = {})
           request(
-            :method  => 'GET',
-            :path    => 'stacks/detail',
-            :expects => 200,
-            :query   => options
+            method: 'GET',
+            path: 'stacks/detail',
+            expects: 200,
+            query: options
           )
         end
       end
@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_stack_data_detailed(_options = {})
           Excon::Response.new(
-            :body => {
+            body: {
               'stacks' =>
                           [{ "parent" => nil,
                              "disable_rollback"      => true,
@@ -40,7 +40,7 @@ module Fog
                              "outputs"               => [],
                              "template_description"  => "No description" }]
             },
-            :status => 200
+            status: 200
           )
         end
       end

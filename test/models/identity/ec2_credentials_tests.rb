@@ -7,16 +7,16 @@ describe "Fog::Identity[:openstack] | ec2_credentials" do
 
     @user = identity.users.find { |user| user.name == 'foobar' }
     @user ||= identity.users.create(
-      :name      => 'foobar',
-      :email     => 'foo@bar.com',
-      :tenant_id => tenant_id,
-      :password  => 'spoof',
-      :enabled   => true
+      name: 'foobar',
+      email: 'foo@bar.com',
+      tenant_id: tenant_id,
+      password: 'spoof',
+      enabled: true
     )
 
     @ec2_credential = identity.ec2_credentials.create(
-      :user_id   => @user.id,
-      :tenant_id => tenant_id
+      user_id: @user.id,
+      tenant_id: tenant_id
     )
   end
 

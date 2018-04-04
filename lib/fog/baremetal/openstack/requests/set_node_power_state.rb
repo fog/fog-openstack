@@ -8,10 +8,10 @@ module Fog
           }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 202,
-            :method  => 'PUT',
-            :path    => "nodes/#{node_id}/states/power"
+            body: Fog::JSON.encode(data),
+            expects: 202,
+            method: 'PUT',
+            path: "nodes/#{node_id}/states/power"
           )
         end
       end

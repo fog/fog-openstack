@@ -5,9 +5,9 @@ module Fog
         class Real
           def deactivate_image(image_id)
             request(
-              :expects => 204,
-              :method  => 'POST',
-              :path    => "images/#{image_id}/actions/deactivate"
+              expects: 204,
+              method: 'POST',
+              path: "images/#{image_id}/actions/deactivate"
             )
           end
         end

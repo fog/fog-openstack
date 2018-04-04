@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_subnet_pool(subnet_pool_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "subnetpools/#{subnet_pool_id}"
+            expects: [200],
+            method: 'GET',
+            path: "subnetpools/#{subnet_pool_id}"
           )
         end
       end

@@ -5,10 +5,10 @@ module Fog
         class Real
           def list_policies(options = {})
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "policies",
-              :query   => options
+              expects: [200],
+              method: 'GET',
+              path: "policies",
+              query: options
             )
           end
         end

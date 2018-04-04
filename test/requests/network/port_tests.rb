@@ -22,15 +22,15 @@ describe "Fog::Network[:openstack] | port requests" do
     before do
       network_id = 'net_id'
       attributes = {
-        :name                  => 'port_name',
-        :fixed_ips             => [],
-        :mac_address           => 'fa:16:3e:62:91:7f',
-        :admin_state_up        => true,
-        :device_owner          => 'device_owner',
-        :device_id             => 'device_id',
-        :tenant_id             => 'tenant_id',
-        :security_groups       => [],
-        :allowed_address_pairs => []
+        name: 'port_name',
+        fixed_ips: [],
+        mac_address: 'fa:16:3e:62:91:7f',
+        admin_state_up: true,
+        device_owner: 'device_owner',
+        device_id: 'device_id',
+        tenant_id: 'tenant_id',
+        security_groups: [],
+        allowed_address_pairs: []
       }
 
       @port = network.create_port(network_id, attributes).body
@@ -54,11 +54,11 @@ describe "Fog::Network[:openstack] | port requests" do
     it "#update_port" do
       port_id = network.ports.all.first.id
       attributes = {
-        :name           => 'port_name',
-        :fixed_ips      => [],
-        :admin_state_up => true,
-        :device_owner   => 'device_owner',
-        :device_id      => 'device_id'
+        name: 'port_name',
+        fixed_ips: [],
+        admin_state_up: true,
+        device_owner: 'device_owner',
+        device_id: 'device_id'
       }
 
       network.update_port(port_id, attributes).body

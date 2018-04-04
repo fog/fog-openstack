@@ -14,10 +14,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 201,
-            :method  => "POST",
-            :path    => "vnfs"
+            body: Fog::JSON.encode(data),
+            expects: 201,
+            method: "POST",
+            path: "vnfs"
           )
         end
       end

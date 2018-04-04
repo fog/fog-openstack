@@ -17,10 +17,10 @@ module Fog
             end
 
             request(
-              :body    => Fog::JSON.encode(data),
-              :expects => 202,
-              :method  => 'POST',
-              :path    => "zones/#{zone_id}/recordsets"
+              body: Fog::JSON.encode(data),
+              expects: 202,
+              method: 'POST',
+              path: "zones/#{zone_id}/recordsets"
             )
           end
         end

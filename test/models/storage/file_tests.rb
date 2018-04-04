@@ -20,13 +20,13 @@ unless Fog.mocking?
   end
 
   @file_attributes = {
-    :key  => 'fog_file_tests',
-    :body => lorem_file
+    key: 'fog_file_tests',
+    body: lorem_file
   }
 
   directory_attributes = {
     # Add a random suffix to prevent collision
-    :key => "fogfilestests-#{rand(65536)}"
+    key: "fogfilestests-#{rand(65536)}"
   }
 
   @directory = Fog::Storage[:openstack].directories.create(directory_attributes)
@@ -36,7 +36,7 @@ unless Fog.mocking?
       @directory.destroy
     end
 
-    model_tests(@directory.files, @file_attributes.merge(:etag => 'foo'), Fog.mocking?) do
+    model_tests(@directory.files, @file_attributes.merge(etag: 'foo'), Fog.mocking?) do
       it "#save should not blow up with etag" do
         @instance.save
       end
@@ -77,9 +77,9 @@ unless Fog.mocking?
         describe "#content_disposition" do
           before do
             @instance = @directory.files.create(
-              :key                 => 'meta-test',
-              :body                => lorem_file,
-              :content_disposition => 'ho-ho-ho'
+              key: 'meta-test',
+              body: lorem_file,
+              content_disposition: 'ho-ho-ho'
             )
           end
 

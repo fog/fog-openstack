@@ -19,15 +19,15 @@ describe "Fog::Network[:openstack] | ipsec_policy requests" do
   describe "success" do
     before do
       attributes = {
-        :name                 => 'test-ipsec-policy',
-        :description          => 'Test VPN ipsec Policy',
-        :tenant_id            => 'tenant_id',
-        :auth_algorithm       => 'sha1',
-        :encryption_algorithm => 'aes-128',
-        :pfs                  => 'group5',
-        :transform_protocol   => 'esp',
-        :lifetime             => { 'units' => 'seconds', 'value' => 3600 },
-        :encapsulation_mode   => 'tunnel'
+        name: 'test-ipsec-policy',
+        description: 'Test VPN ipsec Policy',
+        tenant_id: 'tenant_id',
+        auth_algorithm: 'sha1',
+        encryption_algorithm: 'aes-128',
+        pfs: 'group5',
+        transform_protocol: 'esp',
+        lifetime: { 'units' => 'seconds', 'value' => 3600 },
+        encapsulation_mode: 'tunnel'
       }
 
       @create_ipsec_policy = network.create_ipsec_policy(attributes).body
@@ -51,15 +51,15 @@ describe "Fog::Network[:openstack] | ipsec_policy requests" do
     it "#update_ipsec_policy" do
       ipsec_policy_id = network.ipsec_policies.all.first.id
       attributes = {
-        :name                 => 'rename-test-ipsec-policy',
-        :description          => 'Test VPN ipsec Policy',
-        :tenant_id            => 'tenant_id',
-        :auth_algorithm       => 'sha1',
-        :encryption_algorithm => 'aes-128',
-        :pfs                  => 'group5',
-        :transform_protocol   => 'esp',
-        :lifetime             => { 'units' => 'seconds', 'value' => 3600 },
-        :encapsulation_mode   => 'tunnel'
+        name: 'rename-test-ipsec-policy',
+        description: 'Test VPN ipsec Policy',
+        tenant_id: 'tenant_id',
+        auth_algorithm: 'sha1',
+        encryption_algorithm: 'aes-128',
+        pfs: 'group5',
+        transform_protocol: 'esp',
+        lifetime: { 'units' => 'seconds', 'value' => 3600 },
+        encapsulation_mode: 'tunnel'
       }
 
       network.update_ipsec_policy(ipsec_policy_id, attributes).body

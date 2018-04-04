@@ -91,7 +91,7 @@ module Fog
             node_uuid = Fog::UUID.uuid
 
             hash[key] = {
-              :chassis_collection => [
+              chassis_collection: [
                 {
                   "created_at"  => "2000-01-01T12:00:00",
                   "description" => "Sample chassis",
@@ -120,7 +120,7 @@ module Fog
                   "uuid"        => chassis_uuid
                 }
               ],
-              :drivers => [
+              drivers: [
                 {
                   "hosts" => [
                     "fake-host"
@@ -128,7 +128,7 @@ module Fog
                   "name" => "sample-driver"
                 }
               ],
-              :nodes => [{
+              nodes: [{
                 "chassis_uuid"           => chassis_uuid,
                 "console_enabled"        => false,
                 "created_at"             => "2000-01-01T12:00:00",
@@ -174,7 +174,7 @@ module Fog
                 "updated_at"             => "2000-01-01T12:00:00",
                 "uuid"                   => node_uuid
               }],
-              :ports => [{
+              ports: [{
                 "address"    => "fe:54:00:77:07:d9",
                 "created_at" => "2014-12-23T19:35:30.734116",
                 "extra"      => {
@@ -215,7 +215,7 @@ module Fog
           management_url.path = '/v1'
           @openstack_management_url = management_url.to_s
 
-          @data ||= { :users => {} }
+          @data ||= { users: {} }
           unless @data[:users].find { |u| u['name'] == options[:openstack_username] }
             id = Fog::Mock.random_numbers(6).to_s
             @data[:users][id] = {
@@ -237,11 +237,11 @@ module Fog
         end
 
         def credentials
-          { :provider => 'openstack',
-            :openstack_auth_url       => @openstack_auth_uri.to_s,
-            :openstack_auth_token     => @auth_token,
-            :openstack_region         => @openstack_region,
-            :openstack_management_url => @openstack_management_url }
+          { provider: 'openstack',
+            openstack_auth_url: @openstack_auth_uri.to_s,
+            openstack_auth_token: @auth_token,
+            openstack_region: @openstack_region,
+            openstack_management_url: @openstack_management_url }
         end
       end
 

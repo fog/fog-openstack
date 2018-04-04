@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_cron_trigger(name)
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "cron_triggers/#{URI.encode(name)}"
+              expects: 200,
+              method: "GET",
+              path: "cron_triggers/#{URI.encode(name)}"
             )
           end
         end

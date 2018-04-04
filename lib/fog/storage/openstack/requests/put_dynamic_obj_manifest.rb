@@ -29,10 +29,10 @@ module Fog
           path = "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
           headers = { 'X-Object-Manifest' => path }.merge(options)
           request(
-            :expects => 201,
-            :headers => headers,
-            :method  => 'PUT',
-            :path    => path
+            expects: 201,
+            headers: headers,
+            method: 'PUT',
+            path: path
           )
         end
       end

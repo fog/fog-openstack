@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_images_detail(filters = {})
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => 'images/detail',
-            :query   => filters
+            expects: [200, 203],
+            method: 'GET',
+            path: 'images/detail',
+            query: filters
           )
         end
       end

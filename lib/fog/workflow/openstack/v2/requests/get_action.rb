@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_action(name)
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "actions/#{URI.encode(name)}"
+              expects: 200,
+              method: "GET",
+              path: "actions/#{URI.encode(name)}"
             )
           end
         end

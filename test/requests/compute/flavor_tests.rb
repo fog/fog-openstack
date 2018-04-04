@@ -39,15 +39,15 @@ describe "Fog::Compute[:openstack] | flavor requests" do
 
     it "#create_flavor(attributes)" do
       attributes = {
-        :flavor_id   => '100',
-        :name        => 'shindo test flavor',
-        :disk        => 10,
-        :ram         => 10,
-        :vcpus       => 10,
-        :swap        => "0",
-        :rxtx_factor => 2.4,
-        :ephemeral   => 0,
-        :is_public   => false
+        flavor_id: '100',
+        name: 'shindo test flavor',
+        disk: 10,
+        ram: 10,
+        vcpus: 10,
+        swap: "0",
+        rxtx_factor: 2.4,
+        ephemeral: 0,
+        is_public: false
       }
 
       @compute.create_flavor(attributes).body
@@ -79,7 +79,7 @@ describe "Fog::Compute[:openstack] | flavor requests" do
     end
 
     it "#create_flavor_metadata(flavor_ref, metadata)" do
-      metadata = { :cpu_arch => 'x86_64' }
+      metadata = { cpu_arch: 'x86_64' }
       @compute.create_flavor_metadata("1", metadata).body
               .must_match_schema('extra_specs' => { 'cpu_arch' => String })
     end
@@ -123,7 +123,7 @@ describe "Fog::Compute[:openstack] | flavor requests" do
     it "create_flavor_metadata(flavor_ref)" do
       skip if Fog.mocking?
       proc do
-        metadata = { :cpu_arch => 'x86_64' }
+        metadata = { cpu_arch: 'x86_64' }
         @compute.create_flavor_metadata("1234", metadata).body
       end.must_raise Fog::Compute::OpenStack::NotFound
     end

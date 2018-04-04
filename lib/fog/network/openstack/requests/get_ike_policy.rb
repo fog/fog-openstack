@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_ike_policy(ike_policy_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "vpn/ikepolicies/#{ike_policy_id}"
+            expects: [200],
+            method: 'GET',
+            path: "vpn/ikepolicies/#{ike_policy_id}"
           )
         end
       end

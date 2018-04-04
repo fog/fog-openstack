@@ -5,8 +5,8 @@ describe "Fog::ContainerInfra[:openstack] | certificate" do
   describe "success" do
     before do
       @instance = container_infra.certificates.create(
-        :bay_uuid => '0562d357-8641-4759-8fed-8173f02c9633',
-        :csr => "-----BEGIN CERTIFICATE REQUEST-----\nMIIEfzCCAmcCAQAwFDESMBAGA1UEAxMJWW91ciBOYW1lMIICIjANBgkqhkiG9w0B\n-----END CERTIFICATE REQUEST-----\n"
+        bay_uuid: '0562d357-8641-4759-8fed-8173f02c9633',
+        csr: "-----BEGIN CERTIFICATE REQUEST-----\nMIIEfzCCAmcCAQAwFDESMBAGA1UEAxMJWW91ciBOYW1lMIICIjANBgkqhkiG9w0B\n-----END CERTIFICATE REQUEST-----\n"
       )
     end
 

@@ -22,11 +22,11 @@ module Fog
             headers, options = Fog::DNS::OpenStack::V2.setup_headers(options)
 
             request(
-              :expects => 200,
-              :method  => 'GET',
-              :path    => path,
-              :query   => options,
-              :headers => headers
+              expects: 200,
+              method: 'GET',
+              path: path,
+              query: options,
+              headers: headers
             )
           end
         end

@@ -36,10 +36,10 @@ module Fog
           selected_options.each { |key| data["security_group"][key] = options[key] }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 201,
-            :method  => "POST",
-            :path    => "security-groups"
+            body: Fog::JSON.encode(data),
+            expects: 201,
+            method: "POST",
+            path: "security-groups"
           )
         end
       end

@@ -86,7 +86,7 @@ module Fog
         def self.data
           @data ||= Hash.new do |hash, key|
             hash[key] = {
-              :shares => [
+              shares: [
                 {
                   "id"    => "d94a8548-2079-4be0-b21c-0a887acd31ca",
                   "links" => [
@@ -116,7 +116,7 @@ module Fog
                   "name" => "Share1"
                 }
               ],
-              :shares_detail => [
+              shares_detail: [
                 {
                   "links" => [
                     {
@@ -157,7 +157,7 @@ module Fog
                   "source_cgsnapshot_member_id" => ''
                 }
               ],
-              :share_networks => [
+              share_networks: [
                 {
                   "id"   => "32763294-e3d4-456a-998d-60047677c2fb",
                   "name" => "net_my1"
@@ -167,7 +167,7 @@ module Fog
                   "name" => "net_my"
                 }
               ],
-              :share_networks_detail => [
+              share_networks_detail: [
                 {
                   "name"              => "net_my1",
                   "segmentation_id"   => '',
@@ -184,7 +184,7 @@ module Fog
                   "description"       => "descr"
                 }
               ],
-              :snapshots => [
+              snapshots: [
                 {
                   "id"    => "086a1aa6-c425-4ecd-9612-391a3b1b9375",
                   "links" => [
@@ -200,7 +200,7 @@ module Fog
                   "name" => "snapshot_My_share"
                 }
               ],
-              :security_services_detail => [
+              security_services_detail: [
                 {
                   "status"      => "new",
                   "domain"      => "",
@@ -217,7 +217,7 @@ module Fog
                   "description" => "Creating my first Security Service"
                 }
               ],
-              :security_services => [
+              security_services: [
                 {
                   "status" => "new",
                   "type"   => "ldap",
@@ -225,7 +225,7 @@ module Fog
                   "name"   => "SecServ2"
                 }
               ],
-              :availability_zones => [
+              availability_zones: [
                 {
                   "name"        => "nova",
                   "created_at"  => "2015-09-18T09:50:55.000000",
@@ -233,7 +233,7 @@ module Fog
                   "id"          => "388c983d-258e-4a0e-b1ba-10da37d766db"
                 }
               ],
-              :snapshots_detail => [
+              snapshots_detail: [
                 {
                   "status"      => "available",
                   "share_id"    => "d94a8548-2079-4be0-b21c-0a887acd31ca",
@@ -256,7 +256,7 @@ module Fog
                   "size"        => 1
                 }
               ],
-              :export_locations => [
+              export_locations: [
                 {
                   "path"              => "10.254.0.3:/shares/share-e1c2d35e-fe67-4028-ad7a-45f668732b1d",
                   "share_instance_id" => "e1c2d35e-fe67-4028-ad7a-45f668732b1d",
@@ -272,7 +272,7 @@ module Fog
                   "preferred"         => false
                 }
               ],
-              :access_rules => [
+              access_rules: [
                 {
                   "share_id"     => "406ea93b-32e9-4907-a117-148b3945749f",
                   "created_at"   => "2015-09-07T09:14:48.000000",
@@ -284,7 +284,7 @@ module Fog
                   "id"           => "a25b2df3-90bd-4add-afa6-5f0dbbd50452"
                 }
               ],
-              :quota => {
+              quota: {
                 "gigabytes"          => 1000,
                 "shares"             => 50,
                 "snapshot_gigabytes" => 1000,
@@ -313,7 +313,7 @@ module Fog
           management_url.path = '/v2'
           @openstack_management_url = management_url.to_s
 
-          @data ||= { :users => {} }
+          @data ||= { users: {} }
           unless @data[:users].detect { |u| u['name'] == options[:openstack_username] }
             id = Fog::Mock.random_numbers(6).to_s
             @data[:users][id] = {
@@ -335,11 +335,11 @@ module Fog
         end
 
         def credentials
-          { :provider => 'openstack',
-            :openstack_auth_url       => @openstack_auth_uri.to_s,
-            :openstack_auth_token     => @auth_token,
-            :openstack_region         => @openstack_region,
-            :openstack_management_url => @openstack_management_url }
+          { provider: 'openstack',
+            openstack_auth_url: @openstack_auth_uri.to_s,
+            openstack_auth_token: @auth_token,
+            openstack_region: @openstack_region,
+            openstack_management_url: @openstack_management_url }
         end
       end
       # rubocop:enable Metrics/MethodLength

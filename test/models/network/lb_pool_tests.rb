@@ -4,20 +4,20 @@ describe "Fog::Network[:openstack] | lb_pool" do
   describe "success" do
     before do
       @lb_health_monitor = network.lb_health_monitors.create(
-        :type        => 'PING',
-        :delay       => 1,
-        :timeout     => 5,
-        :max_retries => 10
+        type: 'PING',
+        delay: 1,
+        timeout: 5,
+        max_retries: 10
       )
 
       @instance = network.lb_pools.create(
-        :subnet_id      => 'subnet_id',
-        :protocol       => 'HTTP',
-        :lb_method      => 'ROUND_ROBIN',
-        :name           => 'test-pool',
-        :description    => 'Test Pool',
-        :admin_state_up => true,
-        :tenant_id      => 'tenant_id'
+        subnet_id: 'subnet_id',
+        protocol: 'HTTP',
+        lb_method: 'ROUND_ROBIN',
+        name: 'test-pool',
+        description: 'Test Pool',
+        admin_state_up: true,
+        tenant_id: 'tenant_id'
       )
     end
 

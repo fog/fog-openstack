@@ -6,10 +6,10 @@ module Fog
           data = { key => value }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "flavors/#{flavor_ref}/os-extra_specs/#{key}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "flavors/#{flavor_ref}/os-extra_specs/#{key}"
           )
         end
       end

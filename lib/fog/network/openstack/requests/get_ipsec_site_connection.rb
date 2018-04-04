@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_ipsec_site_connection(ipsec_site_connection_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "vpn/ipsec-site-connections/#{ipsec_site_connection_id}"
+            expects: [200],
+            method: 'GET',
+            path: "vpn/ipsec-site-connections/#{ipsec_site_connection_id}"
           )
         end
       end

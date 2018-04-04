@@ -23,10 +23,10 @@ module Fog
             end
 
             request(
-              :headers => data,
-              :expects => 200,
-              :method  => 'PUT',
-              :path    => "images/#{attributes[:id]}"
+              headers: data,
+              expects: 200,
+              method: 'PUT',
+              path: "images/#{attributes[:id]}"
             )
           end
         end

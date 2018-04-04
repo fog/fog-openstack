@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_project(id, options = [])
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "projects/#{id}?#{options.join '&'}"
+              expects: [200],
+              method: 'GET',
+              path: "projects/#{id}?#{options.join '&'}"
             )
           end
         end

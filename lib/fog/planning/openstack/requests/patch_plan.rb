@@ -4,10 +4,10 @@ module Fog
       class Real
         def patch_plan(plan_uuid, parameters)
           request(
-            :expects => [201],
-            :method  => 'PATCH',
-            :path    => "plans/#{plan_uuid}",
-            :body    => Fog::JSON.encode(parameters)
+            expects: [201],
+            method: 'PATCH',
+            path: "plans/#{plan_uuid}",
+            body: Fog::JSON.encode(parameters)
           )
         end
       end

@@ -4,9 +4,9 @@ module Fog
       class Real
         def list_network_ip_availabilities
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "network-ip-availabilities"
+            expects: [200],
+            method: 'GET',
+            path: "network-ip-availabilities"
           )
         end
       end

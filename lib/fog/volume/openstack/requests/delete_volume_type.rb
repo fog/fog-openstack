@@ -4,9 +4,9 @@ module Fog
       module Real
         def delete_volume_type(volume_type_id)
           request(
-            :expects => 202,
-            :method  => 'DELETE',
-            :path    => "types/#{volume_type_id}"
+            expects: 202,
+            method: 'DELETE',
+            path: "types/#{volume_type_id}"
           )
         end
       end

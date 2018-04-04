@@ -1,7 +1,7 @@
 require "test_helper"
 describe "Fog::Image[:openstack] | images" do
   before do
-    @instance = Fog::Image[:openstack].create_image(:name => "model test image").body
+    @instance = Fog::Image[:openstack].create_image(name: "model test image").body
   end
 
   describe "success" do

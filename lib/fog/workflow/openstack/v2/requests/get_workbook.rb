@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_workbook(name)
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "workbooks/#{URI.encode(name)}"
+              expects: 200,
+              method: "GET",
+              path: "workbooks/#{URI.encode(name)}"
             )
           end
         end

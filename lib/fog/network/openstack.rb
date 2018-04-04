@@ -271,7 +271,7 @@ module Fog
             tenant_id    = Fog::Mock.random_hex(8)
 
             hash[key] = {
-              :extensions => {
+              extensions: {
                 extension_id => {
                   'id'          => extension_id,
                   'alias'       => 'dvr',
@@ -280,7 +280,7 @@ module Fog
                   'name'        => 'Distributed Virtual Router'
                 }
               },
-              :networks => {
+              networks: {
                 network_id                => {
                   'id'                    => network_id,
                   'name'                  => 'Public',
@@ -308,8 +308,8 @@ module Fog
                   'port_security_enabled' => true
                 }
               },
-              :ports                  => {},
-              :subnets                => {
+              ports: {},
+              subnets: {
                 subnet_id => {
                   'id'               => subnet_id,
                   'name'             => "Public",
@@ -324,33 +324,33 @@ module Fog
                   'tenant_id'        => tenant_id
                 }
               },
-              :subnet_pools           => {},
-              :floating_ips           => {},
-              :routers                => {},
-              :lb_pools               => {},
-              :lb_members             => {},
-              :lb_health_monitors     => {},
-              :lb_vips                => {},
-              :lbaas_loadbalancers    => {},
-              :lbaas_listeners        => {},
-              :lbaas_pools            => {},
-              :lbaas_pool_members     => {},
-              :lbaas_health_monitorss => {},
-              :lbaas_l7policies       => {},
-              :lbaas_l7rules          => {},
-              :vpn_services           => {},
-              :ike_policies           => {},
-              :ipsec_policies         => {},
-              :ipsec_site_connections => {},
-              :rbac_policies          => {},
-              :quota                  => {
+              subnet_pools: {},
+              floating_ips: {},
+              routers: {},
+              lb_pools: {},
+              lb_members: {},
+              lb_health_monitors: {},
+              lb_vips: {},
+              lbaas_loadbalancers: {},
+              lbaas_listeners: {},
+              lbaas_pools: {},
+              lbaas_pool_members: {},
+              lbaas_health_monitorss: {},
+              lbaas_l7policies: {},
+              lbaas_l7rules: {},
+              vpn_services: {},
+              ike_policies: {},
+              ipsec_policies: {},
+              ipsec_site_connections: {},
+              rbac_policies: {},
+              quota: {
                 "subnet"     => 10,
                 "router"     => 10,
                 "port"       => 50,
                 "network"    => 10,
                 "floatingip" => 50
               },
-              :quotas => [
+              quotas: [
                 {
                   "subnet"     => 10,
                   "network"    => 10,
@@ -360,9 +360,9 @@ module Fog
                   "port"       => 30
                 }
               ],
-              :security_groups            => {},
-              :security_group_rules       => {},
-              :network_ip_availabilities  => [
+              security_groups: {},
+              security_group_rules: {},
+              network_ip_availabilities: [
                 {
                   "network_id"              => "4cf895c9-c3d1-489e-b02e-59b5c8976809",
                   "network_name"            => "public",

@@ -5,7 +5,7 @@ module Fog
     class OpenStack
       class OsInterface < Fog::OpenStack::Model
         identity  :port_id
-        attribute :fixed_ips, :type => :array
+        attribute :fixed_ips, type: :array
         attribute :mac_addr
         attribute :net_id
         attribute :port_state

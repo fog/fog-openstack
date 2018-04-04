@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_plans(options = {})
           request(
-            :expects => [200, 204],
-            :method  => 'GET',
-            :path    => 'plans',
-            :query   => options
+            expects: [200, 204],
+            method: 'GET',
+            path: 'plans',
+            query: options
           )
         end
       end

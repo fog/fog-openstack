@@ -4,9 +4,9 @@ module Fog
       class Real
         def list_addresses(server_id)
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => "servers/#{server_id}/ips"
+            expects: [200, 203],
+            method: 'GET',
+            path: "servers/#{server_id}/ips"
           )
         end
       end

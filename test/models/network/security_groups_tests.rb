@@ -4,8 +4,8 @@ require "helpers/collection_helper"
 
 describe "Fog::Network[:openstack] | security_groups collection" do
   @attributes = {
-    :name        => "my_secgroup",
-    :description => "my sec group desc"
+    name: "my_secgroup",
+    description: "my sec group desc"
   }
 
   collection_tests(network.security_groups, @attributes)
@@ -13,8 +13,8 @@ describe "Fog::Network[:openstack] | security_groups collection" do
   describe "success" do
     before do
       @attributes = {
-        :name        => "fogsecgroup",
-        :description => "fog sec group desc"
+        name: "fogsecgroup",
+        description: "fog sec group desc"
       }
 
       @secgroup = network.security_groups.create(@attributes)
@@ -25,7 +25,7 @@ describe "Fog::Network[:openstack] | security_groups collection" do
     end
 
     it "#all(filter)" do
-      secgroup = network.security_groups.all(:name => "fogsecgroup")
+      secgroup = network.security_groups.all(name: "fogsecgroup")
       secgroup.first.name.wont_be_empty
     end
   end

@@ -11,10 +11,10 @@ module Fog
             }
 
             request(
-              :body    => Fog::JSON.encode(data),
-              :expects => [200, 202],
-              :method  => 'POST',
-              :path    => '/OS-KSADM/roles'
+              body: Fog::JSON.encode(data),
+              expects: [200, 202],
+              method: 'POST',
+              path: '/OS-KSADM/roles'
             )
           end
         end
@@ -27,8 +27,8 @@ module Fog
             }
             self.data[:roles][data['id']] = data
             Excon::Response.new(
-              :body   => { 'role' => data },
-              :status => 202
+              body: { 'role' => data },
+              status: 202
             )
           end
         end

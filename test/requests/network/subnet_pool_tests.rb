@@ -43,7 +43,7 @@ describe "Fog::Network[:openstack] | subnet_pool requests" do
     it "#update_subnet_pool" do
       subnet_pool_id = network.subnet_pools.all.first.id
       attributes = {
-        :name => 'new_subnet_pool_name'
+        name: 'new_subnet_pool_name'
       }
 
       network.update_subnet_pool(subnet_pool_id, attributes).body.must_match_schema('subnetpool' => @subnet_pool_format)

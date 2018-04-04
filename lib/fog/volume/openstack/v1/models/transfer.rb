@@ -7,10 +7,10 @@ module Fog
         class Transfer < Fog::Volume::OpenStack::Transfer
           identity :id
 
-          attribute :auth_key, :aliases => 'authKey'
-          attribute :created_at, :aliases => 'createdAt'
+          attribute :auth_key, aliases: 'authKey'
+          attribute :created_at, aliases: 'createdAt'
           attribute :name
-          attribute :volume_id, :aliases => 'volumeId'
+          attribute :volume_id, aliases: 'volumeId'
         end
       end
     end

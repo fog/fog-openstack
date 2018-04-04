@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_chassis(options = {})
           request(
-            :expects => [200, 204],
-            :method  => 'GET',
-            :path    => 'chassis',
-            :query   => options
+            expects: [200, 204],
+            method: 'GET',
+            path: 'chassis',
+            query: options
           )
         end
       end

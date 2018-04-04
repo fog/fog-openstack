@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_flavor_metadata(flavor_ref)
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => "flavors/#{flavor_ref}/os-extra_specs"
+            expects: [200, 203],
+            method: 'GET',
+            path: "flavors/#{flavor_ref}/os-extra_specs"
           )
         end
       end

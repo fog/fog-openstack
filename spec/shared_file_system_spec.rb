@@ -6,16 +6,16 @@ describe Fog::SharedFileSystem::OpenStack do
 
   before :all do
     openstack_vcr = OpenStackVCR.new(
-      :vcr_directory  => spec_data_folder,
-      :project_scoped => true,
-      :service_class  => Fog::SharedFileSystem::OpenStack
+      vcr_directory: spec_data_folder,
+      project_scoped: true,
+      service_class: Fog::SharedFileSystem::OpenStack
     )
     @service = openstack_vcr.service
 
     net_openstack_vcr = OpenStackVCR.new(
-      :vcr_directory  => spec_data_folder,
-      :project_scoped => true,
-      :service_class  => Fog::Network::OpenStack
+      vcr_directory: spec_data_folder,
+      project_scoped: true,
+      service_class: Fog::Network::OpenStack
     )
     @network_service = net_openstack_vcr.service
   end
@@ -35,24 +35,24 @@ describe Fog::SharedFileSystem::OpenStack do
 
         # create a share network
         share_network = @service.networks.create(
-          :neutron_net_id    => net.id,
-          :neutron_subnet_id => net.subnets.first.id,
-          :name              => share_net_name
+          neutron_net_id: net.id,
+          neutron_subnet_id: net.subnets.first.id,
+          name: share_net_name
         )
 
         # create share
         example_share = @service.shares.create(
-          :share_proto      => share_protocol,
-          :size             => share_size,
-          :name             => share_name,
-          :description      => share_description,
-          :share_network_id => share_network.id
+          share_proto: share_protocol,
+          size: share_size,
+          name: share_name,
+          description: share_description,
+          share_network_id: share_network.id
         )
         example_share.status.must_equal 'creating'
         example_id = example_share.id
 
         # update display description
-        example_share.update(:display_description => share_updated_description)
+        example_share.update(display_description: share_updated_description)
         example_share.reload.description.must_equal share_updated_description
 
         # get by ID
@@ -61,17 +61,17 @@ describe Fog::SharedFileSystem::OpenStack do
         example_share_by_id.name.must_equal share_name
 
         # get by filtering list by name
-        shares = @service.shares.all(:name => share_name)
+        shares = @service.shares.all(name: share_name)
         shares.length.must_equal 1
         shares.first.id.must_equal example_id
       ensure
         # delete the share(s)
-        @service.shares.all(:name => share_name).each(&:destroy)
+        @service.shares.all(name: share_name).each(&:destroy)
         # check delete action
-        @service.shares.all(:name => share_name).length.must_equal 0
+        @service.shares.all(name: share_name).length.must_equal 0
 
         # delete the share network
-        @service.networks.all(:name => share_net_name).each(&:destroy)
+        @service.networks.all(name: share_net_name).each(&:destroy)
       end
     end
   end
@@ -87,16 +87,16 @@ describe Fog::SharedFileSystem::OpenStack do
 
         # create a share network
         share_network = @service.networks.create(
-          :neutron_net_id    => net.id,
-          :neutron_subnet_id => net.subnets.first.id,
-          :name              => share_net_name,
-          :description       => share_net_description
+          neutron_net_id: net.id,
+          neutron_subnet_id: net.subnets.first.id,
+          name: share_net_name,
+          description: share_net_description
         )
         share_network.description.must_equal share_net_description
         share_net_id = share_network.id
 
         # update description
-        share_network.update(:description => share_net_updated_description)
+        share_network.update(description: share_net_updated_description)
         share_network.reload.description.must_equal share_net_updated_description
 
         # get by ID
@@ -105,14 +105,14 @@ describe Fog::SharedFileSystem::OpenStack do
         share_net_by_id.name.must_equal share_net_name
 
         # get by filtering list by name
-        share_nets = @service.networks.all(:name => share_net_name)
+        share_nets = @service.networks.all(name: share_net_name)
         share_nets.length.must_equal 1
         share_nets.first.id.must_equal share_net_id
       ensure
         # delete the share network
-        @service.networks.all(:name => share_net_name).each(&:destroy)
+        @service.networks.all(name: share_net_name).each(&:destroy)
         # check delete action
-        @service.networks.all(:name => share_net_name).length.must_equal 0
+        @service.networks.all(name: share_net_name).length.must_equal 0
       end
     end
   end
@@ -132,25 +132,25 @@ describe Fog::SharedFileSystem::OpenStack do
 
         # create a share network
         share_network = @service.networks.create(
-          :neutron_net_id    => net.id,
-          :neutron_subnet_id => net.subnets.first.id,
-          :name              => share_net_name
+          neutron_net_id: net.id,
+          neutron_subnet_id: net.subnets.first.id,
+          name: share_net_name
         )
 
         # create share
         example_share = @service.shares.create(
-          :share_proto      => share_protocol,
-          :size             => share_size,
-          :name             => share_name,
-          :share_network_id => share_network.id
+          share_proto: share_protocol,
+          size: share_size,
+          name: share_name,
+          share_network_id: share_network.id
         )
 
         example_share.wait_for { ready? }
 
         # create snapshot
         snap = @service.snapshots.create(
-          :share_id => example_share.id,
-          :name     => snap_name
+          share_id: example_share.id,
+          name: snap_name
         )
 
         snap.name.must_equal snap_name
@@ -163,42 +163,42 @@ describe Fog::SharedFileSystem::OpenStack do
         snap_by_id.name.must_equal snap_name
 
         # update name via display_name
-        snap_by_id.update(:display_name => snap_updated_name)
+        snap_by_id.update(display_name: snap_updated_name)
         snap_by_id.reload.name.must_equal snap_updated_name
 
         # get by filtering list by name
-        snaps = @service.snapshots.all(:name => snap_updated_name)
+        snaps = @service.snapshots.all(name: snap_updated_name)
         snaps.length.must_equal 1
         snaps.first.id.must_equal snap_id
       ensure
         # delete the snapshot(s)
-        @service.snapshots.all(:name => snap_updated_name).each(&:destroy)
+        @service.snapshots.all(name: snap_updated_name).each(&:destroy)
         # check delete action
-        @service.snapshots.all(:name => snap_updated_name).each do |s|
+        @service.snapshots.all(name: snap_updated_name).each do |s|
           s.status.must_equal 'deleting'
         end
 
         # only can go on when the snapshots are gone
         Fog.wait_for do
           begin
-            snaps = @service.snapshots.all(:name => snap_updated_name)
+            snaps = @service.snapshots.all(name: snap_updated_name)
             snaps.length.zero?
           end
         end
 
         # delete the share(s)
-        @service.shares.all(:name => share_name).each(&:destroy)
+        @service.shares.all(name: share_name).each(&:destroy)
 
         # only can go on when the shares are gone
         Fog.wait_for do
           begin
-            shares = @service.shares.all(:name => share_name)
+            shares = @service.shares.all(name: share_name)
             shares.length.zero?
           end
         end
 
         # delete the share network(s)
-        @service.networks.all(:name => share_net_name).each(&:destroy)
+        @service.networks.all(name: share_net_name).each(&:destroy)
       end
     end
   end
@@ -217,17 +217,17 @@ describe Fog::SharedFileSystem::OpenStack do
         net = @network_service.networks.first
         # create a share network
         share_network = @service.networks.create(
-          :neutron_net_id    => net.id,
-          :neutron_subnet_id => net.subnets.first.id,
-          :name              => share_net_name
+          neutron_net_id: net.id,
+          neutron_subnet_id: net.subnets.first.id,
+          name: share_net_name
         )
 
         # create share
         share = @service.shares.create(
-          :share_proto      => share_protocol,
-          :size             => share_size_small,
-          :name             => share_name,
-          :share_network_id => share_network.id
+          share_proto: share_protocol,
+          size: share_size_small,
+          name: share_name,
+          share_network_id: share_network.id
         )
         share.wait_for { ready? }
 
@@ -243,9 +243,9 @@ describe Fog::SharedFileSystem::OpenStack do
         # modify share access
         share.access_rules.length.must_equal 0
         access_rule = share.access_rules.create(
-          :access_type  => share_access_type,
-          :access_to    => '10.0.0.2',
-          :access_level => 'ro'
+          access_type: share_access_type,
+          access_to: '10.0.0.2',
+          access_level: 'ro'
         )
         rules = share.access_rules
         rules.length.must_equal 1
@@ -257,18 +257,18 @@ describe Fog::SharedFileSystem::OpenStack do
         Fog.wait_for { share.access_rules.empty? }
       ensure
         # delete the share(s)
-        @service.shares.all(:name => share_name).each(&:destroy)
+        @service.shares.all(name: share_name).each(&:destroy)
 
         # only can go on when the shares are gone
         Fog.wait_for do
           begin
-            shares = @service.shares.all(:name => share_name)
+            shares = @service.shares.all(name: share_name)
             shares.length.zero?
           end
         end
 
         # delete the share network(s)
-        @service.networks.all(:name => share_net_name).each(&:destroy)
+        @service.networks.all(name: share_net_name).each(&:destroy)
       end
     end
   end

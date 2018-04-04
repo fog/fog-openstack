@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_key_pair(key_name)
           request(
-            :expects => [202, 204],
-            :method  => 'DELETE',
-            :path    => "os-keypairs/#{Fog::OpenStack.escape(key_name)}"
+            expects: [202, 204],
+            method: 'DELETE',
+            path: "os-keypairs/#{Fog::OpenStack.escape(key_name)}"
           )
         end
       end

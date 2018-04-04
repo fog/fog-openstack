@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_lb_health_monitors(filters = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'lb/health_monitors',
-            :query   => filters
+            expects: 200,
+            method: 'GET',
+            path: 'lb/health_monitors',
+            query: filters
           )
         end
       end
@@ -15,8 +15,8 @@ module Fog
       class Mock
         def list_lb_health_monitors(_filters = {})
           Excon::Response.new(
-            :body   => { 'health_monitors' => data[:lb_health_monitors].values },
-            :status => 200
+            body: { 'health_monitors' => data[:lb_health_monitors].values },
+            status: 200
           )
         end
       end

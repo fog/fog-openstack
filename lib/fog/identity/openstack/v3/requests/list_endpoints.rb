@@ -5,10 +5,10 @@ module Fog
         class Real
           def list_endpoints(options = {})
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "endpoints",
-              :query   => options
+              expects: [200],
+              method: 'GET',
+              path: "endpoints",
+              query: options
             )
           end
         end

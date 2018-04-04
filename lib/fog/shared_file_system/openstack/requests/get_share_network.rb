@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_share_network(id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "share-networks/#{id}"
+            expects: 200,
+            method: 'GET',
+            path: "share-networks/#{id}"
           )
         end
       end

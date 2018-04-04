@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_domain(id)
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "domains/#{id}"
+              expects: [200],
+              method: 'GET',
+              path: "domains/#{id}"
             )
           end
         end

@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_lb_member(member_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "lb/members/#{member_id}"
+            expects: [200],
+            method: 'GET',
+            path: "lb/members/#{member_id}"
           )
         end
       end

@@ -53,7 +53,7 @@ module Fog
         end
 
         def resources(options = {})
-          @resources ||= service.resources.all({ :stack => self }.merge(options))
+          @resources ||= service.resources.all({ stack: self }.merge(options))
         end
 
         def events(options = {})
@@ -112,9 +112,9 @@ module Fog
             end
 
           options = {
-            :stack_name       => stack_name,
-            :disable_rollback => disable_rollback,
-            :timeout_mins     => timeout_mins
+            stack_name: stack_name,
+            disable_rollback: disable_rollback,
+            timeout_mins: timeout_mins
           }
           options[:template] = template_content if template_content
           options[:template_url] = @template_url if @template_url

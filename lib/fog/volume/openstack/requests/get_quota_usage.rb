@@ -4,9 +4,9 @@ module Fog
       module Real
         def get_quota_usage(tenant_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "/os-quota-sets/#{tenant_id}?usage=True"
+            expects: 200,
+            method: 'GET',
+            path: "/os-quota-sets/#{tenant_id}?usage=True"
           )
         end
       end

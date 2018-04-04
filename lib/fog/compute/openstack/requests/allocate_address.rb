@@ -4,10 +4,10 @@ module Fog
       class Real
         def allocate_address(pool = nil)
           request(
-            :body    => Fog::JSON.encode('pool' => pool),
-            :expects => [200, 202],
-            :method  => 'POST',
-            :path    => 'os-floating-ips'
+            body: Fog::JSON.encode('pool' => pool),
+            expects: [200, 202],
+            method: 'POST',
+            path: 'os-floating-ips'
           )
         end
       end

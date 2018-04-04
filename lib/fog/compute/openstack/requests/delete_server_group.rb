@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_server_group(group_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "os-server-groups/#{group_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "os-server-groups/#{group_id}"
           )
         end
       end

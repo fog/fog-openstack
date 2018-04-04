@@ -20,13 +20,13 @@ require 'pp'
 #  SSL_VERIFY=false
 
 auth_options = {
-  :openstack_auth_url     => "#{ENV['OS_AUTH_URL']}/auth/tokens",
-  :openstack_api_key      => ENV['OS_PASSWORD'],
-  :openstack_username     => ENV['OS_USERNAME'],
-  :openstack_domain_name  => ENV['OS_USER_DOMAIN_NAME'],
-  :openstack_project_name => ENV['OS_PROJECT_NAME'],
-  :openstack_region       => ENV['OS_REGION_NAME'],
-  :connection_options     => { :ssl_verify_peer => ENV['SSL_VERIFY'] != 'false' }
+  openstack_auth_url: "#{ENV['OS_AUTH_URL']}/auth/tokens",
+  openstack_api_key: ENV['OS_PASSWORD'],
+  openstack_username: ENV['OS_USERNAME'],
+  openstack_domain_name: ENV['OS_USER_DOMAIN_NAME'],
+  openstack_project_name: ENV['OS_PROJECT_NAME'],
+  openstack_region: ENV['OS_REGION_NAME'],
+  connection_options: { ssl_verify_peer: ENV['SSL_VERIFY'] != 'false' }
 }
 
 identity_service = Fog::Identity::OpenStack::V3.new(auth_options)
@@ -36,15 +36,15 @@ own_project   = identity_service.projects.select { |p| p.name == ENV['OS_PROJECT
 other_project = identity_service.projects.select { |p| p.name != ENV['OS_PROJECT_NAME'] }.first
 
 puts "Create network in #{own_project.name}"
-foonet = network_service.networks.create(:name => 'foo-net23', :tenant_id => own_project.id)
+foonet = network_service.networks.create(name: 'foo-net23', tenant_id: own_project.id)
 
 puts "Share network with #{other_project.name}"
 rbac = network_service.rbac_policies.create(
-  :object_type   => 'network',
-  :object_id     => foonet.id,
-  :tenant_id     => own_project.id,
-  :target_tenant => other_project.id,
-  :action        => 'access_as_shared'
+  object_type: 'network',
+  object_id: foonet.id,
+  tenant_id: own_project.id,
+  target_tenant: other_project.id,
+  action: 'access_as_shared'
 )
 
 puts "Get RBAC policy"

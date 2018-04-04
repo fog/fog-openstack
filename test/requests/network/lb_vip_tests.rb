@@ -24,13 +24,13 @@ describe "Fog::Network[:openstack] | lb_vip requests" do
       protocol = 'HTTP'
       protocol_port = 80
       attributes = {
-        :name                => 'test-vip',
-        :description         => 'Test VIP',
-        :address             => '10.0.0.1',
-        :connection_limit    => 10,
-        :session_persistence => { "cookie_name" => "COOKIE_NAME", "type" => "APP_COOKIE" },
-        :admin_state_up      => true,
-        :tenant_id           => 'tenant_id'
+        name: 'test-vip',
+        description: 'Test VIP',
+        address: '10.0.0.1',
+        connection_limit: 10,
+        session_persistence: { "cookie_name" => "COOKIE_NAME", "type" => "APP_COOKIE" },
+        admin_state_up: true,
+        tenant_id: 'tenant_id'
       }
       @lb_vip =  network.create_lb_vip(subnet_id, pool_id, protocol, protocol_port, attributes).body
       @lb_vip_id = @lb_vip["vip"]["id"]
@@ -53,12 +53,12 @@ describe "Fog::Network[:openstack] | lb_vip requests" do
     it "#update_lb_vip" do
       lb_vip_id = network.lb_vips.all.first.id
       attributes = {
-        :pool_id             => "new_pool_id",
-        :name                => "new-test-vip",
-        :description         => "New Test VIP",
-        :connection_limit    => 5,
-        :session_persistence => { "type" => "HTTP_COOKIE" },
-        :admin_state_up      => false
+        pool_id: "new_pool_id",
+        name: "new-test-vip",
+        description: "New Test VIP",
+        connection_limit: 5,
+        session_persistence: { "type" => "HTTP_COOKIE" },
+        admin_state_up: false
       }
       network.update_lb_vip(lb_vip_id, attributes).body
              .must_match_schema('vip' => @lb_vip_format)

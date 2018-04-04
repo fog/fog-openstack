@@ -6,10 +6,10 @@ module Fog
           def update_action(definition)
             body = Fog::JSON.encode(definition)
             request(
-              :body    => body,
-              :expects => 200,
-              :method  => "PUT",
-              :path    => "actions"
+              body: body,
+              expects: 200,
+              method: "PUT",
+              path: "actions"
             )
           end
         end

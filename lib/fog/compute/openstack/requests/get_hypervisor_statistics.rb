@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_hypervisor_statistics(_tenant_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "os-hypervisors/statistics"
+            expects: 200,
+            method: 'GET',
+            path: "os-hypervisors/statistics"
           )
         end
       end

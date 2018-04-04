@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_vnfd(vnfd_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "vnfds/#{vnfd_id}"
+            expects: 200,
+            method: 'GET',
+            path: "vnfds/#{vnfd_id}"
           )
         end
       end

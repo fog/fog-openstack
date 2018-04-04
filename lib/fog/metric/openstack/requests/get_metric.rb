@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_metric(metric_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "metric/#{metric_id}"
+            expects: 200,
+            method: 'GET',
+            path: "metric/#{metric_id}"
           )
         end
       end

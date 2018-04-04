@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_lbaas_listener(listener_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "lbaas/listeners/#{listener_id}"
+            expects: [200],
+            method: 'GET',
+            path: "lbaas/listeners/#{listener_id}"
           )
         end
       end

@@ -66,7 +66,7 @@ module Fog
           management_url.path = '/v1'
           @openstack_management_url = management_url.to_s
 
-          @data ||= { :users => {} }
+          @data ||= { users: {} }
           unless @data[:users].detect { |u| u['name'] == options[:openstack_username] }
             id = Fog::Mock.random_numbers(6).to_s
             @data[:users][id] = {
@@ -80,11 +80,11 @@ module Fog
         end
 
         def credentials
-          { :provider => 'openstack',
-            :openstack_auth_url       => @openstack_auth_uri.to_s,
-            :openstack_auth_token     => @auth_token,
-            :openstack_region         => @openstack_region,
-            :openstack_management_url => @openstack_management_url }
+          { provider: 'openstack',
+            openstack_auth_url: @openstack_auth_uri.to_s,
+            openstack_auth_token: @auth_token,
+            openstack_region: @openstack_region,
+            openstack_management_url: @openstack_management_url }
         end
       end
 
@@ -118,11 +118,11 @@ module Fog
 
         def supported_version(supported_versions, uri, auth_token, connection_options = {})
           connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}", false, connection_options)
-          response = connection.request(:expects => [200, 204, 300],
-                                        :headers => { 'Content-Type' => 'application/json',
-                                                      'Accept' => 'application/json',
-                                                      'X-Auth-Token' => auth_token },
-                                        :method => 'GET')
+          response = connection.request(expects: [200, 204, 300],
+                                        headers: { 'Content-Type' => 'application/json',
+                                                   'Accept' => 'application/json',
+                                                   'X-Auth-Token' => auth_token },
+                                        method: 'GET')
 
           body = Fog::JSON.decode(response.body)
           version = nil

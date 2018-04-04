@@ -6,10 +6,10 @@ module Fog
           def validate_workflow(definition)
             body = Fog::JSON.encode(definition)
             request(
-              :body    => body,
-              :expects => 200,
-              :method  => "POST",
-              :path    => "workflows/validate"
+              body: body,
+              expects: 200,
+              method: "POST",
+              path: "workflows/validate"
             )
           end
         end

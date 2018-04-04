@@ -25,7 +25,7 @@ module Fog
             # Deprecated: create_stack(stack_name, options = {})
             Fog::Logger.deprecation("#create_stack(stack_name, options) is deprecated, use #create_stack(options) instead [light_black](#{caller.first})[/]")
             options = {
-              :stack_name => arg1
+              stack_name: arg1
             }.merge(arg2.nil? ? {} : arg2)
           end
 
@@ -42,10 +42,10 @@ module Fog
           options[:files] = file_resolver.files unless file_resolver.files.empty?
 
           request(
-            :expects => 201,
-            :path    => 'stacks',
-            :method  => 'POST',
-            :body    => Fog::JSON.encode(options)
+            expects: 201,
+            path: 'stacks',
+            method: 'POST',
+            body: Fog::JSON.encode(options)
           )
         end
       end
@@ -59,7 +59,7 @@ module Fog
             # Deprecated: create_stack(stack_name, options = {})
             Fog::Logger.deprecation("#create_stack(stack_name, options) is deprecated, use #create_stack(options) instead [light_black](#{caller.first})[/]")
             options = {
-              :stack_name => arg1
+              stack_name: arg1
             }.merge(arg2.nil? ? {} : arg2)
           end
 

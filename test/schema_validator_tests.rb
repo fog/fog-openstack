@@ -14,7 +14,7 @@ describe "Fog::Schema::DataValidator, 'meta'" do
     end
 
     it "returns true when nested values match schema expectation" do
-      validator.validate({ "key" => { :nested_key => "Value" } }, "key" => { :nested_key => String }).must_equal true
+      validator.validate({ "key" => { nested_key: "Value" } }, "key" => { nested_key: String }).must_equal true
     end
 
     it "returns true when collection of values all match schema expectation" do
@@ -26,7 +26,7 @@ describe "Fog::Schema::DataValidator, 'meta'" do
     end
 
     it "returns true when additional keys are passed and not strict" do
-      validator.validate({ "key" => "Value", :extra => "Bonus" }, { "key" => String }, :allow_extra_keys => true).must_equal true
+      validator.validate({ "key" => "Value", :extra => "Bonus" }, { "key" => String }, allow_extra_keys: true).must_equal true
     end
 
     it "returns true when value is nil and schema expects NilClass" do
@@ -46,11 +46,11 @@ describe "Fog::Schema::DataValidator, 'meta'" do
     end
 
     it "returns true when key is missing but value should be NilClass (#1477)" do
-      validator.validate({}, { "key" => NilClass }, :allow_optional_rules => true).must_equal true
+      validator.validate({}, { "key" => NilClass }, allow_optional_rules: true).must_equal true
     end
 
     it "returns true when key is missing but value is nullable (#1477)" do
-      validator.validate({}, { "key" => Fog::Nullable::String }, :allow_optional_rules => true).must_equal true
+      validator.validate({}, { "key" => Fog::Nullable::String }, allow_optional_rules: true).must_equal true
     end
 
     it "returns false when value does not match schema expectation" do
@@ -58,7 +58,7 @@ describe "Fog::Schema::DataValidator, 'meta'" do
     end
 
     it "returns false when key formats do not match" do
-      validator.validate({ "key" => "Value" }, :key => String).must_equal false
+      validator.validate({ "key" => "Value" }, key: String).must_equal false
     end
 
     it "returns false when additional keys are passed and strict" do
@@ -86,15 +86,15 @@ describe "Fog::Schema::DataValidator, 'meta'" do
     end
 
     it "returns false when a hash is expected but another data type is found" do
-      validator.validate({ "key" => { :nested_key => [] } }, "key" => { :nested_key => {} }).must_equal false
+      validator.validate({ "key" => { nested_key: [] } }, "key" => { nested_key: {} }).must_equal false
     end
 
     it "returns false when key is missing but value should be NilClass (#1477)" do
-      validator.validate({}, { "key" => NilClass }, :allow_optional_rules => false).must_equal false
+      validator.validate({}, { "key" => NilClass }, allow_optional_rules: false).must_equal false
     end
 
     it "returns false when key is missing but value is nullable (#1477)" do
-      validator.validate({}, { "key" => Fog::Nullable::String }, :allow_optional_rules => false).must_equal false
+      validator.validate({}, { "key" => Fog::Nullable::String }, allow_optional_rules: false).must_equal false
     end
   end
 end

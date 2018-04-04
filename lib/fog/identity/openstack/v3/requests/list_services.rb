@@ -5,10 +5,10 @@ module Fog
         class Real
           def list_services(options = {})
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "services",
-              :query   => options
+              expects: [200],
+              method: 'GET',
+              path: "services",
+              query: options
             )
           end
         end

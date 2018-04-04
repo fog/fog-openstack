@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_resources(type = "generic", options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "resource/#{Fog::OpenStack.escape(type)}",
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: "resource/#{Fog::OpenStack.escape(type)}",
+            query: options
           )
         end
       end

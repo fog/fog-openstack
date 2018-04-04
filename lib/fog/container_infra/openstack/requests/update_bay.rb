@@ -4,10 +4,10 @@ module Fog
       class Real
         def update_bay(uuid_or_name, params)
           request(
-            :expects => [202, 200],
-            :method  => 'PATCH',
-            :path    => "bays/#{uuid_or_name}",
-            :body    => Fog::JSON.encode(params)
+            expects: [202, 200],
+            method: 'PATCH',
+            path: "bays/#{uuid_or_name}",
+            body: Fog::JSON.encode(params)
           )
         end
       end

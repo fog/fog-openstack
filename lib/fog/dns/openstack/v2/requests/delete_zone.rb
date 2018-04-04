@@ -6,10 +6,10 @@ module Fog
           def delete_zone(id, options = {})
             headers, _options = Fog::DNS::OpenStack::V2.setup_headers(options)
             request(
-              :expects => 202,
-              :method  => 'DELETE',
-              :path    => "zones/#{id}",
-              :headers => headers
+              expects: 202,
+              method: 'DELETE',
+              path: "zones/#{id}",
+              headers: headers
             )
           end
         end

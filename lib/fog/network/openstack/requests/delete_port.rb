@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_port(port_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "ports/#{port_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "ports/#{port_id}"
           )
         end
       end

@@ -8,10 +8,10 @@ module Fog
           }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200],
-            :method  => 'PUT',
-            :path    => "routers/#{router_id}/remove_router_interface"
+            body: Fog::JSON.encode(data),
+            expects: [200],
+            method: 'PUT',
+            path: "routers/#{router_id}/remove_router_interface"
           )
         end
       end

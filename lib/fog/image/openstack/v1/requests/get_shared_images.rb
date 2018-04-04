@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_shared_images(tenant_id)
             request(
-              :expects => [200, 204],
-              :method  => 'GET',
-              :path    => "shared-images/#{tenant_id}"
+              expects: [200, 204],
+              method: 'GET',
+              path: "shared-images/#{tenant_id}"
             )
           end
         end

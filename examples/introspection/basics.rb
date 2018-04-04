@@ -8,11 +8,11 @@ password = 'secret'
 project  = 'admin'
 
 @connection_params = {
-  :openstack_auth_url     => auth_url,
-  :openstack_username     => username,
-  :openstack_api_key      => password,
-  :openstack_project_name => project,
-  :openstack_domain_id    => "default"
+  openstack_auth_url: auth_url,
+  openstack_username: username,
+  openstack_api_key: password,
+  openstack_project_name: project,
+  openstack_domain_id: "default"
 }
 
 inspector = Fog::Introspection::OpenStack.new(@connection_params)

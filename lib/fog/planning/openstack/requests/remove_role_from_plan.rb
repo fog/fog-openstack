@@ -4,9 +4,9 @@ module Fog
       class Real
         def remove_role_from_plan(plan_uuid, role_uuid)
           request(
-            :expects => [200],
-            :method  => 'DELETE',
-            :path    => "plans/#{plan_uuid}/roles/#{role_uuid}"
+            expects: [200],
+            method: 'DELETE',
+            path: "plans/#{plan_uuid}/roles/#{role_uuid}"
           )
         end
       end

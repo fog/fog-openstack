@@ -9,11 +9,11 @@ module Fog
           optional_params = optional_params.each { |k, v| optional_params[k] = URI.encode(v) } if optional_params
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "os-services/enable",
-            :query   => optional_params
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "os-services/enable",
+            query: optional_params
           )
         end
       end

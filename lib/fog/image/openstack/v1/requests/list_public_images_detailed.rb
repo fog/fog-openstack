@@ -15,10 +15,10 @@ module Fog
             end
 
             request(
-              :expects => [200, 204],
-              :method  => 'GET',
-              :path    => 'images/detail',
-              :query   => query
+              expects: [200, 204],
+              method: 'GET',
+              path: 'images/detail',
+              query: query
             )
           end
         end

@@ -24,7 +24,7 @@ module Fog
           return cached_notification_method if cached_notification_method
           notification_method_hash = service.get_notification_method(id).body
           Fog::Monitoring::OpenStack::NotificationMethod.new(
-            notification_method_hash.merge(:service => service)
+            notification_method_hash.merge(service: service)
           )
         end
 

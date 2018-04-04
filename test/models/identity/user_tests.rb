@@ -5,11 +5,11 @@ describe "Fog::Identity[:openstack] | user" do
     @identity = Fog::Identity[:openstack]
     @tenant_id = @identity.list_tenants.body['tenants'].first['id']
     @instance = @identity.users.new(
-      :name      => 'User Name',
-      :email     => 'test@fog.com',
-      :tenant_id => @tenant_id,
-      :password  => 'spoof',
-      :enabled   => true
+      name: 'User Name',
+      email: 'test@fog.com',
+      tenant_id: @tenant_id,
+      password: 'spoof',
+      enabled: true
     )
   end
 
@@ -27,7 +27,7 @@ describe "Fog::Identity[:openstack] | user" do
     end
 
     it "#update" do
-      @instance.update(:name => 'updatename', :email => 'new@email.com')
+      @instance.update(name: 'updatename', email: 'new@email.com')
                .must_equal true
     end
 

@@ -4,9 +4,9 @@ module Fog
       class Real
         def release_address(address_id)
           request(
-            :expects => [200, 202],
-            :method  => 'DELETE',
-            :path    => "os-floating-ips/#{address_id}"
+            expects: [200, 202],
+            method: 'DELETE',
+            path: "os-floating-ips/#{address_id}"
           )
         end
       end

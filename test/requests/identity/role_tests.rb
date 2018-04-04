@@ -16,7 +16,7 @@ describe "Fog::Identity[:openstack] | role requests" do
 
   describe "success" do
     it "#create_role('Role Name')" do
-      @role.must_match_schema(@role_format, nil, :allow_optional_rules => false)
+      @role.must_match_schema(@role_format, nil, allow_optional_rules: false)
     end
 
     it "#list_roles" do

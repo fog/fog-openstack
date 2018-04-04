@@ -4,18 +4,18 @@ describe "Fog::Network[:openstack] | ike_policy" do
   describe "success" do
     before do
       @instance = network.ike_policies.create(
-        :name                    => 'test-ike-policy',
-        :description             => 'Test VPN IKE Policy',
-        :tenant_id               => 'tenant_id',
-        :auth_algorithm          => 'sha1',
-        :encryption_algorithm    => 'aes-256',
-        :pfs                     => 'group5',
-        :phase1_negotiation_mode => 'main',
-        :lifetime                => {
+        name: 'test-ike-policy',
+        description: 'Test VPN IKE Policy',
+        tenant_id: 'tenant_id',
+        auth_algorithm: 'sha1',
+        encryption_algorithm: 'aes-256',
+        pfs: 'group5',
+        phase1_negotiation_mode: 'main',
+        lifetime: {
           'units' => 'seconds',
           'value' => 3600
         },
-        :ike_version => 'v1'
+        ike_version: 'v1'
       )
     end
 

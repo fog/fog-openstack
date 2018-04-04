@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_extension(name)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "extensions/#{name}"
+            expects: [200],
+            method: 'GET',
+            path: "extensions/#{name}"
           )
         end
       end

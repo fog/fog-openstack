@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_zones_detailed(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'os-availability-zone/detail',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'os-availability-zone/detail',
+            query: options
           )
         end
       end
@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_zones_detailed(_options = {})
           Excon::Response.new(
-            :body => {
+            body: {
               "availabilityZoneInfo" => [
                 {
                   "zoneState" => {
@@ -59,7 +59,7 @@ module Fog
                 }
               ]
             },
-            :status => 200
+            status: 200
           )
         end
       end

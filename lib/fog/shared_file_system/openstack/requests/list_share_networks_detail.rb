@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_share_networks_detail(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'share-networks/detail',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'share-networks/detail',
+            query: options
           )
         end
       end

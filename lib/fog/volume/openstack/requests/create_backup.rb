@@ -14,14 +14,14 @@ module Fog
 
           # Filter only allowed creation attributes
           data = {
-            :backup => attributes.select { |key, _value| desired_options.include?(key.to_sym) }
+            backup: attributes.select { |key, _value| desired_options.include?(key.to_sym) }
           }
 
           request(
-            :body => Fog::JSON.encode(data),
-            :expects => [200, 202],
-            :method => 'POST',
-            :path => 'backups'
+            body: Fog::JSON.encode(data),
+            expects: [200, 202],
+            method: 'POST',
+            path: 'backups'
           )
         end
       end

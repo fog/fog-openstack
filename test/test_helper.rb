@@ -14,7 +14,7 @@ require File.expand_path('../lib/fog/openstack', __dir__)
 Fog.mock! if ENV["FOG_MOCK"] == "true"
 Bundler.require(:test)
 
-Excon.defaults.merge!(:debug_request => true, :debug_response => true)
+Excon.defaults.merge!(debug_request: true, debug_response: true)
 
 require File.expand_path(File.join(File.dirname(__FILE__), 'helpers', 'mock_helper'))
 

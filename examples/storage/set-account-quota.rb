@@ -28,16 +28,16 @@ Excon.defaults[:ssl_verify_peer] = false
 # to retrieve the list of tenants available and find
 # the tenant we want to set the quotas for.
 #
-id = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
-                                  :openstack_username => user,
-                                  :openstack_api_key  => password
+id = Fog::Identity::OpenStack.new openstack_auth_url: auth_url,
+                                  openstack_username: user,
+                                  openstack_api_key: password
 
 #
 # Storage service (Swift)
 #
-st = Fog::Storage::OpenStack.new :openstack_auth_url => auth_url,
-                                 :openstack_username => user,
-                                 :openstack_api_key  => password
+st = Fog::Storage::OpenStack.new openstack_auth_url: auth_url,
+                                 openstack_username: user,
+                                 openstack_api_key: password
 
 id.tenants.each do |t|
   # We want to set the account quota for tenant demo@test.lan
@@ -52,12 +52,12 @@ id.tenants.each do |t|
   # tenant account, limiting the account bytes to 1048576 (1MB)
   #
   # Uploading more than 1MB will return 413: Request Entity Too Large
-  st.request :method => 'POST',
-             :headers => { 'X-Account-Meta-Quota-Bytes' => '1048576' }
+  st.request method: 'POST',
+             headers: { 'X-Account-Meta-Quota-Bytes' => '1048576' }
 
   # We can list the account details to verify the new
   # header has been added
-  pp st.request :method => 'HEAD'
+  pp st.request method: 'HEAD'
 end
 
 # Restore the account we were using initially (admin@test.lan)

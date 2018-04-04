@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_server_group(group_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "/os-server-groups/#{group_id}"
+            expects: 200,
+            method: 'GET',
+            path: "/os-server-groups/#{group_id}"
           )
         end
       end

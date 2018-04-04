@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_task(id)
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "tasks/#{id}"
+              expects: 200,
+              method: "GET",
+              path: "tasks/#{id}"
             )
           end
         end

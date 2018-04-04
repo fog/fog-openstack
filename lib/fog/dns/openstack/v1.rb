@@ -27,7 +27,7 @@ module Fog
           def self.data
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                :domains => [{
+                domains: [{
                   "id"          => "a86dba58-0043-4cc6-a1bb-69d5e86f3ca3",
                   "name"        => "example.org.",
                   "email"       => "joe@example.org",
@@ -37,7 +37,7 @@ module Fog
                   "created_at"  => "2014-07-07T18:25:31.275934",
                   "updated_at"  => ''
                 }],
-                :quota => {
+                quota: {
                   "api_export_size"   => 1000,
                   "recordset_records" => 20,
                   "domain_records"    => 500,
@@ -65,7 +65,7 @@ module Fog
             management_url.path = '/v1'
             @openstack_management_url = management_url.to_s
 
-            @data ||= { :users => {} }
+            @data ||= { users: {} }
             unless @data[:users].detect { |u| u['name'] == options[:openstack_username] }
               id = Fog::Mock.random_numbers(6).to_s
               @data[:users][id] = {
@@ -87,11 +87,11 @@ module Fog
           end
 
           def credentials
-            { :provider => 'openstack',
-              :openstack_auth_url       => @openstack_auth_uri.to_s,
-              :openstack_auth_token     => @auth_token,
-              :openstack_region         => @openstack_region,
-              :openstack_management_url => @openstack_management_url }
+            { provider: 'openstack',
+              openstack_auth_url: @openstack_auth_uri.to_s,
+              openstack_auth_token: @auth_token,
+              openstack_region: @openstack_region,
+              openstack_management_url: @openstack_management_url }
           end
         end
 
