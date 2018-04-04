@@ -118,11 +118,11 @@ module Fog
 
         def supported_version(supported_versions, uri, auth_token, connection_options = {})
           connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}", false, connection_options)
-          response = connection.request({ :expects => [200, 204, 300],
-                                          :headers => { 'Content-Type' => 'application/json',
-                                                        'Accept' => 'application/json',
-                                                        'X-Auth-Token' => auth_token },
-                                          :method => 'GET' })
+          response = connection.request(:expects => [200, 204, 300],
+                                        :headers => { 'Content-Type' => 'application/json',
+                                                      'Accept' => 'application/json',
+                                                      'X-Auth-Token' => auth_token },
+                                        :method => 'GET')
 
           body = Fog::JSON.decode(response.body)
           version = nil

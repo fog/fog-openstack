@@ -30,7 +30,7 @@ describe "Fog::Schema::DataValidator, 'meta'" do
     end
 
     it "returns true when value is nil and schema expects NilClass" do
-      validator.validate({ "key" => nil }, { "key" => NilClass }).must_equal true
+      validator.validate({ "key" => nil }, "key" => NilClass).must_equal true
     end
 
     it "returns true when value and schema match as hashes" do

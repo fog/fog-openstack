@@ -229,23 +229,6 @@ Style/BlockDelimiters:
   Exclude:
     - 'lib/fog/openstack.rb'
 
-# Offense count: 19
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: braces, no_braces, context_dependent
-Style/BracesAroundHashParameters:
-  Exclude:
-    - 'examples/planning/basics.rb'
-    - 'examples/volume/backups.rb'
-    - 'lib/fog/dns/openstack/v2/models/zone_transfer_request.rb'
-    - 'lib/fog/key_manager/openstack.rb'
-    - 'lib/fog/openstack.rb'
-    - 'test/authenticate_tests.rb'
-    - 'test/requests/container_infra/bay_tests.rb'
-    - 'test/requests/container_infra/cluster_tests.rb'
-    - 'test/schema_validator_tests.rb'
-    - 'test/version_tests.rb'
-
 # Offense count: 54
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.

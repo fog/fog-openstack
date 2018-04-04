@@ -35,10 +35,10 @@ end
 #
 # Creating new Tuskar plan
 #
-plan = planning.plans.new({
-                            :name        => 'New Plan Name',
-                            :description => 'New Plan Description'
-                          })
+plan = planning.plans.new(
+  :name        => 'New Plan Name',
+  :description => 'New Plan Description'
+)
 pp plan
 
 #

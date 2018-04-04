@@ -138,15 +138,15 @@ module Fog
       @openstack_api_key  = options[:openstack_api_key]
       @openstack_username = options[:openstack_username]
 
-      response = connection.request({
-                                      :expects  => [200, 204],
-                                      :headers  => {
-                                        'X-Auth-Key'  => @openstack_api_key,
-                                        'X-Auth-User' => @openstack_username
-                                      },
-                                      :method   => 'GET',
-                                      :path     =>  (uri.path && (not uri.path.empty?)) ? uri.path : 'v1.0'
-                                    })
+      response = connection.request(
+        :expects  => [200, 204],
+        :headers  => {
+          'X-Auth-Key'  => @openstack_api_key,
+          'X-Auth-User' => @openstack_username
+        },
+        :method   => 'GET',
+        :path     =>  (uri.path && (not uri.path.empty?)) ? uri.path : 'v1.0'
+      )
 
       return {
         :token => response.headers['X-Auth-Token'],
@@ -174,13 +174,13 @@ module Fog
         unless tenant_name
           response = Fog::Core::Connection.new(
             "#{uri.scheme}://#{uri.host}:#{uri.port}/v2.0/tenants", false, connection_options
-          ).request({
-                      :expects => [200, 204],
-                      :headers => { 'Content-Type' => 'application/json',
-                                    'Accept' => 'application/json',
-                                    'X-Auth-Token' => body['access']['token']['id'] },
-                      :method  => 'GET'
-                    })
+          ).request(
+            :expects => [200, 204],
+            :headers => { 'Content-Type' => 'application/json',
+                          'Accept' => 'application/json',
+                          'X-Auth-Token' => body['access']['token']['id'] },
+            :method  => 'GET'
+          )
 
           body = Fog::JSON.decode(response.body)
           if body['tenants'].empty?
@@ -289,7 +289,7 @@ module Fog
       unless service
         if service_type.include? "identity"
           identity_uri = uri.to_s.sub('/auth/tokens', '')
-          response = Fog::Core::Connection.new(identity_uri, false, connection_options).request({ :method => 'GET' })
+          response = Fog::Core::Connection.new(identity_uri, false, connection_options).request(:method => 'GET')
           if response.status == 200
             service = {
               "endpoints" => [{

@@ -78,7 +78,7 @@ describe "OpenStack authentication" do
   it "with v2" do
     Excon.stub(
       { :method => 'POST', :path => "/v2.0/tokens" },
-      { :status => 200, :body => Fog::JSON.encode(@body) }
+      :status => 200, :body => Fog::JSON.encode(@body)
     )
 
     expected = {
@@ -123,7 +123,7 @@ describe "OpenStack authentication" do
   it "v2 missing service" do
     Excon.stub(
       { :method => 'POST', :path => "/v2.0/tokens" },
-      { :status => 200, :body => Fog::JSON.encode(@body) }
+      :status => 200, :body => Fog::JSON.encode(@body)
     )
 
     proc do
@@ -138,7 +138,7 @@ describe "OpenStack authentication" do
   it "v2 missing storage service" do
     Excon.stub(
       { :method => 'POST', :path => "/v2.0/tokens" },
-      { :status => 200, :body => Fog::JSON.encode(@body) }
+      :status => 200, :body => Fog::JSON.encode(@body)
     )
 
     proc do
@@ -178,7 +178,7 @@ describe "OpenStack authentication" do
 
     Excon.stub(
       { :method => 'POST', :path => "/v2.0/tokens" },
-      { :status => 200, :body => Fog::JSON.encode(body_clone) }
+      :status => 200, :body => Fog::JSON.encode(body_clone)
     )
 
     assert("http://example2:8774/v2/#{@tenant_token}") do
@@ -202,7 +202,7 @@ describe "OpenStack authentication" do
 
     Excon.stub(
       { :method => 'GET', :path => "/auth/v1.0" },
-      { :status => 200, :body => "", :headers => headers }
+      :status => 200, :body => "", :headers => headers
     )
 
     assert("https://swift.myhost.com/v1/AUTH_tenant") do
