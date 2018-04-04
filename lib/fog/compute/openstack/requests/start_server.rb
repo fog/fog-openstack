@@ -11,14 +11,14 @@ module Fog
         def start_server(server_id)
           body = {'os-start' => nil}
           server_action(server_id, body).status == 202
-        end # def start_server
-      end # class Real
+        end
+      end
 
       class Mock
         def start_server(_server_id)
           true
-        end # def start_server
-      end # class Mock
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+        end
+      end
+    end
+  end
+end

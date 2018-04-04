@@ -702,10 +702,6 @@ Style/ClassVars:
   Exclude:
     - 'lib/fog/volume/openstack.rb'
 
-# Offense count: 690
-Style/CommentedKeyword:
-  Enabled: false
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SingleLineConditionsOnly, IncludeTernaryExpressions.

@@ -21,7 +21,7 @@ module Fog
               :query   => query
             )
           end
-        end # class Real
+        end
 
         class Mock
           def list_public_images_detailed(_options = {}, _query_deprecated = nil)
@@ -29,9 +29,9 @@ module Fog
             response.status = [200, 204][rand(2)]
             response.body = {'images' => data[:images].values}
             response
-          end # def list_public_images_detailed
-        end # class Mock
-      end # class OpenStack
+          end
+        end
+      end
     end
-  end # module Image
-end # module Fog
+  end
+end

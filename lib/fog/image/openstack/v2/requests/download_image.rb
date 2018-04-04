@@ -3,7 +3,8 @@ module Fog
     class OpenStack
       class V2
         class Real
-          def download_image(image_id, _content_range = nil, params) # TODO: implement content range handling
+          # TODO: implement content range handling
+          def download_image(image_id, _content_range = nil, params)
             request_hash = {
               :expects  => [200, 204],
               :method   => 'GET',
@@ -13,7 +14,7 @@ module Fog
             request_hash[:response_block] = params[:response_block] if params[:response_block]
             request(request_hash).body
           end
-        end # class Real
+        end
 
         class Mock
           def download_image(_image_id, _content_range = nil)
@@ -21,9 +22,9 @@ module Fog
             response.status = [200, 204][rand(2)]
             response.body = ""
             response
-          end # def list_tenants
-        end # class Mock
-      end # class OpenStack
+          end
+        end
+      end
     end
-  end # module Identity
-end # module Fog
+  end
+end

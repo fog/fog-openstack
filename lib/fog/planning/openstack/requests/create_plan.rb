@@ -10,7 +10,7 @@ module Fog
             :body    => Fog::JSON.encode(parameters)
           )
         end
-      end # class Real
+      end
 
       class Mock
         def create_plan(_parameters)
@@ -26,8 +26,8 @@ module Fog
             "uuid"        => "53268a27-afc8-4b21-839f-90227dd7a001"
           }
           response
-        end # def create_plans
-      end # class Mock
-    end # class Planning
-  end # module OpenStack
-end # module Fog
+        end
+      end
+    end
+  end
+end

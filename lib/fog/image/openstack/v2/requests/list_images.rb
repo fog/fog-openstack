@@ -11,7 +11,7 @@ module Fog
               :query   => options
             )
           end
-        end # class Real
+        end
 
         class Mock
           def list_images(_options = {})
@@ -28,9 +28,9 @@ module Fog
               }]
             }
             response
-          end # def list_tenants
-        end # class Mock
-      end # class OpenStack
+          end
+        end
+      end
     end
-  end # module Identity
-end # module Fog
+  end
+end

@@ -46,8 +46,8 @@ module Fog
           def get_id(model_or_string)
             model_or_string.kind_of?(String) ? id : model_or_string.id
           end
-        end # class Role
-      end # class V2
-    end # class OpenStack
-  end # module Identity
-end # module Fog
+        end
+      end
+    end
+  end
+end

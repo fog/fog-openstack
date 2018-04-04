@@ -61,7 +61,7 @@ module Fog
             :status  => 200
           )
         end
-      end # mock
-    end # openstack
-  end # compute
-end # fog
+      end
+    end
+  end
+end

@@ -100,7 +100,9 @@ module Fog
              :openstack_management_url => @openstack_management_url}
           end
         end
-        class Upload # Exists for image_v2_upload_spec "describe"
+
+        # Exists for image_v2_upload_spec "describe"
+        class Upload
         end
 
         class Real

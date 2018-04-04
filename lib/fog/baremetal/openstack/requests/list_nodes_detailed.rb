@@ -10,7 +10,7 @@ module Fog
             :query   => options
           )
         end
-      end # class Real
+      end
 
       class Mock
         def list_nodes_detailed(_options = {})
@@ -18,8 +18,8 @@ module Fog
           response.status = [200, 204][rand(2)]
           response.body = {"nodes" => data[:nodes]}
           response
-        end # def list_nodes
-      end # class Mock
-    end # class OpenStack
-  end # module Baremetal
-end # module Fog
+        end
+      end
+    end
+  end
+end

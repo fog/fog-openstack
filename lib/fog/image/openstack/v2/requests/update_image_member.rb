@@ -11,7 +11,7 @@ module Fog
               :path    => "images/#{image_id}/members/#{member['member_id']}"
             )
           end
-        end # class Real
+        end
 
         class Mock
           def update_image_members(image_id, member)
@@ -27,8 +27,8 @@ module Fog
             }
             response
           end
-        end # class Mock
-      end # class OpenStack
+        end
+      end
     end
-  end # module Identity
-end # module Fog
+  end
+end

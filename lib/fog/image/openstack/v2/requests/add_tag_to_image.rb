@@ -10,16 +10,16 @@ module Fog
               :path    => "images/#{image_id}/tags/#{tag}"
             )
           end
-        end # class Real
+        end
 
         class Mock
           def add_tag_to_image(_image_id, _tag)
             response = Excon::Response.new
             response.status = 204
             response
-          end # def add_tag_to_image
-        end # class Mock
-      end # class OpenStack
+          end
+        end
+      end
     end
-  end # module Image
-end # module Fog
+  end
+end

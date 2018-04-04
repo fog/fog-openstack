@@ -16,7 +16,7 @@ module Fog
             unless VALID_SERVER_GROUP_POLICIES.include? policy
           true
         end
-      end # class ServerGroup
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+      end
+    end
+  end
+end
