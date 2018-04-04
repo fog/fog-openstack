@@ -48,14 +48,14 @@ module Fog
         def require_mime_types
           # Use mime/types/columnar if available, for reduced memory usage
           require 'mime/types/columnar'
+        rescue LoadError
+          begin
+            require 'mime/types'
           rescue LoadError
-            begin
-              require 'mime/types'
-            rescue LoadError
-              Fog::Logger.warning("'mime-types' missing, please install and try again.")
-              exit(1)
-            end
+            Fog::Logger.warning("'mime-types' missing, please install and try again.")
+            exit(1)
           end
+        end
       end
 
       class Mock
