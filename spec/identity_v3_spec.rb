@@ -304,7 +304,6 @@ describe Fog::Identity::OpenStack::V3 do
       auth_url = "#{@os_auth_url}/auth/tokens"
 
       begin
-
         foobar_user = @service.users.create(
           :name      => 'foobar_385',
           :email     => 'foobar_demo@example.com',
@@ -780,7 +779,6 @@ describe Fog::Identity::OpenStack::V3 do
         foobar_project.revoke_role_from_group(baz_role.id, foobar_group.id)
         foobar_user.projects.length.must_equal 0
         foobar_project.check_group_role(foobar_group.id, baz_role.id).must_equal false
-
       ensure
         # Clean up
         foobar_user.destroy if foobar_user
@@ -952,7 +950,6 @@ describe Fog::Identity::OpenStack::V3 do
         updated_credential.wont_equal nil
         updated_credential.type.must_equal 'ec2'
         JSON.parse(updated_credential.blob)['secret'].must_equal new_secret_key
-
       ensure
         foobar_user = @service.users.find_by_name('u-foobar_cred').first unless foobar_user
         foobar_user.destroy if foobar_user

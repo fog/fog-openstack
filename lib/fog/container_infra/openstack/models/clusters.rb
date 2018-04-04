@@ -5,7 +5,6 @@ module Fog
   module ContainerInfra
     class OpenStack
       class Clusters < Fog::OpenStack::Collection
-
         model Fog::ContainerInfra::OpenStack::Cluster
 
         def all

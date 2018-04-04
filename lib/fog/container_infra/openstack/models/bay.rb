@@ -49,7 +49,6 @@ module Fog
             :node_count
           ]
         end
-
       end
     end
   end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Fog
   module Orchestration
     class OpenStack

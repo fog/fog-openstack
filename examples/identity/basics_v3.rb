@@ -9,8 +9,6 @@ password = 'secret'
 project = 'admin'
 domain = 'Default'
 
-
-
 keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
                                         :openstack_username => username,
                                         :openstack_api_key  => password,

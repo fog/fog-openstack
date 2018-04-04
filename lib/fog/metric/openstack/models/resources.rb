@@ -5,7 +5,6 @@ module Fog
   module Metric
     class OpenStack
       class Resources < Fog::OpenStack::Collection
-
         model Fog::Metric::OpenStack::Resource
 
         def all(options = {})

@@ -4,7 +4,6 @@ require 'uri'
 module Fog
   module KeyManager
     class OpenStack
-
       class Secret < Fog::OpenStack::Model
         identity :secret_ref
 
@@ -45,9 +44,7 @@ module Fog
           service.delete_secret(uuid)
           true
         end
-
       end
-
     end
   end
 end

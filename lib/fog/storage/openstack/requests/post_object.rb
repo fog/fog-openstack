@@ -10,7 +10,6 @@ module Fog
         # * headers<~Hash> - metadata headers for object. Defaults to {}.
         #
         def post_object(container, object, headers = {})
-
           params = {
             :expects    => 202,
             :headers    => headers,

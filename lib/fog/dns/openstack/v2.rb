@@ -60,7 +60,6 @@ module Fog
         request :get_zone_transfer_accept
         request :list_zone_transfer_accepts
 
-
         def self.setup_headers(options)
           # user needs to have admin privileges to ask for all projects
           all_projects = options.delete(:all_projects) || false

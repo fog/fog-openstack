@@ -417,7 +417,6 @@ module Fog
     end
 
     def self.retrieve_tokens_v3(options, connection_options = {})
-
       api_key           = options[:openstack_api_key].to_s
       username          = options[:openstack_username].to_s
       userid            = options[:openstack_userid]
@@ -512,7 +511,6 @@ module Fog
     end
 
     def self.get_service_v3(hash, service_type=[], service_name=nil, region=nil, options={})
-
       # Find all services matching any of the types in service_type, filtered by service_name if it's non-nil
       services = hash['token']['catalog'].find_all do |s|
         if service_name.nil? or service_name.empty?
@@ -526,7 +524,6 @@ module Fog
       services.find do |s|
         s['endpoints'].any? { |ep| endpoint_region?(ep, region) && endpoint_path_match?(ep, options[:openstack_endpoint_path_matches])}
       end if services
-
     end
 
     def self.endpoint_region?(endpoint, region)
@@ -575,7 +572,6 @@ module Fog
         when "adminURL"
           "admin"
       end
-
     end
 
     def self.get_version(supported_versions, uri, auth_token, connection_options = {})

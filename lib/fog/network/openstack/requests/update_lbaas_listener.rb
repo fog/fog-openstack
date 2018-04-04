@@ -3,7 +3,6 @@ module Fog
     class OpenStack
       class Real
         def update_lbaas_listener(listener_id, options = {})
-
           data = { 'listener' => {} }
 
           vanilla_options = [:name, :description, :connection_limit, :default_tls_container_ref, :sni_container_refs,

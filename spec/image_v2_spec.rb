@@ -52,7 +52,6 @@ describe Fog::Image::OpenStack do
         images = @service.images.all(:name => image_rename)
         images.length.must_equal 1
         images.first.id.must_equal baz_image.id
-
       ensure
         cleanup_image baz_image
         @service.images.all.select { |image| [image_name, image_rename].include? image.name }.each(&:destroy)
@@ -79,7 +78,6 @@ describe Fog::Image::OpenStack do
 
         get_image = @service.images.find_by_id(identifier)
         get_image.name.must_equal image_name
-
       ensure
         cleanup_image foobar_image, image_name, foobar_id
       end
@@ -194,7 +192,6 @@ describe Fog::Image::OpenStack do
         # Bulk download
         downloaded_data = foobar_image.download_data
         downloaded_data.size.must_equal File.size(image_path)
-
       ensure
         cleanup_image foobar_image, image_name
       end
@@ -250,7 +247,6 @@ describe Fog::Image::OpenStack do
 
         foobar_image.remove_tags %w(tag1 tag3)
         @service.images.find_by_id(foobar_id).tags.must_include 'tag4'
-
       ensure
         cleanup_image foobar_image, image_name
       end

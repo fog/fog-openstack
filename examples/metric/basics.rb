@@ -30,7 +30,6 @@ p metric.resources.find_by_id("3c6c53c9-25c1-4aca-984d-a20c1926b499")
 
 p metric.get_resource_metric_measures("d1f84147-d4ef-465e-a679-265df36918ed", "disk.ephemeral.size", start: 0, stop: Time.now.iso8601, granularity: 300).body
 
-
 puts "### METRICS ###"
 
 p metric.metrics.all

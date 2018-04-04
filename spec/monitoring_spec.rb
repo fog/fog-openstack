@@ -145,10 +145,8 @@ describe Fog::Monitoring::OpenStack do
         proc { @service.notification_methods.create(:name => "this won't be created due to insufficient args") }.
           must_raise Fog::Monitoring::OpenStack::ArgumentError
         proc { @service.notification_methods.find_by_id('bogus_id') }.must_raise Fog::Monitoring::OpenStack::NotFound
-
       ensure
         notification_method.destroy if notification_method
-
       end
     end
   end
@@ -221,11 +219,9 @@ describe Fog::Monitoring::OpenStack do
         # failure cases
         proc { @service.alarm_definitions.create(:name => "this won't be created due to insufficient args") }.
           must_raise Fog::Monitoring::OpenStack::ArgumentError
-
       ensure
         alarm_definition.destroy if alarm_definition
         notification_method.destroy if notification_method
-
       end
     end
   end
@@ -308,12 +304,10 @@ describe Fog::Monitoring::OpenStack do
 
         alarm_definition    = nil
         notification_method = nil
-
       ensure
         # cleanup
         alarm_definition.destroy if alarm_definition
         notification_method.destroy if notification_method
-
       end
     end
   end

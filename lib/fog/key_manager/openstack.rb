@@ -15,7 +15,6 @@ module Fog
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
                  :openstack_identity_prefix, :openstack_temp_url_key, :openstack_cache_ttl
 
-
       ## MODELS
       #
       model_path 'fog/key_manager/openstack/models'
@@ -144,7 +143,6 @@ module Fog
 
           version
         end
-
       end
     end
   end

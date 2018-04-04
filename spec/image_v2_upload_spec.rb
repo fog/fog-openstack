@@ -52,7 +52,6 @@ describe Fog::Image::OpenStack do
         end
         foobar_image.download_data(:response_block => read_block)
         size.must_equal File.size(image_path)
-
       ensure
         # Delete the image
         foobar_image.destroy if foobar_image

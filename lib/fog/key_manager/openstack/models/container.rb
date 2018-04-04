@@ -4,7 +4,6 @@ require 'uri'
 module Fog
   module KeyManager
     class OpenStack
-
       class Container < Fog::OpenStack::Model
         identity :container_ref
 
@@ -36,9 +35,7 @@ module Fog
           service.delete_container(uuid)
           true
         end
-
       end
-
     end
   end
 end

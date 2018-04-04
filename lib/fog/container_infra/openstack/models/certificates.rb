@@ -5,7 +5,6 @@ module Fog
   module ContainerInfra
     class OpenStack
       class Certificates < Fog::OpenStack::Collection
-
         model Fog::ContainerInfra::OpenStack::Certificate
 
         def create(bay_uuid)

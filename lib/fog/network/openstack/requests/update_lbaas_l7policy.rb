@@ -3,7 +3,6 @@ module Fog
     class OpenStack
       class Real
         def update_lbaas_l7policy(l7policy_id, options = {})
-
           data = {'l7policy' => {}}
 
           vanilla_options = [:action, :name, :description, :redirect_pool_id, :redirect_url, :position]

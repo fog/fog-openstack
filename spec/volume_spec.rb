@@ -494,7 +494,6 @@ require_relative './shared_context'
           check_metadata = updated_volume.metadata
           check_metadata.size.must_equal 1
           check_metadata['newer_metadata'].must_equal 'this is newer'
-
         ensure
           # cleanup volume
           cleanup_test_object(@service.volumes, volume.id) if volume
@@ -553,7 +552,6 @@ require_relative './shared_context'
           check_metadata   = updated_snapshot.metadata
           check_metadata.size.must_equal 1
           check_metadata['new_snapshot_metadata'].must_equal 'this is new'
-
         ensure
           # cleanup volume
           cleanup_test_object(@service.snapshots, snapshot.id) if snapshot
