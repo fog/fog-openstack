@@ -38,12 +38,6 @@ Lint/ParenthesesAsGroupedExpression:
     - 'test/models/compute/server_tests.rb'
     - 'test/models/network/floating_ip_tests.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Lint/PercentStringArray:
-  Exclude:
-    - 'test/helpers/collection_helper.rb'
-
 # Offense count: 3
 Lint/ShadowingOuterLocalVariable:
   Exclude:

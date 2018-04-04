@@ -53,7 +53,7 @@ def collection_tests(collection, params = {})
           end
         end
 
-        %w{max_by, min_by}.each do |enum_method|
+        %w{max_by min_by}.each do |enum_method|
           if collection.respond_to?(enum_method)
             it "##{enum_method}" do
               block_called = false
