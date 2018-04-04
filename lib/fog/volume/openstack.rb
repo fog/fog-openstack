@@ -3,8 +3,8 @@
 module Fog
   module Volume
     class OpenStack < Fog::Service
-      autoload :V1, File.expand_path('../openstack/v1', __FILE__)
-      autoload :V2, File.expand_path('../openstack/v2', __FILE__)
+      autoload :V1, File.expand_path('openstack/v1', __dir__)
+      autoload :V2, File.expand_path('openstack/v2', __dir__)
 
       @@recognizes = [:openstack_auth_token, :openstack_management_url,
                       :persistent, :openstack_service_type, :openstack_service_name,

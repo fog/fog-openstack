@@ -3,8 +3,8 @@
 module Fog
   module Image
     class OpenStack < Fog::Service
-      autoload :V1, File.expand_path('../openstack/v1', __FILE__)
-      autoload :V2, File.expand_path('../openstack/v2', __FILE__)
+      autoload :V1, File.expand_path('openstack/v1', __dir__)
+      autoload :V2, File.expand_path('openstack/v2', __dir__)
 
       # Fog::Image::OpenStack.new() will return a Fog::Image::OpenStack::V2 or a Fog::Image::OpenStack::V1,
       #  choosing the latest available

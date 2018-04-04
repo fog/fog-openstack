@@ -4,86 +4,86 @@ require 'fog/json'
 
 module Fog
   module Baremetal
-    autoload :OpenStack, File.expand_path('../baremetal/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('baremetal/openstack', __dir__)
   end
 
   module Compute
-    autoload :OpenStack, File.expand_path('../compute/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('compute/openstack', __dir__)
   end
 
   module ContainerInfra
-    autoload :OpenStack, File.expand_path('../container_infra/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('container_infra/openstack', __dir__)
   end
 
   module DNS
-    autoload :OpenStack, File.expand_path('../dns/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('dns/openstack', __dir__)
   end
 
   module Event
-    autoload :OpenStack, File.expand_path('../event/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('event/openstack', __dir__)
   end
 
   module Identity
-    autoload :OpenStack, File.expand_path('../identity/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('identity/openstack', __dir__)
   end
 
   module Image
-    autoload :OpenStack, File.expand_path('../image/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('image/openstack', __dir__)
   end
 
   module Introspection
-    autoload :OpenStack, File.expand_path('../introspection/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('introspection/openstack', __dir__)
   end
 
   module KeyManager
-    autoload :OpenStack, File.expand_path('../key_manager/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('key_manager/openstack', __dir__)
   end
 
   module Metering
-    autoload :OpenStack, File.expand_path('../metering/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('metering/openstack', __dir__)
   end
 
   module Metric
-    autoload :OpenStack, File.expand_path('../metric/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('metric/openstack', __dir__)
   end
 
   module Monitoring
-    autoload :OpenStack, File.expand_path('../monitoring/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('monitoring/openstack', __dir__)
   end
 
   module Network
-    autoload :OpenStack, File.expand_path('../network/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('network/openstack', __dir__)
   end
 
   module NFV
-    autoload :OpenStack, File.expand_path('../nfv/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('nfv/openstack', __dir__)
   end
 
   module Orchestration
-    autoload :OpenStack, File.expand_path('../orchestration/openstack', __FILE__)
-    autoload :Util, File.expand_path('../orchestration/util/recursive_hot_file_loader', __FILE__)
+    autoload :OpenStack, File.expand_path('orchestration/openstack', __dir__)
+    autoload :Util, File.expand_path('orchestration/util/recursive_hot_file_loader', __dir__)
   end
 
   module SharedFileSystem
-    autoload :OpenStack, File.expand_path('../shared_file_system/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('shared_file_system/openstack', __dir__)
   end
 
   module Storage
-    autoload :OpenStack, File.expand_path('../storage/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('storage/openstack', __dir__)
   end
 
   module Volume
-    autoload :OpenStack, File.expand_path('../volume/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('volume/openstack', __dir__)
   end
 
   module Workflow
-    autoload :OpenStack, File.expand_path('../workflow/openstack', __FILE__)
+    autoload :OpenStack, File.expand_path('workflow/openstack', __dir__)
   end
 
   module OpenStack
-    autoload :Core, File.expand_path('../openstack/core', __FILE__)
-    autoload :Errors, File.expand_path('../openstack/errors', __FILE__)
-    autoload :Planning, File.expand_path('../planning/openstack', __FILE__)
+    autoload :Core, File.expand_path('openstack/core', __dir__)
+    autoload :Errors, File.expand_path('openstack/errors', __dir__)
+    autoload :Planning, File.expand_path('planning/openstack', __dir__)
 
     extend Fog::Provider
 

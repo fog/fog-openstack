@@ -272,19 +272,6 @@ Style/EvalWithLocation:
   Exclude:
     - 'test/volume_tests.rb'
 
-# Offense count: 34
-# Cop supports --auto-correct.
-Style/ExpandPathArguments:
-  Exclude:
-    - 'fog-openstack.gemspec'
-    - 'lib/fog/dns/openstack.rb'
-    - 'lib/fog/identity/openstack.rb'
-    - 'lib/fog/image/openstack.rb'
-    - 'lib/fog/openstack.rb'
-    - 'lib/fog/volume/openstack.rb'
-    - 'lib/fog/workflow/openstack.rb'
-    - 'test/test_helper.rb'
-
 # Offense count: 1
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: each, for

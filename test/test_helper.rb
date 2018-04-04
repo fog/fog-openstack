@@ -9,7 +9,7 @@ require 'fog/test_helpers/types_helper.rb'
 require 'fog/test_helpers/minitest/assertions'
 require 'fog/test_helpers/minitest/expectations'
 
-require File.expand_path('../../lib/fog/openstack', __FILE__)
+require File.expand_path('../lib/fog/openstack', __dir__)
 
 Fog.mock! if ENV["FOG_MOCK"] == "true"
 Bundler.require(:test)
