@@ -41,7 +41,7 @@ module Fog
             'expected_codes' => options[:expected_codes],
             'status'         => 'ACTIVE',
             'admin_state_up' => options[:admin_state_up],
-            'tenant_id'      => options[:tenant_id],
+            'tenant_id'      => options[:tenant_id]
           }
 
           self.data[:lb_health_monitors][data['id']] = data

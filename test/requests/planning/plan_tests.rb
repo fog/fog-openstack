@@ -35,7 +35,7 @@ describe "Fog::OpenStack[:planning] | Planning plan requests" do
     it "#create_plan" do
       plan_attributes = {
         :name        => 'test-plan-name',
-        :description => 'test-plan-desc',
+        :description => 'test-plan-desc'
       }
       @instance = Fog::OpenStack[:planning].create_plan(plan_attributes).body
       @instance.must_match_schema(@plan_format)
@@ -54,7 +54,7 @@ describe "Fog::OpenStack[:planning] | Planning plan requests" do
       plan_parameters = parameters.collect do |parameter|
         {
           "name"  => parameter['name'],
-          "value" => "test-#{parameter['name']}-value",
+          "value" => "test-#{parameter['name']}-value"
         }
       end
       Fog::OpenStack[:planning].patch_plan(@instance['uuid'], plan_parameters).body.

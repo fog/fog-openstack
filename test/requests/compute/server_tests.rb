@@ -19,7 +19,7 @@ describe "Fog::Compute[:openstack] | server requests" do
         'adminPass'       => String,
         'id'              => String,
         'links'           => Array,
-        'security_groups' => Fog::Nullable::Array,
+        'security_groups' => Fog::Nullable::Array
       }
 
       @base_server_format = {
@@ -37,7 +37,7 @@ describe "Fog::Compute[:openstack] | server requests" do
         'created'      => String,
         'updated'      => String,
         'user_id'      => String,
-        'config_drive' => String,
+        'config_drive' => String
       }
 
       @reservation_format = {'reservation_id' => String}

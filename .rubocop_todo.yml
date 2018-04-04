@@ -1092,42 +1092,6 @@ Style/TernaryParentheses:
   Exclude:
     - 'lib/fog/openstack.rb'
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInArguments:
-  Exclude:
-    - 'lib/fog/key_manager/openstack/requests/get_container.rb'
-    - 'lib/fog/key_manager/openstack/requests/get_secret.rb'
-    - 'lib/fog/key_manager/openstack/requests/get_secret_metadata.rb'
-    - 'lib/fog/metric/openstack/requests/get_metric_measures.rb'
-
-# Offense count: 12
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInArrayLiteral:
-  Exclude:
-    - 'lib/fog/compute/openstack.rb'
-    - 'lib/fog/image/openstack/v2/models/image.rb'
-    - 'lib/fog/network/openstack/requests/create_network.rb'
-    - 'lib/fog/nfv/openstack/requests/create_vnf.rb'
-    - 'lib/fog/nfv/openstack/requests/create_vnfd.rb'
-    - 'lib/fog/nfv/openstack/requests/update_vnf.rb'
-    - 'lib/fog/planning/openstack/requests/get_plan.rb'
-    - 'lib/fog/planning/openstack/requests/list_plans.rb'
-    - 'lib/fog/volume/openstack/requests/create_backup.rb'
-    - 'test/requests/orchestration/stack_files_util_helper_tests.rb'
-    - 'test/requests/orchestration/stack_files_util_tests.rb'
-
-# Offense count: 69
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInHashLiteral:
-  Enabled: false
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/UnneededPercentQ:

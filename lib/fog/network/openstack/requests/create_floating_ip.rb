@@ -33,7 +33,7 @@ module Fog
             'port_id'             => options[:port_id],
             'tenant_id'           => options[:tenant_id],
             'fixed_ip_address'    => options[:fixed_ip_address],
-            'router_id'           => nil,
+            'router_id'           => nil
           }
           self.data[:floating_ips][data['id']] = data
           response.body = {'floatingip' => data}

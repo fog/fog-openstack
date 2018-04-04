@@ -300,9 +300,9 @@ module Fog
                      "to_port"         => 68,
                      "ip_protocol"     => "udp",
                      "ip_range"        => {"cidr" => "0.0.0.0/0"},
-                     "group"           => {}},
-                  ],
-                },
+                     "group"           => {}}
+                  ]
+                }
               },
               :server_groups             => {},
               :server_security_group_map => {},

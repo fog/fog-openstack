@@ -10,7 +10,7 @@ module Fog
                 'password' => password,
                 'tenantId' => tenantId,
                 'email'    => email,
-                'enabled'  => enabled,
+                'enabled'  => enabled
               }
             }
 

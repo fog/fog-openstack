@@ -38,7 +38,7 @@ module Fog
             'weight'         => weight,
             'status'         => 'ACTIVE',
             'admin_state_up' => options[:admin_state_up],
-            'tenant_id'      => options[:tenant_id],
+            'tenant_id'      => options[:tenant_id]
           }
 
           self.data[:lb_members][data['id']] = data

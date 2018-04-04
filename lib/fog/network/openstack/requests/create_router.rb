@@ -5,7 +5,7 @@ module Fog
         def create_router(name, options = {})
           data = {
             'router' => {
-              'name' => name,
+              'name' => name
             }
           }
 

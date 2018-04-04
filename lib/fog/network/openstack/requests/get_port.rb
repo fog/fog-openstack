@@ -24,7 +24,7 @@ module Fog
                 'fixed_ips'             => [
                   {
                     'ip_address' => '10.2.2.2',
-                    'subnet_id'  => '2e4ec6a4-0150-47f5-8523-e899ac03026e',
+                    'subnet_id'  => '2e4ec6a4-0150-47f5-8523-e899ac03026e'
                   }
                 ],
                 'mac_address'           => 'fa:16:3e:62:91:7f',

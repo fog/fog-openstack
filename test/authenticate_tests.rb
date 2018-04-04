@@ -19,7 +19,7 @@ describe "OpenStack authentication" do
             "enabled"     => true,
             "description" => nil,
             "name"        => "admin",
-            "id"          => @tenant_token,
+            "id"          => @tenant_token
           }
         },
         "serviceCatalog" => [

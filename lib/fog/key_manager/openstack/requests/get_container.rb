@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => [200],
             :method  => 'GET',
-            :path    => "containers/#{uuid}",
+            :path    => "containers/#{uuid}"
           )
         end
       end

@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => [200],
             :method  => 'GET',
-            :path    => "secrets/#{uuid}/metadata",
+            :path    => "secrets/#{uuid}/metadata"
           )
         end
       end

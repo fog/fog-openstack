@@ -5,7 +5,7 @@ module Fog
         def add_router_interface(router_id, subnet_id_or_options)
           if subnet_id_or_options.kind_of? String
             data = {
-              'subnet_id' => subnet_id_or_options,
+              'subnet_id' => subnet_id_or_options
             }
           elsif subnet_id_or_options.kind_of? Hash
             data = subnet_id_or_options

@@ -24,7 +24,7 @@ _vm = compute_client.servers.create(
       :source_type           => "volume", # Or "snapshot"
       :destination_type      => "volume",
       :delete_on_termination => false,
-      :uuid                  => cinder_uddi,
+      :uuid                  => cinder_uddi
     }
   ]
 )

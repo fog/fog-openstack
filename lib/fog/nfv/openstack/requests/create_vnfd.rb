@@ -5,7 +5,7 @@ module Fog
         def create_vnfd(options)
           options_valid = [
             :auth,
-            :vnfd,
+            :vnfd
           ]
 
           # Filter only allowed creation attributes

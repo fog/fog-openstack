@@ -7,7 +7,7 @@ module Fog
               :expects => 200,
               :method  => 'GET',
               :path    => "metric/#{metric_id}/measures",
-              :query    => options,
+              :query    => options
           )
         end
       end

@@ -32,7 +32,7 @@ module Fog
           response.status = 200
           response.body = [{
             'event_type' => 'compute.instance.create',
-            'message_id' => 'd646b40dea6347dfb8caee2da1484c56',
+            'message_id' => 'd646b40dea6347dfb8caee2da1484c56'
           }]
           response
         end

@@ -12,6 +12,6 @@ if Fog.mock?
     :openstack_api_key  => 'openstack_api_key',
     :openstack_username => 'openstack_username',
     :openstack_tenant   => 'openstack_tenant',
-    :openstack_auth_url => 'http://openstack:35357/v2.0/tokens',
+    :openstack_auth_url => 'http://openstack:35357/v2.0/tokens'
   }.merge(Fog.credentials)
 end

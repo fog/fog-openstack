@@ -38,7 +38,7 @@ module Fog
                                    "label"       => nil,
                                    "name"        => "name",
                                    "value"       => "value"
-                                 },
+                                 }
                                ],
               "roles"       =>
                                [

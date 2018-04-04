@@ -67,7 +67,7 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
         %w(file:///a/f.txt file:///a),
         %w(file:///a/b/f.txt file:///a/b),
         %w(http://h.com/a/f.txt http://h.com/a),
-        %w(https://h.com/a/b/f.txt https://h.com/a/b),
+        %w(https://h.com/a/b/f.txt https://h.com/a/b)
       ]
       test_cases.each do |data, expected|
         assert_equal(@file_resolver.send(:base_url_for_url, data).to_s, expected)

@@ -9,7 +9,7 @@ module Fog
             :description,
             :volume_id,
             :incremental,
-            :force,
+            :force
           ]
 
           # Filter only allowed creation attributes
@@ -38,7 +38,7 @@ module Fog
               "status" => "available",
               "size" => 1,
               "object_count" => 16,
-              "container" => "testcontainer",
+              "container" => "testcontainer"
             }
           }
           response

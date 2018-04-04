@@ -8,7 +8,7 @@ module Fog
               :expects  => [200, 204],
               :method   => 'GET',
               :raw_body => true,
-              :path     => "images/#{image_id}/file",
+              :path     => "images/#{image_id}/file"
             }
             request_hash[:response_block] = params[:response_block] if params[:response_block]
             request(request_hash).body

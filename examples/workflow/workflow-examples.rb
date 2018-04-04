@@ -11,7 +11,7 @@ project  = "admin"
   :openstack_username     => username,
   :openstack_api_key      => password,
   :openstack_project_name => project,
-  :openstack_domain_id    => "default",
+  :openstack_domain_id    => "default"
 }
 
 mistral = Fog::Workflow::OpenStack.new(@connection_params)
@@ -97,7 +97,7 @@ puts "INFO: create_workbook"
 workbook_def = {
   :version => "2.0",
   :name => "workbook name",
-  :description => "workbook description",
+  :description => "workbook description"
 }
 response = mistral.create_workbook(workbook_def)
 workbook_name = response.body["name"]
@@ -121,7 +121,7 @@ puts "INFO: update_workbook"
 workbook_def = {
   :version => "2.0",
   :name => "workbook name",
-  :description => "workbook description2",
+  :description => "workbook description2"
 }
 
 response = mistral.update_workbook(workbook_def)

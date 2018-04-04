@@ -5,7 +5,7 @@ module Fog
         def associate_lb_health_monitor(pool_id, health_monitor_id)
           data = {
             'health_monitor' => {
-              'id' => health_monitor_id,
+              'id' => health_monitor_id
             }
           }
 

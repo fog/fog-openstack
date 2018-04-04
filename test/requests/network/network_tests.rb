@@ -13,7 +13,7 @@ describe "Fog::Network[:openstack] | network requests" do
         "admin_state_up"        => Fog::Boolean,
         "qos_policy_id"         => Fog::Nullable::String,
         "port_security_enabled" => Fog::Boolean,
-        "tenant_id"             => String,
+        "tenant_id"             => String
       }
     end
 
@@ -22,7 +22,7 @@ describe "Fog::Network[:openstack] | network requests" do
         "router:external"           => Fog::Boolean,
         "provider:network_type"     => String,
         "provider:physical_network" => Fog::Nullable::String,
-        "provider:segmentation_id"  => Integer,
+        "provider:segmentation_id"  => Integer
       }
     end
 
@@ -59,7 +59,7 @@ describe "Fog::Network[:openstack] | network requests" do
         # QuantumError: "Invalid input for operation: provider:physical_network"
         :provider_network_type    => "gre",
         :provider_segmentation_id => 22,
-        :router_external          => true,
+        :router_external          => true
       }
 
       network.create_network(attributes).body.
@@ -113,7 +113,7 @@ describe "Fog::Network[:openstack] | network requests" do
           # May rise an exception if the network_type isn't valid:
           # QuantumError: "Invalid input for operation: provider:physical_network"
           :provider_network_type    => 'foobar',
-          :provider_segmentation_id => 22,
+          :provider_segmentation_id => 22
         }
 
         network.create_network(attributes)

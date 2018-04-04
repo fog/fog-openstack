@@ -381,7 +381,7 @@ module Fog
             'nics'                    => @nics,
             'os:scheduler_hints'      => @os_scheduler_hints,
             'block_device_mapping'    => @block_device_mapping,
-            'block_device_mapping_v2' => @block_device_mapping_v2,
+            'block_device_mapping_v2' => @block_device_mapping_v2
           }
           options['metadata'] = metadata.to_hash unless @metadata.nil?
           options = options.reject { |_key, value| value.nil? }

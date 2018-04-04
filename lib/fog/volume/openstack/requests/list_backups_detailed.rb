@@ -24,7 +24,7 @@ module Fog
               "status" => "available",
               "size" => 1,
               "object_count" => 16,
-              "container" => "testcontainer",
+              "container" => "testcontainer"
             },
             {
               "id" => "2",
@@ -33,7 +33,7 @@ module Fog
               "status" => "available",
               "size" => 1,
               "object_count" => 16,
-              "container" => "testcontainer",
+              "container" => "testcontainer"
             }
           ]
           response.body = { 'backups' => data[:backups] }

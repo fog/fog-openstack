@@ -46,7 +46,7 @@ module Fog
             "coe"                   => "kubernetes",
             "flavor_id"             => "m1.small",
             "master_lb_enabled"     => true,
-            "dns_nameserver"        => "8.8.8.8",
+            "dns_nameserver"        => "8.8.8.8"
           }
           response
         end

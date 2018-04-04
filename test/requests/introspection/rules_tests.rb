@@ -8,7 +8,7 @@ describe "@inspector | Introspection rules requests" do
       'description' => Fog::Nullable::String,
       'actions'     => Array,
       'conditions'  => Array,
-      'uuid'        => Fog::Nullable::String,
+      'uuid'        => Fog::Nullable::String
     }
   end
 
@@ -27,7 +27,7 @@ describe "@inspector | Introspection rules requests" do
         "conditions"  => {
           "field" => "node://property.path",
           "op"    => "eq",
-          "value" => "val",
+          "value" => "val"
         },
         "description" => "",
         "uuid"        => ""

@@ -5,7 +5,7 @@ module Fog
         def associate_floating_ip(floating_ip_id, port_id, options = {})
           data = {
             'floatingip' => {
-              'port_id' => port_id,
+              'port_id' => port_id
             }
           }
 
@@ -34,7 +34,7 @@ module Fog
             'floating_network_id' => options["floating_network_id"],
             'fixed_ip_address'    => options["fixed_ip_address"],
             'floating_ip_address' => options["floating_ip_address"],
-            'port_id'             => port_id,
+            'port_id'             => port_id
           }
 
           self.data[:floating_ips][data['floating_ip_id']] = data

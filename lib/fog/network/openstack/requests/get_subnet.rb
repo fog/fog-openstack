@@ -33,7 +33,7 @@ module Fog
                 "dns_nameservers"  => [],
                 "host_routes"      => [],
                 "enable_dhcp"      => true,
-                "tenant_id"        => "f8b26a6032bc47718a7702233ac708b9",
+                "tenant_id"        => "f8b26a6032bc47718a7702233ac708b9"
               }
             }
             response

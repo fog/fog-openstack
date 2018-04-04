@@ -72,7 +72,7 @@ module Fog
                 'delete_on_termination' => mapping[:delete_on_termination],
                 'device_name'           => mapping[:device_name],
                 'volume_id'             => mapping[:volume_id],
-                'volume_size'           => mapping[:volume_size],
+                'volume_size'           => mapping[:volume_size]
               }
             end
           end
@@ -124,7 +124,7 @@ module Fog
             'created'      => '2012-09-27T00:04:18Z',
             'updated'      => '2012-09-27T00:04:27Z',
             'user_id'      => user_id,
-            'config_drive' => options['config_drive'] || '',
+            'config_drive' => options['config_drive'] || ''
           }
 
           nics = options['nics']
@@ -143,7 +143,7 @@ module Fog
                             {
                               'adminPass' => 'password',
                               'id'        => server_id,
-                              'links'     => mock_data['links'],
+                              'links'     => mock_data['links']
                             }
                           end
 

@@ -178,7 +178,7 @@ module Fog
             [
               build_patch_operation('remove', patch_attributes_to_remove(client_attributes, server_attributes)),
               build_patch_operation('add', patch_attributes_to_add(client_attributes, server_attributes)),
-              build_patch_operation('replace', patch_attributes_to_replace(client_attributes, server_attributes)),
+              build_patch_operation('replace', patch_attributes_to_replace(client_attributes, server_attributes))
             ].flatten
           end
 

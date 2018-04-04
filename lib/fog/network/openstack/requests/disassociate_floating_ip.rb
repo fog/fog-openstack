@@ -5,7 +5,7 @@ module Fog
         def disassociate_floating_ip(floating_ip_id, options = {})
           data = {
             'floatingip' => {
-              'port_id' => nil,
+              'port_id' => nil
             }
           }
 
@@ -34,7 +34,7 @@ module Fog
             'floating_network_id' => options["floating_network_id"],
             'fixed_ip_address'    => nil,
             'floating_ip_address' => options["floating_ip_address"],
-            'port_id'             => options["port_id"],
+            'port_id'             => options["port_id"]
           }
 
           self.data[:floating_ips][data['floating_ip_id']] = data

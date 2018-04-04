@@ -48,7 +48,7 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
 
     @create_format = {
       'id'    => String,
-      'links' => Array,
+      'links' => Array
     }
 
     @create_format_files = {
@@ -78,7 +78,7 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
       expected = prefix_with_url(["local.yaml", "hot_1.yaml"], @base_url)
       args = {
         :stack_name => "teststack_files",
-        :template   => YAML.load_file("local.yaml"),
+        :template   => YAML.load_file("local.yaml")
       }
       response = @orchestration.create_stack(args)
       response.body.must_match_schema(@create_format_files)

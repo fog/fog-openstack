@@ -321,7 +321,7 @@ module Fog
                   'dns_nameservers'  => [Fog::Mock.random_ip, Fog::Mock.random_ip],
                   'host_routes'      => [Fog::Mock.random_ip],
                   'enable_dhcp'      => true,
-                  'tenant_id'        => tenant_id,
+                  'tenant_id'        => tenant_id
                 }
               },
               :subnet_pools           => {},

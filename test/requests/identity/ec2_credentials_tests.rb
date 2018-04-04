@@ -10,7 +10,7 @@ describe "Fog::Identity[:openstack] | EC2 credential requests" do
       'access'    => String,
       'tenant_id' => String,
       'secret'    => String,
-      'user_id'   => String,
+      'user_id'   => String
     }
 
     @user_id = OpenStack::Identity.get_user_id(@identity)

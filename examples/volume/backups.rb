@@ -11,7 +11,7 @@ project  = "admin"
   :openstack_username     => username,
   :openstack_api_key      => password,
   :openstack_project_name => project,
-  :openstack_domain_id    => "default",
+  :openstack_domain_id    => "default"
 }
 
 cinder = Fog::Volume::OpenStack.new(@connection_params)

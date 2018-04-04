@@ -5,7 +5,7 @@ module Fog
         def update_vnf(id, options)
           options_valid = [
             :auth,
-            :vnf,
+            :vnf
           ]
 
           # Filter only allowed creation attributes

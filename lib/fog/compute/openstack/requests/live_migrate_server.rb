@@ -7,7 +7,7 @@ module Fog
             'os-migrateLive' => {
               'host'             => host,
               'block_migration'  => block_migration,
-              'disk_over_commit' => disk_over_commit,
+              'disk_over_commit' => disk_over_commit
             }
           }
           server_action(server_id, body)

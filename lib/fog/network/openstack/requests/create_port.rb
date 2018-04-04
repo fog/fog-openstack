@@ -5,7 +5,7 @@ module Fog
         def create_port(network_id, options = {})
           data = {
             'port' => {
-              'network_id' => network_id,
+              'network_id' => network_id
             }
           }
 
@@ -41,7 +41,7 @@ module Fog
             'device_id'             => options[:device_id],
             'tenant_id'             => options[:tenant_id],
             'security_groups'       => options[:security_groups],
-            'allowed_address_pairs' => options[:allowed_address_pairs],
+            'allowed_address_pairs' => options[:allowed_address_pairs]
           }
           self.data[:ports][data['id']] = data
           response.body = {'port' => data}

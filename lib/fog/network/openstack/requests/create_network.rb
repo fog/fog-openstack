@@ -8,7 +8,7 @@ module Fog
           :admin_state_up,
           :qos_policy_id,
           :port_security_enabled,
-          :tenant_id,
+          :tenant_id
         ].freeze
 
         # Advanced Features through API Extensions
@@ -22,7 +22,7 @@ module Fog
           :provider_network_type,
           :provider_segmentation_id,
           :provider_physical_network,
-          :router_external,
+          :router_external
         ].freeze
 
         # Map Fog::Network::OpenStack::Network

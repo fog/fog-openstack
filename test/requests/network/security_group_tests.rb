@@ -38,7 +38,7 @@ describe "Fog::Network[:openstack] | security_group requests" do
       security_group_id = network.security_groups.all.first.id
       attributes = {
         :name        => "new_security_group_name",
-        :description => "New sg desc",
+        :description => "New sg desc"
       }
       updated = network.update_security_group(security_group_id, attributes)
       updated.body.must_match_schema("security_group" => @security_group_format)

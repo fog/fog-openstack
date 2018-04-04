@@ -8,7 +8,7 @@ module Fog
               :expects => [200, 204],
               :method  => 'DELETE',
               :path    => "auth/tokens",
-              :headers => {"X-Subject-Token" => subject_token, "X-Auth-Token" => auth_token,}
+              :headers => {"X-Subject-Token" => subject_token, "X-Auth-Token" => auth_token}
             )
           end
         end

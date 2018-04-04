@@ -25,7 +25,7 @@ module Fog
                 "tenant_id"           => data["tenant_id"],
                 "fixed_ip_address"    => data["fixed_ip_address"],
                 "router_id"           => "00000000-0000-0000-0000-000000000000",
-                "floating_ip_address" => data["floating_ip_address"],
+                "floating_ip_address" => data["floating_ip_address"]
               }
             }
             response

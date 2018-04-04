@@ -18,13 +18,13 @@ describe "Fog::Workflow::OpenStack | Workflow requests" do
     @workbook_sample = {
       "version"     => "2.0",
       "name"        => "workbook1",
-      "description" => "d1",
+      "description" => "d1"
     }
 
     @workflow_sample = {
       "version"     => "2.0",
       "name"        => "workflow1",
-      "description" => "d1",
+      "description" => "d1"
     }
 
     @action_sample = {
@@ -44,7 +44,7 @@ describe "Fog::Workflow::OpenStack | Workflow requests" do
     @cron_trigger_sample = {
       "version"     => "2.0",
       "name"        => "cron_trigger1",
-      "description" => "d1",
+      "description" => "d1"
     }
 
     @environment_sample = {

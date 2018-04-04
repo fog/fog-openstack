@@ -11,7 +11,7 @@ module Fog
               :role_id    => 'role.id',
               :domain_id  => 'scope.domain.id',
               :project_id => 'scope.project.id',
-              :user_id    => 'user.id',
+              :user_id    => 'user.id'
             }
             name_mapping.keys.each do |key|
               if (opt = options.delete(key))

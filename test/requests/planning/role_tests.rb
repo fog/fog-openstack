@@ -6,7 +6,7 @@ describe "Fog::OpenStack[:planning] | Planning role requests" do
       'description' => Fog::Nullable::String,
       'name'        => Fog::Nullable::String,
       'uuid'        => String,
-      'version'     => Integer,
+      'version'     => Integer
     }
   end
 
