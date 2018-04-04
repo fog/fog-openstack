@@ -23,7 +23,7 @@ describe "Fog::Network[:openstack] | lb_member requests" do
         :tenant_id      => 'tenant_id'
       }
       @lb_member = network.create_lb_member(pool_id, address, protocol_port,
-        weight, attributes).body
+                                            weight, attributes).body
       @lb_member_id = @lb_member["member"]["id"]
     end
 
@@ -37,8 +37,8 @@ describe "Fog::Network[:openstack] | lb_member requests" do
 
     it "#get_lb_member" do
       lb_member_id = network.lb_members.all.first.id
-      network.get_lb_member(lb_member_id).body.
-        must_match_schema('member' => @lb_member_format)
+      network.get_lb_member(lb_member_id).body
+             .must_match_schema('member' => @lb_member_format)
     end
 
     it "#update_lb_member" do
@@ -49,8 +49,8 @@ describe "Fog::Network[:openstack] | lb_member requests" do
         :admin_state_up => false
       }
 
-      network.update_lb_member(lb_member_id, attributes).body.
-        must_match_schema('member' => @lb_member_format)
+      network.update_lb_member(lb_member_id, attributes).body
+             .must_match_schema('member' => @lb_member_format)
     end
 
     it "#delete_lb_member" do

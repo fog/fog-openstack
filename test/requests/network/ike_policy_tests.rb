@@ -36,14 +36,14 @@ describe "Fog::Network[:openstack] | ike_policy requests" do
     end
 
     it "#list_ike_policies" do
-      network.list_ike_policies.body.
-        must_match_schema('ikepolicies' => [@ike_policy_format])
+      network.list_ike_policies.body
+             .must_match_schema('ikepolicies' => [@ike_policy_format])
     end
 
     it "#get_ike_policy" do
       ike_policy_id = network.ike_policies.all.first.id
-      network.get_ike_policy(ike_policy_id).body.
-        must_match_schema('ikepolicy' => @ike_policy_format)
+      network.get_ike_policy(ike_policy_id).body
+             .must_match_schema('ikepolicy' => @ike_policy_format)
     end
 
     it "#update_ike_policy" do
@@ -60,8 +60,8 @@ describe "Fog::Network[:openstack] | ike_policy requests" do
         :ike_version             => 'v1'
       }
 
-      network.update_ike_policy(ike_policy_id, attributes).body.
-        must_match_schema('ikepolicy' => @ike_policy_format)
+      network.update_ike_policy(ike_policy_id, attributes).body
+             .must_match_schema('ikepolicy' => @ike_policy_format)
     end
 
     it "#delete_ike_policy" do

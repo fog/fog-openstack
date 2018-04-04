@@ -59,14 +59,14 @@ describe "Fog::Network[:openstack] | ipsec_site_connection requests" do
     end
 
     it "#list_ipsec_site_connections" do
-      network.list_ipsec_site_connections.body.
-        must_match_schema('ipsec_site_connections' => [@ipsec_site_connection_format])
+      network.list_ipsec_site_connections.body
+             .must_match_schema('ipsec_site_connections' => [@ipsec_site_connection_format])
     end
 
     it "#get_ipsec_site_connection" do
       ipsec_site_connection_id = network.ipsec_site_connections.all.first.id
-      network.get_ipsec_site_connection(ipsec_site_connection_id).body.
-        must_match_schema('ipsec_site_connection' => @ipsec_site_connection_format)
+      network.get_ipsec_site_connection(ipsec_site_connection_id).body
+             .must_match_schema('ipsec_site_connection' => @ipsec_site_connection_format)
     end
 
     it "#update_ipsec_site_connection" do
@@ -86,8 +86,8 @@ describe "Fog::Network[:openstack] | ipsec_site_connection requests" do
         :admin_state_up => true
       }
 
-      network.update_ipsec_site_connection(ipsec_site_connection_id, attributes).body.
-        must_match_schema('ipsec_site_connection' => @ipsec_site_connection_format)
+      network.update_ipsec_site_connection(ipsec_site_connection_id, attributes).body
+             .must_match_schema('ipsec_site_connection' => @ipsec_site_connection_format)
     end
 
     it "#delete_ipsec_site_connection" do

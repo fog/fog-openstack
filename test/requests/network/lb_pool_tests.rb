@@ -48,20 +48,20 @@ describe "Fog::Network[:openstack] | lb_pool requests" do
     end
 
     it "#list_lb_pools" do
-      network.list_lb_pools.body.
-        must_match_schema('pools' => [@lb_pool_format])
+      network.list_lb_pools.body
+             .must_match_schema('pools' => [@lb_pool_format])
     end
 
     it "#get_lb_pool" do
       lb_pool_id = network.lb_pools.all.first.id
-      network.get_lb_pool(lb_pool_id).body.
-        must_match_schema('pool' => @lb_pool_format)
+      network.get_lb_pool(lb_pool_id).body
+             .must_match_schema('pool' => @lb_pool_format)
     end
 
     it "#get_lb_pool_stats" do
       lb_pool_id = network.lb_pools.all.first.id
-      network.get_lb_pool_stats(lb_pool_id).body.
-        must_match_schema('stats' => @lb_pool_stats_format)
+      network.get_lb_pool_stats(lb_pool_id).body
+             .must_match_schema('stats' => @lb_pool_stats_format)
     end
 
     it "#update_lb_pool" do
@@ -72,8 +72,8 @@ describe "Fog::Network[:openstack] | lb_pool requests" do
         :lb_method      => 'LEAST_CONNECTIONS',
         :admin_state_up => false
       }
-      network.update_lb_pool(lb_pool_id, attributes).body.
-        must_match_schema('pool' => @lb_pool_format)
+      network.update_lb_pool(lb_pool_id, attributes).body
+             .must_match_schema('pool' => @lb_pool_format)
     end
 
     it "#delete_lb_pool" do

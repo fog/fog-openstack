@@ -26,8 +26,8 @@ describe "Fog::Compute[:openstack] | quota requests" do
 
   describe "success" do
     it "#get_quota_defaults" do
-      @compute.get_quota_defaults(@tenant_id).body.
-        must_match_schema('quota_set' => @quota_set_format)
+      @compute.get_quota_defaults(@tenant_id).body
+              .must_match_schema('quota_set' => @quota_set_format)
     end
 
     it "#get_quota" do

@@ -10,8 +10,8 @@ password = 'secret'
 keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
                                         :openstack_username => username,
                                         :openstack_api_key  => password
-                                        # Optional, self-signed certs
-                                        #:connection_options => { :ssl_verify_peer => false }
+# Optional, self-signed certs
+#:connection_options => { :ssl_verify_peer => false }
 
 #
 # Listing keystone tenants

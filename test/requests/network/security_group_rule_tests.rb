@@ -40,8 +40,8 @@ describe "Fog::Network[:openstack] | security_grouprule requests" do
     end
 
     it "#get_security_group_rule(@sec_group_rule_id)" do
-      network.get_security_group_rule(@sec_group_rule_id).
-        body["security_group_rule"].must_match_schema(@security_group_rule_format)
+      network.get_security_group_rule(@sec_group_rule_id)
+             .body["security_group_rule"].must_match_schema(@security_group_rule_format)
     end
 
     it "#list_security_group_rules" do

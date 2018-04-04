@@ -35,8 +35,8 @@ describe "Fog::Compute[:openstack] | volume requests" do
       end
 
       it "#get_volume_detail" do
-        @compute.get_volume_details(@volume_id).
-          body.must_match_schema('volume' => @volume_format)
+        @compute.get_volume_details(@volume_id)
+                .body.must_match_schema('volume' => @volume_format)
       end
 
       it "delete_volume" do

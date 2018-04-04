@@ -31,18 +31,18 @@ describe "Fog::Compute[:openstack] | image requests" do
 
     it "#get_image_details(#{@image_id})" do
       skip if Fog.mocking?
-      @compute.get_image_details(@image_id).body['image'].
-        must_match_schema(@image_format)
+      @compute.get_image_details(@image_id).body['image']
+              .must_match_schema(@image_format)
     end
 
     it "#list_images" do
-      @compute.list_images.body.
-        must_match_schema('images' => [OpenStack::Compute::Formats::SUMMARY])
+      @compute.list_images.body
+              .must_match_schema('images' => [OpenStack::Compute::Formats::SUMMARY])
     end
 
     it "#list_images_detail" do
-      @compute.list_images_detail.body.
-        must_match_schema('images' => [@image_format])
+      @compute.list_images_detail.body
+              .must_match_schema('images' => [@image_format])
     end
 
     after do

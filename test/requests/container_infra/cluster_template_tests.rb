@@ -83,8 +83,8 @@ describe "Fog::ContainerInfra[:openstack] | cluster template requests" do
         }
       ]
 
-      container_infra.update_cluster_template(cluster_template_uuid, attributes).body.
-        must_match_schema(@cluster_template_format)
+      container_infra.update_cluster_template(cluster_template_uuid, attributes).body
+                     .must_match_schema(@cluster_template_format)
     end
 
     it "#delete_cluster_template" do

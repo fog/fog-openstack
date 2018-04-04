@@ -65,18 +65,18 @@ describe "Fog::Compute[:openstack] | address requests" do
     end
 
     it "#list_all_addresses" do
-      compute.list_all_addresses.body.
-        must_match_schema("floating_ips" => [address_format])
+      compute.list_all_addresses.body
+             .must_match_schema("floating_ips" => [address_format])
     end
 
     it "#get_address(address_id)" do
-      compute.get_address(address_id).body.
-        must_match_schema("floating_ip" => address_format)
+      compute.get_address(address_id).body
+             .must_match_schema("floating_ip" => address_format)
     end
 
     it "#list_address_pools" do
-      compute.list_address_pools.body.
-        must_match_schema("floating_ip_pools" => [address_pools_format])
+      compute.list_address_pools.body
+             .must_match_schema("floating_ip_pools" => [address_pools_format])
     end
 
     it "#associate_address(server_id, ip_address)" do

@@ -14,8 +14,8 @@ keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
                                         :openstack_api_key  => password,
                                         :openstack_project_name => project,
                                         :openstack_domain_name => domain
-                                        # Optional, self-signed certs
-                                        #:connection_options => { :ssl_verify_peer => false }
+# Optional, self-signed certs
+#:connection_options => { :ssl_verify_peer => false }
 
 #
 # List keystone projects

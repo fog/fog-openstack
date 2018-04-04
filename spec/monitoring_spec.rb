@@ -71,10 +71,10 @@ describe Fog::Monitoring::OpenStack do
       metrics_name_list.wont_be_empty
 
       # failure cases
-      proc { @service.metrics.create(:name => "this won't be created due to insufficient args") }.
-        must_raise Fog::Monitoring::OpenStack::ArgumentError
-      proc { @service.metrics.create(:name => "this wont't be created due to invalid timestamp", :timestamp => 1234) }.
-        must_raise Fog::Monitoring::OpenStack::ArgumentError
+      proc { @service.metrics.create(:name => "this won't be created due to insufficient args") }
+        .must_raise Fog::Monitoring::OpenStack::ArgumentError
+      proc { @service.metrics.create(:name => "this wont't be created due to invalid timestamp", :timestamp => 1234) }
+        .must_raise Fog::Monitoring::OpenStack::ArgumentError
     end
   end
 
@@ -142,8 +142,8 @@ describe Fog::Monitoring::OpenStack do
         notification_method = nil
 
         # failure cases
-        proc { @service.notification_methods.create(:name => "this won't be created due to insufficient args") }.
-          must_raise Fog::Monitoring::OpenStack::ArgumentError
+        proc { @service.notification_methods.create(:name => "this won't be created due to insufficient args") }
+          .must_raise Fog::Monitoring::OpenStack::ArgumentError
         proc { @service.notification_methods.find_by_id('bogus_id') }.must_raise Fog::Monitoring::OpenStack::NotFound
       ensure
         notification_method.destroy if notification_method
@@ -217,8 +217,8 @@ describe Fog::Monitoring::OpenStack do
         notification_method = nil
 
         # failure cases
-        proc { @service.alarm_definitions.create(:name => "this won't be created due to insufficient args") }.
-          must_raise Fog::Monitoring::OpenStack::ArgumentError
+        proc { @service.alarm_definitions.create(:name => "this won't be created due to insufficient args") }
+          .must_raise Fog::Monitoring::OpenStack::ArgumentError
       ensure
         alarm_definition.destroy if alarm_definition
         notification_method.destroy if notification_method

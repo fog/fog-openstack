@@ -62,19 +62,19 @@ describe "Fog::Network[:openstack] | network requests" do
         :router_external          => true
       }
 
-      network.create_network(attributes).body.
-        must_match_schema('network' => network_format.merge(network_extentions_format))
+      network.create_network(attributes).body
+             .must_match_schema('network' => network_format.merge(network_extentions_format))
     end
 
     it "#list_networks" do
-      network.list_networks.body.
-        must_match_schema('networks' => [network_format])
+      network.list_networks.body
+             .must_match_schema('networks' => [network_format])
     end
 
     it "#get_network" do
       network_id = created_network["network"]["id"]
-      network.get_network(network_id).body.
-        must_match_schema('network' => network_format)
+      network.get_network(network_id).body
+             .must_match_schema('network' => network_format)
     end
 
     it "#update_network" do
@@ -89,8 +89,8 @@ describe "Fog::Network[:openstack] | network requests" do
 
       network_id = network.networks.all.first.id
       network_update_extentions_format = { "router:external" => Fog::Boolean }
-      network.update_network(network_id, attributes).body.
-        must_match_schema('network' => network_format.merge(network_update_extentions_format))
+      network.update_network(network_id, attributes).body
+             .must_match_schema('network' => network_format.merge(network_update_extentions_format))
     end
 
     it "#delete_network" do

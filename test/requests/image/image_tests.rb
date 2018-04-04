@@ -103,8 +103,8 @@ describe "Fog::Image[:openstack] | image requests" do
     end
 
     it "#list_public_images_detailed" do
-      Fog::Image[:openstack].list_public_images_detailed.body.
-        must_match_schema('images' => [@detailed_image_format])
+      Fog::Image[:openstack].list_public_images_detailed.body
+                            .must_match_schema('images' => [@detailed_image_format])
     end
 
     it "#create_image" do
@@ -112,8 +112,8 @@ describe "Fog::Image[:openstack] | image requests" do
     end
 
     it "#get_image" do
-      Fog::Image[:openstack].get_image(@instance['image']['id']).headers.
-        must_match_schema(@image_meta_format)
+      Fog::Image[:openstack].get_image(@instance['image']['id']).headers
+                            .must_match_schema(@image_meta_format)
     end
 
     it "#update_image" do

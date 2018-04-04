@@ -38,14 +38,14 @@ describe "Fog::Network[:openstack] | ipsec_policy requests" do
     end
 
     it "#list_ipsec_policies" do
-      network.list_ipsec_policies.body.
-        must_match_schema('ipsecpolicies' => [@ipsec_policy_format])
+      network.list_ipsec_policies.body
+             .must_match_schema('ipsecpolicies' => [@ipsec_policy_format])
     end
 
     it "#get_ipsec_policy" do
       ipsec_policy_id = network.ipsec_policies.all.first.id
-      network.get_ipsec_policy(ipsec_policy_id).body.
-        must_match_schema('ipsecpolicy' => @ipsec_policy_format)
+      network.get_ipsec_policy(ipsec_policy_id).body
+             .must_match_schema('ipsecpolicy' => @ipsec_policy_format)
     end
 
     it "#update_ipsec_policy" do
@@ -62,8 +62,8 @@ describe "Fog::Network[:openstack] | ipsec_policy requests" do
         :encapsulation_mode   => 'tunnel'
       }
 
-      network.update_ipsec_policy(ipsec_policy_id, attributes).body.
-        must_match_schema('ipsecpolicy' => @ipsec_policy_format)
+      network.update_ipsec_policy(ipsec_policy_id, attributes).body
+             .must_match_schema('ipsecpolicy' => @ipsec_policy_format)
     end
 
     it "#delete_ipsec_policy" do

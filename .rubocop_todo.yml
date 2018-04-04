@@ -6,57 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 42
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle.
-# SupportedHashRocketStyles: key, separator, table
-# SupportedColonStyles: key, separator, table
-# SupportedLastArgumentHashStyles: always_inspect, always_ignore, ignore_implicit, ignore_explicit
-Layout/AlignHash:
-  Exclude:
-    - 'lib/fog/dns/openstack/v2.rb'
-    - 'lib/fog/image/openstack/v1/requests/get_image.rb'
-    - 'lib/fog/image/openstack/v2/requests/get_image.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, IndentationWidth.
-# SupportedStyles: with_first_parameter, with_fixed_indentation
-Layout/AlignParameters:
-  Exclude:
-    - 'test/requests/network/lb_member_tests.rb'
-
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, IndentOneStep, IndentationWidth.
-# SupportedStyles: case, end
-Layout/CaseIndentation:
-  Exclude:
-    - 'lib/fog/openstack.rb'
-
-# Offense count: 4
-# Cop supports --auto-correct.
-Layout/ClosingParenthesisIndentation:
-  Exclude:
-    - 'lib/fog/network/openstack/requests/list_lbaas_loadbalancers.rb'
-    - 'lib/fog/network/openstack/requests/list_lbaas_pool_members.rb'
-    - 'test/models/compute/server_tests.rb'
-    - 'test/requests/compute/security_group_tests.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Layout/CommentIndentation:
-  Exclude:
-    - 'examples/identity/basics.rb'
-    - 'examples/identity/basics_v3.rb'
-
-# Offense count: 106
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: leading, trailing
-Layout/DotPosition:
-  Enabled: false
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: AllowBorderComment, AllowMarginComment.

@@ -82,8 +82,8 @@ describe "Fog::ContainerInfra[:openstack] | bay model requests" do
         }
       ]
 
-      container_infra.update_bay_model(bay_model_uuid, attributes).body.
-        must_match_schema(@bay_model_format)
+      container_infra.update_bay_model(bay_model_uuid, attributes).body
+                     .must_match_schema(@bay_model_format)
     end
 
     it "#delete_bay_model" do

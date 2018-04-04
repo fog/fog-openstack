@@ -26,13 +26,13 @@ describe "Fog::Volume[:openstack] | volume_type requests" do
     end
 
     it "#get_volume_type" do
-      @volume.get_volume_type_details(@volume_type['id']).body['volume_type'].
-        must_match_schema(@volume_type_format)
+      @volume.get_volume_type_details(@volume_type['id']).body['volume_type']
+             .must_match_schema(@volume_type_format)
     end
 
     it "#list_volume_type" do
-      @volume.list_volume_types.body['volume_types'].
-        must_match_schema([@volume_type_format])
+      @volume.list_volume_types.body['volume_types']
+             .must_match_schema([@volume_type_format])
     end
 
     it 'delete the volute type' do

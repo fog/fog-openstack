@@ -61,8 +61,8 @@ describe "Fog::Network[:openstack] | port requests" do
         :device_id      => 'device_id'
       }
 
-      network.update_port(port_id, attributes).body.
-        must_match_schema('port' => @port_format)
+      network.update_port(port_id, attributes).body
+             .must_match_schema('port' => @port_format)
     end
 
     it "#delete_port" do

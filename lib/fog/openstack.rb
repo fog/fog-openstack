@@ -566,12 +566,12 @@ module Fog
 
     def self.map_endpoint_type type
       case type
-        when "publicURL"
-          "public"
-        when "internalURL"
-          "internal"
-        when "adminURL"
-          "admin"
+      when "publicURL"
+        "public"
+      when "internalURL"
+        "internal"
+      when "adminURL"
+        "admin"
       end
     end
 

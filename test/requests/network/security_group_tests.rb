@@ -25,13 +25,13 @@ describe "Fog::Network[:openstack] | security_group requests" do
     end
 
     it "#get_security_group('#{@sec_group_id}')" do
-      network.get_security_group(@sec_group_id).body["security_group"].
-        must_match_schema(@security_group_format)
+      network.get_security_group(@sec_group_id).body["security_group"]
+             .must_match_schema(@security_group_format)
     end
 
     it "#list_security_groups" do
-      network.list_security_groups.body.
-        must_match_schema('security_groups' => [@security_group_format])
+      network.list_security_groups.body
+             .must_match_schema('security_groups' => [@security_group_format])
     end
 
     it "#update_security_group" do

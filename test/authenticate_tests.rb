@@ -85,8 +85,8 @@ describe "OpenStack authentication" do
       :user                     => @body['access']['user'],
       :tenant                   => @body['access']['token']['tenant'],
       :identity_public_endpoint => nil,
-      :server_management_url    => @body['access']['serviceCatalog'].
-               first['endpoints'].first['publicURL'],
+      :server_management_url    => @body['access']['serviceCatalog']
+               .first['endpoints'].first['publicURL'],
       :token                    => @token,
       :expires                  => @expires.iso8601,
       :current_user_id          => @body['access']['user']['id'],

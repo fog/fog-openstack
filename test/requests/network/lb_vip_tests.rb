@@ -46,8 +46,8 @@ describe "Fog::Network[:openstack] | lb_vip requests" do
 
     it "#get_lb_vip" do
       lb_vip_id = network.lb_vips.all.first.id
-      network.get_lb_vip(lb_vip_id).body.
-        must_match_schema('vip' => @lb_vip_format)
+      network.get_lb_vip(lb_vip_id).body
+             .must_match_schema('vip' => @lb_vip_format)
     end
 
     it "#update_lb_vip" do
@@ -60,8 +60,8 @@ describe "Fog::Network[:openstack] | lb_vip requests" do
         :session_persistence => { "type" => "HTTP_COOKIE" },
         :admin_state_up      => false
       }
-      network.update_lb_vip(lb_vip_id, attributes).body.
-        must_match_schema('vip' => @lb_vip_format)
+      network.update_lb_vip(lb_vip_id, attributes).body
+             .must_match_schema('vip' => @lb_vip_format)
     end
 
     it "#delete_lb_vip" do

@@ -17,7 +17,7 @@ module Fog
           Excon::Response.new(
             :body   => { 'loadbalancers' => [data[:lbaas_loadbalancer]] },
             :status => 200
-         )
+          )
         end
       end
     end

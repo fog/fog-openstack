@@ -39,8 +39,8 @@ describe "Fog::Baremetal[:openstack] | Baremetal driver requests" do
     end
 
     it "#get_driver_properties" do
-      @baremetal.get_driver_properties(@instance['name']).body.
-        must_match_schema(@driver_properties_format)
+      @baremetal.get_driver_properties(@instance['name']).body
+                .must_match_schema(@driver_properties_format)
     end
   end
 end

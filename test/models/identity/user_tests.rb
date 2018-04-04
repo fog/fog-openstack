@@ -27,8 +27,8 @@ describe "Fog::Identity[:openstack] | user" do
     end
 
     it "#update" do
-      @instance.update(:name => 'updatename', :email => 'new@email.com').
-        must_equal true
+      @instance.update(:name => 'updatename', :email => 'new@email.com')
+               .must_equal true
     end
 
     it "#update_password" do

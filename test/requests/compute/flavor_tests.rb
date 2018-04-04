@@ -23,18 +23,18 @@ describe "Fog::Compute[:openstack] | flavor requests" do
 
   describe "success" do
     it "#get_flavor_details(1)" do
-      @compute.get_flavor_details("1").body['flavor'].
-        must_match_schema(@flavor_format)
+      @compute.get_flavor_details("1").body['flavor']
+              .must_match_schema(@flavor_format)
     end
 
     it "#list_flavors" do
-      @compute.list_flavors.body.
-        must_match_schema('flavors' => [OpenStack::Compute::Formats::SUMMARY])
+      @compute.list_flavors.body
+              .must_match_schema('flavors' => [OpenStack::Compute::Formats::SUMMARY])
     end
 
     it "#list_flavors_detail" do
-      @compute.list_flavors_detail.body.
-        must_match_schema('flavors' => [@flavor_format])
+      @compute.list_flavors_detail.body
+              .must_match_schema('flavors' => [@flavor_format])
     end
 
     it "#create_flavor(attributes)" do
@@ -50,23 +50,23 @@ describe "Fog::Compute[:openstack] | flavor requests" do
         :is_public   => false
       }
 
-      @compute.create_flavor(attributes).body.
-        must_match_schema('flavor' => @flavor_format)
+      @compute.create_flavor(attributes).body
+              .must_match_schema('flavor' => @flavor_format)
     end
 
     it "add_flavor_access(flavor_ref, tenant_id)" do
-      @compute.add_flavor_access(100, 1).body.
-        must_match_schema('flavor_access' => [{ 'tenant_id' => String, 'flavor_id' => String }])
+      @compute.add_flavor_access(100, 1).body
+              .must_match_schema('flavor_access' => [{ 'tenant_id' => String, 'flavor_id' => String }])
     end
 
     it "remove_flavor_access(flavor_ref, tenant_id)" do
-      @compute.remove_flavor_access(100, 1).body.
-        must_match_schema('flavor_access' => [])
+      @compute.remove_flavor_access(100, 1).body
+              .must_match_schema('flavor_access' => [])
     end
 
     it "list_tenants_with_flavor_access(flavor_ref)" do
-      @compute.list_tenants_with_flavor_access(100).body.
-        must_match_schema('flavor_access' => [{ 'tenant_id' => String, 'flavor_id' => String }])
+      @compute.list_tenants_with_flavor_access(100).body
+              .must_match_schema('flavor_access' => [{ 'tenant_id' => String, 'flavor_id' => String }])
     end
 
     it "delete_flavor(flavor_id)" do
@@ -74,14 +74,14 @@ describe "Fog::Compute[:openstack] | flavor requests" do
     end
 
     it "#get_flavor_metadata(flavor_ref)" do
-      @compute.get_flavor_metadata("1").body.
-        must_match_schema('extra_specs' => { 'cpu_arch' => String })
+      @compute.get_flavor_metadata("1").body
+              .must_match_schema('extra_specs' => { 'cpu_arch' => String })
     end
 
     it "#create_flavor_metadata(flavor_ref, metadata)" do
       metadata = { :cpu_arch => 'x86_64' }
-      @compute.create_flavor_metadata("1", metadata).body.
-        must_match_schema('extra_specs' => { 'cpu_arch' => String })
+      @compute.create_flavor_metadata("1", metadata).body
+              .must_match_schema('extra_specs' => { 'cpu_arch' => String })
     end
   end
 

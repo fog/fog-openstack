@@ -26,19 +26,19 @@ describe "Fog::Compute[:openstack] | Compute aggregate requests" do
     end
 
     it "#list_aggregates" do
-      @compute.list_aggregates.body.
-        must_match_schema('aggregates' => [@metadata_aggregate_format])
+      @compute.list_aggregates.body
+              .must_match_schema('aggregates' => [@metadata_aggregate_format])
     end
 
     it "#update_aggregate" do
       @aggregate_attributes = { 'name' => 'test_aggregate2' }
-      @compute.update_aggregate(@aggregate['id'], @aggregate_attributes).body.
-        must_match_schema('aggregate' => @aggregate_format)
+      @compute.update_aggregate(@aggregate['id'], @aggregate_attributes).body
+              .must_match_schema('aggregate' => @aggregate_format)
     end
 
     it "#get_aggregate" do
-      @compute.get_aggregate(@aggregate['id']).body.
-        must_match_schema('aggregate' => @detailed_aggregate_format)
+      @compute.get_aggregate(@aggregate['id']).body
+              .must_match_schema('aggregate' => @detailed_aggregate_format)
     end
 
     describe "with aggregate host" do

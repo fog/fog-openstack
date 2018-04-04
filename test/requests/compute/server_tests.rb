@@ -83,11 +83,11 @@ describe "Fog::Compute[:openstack] | server requests" do
     end
 
     it "#get_server_details(#{@server_id})" do
-      compute.get_server_details(@server_id).body['server'].
-        must_match_schema(@base_server_format,
-                          nil,
-                          :allow_extra_keys     => true,
-                          :allow_optional_rules => true)
+      compute.get_server_details(@server_id).body['server']
+             .must_match_schema(@base_server_format,
+                                nil,
+                                :allow_extra_keys     => true,
+                                :allow_optional_rules => true)
     end
 
     it "#block_device_mapping" do
@@ -132,18 +132,18 @@ describe "Fog::Compute[:openstack] | server requests" do
       end
 
       it "#get_server_details(#{@server_id})" do
-        compute.get_server_details(@server_id).body['server'].
-          must_match_schema(@base_server_format,
-                            nil,
-                            :allow_extra_keys     => true,
-                            :allow_optional_rules => true)
+        compute.get_server_details(@server_id).body['server']
+               .must_match_schema(@base_server_format,
+                                  nil,
+                                  :allow_extra_keys     => true,
+                                  :allow_optional_rules => true)
       end
 
       it "#block_device_mapping_v2" do
         #  Breaks sometimes: "Expected: ["56", "56"] <=> Actual: ["56"]"
         skip unless Minitest::Test::UNIT_TESTS_CLEAN
-        compute.servers.get(@server_id).volumes.collect(&:id).sort.
-          must_equal [@volume1_id, @volume2_id].sort
+        compute.servers.get(@server_id).volumes.collect(&:id).sort
+               .must_equal [@volume1_id, @volume2_id].sort
       end
     end
 
@@ -163,11 +163,11 @@ describe "Fog::Compute[:openstack] | server requests" do
       end
 
       it "#get_server_details(#{@server_id})" do
-        compute.get_server_details(@server_id).body['server'].
-          must_match_schema(@server_from_image_format,
-                            nil,
-                            :allow_extra_keys     => true,
-                            :allow_optional_rules => true)
+        compute.get_server_details(@server_id).body['server']
+               .must_match_schema(@server_from_image_format,
+                                  nil,
+                                  :allow_extra_keys     => true,
+                                  :allow_optional_rules => true)
       end
     end
 
@@ -202,20 +202,20 @@ describe "Fog::Compute[:openstack] | server requests" do
 
     # LIST
     it "#list_servers" do
-      compute.list_servers.body.
-        must_match_schema({ 'servers' => [OpenStack::Compute::Formats::SUMMARY] },
-                          nil,
-                          :allow_extra_keys     => true,
-                          :allow_optional_rules => true)
+      compute.list_servers.body
+             .must_match_schema({ 'servers' => [OpenStack::Compute::Formats::SUMMARY] },
+                                nil,
+                                :allow_extra_keys     => true,
+                                :allow_optional_rules => true)
     end
 
     # DETAILS
     it "#list_servers_detail" do
-      compute.list_servers_detail.body["servers"][0].
-        must_match_schema(@server_from_image_format,
-                          nil,
-                          :allow_extra_keys     => true,
-                          :allow_optional_rules => true)
+      compute.list_servers_detail.body["servers"][0]
+             .must_match_schema(@server_from_image_format,
+                                nil,
+                                :allow_extra_keys     => true,
+                                :allow_optional_rules => true)
     end
 
     # CHANGE PASSWORD

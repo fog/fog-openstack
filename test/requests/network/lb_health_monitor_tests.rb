@@ -52,14 +52,14 @@ describe "Fog::Network[:openstack] | lb_health_monitor requests" do
     end
 
     it "#list_lb_health_monitors" do
-      network.list_lb_health_monitors.body.
-        must_match_schema('health_monitors' => [@lb_health_monitor_format])
+      network.list_lb_health_monitors.body
+             .must_match_schema('health_monitors' => [@lb_health_monitor_format])
     end
 
     it "#get_lb_health_monitor" do
       lb_health_monitor_id = network.lb_health_monitors.all.first.id
-      network.get_lb_health_monitor(lb_health_monitor_id).body.
-        must_match_schema('health_monitor' => @lb_health_monitor_format)
+      network.get_lb_health_monitor(lb_health_monitor_id).body
+             .must_match_schema('health_monitor' => @lb_health_monitor_format)
     end
 
     it "#update_lb_health_monitor" do
@@ -74,8 +74,8 @@ describe "Fog::Network[:openstack] | lb_health_monitor requests" do
         :admin_state_up => false
       }
 
-      network.update_lb_health_monitor(lb_health_monitor_id, attributes).body.
-        must_match_schema('health_monitor' => @lb_health_monitor_format)
+      network.update_lb_health_monitor(lb_health_monitor_id, attributes).body
+             .must_match_schema('health_monitor' => @lb_health_monitor_format)
     end
 
     it "#associate_lb_health_monitor" do

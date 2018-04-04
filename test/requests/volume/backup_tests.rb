@@ -22,13 +22,13 @@ describe "Fog::Volume[:openstack] | backup requests" do
     end
 
     it "#get_backup_details" do
-      @volume.get_backup_details(@backup['id']).body['backup'].
-        must_match_schema(@backup_format)
+      @volume.get_backup_details(@backup['id']).body['backup']
+             .must_match_schema(@backup_format)
     end
 
     it "#list_backups_detailed" do
-      @volume.list_backups_detailed.body['backups'].
-        must_match_schema([@backup_format])
+      @volume.list_backups_detailed.body['backups']
+             .must_match_schema([@backup_format])
     end
 
     it '#delete_backup' do

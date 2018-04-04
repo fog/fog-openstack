@@ -13,14 +13,14 @@ describe "Fog::Network[:openstack] | extension requests" do
 
   describe "success" do
     it "#list_extensions" do
-      network.list_extensions.body.
-        must_match_schema('extensions' => [@extension_format])
+      network.list_extensions.body
+             .must_match_schema('extensions' => [@extension_format])
     end
 
     it "#get_extension" do
       extension_id = network.extensions.all.first.id
-      network.get_extension(extension_id).body.
-        must_match_schema('extension' => @extension_format)
+      network.get_extension(extension_id).body
+             .must_match_schema('extension' => @extension_format)
     end
   end
 

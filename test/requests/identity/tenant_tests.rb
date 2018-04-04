@@ -38,8 +38,8 @@ describe "Fog::Identity[:openstack] | tenant requests" do
     end
 
     it "#get_tenant" do
-      @identity.get_tenant(@tenant['tenant']['id']).body.
-        must_match_schema('tenant' => @tenant_format)
+      @identity.get_tenant(@tenant['tenant']['id']).body
+               .must_match_schema('tenant' => @tenant_format)
     end
 
     it "#update_tenant check format" do

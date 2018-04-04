@@ -49,21 +49,21 @@ describe "Fog::OpenStack[:planning] | Planning plan requests" do
     end
 
     it "#patch_plan" do
-      parameters = Fog::OpenStack[:planning].get_plan(@instance['uuid']).
-                   body['parameters'][0..1]
+      parameters = Fog::OpenStack[:planning].get_plan(@instance['uuid'])
+                                            .body['parameters'][0..1]
       plan_parameters = parameters.collect do |parameter|
         {
           "name"  => parameter['name'],
           "value" => "test-#{parameter['name']}-value"
         }
       end
-      Fog::OpenStack[:planning].patch_plan(@instance['uuid'], plan_parameters).body.
-        must_match_schema(@plan_format)
+      Fog::OpenStack[:planning].patch_plan(@instance['uuid'], plan_parameters).body
+                               .must_match_schema(@plan_format)
     end
 
     it "#get_plan_templates" do
-      Fog::OpenStack[:planning].get_plan_templates(@instance['uuid']).body.
-        must_match_schema(@plan_templates_format)
+      Fog::OpenStack[:planning].get_plan_templates(@instance['uuid']).body
+                               .must_match_schema(@plan_templates_format)
     end
 
     it "#remove_role_from_plan" do

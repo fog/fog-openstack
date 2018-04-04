@@ -43,8 +43,8 @@ describe "Fog::Baremetal[:openstack] | Baremetal node requests" do
     end
 
     it "#list_nodes_detailed" do
-      @baremetal.list_nodes_detailed.body.
-        must_match_schema('nodes' => [@detailed_node_format])
+      @baremetal.list_nodes_detailed.body
+                .must_match_schema('nodes' => [@detailed_node_format])
     end
 
     before do
@@ -57,8 +57,8 @@ describe "Fog::Baremetal[:openstack] | Baremetal node requests" do
     end
 
     it "#get_node" do
-      @baremetal.get_node(@instance['uuid']).body.
-        must_match_schema(@detailed_node_format)
+      @baremetal.get_node(@instance['uuid']).body
+                .must_match_schema(@detailed_node_format)
     end
 
     it "#patch_node" do
@@ -69,13 +69,13 @@ describe "Fog::Baremetal[:openstack] | Baremetal node requests" do
     end
 
     it "#set_node_power_state" do
-      @baremetal.set_node_power_state(@instance['uuid'], 'power off').body.
-        must_match_schema(@detailed_node_format)
+      @baremetal.set_node_power_state(@instance['uuid'], 'power off').body
+                .must_match_schema(@detailed_node_format)
     end
 
     it "#set_node_provision_state" do
-      @baremetal.set_node_provision_state(@instance['uuid'], 'manage').body.
-        must_match_schema(@detailed_node_format)
+      @baremetal.set_node_provision_state(@instance['uuid'], 'manage').body
+                .must_match_schema(@detailed_node_format)
     end
 
     it "#set_node_maintenance" do

@@ -17,7 +17,7 @@ module Fog
           Excon::Response.new(
             :body   => { 'members' => data[:lbaas_pool_members].values },
             :status => 200
-         )
+          )
         end
       end
     end

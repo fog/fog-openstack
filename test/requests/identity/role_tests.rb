@@ -28,23 +28,23 @@ describe "Fog::Identity[:openstack] | role requests" do
     end
 
     it "#create_user_role(@tenant['id'], @user['id'], @role['id'])" do
-      @identity.create_user_role(@tenant['id'], @user['id'], @role['id']).body['role'].
-        must_match_schema(@role_format)
+      @identity.create_user_role(@tenant['id'], @user['id'], @role['id']).body['role']
+               .must_match_schema(@role_format)
     end
 
     it "#list_roles_for_user_on_tenant" do
-      @identity.list_roles_for_user_on_tenant(@tenant['id'], @user['id']).body['roles'].
-        must_match_schema([@role_format])
+      @identity.list_roles_for_user_on_tenant(@tenant['id'], @user['id']).body['roles']
+               .must_match_schema([@role_format])
     end
 
     it "#delete_user_role with tenant" do
-      @identity.delete_user_role(@tenant['id'], @user['id'], @role['id']).body.
-        must_equal ""
+      @identity.delete_user_role(@tenant['id'], @user['id'], @role['id']).body
+               .must_equal ""
     end
 
     it "#delete_user_role with tenant" do
-      @identity.delete_user_role(@tenant['id'], @user['id'], @role['id']).status.
-        must_equal 204
+      @identity.delete_user_role(@tenant['id'], @user['id'], @role['id']).status
+               .must_equal 204
     end
 
     it "#delete_role" do

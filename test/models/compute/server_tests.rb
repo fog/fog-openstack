@@ -40,7 +40,7 @@ describe "Fog::Compute[:openstack] | server" do
           :name       => 'test server',
           :flavor_ref => flavor,
           :image_ref  => image
-          )
+        )
 
         server.security_groups = my_group
         server.save
