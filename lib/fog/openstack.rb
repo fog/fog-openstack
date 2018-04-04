@@ -196,9 +196,9 @@ module Fog
       end
 
       unless service
-        available = body['access']['serviceCatalog'].map { |endpoint|
+        available = body['access']['serviceCatalog'].map do |endpoint|
           endpoint['type']
-        }.sort.join ', '
+        end.sort.join ', '
 
         missing = service_type.join ', '
 
@@ -305,15 +305,15 @@ module Fog
       end
 
       unless service
-        available_services = body['token']['catalog'].map { |service|
+        available_services = body['token']['catalog'].map do |service|
           service['type']
-        }.sort.join ', '
+        end.sort.join ', '
 
-        available_regions = body['token']['catalog'].map { |service|
-          service['endpoints'].map { |endpoint|
+        available_regions = body['token']['catalog'].map do |service|
+          service['endpoints'].map do |endpoint|
             endpoint['region']
-          }.uniq
-        }.uniq.sort.join ', '
+          end.uniq
+        end.uniq.sort.join ', '
 
         missing = service_type.join ', '
 
