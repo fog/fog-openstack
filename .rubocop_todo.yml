@@ -90,42 +90,6 @@ Layout/LeadingCommentSpace:
     - 'examples/identity/basics_v3.rb'
     - 'lib/fog/key_manager/openstack.rb'
 
-# Offense count: 15
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: final_newline, final_blank_line
-Layout/TrailingBlankLines:
-  Exclude:
-    - 'lib/fog/container_infra/openstack/models/base.rb'
-    - 'lib/fog/key_manager/openstack/models/container.rb'
-    - 'lib/fog/key_manager/openstack/models/containers.rb'
-    - 'lib/fog/key_manager/openstack/models/secret.rb'
-    - 'lib/fog/key_manager/openstack/models/secrets.rb'
-    - 'lib/fog/key_manager/openstack/requests/create_container.rb'
-    - 'lib/fog/key_manager/openstack/requests/create_secret.rb'
-    - 'lib/fog/key_manager/openstack/requests/delete_container.rb'
-    - 'lib/fog/key_manager/openstack/requests/delete_secret.rb'
-    - 'lib/fog/key_manager/openstack/requests/get_container.rb'
-    - 'lib/fog/key_manager/openstack/requests/get_secret.rb'
-    - 'lib/fog/key_manager/openstack/requests/get_secret_metadata.rb'
-    - 'lib/fog/key_manager/openstack/requests/get_secret_payload.rb'
-    - 'lib/fog/key_manager/openstack/requests/list_containers.rb'
-    - 'lib/fog/key_manager/openstack/requests/list_secrets.rb'
-
-# Offense count: 11
-# Cop supports --auto-correct.
-Layout/TrailingWhitespace:
-  Exclude:
-    - 'lib/fog/compute/openstack.rb'
-    - 'lib/fog/container_infra/openstack/models/base.rb'
-    - 'lib/fog/container_infra/openstack/models/bay_model.rb'
-    - 'lib/fog/container_infra/openstack/models/cluster_template.rb'
-    - 'lib/fog/shared_file_system/openstack/models/share.rb'
-    - 'lib/fog/shared_file_system/openstack/models/share_export_location.rb'
-    - 'lib/fog/shared_file_system/openstack/models/share_export_locations.rb'
-    - 'lib/fog/shared_file_system/openstack/requests/get_share_export_location.rb'
-    - 'lib/fog/shared_file_system/openstack/requests/list_share_export_locations.rb'
-
 # Offense count: 2
 Lint/AmbiguousOperator:
   Exclude:

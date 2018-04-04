@@ -8,7 +8,7 @@ module Fog
         model Fog::SharedFileSystem::OpenStack::ShareExportLocation
 
         attr_accessor :share
-        
+
         def all
           requires :share
           load_response(service.list_share_export_locations(@share.id), 'export_locations')
@@ -20,7 +20,7 @@ module Fog
         end
 
         alias get find_by_id
-        
+
         def new(attributes = {})
           requires :share
           super({ :share => @share }.merge!(attributes))

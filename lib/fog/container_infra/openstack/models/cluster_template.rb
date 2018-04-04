@@ -5,7 +5,7 @@ module Fog
     class OpenStack
       class ClusterTemplate < Fog::ContainerInfra::OpenStack::Base
         identity :uuid
-        
+
         attribute :apiserver_port
         attribute :cluster_distro
         attribute :coe

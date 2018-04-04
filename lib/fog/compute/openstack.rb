@@ -338,7 +338,7 @@ module Fog
                   "port_state" => "ACTIVE"
                 }
               ]
-            }  
+            }
           end
         end
 
