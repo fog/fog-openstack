@@ -13,25 +13,6 @@ Layout/EmptyComment:
   Exclude:
     - 'lib/fog/compute/openstack/requests/create_volume.rb'
 
-# Offense count: 19
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
-Layout/ExtraSpacing:
-  Exclude:
-    - 'fog-openstack.gemspec'
-    - 'lib/fog/container_infra/openstack/models/bay_model.rb'
-    - 'lib/fog/container_infra/openstack/models/cluster_template.rb'
-    - 'lib/fog/key_manager/openstack.rb'
-    - 'lib/fog/network/openstack/requests/create_lb_vip.rb'
-    - 'lib/fog/network/openstack/requests/create_lbaas_listener.rb'
-    - 'lib/fog/network/openstack/requests/update_lbaas_listener.rb'
-    - 'lib/fog/openstack.rb'
-    - 'lib/fog/storage/openstack/models/file.rb'
-    - 'test/models/container_infra/bay_model_tests.rb'
-    - 'test/models/container_infra/bay_tests.rb'
-    - 'test/models/container_infra/cluster_template_tests.rb'
-    - 'test/models/container_infra/cluster_tests.rb'
-
 # Offense count: 5
 # Cop supports --auto-correct.
 Layout/LeadingCommentSpace:

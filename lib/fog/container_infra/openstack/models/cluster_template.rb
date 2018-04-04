@@ -36,14 +36,14 @@ module Fog
         attribute :volume_driver
 
         def create
-          requires :name, :keypair_id,  :flavor_id, :image_id,
+          requires :name, :keypair_id, :flavor_id, :image_id,
                    :external_network_id, :coe
           merge_attributes(service.create_cluster_template(attributes).body)
           self
         end
 
         def update
-          requires :uuid, :name, :keypair_id,  :flavor_id, :image_id,
+          requires :uuid, :name, :keypair_id, :flavor_id, :image_id,
                    :external_network_id, :coe
           attrs = convert_update_params(attributes)
           merge_attributes(service.update_cluster_template(uuid, attrs).body)

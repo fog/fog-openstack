@@ -28,7 +28,7 @@ module Fog
       end
 
       class Mock
-        def create_lb_vip(subnet_id,  pool_id, protocol, protocol_port, options = {})
+        def create_lb_vip(subnet_id, pool_id, protocol, protocol_port, options = {})
           response = Excon::Response.new
           response.status = 201
           data = {

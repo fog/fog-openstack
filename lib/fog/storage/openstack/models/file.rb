@@ -4,7 +4,7 @@ module Fog
   module Storage
     class OpenStack
       class File < Fog::OpenStack::Model
-        identity  :key,             :aliases => 'name'
+        identity  :key, :aliases => 'name'
 
         attribute :access_control_allow_origin, :aliases => ['Access-Control-Allow-Origin']
         attribute :content_length,  :aliases => ['bytes', 'Content-Length'], :type => :integer
@@ -13,7 +13,7 @@ module Fog
         attribute :etag,            :aliases => ['hash', 'Etag']
         attribute :last_modified,   :aliases => ['last_modified', 'Last-Modified'], :type => :time
         attribute :metadata
-        attribute :origin,          :aliases => ['Origin']
+        attribute :origin, :aliases => ['Origin']
         # @!attribute [rw] delete_at
         # A Unix Epoch Timestamp, in integer form, representing the time when this object will be automatically deleted.
         # @return [Integer] the unix epoch timestamp of when this object will be automatically deleted
