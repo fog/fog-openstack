@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_ipsec_policies(*)
           Excon::Response.new(
-            :body   => {'ipsecpolicies' => data[:ipsec_policies].values},
+            :body   => { 'ipsecpolicies' => data[:ipsec_policies].values },
             :status => 200
           )
         end

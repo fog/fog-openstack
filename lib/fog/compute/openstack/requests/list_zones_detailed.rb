@@ -15,20 +15,20 @@ module Fog
       class Mock
         def list_zones_detailed(_options = {})
           Excon::Response.new(
-            :body   => {
+            :body => {
               "availabilityZoneInfo" => [
                 {
                   "zoneState" => {
                     "available" => true
                   },
-                  "hosts"     => {
+                  "hosts" => {
                     "instack.localdomain" => {
-                      "nova-conductor"   => {
+                      "nova-conductor" => {
                         "available"  => true,
                         "active"     => true,
                         "updated_at" => "2015-07-22T07:40:08.000000"
                       },
-                      "nova-scheduler"   => {
+                      "nova-scheduler" => {
                         "available"  => true,
                         "active"     => true,
                         "updated_at" => "2015-07-22T07:40:04.000000"
@@ -46,7 +46,7 @@ module Fog
                   "zoneState" => {
                     "available" => true
                   },
-                  "hosts"     => {
+                  "hosts" => {
                     "instack.localdomain" => {
                       "nova-compute" => {
                         "available"  => true,
@@ -55,7 +55,7 @@ module Fog
                       }
                     }
                   },
-                  "zoneName"  => "nova"
+                  "zoneName" => "nova"
                 }
               ]
             },

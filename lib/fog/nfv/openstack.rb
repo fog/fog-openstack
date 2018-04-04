@@ -45,26 +45,26 @@ module Fog
         def self.data
           @data ||= Hash.new do |hash, key|
             hash[key] = {
-              :vnfs  => [
+              :vnfs => [
                 {
                   "status"      => "ACTIVE",
                   "description" => "demo-example",
                   "tenant_id"   => "943b6ff8229a4ec2bed0a306f869a0ea",
                   "instance_id" => "5a9a7d3b-24f5-4226-8d43-262972a1776e",
                   "mgmt_url"    => "{\"vdu1\": \"192.168.0.8\"}",
-                  "attributes"  => {"monitoring_policy" => "{\"vdus\": {}}"},
+                  "attributes"  => { "monitoring_policy" => "{\"vdus\": {}}" },
                   "id"          => "cb4cdbd8-cf1a-4758-8d36-40db788a37a1",
                   "name"        => "LadasTest"
                 }
               ],
               :vnfds => [
                 {
-                  "service_types" => [{"service_type" => "vnfd", "id" => "f9211d81-b58a-4849-8d38-e25376c421bd"}],
+                  "service_types" => [{ "service_type" => "vnfd", "id" => "f9211d81-b58a-4849-8d38-e25376c421bd" }],
                   "description"   => "demo-example",
                   "tenant_id"     => "943b6ff8229a4ec2bed0a306f869a0ea",
                   "mgmt_driver"   => "noop",
                   "infra_driver"  => "heat",
-                  "attributes"    => {"vnfd" => "template_name: sample-vnfd"},
+                  "attributes"    => { "vnfd" => "template_name: sample-vnfd" },
                   "id"            => "1f8f33cf-8c94-427e-a040-f3e393b773b7",
                   "name"          => "sample-vnfd"
                 }

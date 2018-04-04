@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def update_subnet_pool(subnet_pool_id, options = {})
-          data = {'subnetpool' => {}}
+          data = { 'subnetpool' => {} }
 
           vanilla_options = [:name, :description, :prefixes, :address_scope_id,
                              :min_prefixlen, :max_prefixlen, :default_prefixlen]
@@ -33,7 +33,7 @@ module Fog
             subnet_pool['address_scope_id']  = options[:address_scope_id]
             subnet_pool['updated_at']        = Time.now.to_s
             response = Excon::Response.new
-            response.body = {'subnetpool' => subnet_pool}
+            response.body = { 'subnetpool' => subnet_pool }
             response.status = 200
             response
           else

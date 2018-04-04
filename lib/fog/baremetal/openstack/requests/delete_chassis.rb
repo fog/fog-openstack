@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def delete_chassis(chassis_uuid)
-          data = {:chassis_uuid => chassis_uuid}
+          data = { :chassis_uuid => chassis_uuid }
           request(
             :body    => Fog::JSON.encode(data),
             :expects => [200, 204],

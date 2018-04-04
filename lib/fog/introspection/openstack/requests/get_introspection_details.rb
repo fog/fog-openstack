@@ -15,7 +15,7 @@ module Fog
         def get_introspection_details(_node_id)
           response = Excon::Response.new
           response.status = 200
-          response.body = {"data" => data[:introspection_data]}
+          response.body = { "data" => data[:introspection_data] }
           response
         end
       end

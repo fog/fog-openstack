@@ -16,8 +16,8 @@ module Fog
           def get_action(_name)
             response = Excon::Response.new
             response.status = 200
-            response.body = {"version" => "2.0",
-                             "action1" => {"input" => ['test_id']}}
+            response.body = { "version" => "2.0",
+                              "action1" => { "input" => ['test_id'] } }
             response
           end
         end

@@ -24,7 +24,7 @@ describe "Fog::Network[:openstack] | ike_policy requests" do
         :encryption_algorithm    => 'aes-256',
         :pfs                     => 'group5',
         :phase1_negotiation_mode => 'main',
-        :lifetime                => {'units' => 'seconds', 'value' => 3600},
+        :lifetime                => { 'units' => 'seconds', 'value' => 3600 },
         :ike_version             => 'v1'
       }
 
@@ -56,7 +56,7 @@ describe "Fog::Network[:openstack] | ike_policy requests" do
         :encryption_algorithm    => 'aes-256',
         :pfs                     => 'group5',
         :phase1_negotiation_mode => 'main',
-        :lifetime                => {'units' => 'seconds', 'value' => 3600},
+        :lifetime                => { 'units' => 'seconds', 'value' => 3600 },
         :ike_version             => 'v1'
       }
 

@@ -17,7 +17,7 @@ module Fog
           def update_tenant(_id, attributes)
             response = Excon::Response.new
             response.status = [200, 204][rand(2)]
-            attributes = {'enabled' => true, 'id' => '1'}.merge(attributes)
+            attributes = { 'enabled' => true, 'id' => '1' }.merge(attributes)
             response.body = {
               'tenant' => attributes
             }

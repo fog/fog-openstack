@@ -15,7 +15,7 @@ module Fog
         def get_rules(_rule_id)
           response = Excon::Response.new
           response.status = 200
-          response.body = {"rules" => data[:rules].first}
+          response.body = { "rules" => data[:rules].first }
           response
         end
       end

@@ -43,7 +43,7 @@ module Fog
           }
 
           self.data[:ike_policies][data['id']] = data
-          response.body = {'ikepolicy' => data}
+          response.body = { 'ikepolicy' => data }
           response
         end
       end

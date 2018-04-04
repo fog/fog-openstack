@@ -32,18 +32,18 @@ module Fog
             'name' => options[:name],
             'description' => options[:description],
             'vip_address' => options[:vip_address],
-            'vip_port_id'=> Fog::Mock.random_numbers(6).to_s,
-            'vip_subnet_id'=> vip_subnet_id,
+            'vip_port_id' => Fog::Mock.random_numbers(6).to_s,
+            'vip_subnet_id' => vip_subnet_id,
             'flavor' => options[:flavor],
             'admin_state_up' => options[:admin_state_up],
             'tenant_id' => options[:tenant_id],
-            'listeners'=> [{ 'id'=> Fog::Mock.random_numbers(6).to_s}],
-            'operating_status'=> 'ONLINE',
-            'provider'=> 'lbprovider',
-            'provisioning_status'=> 'ACTIVE'
+            'listeners' => [{ 'id' => Fog::Mock.random_numbers(6).to_s }],
+            'operating_status' => 'ONLINE',
+            'provider' => 'lbprovider',
+            'provisioning_status' => 'ACTIVE'
           }
           self.data[:lbaas_loadbalancer][data['id']] = data
-          response.body = {'loadbalancer' => data}
+          response.body = { 'loadbalancer' => data }
           response
         end
       end

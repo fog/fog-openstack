@@ -17,43 +17,43 @@ module Fog
       class Mock
         def get_limits(_options = {})
           rate_limits = [
-            {'regex' => '.*',
-             'limit' => [
-               {'next-available' => '2012-11-22T16:13:44Z',
-                'unit'           => 'MINUTE',
-                'verb'           => 'POST',
-                'remaining'      => 9,
-                'value'          => 10},
-               {'next-available' => '2012-11-23T00:46:14Z',
-                'unit'           => 'MINUTE',
-                'verb'           => 'PUT',
-                'remaining'      => 10,
-                'value'          => 10},
-               {'next-available' => '2012-11-22T16:14:30Z',
-                'unit'           => 'MINUTE',
-                'verb'           => 'DELETE',
-                'remaining'      => 99,
-                'value'          => 100}
-             ],
-             'uri'   => '*'},
-            {'regex' => '^/servers',
-             'limit' => [
-               {'next-available' => '2012-11-23T00:46:14Z',
-                'unit'           => 'DAY',
-                'verb'           => 'POST',
-                'remaining'      => 50,
-                'value'          => 50}
-             ],
-             'uri'   => '*/servers'},
-            {'regex' => '.*changes-since.*',
-             'limit' => [
-               {'next-available' => '2012-11-23T00:46:14Z',
-                'unit'           => 'MINUTE',
-                'verb'           => 'GET',
-                'remaining'      => 3,
-                'value'          => 3}
-             ],
-             'uri'   => '*changes-since*'}
+            { 'regex' => '.*',
+              'limit' => [
+                { 'next-available' => '2012-11-22T16:13:44Z',
+                  'unit'           => 'MINUTE',
+                  'verb'           => 'POST',
+                  'remaining'      => 9,
+                  'value'          => 10 },
+                { 'next-available' => '2012-11-23T00:46:14Z',
+                  'unit'           => 'MINUTE',
+                  'verb'           => 'PUT',
+                  'remaining'      => 10,
+                  'value'          => 10 },
+                { 'next-available' => '2012-11-22T16:14:30Z',
+                  'unit'           => 'MINUTE',
+                  'verb'           => 'DELETE',
+                  'remaining'      => 99,
+                  'value'          => 100 }
+              ],
+              'uri'   => '*' },
+            { 'regex' => '^/servers',
+              'limit' => [
+                { 'next-available' => '2012-11-23T00:46:14Z',
+                  'unit'           => 'DAY',
+                  'verb'           => 'POST',
+                  'remaining'      => 50,
+                  'value'          => 50 }
+              ],
+              'uri'   => '*/servers' },
+            { 'regex' => '.*changes-since.*',
+              'limit' => [
+                { 'next-available' => '2012-11-23T00:46:14Z',
+                  'unit'           => 'MINUTE',
+                  'verb'           => 'GET',
+                  'remaining'      => 3,
+                  'value'          => 3 }
+              ],
+              'uri' => '*changes-since*' }
           ]
 
           absolute_limits = {

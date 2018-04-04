@@ -27,7 +27,7 @@ module Fog
             }
             self.data[:roles][data['id']] = data
             Excon::Response.new(
-              :body   => {'role' => data},
+              :body   => { 'role' => data },
               :status => 202
             )
           end

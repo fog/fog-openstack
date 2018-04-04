@@ -30,7 +30,7 @@ describe "Fog::Baremetal[:openstack] | Baremetal port requests" do
     end
 
     before do
-      node_attributes = {:driver => 'pxe_ipmitool'}
+      node_attributes = { :driver => 'pxe_ipmitool' }
       @instance = Fog::Baremetal[:openstack].create_node(node_attributes).body
 
       port_attributes = {
@@ -51,7 +51,7 @@ describe "Fog::Baremetal[:openstack] | Baremetal port requests" do
     it "#patch_port" do
       @baremetal.patch_port(
         @port['uuid'],
-        [{'op' => 'add', 'path' => '/extra/name', 'value' => 'eth1'}]
+        [{ 'op' => 'add', 'path' => '/extra/name', 'value' => 'eth1' }]
       ).body.must_match_schema(@detailed_port_format)
     end
 

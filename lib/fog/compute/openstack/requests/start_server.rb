@@ -9,7 +9,7 @@ module Fog
         # === Returns
         # * success <~Boolean>
         def start_server(server_id)
-          body = {'os-start' => nil}
+          body = { 'os-start' => nil }
           server_action(server_id, body).status == 202
         end
       end

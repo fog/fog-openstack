@@ -103,13 +103,13 @@ describe "Fog::Storage[:openstack] | large object requests" do
       describe "specifying X-Object-Manifest segment prefix" do
         it "#put_dynamic_obj_manifest" do
           skip if Fog.mocking?
-          options = {'X-Object-Manifest' => "#{@directory.identity}/fog_large_object/"}
+          options = { 'X-Object-Manifest' => "#{@directory.identity}/fog_large_object/" }
           @storage.put_dynamic_obj_manifest(@directory.identity, 'fog_large_object', options)
         end
         describe "with large object" do
           before do
             unless Fog.mocking?
-              options = {'X-Object-Manifest' => "#{@directory.identity}/fog_large_object/"}
+              options = { 'X-Object-Manifest' => "#{@directory.identity}/fog_large_object/" }
               @storage.put_dynamic_obj_manifest(@directory.identity, 'fog_large_object', options)
             end
           end
@@ -134,7 +134,7 @@ describe "Fog::Storage[:openstack] | large object requests" do
       describe "storing manifest in a different container than the segments" do
         before do
           unless Fog.mocking?
-            options = {'X-Object-Manifest' => "#{@directory.identity}/fog_large_object/"}
+            options = { 'X-Object-Manifest' => "#{@directory.identity}/fog_large_object/" }
             @storage.put_dynamic_obj_manifest(@directory2.identity, 'fog_large_object', options)
           end
         end
@@ -281,7 +281,7 @@ describe "Fog::Storage[:openstack] | large object requests" do
           :etag       => @segments[:c][:etag],
           :size_bytes => @segments[:c][:size]
         }]
-        expected = {'Errors' => [[segments[0][:path], '404 Not Found']]}
+        expected = { 'Errors' => [[segments[0][:path], '404 Not Found']] }
 
         err = proc do
           @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments)
@@ -306,7 +306,7 @@ describe "Fog::Storage[:openstack] | large object requests" do
             :etag       => @segments[:b][:etag],
             :size_bytes => @segments[:a][:size]
           }]
-          expected = {'Errors' => [[segments[0][:path], 'Etag Mismatch']]}
+          expected = { 'Errors' => [[segments[0][:path], 'Etag Mismatch']] }
 
           err = proc do
             @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments)
@@ -322,7 +322,7 @@ describe "Fog::Storage[:openstack] | large object requests" do
             :etag       => @segments[:a][:etag],
             :size_bytes => @segments[:b][:size]
           }]
-          expected = {'Errors' => [[segments[0][:path], 'Size Mismatch']]}
+          expected = { 'Errors' => [[segments[0][:path], 'Size Mismatch']] }
 
           err = proc do
             @storage.put_static_obj_manifest(@directory.identity, 'fog_large_object', segments)

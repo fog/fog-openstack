@@ -26,21 +26,21 @@ module Fog
         class Mock
           def list_tenants(_options = nil, _marker = nil)
             Excon::Response.new(
-              :body   => {
+              :body => {
                 'tenants_links' => [],
                 'tenants'       => [
-                  {'id'          => '1',
-                   'description' => 'Has access to everything',
-                   'enabled'     => true,
-                   'name'        => 'admin'},
-                  {'id'          => '2',
-                   'description' => 'Normal tenant',
-                   'enabled'     => true,
-                   'name'        => 'default'},
-                  {'id'          => '3',
-                   'description' => 'Disabled tenant',
-                   'enabled'     => false,
-                   'name'        => 'disabled'}
+                  { 'id'          => '1',
+                    'description' => 'Has access to everything',
+                    'enabled'     => true,
+                    'name'        => 'admin' },
+                  { 'id'          => '2',
+                    'description' => 'Normal tenant',
+                    'enabled'     => true,
+                    'name'        => 'default' },
+                  { 'id'          => '3',
+                    'description' => 'Disabled tenant',
+                    'enabled'     => false,
+                    'name'        => 'disabled' }
                 ]
               },
               :status => [200, 204][rand(2)]

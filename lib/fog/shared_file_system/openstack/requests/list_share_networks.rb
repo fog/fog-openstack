@@ -16,7 +16,7 @@ module Fog
         def list_share_networks(_options = {})
           response = Excon::Response.new
           response.status = 200
-          response.body = {'share_networks' => data[:share_networks]}
+          response.body = { 'share_networks' => data[:share_networks] }
           response
         end
       end

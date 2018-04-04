@@ -31,7 +31,7 @@ describe "Fog::Compute[:openstack] | Compute aggregate requests" do
     end
 
     it "#update_aggregate" do
-      @aggregate_attributes = {'name' => 'test_aggregate2'}
+      @aggregate_attributes = { 'name' => 'test_aggregate2' }
       @compute.update_aggregate(@aggregate['id'], @aggregate_attributes).body.
         must_match_schema('aggregate' => @aggregate_format)
     end

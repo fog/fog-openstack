@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:ipsec_site_connections][ipsec_site_connection_id]
             response.status = 200
-            response.body   = {'ipsec_site_connection' => data}
+            response.body   = { 'ipsec_site_connection' => data }
             response
           else
             raise Fog::Network::OpenStack::NotFound

@@ -129,7 +129,7 @@ module Fog
                   'Content-Type' => 'application/json',
                   'X-Auth-Token' => @auth_token
                 }.merge!(params[:headers] || {}),
-                :path    => "#{@path}/#{params[:path]}"
+                :path => "#{@path}/#{params[:path]}"
               )
             )
           rescue Excon::Errors::Unauthorized    => error

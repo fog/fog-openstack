@@ -17,7 +17,7 @@ module Fog
           response.status = 200
           response.body = {
             'floating_ip_pools' => [
-              {'name' => 'nova'}
+              { 'name' => 'nova' }
             ]
           }
           response

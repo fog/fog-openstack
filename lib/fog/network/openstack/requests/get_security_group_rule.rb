@@ -35,7 +35,7 @@ module Fog
           response = Excon::Response.new
           if sec_group_rule = data[:security_group_rules][security_group_rule_id]
             response.status = 200
-            response.body   = {"security_group_rule" => sec_group_rule}
+            response.body   = { "security_group_rule" => sec_group_rule }
             response
           else
             raise Fog::Network::OpenStack::NotFound

@@ -17,7 +17,7 @@ module Fog
           response.status = 200
           security_service = data[:security_service_updated] || data[:security_services_detail].first
           security_service['id'] = id
-          response.body = {'security_service' => security_service}
+          response.body = { 'security_service' => security_service }
           response
         end
       end

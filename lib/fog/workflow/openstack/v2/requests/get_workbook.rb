@@ -16,9 +16,9 @@ module Fog
           def get_workbook(_name)
             response = Excon::Response.new
             response.status = 200
-            response.body = {"version"     => "2.0",
-                             "name"        => "workbook1",
-                             "description" => "d1"}
+            response.body = { "version" => "2.0",
+                              "name"        => "workbook1",
+                              "description" => "d1" }
             response
           end
         end

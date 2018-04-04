@@ -19,7 +19,7 @@ namespace :tests do
   desc "Run fog-openstack test/"
   Rake::TestTask.new do |t|
     t.name = 'unit'
-    t.libs.push [ "lib", "test" ]
+    t.libs.push ["lib", "test"]
     t.test_files = FileList['test/**/*.rb']
     t.verbose = true
   end
@@ -27,7 +27,7 @@ namespace :tests do
   desc "Run fog-openstack spec/"
   Rake::TestTask.new do |t|
     t.name = 'spec'
-    t.libs.push [ "lib", "spec" ]
+    t.libs.push ["lib", "spec"]
     t.pattern = 'spec/**/*_spec.rb'
     t.verbose = true
   end

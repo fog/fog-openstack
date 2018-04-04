@@ -31,7 +31,7 @@ module Fog
         #     * 'remote_ip_prefix'<~String> - IP cidr range address i.e. '0.0.0.0/0'
         #     * 'tenant_id'<~String> - Tenant id that owns the security group rule
         def create_security_group_rule(security_group_id, direction, options = {})
-          data            = {"security_group_rule" => {"security_group_id" => security_group_id, "direction" => direction}}
+          data            = { "security_group_rule" => { "security_group_id" => security_group_id, "direction" => direction } }
           desired_options = [
             :port_range_min,
             :port_range_max,
@@ -70,7 +70,7 @@ module Fog
           }
           self.data[:security_group_rules][data["id"]] = data
           response.status = 201
-          response.body   = {"security_group_rule" => data}
+          response.body   = { "security_group_rule" => data }
           response
         end
       end

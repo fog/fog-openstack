@@ -45,7 +45,7 @@ module Fog
           }
 
           self.data[:lb_health_monitors][data['id']] = data
-          response.body = {'health_monitor' => data}
+          response.body = { 'health_monitor' => data }
           response
         end
       end

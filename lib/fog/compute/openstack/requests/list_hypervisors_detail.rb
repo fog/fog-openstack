@@ -17,8 +17,8 @@ module Fog
           response = Excon::Response.new
           response.status = 200
           response.body = {
-            "hypervisors"       => [{
-              "cpu_info"             => {
+            "hypervisors" => [{
+              "cpu_info" => {
                 "arch"     => "x86_64",
                 "model"    => "Nehalem",
                 "vendor"   => "Intel",

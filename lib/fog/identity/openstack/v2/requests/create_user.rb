@@ -35,7 +35,7 @@ module Fog
               'enabled'  => enabled
             }
             self.data[:users][data['id']] = data
-            response.body = {'user' => data}
+            response.body = { 'user' => data }
             response
           end
         end

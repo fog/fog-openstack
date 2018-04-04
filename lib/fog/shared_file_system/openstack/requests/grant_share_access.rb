@@ -25,7 +25,7 @@ module Fog
           access[:access_type]  = access_type
           access[:access_to]    = access_to
 
-          response.body = {'access' => access}
+          response.body = { 'access' => access }
           response
         end
       end

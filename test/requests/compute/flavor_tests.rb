@@ -56,7 +56,7 @@ describe "Fog::Compute[:openstack] | flavor requests" do
 
     it "add_flavor_access(flavor_ref, tenant_id)" do
       @compute.add_flavor_access(100, 1).body.
-        must_match_schema('flavor_access' => [{'tenant_id' => String, 'flavor_id' => String}])
+        must_match_schema('flavor_access' => [{ 'tenant_id' => String, 'flavor_id' => String }])
     end
 
     it "remove_flavor_access(flavor_ref, tenant_id)" do
@@ -66,7 +66,7 @@ describe "Fog::Compute[:openstack] | flavor requests" do
 
     it "list_tenants_with_flavor_access(flavor_ref)" do
       @compute.list_tenants_with_flavor_access(100).body.
-        must_match_schema('flavor_access' => [{'tenant_id' => String, 'flavor_id' => String}])
+        must_match_schema('flavor_access' => [{ 'tenant_id' => String, 'flavor_id' => String }])
     end
 
     it "delete_flavor(flavor_id)" do
@@ -75,13 +75,13 @@ describe "Fog::Compute[:openstack] | flavor requests" do
 
     it "#get_flavor_metadata(flavor_ref)" do
       @compute.get_flavor_metadata("1").body.
-        must_match_schema('extra_specs' => {'cpu_arch' => String})
+        must_match_schema('extra_specs' => { 'cpu_arch' => String })
     end
 
     it "#create_flavor_metadata(flavor_ref, metadata)" do
-      metadata = {:cpu_arch => 'x86_64'}
+      metadata = { :cpu_arch => 'x86_64' }
       @compute.create_flavor_metadata("1", metadata).body.
-        must_match_schema('extra_specs' => {'cpu_arch' => String})
+        must_match_schema('extra_specs' => { 'cpu_arch' => String })
     end
   end
 
@@ -123,7 +123,7 @@ describe "Fog::Compute[:openstack] | flavor requests" do
     it "create_flavor_metadata(flavor_ref)" do
       skip if Fog.mocking?
       proc do
-        metadata = {:cpu_arch => 'x86_64'}
+        metadata = { :cpu_arch => 'x86_64' }
         @compute.create_flavor_metadata("1234", metadata).body
       end.must_raise Fog::Compute::OpenStack::NotFound
     end

@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_ike_policies(*)
           Excon::Response.new(
-            :body   => {'ikepolicies' => data[:ike_policies].values},
+            :body   => { 'ikepolicies' => data[:ike_policies].values },
             :status => 200
           )
         end

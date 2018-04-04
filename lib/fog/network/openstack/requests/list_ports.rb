@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_ports(_filters = {})
           Excon::Response.new(
-            :body   => {'ports' => data[:ports].values},
+            :body   => { 'ports' => data[:ports].values },
             :status => 200
           )
         end

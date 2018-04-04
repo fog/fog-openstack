@@ -30,7 +30,7 @@ module Fog
                     "rel"  => "bookmark"
                   }
                 ],
-                "uuid"        => Fog::UUID.uuid
+                "uuid" => Fog::UUID.uuid
               }
             ]
           }

@@ -55,7 +55,7 @@ module Fog
         private
 
         def options(fixed_ip_address)
-          fixed_ip_address ? {'fixed_ip_address' => fixed_ip_address} : {}
+          fixed_ip_address ? { 'fixed_ip_address' => fixed_ip_address } : {}
         end
       end
     end

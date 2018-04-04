@@ -16,6 +16,6 @@ def create_virtual_address_pairing(username, password, auth_url, tenant, device_
     network_port['mac_address'] == server.attributes['macaddress']
   end).first
 
-  network_driver.update_port(port['id'], :allowed_address_pairs => [{:ip_address => device_ip_address},
-                                                                    {:ip_address => virtual_ip_address}])
+  network_driver.update_port(port['id'], :allowed_address_pairs => [{ :ip_address => device_ip_address },
+                                                                    { :ip_address => virtual_ip_address }])
 end

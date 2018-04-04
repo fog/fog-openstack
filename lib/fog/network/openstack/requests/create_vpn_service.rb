@@ -42,7 +42,7 @@ module Fog
           }
 
           self.data[:vpn_services][data['id']] = data
-          response.body = {'vpnservice' => data}
+          response.body = { 'vpnservice' => data }
           response
         end
       end

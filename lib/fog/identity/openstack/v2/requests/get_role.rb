@@ -17,7 +17,7 @@ module Fog
             response = Excon::Response.new
             if data = self.data[:roles][id]
               response.status = 200
-              response.body = {'role' => data}
+              response.body = { 'role' => data }
               response
             else
               raise Fog::Identity::OpenStack::NotFound

@@ -255,14 +255,14 @@ module Fog
         def self.data
           @data ||= Hash.new do |hash, key|
             hash[key] = {
-              :last_modified             => {
+              :last_modified => {
                 :images          => {},
                 :servers         => {},
                 :key_pairs       => {},
                 :security_groups => {},
                 :addresses       => {}
               },
-              :aggregates                => [{
+              :aggregates => [{
                 "availability_zone" => "nova",
                 "created_at"        => "2012-11-16T06:22:23.032493",
                 "deleted"           => false,
@@ -271,7 +271,7 @@ module Fog
                 "name"              => "name",
                 "updated_at"        => nil
               }],
-              :images                    => {
+              :images => {
                 "0e09fbd6-43c5-448a-83e9-0d3d05f9747e" => {
                   "id"       => "0e09fbd6-43c5-448a-83e9-0d3d05f9747e",
                   "name"     => "cirros-0.3.0-x86_64-blank",
@@ -281,8 +281,8 @@ module Fog
                   'minRam'   => 0,
                   'minDisk'  => 0,
                   'metadata' => {},
-                  'links'    => [{"href" => "http://nova1:8774/v1.1/admin/images/1", "rel" => "self"},
-                                 {"href" => "http://nova1:8774/admin/images/2", "rel" => "bookmark"}]
+                  'links'    => [{ "href" => "http://nova1:8774/v1.1/admin/images/1", "rel" => "self" },
+                                 { "href" => "http://nova1:8774/admin/images/2", "rel" => "bookmark" }]
                 }
               },
               :servers                   => {},
@@ -294,13 +294,13 @@ module Fog
                   "name"        => "default",
                   "description" => "default",
                   "rules"       => [
-                    {"id"              => 0,
-                     "parent_group_id" => 0,
-                     "from_port"       => 68,
-                     "to_port"         => 68,
-                     "ip_protocol"     => "udp",
-                     "ip_range"        => {"cidr" => "0.0.0.0/0"},
-                     "group"           => {}}
+                    { "id" => 0,
+                      "parent_group_id" => 0,
+                      "from_port"       => 68,
+                      "to_port"         => 68,
+                      "ip_protocol"     => "udp",
+                      "ip_range"        => { "cidr" => "0.0.0.0/0" },
+                      "group"           => {} }
                   ]
                 }
               },

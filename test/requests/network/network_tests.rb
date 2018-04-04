@@ -88,7 +88,7 @@ describe "Fog::Network[:openstack] | network requests" do
       }
 
       network_id = network.networks.all.first.id
-      network_update_extentions_format = {"router:external" => Fog::Boolean}
+      network_update_extentions_format = { "router:external" => Fog::Boolean }
       network.update_network(network_id, attributes).body.
         must_match_schema('network' => network_format.merge(network_update_extentions_format))
     end

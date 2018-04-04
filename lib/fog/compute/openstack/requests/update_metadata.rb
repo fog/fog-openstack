@@ -28,7 +28,7 @@ module Fog
 
           # FIXME: join w/ existing metadata here
           response = Excon::Response.new
-          response.body = {"metadata" => metadata}
+          response.body = { "metadata" => metadata }
           response.status = 200
           response
         end

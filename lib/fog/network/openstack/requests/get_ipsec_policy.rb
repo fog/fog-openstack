@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:ipsec_policies][ipsec_policy_id]
             response.status = 200
-            response.body   = {'ipsecpolicy' => data}
+            response.body   = { 'ipsecpolicy' => data }
             response
           else
             raise Fog::Network::OpenStack::NotFound

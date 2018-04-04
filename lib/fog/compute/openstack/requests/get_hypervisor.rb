@@ -17,7 +17,7 @@ module Fog
           response.status = 200
           response.body = {
             "hypervisor" => {
-              "cpu_info"             => {
+              "cpu_info" => {
                 "arch"     => "x86_64",
                 "model"    => "Nehalem",
                 "vendor"   => "Intel",

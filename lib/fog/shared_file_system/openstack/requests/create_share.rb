@@ -40,7 +40,7 @@ module Fog
           share['size']        = size
           share['status']      = 'creating'
 
-          response.body = {'share' => share.merge(options)}
+          response.body = { 'share' => share.merge(options) }
           response
         end
       end

@@ -43,7 +43,7 @@ module Fog
           }
 
           self.data[:routers][data['router_id']] = data
-          response.body = {'router' => data}
+          response.body = { 'router' => data }
           response
         end
       end

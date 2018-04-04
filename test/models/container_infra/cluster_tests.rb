@@ -15,7 +15,7 @@ describe "Fog::ContainerInfra[:openstack] | cluster" do
     end
 
     it "#update" do
-      @instance.name                 = 'rename-test-cluster'
+      @instance.name = 'rename-test-cluster'
       @instance.update.name.must_equal "rename-test-cluster"
     end
 

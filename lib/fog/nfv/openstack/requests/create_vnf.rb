@@ -28,7 +28,7 @@ module Fog
           response.status = 201
 
           create_data = data[:vnfs].first.merge("vnfd_id" => "id")
-          response.body = {"vnf" => create_data}
+          response.body = { "vnf" => create_data }
           response
         end
       end

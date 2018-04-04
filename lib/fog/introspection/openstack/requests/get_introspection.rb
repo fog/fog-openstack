@@ -15,7 +15,7 @@ module Fog
         def get_introspection(_node_id)
           response = Excon::Response.new
           response.status = 200
-          response.body = {"error" => "null", "finished" => "true"}
+          response.body = { "error" => "null", "finished" => "true" }
           response
         end
       end

@@ -18,7 +18,7 @@ module Fog
           if server
             if server['status'] == 'BUILD'
               response.status = 409
-              raise(Excon::Errors.status_error({:expects => 204}, response))
+              raise(Excon::Errors.status_error({ :expects => 204 }, response))
             else
               data[:last_modified][:servers].delete(server_id)
               data[:servers].delete(server_id)

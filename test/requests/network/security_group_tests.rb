@@ -15,7 +15,7 @@ describe "Fog::Network[:openstack] | security_group requests" do
   describe "success" do
     before do
       @sec_group_id   = nil
-      attributes      = {:name => "fog_security_group", :description => "tests group"}
+      attributes      = { :name => "fog_security_group", :description => "tests group" }
       @security_group = network.create_security_group(attributes).body["security_group"]
       @sec_group_id   = @security_group["id"]
     end

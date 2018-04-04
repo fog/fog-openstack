@@ -5,7 +5,7 @@ module Fog
         def update_aggregate(uuid, options = {})
           vanilla_options = [:name, :availability_zone]
 
-          data = {'aggregate' => {}}
+          data = { 'aggregate' => {} }
           vanilla_options.select { |o| options[o] }.each do |key|
             data['aggregate'][key] = options[key]
           end
@@ -28,7 +28,7 @@ module Fog
             "Content-Length" => "0",
             "Date"           => Date.new
           }
-          response.body = {'aggregate' => data[:aggregates].first}
+          response.body = { 'aggregate' => data[:aggregates].first }
           response
         end
       end

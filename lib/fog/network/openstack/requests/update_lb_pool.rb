@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def update_lb_pool(pool_id, options = {})
-          data = {'pool' => {}}
+          data = { 'pool' => {} }
 
           vanilla_options = [:name, :description, :lb_method, :admin_state_up]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
@@ -27,7 +27,7 @@ module Fog
             pool['description']     = options[:description]
             pool['lb_method']       = options[:lb_method]
             pool['admin_state_up']  = options[:admin_state_up]
-            response.body = {'pool' => pool}
+            response.body = { 'pool' => pool }
             response.status = 200
             response
           else

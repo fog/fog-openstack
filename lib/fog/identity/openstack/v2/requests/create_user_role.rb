@@ -15,7 +15,7 @@ module Fog
         class Mock
           def create_user_role(_tenant_id, _user_id, role_id)
             Excon::Response.new(
-              :body   => {'role' => data[:roles][role_id]},
+              :body   => { 'role' => data[:roles][role_id] },
               :status => 200
             )
           end

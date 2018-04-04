@@ -26,7 +26,7 @@ auth_options = {
   :openstack_domain_name  => ENV['OS_USER_DOMAIN_NAME'],
   :openstack_project_name => ENV['OS_PROJECT_NAME'],
   :openstack_region       => ENV['OS_REGION_NAME'],
-  :connection_options     => {:ssl_verify_peer => ENV['SSL_VERIFY'] != 'false'}
+  :connection_options     => { :ssl_verify_peer => ENV['SSL_VERIFY'] != 'false' }
 }
 
 network_service = Fog::Network::OpenStack.new(auth_options)

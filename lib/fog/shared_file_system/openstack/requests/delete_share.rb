@@ -20,7 +20,7 @@ module Fog
           share['id']            = id
           share['links']['self'] = "https://127.0.0.1:8786/v2/shares/#{id}"
 
-          response.body = {'share' => share}
+          response.body = { 'share' => share }
           response
         end
       end

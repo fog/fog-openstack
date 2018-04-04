@@ -18,8 +18,8 @@ cinder = Fog::Volume::OpenStack.new(@connection_params)
 
 puts "INFO: create backup of existing volume named test"
 
-response = cinder.create_backup({:name => 'test-backup',
-                                 :volume_id => '82fe2ad5-43a3-4c2b-8464-e57b138ea81c'})
+response = cinder.create_backup({ :name => 'test-backup',
+                                  :volume_id => '82fe2ad5-43a3-4c2b-8464-e57b138ea81c' })
 puts response.body
 
 puts "INFO: list backups"

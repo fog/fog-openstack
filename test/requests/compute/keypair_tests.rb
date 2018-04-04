@@ -25,7 +25,7 @@ describe "Fog::Compute[:openstack] | keypair requests" do
 
     it "#list_key_pairs" do
       Fog::Compute[:openstack].list_key_pairs.body.
-        must_match_schema("keypairs" => [{"keypair" => @keypair_list_format}])
+        must_match_schema("keypairs" => [{ "keypair" => @keypair_list_format }])
     end
 
     it "#delete_key_pair(key_name)" do

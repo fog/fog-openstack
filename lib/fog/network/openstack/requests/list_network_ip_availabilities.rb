@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:network_ip_availabilities]
             response.status = 200
-            response.body = {'network_ip_availabilities' => data}
+            response.body = { 'network_ip_availabilities' => data }
             response
           else
             raise Fog::Network::OpenStack::NotFound

@@ -46,7 +46,7 @@ module Fog
             :headers => options,
             :body    => Fog::JSON.encode(segments),
             :path    => "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}",
-            :query   => {'multipart-manifest' => 'put'}
+            :query   => { 'multipart-manifest' => 'put' }
           )
         end
       end

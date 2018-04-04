@@ -14,7 +14,7 @@ module Fog
       class Mock
         def list_os_interfaces(server_id)
           Excon::Response.new(
-            :body   => {'interfaceAttachments' => data[:os_interfaces]},
+            :body   => { 'interfaceAttachments' => data[:os_interfaces] },
             :status => 200
           )
         end

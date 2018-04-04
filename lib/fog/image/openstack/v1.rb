@@ -65,7 +65,7 @@ module Fog
             management_url.path = '/v1'
             @openstack_management_url = management_url.to_s
 
-            @data ||= {:users => {}}
+            @data ||= { :users => {} }
             unless @data[:users].detect { |u| u['name'] == options[:openstack_username] }
               id = Fog::Mock.random_numbers(6).to_s
               @data[:users][id] = {
@@ -87,11 +87,11 @@ module Fog
           end
 
           def credentials
-            {:provider                 => 'openstack',
-             :openstack_auth_url       => @openstack_auth_uri.to_s,
-             :openstack_auth_token     => @auth_token,
-             :openstack_region         => @openstack_region,
-             :openstack_management_url => @openstack_management_url}
+            { :provider => 'openstack',
+              :openstack_auth_url       => @openstack_auth_uri.to_s,
+              :openstack_auth_token     => @auth_token,
+              :openstack_region         => @openstack_region,
+              :openstack_management_url => @openstack_management_url }
           end
         end
 

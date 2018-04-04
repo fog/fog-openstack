@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def update_aggregate_metadata(uuid, metadata = {})
-          data = {'set_metadata' => {'metadata' => metadata}}
+          data = { 'set_metadata' => { 'metadata' => metadata } }
           request(
             :body    => Fog::JSON.encode(data),
             :expects => [200],

@@ -15,7 +15,7 @@ describe "Fog::Network[:openstack] | ike_policy" do
           'units' => 'seconds',
           'value' => 3600
         },
-        :ike_version             => 'v1'
+        :ike_version => 'v1'
       )
     end
 
@@ -32,7 +32,7 @@ describe "Fog::Network[:openstack] | ike_policy" do
       @pfs                           = 'group1'
       @phase1_negotiation_mode       = 'main'
       @ike_version                   = 'v1'
-      @lifetime                      = {'units' => 'seconds', 'value' => 3600}
+      @lifetime                      = { 'units' => 'seconds', 'value' => 3600 }
       @instance.update.name.must_equal "rename-test-ike-policy"
     end
 

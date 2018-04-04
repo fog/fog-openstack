@@ -30,7 +30,7 @@ module Fog
                                :headers => options.merge('Content-Type' => 'text/plain',
                                                          'Accept'       => 'application/json'),
                                :path    => "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}",
-                               :query   => {'multipart-manifest' => 'delete'}
+                               :query   => { 'multipart-manifest' => 'delete' }
                              }, false)
           response.body = Fog::JSON.decode(response.body)
           response

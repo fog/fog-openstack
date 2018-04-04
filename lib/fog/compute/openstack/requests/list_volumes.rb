@@ -29,7 +29,7 @@ module Fog
       class Mock
         def list_volumes(_options = true)
           Excon::Response.new(
-            :body   => {'volumes' => data[:volumes].values},
+            :body   => { 'volumes' => data[:volumes].values },
             :status => 200
           )
         end

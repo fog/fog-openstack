@@ -16,9 +16,9 @@ module Fog
           def get_workflow(_identifier)
             response = Excon::Response.new
             response.status = 200
-            response.body = {"version"     => "2.0",
-                             "name"        => "workflow1",
-                             "description" => "d1"}
+            response.body = { "version" => "2.0",
+                              "name"        => "workflow1",
+                              "description" => "d1" }
             response
           end
         end

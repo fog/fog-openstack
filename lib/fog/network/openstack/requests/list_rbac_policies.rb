@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_rbac_policies(*)
           Excon::Response.new(
-            :body   => {'rbac_policies' => data[:rbac_policies].values},
+            :body   => { 'rbac_policies' => data[:rbac_policies].values },
             :status => 200
           )
         end

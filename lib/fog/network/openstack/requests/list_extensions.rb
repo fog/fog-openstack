@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_extensions(_filters = {})
           Excon::Response.new(
-            :body   => {'extensions' => data[:extensions].values},
+            :body   => { 'extensions' => data[:extensions].values },
             :status => 200
           )
         end

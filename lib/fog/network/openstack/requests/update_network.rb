@@ -30,7 +30,7 @@ module Fog
         end
 
         def update_network(network_id, options = {})
-          data = {'network' => self.class.update(options)}
+          data = { 'network' => self.class.update(options) }
           request(
             :body    => Fog::JSON.encode(data),
             :expects => 200,
@@ -45,7 +45,7 @@ module Fog
           response = Excon::Response.new
           if network = list_networks.body['networks'].find { |_| _['id'] == network_id }
             network.merge!(Fog::Network::OpenStack::Real.update(options))
-            response.body = {'network' => network}
+            response.body = { 'network' => network }
             response.status = 200
             response
           else

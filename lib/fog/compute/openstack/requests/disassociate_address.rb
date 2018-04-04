@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def disassociate_address(server_id, ip_address)
-          body = {"removeFloatingIp" => {"address" => ip_address}}
+          body = { "removeFloatingIp" => { "address" => ip_address } }
           server_action(server_id, body)
         end
       end

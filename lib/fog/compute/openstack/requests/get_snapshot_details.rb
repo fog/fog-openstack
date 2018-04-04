@@ -18,7 +18,7 @@ module Fog
             snap['id'] == snapshot_id
           end
             response.status = 200
-            response.body = {'snapshot' => snapshot}
+            response.body = { 'snapshot' => snapshot }
             response
           else
             raise Fog::Compute::OpenStack::NotFound

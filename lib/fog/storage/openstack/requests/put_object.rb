@@ -17,12 +17,12 @@ module Fog
         #
         def put_object(container, object, data, options = {}, &block)
           if block_given?
-            params = {:request_block => block}
+            params = { :request_block => block }
             headers = options
           else
             data = Fog::Storage.parse_data(data)
             headers = data[:headers].merge!(options)
-            params = {:body => data[:body]}
+            params = { :body => data[:body] }
           end
 
           params.merge!(
@@ -56,7 +56,7 @@ module Fog
           response = Excon::Response.new
           response.status = 201
           response.body = ''
-          response.headers = {'ETag' => dgst.hexdigest}
+          response.headers = { 'ETag' => dgst.hexdigest }
           response
         end
       end

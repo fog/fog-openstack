@@ -19,7 +19,7 @@ module Fog
         def get(port_id)
           requires :server
 
-          data = service.get_os_interface(server.id,port_id)
+          data = service.get_os_interface(server.id, port_id)
           load_response(data, 'interfaceAttachment')
         end
       end

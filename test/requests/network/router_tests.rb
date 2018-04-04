@@ -39,7 +39,7 @@ describe "Fog::Network[:openstack] | router requests" do
       router_id = network.routers.all.first.id
       attributes = {
         :name                  => 'net_name',
-        :external_gateway_info => {:network_id => 'net_id'},
+        :external_gateway_info => { :network_id => 'net_id' },
         :status                => 'ACTIVE',
         :admin_state_up        => true
       }

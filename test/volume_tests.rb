@@ -8,7 +8,7 @@ describe "Fog::Volume[:openstack], ['openstack', 'volume']" do
   volume = Fog::Volume[:openstack]
 
   describe "Volumes collection" do
-    %w{ volumes }.each do |collection|
+    %w{volumes}.each do |collection|
       it "should respond to #{collection}" do
         volume.respond_to? collection
       end

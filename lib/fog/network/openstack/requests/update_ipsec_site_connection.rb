@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def update_ipsec_site_connection(ipsec_site_connection_id, options = {})
-          data = {'ipsec_site_connection' => {}}
+          data = { 'ipsec_site_connection' => {} }
 
           vanilla_options = [:name, :description, :tenant_id,
                              :peer_address, :peer_id, :peer_cidrs,
@@ -50,7 +50,7 @@ module Fog
             ipsec_site_connection['peer_address']      = options[:peer_address]
             ipsec_site_connection['peer_id']           = options[:peer_id]
 
-            response.body = {'ipsec_site_connection' => ipsec_site_connection}
+            response.body = { 'ipsec_site_connection' => ipsec_site_connection }
             response.status = 200
             response
           else

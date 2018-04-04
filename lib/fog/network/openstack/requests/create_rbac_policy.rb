@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def create_rbac_policy(options = {})
-          data = {'rbac_policy' => {}}
+          data = { 'rbac_policy' => {} }
 
           vanilla_options = [:object_type, :object_id, :tenant_id, :target_tenant, :action]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
@@ -33,7 +33,7 @@ module Fog
           }
 
           self.data[:rbac_policies][data['id']] = data
-          response.body = {'rbac_policy' => data}
+          response.body = { 'rbac_policy' => data }
           response
         end
       end

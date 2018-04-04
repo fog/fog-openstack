@@ -56,7 +56,7 @@ module Fog
           }
 
           self.data[:ipsec_site_connections][data['id']] = data
-          response.body = {'ipsec_site_connection' => data}
+          response.body = { 'ipsec_site_connection' => data }
           response
         end
       end

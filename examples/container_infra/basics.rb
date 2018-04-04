@@ -21,7 +21,7 @@ unless image.images.map(&:name).include?("fedora-atomic-latest")
                                visibility: 'public',
                                container_format: 'bare',
                                copy_from: 'https://fedorapeople.org/groups/magnum/fedora-atomic-latest.qcow2',
-                               properties: {'os_distro' => 'fedora-atomic'}.to_json
+                               properties: { 'os_distro' => 'fedora-atomic' }.to_json
   fedora.wait_for { status == "active" }
 end
 

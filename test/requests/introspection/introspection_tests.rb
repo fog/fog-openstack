@@ -25,8 +25,8 @@ describe "Fog::Introspection::OpenStack | Introspection requests" do
         "serial"               => Fog::Nullable::String,
         "size"                 => Integer
       },
-      "extra"          => {
-        "network"  => {
+      "extra" => {
+        "network" => {
           "eth0" => {
             "vlan-challenged"                                  => String,
             "tx-udp_tnl-segmentation"                          => String,
@@ -143,8 +143,8 @@ describe "Fog::Introspection::OpenStack | Introspection requests" do
             "vendor"  => String
           }
         },
-        "system"   => {
-          "kernel"  => {
+        "system" => {
+          "kernel" => {
             "cmdline" => String,
             "version" => String,
             "arch"    => String
@@ -155,28 +155,28 @@ describe "Fog::Introspection::OpenStack | Introspection requests" do
             "name"    => String,
             "uuid"    => String
           },
-          "os"      => {
+          "os" => {
             "version" => String,
             "vendor"  => String
           }
         },
-        "memory"   => {
+        "memory" => {
           "total" => {
             "size" => Integer
           }
         },
-        "disk"     => {
-          "vda"     => {
+        "disk" => {
+          "vda" => {
             "optimal_io_size"     => Integer,
             "physical_block_size" => Integer,
             "rotational"          => Integer,
             "vendor"              => String,
             "size"                => Integer
           },
-          "logical" => {"count" => Integer}
+          "logical" => { "count" => Integer }
         },
-        "cpu"      => {
-          "logical"    => {"number" => Integer},
+        "cpu" => {
+          "logical"    => { "number" => Integer },
           "physical_0" => {
             "physid"    => Integer,
             "product"   => String,
@@ -205,10 +205,10 @@ describe "Fog::Introspection::OpenStack | Introspection requests" do
             "vendor"    => String,
             "flags"     => String
           },
-          "physical"   => {"number" => Integer}
+          "physical" => { "number" => Integer }
         }
       },
-      "interfaces"     => {
+      "interfaces" => {
         "eth0" => {
           "ip"  => String,
           "mac" => String
@@ -236,7 +236,7 @@ describe "Fog::Introspection::OpenStack | Introspection requests" do
             "mac_address"          => String
           }
         ],
-        "disks"         => [
+        "disks" => [
           {
             "rotational"           => Fog::Boolean,
             "vendor"               => String,
@@ -258,7 +258,7 @@ describe "Fog::Introspection::OpenStack | Introspection requests" do
           "physical_mb" => Integer,
           "total"       => Integer
         },
-        "cpu"           => {
+        "cpu" => {
           "count"        => Integer,
           "frequency"    => String,
           "model_name"   => String,
@@ -277,7 +277,7 @@ describe "Fog::Introspection::OpenStack | Introspection requests" do
           "mac" => String
         }
       },
-      "logs"           => String
+      "logs" => String
     }
   end
 

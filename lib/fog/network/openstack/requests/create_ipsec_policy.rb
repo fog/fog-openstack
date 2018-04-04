@@ -43,7 +43,7 @@ module Fog
           }
 
           self.data[:ipsec_policies][data['id']] = data
-          response.body = {'ipsecpolicy' => data}
+          response.body = { 'ipsecpolicy' => data }
           response
         end
       end

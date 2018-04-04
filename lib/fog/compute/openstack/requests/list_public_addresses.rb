@@ -17,7 +17,7 @@ module Fog
           server = list_servers_detail.body['servers'].find { |srv| srv['id'] == server_id }
           if server
             response.status = [200, 203][rand(2)]
-            response.body = {'public' => server['addresses']['public']}
+            response.body = { 'public' => server['addresses']['public'] }
             response
           else
             raise Fog::Compute::OpenStack::NotFound

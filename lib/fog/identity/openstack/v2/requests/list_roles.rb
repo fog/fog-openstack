@@ -18,12 +18,12 @@ module Fog
             if data[:roles].empty?
               ['admin', 'Member'].each do |name|
                 id = Fog::Mock.random_hex(32)
-                data[:roles][id] = {'id' => id, 'name' => name}
+                data[:roles][id] = { 'id' => id, 'name' => name }
               end
             end
 
             Excon::Response.new(
-              :body   => {'roles' => data[:roles].values},
+              :body   => { 'roles' => data[:roles].values },
               :status => 200
             )
           end

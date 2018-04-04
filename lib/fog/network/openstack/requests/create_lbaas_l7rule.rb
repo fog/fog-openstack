@@ -41,7 +41,7 @@ module Fog
           }
 
           self.data[:lbaas_l7rules][data['id']] = data
-          response.body = {'rule' => data}
+          response.body = { 'rule' => data }
           response
         end
       end

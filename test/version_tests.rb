@@ -43,8 +43,8 @@ describe "OpenStack | versions, ['openstack']" do
   end
 
   it "supported" do
-    Excon.stub({:method => 'GET'},
-               {:status => 300, :body => Fog::JSON.encode(@body)})
+    Excon.stub({ :method => 'GET' },
+               { :status => 300, :body => Fog::JSON.encode(@body) })
 
     assert("v1.1") do
       Fog::OpenStack.get_supported_version(/v1(\.(0|1))*/,
@@ -55,8 +55,8 @@ describe "OpenStack | versions, ['openstack']" do
 
   it "unsupported" do
     Excon.stub(
-      {:method => 'GET'},
-      {:status => 300, :body => Fog::JSON.encode(@body)}
+      { :method => 'GET' },
+      { :status => 300, :body => Fog::JSON.encode(@body) }
     )
 
     proc do

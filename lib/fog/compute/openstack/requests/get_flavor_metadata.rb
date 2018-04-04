@@ -15,9 +15,9 @@ module Fog
         def get_flavor_metadata(_flavor_ref)
           response = Excon::Response.new
           response.status = 200
-          response.body = {"extra_specs" => {
+          response.body = { "extra_specs" => {
             "cpu_arch" => "x86_64"
-          }}
+          } }
           response
         end
       end

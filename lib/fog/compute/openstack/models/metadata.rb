@@ -16,7 +16,7 @@ module Fog
           requires :parent
           metadata = service.list_metadata(collection_name, @parent.id).body['metadata']
           metas = []
-          metadata.each_pair { |k, v| metas << {"key" => k, "value" => v} } unless metadata.nil?
+          metadata.each_pair { |k, v| metas << { "key" => k, "value" => v } } unless metadata.nil?
           # TODO: convert to load_response?
           load(metas)
         end
@@ -25,7 +25,7 @@ module Fog
           requires :parent
           data = service.get_metadata(collection_name, @parent.id, key).body["meta"]
           metas = []
-          data.each_pair { |k, v| metas << {"key" => k, "value" => v} }
+          data.each_pair { |k, v| metas << { "key" => k, "value" => v } }
           new(metas[0])
         rescue Fog::Compute::OpenStack::NotFound
           nil
@@ -43,7 +43,7 @@ module Fog
 
         def new(attributes = {})
           requires :parent
-          super({:parent => @parent}.merge!(attributes))
+          super({ :parent => @parent }.merge!(attributes))
         end
 
         def to_hash(data = nil)

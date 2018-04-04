@@ -46,7 +46,7 @@ rules = {
       "value"  => "yes"
     }
   ],
-  "conditions"  => [
+  "conditions" => [
     {
       "field" => "memory_mb",
       "op"    => "ge",

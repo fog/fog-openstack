@@ -26,7 +26,7 @@ module Fog
         def create_vnfd(_)
           response = Excon::Response.new
           response.status = 201
-          response.body = {"vnfd" => data[:vnfds].first}
+          response.body = { "vnfd" => data[:vnfds].first }
           response
         end
       end

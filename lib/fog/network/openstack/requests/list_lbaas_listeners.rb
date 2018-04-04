@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_lbaas_listeners(_filters = {})
           Excon::Response.new(
-            :body => {'listeners' => data[:lbaas_listeners].values},
+            :body => { 'listeners' => data[:lbaas_listeners].values },
             :status => 200
           )
         end

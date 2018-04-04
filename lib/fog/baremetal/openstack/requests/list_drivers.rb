@@ -16,7 +16,7 @@ module Fog
         def list_drivers(_options = {})
           response = Excon::Response.new
           response.status = [200, 204][rand(2)]
-          response.body = {"drivers" => data[:drivers]}
+          response.body = { "drivers" => data[:drivers] }
           response
         end
       end

@@ -26,9 +26,9 @@ module Fog
             "Content-Length"       => "356",
             "Date"                 => Date.new
           }
-          response.body = {"extra_specs" => {
+          response.body = { "extra_specs" => {
             "cpu_arch" => "x86_64"
-          }}
+          } }
           response
         end
       end

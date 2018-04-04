@@ -16,7 +16,7 @@ module Fog
           stack = data[:stack].values
 
           Excon::Response.new(
-            :body   => {'stack' => stack},
+            :body   => { 'stack' => stack },
             :status => 200
           )
         end

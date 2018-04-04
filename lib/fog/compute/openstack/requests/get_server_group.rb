@@ -21,7 +21,7 @@ module Fog
             "Content-Length" => "0",
             "Date"           => Date.new
           }
-          response.body = {'server_group' => {
+          response.body = { 'server_group' => {
             'id'         => group_id,
             'name'       => grp[:name],
             'policies'   => grp[:policies],
@@ -29,7 +29,7 @@ module Fog
             'metadata'   => {},
             'project_id' => 'test-project',
             'user_id'    => 'test-user'
-          }}
+          } }
           response
         end
       end

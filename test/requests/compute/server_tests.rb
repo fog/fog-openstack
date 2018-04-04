@@ -40,7 +40,7 @@ describe "Fog::Compute[:openstack] | server requests" do
         'config_drive' => String
       }
 
-      @reservation_format = {'reservation_id' => String}
+      @reservation_format = { 'reservation_id' => String }
 
       @server_from_image_format = @base_server_format.merge('image' => Hash)
 
@@ -204,7 +204,7 @@ describe "Fog::Compute[:openstack] | server requests" do
     # LIST
     it "#list_servers" do
       compute.list_servers.body.
-        must_match_schema({'servers' => [OpenStack::Compute::Formats::SUMMARY]},
+        must_match_schema({ 'servers' => [OpenStack::Compute::Formats::SUMMARY] },
                           nil,
                           :allow_extra_keys     => true,
                           :allow_optional_rules => true)
@@ -257,7 +257,7 @@ describe "Fog::Compute[:openstack] | server requests" do
       it "#rebuild_server(#{@server_id}, #{@snapshot_id}, 'fog')" do
         compute.rebuild_server(
           @server_id, @snapshot_id, 'fog', 'newpass', "foo" => "bar"
-        ).body.must_match_schema({'server' => @server_from_image_format},
+        ).body.must_match_schema({ 'server' => @server_from_image_format },
                                  nil,
                                  :allow_extra_keys     => true,
                                  :allow_optional_rules => true)

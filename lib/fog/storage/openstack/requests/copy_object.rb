@@ -11,7 +11,7 @@ module Fog
         # * target_object_name<~String> - Name for new copy of object
         # * options<~Hash> - Additional headers
         def copy_object(source_container_name, source_object_name, target_container_name, target_object_name, options = {})
-          headers = {'X-Copy-From' => "/#{source_container_name}/#{source_object_name}"}.merge(options)
+          headers = { 'X-Copy-From' => "/#{source_container_name}/#{source_object_name}" }.merge(options)
           request(:expects => 201,
                   :headers => headers,
                   :method  => 'PUT',

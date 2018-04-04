@@ -175,9 +175,9 @@ module Fog
           response = Fog::Core::Connection.new(
             "#{uri.scheme}://#{uri.host}:#{uri.port}/v2.0/tenants", false, connection_options).request({
                                                                                                          :expects => [200, 204],
-                                                                                                         :headers => {'Content-Type' => 'application/json',
-                                                                                                                      'Accept' => 'application/json',
-                                                                                                                      'X-Auth-Token' => body['access']['token']['id']},
+                                                                                                         :headers => { 'Content-Type' => 'application/json',
+                                                                                                                       'Accept' => 'application/json',
+                                                                                                                       'X-Auth-Token' => body['access']['token']['id'] },
                                                                                                          :method  => 'GET'
                                                                                                        })
 
@@ -214,7 +214,7 @@ module Fog
         raise Fog::Errors::NotFound.new("No endpoints available for region '#{openstack_region}'")
       end if openstack_region
 
-      regions = service["endpoints"].map{ |e| e['region'] }.uniq
+      regions = service["endpoints"].map { |e| e['region'] }.uniq
       if regions.count > 1
         raise Fog::Errors::NotFound.new("Multiple regions available choose one of these '#{regions.join(',')}'")
       end
@@ -223,8 +223,8 @@ module Fog
       tenant = body['access']['token']['tenant']
       user = body['access']['user']
 
-      management_url = service['endpoints'].find{|s| s[endpoint_type]}[endpoint_type]
-      identity_url   = identity_service['endpoints'].find{|s| s['publicURL']}['publicURL'] if identity_service
+      management_url = service['endpoints'].find { |s| s[endpoint_type] }[endpoint_type]
+      identity_url   = identity_service['endpoints'].find { |s| s['publicURL'] }['publicURL'] if identity_service
 
       {
         :user                     => user,
@@ -258,9 +258,9 @@ module Fog
         unless project_name
           request_body = {
             :expects => [200],
-            :headers => {'Content-Type' => 'application/json',
-                         'Accept' => 'application/json',
-                         'X-Auth-Token' => token},
+            :headers => { 'Content-Type' => 'application/json',
+                          'Accept' => 'application/json',
+                          'X-Auth-Token' => token },
             :method => 'GET'
           }
           user_id = body['token']['user']['id']
@@ -288,7 +288,7 @@ module Fog
       unless service
         if service_type.include? "identity"
           identity_uri = uri.to_s.sub('/auth/tokens', '')
-          response = Fog::Core::Connection.new(identity_uri, false, connection_options).request({:method => 'GET'})
+          response = Fog::Core::Connection.new(identity_uri, false, connection_options).request({ :method => 'GET' })
           if response.status == 200
             service = {
               "endpoints" => [{
@@ -316,8 +316,8 @@ module Fog
 
         missing = service_type.join ', '
 
-        message = "Could not find service #{missing}#{(' in region '+openstack_region) if openstack_region}."+
-            " Have #{available_services}#{(' in regions '+available_regions) if openstack_region}"
+        message = "Could not find service #{missing}#{(' in region ' + openstack_region) if openstack_region}." +
+            " Have #{available_services}#{(' in regions ' + available_regions) if openstack_region}"
 
         raise Fog::Errors::NotFound, message
       end
@@ -337,8 +337,8 @@ module Fog
 
       identity_service = get_service_v3(body, identity_service_type, nil, nil, :openstack_endpoint_path_matches => /\/v3/) if identity_service_type
 
-      management_url = service['endpoints'].find { |e| e['interface']==endpoint_type }['url']
-      identity_url = identity_service['endpoints'].find { |e| e['interface']=='public' }['url'] if identity_service
+      management_url = service['endpoints'].find { |e| e['interface'] == endpoint_type }['url']
+      identity_url = identity_service['endpoints'].find { |e| e['interface'] == 'public' }['url'] if identity_service
 
       if body['token']['project']
         tenant = body['token']['project']
@@ -358,7 +358,7 @@ module Fog
       }
     end
 
-    def self.get_service(body, service_type=[], service_name=nil)
+    def self.get_service(body, service_type = [], service_name = nil)
       if not body['access'].nil?
         body['access']['serviceCatalog'].find do |s|
           if service_name.nil? or service_name.empty?
@@ -388,7 +388,7 @@ module Fog
       omit_default_port = options[:openstack_auth_omit_default_port]
 
       identity_v2_connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
-      request_body = {:auth => Hash.new}
+      request_body = { :auth => Hash.new }
 
       if auth_token
         request_body[:auth][:token] = {
@@ -404,7 +404,7 @@ module Fog
 
       request = {
         :expects => [200, 204],
-        :headers => {'Content-Type' => 'application/json'},
+        :headers => { 'Content-Type' => 'application/json' },
         :body    => Fog::JSON.encode(request_body),
         :method  => 'POST',
         :path    => (uri.path and not uri.path.empty?) ? uri.path : 'v2.0'
@@ -434,22 +434,22 @@ module Fog
       cache_ttl         = options[:openstack_cache_ttl] || 0
 
       connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
-      request_body = {:auth => {}}
+      request_body = { :auth => {} }
 
       scope = {}
 
       if project_name || project_id
         scope[:project] = if project_id.nil? then
                             if project_domain || project_domain_id
-                              {:name => project_name, :domain => project_domain_id.nil? ? {:name => project_domain} : {:id => project_domain_id}}
+                              { :name => project_name, :domain => project_domain_id.nil? ? { :name => project_domain } : { :id => project_domain_id } }
                             else
-                              {:name => project_name, :domain => domain_id.nil? ? {:name => domain_name} : {:id => domain_id}}
+                              { :name => project_name, :domain => domain_id.nil? ? { :name => domain_name } : { :id => domain_id } }
                             end
                           else
-                            {:id => project_id}
+                            { :id => project_id }
                           end
       elsif domain_name || domain_id
-        scope[:domain] = domain_id.nil? ? {:name => domain_name} : {:id => domain_id}
+        scope[:domain] = domain_id.nil? ? { :name => domain_name } : { :id => domain_id }
       else
         # unscoped token
       end
@@ -475,9 +475,9 @@ module Fog
           request_body[:auth][:identity][:password][:user][:id] = userid
         else
           if user_domain || user_domain_id
-            request_body[:auth][:identity][:password][:user].merge! :domain => user_domain_id.nil? ? {:name => user_domain} : {:id => user_domain_id}
+            request_body[:auth][:identity][:password][:user].merge! :domain => user_domain_id.nil? ? { :name => user_domain } : { :id => user_domain_id }
           elsif domain_name || domain_id
-            request_body[:auth][:identity][:password][:user].merge! :domain => domain_id.nil? ? {:name => domain_name} : {:id => domain_id}
+            request_body[:auth][:identity][:password][:user].merge! :domain => domain_id.nil? ? { :name => domain_name } : { :id => domain_id }
           end
           request_body[:auth][:identity][:password][:user][:name] = username
         end
@@ -485,14 +485,14 @@ module Fog
       end
       request_body[:auth][:scope] = scope unless scope.empty?
 
-      path     = (uri.path and not uri.path.empty?) ? uri.path : 'v3'
+      path = (uri.path and not uri.path.empty?) ? uri.path : 'v3'
 
-      response, expires = Fog::OpenStack.token_cache[{:body => request_body, :path => path}] if cache_ttl > 0
+      response, expires = Fog::OpenStack.token_cache[{ :body => request_body, :path => path }] if cache_ttl > 0
 
       unless response && expires > Time.now
         request = {
           :expects => [201],
-          :headers => {'Content-Type' => 'application/json'},
+          :headers => { 'Content-Type' => 'application/json' },
           :body    => Fog::JSON.encode(request_body),
           :method  => 'POST',
           :path    => path
@@ -502,7 +502,7 @@ module Fog
         response = connection.request(request)
         if cache_ttl > 0
           cache = Fog::OpenStack.token_cache
-          cache[{:body => request_body, :path => path}] = response, Time.now + cache_ttl
+          cache[{ :body => request_body, :path => path }] = response, Time.now + cache_ttl
           Fog::OpenStack.token_cache = cache
         end
       end
@@ -510,7 +510,7 @@ module Fog
       [response.headers["X-Subject-Token"], Fog::JSON.decode(response.body)]
     end
 
-    def self.get_service_v3(hash, service_type=[], service_name=nil, region=nil, options={})
+    def self.get_service_v3(hash, service_type = [], service_name = nil, region = nil, options = {})
       # Find all services matching any of the types in service_type, filtered by service_name if it's non-nil
       services = hash['token']['catalog'].find_all do |s|
         if service_name.nil? or service_name.empty?
@@ -522,7 +522,7 @@ module Fog
 
       # Filter the found services by region (if specified) and whether the endpoint path matches the given regex (e.g. /\/v3/)
       services.find do |s|
-        s['endpoints'].any? { |ep| endpoint_region?(ep, region) && endpoint_path_match?(ep, options[:openstack_endpoint_path_matches])}
+        s['endpoints'].any? { |ep| endpoint_region?(ep, region) && endpoint_path_match?(ep, options[:openstack_endpoint_path_matches]) }
       end if services
     end
 
@@ -580,9 +580,9 @@ module Fog
       connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}", false, connection_options)
       response = connection.request(
         :expects => [200, 204, 300],
-        :headers => {'Content-Type' => 'application/json',
-                     'Accept'       => 'application/json',
-                     'X-Auth-Token' => auth_token},
+        :headers => { 'Content-Type' => 'application/json',
+                      'Accept'       => 'application/json',
+                      'X-Auth-Token' => auth_token },
         :method  => 'GET'
       )
 

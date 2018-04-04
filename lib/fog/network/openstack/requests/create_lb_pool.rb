@@ -49,7 +49,7 @@ module Fog
           }
 
           self.data[:lb_pools][data['id']] = data
-          response.body = {'pool' => data}
+          response.body = { 'pool' => data }
           response
         end
       end

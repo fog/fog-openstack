@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:rbac_policies][rbac_policy_id]
             response.status = 200
-            response.body   = {'rbac_policy' => data}
+            response.body   = { 'rbac_policy' => data }
             response
           else
             raise Fog::Network::OpenStack::NotFound

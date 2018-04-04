@@ -21,7 +21,7 @@ describe "Fog::ContainerInfra[:openstack] | bay model" do
     end
 
     it "#update" do
-      @instance.name                 = 'rename-test-bay-model'
+      @instance.name = 'rename-test-bay-model'
       @instance.update.name.must_equal 'rename-test-bay-model'
     end
 

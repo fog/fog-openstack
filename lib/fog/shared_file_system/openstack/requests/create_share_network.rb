@@ -32,7 +32,7 @@ module Fog
 
           share_net = data[:share_networks_detail].first.dup
 
-          response.body = {'share_networks' => share_net.merge(options)}
+          response.body = { 'share_networks' => share_net.merge(options) }
           response
         end
       end

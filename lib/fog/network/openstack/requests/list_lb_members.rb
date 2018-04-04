@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_lb_members(_filters = {})
           Excon::Response.new(
-            :body   => {'members' => data[:lb_members].values},
+            :body   => { 'members' => data[:lb_members].values },
             :status => 200
           )
         end

@@ -34,7 +34,7 @@ describe "Fog::ContainerInfra[:openstack] | certificate requests" do
       @cluster = container_infra.create_cluster(attributes).body
       attributes = {
         :cluster_uuid => @cluster['uuid'],
-        :csr      => "-----BEGIN CERTIFICATE REQUEST-----\nMIIEfzCCAmcCAQAwFDESMBAGA1UEAxMJWW91ciBOYW1lMIICIjANBgkqhkiG9w0B\n-----END CERTIFICATE REQUEST-----\n"
+        :csr => "-----BEGIN CERTIFICATE REQUEST-----\nMIIEfzCCAmcCAQAwFDESMBAGA1UEAxMJWW91ciBOYW1lMIICIjANBgkqhkiG9w0B\n-----END CERTIFICATE REQUEST-----\n"
       }
 
       @certificate = container_infra.create_certificate(attributes).body

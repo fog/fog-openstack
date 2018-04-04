@@ -33,7 +33,7 @@ module Fog
             :expects => 200,
             :method  => 'GET',
             :path    => Fog::OpenStack.escape(container),
-            :query   => {'format' => 'json'}.merge!(options)
+            :query   => { 'format' => 'json' }.merge!(options)
           )
         end
       end

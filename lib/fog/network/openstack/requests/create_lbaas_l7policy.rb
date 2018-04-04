@@ -36,12 +36,12 @@ module Fog
             'tenant_id'       => options[:tenant_id],
             'name'            => options[:name],
             'description'     => options[:description],
-            'redirect_pool_id'   => options[:redirect_pool_id],
-            'redirect_url'    => options[:redirect_url]
+            'redirect_pool_id' => options[:redirect_pool_id],
+            'redirect_url' => options[:redirect_url]
           }
 
           self.data[:lbaas_l7policies][data['id']] = data
-          response.body = {'l7policy' => data}
+          response.body = { 'l7policy' => data }
           response
         end
       end

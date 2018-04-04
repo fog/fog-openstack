@@ -15,7 +15,7 @@ module Fog
         end
 
         def find_by_id(id)
-          location_hash = service.get_share_export_location(@share.id,id).body['export_location']
+          location_hash = service.get_share_export_location(@share.id, id).body['export_location']
           new(location_hash.merge(:service => service))
         end
 
@@ -23,7 +23,7 @@ module Fog
         
         def new(attributes = {})
           requires :share
-          super({:share => @share}.merge!(attributes))
+          super({ :share => @share }.merge!(attributes))
         end
       end
     end

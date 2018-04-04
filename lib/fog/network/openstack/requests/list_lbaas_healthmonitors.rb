@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_lbaas_healthmonitors(_filters = {})
           Excon::Response.new(
-            :body   => {'healthmonitors' => data[:lbaas_healthmonitors].values},
+            :body   => { 'healthmonitors' => data[:lbaas_healthmonitors].values },
             :status => 200
           )
         end

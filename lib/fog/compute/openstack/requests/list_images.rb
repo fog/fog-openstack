@@ -20,7 +20,7 @@ module Fog
             images << image.reject { |key, _value| !['id', 'name', 'links'].include?(key) }
           end
           response.status = [200, 203][rand(2)]
-          response.body = {'images' => images}
+          response.body = { 'images' => images }
           response
         end
       end

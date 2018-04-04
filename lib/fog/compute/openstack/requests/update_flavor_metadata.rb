@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def update_flavor_metadata(flavor_ref, key, value)
-          data = {key => value}
+          data = { key => value }
 
           request(
             :body    => Fog::JSON.encode(data),
@@ -24,7 +24,7 @@ module Fog
             "Content-Length"       => "356",
             "Date"                 => Date.new
           }
-          response.body = {key => value}
+          response.body = { key => value }
           response
         end
       end

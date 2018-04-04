@@ -16,9 +16,9 @@ module Fog
           def get_environment(_name)
             response = Excon::Response.new
             response.status = 200
-            response.body = {"name"      => "environment1",
-                             "variables" => {"var1" => "value1",
-                                             "var2" => "value2"}}
+            response.body = { "name" => "environment1",
+                              "variables" => { "var1" => "value1",
+                                               "var2" => "value2" } }
             response
           end
         end

@@ -30,7 +30,7 @@ module Fog
         #       * 'remote_ip_prefix'<~String> - IP cidr range address i.e. '0.0.0.0/0'
         #       * 'tenant_id'<~String> - Tenant id that owns the security group rule
         def create_security_group(options = {})
-          data              = {"security_group" => {}}
+          data              = { "security_group" => {} }
           desired_options   = [:name, :description, :tenant_id]
           selected_options  = desired_options.select { |o| options[o] }
           selected_options.each { |key| data["security_group"][key] = options[key] }
@@ -55,26 +55,26 @@ module Fog
           # by default every security group will come setup with an egress rule to "allow all out"
           data = {
             "security_group_rules" => [
-              {"remote_group_id"   => nil,
-               "direction"         => "egress",
-               "remote_ip_prefix"  => nil,
-               "protocol"          => nil,
-               "ethertype"         => "IPv4",
-               "tenant_id"         => tenant_id,
-               "port_range_max"    => nil,
-               "port_range_min"    => nil,
-               "id"                => Fog::UUID.uuid,
-               "security_group_id" => sec_group_id},
-              {"remote_group_id"   => nil,
-               "direction"         => "egress",
-               "remote_ip_prefix"  => nil,
-               "protocol"          => nil,
-               "ethertype"         => "IPv6",
-               "tenant_id"         => tenant_id,
-               "port_range_max"    => nil,
-               "port_range_min"    => nil,
-               "id"                => Fog::UUID.uuid,
-               "security_group_id" => sec_group_id}
+              { "remote_group_id"   => nil,
+                "direction"         => "egress",
+                "remote_ip_prefix"  => nil,
+                "protocol"          => nil,
+                "ethertype"         => "IPv4",
+                "tenant_id"         => tenant_id,
+                "port_range_max"    => nil,
+                "port_range_min"    => nil,
+                "id"                => Fog::UUID.uuid,
+                "security_group_id" => sec_group_id },
+              { "remote_group_id"   => nil,
+                "direction"         => "egress",
+                "remote_ip_prefix"  => nil,
+                "protocol"          => nil,
+                "ethertype"         => "IPv6",
+                "tenant_id"         => tenant_id,
+                "port_range_max"    => nil,
+                "port_range_min"    => nil,
+                "id"                => Fog::UUID.uuid,
+                "security_group_id" => sec_group_id }
             ],
             "id"                   => sec_group_id,
             "tenant_id"            => tenant_id,
@@ -83,7 +83,7 @@ module Fog
           }
 
           self.data[:security_groups][data["id"]] = data
-          response.body = {"security_group" => data}
+          response.body = { "security_group" => data }
           response
         end
       end

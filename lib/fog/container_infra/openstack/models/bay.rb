@@ -30,7 +30,7 @@ module Fog
 
         def update
           requires :uuid, :name, :baymodel_id
-          attrs = attributes.select{|k,_| allowed_update_attributes.include? k}
+          attrs = attributes.select { |k, _| allowed_update_attributes.include? k }
           attrs = convert_update_params(attrs)
           merge_attributes(service.update_bay(uuid, attrs).body)
           self

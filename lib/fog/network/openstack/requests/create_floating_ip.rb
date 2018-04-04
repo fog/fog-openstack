@@ -36,7 +36,7 @@ module Fog
             'router_id'           => nil
           }
           self.data[:floating_ips][data['id']] = data
-          response.body = {'floatingip' => data}
+          response.body = { 'floatingip' => data }
           response
         end
       end

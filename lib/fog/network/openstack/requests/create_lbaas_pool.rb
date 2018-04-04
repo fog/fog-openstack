@@ -6,7 +6,7 @@ module Fog
           data = {
             'pool' => {
               'listener_id' => listener_id,
-              'protocol'  => protocol,
+              'protocol' => protocol,
               'lb_algorithm' => lb_algorithm
             }
           }
@@ -40,11 +40,11 @@ module Fog
             'status'             => 'ACTIVE',
             'admin_state_up'     => options[:admin_state_up],
             'tenant_id'          => options[:tenant_id],
-            'listeners'          => [ 'id' => listener_id ],
+            'listeners'          => ['id' => listener_id],
             'session_persistence' => {}
           }
           self.data[:lbaas_pools][data['id']] = data
-          response.body = {'pool' => data}
+          response.body = { 'pool' => data }
           response
         end
       end

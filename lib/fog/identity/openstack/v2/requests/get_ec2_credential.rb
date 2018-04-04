@@ -40,7 +40,7 @@ module Fog
 
             response = Excon::Response.new
             response.status = 200
-            response.body = {'credential' => ec2_credential}
+            response.body = { 'credential' => ec2_credential }
             response
           end
         end

@@ -16,7 +16,7 @@ module Fog
         def list_snapshots_detail(_options = {})
           response = Excon::Response.new
           response.status = 200
-          response.body = {'snapshots' => data[:snapshots_detail]}
+          response.body = { 'snapshots' => data[:snapshots_detail] }
           response
         end
       end

@@ -17,7 +17,7 @@ module Fog
           response.status = 200
           quota_data = data[:quota_updated] || data[:quota]
           quota_data['id'] = project_id
-          response.body = {'quota_set' => quota_data}
+          response.body = { 'quota_set' => quota_data }
           response
         end
       end

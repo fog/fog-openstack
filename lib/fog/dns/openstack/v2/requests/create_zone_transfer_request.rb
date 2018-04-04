@@ -6,7 +6,7 @@ module Fog
         class Real
           def create_zone_transfer_request(zone_id, options = {})
             vanilla_options = [:target_project_id, :description, :project_id]
-            data = vanilla_options.inject({}) do |result,option|
+            data = vanilla_options.inject({}) do |result, option|
               result[option] = options[option] if options[option]
               result
             end

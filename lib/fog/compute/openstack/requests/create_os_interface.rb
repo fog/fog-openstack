@@ -5,7 +5,7 @@ module Fog
         # === Parameters
         # * server_id <~String>
         # * options <~Hash>
-        def create_os_interface(server_id, options={})
+        def create_os_interface(server_id, options = {})
           body = {
             'interfaceAttachment' => {}
           }
@@ -17,7 +17,7 @@ module Fog
           end
 
           if options[:ip_address]
-            body['interfaceAttachment']['fixed_ips'] = {ip_address: options[:ip_address]}
+            body['interfaceAttachment']['fixed_ips'] = { ip_address: options[:ip_address] }
           end
 
           request(
@@ -30,9 +30,9 @@ module Fog
       end
 
       class Mock
-        def create_os_interface(server_id, options={})
+        def create_os_interface(server_id, options = {})
           Excon::Response.new(
-            :body   => {'interfaceAttachment' => data[:os_interfaces].first},
+            :body   => { 'interfaceAttachment' => data[:os_interfaces].first },
             :status => 200
           )
         end

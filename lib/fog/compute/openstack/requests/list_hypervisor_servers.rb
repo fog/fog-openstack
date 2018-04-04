@@ -16,7 +16,7 @@ module Fog
         def list_hypervisor_servers(hypervisor_id, _options = {})
           response = Excon::Response.new
           response.status = 200
-          response.body = {'hypervisors' => [
+          response.body = { 'hypervisors' => [
             {
               "hypervisor_hostname" => "fake-mini",
               "id"                  => hypervisor_id,
@@ -33,7 +33,7 @@ module Fog
                 }
               ]
             }
-          ]}
+          ] }
           response
         end
       end

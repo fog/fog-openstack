@@ -15,7 +15,7 @@ module Fog
         def get_vnf(_vnf_id)
           response = Excon::Response.new
           response.status = 200
-          response.body = {"vnf" => data[:vnfs].first}
+          response.body = { "vnf" => data[:vnfs].first }
           response
         end
       end

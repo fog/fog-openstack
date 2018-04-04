@@ -6,7 +6,7 @@ describe "Fog::NFV[:openstack] | vnf" do
     before do
       @nfv, @vnf_data, @auth = set_nfv_data
       @vnfd = @nfv.vnfds.create(:vnfd => @vnfd_data, :auth => @auth)
-      vnf_data = {:vnfd_id => @vnfd.id, :name => 'Test'}
+      vnf_data = { :vnfd_id => @vnfd.id, :name => 'Test' }
       @vnfs = @nfv.vnfs.create(:vnf => vnf_data, :auth => @auth)
     end
 
@@ -19,7 +19,7 @@ describe "Fog::NFV[:openstack] | vnf" do
     end
 
     it "#update" do
-      @vnfs.vnf = {:attributes => {:config => "vdus:\n  vdu1:<sample_vdu_config> \n\n"}}
+      @vnfs.vnf = { :attributes => { :config => "vdus:\n  vdu1:<sample_vdu_config> \n\n" } }
       @vnfs.update.status.must_equal "ACTIVE"
     end
 

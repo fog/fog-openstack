@@ -48,9 +48,9 @@ module Fog
 
           if options[:external_gateway_info]
             if options[:external_gateway_info].kind_of?(Fog::Network::OpenStack::Network)
-              options[:external_gateway_info] = {:network_id => options[:external_gateway_info].id}
+              options[:external_gateway_info] = { :network_id => options[:external_gateway_info].id }
             else
-              options[:external_gateway_info] = {:network_id => options[:external_gateway_info]}
+              options[:external_gateway_info] = { :network_id => options[:external_gateway_info] }
             end
           end
           options

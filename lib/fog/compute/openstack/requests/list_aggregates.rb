@@ -16,7 +16,7 @@ module Fog
         def list_aggregates(_options = {})
           response = Excon::Response.new
           response.status = 200
-          response.body = {'aggregates' => [{
+          response.body = { 'aggregates' => [{
             "availability_zone" => "nova",
             "created_at"        => "2012-11-16T06:22:23.032493",
             "deleted"           => false,
@@ -27,7 +27,7 @@ module Fog
             "id"                => 1,
             "name"              => "name",
             "updated_at"        => nil
-          }]}
+          }] }
 
           response
         end

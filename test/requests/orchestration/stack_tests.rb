@@ -69,7 +69,7 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     it "#create_stack_with_files" do
       args = {
         :stack_name => "teststack_files",
-        :files      => {'foo.sh'=>'hello'}
+        :files      => { 'foo.sh' => 'hello' }
       }
       @stack = @orchestration.create_stack(args).body.must_match_schema(@create_format_files)
     end
@@ -92,7 +92,7 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
       args = {
         :stack_name => "teststack_files",
         :template   => YAML.load_file("local.yaml"),
-        :files      => {expected[-1] => "# just a mock"}
+        :files      => { expected[-1] => "# just a mock" }
       }
       response = @orchestration.create_stack(args)
       response.body.must_match_schema(@create_format_files)

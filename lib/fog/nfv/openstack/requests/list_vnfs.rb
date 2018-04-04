@@ -16,7 +16,7 @@ module Fog
         def list_vnfs(_options = {})
           response = Excon::Response.new
           response.status = 200
-          response.body = {"vnfs" => data[:vnfs]}
+          response.body = { "vnfs" => data[:vnfs] }
           response
         end
       end

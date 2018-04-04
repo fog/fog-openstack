@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def add_aggregate_host(uuid, host_uuid)
-          data = {'add_host' => {'host' => host_uuid}}
+          data = { 'add_host' => { 'host' => host_uuid } }
           request(
             :body    => Fog::JSON.encode(data),
             :expects => [200],

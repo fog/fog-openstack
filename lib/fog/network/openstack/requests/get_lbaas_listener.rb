@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:lbaas_listeners][listener_id]
             response.status = 200
-            response.body = {'listener' => data}
+            response.body = { 'listener' => data }
             response
           else
             raise Fog::Network::OpenStack::NotFound

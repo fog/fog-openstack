@@ -25,7 +25,7 @@ module Fog
             snapshot['name']                = options['name'] if options['name']
             snapshot['description']         = options['description'] if options['description']
             snapshot['metadata']            = options['metadata'] if options['metadata']
-            response.body                   = {'snapshot' => snapshot}
+            response.body                   = { 'snapshot' => snapshot }
             response
           else
             raise Fog::HP::BlockStorageV2::NotFound

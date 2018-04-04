@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:ike_policies][ike_policy_id]
             response.status = 200
-            response.body   = {'ikepolicy' => data}
+            response.body   = { 'ikepolicy' => data }
             response
           else
             raise Fog::Network::OpenStack::NotFound

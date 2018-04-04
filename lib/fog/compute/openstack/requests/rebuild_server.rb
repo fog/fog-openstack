@@ -3,10 +3,10 @@ module Fog
     class OpenStack
       class Real
         def rebuild_server(server_id, image_ref, name, admin_pass = nil, metadata = nil, personality = nil)
-          body = {'rebuild' => {
+          body = { 'rebuild' => {
             'imageRef' => image_ref,
             'name'     => name
-          }}
+          } }
           body['rebuild']['adminPass'] = admin_pass if admin_pass
           body['rebuild']['metadata'] = metadata if metadata
           if personality

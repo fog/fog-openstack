@@ -28,7 +28,7 @@ module Fog
                        else
                          sg
                        end
-                {:name => name}
+                { :name => name }
               end
           end
 
@@ -109,11 +109,11 @@ module Fog
                     end
 
           mock_data = {
-            'addresses'    => {"Private" => [{"addr" => Fog::Mock.random_ip}]},
-            'flavor'       => {"id" => flavor_ref, "links" => [{"href" => "http://nova1:8774/admin/flavors/1", "rel" => "bookmark"}]},
+            'addresses'    => { "Private" => [{ "addr" => Fog::Mock.random_ip }] },
+            'flavor'       => { "id" => flavor_ref, "links" => [{ "href" => "http://nova1:8774/admin/flavors/1", "rel" => "bookmark" }] },
             'id'           => server_id,
-            'image'        => {"id" => image_ref, "links" => [{"href" => "http://nova1:8774/admin/images/#{image_ref}", "rel" => "bookmark"}]},
-            'links'        => [{"href" => "http://nova1:8774/v1.1/admin/servers/5", "rel" => "self"}, {"href" => "http://nova1:8774/admin/servers/5", "rel" => "bookmark"}],
+            'image'        => { "id" => image_ref, "links" => [{ "href" => "http://nova1:8774/admin/images/#{image_ref}", "rel" => "bookmark" }] },
+            'links'        => [{ "href" => "http://nova1:8774/v1.1/admin/servers/5", "rel" => "self" }, { "href" => "http://nova1:8774/admin/servers/5", "rel" => "bookmark" }],
             'hostId'       => "123456789ABCDEF01234567890ABCDEF",
             'metadata'     => options['metadata'] || {},
             'name'         => name || "server_#{rand(999)}",
@@ -132,13 +132,13 @@ module Fog
           if nics
             nics.each do |_nic|
               mock_data["addresses"].merge!(
-                "Public" => [{'addr' => Fog::Mock.random_ip}]
+                "Public" => [{ 'addr' => Fog::Mock.random_ip }]
               )
             end
           end
 
           response_data = if options['return_reservation_id'] == 'True'
-                            {'reservation_id' => "r-#{Fog::Mock.random_numbers(6)}"}
+                            { 'reservation_id' => "r-#{Fog::Mock.random_numbers(6)}" }
                           else
                             {
                               'adminPass' => 'password',
@@ -177,7 +177,7 @@ module Fog
           response.body = if options['return_reservation_id'] == 'True'
                             response_data
                           else
-                            {'server' => response_data}
+                            { 'server' => response_data }
                           end
           response
         end

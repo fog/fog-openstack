@@ -4,7 +4,7 @@ module Fog
       class Real
         def update_meta(collection_name, parent_id, key, value)
           request(
-            :body    => Fog::JSON.encode('meta' => {key => value}),
+            :body    => Fog::JSON.encode('meta' => { key => value }),
             :expects => 200,
             :method  => 'PUT',
             :path    => "#{collection_name}/#{parent_id}/metadata/#{key}"
@@ -28,7 +28,7 @@ module Fog
 
           # FIXME: join w/ existing metadata here
           response = Excon::Response.new
-          response.body = {"metadata" => {key => value}}
+          response.body = { "metadata" => { key => value } }
           response.status = 200
           response
         end

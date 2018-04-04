@@ -455,8 +455,8 @@ require_relative './shared_context'
           volume = setup_test_object(:type       => :volume,
                                      @name_param => 'fog-testvolume-1',
                                      :size       => 1,
-                                     :metadata   => {'some_metadata' => 'this is meta',
-                                                     'more_metadata' => 'even more meta'}
+                                     :metadata   => { 'some_metadata' => 'this is meta',
+                                                      'more_metadata' => 'even more meta' }
                                     )
           volume.wait_for { ready? }
 
@@ -508,8 +508,8 @@ require_relative './shared_context'
           volume = setup_test_object(:type       => :volume,
                                      @name_param => 'fog-testvolume-1',
                                      :size       => 1,
-                                     :metadata   => {'some_metadata' => 'this is meta',
-                                                     'more_metadata' => 'even more meta'}
+                                     :metadata   => { 'some_metadata' => 'this is meta',
+                                                      'more_metadata' => 'even more meta' }
                                     )
           volume.wait_for { ready? }
 

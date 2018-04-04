@@ -44,7 +44,7 @@ module Fog
           sec_groups = data[:security_groups].values unless data[:security_groups].nil?
 
           response.status = 200
-          response.body = {'security_groups' => sec_groups}
+          response.body = { 'security_groups' => sec_groups }
           response
         end
       end

@@ -2,7 +2,7 @@ module Fog
   module Compute
     class OpenStack
       class Real
-        def get_os_interface(server_id,port_id)
+        def get_os_interface(server_id, port_id)
           request(
             :expects => [200, 202, 203],
             :method  => 'GET',
@@ -12,9 +12,9 @@ module Fog
       end
 
       class Mock
-        def get_os_interface(server_id,port_id)
+        def get_os_interface(server_id, port_id)
           Excon::Response.new(
-            :body   => {'interfaceAttachment' => data[:os_interfaces].first},
+            :body   => { 'interfaceAttachment' => data[:os_interfaces].first },
             :status => 200
           )
         end

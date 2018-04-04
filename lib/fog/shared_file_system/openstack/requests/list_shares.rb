@@ -16,7 +16,7 @@ module Fog
         def list_shares(_options = {})
           response = Excon::Response.new
           response.status = 200
-          response.body = {'shares' => data[:shares]}
+          response.body = { 'shares' => data[:shares] }
           response
         end
       end

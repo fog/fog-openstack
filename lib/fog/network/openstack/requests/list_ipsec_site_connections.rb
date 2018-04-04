@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_ipsec_site_connections(*)
           Excon::Response.new(
-            :body   => {'ipsec_site_connections' => data[:ipsec_site_connections].values},
+            :body   => { 'ipsec_site_connections' => data[:ipsec_site_connections].values },
             :status => 200
           )
         end

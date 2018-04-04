@@ -10,12 +10,12 @@ require 'fog/openstack'
 # Needs OpenStack credentials in ~/.fog
 #
 
-def create_tenant_network( tenant_name,
-                           external_net,
-                           router_name = 'router1',
-                           subnet_range = '10.0.0.0/21',
-                           subnet_gateway = '10.0.0.1',
-                           private_network_name = 'private' )
+def create_tenant_network(tenant_name,
+                          external_net,
+                          router_name = 'router1',
+                          subnet_range = '10.0.0.0/21',
+                          subnet_gateway = '10.0.0.1',
+                          private_network_name = 'private')
 
   network = Fog::Network[:openstack]
   id = Fog::Identity[:openstack]

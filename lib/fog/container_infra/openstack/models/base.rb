@@ -9,9 +9,9 @@ module Fog
             {
               "path"  => "/#{key}",
               "op"    => value ? "replace" : "remove"
-            }.merge(value ? {"value" => value} : {})
+            }.merge(value ? { "value" => value } : {})
           end
-          params.each {|k,v| params[k] = v.to_s.capitalize if [true, false].include?(v)} 
+          params.each { |k, v| params[k] = v.to_s.capitalize if [true, false].include?(v) } 
         end
       end
     end

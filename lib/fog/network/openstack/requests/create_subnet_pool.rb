@@ -47,7 +47,7 @@ module Fog
             'tenant_id'         => Fog::Mock.random_hex(8).to_s
           }
           self.data[:subnet_pools][data['id']] = data
-          response.body = {'subnetpool' => data}
+          response.body = { 'subnetpool' => data }
           response
         end
       end

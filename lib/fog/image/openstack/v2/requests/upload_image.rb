@@ -5,7 +5,7 @@ module Fog
         class Real
           def upload_image(image_id, body, params = {})
             request_hash = {
-              :headers => {'Content-Type' => 'application/octet-stream'},
+              :headers => { 'Content-Type' => 'application/octet-stream' },
               :expects => 204,
               :method  => 'PUT',
               :path    => "images/#{image_id}/file"

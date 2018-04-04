@@ -29,7 +29,7 @@ describe "@vnf | NFV vnfs requests" do
     @nfv, @vnf_data, @auth = set_nfv_data
     @vnfd_body = @nfv.create_vnfd(:vnfd => @vnfd_data, :auth => @auth).body
 
-    vnf_data  = {:vnfd_id => @vnfd_body["vnfd"]["id"], :name => 'Test'}
+    vnf_data  = { :vnfd_id => @vnfd_body["vnfd"]["id"], :name => 'Test' }
     @vnf_body = @nfv.create_vnf(:vnf => vnf_data, :auth => @auth).body
 
     @nfv.vnfs.get(@vnf_body["vnf"]["id"]).wait_for { ready? }
@@ -50,8 +50,8 @@ describe "@vnf | NFV vnfs requests" do
 
     describe "inter2" do
       it "#update_vnfs" do
-        vnf_data = {:attributes => {:config => "vdus:\n  vdu1:<sample_vdu_config> \n\n"}}
-        auth = {"tenantName" => "admin", "passwordCredentials" => {"username" => "admin", "password" => "password"}}
+        vnf_data = { :attributes => { :config => "vdus:\n  vdu1:<sample_vdu_config> \n\n" } }
+        auth = { "tenantName" => "admin", "passwordCredentials" => { "username" => "admin", "password" => "password" } }
         @nfv.update_vnf(@vnf_body["vnf"]["id"], :vnf => vnf_data, :auth => auth).body.must_match_schema('vnf' => @vnfs)
       end
 

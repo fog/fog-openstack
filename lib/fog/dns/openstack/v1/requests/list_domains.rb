@@ -17,7 +17,7 @@ module Fog
           def list_domains(_options = {})
             response = Excon::Response.new
             response.status = 200
-            response.body = {'domains' => data[:domains]}
+            response.body = { 'domains' => data[:domains] }
             response
           end
         end

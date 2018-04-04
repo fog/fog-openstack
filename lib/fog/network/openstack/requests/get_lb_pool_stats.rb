@@ -21,7 +21,7 @@ module Fog
             stats["bytes_out"] = 0
             stats["total_connections"] = 0
             response.status = 200
-            response.body = {'stats' => stats}
+            response.body = { 'stats' => stats }
             response
           else
             raise Fog::Network::OpenStack::NotFound

@@ -16,7 +16,7 @@ module Fog
           resources = data[:resources].values
 
           Excon::Response.new(
-            :body   => {'resources' => resources},
+            :body   => { 'resources' => resources },
             :status => 200
           )
         end

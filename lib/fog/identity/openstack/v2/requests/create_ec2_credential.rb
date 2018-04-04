@@ -23,7 +23,7 @@ module Fog
           #       * 'tenant_id'<~String>: The tenant id
 
           def create_ec2_credential(user_id, tenant_id)
-            data = {'tenant_id' => tenant_id}
+            data = { 'tenant_id' => tenant_id }
 
             request(
               :body    => Fog::JSON.encode(data),
@@ -48,7 +48,7 @@ module Fog
 
             self.data[:ec2_credentials][user_id][data['access']] = data
 
-            response.body = {'credential' => data}
+            response.body = { 'credential' => data }
 
             response
           end

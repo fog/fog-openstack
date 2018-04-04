@@ -19,7 +19,7 @@ module Fog
           share_net       = data[:share_net_updated] || data[:share_networks_detail].first.dup
           share_net['id'] = id
 
-          response.body = {'share_network' => share_net}
+          response.body = { 'share_network' => share_net }
           response
         end
       end

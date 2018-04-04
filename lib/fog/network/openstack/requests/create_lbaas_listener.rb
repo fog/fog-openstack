@@ -32,7 +32,7 @@ module Fog
           response.status = 201
           data = {
             'id'                      => Fog::Mock.random_numbers(6).to_s,
-            'loadbalancers'           =>  [{'id' =>  loadbalancer_id }],
+            'loadbalancers'           =>  [{ 'id' => loadbalancer_id }],
             'protocol'                => protocol,
             'protocol_port'           => protocol_port,
             'name'                    => options[:name],
@@ -46,7 +46,7 @@ module Fog
           }
 
           self.data[:lbaas_listener][data['id']] = data
-          response.body = {'listener' => data}
+          response.body = { 'listener' => data }
           response
         end
       end

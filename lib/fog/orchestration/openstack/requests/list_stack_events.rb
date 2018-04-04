@@ -17,7 +17,7 @@ module Fog
           events = data[:events].values
 
           Excon::Response.new(
-            :body   => {'events' => events},
+            :body   => { 'events' => events },
             :status => 200
           )
         end

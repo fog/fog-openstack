@@ -14,7 +14,7 @@ describe "Fog::Network[:openstack] | ike_policies" do
         'units' => 'seconds',
         'value' => 3600
       },
-      :ike_version             => 'v1'
+      :ike_version => 'v1'
     )
 
     @ike_policies = network.ike_policies

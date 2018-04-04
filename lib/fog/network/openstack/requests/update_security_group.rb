@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def update_security_group(security_group_id, options = {})
-          data = {'security_group' => {}}
+          data = { 'security_group' => {} }
 
           [:name, :description].each do |key|
             data['security_group'][key] = options[key] if options[key]
@@ -28,7 +28,7 @@ module Fog
           if security_group
             security_group['name']        = options[:name]
             security_group['description'] = options[:description]
-            response.body = {'security_group' => security_group}
+            response.body = { 'security_group' => security_group }
             response.status = 200
             response
           else

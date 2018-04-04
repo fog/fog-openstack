@@ -21,7 +21,7 @@ module Fog
         def list_usages(_date_start = nil, _date_end = nil, _detailed = false)
           response        = Excon::Response.new
           response.status = 200
-          response.body   = {"tenant_usages" => [{
+          response.body   = { "tenant_usages" => [{
             "total_memory_mb_usage" => 0.00036124444444444445,
             "total_vcpus_usage"     => 7.055555555555556e-07,
             "start"                 => "2012-03-06 05:05:56.349001",
@@ -29,7 +29,7 @@ module Fog
             "stop"                  => "2012-03-06 05:05:56.349255",
             "total_hours"           => 7.055555555555556e-07,
             "total_local_gb_usage"  => 0.0
-          }]}
+          }] }
           response
         end
       end

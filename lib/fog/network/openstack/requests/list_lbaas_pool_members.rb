@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_lbaas_pool_members(pool_id, _filters = {})
           Excon::Response.new(
-            :body   => {'members' => data[:lbaas_pool_members].values},
+            :body   => { 'members' => data[:lbaas_pool_members].values },
             :status => 200
          )
         end

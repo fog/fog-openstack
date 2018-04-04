@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_subnets(_filters = {})
           Excon::Response.new(
-            :body   => {'subnets' => data[:subnets].values},
+            :body   => { 'subnets' => data[:subnets].values },
             :status => 200
           )
         end

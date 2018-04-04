@@ -15,7 +15,7 @@ module Fog
         def list_availability_zones()
           response = Excon::Response.new
           response.status = 200
-          response.body = {'availability_zones' => data[:availability_zones]}
+          response.body = { 'availability_zones' => data[:availability_zones] }
           response
         end
       end

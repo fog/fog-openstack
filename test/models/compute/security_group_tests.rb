@@ -40,7 +40,7 @@ describe "Fog::Compute[:openstack] | security_group" do
           :ip_protocol     => 'tcp',
           :from_port       => 1234,
           :to_port         => 1234,
-          :ip_range        => {"cidr" => "0.0.0.0/0"}
+          :ip_range        => { "cidr" => "0.0.0.0/0" }
         )
         security_group.security_group_rules.count.must_equal(rules_count + 1)
         security_group_rule = security_group.security_group_rules.find { |r| r.id == rule.id }
@@ -55,7 +55,7 @@ describe "Fog::Compute[:openstack] | security_group" do
           :ip_protocol     => 'tcp',
           :from_port       => 1234,
           :to_port         => 1234,
-          :ip_range        => {"cidr" => "0.0.0.0/0"}
+          :ip_range        => { "cidr" => "0.0.0.0/0" }
         )
         rule.destroy
         rule.reload.must_equal nil

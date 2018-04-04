@@ -79,7 +79,7 @@ module Fog
           }
           data.merge!(Fog::Network::OpenStack::Real.create(options))
           self.data[:networks][data['id']] = data
-          response.body = {'network' => data}
+          response.body = { 'network' => data }
           response
         end
       end

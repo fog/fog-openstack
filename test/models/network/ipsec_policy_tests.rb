@@ -15,7 +15,7 @@ describe "Fog::Network[:openstack] | ipsec_policy" do
           'units' => 'seconds',
           'value' => 3600
         },
-        :encapsulation_mode   => 'tunnel'
+        :encapsulation_mode => 'tunnel'
       )
     end
 
@@ -32,7 +32,7 @@ describe "Fog::Network[:openstack] | ipsec_policy" do
       @instance.pfs                  = 'group52'
       @instance.transform_protocol   = 'espn'
       @instance.encapsulation_mode   = 'tunnel'
-      @instance.lifetime             = {'units' => 'seconds', 'value' => 3600}
+      @instance.lifetime             = { 'units' => 'seconds', 'value' => 3600 }
       @instance.update.name.must_equal 'rename-test-ipsec-policy'
     end
 

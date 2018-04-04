@@ -19,12 +19,12 @@ describe "@inspector | Introspection rules requests" do
 
     it "#create_rules" do
       attributes = {
-        "actions"     => {
+        "actions" => {
           "action" => "set-attribute",
           "path"   => "/driver_info/ipmi_address",
           "value"  => "{data[inventory][bmc_address]}"
         },
-        "conditions"  => {
+        "conditions" => {
           "field" => "node://property.path",
           "op"    => "eq",
           "value" => "val"

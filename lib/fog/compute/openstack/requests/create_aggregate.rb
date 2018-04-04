@@ -33,7 +33,7 @@ module Fog
             "Content-Length" => "0",
             "Date"           => Date.new
           }
-          response.body = {'aggregate' => data[:aggregates].first}
+          response.body = { 'aggregate' => data[:aggregates].first }
           response
         end
       end

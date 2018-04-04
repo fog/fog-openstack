@@ -28,7 +28,7 @@ describe "Fog::Network[:openstack] | lb_vip requests" do
         :description         => 'Test VIP',
         :address             => '10.0.0.1',
         :connection_limit    => 10,
-        :session_persistence => {"cookie_name" => "COOKIE_NAME", "type" => "APP_COOKIE"},
+        :session_persistence => { "cookie_name" => "COOKIE_NAME", "type" => "APP_COOKIE" },
         :admin_state_up      => true,
         :tenant_id           => 'tenant_id'
       }
@@ -57,7 +57,7 @@ describe "Fog::Network[:openstack] | lb_vip requests" do
         :name                => "new-test-vip",
         :description         => "New Test VIP",
         :connection_limit    => 5,
-        :session_persistence => {"type" => "HTTP_COOKIE"},
+        :session_persistence => { "type" => "HTTP_COOKIE" },
         :admin_state_up      => false
       }
       network.update_lb_vip(lb_vip_id, attributes).body.

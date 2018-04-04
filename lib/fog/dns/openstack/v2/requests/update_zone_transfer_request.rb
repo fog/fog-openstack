@@ -3,9 +3,9 @@ module Fog
     class OpenStack
       class V2
         class Real
-          def update_zone_transfer_request(zone_transfer_request_id,description,options={})
+          def update_zone_transfer_request(zone_transfer_request_id, description, options = {})
             vanilla_options = [:target_project_id]
-            data = vanilla_options.inject({}) do |result,option|
+            data = vanilla_options.inject({}) do |result, option|
               result[option] = options[option] if options[option]
               result
             end
@@ -20,12 +20,12 @@ module Fog
         end
 
         class Mock
-          def update_zone_transfer_request(zone_transfer_request_id,description,options={})
+          def update_zone_transfer_request(zone_transfer_request_id, description, options = {})
             response = Excon::Response.new
             response.status = 200
             request = data[:zone_transfer_requests]["transfer_requests"]
             request.id = zone_transfer_request_id
-            request.description =description
+            request.description = description
             response.body = request
             response
           end

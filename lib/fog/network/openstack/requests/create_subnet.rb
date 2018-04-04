@@ -45,7 +45,7 @@ module Fog
             'tenant_id'        => options[:tenant_id]
           }
           self.data[:subnets][data['id']] = data
-          response.body = {'subnet' => data}
+          response.body = { 'subnet' => data }
           response
         end
       end

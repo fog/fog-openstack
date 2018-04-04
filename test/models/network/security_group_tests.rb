@@ -7,7 +7,7 @@ describe "Fog::Network[:openstack] | security_group model" do
 
   describe "success" do
     before do
-      attributes = {:name => "my_secgroup", :description => "my sec group desc"}
+      attributes = { :name => "my_secgroup", :description => "my sec group desc" }
       @secgroup = network.security_groups.create(attributes)
       @secgroup.wait_for { ready? } unless Fog.mocking?
     end

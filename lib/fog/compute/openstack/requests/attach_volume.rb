@@ -30,7 +30,7 @@ module Fog
           }
           self.data[:volumes][volume_id]['attachments'] << data
           self.data[:volumes][volume_id]['status'] = 'in-use'
-          response.body = {'volumeAttachment' => data}
+          response.body = { 'volumeAttachment' => data }
           response
         end
       end

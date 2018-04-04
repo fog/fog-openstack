@@ -33,7 +33,7 @@ module Fog
 
         def reset_status(status)
           requires :id
-          service.action(id, 'os-reset_status' => {:status => status})
+          service.action(id, 'os-reset_status' => { :status => status })
         end
 
         def create_metadata(metadata)

@@ -120,11 +120,11 @@ module Fog
         end
 
         def credentials
-          {:provider                    => 'openstack',
-           :openstack_auth_url          => @openstack_auth_uri.to_s,
-           :openstack_auth_token        => @auth_token,
-           :openstack_management_url    => @openstack_management_url,
-           :openstack_identity_endpoint => @openstack_identity_public_endpoint}
+          { :provider => 'openstack',
+            :openstack_auth_url          => @openstack_auth_uri.to_s,
+            :openstack_auth_token        => @auth_token,
+            :openstack_management_url    => @openstack_management_url,
+            :openstack_identity_endpoint => @openstack_identity_public_endpoint }
         end
       end
 

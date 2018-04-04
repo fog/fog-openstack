@@ -158,13 +158,13 @@ module Fog
           end
 
           def credentials
-            {:provider                  => 'openstack',
-             :openstack_auth_url        => @openstack_auth_uri.to_s,
-             :openstack_auth_token      => @auth_token,
-             :openstack_management_url  => @openstack_management_url,
-             :openstack_current_user_id => @openstack_current_user_id,
-             :current_user              => @current_user,
-             :current_tenant            => @current_tenant}
+            { :provider => 'openstack',
+              :openstack_auth_url        => @openstack_auth_uri.to_s,
+              :openstack_auth_token      => @auth_token,
+              :openstack_management_url  => @openstack_management_url,
+              :openstack_current_user_id => @openstack_current_user_id,
+              :current_user              => @current_user,
+              :current_tenant            => @current_tenant }
           end
         end
 

@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def disable_service_log_reason(host, binary, disabled_reason, optional_params = nil)
-          data = {"host" => host, "binary" => binary, "disabled_reason" => disabled_reason}
+          data = { "host" => host, "binary" => binary, "disabled_reason" => disabled_reason }
 
           # Encode all params
           optional_params = optional_params.each { |k, v| optional_params[k] = URI.encode(v) } if optional_params

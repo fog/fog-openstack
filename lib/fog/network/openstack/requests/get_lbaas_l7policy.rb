@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:lbaas_l7policies][l7policy_id]
             response.status = 200
-            response.body = {'l7policy' => data}
+            response.body = { 'l7policy' => data }
             response
           else
             raise Fog::Network::OpenStack::NotFound

@@ -47,7 +47,7 @@ describe "Fog::ContainerInfra[:openstack] | bay requests" do
     end
 
     it "#create_bay" do
-      @bay.must_match_schema({"uuid" => String})
+      @bay.must_match_schema({ "uuid" => String })
     end
 
     it "#list_bays" do
@@ -70,7 +70,7 @@ describe "Fog::ContainerInfra[:openstack] | bay requests" do
       ]
 
       container_infra.update_bay(bay_uuid, attributes).body.
-        must_match_schema({"uuid" => String})
+        must_match_schema({ "uuid" => String })
     end
 
     it "#delete_bay" do

@@ -24,7 +24,7 @@ module Fog
           if pool = list_lb_pools.body['pools'].find { |_| _['id'] == pool_id }
             pool['health_monitors'] << health_monitor_id
             data[:lb_pools][pool_id] = pool
-            response.body = {'health_monitor' => {}}
+            response.body = { 'health_monitor' => {} }
             response.status = 200
             response
           else

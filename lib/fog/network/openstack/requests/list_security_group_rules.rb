@@ -39,7 +39,7 @@ module Fog
           sec_group_rules = data[:security_group_rules].values unless data[:security_group_rules].nil?
 
           response.status = 200
-          response.body = {'security_group_rules' => sec_group_rules}
+          response.body = { 'security_group_rules' => sec_group_rules }
           response
         end
       end

@@ -17,7 +17,7 @@ module Fog
           image = list_images_detail.body['images'].find { |im| im['id'] == image_id }
           if image
             response.status = [200, 203][rand(2)]
-            response.body = {'image' => image}
+            response.body = { 'image' => image }
             response
           else
             raise Fog::Compute::OpenStack::NotFound

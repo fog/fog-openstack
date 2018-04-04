@@ -27,10 +27,10 @@ module Fog
             listener['name']                = options[:name]
             listener['description']         = options[:description]
             listener['connection_limit']    = options[:connection_limit]
-            listener['default_tls_container_ref']    = options[:default_tls_container_ref]
+            listener['default_tls_container_ref'] = options[:default_tls_container_ref]
             listener['sni_container_refs']  = options[:sni_container_refs]
             listener['admin_state_up']      = options[:admin_state_up]
-            response.body = {'listener' => listener}
+            response.body = { 'listener' => listener }
             response.status = 200
             response
           else

@@ -22,7 +22,7 @@ module Fog
 
         def new(attributes = {})
           requires :share
-          super({:share => @share}.merge!(attributes))
+          super({ :share => @share }.merge!(attributes))
         end
       end
     end

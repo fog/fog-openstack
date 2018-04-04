@@ -20,7 +20,7 @@ module Fog
               data['status'] = 'available'
             end
             response.status = 200
-            response.body = {'volume' => data}
+            response.body = { 'volume' => data }
             response
           else
             raise Fog::Compute::OpenStack::NotFound

@@ -40,7 +40,7 @@ module Fog
           response = Excon::Response.new
           if sec_group = data[:security_groups][security_group_id]
             response.status = 200
-            response.body   = {"security_group" => sec_group}
+            response.body   = { "security_group" => sec_group }
             response
           else
             raise Fog::Network::OpenStack::NotFound

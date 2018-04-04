@@ -69,7 +69,7 @@ module Fog
           end
 
           if options.key?(:files)
-            response.body['files'] = {'foo.sh' => 'hello'}
+            response.body['files'] = { 'foo.sh' => 'hello' }
           end
 
           if options.key?(:template) || options.key?(:template_url)

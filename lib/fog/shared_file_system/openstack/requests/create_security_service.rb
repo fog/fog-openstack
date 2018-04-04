@@ -38,7 +38,7 @@ module Fog
           security_service['type'] = type
           security_service['name'] = name
 
-          response.body = {'security_service' => security_service.merge(options)}
+          response.body = { 'security_service' => security_service.merge(options) }
           response
         end
       end

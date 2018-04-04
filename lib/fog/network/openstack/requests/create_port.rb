@@ -44,7 +44,7 @@ module Fog
             'allowed_address_pairs' => options[:allowed_address_pairs]
           }
           self.data[:ports][data['id']] = data
-          response.body = {'port' => data}
+          response.body = { 'port' => data }
           response
         end
       end

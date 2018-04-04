@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:lbaas_loadbalancer][loadbalancer_id]
             response.status = 200
-            response.body = {'loadbalancer' => data[:lbaas_loadbalancer]}
+            response.body = { 'loadbalancer' => data[:lbaas_loadbalancer] }
             response
           else
             raise Fog::Network::OpenStack::NotFound

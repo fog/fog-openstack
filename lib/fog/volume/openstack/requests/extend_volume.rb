@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       module Real
         def extend_volume(volume_id, size)
-          body = {'os-extend' => {'new_size' => size}}
+          body = { 'os-extend' => { 'new_size' => size } }
           request(
             :expects => 202,
             :method  => 'POST',

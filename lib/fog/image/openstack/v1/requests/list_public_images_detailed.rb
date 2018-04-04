@@ -9,7 +9,7 @@ module Fog
             elsif options
               Fog::Logger.deprecation("Calling OpenStack[:glance].list_public_images_detailed(attribute, query) format"\
                                     " is deprecated, call .list_public_images_detailed(attribute => query) instead")
-              query = {options => query_deprecated}
+              query = { options => query_deprecated }
             else
               query = {}
             end
@@ -27,7 +27,7 @@ module Fog
           def list_public_images_detailed(_options = {}, _query_deprecated = nil)
             response = Excon::Response.new
             response.status = [200, 204][rand(2)]
-            response.body = {'images' => data[:images].values}
+            response.body = { 'images' => data[:images].values }
             response
           end
         end

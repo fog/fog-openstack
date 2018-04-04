@@ -79,11 +79,11 @@ module Fog
           response.status = 201
           response.body = {
             'id'    => stack_id,
-            'links' => [{"href" => "http://localhost:8004/v1/fake_tenant_id/stacks/#{options[:stack_name]}/#{stack_id}", "rel" => "self"}]
+            'links' => [{ "href" => "http://localhost:8004/v1/fake_tenant_id/stacks/#{options[:stack_name]}/#{stack_id}", "rel" => "self" }]
           }
 
           if options.key?(:files)
-            response.body['files'] = {'foo.sh' => 'hello'}
+            response.body['files'] = { 'foo.sh' => 'hello' }
           end
 
           if options.key?(:template) || options.key?(:template_url)

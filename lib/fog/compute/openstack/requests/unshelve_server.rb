@@ -9,7 +9,7 @@ module Fog
         # === Returns
         # * success <~Boolean>
         def unshelve_server(server_id)
-          body = {'unshelve' => nil}
+          body = { 'unshelve' => nil }
           server_action(server_id, body).status == 202
         end
       end

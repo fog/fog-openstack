@@ -21,7 +21,7 @@ module Fog
 
           response = Excon::Response.new
           response.status = 200
-          response.body = {'share' => data[:share_updated]}
+          response.body = { 'share' => data[:share_updated] }
           response
         end
 

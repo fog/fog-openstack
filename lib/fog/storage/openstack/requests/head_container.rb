@@ -17,7 +17,7 @@ module Fog
             :expects => 204,
             :method  => 'HEAD',
             :path    => Fog::OpenStack.escape(container),
-            :query   => {'format' => 'json'}
+            :query   => { 'format' => 'json' }
           )
         end
       end

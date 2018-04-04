@@ -68,7 +68,7 @@ module Fog
           # don't ask for all and one project at the same time
           project_id = options.delete(:project_id) unless all_projects
 
-          headers = {'X-Auth-All-Projects' => all_projects}
+          headers = { 'X-Auth-All-Projects' => all_projects }
           headers['X-Auth-Sudo-Project-Id'] = project_id unless project_id.nil?
 
           [headers, options]
@@ -78,7 +78,7 @@ module Fog
           def self.data
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                :zones      => [{
+                :zones => [{
                   "id"             => "a86dba58-0043-4cc6-a1bb-69d5e86f3ca3",
                   "pool_id"        => "572ba08c-d929-4c70-8e42-03824bb24ca2",
                   "project_id"     => "4335d1f0-f793-11e2-b778-0800200c9a66",
@@ -99,14 +99,14 @@ module Fog
                     "self" => "https://127.0.0.1:9001/v2/zones/a86dba58-0043-4cc6-a1bb-69d5e86f3ca3"
                   }
                 }],
-                :pools      => {
+                :pools => {
                   "metadata" => {
                     "total_count" => 2
                   },
-                  "links"    => {
+                  "links" => {
                     "self" => "http://127.0.0.1:9001/v2/pools"
                   },
-                  "pools"    => [
+                  "pools" => [
                     {
                       "description" => '',
                       "id"          => "794ccc2c-d751-44fe-b57f-8894c9f5c842",
@@ -119,7 +119,7 @@ module Fog
                           "priority" => 1
                         }
                       ],
-                      "links"       => {
+                      "links" => {
                         "self" => "http://127.0.0.1:9001/v2/pools/794ccc2c-d751-44fe-b57f-8894c9f5c842"
                       },
                       "name"        => "default",
@@ -137,7 +137,7 @@ module Fog
                           "priority" => 1
                         }
                       ],
-                      "links"       => {
+                      "links" => {
                         "self" => "http://127.0.0.1:9001/v2/pools/d1716333-8c16-490f-85ee-29af36907605"
                       },
                       "name"        => "example_pool",
@@ -145,7 +145,7 @@ module Fog
                     }
                   ]
                 },
-                :quota      => {
+                :quota => {
                   "api_export_size"   => 1000,
                   "recordset_records" => 20,
                   "zone_records"      => 500,
@@ -174,11 +174,11 @@ module Fog
                     "status"      => "ACTIVE",
                     "action"      => "NONE"
                   }],
-                  "links"      => {
+                  "links" => {
                     "self" => "http://127.0.0.1:9001/v2/recordsets?limit=1",
                     "next" => "http://127.0.0.1:9001/v2/recordsets?limit=1&marker=45fd892d-7a67-4f65-9df0-87273f228d6c"
                   },
-                  "metadata"   => {
+                  "metadata" => {
                     "total_count" => 2
                   }
                 },
@@ -273,7 +273,7 @@ module Fog
             management_url.path = '/v2'
             @openstack_management_url = management_url.to_s
 
-            @data ||= {:users => {}}
+            @data ||= { :users => {} }
             unless @data[:users].detect { |u| u['name'] == options[:openstack_username] }
               id = Fog::Mock.random_numbers(6).to_s
               @data[:users][id] = {
@@ -295,11 +295,11 @@ module Fog
           end
 
           def credentials
-            {:provider                 => 'openstack',
+            { :provider => 'openstack',
              :openstack_auth_url       => @openstack_auth_uri.to_s,
              :openstack_auth_token     => @auth_token,
              :openstack_region         => @openstack_region,
-             :openstack_management_url => @openstack_management_url}
+             :openstack_management_url => @openstack_management_url }
           end
         end
 

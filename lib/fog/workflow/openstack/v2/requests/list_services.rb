@@ -16,9 +16,9 @@ module Fog
           def list_services
             response = Excon::Response.new
             response.status = 200
-            response.body = {"services" =>
-                                           [{"name" => "service1", "description" => "d1"},
-                                            {"name" => "service2", "description" => "d2"}]}
+            response.body = { "services" =>
+                                           [{ "name" => "service1", "description" => "d1" },
+                                            { "name" => "service2", "description" => "d2" }] }
             response
           end
         end

@@ -40,7 +40,7 @@ module Fog
             'subnet_id'       => ptions[:subnet_id]
           }
           self.data[:lb_members][data['id']] = data
-          response.body = {'member' => data}
+          response.body = { 'member' => data }
           response
         end
       end

@@ -21,7 +21,7 @@ module Fog
           snapshot['status']        = 'deleting'
           snapshot['links']['self'] = "https://127.0.0.1:8786/v2/snapshots/#{id}"
 
-          response.body = {'snapshot' => snapshot}
+          response.body = { 'snapshot' => snapshot }
           response
         end
       end

@@ -32,7 +32,7 @@ module Fog
 
           def update(options = nil)
             requires :id
-            merge_attributes(ervice.update_zone_transfer_request(id,options[:description],{
+            merge_attributes(ervice.update_zone_transfer_request(id, options[:description], {
                                                                    :target_project_id => options[:target_project_id]
                                                                  }))
             self

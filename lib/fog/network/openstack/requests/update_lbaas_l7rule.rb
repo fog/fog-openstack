@@ -28,7 +28,7 @@ module Fog
             l7rule['key']            = options[:key]
             l7rule['value']          = options[:value]
             l7rule['invert']         = options[:invert]
-            response.body = {'rule' => l7rule}
+            response.body = { 'rule' => l7rule }
             response.status = 200
             response
           else

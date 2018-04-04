@@ -10,7 +10,7 @@ describe "Fog::Network[:openstack] | ipsec_policies" do
       :encryption_algorithm => 'aes-128',
       :pfs                  => 'group5',
       :transform_protocol   => 'esp',
-      :lifetime             => {'units' => 'seconds', 'value' => 3600},
+      :lifetime             => { 'units' => 'seconds', 'value' => 3600 },
       :encapsulation_mode   => 'tunnel'
     }
 

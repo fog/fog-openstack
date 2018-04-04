@@ -48,7 +48,7 @@ describe "Fog::Baremetal[:openstack] | Baremetal node requests" do
     end
 
     before do
-      node_attributes = {:driver => 'pxe_ipmitool'}
+      node_attributes = { :driver => 'pxe_ipmitool' }
       @instance = @baremetal.create_node(node_attributes).body
     end
 
@@ -64,7 +64,7 @@ describe "Fog::Baremetal[:openstack] | Baremetal node requests" do
     it "#patch_node" do
       @baremetal.patch_node(
         @instance['uuid'],
-        [{'op' => 'replace', 'path' => '/driver', 'value' => 'pxe_ssh'}]
+        [{ 'op' => 'replace', 'path' => '/driver', 'value' => 'pxe_ssh' }]
       ).body.must_match_schema(@detailed_node_format)
     end
 

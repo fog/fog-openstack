@@ -28,7 +28,7 @@ module Fog
             loadbalancer['name']                = options[:name]
             loadbalancer['description']         = options[:description]
             loadbalancer['admin_state_up']      = options[:admin_state_up]
-            response.body = {'loadbalancer' => loadbalancer}
+            response.body = { 'loadbalancer' => loadbalancer }
             response.status = 200
             response
           else

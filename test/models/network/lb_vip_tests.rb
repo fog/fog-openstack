@@ -34,7 +34,7 @@ describe "Fog::Network[:openstack] | lb_vip" do
       @instance.pool_id = 'new_pool_id'
       @instance.name = 'new-test-vip'
       @instance.description = 'New Test VIP'
-      @instance.session_persistence = {"type" => "HTTP_COOKIE"}
+      @instance.session_persistence = { "type" => "HTTP_COOKIE" }
       @instance.connection_limit = 5
       @instance.admin_state_up = false
       @instance.update.status.must_equal "ACTIVE"

@@ -40,7 +40,7 @@ module Fog
             }
 
             self.data[:snapshots][data['id']] = data
-            response.body = {"snapshot" => data}
+            response.body = { "snapshot" => data }
             response.status = 202
             response
           end

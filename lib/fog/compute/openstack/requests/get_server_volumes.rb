@@ -18,7 +18,7 @@ module Fog
           data = self.data[:volumes].values.select do |vol|
             vol['attachments'].find { |attachment| attachment["serverId"] == server_id }
           end
-          response.body = {'volumeAttachments' => data.map! { |vol| vol['attachments'] }.flatten(1)}
+          response.body = { 'volumeAttachments' => data.map! { |vol| vol['attachments'] }.flatten(1) }
           response
         end
       end

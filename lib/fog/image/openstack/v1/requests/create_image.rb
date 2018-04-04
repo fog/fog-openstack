@@ -68,7 +68,7 @@ module Fog
               'owner'            => attributes[:owner],
               'properties'       => attributes[:properties] || {}
             }
-            response.body = {'image' => image}
+            response.body = { 'image' => image }
             response
           end
         end

@@ -32,7 +32,7 @@ module Fog
               }
             }
           ]
-          response.body = {'volume_types' => data[:volume_types]}
+          response.body = { 'volume_types' => data[:volume_types] }
           response
         end
       end

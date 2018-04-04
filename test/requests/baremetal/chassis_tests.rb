@@ -21,7 +21,7 @@ describe "Fog::Baremetal[:openstack] | Baremetal chassis requests" do
         'links'       => Array
       }
 
-      chassis_attributes = {:description => 'description'}
+      chassis_attributes = { :description => 'description' }
       @instance = @baremetal.create_chassis(chassis_attributes).body
     end
 
@@ -44,7 +44,7 @@ describe "Fog::Baremetal[:openstack] | Baremetal chassis requests" do
     it "#patch_chassis" do
       @baremetal.patch_chassis(
         @instance['uuid'],
-        [{'op' => 'replace', 'path' => '/description', 'value' => 'new description'}]
+        [{ 'op' => 'replace', 'path' => '/description', 'value' => 'new description' }]
       ).body.must_match_schema(@detailed_chassis_format)
     end
 

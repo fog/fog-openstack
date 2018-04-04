@@ -274,12 +274,12 @@ describe Fog::Identity::OpenStack::V3 do
               }
             }
           },
-          :scope    => {
+          :scope => {
             :project => {
               :domain => {
                 :name => @openstack_vcr.domain_name
               },
-              :name   => @openstack_vcr.project_name
+              :name => @openstack_vcr.project_name
             }
           }
         }
@@ -918,8 +918,8 @@ describe Fog::Identity::OpenStack::V3 do
         secret_key = '7e084117-b13d-4656-9eca-85376b690897'
 
         # OpenStack Keystone requires the blob to be a JSON string - i.e. not JSON, but a string containing JSON :-/
-        blob_json = {:access => access_key,
-                     :secret => secret_key}.to_json
+        blob_json = { :access => access_key,
+                      :secret => secret_key }.to_json
 
         # Make sure there are no existing ec2 credentials
         @service.os_credentials.all.select do |credential|
@@ -939,8 +939,8 @@ describe Fog::Identity::OpenStack::V3 do
 
         # Update secret key
         new_secret_key = '62307bcd-ca3c-47ae-a114-27a6cadb5bc9'
-        new_blob_json = {:access => access_key,
-                         :secret => new_secret_key}.to_json
+        new_blob_json = { :access => access_key,
+                          :secret => new_secret_key }.to_json
         foo_credential.update(:blob => new_blob_json)
         JSON.parse(foo_credential.blob)['secret'].must_equal new_secret_key
 
@@ -984,7 +984,7 @@ describe Fog::Identity::OpenStack::V3 do
 
   it "CRUD policies" do
     VCR.use_cassette('idv3_policy_crud') do
-      blob = {'foobar_user' => ['role:compute-user']}.to_json
+      blob = { 'foobar_user' => ['role:compute-user'] }.to_json
 
       # Make sure there are no existing policies
       @service.policies.all.select { |policy| policy.type == 'application/json' }.length.must_equal 0
@@ -996,7 +996,7 @@ describe Fog::Identity::OpenStack::V3 do
       @service.policies.all.select { |policy| policy.type == 'application/json' }.length.must_equal 1
 
       # Update policy blob
-      new_blob = {'baz_user' => ['role:compute-user']}.to_json
+      new_blob = { 'baz_user' => ['role:compute-user'] }.to_json
       foo_policy.update(:blob => new_blob)
       foo_policy.blob.must_equal new_blob
 

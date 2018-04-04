@@ -36,7 +36,7 @@ module Fog
             end
 
             Excon::Response.new(
-              :body   => {'users' => users},
+              :body   => { 'users' => users },
               :status => 200
             )
           end

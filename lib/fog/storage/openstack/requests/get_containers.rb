@@ -22,7 +22,7 @@ module Fog
             :expects => [200, 204],
             :method  => 'GET',
             :path    => '',
-            :query   => {'format' => 'json'}.merge!(options)
+            :query   => { 'format' => 'json' }.merge!(options)
           )
         end
       end

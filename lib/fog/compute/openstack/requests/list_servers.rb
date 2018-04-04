@@ -27,7 +27,7 @@ module Fog
             servers << server.reject { |key, _value| !['id', 'name', 'links'].include?(key) }
           end
           response.status = [200, 203][rand(2)]
-          response.body = {'servers' => servers}
+          response.body = { 'servers' => servers }
           response
         end
       end

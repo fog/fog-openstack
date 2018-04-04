@@ -31,7 +31,7 @@ module Fog
           response = Excon::Response.new
           response.status = 200
           snapshots = data[:snapshots].values
-          response.body = {'snapshots' => snapshots}
+          response.body = { 'snapshots' => snapshots }
           response
         end
       end

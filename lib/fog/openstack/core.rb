@@ -151,7 +151,7 @@ module Fog
                                else
                                  @microversion
                                end
-          microversion_header = {@microversion_key => microversion_value}
+          microversion_header = { @microversion_key => microversion_value }
           additional_headers.merge!(microversion_header)
         end
 

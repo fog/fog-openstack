@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def delete_port(port_uuid)
-          data = {:port_uuid => port_uuid}
+          data = { :port_uuid => port_uuid }
           request(
             :body    => Fog::JSON.encode(data),
             :expects => [200, 204],

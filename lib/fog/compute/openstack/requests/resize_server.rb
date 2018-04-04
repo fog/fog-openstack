@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def resize_server(server_id, flavor_ref)
-          body = {'resize' => {'flavorRef' => flavor_ref}}
+          body = { 'resize' => { 'flavorRef' => flavor_ref } }
           server_action(server_id, body)
         end
       end

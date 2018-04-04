@@ -27,7 +27,7 @@ module Fog
         # @see http://docs.openstack.org/api/openstack-object-storage/1.0/content/dynamic-large-object-creation.html
         def put_dynamic_obj_manifest(container, object, options = {})
           path = "#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object)}"
-          headers = {'X-Object-Manifest' => path}.merge(options)
+          headers = { 'X-Object-Manifest' => path }.merge(options)
           request(
             :expects => 201,
             :headers => headers,

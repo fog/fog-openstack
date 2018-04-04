@@ -31,9 +31,9 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
       test_cases = [
         ["a string", {}],
         [["a", "list"], {}],
-        [{"a" => "dict", "b" => "values"}, {}],
-        [{"type"=>"OS::Nova::Server"}, {}],
-        [{"get_file" => "foo.sh", "b" => "values"}, {'foo.sh'=>'# Just a mock'}]
+        [{ "a" => "dict", "b" => "values" }, {}],
+        [{ "type" => "OS::Nova::Server" }, {}],
+        [{ "get_file" => "foo.sh", "b" => "values" }, { 'foo.sh' => '# Just a mock' }]
       ]
       test_cases.each do |data, expected|
         file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new({})

@@ -14,7 +14,7 @@ describe "Fog::Network[:openstack] | ipsec_site_connections" do
       :peer_cidrs     => [],
       :psk            => "secret",
       :mtu            => 1500,
-      :dpd            => {"action" => "hold", "interval" => 30, "timeout" => 120},
+      :dpd            => { "action" => "hold", "interval" => 30, "timeout" => 120 },
       :initiator      => "bi-directional",
       :admin_state_up => true
     }

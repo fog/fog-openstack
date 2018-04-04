@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       class Real
         def update_lb_vip(vip_id, options = {})
-          data = {'vip' => {}}
+          data = { 'vip' => {} }
 
           vanilla_options = [:pool_id, :name, :description, :session_persistence, :connection_limit, :admin_state_up]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
@@ -29,7 +29,7 @@ module Fog
             vip['session_persistence'] = options[:session_persistence]
             vip['connection_limit']    = options[:connection_limit]
             vip['admin_state_up']      = options[:admin_state_up]
-            response.body = {'vip' => vip}
+            response.body = { 'vip' => vip }
             response.status = 200
             response
           else

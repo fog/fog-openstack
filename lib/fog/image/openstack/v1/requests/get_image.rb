@@ -16,7 +16,7 @@ module Fog
           def get_image(_image_id)
             response = Excon::Response.new
             response.status = [200, 204][rand(2)]
-            response.headers = {"X-Image-Meta-Is_public" => "True",
+            response.headers = { "X-Image-Meta-Is_public" => "True",
                                "X-Image-Meta-Min_disk" => "0",
                                "X-Image-Meta-Property-Ramdisk_id" => "b45aa128-cd36-4ad9-a026-1a1c2bfd8fdc",
                                "X-Image-Meta-Disk_format" => "ami",
@@ -36,7 +36,7 @@ module Fog
                                "Content-Length" => "0",
                                "X-Image-Meta-Owner" => "ff528b20431645ebb5fa4b0a71ca002f",
                                "X-Image-Meta-Status" => "active",
-                               "X-Image-Meta-Id" => "0e09fbd6-43c5-448a-83e9-0d3d05f9747e"}
+                               "X-Image-Meta-Id" => "0e09fbd6-43c5-448a-83e9-0d3d05f9747e" }
             response.body = ""
             response
           end

@@ -15,7 +15,7 @@ module Fog
       class Mock
         def list_vpn_services(*)
           Excon::Response.new(
-            :body   => {'vpnservices' => data[:vpn_services].values},
+            :body   => { 'vpnservices' => data[:vpn_services].values },
             :status => 200
           )
         end

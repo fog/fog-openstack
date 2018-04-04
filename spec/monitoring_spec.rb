@@ -20,9 +20,9 @@ describe Fog::Monitoring::OpenStack do
       # create single metric
       metric_0 = @service.metrics.create(:name       => 'sample_metric_0',
                                          :timestamp  => @timestamp,
-                                         :dimensions => {"key1" => "value1"},
+                                         :dimensions => { "key1" => "value1" },
                                          :value      => 42,
-                                         :value_meta => {"meta_key1" => "meta_value1"})
+                                         :value_meta => { "meta_key1" => "meta_value1" })
 
       metric_0.wont_be_nil
 
@@ -30,26 +30,26 @@ describe Fog::Monitoring::OpenStack do
 
       metric_1 = Fog::Monitoring::OpenStack::Metric.new(:name       => 'sample_metric_1',
                                                         :timestamp  => @timestamp,
-                                                        :dimensions => {"key1" => "value1"},
+                                                        :dimensions => { "key1" => "value1" },
                                                         :value      => 42,
-                                                        :value_meta => {"meta_key1" => "meta_value1"})
+                                                        :value_meta => { "meta_key1" => "meta_value1" })
 
       metric_2 = Fog::Monitoring::OpenStack::Metric.new(:name       => 'sample_metric_2',
                                                         :timestamp  => @timestamp,
-                                                        :dimensions => {"key1" => "value1"},
+                                                        :dimensions => { "key1" => "value1" },
                                                         :value      => 42,
-                                                        :value_meta => {"meta_key1" => "meta_value1"})
+                                                        :value_meta => { "meta_key1" => "meta_value1" })
 
       @service.metrics.create_metric_array([metric_1, metric_2])
 
-      metric_0_identity = {:name       => 'sample_metric_0',
-                           :dimensions => {"key1" => "value1"}}
+      metric_0_identity = { :name       => 'sample_metric_0',
+                            :dimensions => { "key1" => "value1" } }
 
-      metric_1_identity = {:name       => 'sample_metric_1',
-                           :dimensions => {"key1" => "value1"}}
+      metric_1_identity = { :name       => 'sample_metric_1',
+                            :dimensions => { "key1" => "value1" } }
 
-      metric_2_identity = {:name       => 'sample_metric_2',
-                           :dimensions => {"key1" => "value1"}}
+      metric_2_identity = { :name       => 'sample_metric_2',
+                            :dimensions => { "key1" => "value1" } }
 
       # list metrics filtered by name and search for previuosly created metrics by unique identifier of name,dimensions
       [metric_0_identity, metric_1_identity, metric_2_identity].each do |metric_identity|
@@ -57,8 +57,8 @@ describe Fog::Monitoring::OpenStack do
         metrics_all.wont_be_nil
         metrics_all.wont_be_empty
         metrics_all_identities = metrics_all.collect do |_metric|
-          {:name       => metric_identity[:name],
-           :dimensions => metric_identity[:dimensions]}
+          { :name => metric_identity[:name],
+            :dimensions => metric_identity[:dimensions] }
         end
 
         metrics_all_identities.must_include(metric_identity)

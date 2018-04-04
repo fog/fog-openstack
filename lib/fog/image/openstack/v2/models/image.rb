@@ -203,7 +203,7 @@ module Fog
           def build_patch_operation(op_name, attributes)
             json_patch = []
             attributes.each do |key, value|
-              json_patch << {:op => op_name, :path => "/#{key}", :value => value}
+              json_patch << { :op => op_name, :path => "/#{key}", :value => value }
             end
             json_patch
           end

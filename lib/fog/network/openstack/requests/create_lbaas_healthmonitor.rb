@@ -44,11 +44,11 @@ module Fog
             'admin_state_up' => options[:admin_state_up],
             'tenant_id'      => options[:tenant_id],
             'name'           => options[:name],
-            'pools'          => [{ 'id'=> Fog::Mock.random_numbers(6).to_s}]
+            'pools'          => [{ 'id' => Fog::Mock.random_numbers(6).to_s }]
           }
 
           self.data[:lbaas_healthmonitors][data['id']] = data
-          response.body = {'healthmonitor' => data}
+          response.body = { 'healthmonitor' => data }
           response
         end
       end

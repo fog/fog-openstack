@@ -15,7 +15,7 @@ module Fog
         def get_metadata(_collection_name, _parent_id, _key)
           response = Excon::Response.new
           response.status = 200
-          response.body = {'meta' => {}}
+          response.body = { 'meta' => {} }
           response
         end
       end

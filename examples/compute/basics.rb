@@ -8,9 +8,9 @@ password = 'secret'
 tenant   = 'My Compute Tenant' # String
 
 compute_client ||= ::Fog::Compute.new(:provider           => :openstack,
-                                      :openstack_api_key  => password  ,
-                                      :openstack_username => username  ,
-                                      :openstack_auth_url => auth_url  ,
+                                      :openstack_api_key  => password,
+                                      :openstack_username => username,
+                                      :openstack_auth_url => auth_url,
                                       :openstack_tenant   => tenant)
 
 # Create VM

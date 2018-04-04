@@ -5,7 +5,7 @@ module Fog
         class Real
           def update_image(id, json_patch)
             request(
-              :headers => {'Content-Type' => 'application/openstack-images-v2.1-json-patch'},
+              :headers => { 'Content-Type' => 'application/openstack-images-v2.1-json-patch' },
               :expects => [200],
               :method  => 'PATCH',
               :path    => "images/#{id}",

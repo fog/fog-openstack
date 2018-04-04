@@ -14,7 +14,7 @@ module Fog
       class Mock
         def list_volume_attachments(server_id)
           Excon::Response.new(
-            :body   => {
+            :body => {
               :volumeAttachments => [{
                 :device   => '/dev/vdd',
                 :serverId => server_id,

@@ -17,7 +17,7 @@ module Fog
           if data
             response = Excon::Response.new
             response.status = 200
-            response.body = {'subnetpool' => data}
+            response.body = { 'subnetpool' => data }
             response
           else
             raise Fog::Network::OpenStack::NotFound

@@ -20,7 +20,7 @@ module Fog
           def list_zones(_options = {})
             response = Excon::Response.new
             response.status = 200
-            response.body = {'zones' => data[:zones]}
+            response.body = { 'zones' => data[:zones] }
             response
           end
         end
