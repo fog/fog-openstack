@@ -29,10 +29,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency "mime-types"
   spec.add_development_dependency "mime-types-data"
+  spec.add_development_dependency 'minitest'
   spec.add_development_dependency 'rake',    '~> 10.0'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'shindo',  '~> 0.3'
-  spec.add_development_dependency 'minitest'
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'webmock',  '~> 1.24.6'
 end
