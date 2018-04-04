@@ -62,11 +62,11 @@ describe "Fog::ContainerInfra[:openstack] | bay requests" do
     it "#update_bay" do
       bay_uuid = container_infra.bays.all.first.uuid
       attributes = [
-         {
-            "path"  => "/node_count",
-            "value" => 2,
-            "op"    => "replace"
-         }
+        {
+          "path"  => "/node_count",
+          "value" => 2,
+          "op"    => "replace"
+        }
       ]
 
       container_infra.update_bay(bay_uuid, attributes).body.

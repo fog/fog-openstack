@@ -4,7 +4,7 @@ module Fog
       class Real
         def update_lbaas_loadbalancer(loadbalancer_id, options = {})
           data = {
-              'loadbalancer' => {}
+            'loadbalancer' => {}
           }
 
           vanilla_options = [:name, :description, :admin_state_up]

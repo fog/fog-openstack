@@ -216,8 +216,8 @@ module Fog
                 },
                 :zone_transfer_accepts => {
                   "metadata" => {
-                     "total_count" => 2
-                   },
+                    "total_count" => 2
+                  },
                    "links" => {
                      "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts"
                    },
@@ -226,7 +226,7 @@ module Fog
                        "status" => "COMPLETE",
                        "zone_id" => "8db93d1a-59e3-4143-a393-5821abea0a46",
                        "links" => {
-                           "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts/afb4222b-18b3-44b3-9f54-e0dfdba1be44",
+                         "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts/afb4222b-18b3-44b3-9f54-e0dfdba1be44",
                            "zone" => "http://127.0.0.1:9001/v2/zones/8db93d1a-59e3-4143-a393-5821abea0a46"
                        },
                        "created_at" => "2016-06-01 05:35:35",
@@ -240,7 +240,7 @@ module Fog
                        "status" => "COMPLETE",
                        "zone_id" => "925bfc45-8901-4aca-aa12-18afaf0879e2",
                        "links" => {
-                           "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts/ecbc7091-c498-4ec4-9893-68b06297fe50",
+                         "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts/ecbc7091-c498-4ec4-9893-68b06297fe50",
                            "zone" => "http://127.0.0.1:9001/v2/zones/925bfc45-8901-4aca-aa12-18afaf0879e2"
                        },
                        "created_at" => "2016-06-01 10:06:36",
@@ -251,7 +251,7 @@ module Fog
                        "zone_transfer_request_id" => "94cf9bd3-4137-430b-bf75-4e690430258c"
                      }
                    ]
-                 }
+                }
               }
             end
           end

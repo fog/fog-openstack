@@ -139,14 +139,14 @@ module Fog
       @openstack_username = options[:openstack_username]
 
       response = connection.request({
-        :expects  => [200, 204],
-        :headers  => {
-          'X-Auth-Key'  => @openstack_api_key,
-          'X-Auth-User' => @openstack_username
-        },
-        :method   => 'GET',
-        :path     =>  (uri.path and not uri.path.empty?) ? uri.path : 'v1.0'
-      })
+                                      :expects  => [200, 204],
+                                      :headers  => {
+                                        'X-Auth-Key'  => @openstack_api_key,
+                                        'X-Auth-User' => @openstack_username
+                                      },
+                                      :method   => 'GET',
+                                      :path     =>  (uri.path and not uri.path.empty?) ? uri.path : 'v1.0'
+                                    })
 
       return {
         :token => response.headers['X-Auth-Token'],
@@ -174,12 +174,12 @@ module Fog
         unless tenant_name
           response = Fog::Core::Connection.new(
             "#{uri.scheme}://#{uri.host}:#{uri.port}/v2.0/tenants", false, connection_options).request({
-            :expects => [200, 204],
-            :headers => {'Content-Type' => 'application/json',
-                         'Accept' => 'application/json',
-                         'X-Auth-Token' => body['access']['token']['id']},
-            :method  => 'GET'
-          })
+                                                                                                         :expects => [200, 204],
+                                                                                                         :headers => {'Content-Type' => 'application/json',
+                                                                                                                      'Accept' => 'application/json',
+                                                                                                                      'X-Auth-Token' => body['access']['token']['id']},
+                                                                                                         :method  => 'GET'
+                                                                                                       })
 
           body = Fog::JSON.decode(response.body)
           if body['tenants'].empty?
@@ -257,11 +257,11 @@ module Fog
       unless service
         unless project_name
           request_body = {
-              :expects => [200],
-              :headers => {'Content-Type' => 'application/json',
-                           'Accept' => 'application/json',
-                           'X-Auth-Token' => token},
-              :method => 'GET'
+            :expects => [200],
+            :headers => {'Content-Type' => 'application/json',
+                         'Accept' => 'application/json',
+                         'X-Auth-Token' => token},
+            :method => 'GET'
           }
           user_id = body['token']['user']['id']
           project_uri = uri.clone
@@ -292,9 +292,9 @@ module Fog
           if response.status == 200
             service = {
               "endpoints" => [{
-                 "url"       => identity_uri,
-                 "region"    => openstack_region,
-                 "interface" => endpoint_type
+                "url"       => identity_uri,
+                "region"    => openstack_region,
+                "interface" => endpoint_type
               }],
               "type"      => service_type,
               "name"      => service_name
@@ -347,14 +347,14 @@ module Fog
       end
 
       return {
-          :user                     => body['token']['user']['name'],
-          :tenant                   => tenant,
-          :identity_public_endpoint => identity_url,
-          :server_management_url    => management_url,
-          :token                    => token,
-          :expires                  => body['token']['expires_at'],
-          :current_user_id          => body['token']['user']['id'],
-          :unscoped_token           => options[:unscoped_token]
+        :user                     => body['token']['user']['name'],
+        :tenant                   => tenant,
+        :identity_public_endpoint => identity_url,
+        :server_management_url    => management_url,
+        :token                    => token,
+        :expires                  => body['token']['expires_at'],
+        :current_user_id          => body['token']['user']['id'],
+        :unscoped_token           => options[:unscoped_token]
       }
     end
 
@@ -456,19 +456,19 @@ module Fog
 
       if auth_token
         request_body[:auth][:identity] = {
-            :methods => %w{token},
-            :token => {
-                :id => auth_token
-            }
+          :methods => %w{token},
+          :token => {
+            :id => auth_token
+          }
         }
       else
         request_body[:auth][:identity] = {
-            :methods => %w{password},
-            :password => {
-                :user => {
-                    :password => api_key
-                }
+          :methods => %w{password},
+          :password => {
+            :user => {
+              :password => api_key
             }
+          }
         }
 
         if userid

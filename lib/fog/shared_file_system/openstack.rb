@@ -226,12 +226,12 @@ module Fog
                 }
               ],
               :availability_zones => [
-                  {
-                      "name"        => "nova",
-                      "created_at"  => "2015-09-18T09:50:55.000000",
-                      "updated_at"  => nil,
-                      "id"          => "388c983d-258e-4a0e-b1ba-10da37d766db"
-                  }
+                {
+                  "name"        => "nova",
+                  "created_at"  => "2015-09-18T09:50:55.000000",
+                  "updated_at"  => nil,
+                  "id"          => "388c983d-258e-4a0e-b1ba-10da37d766db"
+                }
               ],
               :snapshots_detail      => [
                 {

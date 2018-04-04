@@ -34,12 +34,12 @@ module Fog
             "name"               => "k8s",
             "links"              => [
               {
-                 "href" => "http://10.164.180.104:9511/v1/bays/746e779a-751a-456b-a3e9-c883d734946f",
-                 "rel"  => "self"
+                "href" => "http://10.164.180.104:9511/v1/bays/746e779a-751a-456b-a3e9-c883d734946f",
+                "rel"  => "self"
               },
               {
-                 "href" => "http://10.164.180.104:9511/bays/746e779a-751a-456b-a3e9-c883d734946f",
-                 "rel"  => "bookmark"
+                "href" => "http://10.164.180.104:9511/bays/746e779a-751a-456b-a3e9-c883d734946f",
+                "rel"  => "bookmark"
               }
             ]
           }

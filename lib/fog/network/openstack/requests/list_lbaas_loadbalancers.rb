@@ -14,10 +14,10 @@ module Fog
 
       class Mock
         def list_lbaas_loadbalancers(_filters = {})
-           Excon::Response.new(
+          Excon::Response.new(
             :body   => {'loadbalancers' => [data[:lbaas_loadbalancer]]},
             :status => 200
-          )
+         )
         end
       end
     end

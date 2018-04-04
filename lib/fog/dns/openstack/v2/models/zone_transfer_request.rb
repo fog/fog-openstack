@@ -22,10 +22,10 @@ module Fog
               update(description: description, target_project_id: target_project_id)
             else
               merge_attributes(ervice.create_zone_transfer_request(zone_id, {
-                :target_project_id => target_project_id,
-                :description => description,
-                :project_id => project_id
-              }))
+                                                                     :target_project_id => target_project_id,
+                                                                     :description => description,
+                                                                     :project_id => project_id
+                                                                   }))
             end
             true
           end
@@ -33,8 +33,8 @@ module Fog
           def update(options = nil)
             requires :id
             merge_attributes(ervice.update_zone_transfer_request(id,options[:description],{
-              :target_project_id => options[:target_project_id]
-            }))
+                                                                   :target_project_id => options[:target_project_id]
+                                                                 }))
             self
           end
 

@@ -50,12 +50,12 @@ module Fog
                 "dns_nameserver"        => "8.8.8.8",
                 "links" => [
                   {
-                     "href" => "http://10.164.180.104:9511/v1/baymodels/085e1c4d-4f68-4bfd-8462-74b9e14e4f39",
-                     "rel"  => "self"
+                    "href" => "http://10.164.180.104:9511/v1/baymodels/085e1c4d-4f68-4bfd-8462-74b9e14e4f39",
+                    "rel"  => "self"
                   },
                   {
-                     "href" => "http://10.164.180.104:9511/baymodels/085e1c4d-4f68-4bfd-8462-74b9e14e4f39",
-                     "rel"  => "bookmark"
+                    "href" => "http://10.164.180.104:9511/baymodels/085e1c4d-4f68-4bfd-8462-74b9e14e4f39",
+                    "rel"  => "bookmark"
                   }
                 ]
               }
