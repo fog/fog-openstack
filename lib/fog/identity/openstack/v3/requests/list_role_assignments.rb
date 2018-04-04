@@ -29,8 +29,7 @@ module Fog
         end
 
         class Mock
-          def list_role_assignments(options = {})
-          end
+          def list_role_assignments(options = {}); end
         end
       end
     end

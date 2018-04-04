@@ -14,8 +14,7 @@ module Fog
         end
 
         class Mock
-          def list_domains(options = {})
-          end
+          def list_domains(options = {}); end
         end
       end
     end

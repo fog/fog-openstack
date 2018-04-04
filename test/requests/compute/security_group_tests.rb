@@ -2,8 +2,8 @@ require "test_helper"
 
 describe "Shindo.tests('@compute | security group requests" do
   before do
-    @security_group = Hash.new
-    @security_group_rule = Hash.new
+    @security_group = {}
+    @security_group_rule = {}
     @security_group_format = {
       "id"          => Integer,
       "rules"       => Array,

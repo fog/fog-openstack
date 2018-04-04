@@ -13,8 +13,7 @@ module Fog
         end
 
         class Mock
-          def get_policy(id)
-          end
+          def get_policy(id); end
         end
       end
     end

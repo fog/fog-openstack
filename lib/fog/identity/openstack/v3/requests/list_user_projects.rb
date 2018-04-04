@@ -14,8 +14,7 @@ module Fog
         end
 
         class Mock
-          def list_user_projects
-          end
+          def list_user_projects; end
         end
       end
     end

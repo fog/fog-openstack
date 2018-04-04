@@ -17,8 +17,7 @@ module Fog
       end
 
       class Mock
-        def server_diagnostics(server_id)
-        end
+        def server_diagnostics(server_id); end
       end
     end
   end

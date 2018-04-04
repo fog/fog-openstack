@@ -13,8 +13,7 @@ module Fog
         end
 
         class Mock
-          def get_service(id)
-          end
+          def get_service(id); end
         end
       end
     end

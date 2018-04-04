@@ -13,8 +13,7 @@ module Fog
         end
 
         class Mock
-          def get_role(id)
-          end
+          def get_role(id); end
         end
       end
     end

@@ -389,7 +389,7 @@ module Fog
       omit_default_port = options[:openstack_auth_omit_default_port]
 
       identity_v2_connection = Fog::Core::Connection.new(uri.to_s, false, connection_options)
-      request_body = { :auth => Hash.new }
+      request_body = { :auth => {} }
 
       if auth_token
         request_body[:auth][:token] = {
@@ -451,8 +451,6 @@ module Fog
                           end
       elsif domain_name || domain_id
         scope[:domain] = domain_id.nil? ? { :name => domain_name } : { :id => domain_id }
-      else
-        # unscoped token
       end
 
       if auth_token

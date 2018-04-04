@@ -118,8 +118,7 @@ module Fog
 
         class Mock
           include Fog::OpenStack::Core
-          def initialize(options = {})
-          end
+          def initialize(options = {}); end
         end
 
         def self.get_api_version(uri, connection_options = {})

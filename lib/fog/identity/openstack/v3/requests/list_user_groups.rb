@@ -13,8 +13,7 @@ module Fog
         end
 
         class Mock
-          def list_user_groups
-          end
+          def list_user_groups; end
         end
       end
     end

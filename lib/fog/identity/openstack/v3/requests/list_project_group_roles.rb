@@ -13,8 +13,7 @@ module Fog
         end
 
         class Mock
-          def list_project_user_roles(id, group_id)
-          end
+          def list_project_user_roles(id, group_id); end
         end
       end
     end

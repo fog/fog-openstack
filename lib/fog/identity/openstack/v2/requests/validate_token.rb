@@ -13,8 +13,7 @@ module Fog
         end
 
         class Mock
-          def validate_token(token_id, tenant_id = nil)
-          end
+          def validate_token(token_id, tenant_id = nil); end
         end
       end
     end

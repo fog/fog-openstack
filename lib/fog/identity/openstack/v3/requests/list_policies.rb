@@ -14,8 +14,7 @@ module Fog
         end
 
         class Mock
-          def list_policies(options = {})
-          end
+          def list_policies(options = {}); end
         end
       end
     end

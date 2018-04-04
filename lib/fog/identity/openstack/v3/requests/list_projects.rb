@@ -21,8 +21,7 @@ module Fog
         end
 
         class Mock
-          def list_projects(options = {})
-          end
+          def list_projects(options = {}); end
         end
       end
     end

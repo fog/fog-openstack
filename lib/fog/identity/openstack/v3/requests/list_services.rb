@@ -14,8 +14,7 @@ module Fog
         end
 
         class Mock
-          def list_services(options = {})
-          end
+          def list_services(options = {}); end
         end
       end
     end

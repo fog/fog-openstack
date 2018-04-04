@@ -15,8 +15,7 @@ module Fog
       end
 
       class Mock
-        def list_endpoints
-        end
+        def list_endpoints; end
       end
     end
   end

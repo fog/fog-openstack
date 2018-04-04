@@ -14,8 +14,7 @@ module Fog
         end
 
         class Mock
-          def auth_projects
-          end
+          def auth_projects; end
         end
       end
     end

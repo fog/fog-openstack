@@ -13,8 +13,7 @@ module Fog
         end
 
         class Mock
-          def get_endpoint(id)
-          end
+          def get_endpoint(id); end
         end
       end
     end

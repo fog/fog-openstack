@@ -13,8 +13,7 @@ module Fog
         end
 
         class Mock
-          def get_domain(id)
-          end
+          def get_domain(id); end
         end
       end
     end

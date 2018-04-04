@@ -13,8 +13,7 @@ module Fog
         end
 
         class Mock
-          def remove_user_from_tenant(tenant_id, user_id, role_id)
-          end
+          def remove_user_from_tenant(tenant_id, user_id, role_id); end
         end
       end
     end

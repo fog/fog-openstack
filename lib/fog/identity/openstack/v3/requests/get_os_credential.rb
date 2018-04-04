@@ -13,8 +13,7 @@ module Fog
         end
 
         class Mock
-          def get_os_credential(id)
-          end
+          def get_os_credential(id); end
         end
       end
     end

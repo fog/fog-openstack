@@ -22,8 +22,7 @@ module Fog
         end
 
         class Mock
-          def list_groups(options = {})
-          end
+          def list_groups(options = {}); end
         end
       end
     end

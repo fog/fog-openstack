@@ -14,8 +14,7 @@ module Fog
         end
 
         class Mock
-          def auth_domains
-          end
+          def auth_domains; end
         end
       end
     end

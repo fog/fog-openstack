@@ -13,8 +13,7 @@ module Fog
         end
 
         class Mock
-          def get_user(id)
-          end
+          def get_user(id); end
         end
       end
     end

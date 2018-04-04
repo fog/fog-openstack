@@ -12,8 +12,7 @@ module Fog
       end
 
       class Mock
-        def get_stack_template(stack)
-        end
+        def get_stack_template(stack); end
       end
     end
   end

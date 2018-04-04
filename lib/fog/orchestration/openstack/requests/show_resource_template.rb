@@ -12,8 +12,7 @@ module Fog
       end
 
       class Mock
-        def show_resource_template(name)
-        end
+        def show_resource_template(name); end
       end
     end
   end

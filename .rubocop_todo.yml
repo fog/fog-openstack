@@ -263,28 +263,6 @@ Style/EachWithObject:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty, nil, both
-Style/EmptyElse:
-  Exclude:
-    - 'lib/fog/openstack.rb'
-
-# Offense count: 3
-# Cop supports --auto-correct.
-Style/EmptyLiteral:
-  Exclude:
-    - 'lib/fog/openstack.rb'
-    - 'test/requests/compute/security_group_tests.rb'
-
-# Offense count: 36
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: compact, expanded
-Style/EmptyMethod:
-  Enabled: false
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Style/Encoding:
   Exclude:
     - 'fog-openstack.gemspec'
