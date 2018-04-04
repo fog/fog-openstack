@@ -90,47 +90,6 @@ Layout/LeadingCommentSpace:
     - 'examples/identity/basics_v3.rb'
     - 'lib/fog/key_manager/openstack.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: symmetrical, new_line, same_line
-Layout/MultilineHashBraceLayout:
-  Exclude:
-    - 'lib/fog/key_manager/openstack.rb'
-
-# Offense count: 24
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: symmetrical, new_line, same_line
-Layout/MultilineMethodCallBraceLayout:
-  Exclude:
-    - 'lib/fog/key_manager/openstack.rb'
-    - 'lib/fog/openstack.rb'
-    - 'spec/volume_spec.rb'
-    - 'test/authenticate_tests.rb'
-    - 'test/requests/compute/security_group_tests.rb'
-    - 'test/requests/compute/server_tests.rb'
-    - 'test/requests/identity/tenant_tests.rb'
-    - 'test/requests/storage/object_tests.rb'
-    - 'test/test_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, IndentationWidth.
-# SupportedStyles: aligned, indented, indented_relative_to_receiver
-Layout/MultilineMethodCallIndentation:
-  Exclude:
-    - 'test/authenticate_tests.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, IndentationWidth.
-# SupportedStyles: aligned, indented
-Layout/MultilineOperationIndentation:
-  Exclude:
-    - 'lib/fog/key_manager/openstack.rb'
-    - 'lib/fog/openstack.rb'
-
 # Offense count: 15
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
@@ -306,7 +265,7 @@ Metrics/MethodLength:
 # Offense count: 2
 # Configuration parameters: CountComments.
 Metrics/ModuleLength:
-  Max: 435
+  Max: 436
 
 # Offense count: 9
 # Configuration parameters: CountKeywordArgs.

@@ -173,13 +173,14 @@ module Fog
       unless service
         unless tenant_name
           response = Fog::Core::Connection.new(
-            "#{uri.scheme}://#{uri.host}:#{uri.port}/v2.0/tenants", false, connection_options).request({
-                                                                                                         :expects => [200, 204],
-                                                                                                         :headers => { 'Content-Type' => 'application/json',
-                                                                                                                       'Accept' => 'application/json',
-                                                                                                                       'X-Auth-Token' => body['access']['token']['id'] },
-                                                                                                         :method  => 'GET'
-                                                                                                       })
+            "#{uri.scheme}://#{uri.host}:#{uri.port}/v2.0/tenants", false, connection_options
+          ).request({
+                      :expects => [200, 204],
+                      :headers => { 'Content-Type' => 'application/json',
+                                    'Accept' => 'application/json',
+                                    'X-Auth-Token' => body['access']['token']['id'] },
+                      :method  => 'GET'
+                    })
 
           body = Fog::JSON.decode(response.body)
           if body['tenants'].empty?
@@ -317,7 +318,7 @@ module Fog
         missing = service_type.join ', '
 
         message = "Could not find service #{missing}#{(' in region ' + openstack_region) if openstack_region}." +
-            " Have #{available_services}#{(' in regions ' + available_regions) if openstack_region}"
+                  " Have #{available_services}#{(' in regions ' + available_regions) if openstack_region}"
 
         raise Fog::Errors::NotFound, message
       end

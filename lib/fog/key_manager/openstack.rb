@@ -122,8 +122,7 @@ module Fog
                                           :headers => { 'Content-Type' => 'application/json',
                                                         'Accept' => 'application/json',
                                                         'X-Auth-Token' => auth_token },
-                                          :method => 'GET'
-                                        })
+                                          :method => 'GET' })
 
           body = Fog::JSON.decode(response.body)
           version = nil
@@ -131,14 +130,15 @@ module Fog
           versions = body.fetch('versions', {}).fetch('values', [])
           versions.each do |v|
             if v.fetch('id', "").match(supported_versions) &&
-              ['current', 'supported', 'stable'].include?(v.fetch('status', '').downcase)
+               ['current', 'supported', 'stable'].include?(v.fetch('status', '').downcase)
               version = v['id']
             end
           end
 
           if !version || version.empty?
             raise Fog::OpenStack::Errors::ServiceUnavailable.new(
-              "OpenStack service only supports API versions #{supported_versions.inspect}")
+              "OpenStack service only supports API versions #{supported_versions.inspect}"
+            )
           end
 
           version

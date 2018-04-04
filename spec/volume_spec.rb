@@ -108,8 +108,7 @@ require_relative './shared_context'
           volume_id              = setup_test_object(:type              => :volume,
                                                      @name_param        => volume_name,
                                                      @description_param => volume_description,
-                                                     :size              => volume_size
-                                                    ).id
+                                                     :size              => volume_size).id
 
           @service.volumes.all(@name_param => volume_name).length.must_equal 1
 
@@ -208,8 +207,7 @@ require_relative './shared_context'
 
           volume = setup_test_object(:type       => :volume,
                                      @name_param => 'fog-testvolume-1',
-                                     :size       => volume_size_small
-                                    )
+                                     :size       => volume_size_small)
           volume.wait_for { ready? && size == volume_size_small }
 
           # extend volume
@@ -225,8 +223,7 @@ require_relative './shared_context'
           proc do
             volume.extend(volume_size_small)
           end.must_raise(Excon::Errors::BadRequest,
-                         /Invalid input received: New size for extend must be greater than current size./
-                        )
+                         /Invalid input received: New size for extend must be greater than current size./)
         ensure
           # delete volume
           cleanup_test_object(@service.volumes, volume.nil? ? nil : volume.id)
@@ -246,15 +243,13 @@ require_relative './shared_context'
           # create volume object
           volume        = setup_test_object(:type       => :volume,
                                             @name_param => 'fog-testvolume-1',
-                                            :size       => 1
-                                           )
+                                            :size       => 1)
           volume.wait_for { ready? }
 
           # create transfer object
           transfer = setup_test_object(:type      => :transfer,
                                        :name      => transfer_name,
-                                       :volume_id => volume.id
-                                      )
+                                       :volume_id => volume.id)
           # we need to save the auth_key NOW, it's only present in the response
           # from the create_transfer request
           auth_key    = transfer.auth_key
@@ -352,15 +347,13 @@ require_relative './shared_context'
             # create volume object
             volume = setup_test_object(:type       => :volume,
                                        @name_param => 'fog-testvolume-1',
-                                       :size       => 1
-                                      )
+                                       :size       => 1)
             volume.wait_for { ready? }
 
             # create transfer object
             transfer = setup_test_object(:type      => :transfer,
                                          :name      => 'fog-testtransfer-1',
-                                         :volume_id => volume.id
-                                        )
+                                         :volume_id => volume.id)
             # we need to save the auth_key NOW, it's only present in the response
             # from the create_transfer request
             auth_key      = transfer.auth_key
@@ -396,16 +389,14 @@ require_relative './shared_context'
           # create volume object
           volume = setup_test_object(:type       => :volume,
                                      @name_param => 'fog-testvolume-1',
-                                     :size       => 1
-                                    )
+                                     :size       => 1)
           volume.wait_for { ready? }
 
           # create snapshot object
           snapshot = setup_test_object(:type              => :snapshot,
                                        @name_param        => 'fog-testsnapshot-1',
                                        @description_param => 'Test snapshot',
-                                       :volume_id         => volume.id
-                                      )
+                                       :volume_id         => volume.id)
           snapshot_id = snapshot.id
 
           # wait for the snapshot to be available
@@ -456,8 +447,7 @@ require_relative './shared_context'
                                      @name_param => 'fog-testvolume-1',
                                      :size       => 1,
                                      :metadata   => { 'some_metadata' => 'this is meta',
-                                                      'more_metadata' => 'even more meta' }
-                                    )
+                                                      'more_metadata' => 'even more meta' })
           volume.wait_for { ready? }
 
           updated_volume = @service.volumes.get(volume.id)
@@ -509,16 +499,14 @@ require_relative './shared_context'
                                      @name_param => 'fog-testvolume-1',
                                      :size       => 1,
                                      :metadata   => { 'some_metadata' => 'this is meta',
-                                                      'more_metadata' => 'even more meta' }
-                                    )
+                                                      'more_metadata' => 'even more meta' })
           volume.wait_for { ready? }
 
           # create snapshot object
           snapshot = setup_test_object(:type              => :snapshot,
                                        @name_param        => 'fog-testsnapshot-1',
                                        @description_param => 'Test snapshot',
-                                       :volume_id         => volume.id
-                                      )
+                                       :volume_id         => volume.id)
           snapshot_id = snapshot.id
 
           # wait for the snapshot to be available

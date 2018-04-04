@@ -86,7 +86,7 @@ describe "OpenStack authentication" do
       :tenant                   => @body['access']['token']['tenant'],
       :identity_public_endpoint => nil,
       :server_management_url    => @body['access']['serviceCatalog'].
-                                     first['endpoints'].first['publicURL'],
+               first['endpoints'].first['publicURL'],
       :token                    => @token,
       :expires                  => @expires.iso8601,
       :current_user_id          => @body['access']['user']['id'],
@@ -186,7 +186,8 @@ describe "OpenStack authentication" do
         :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
         :openstack_tenant       => 'admin',
         :openstack_service_type => %w[compute],
-        :openstack_service_name => 'nova2')[:server_management_url]
+        :openstack_service_name => 'nova2'
+      )[:server_management_url]
     end
   end
 
@@ -209,7 +210,8 @@ describe "OpenStack authentication" do
         :openstack_auth_uri     => URI('https://swift.myhost.com/auth/v1.0'),
         :openstack_username     => 'tenant:dev',
         :openstack_api_key      => 'secret_key',
-        :openstack_service_type => %w[storage])[:server_management_url]
+        :openstack_service_type => %w[storage]
+      )[:server_management_url]
     end
   end
 

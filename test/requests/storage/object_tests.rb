@@ -181,7 +181,8 @@ describe "Fog::Storage[:openstack] | object requests" do
       it "#delete_multiple_objects" do
         skip if Fog.mocking?
         resp = Fog::Storage[:openstack].delete_multiple_objects(
-          'fogobjecttests', %w[fog_object fog_object2])
+          'fogobjecttests', %w[fog_object fog_object2]
+        )
         resp.body.must_equal @expected
       end
 
@@ -261,14 +262,16 @@ describe "Fog::Storage[:openstack] | object requests" do
       it "reports missing objects" do
         skip if Fog.mocking?
         resp = Fog::Storage[:openstack].delete_multiple_objects(
-          'fogobjecttests', %w[fog_non_object fog_non_object2])
+          'fogobjecttests', %w[fog_non_object fog_non_object2]
+        )
         resp.body.must_equal @expected
       end
 
       it "reports missing container" do
         skip if Fog.mocking?
         resp = Fog::Storage[:openstack].delete_multiple_objects(
-          'fognoncontainer', %w[fog_non_object fog_non_object2])
+          'fognoncontainer', %w[fog_non_object fog_non_object2]
+        )
         resp.body.must_equal @expected
       end
 

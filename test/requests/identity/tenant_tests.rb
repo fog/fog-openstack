@@ -54,7 +54,8 @@ describe "Fog::Identity[:openstack] | tenant requests" do
     it "#update_tenant update name" do
       tenant_name_update = Fog::Mock.random_hex(64)
       tenant = @identity.update_tenant(
-        @tenant['tenant']['id'], 'name' => tenant_name_update).body
+        @tenant['tenant']['id'], 'name' => tenant_name_update
+      ).body
       tenant['tenant']['name'].must_equal tenant_name_update
     end
 

@@ -120,8 +120,7 @@ describe "Fog::Compute[:openstack] | server requests" do
         data = compute.create_server("test",
                                      nil,
                                      @flavor_id,
-                                     "block_device_mapping_v2" => volume_data
-                                    ).body['server']
+                                     "block_device_mapping_v2" => volume_data).body['server']
         @server_id = data['id']
       end
 

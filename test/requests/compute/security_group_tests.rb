@@ -24,16 +24,14 @@ describe "Shindo.tests('@compute | security group requests" do
 
     @compute = Fog::Compute[:openstack]
     @security_group = @compute.create_security_group('from_shindo_test',
-                                                     'this is from the shindo test'
-    ).body
+                                                     'this is from the shindo test').body
     @security_group_id = @security_group['security_group']['id']
 
     @security_group_rule = @compute.create_security_group_rule(@security_group_id,
                                                                "tcp",
                                                                2222,
                                                                3333,
-                                                               "20.20.20.20/24"
-                                                              ).body
+                                                               "20.20.20.20/24").body
     @security_group_rule_id = @security_group_rule['security_group_rule']['id']
   end
 

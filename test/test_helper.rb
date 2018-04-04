@@ -58,7 +58,8 @@ def lorem_file
       "Et est inani dolore, dicta prodesset qui ne. Inermis veritus fierent mei" \
       "no, sit in amet reque philosophia. Erant docendi sit ne. His id" \
       "petentium periculis. Veri efficiendi no has, id vix quas eripuit" \
-      "temporibus.")
+      "temporibus."
+    )
     f.close
   end
   File.open(File.dirname(__FILE__) + '/lorem.txt', 'r')
