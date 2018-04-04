@@ -145,7 +145,7 @@ module Fog
                                         'X-Auth-User' => @openstack_username
                                       },
                                       :method   => 'GET',
-                                      :path     =>  (uri.path and not uri.path.empty?) ? uri.path : 'v1.0'
+                                      :path     =>  (uri.path && (not uri.path.empty?)) ? uri.path : 'v1.0'
                                     })
 
       return {
@@ -362,18 +362,18 @@ module Fog
     def self.get_service(body, service_type = [], service_name = nil)
       if not body['access'].nil?
         body['access']['serviceCatalog'].find do |s|
-          if service_name.nil? or service_name.empty?
+          if service_name.nil? || service_name.empty?
             service_type.include?(s['type'])
           else
-            service_type.include?(s['type']) and s['name'] == service_name
+            service_type.include?(s['type']) && (s['name'] == service_name)
           end
         end
       elsif not body['token']['catalog'].nil?
         body['token']['catalog'].find do |s|
-          if service_name.nil? or service_name.empty?
+          if service_name.nil? || service_name.empty?
             service_type.include?(s['type'])
           else
-            service_type.include?(s['type']) and s['name'] == service_name
+            service_type.include?(s['type']) && (s['name'] == service_name)
           end
         end
 
@@ -408,7 +408,7 @@ module Fog
         :headers => { 'Content-Type' => 'application/json' },
         :body    => Fog::JSON.encode(request_body),
         :method  => 'POST',
-        :path    => (uri.path and not uri.path.empty?) ? uri.path : 'v2.0'
+        :path    => (uri.path && (not uri.path.empty?)) ? uri.path : 'v2.0'
       }
       request[:omit_default_port] = omit_default_port unless omit_default_port.nil?
 
@@ -486,7 +486,7 @@ module Fog
       end
       request_body[:auth][:scope] = scope unless scope.empty?
 
-      path = (uri.path and not uri.path.empty?) ? uri.path : 'v3'
+      path = (uri.path && (not uri.path.empty?)) ? uri.path : 'v3'
 
       response, expires = Fog::OpenStack.token_cache[{ :body => request_body, :path => path }] if cache_ttl > 0
 
@@ -514,10 +514,10 @@ module Fog
     def self.get_service_v3(hash, service_type = [], service_name = nil, region = nil, options = {})
       # Find all services matching any of the types in service_type, filtered by service_name if it's non-nil
       services = hash['token']['catalog'].find_all do |s|
-        if service_name.nil? or service_name.empty?
+        if service_name.nil? || service_name.empty?
           service_type.include?(s['type'])
         else
-          service_type.include?(s['type']) and s['name'] == service_name
+          service_type.include?(s['type']) && (s['name'] == service_name)
         end
       end if hash['token']['catalog']
 

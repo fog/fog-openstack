@@ -212,15 +212,6 @@ Security/YAMLLoad:
   Exclude:
     - 'lib/fog/introspection/openstack.rb'
 
-# Offense count: 11
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, conditionals
-Style/AndOr:
-  Exclude:
-    - 'lib/fog/openstack.rb'
-    - 'lib/fog/openstack/errors.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/BlockComments:
