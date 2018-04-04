@@ -476,9 +476,9 @@ module Fog
           request_body[:auth][:identity][:password][:user][:id] = userid
         else
           if user_domain || user_domain_id
-            request_body[:auth][:identity][:password][:user].merge! :domain => user_domain_id.nil? ? { :name => user_domain } : { :id => user_domain_id }
+            request_body[:auth][:identity][:password][:user][:domain] = user_domain_id.nil? ? { :name => user_domain } : { :id => user_domain_id }
           elsif domain_name || domain_id
-            request_body[:auth][:identity][:password][:user].merge! :domain => domain_id.nil? ? { :name => domain_name } : { :id => domain_id }
+            request_body[:auth][:identity][:password][:user][:domain] = domain_id.nil? ? { :name => domain_name } : { :id => domain_id }
           end
           request_body[:auth][:identity][:password][:user][:name] = username
         end

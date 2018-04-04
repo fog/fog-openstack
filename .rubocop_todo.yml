@@ -196,13 +196,6 @@ Performance/Caller:
     - 'lib/fog/orchestration/openstack/requests/delete_stack.rb'
     - 'lib/fog/orchestration/openstack/requests/update_stack.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: MaxKeyValuePairs.
-Performance/RedundantMerge:
-  Exclude:
-    - 'lib/fog/openstack.rb'
-
 # Offense count: 1
 Security/Eval:
   Exclude:
