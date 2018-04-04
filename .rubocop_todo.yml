@@ -61,12 +61,6 @@ Lint/ShadowingOuterLocalVariable:
 Lint/UnderscorePrefixedVariableName:
   Enabled: false
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Lint/UnneededCopDisableDirective:
-  Exclude:
-    - 'lib/fog/shared_file_system/openstack.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: IgnoreEmptyBlocks, AllowUnusedKeywordArguments.

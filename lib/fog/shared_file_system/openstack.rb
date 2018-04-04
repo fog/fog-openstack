@@ -81,7 +81,7 @@ module Fog
       # availability zones
       request :list_availability_zones
 
-      # rubocop:disable LineLength, Metrics/MethodLength, Metrics/ClassLength, Metrics/AbcSize
+      # rubocop:disable Metrics/MethodLength
       class Mock
         def self.data
           @data ||= Hash.new do |hash, key|
