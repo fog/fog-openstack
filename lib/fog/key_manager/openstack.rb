@@ -41,7 +41,7 @@ module Fog
       request :list_containers
       request :delete_container
 
-      #ACL
+      # ACL
       request :get_secret_acl
       request :update_secret_acl
       request :replace_secret_acl

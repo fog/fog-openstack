@@ -342,7 +342,7 @@ module Fog
             :openstack_management_url => @openstack_management_url }
         end
       end
-      # rubocop:enable LineLength, Metrics/MethodLength, Metrics/ClassLength, Metrics/AbcSize
+      # rubocop:enable Metrics/MethodLength
 
       class Real
         include Fog::OpenStack::Core

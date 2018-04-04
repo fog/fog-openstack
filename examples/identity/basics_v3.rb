@@ -21,7 +21,7 @@ keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
 # List keystone projects
 #
 keystone.projects.each do |project|
-  #<Fog::Identity::OpenStack::V3::Project
+  # <Fog::Identity::OpenStack::V3::Project
   #  id="17775c",
   #  domain_id="default",
   #  description="admin tenant",
@@ -31,7 +31,7 @@ keystone.projects.each do |project|
   #  parent_id=nil,
   #  subtree=nil,
   #  parents=nil
-  #>
+  # >
   # ...
   pp project
 end
@@ -40,7 +40,7 @@ end
 # List users
 #
 keystone.users.each do |user|
-  #<Fog::Identity::OpenStack::V3::User
+  # <Fog::Identity::OpenStack::V3::User
   #  id="02124b...",
   #  default_project_id=2f534e...,
   #  description=nil,
@@ -50,7 +50,7 @@ keystone.users.each do |user|
   #  name="quantum",
   #  links={"self"=>"http://example.net:35357/..."},
   #  password=nil
-  #>
+  # >
   # ...
   pp user
 end
