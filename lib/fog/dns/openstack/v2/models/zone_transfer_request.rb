@@ -38,7 +38,7 @@ module Fog
             self
           end
 
-          def destroy(options = {})
+          def destroy(_options = {})
             requires :id
             service.delete_zone_transfer_request(id)
             true

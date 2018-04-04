@@ -22,7 +22,7 @@ module Fog
         end
 
         class Mock
-          def create_zone_transfer_accept(key, zone_transfer_request_id)
+          def create_zone_transfer_accept(_key, _zone_transfer_request_id)
             response = Excon::Response.new
             response.status = 200
             response.body = data[:zone_transfer_accepts]["transfer_accepts"].first

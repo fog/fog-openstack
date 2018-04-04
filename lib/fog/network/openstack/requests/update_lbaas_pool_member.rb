@@ -20,7 +20,7 @@ module Fog
       end
 
       class Mock
-        def update_lbaas_pool_member(pool_id, member_id, options = {})
+        def update_lbaas_pool_member(_pool_id, member_id, options = {})
           response = Excon::Response.new
           if member = list_lbaas_pool_members.body['members'].find { |_| _['id'] == member_id }
             member['pool_id']        = options[:pool_id]

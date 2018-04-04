@@ -12,7 +12,7 @@ module Fog
       end
 
       class Mock
-        def list_os_interfaces(server_id)
+        def list_os_interfaces(_server_id)
           Excon::Response.new(
             :body   => { 'interfaceAttachments' => data[:os_interfaces] },
             :status => 200

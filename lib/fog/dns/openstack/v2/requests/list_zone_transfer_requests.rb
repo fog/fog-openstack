@@ -14,7 +14,7 @@ module Fog
         end
 
         class Mock
-          def list_zone_transfer_requests(options = {})
+          def list_zone_transfer_requests(_options = {})
             response = Excon::Response.new
             response.status = 200
             response.body = data[:zone_transfer_requests]["transfer_requests"]

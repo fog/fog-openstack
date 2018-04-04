@@ -15,7 +15,7 @@ module Fog
       end
 
       class Mock
-        def list_share_export_locations(share_id)
+        def list_share_export_locations(_share_id)
           response = Excon::Response.new
           response.status = 200
           response.body = { 'export_locations' => data[:export_locations] }

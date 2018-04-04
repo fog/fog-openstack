@@ -40,7 +40,7 @@ module Fog
       class Mock
         require 'digest'
 
-        def put_object(container, object, data, options = {}, &block)
+        def put_object(_container, _object, data, _options = {})
           dgst = Digest::MD5.new
           if block_given?
             Kernel.loop do

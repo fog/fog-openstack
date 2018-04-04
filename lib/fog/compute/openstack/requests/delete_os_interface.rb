@@ -15,7 +15,7 @@ module Fog
       end
 
       class Mock
-        def delete_os_interface(server_id, port_id)
+        def delete_os_interface(_server_id, _port_id)
           true
         end
       end

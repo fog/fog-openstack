@@ -12,7 +12,7 @@ module Fog
       end
 
       class Mock
-        def get_lbaas_l7rule(l7policy_id, l7rule_id)
+        def get_lbaas_l7rule(_l7policy_id, l7rule_id)
           response = Excon::Response.new
           if data = self.data[:lbaas_l7rules][l7rule_id]
             response.status = 200

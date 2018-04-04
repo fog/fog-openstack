@@ -20,7 +20,7 @@ module Fog
       # Abstract base class methods, please keep the consistent naming in all subclasses of the Collection class
 
       # Returns detailed list of records
-      def all(options = {})
+      def all(_options = {})
         raise Fog::OpenStack::Errors::InterfaceNotImplemented.new('Method :all is not implemented')
       end
 
@@ -31,7 +31,7 @@ module Fog
       end
 
       # Gets record given record's UUID
-      def get(uuid)
+      def get(_uuid)
         raise Fog::OpenStack::Errors::InterfaceNotImplemented.new('Method :get is not implemented')
       end
 
@@ -40,7 +40,7 @@ module Fog
       end
 
       # Destroys record given record's UUID
-      def destroy(uuid)
+      def destroy(_uuid)
         raise Fog::OpenStack::Errors::InterfaceNotImplemented.new('Method :destroy is not implemented')
       end
     end

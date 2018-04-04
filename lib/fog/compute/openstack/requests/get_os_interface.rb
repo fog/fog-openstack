@@ -12,7 +12,7 @@ module Fog
       end
 
       class Mock
-        def get_os_interface(server_id, port_id)
+        def get_os_interface(_server_id, _port_id)
           Excon::Response.new(
             :body   => { 'interfaceAttachment' => data[:os_interfaces].first },
             :status => 200

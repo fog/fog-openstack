@@ -14,7 +14,7 @@ module Fog
         end
 
         class Mock
-          def delete_zone_transfer_request(zone_transfer_request_id)
+          def delete_zone_transfer_request(_zone_transfer_request_id)
             response = Excon::Response.new
             response.status = 204
             response

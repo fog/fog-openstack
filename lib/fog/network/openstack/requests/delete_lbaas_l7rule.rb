@@ -12,7 +12,7 @@ module Fog
       end
 
       class Mock
-        def delete_lbaas_l7rule(l7policy_id, l7rule_id)
+        def delete_lbaas_l7rule(_l7policy_id, l7rule_id)
           response = Excon::Response.new
           if list_lbaas_l7rules.body['l7rules'].map { |r| r['id'] }.include? l7rule_id
             data[:lbaas_l7rules].delete(l7rule_id)

@@ -13,7 +13,7 @@ module Fog
       end
 
       class Mock
-        def list_lbaas_l7policies(filters = {})
+        def list_lbaas_l7policies(_filters = {})
           Excon::Response.new(
             :body   => { 'l7policies' => data[:lbaas_l7policies].values },
             :status => 200

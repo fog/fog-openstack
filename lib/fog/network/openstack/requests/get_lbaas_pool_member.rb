@@ -12,7 +12,7 @@ module Fog
       end
 
       class Mock
-        def get_lbaas_pool_member(pool_id, member_id)
+        def get_lbaas_pool_member(_pool_id, member_id)
           response = Excon::Response.new
           if data = self.data[:lbaas_pool_members][member_id]
             response.status = 200

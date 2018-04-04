@@ -20,7 +20,7 @@ module Fog
       end
 
       class Mock
-        def update_lbaas_l7rule(l7policy_id, l7rule_id, options = {})
+        def update_lbaas_l7rule(_l7policy_id, l7rule_id, options = {})
           response = Excon::Response.new
           if l7rule = list_l7rules.body['l7rules'].find { |_| _['id'] == l7rule_id }
             l7rule['type']           = options[:type]

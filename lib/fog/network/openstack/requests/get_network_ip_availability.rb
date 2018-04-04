@@ -12,7 +12,7 @@ module Fog
       end
 
       class Mock
-        def get_network_ip_availability(network_id)
+        def get_network_ip_availability(_network_id)
           response = Excon::Response.new
           if data = self.data[:network_ip_availabilities].first
             response.status = 200
