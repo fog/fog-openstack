@@ -9,103 +9,103 @@ require 'fog/planning/openstack'
 
 module Fog
   module Baremetal
-    autoload :OpenStack, File.expand_path('../baremetal/openstack', __FILE__)
+    autoload :OpenStack, 'fog/baremetal/openstack'
   end
 
   module Compute
-    autoload :OpenStack, File.expand_path('../compute/openstack', __FILE__)
+    autoload :OpenStack, 'fog/compute/openstack'
   end
 
   module ContainerInfra
-    autoload :OpenStack, File.expand_path('../container_infra/openstack', __FILE__)
+    autoload :OpenStack, 'fog/container_infra/openstack'
   end
 
   module DNS
-    autoload :OpenStack, File.expand_path('../dns/openstack', __FILE__)
+    autoload :OpenStack, 'fog/dns/openstack'
 
     class OpenStack
-      autoload :V1, File.expand_path('../dns/openstack/v1', __FILE__)
-      autoload :V2, File.expand_path('../dns/openstack/v2', __FILE__)
+      autoload :V1, 'fog/dns/openstack/v1'
+      autoload :V2, 'fog/dns/openstack/v2'
     end
   end
 
   module Event
-    autoload :OpenStack, File.expand_path('../event/openstack', __FILE__)
+    autoload :OpenStack, 'fog/event/openstack'
   end
 
   module Identity
-    autoload :OpenStack, File.expand_path('../identity/openstack', __FILE__)
+    autoload :OpenStack, 'fog/identity/openstack'
 
     class OpenStack
-      autoload :V2, File.expand_path('../identity/openstack/v2', __FILE__)
-      autoload :V3, File.expand_path('../identity/openstack/v3', __FILE__)
+      autoload :V2, 'fog/identity/openstack/v2'
+      autoload :V3, 'fog/identity/openstack/v3'
     end
   end
 
   module Image
-    autoload :OpenStack, File.expand_path('../image/openstack', __FILE__)
+    autoload :OpenStack, 'fog/image/openstack'
 
     class OpenStack
-      autoload :V1, File.expand_path('../image/openstack/v1', __FILE__)
-      autoload :V2, File.expand_path('../image/openstack/v2', __FILE__)
+      autoload :V1, 'fog/image/openstack/v1'
+      autoload :V2, 'fog/image/openstack/v2'
     end
   end
 
   module Introspection
-    autoload :OpenStack, File.expand_path('../introspection/openstack', __FILE__)
+    autoload :OpenStack, 'fog/introspection/openstack'
   end
 
   module KeyManager
-    autoload :OpenStack, File.expand_path('../key_manager/openstack', __FILE__)
+    autoload :OpenStack, 'fog/key_manager/openstack'
   end
 
   module Metering
-    autoload :OpenStack, File.expand_path('../metering/openstack', __FILE__)
+    autoload :OpenStack, 'fog/metering/openstack'
   end
 
   module Metric
-    autoload :OpenStack, File.expand_path('../metric/openstack', __FILE__)
+    autoload :OpenStack, 'fog/metric/openstack'
   end
 
   module Monitoring
-    autoload :OpenStack, File.expand_path('../monitoring/openstack', __FILE__)
+    autoload :OpenStack, 'fog/monitoring/openstack'
   end
 
   module Network
-    autoload :OpenStack, File.expand_path('../network/openstack', __FILE__)
+    autoload :OpenStack, 'fog/network/openstack'
   end
 
   module NFV
-    autoload :OpenStack, File.expand_path('../nfv/openstack', __FILE__)
+    autoload :OpenStack, 'fog/nfv/openstack'
   end
 
   module Orchestration
-    autoload :OpenStack, File.expand_path('../orchestration/openstack', __FILE__)
-    autoload :Util, File.expand_path('../orchestration/util/recursive_hot_file_loader', __FILE__)
+    autoload :OpenStack, 'fog/orchestration/openstack'
+    autoload :Util, 'fog/orchestration/util/recursive_hot_file_loader'
   end
 
   module SharedFileSystem
-    autoload :OpenStack, File.expand_path('../shared_file_system/openstack', __FILE__)
+    autoload :OpenStack, 'fog/shared_file_system/openstack'
   end
 
   module Storage
-    autoload :OpenStack, File.expand_path('../storage/openstack', __FILE__)
+    autoload :OpenStack, 'fog/storage/openstack'
   end
 
   module Volume
-    autoload :OpenStack, File.expand_path('../volume/openstack', __FILE__)
+    autoload :OpenStack, 'fog/volume/openstack'
 
     class OpenStack
-      autoload :V1, File.expand_path('../volume/openstack/v1', __FILE__)
-      autoload :V2, File.expand_path('../volume/openstack/v2', __FILE__)
+      autoload :V1, 'fog/volume/openstack/v1'
+      autoload :V2, 'fog/volume/openstack/v2'
     end
   end
 
   module Workflow
-    autoload :OpenStack, File.expand_path('../workflow/openstack', __FILE__)
+    autoload :OpenStack, 'fog/workflow/openstack'
 
     class OpenStack
-      autoload :V2, File.expand_path('../workflow/openstack/v2', __FILE__)
+      autoload :V2, 'fog/workflow/openstack/v2'
     end
   end
 
