@@ -100,7 +100,9 @@ StringLiterals:
   Enabled: false
 StringLiteralsInInterpolation:
   Enabled: false
-TrailingCommaInLiteral:
+TrailingCommaInArrayLiteral:
+  Enabled: false
+TrailingCommaInHashLiteral:
   Enabled: false
 WhileUntilModifier:
   Enabled: false
