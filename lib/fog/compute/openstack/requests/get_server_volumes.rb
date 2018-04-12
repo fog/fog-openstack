@@ -6,7 +6,7 @@ module Fog
           request(
             :expects => 200,
             :method  => 'GET',
-            :path    => "/servers/#{server_id}/os-volume_attachments"
+            :path    => "servers/#{server_id}/os-volume_attachments"
           )
         end
       end
