@@ -677,7 +677,7 @@ describe Fog::Identity::OpenStack::V3 do
         booboo_parents[booboo_parent_id].length.must_equal 1
         booboo_grandparent_id = booboo_parents[booboo_parent_id].keys.first
         booboo_grandparent_id.must_equal foobar_id
-        booboo_parents[booboo_parent_id][booboo_grandparent_id].must_equal nil
+        assert_nil booboo_parents[booboo_parent_id][booboo_grandparent_id]
 
         # Get the parents of booboo, as a list of objects
         booboo_parents = @service.projects.find_by_id(booboo_id, :parents_as_list).parents

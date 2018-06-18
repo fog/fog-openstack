@@ -17,6 +17,23 @@ module Fog
         attribute :provider_segmentation_id,  :aliases => 'provider:segmentation_id'
         attribute :router_external,           :aliases => 'router:external'
 
+        # Overload super class since behaviour as changed since fog-core 1.40.0
+        # https://github.com/fog/fog-core/issues/236
+        def reload
+          requires :identity
+
+          object = collection.get(identity)
+
+          return unless object
+
+          merge_attributes(object.attributes)
+          merge_attributes(object.all_associations)
+
+          self
+        rescue Excon::Errors::SocketError
+          nil
+        end
+
         def subnets
           service.subnets.select { |s| s.network_id == id }
         end

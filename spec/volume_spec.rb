@@ -294,7 +294,7 @@ require_relative './shared_context'
           )
 
           # check that recipient cannot see the transfer object
-          other_service.transfers.get(transfer.id).must_equal nil
+          assert_nil other_service.transfers.get(transfer.id)
           other_service.transfers.all(:name => transfer_name).length.must_equal 0
 
           # # check that recipient cannot see the volume before transfer
@@ -334,7 +334,7 @@ require_relative './shared_context'
 
           # check that the transfer object is gone on both sides
           [@service, other_service].each do |service|
-            service.transfers.get(transfer.id).must_equal nil
+            assert_nil service.transfers.get(transfer.id)
             service.transfers.all(:name => transfer_name).length.must_equal 0
           end
         ensure

@@ -72,9 +72,9 @@ describe Fog::Monitoring::OpenStack do
 
       # failure cases
       proc { @service.metrics.create(:name => "this won't be created due to insufficient args") }.
-        must_raise Fog::Monitoring::OpenStack::ArgumentError
+        must_raise ArgumentError
       proc { @service.metrics.create(:name => "this wont't be created due to invalid timestamp", :timestamp => 1234) }.
-        must_raise Fog::Monitoring::OpenStack::ArgumentError
+        must_raise ArgumentError
     end
   end
 
@@ -143,7 +143,7 @@ describe Fog::Monitoring::OpenStack do
 
         # failure cases
         proc { @service.notification_methods.create(:name => "this won't be created due to insufficient args") }.
-          must_raise Fog::Monitoring::OpenStack::ArgumentError
+          must_raise ArgumentError
         proc { @service.notification_methods.find_by_id('bogus_id') }.must_raise Fog::Monitoring::OpenStack::NotFound
 
       ensure
@@ -220,7 +220,7 @@ describe Fog::Monitoring::OpenStack do
 
         # failure cases
         proc { @service.alarm_definitions.create(:name => "this won't be created due to insufficient args") }.
-          must_raise Fog::Monitoring::OpenStack::ArgumentError
+          must_raise ArgumentError
 
       ensure
         alarm_definition.destroy if alarm_definition
