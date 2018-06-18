@@ -257,7 +257,7 @@ To upload a file into a directory:
 file = directory.files.create :key => 'space.jpg', :body => File.open "space.jpg"
 ```
 
-**Note**: For files larger than 5 GB please refer to the [Upload Large Files](#upload_large_files) section.
+**Note**: For files larger than 5 GB please refer to the [Upload Large Files](#upload-large-files) section.
 
 ### Additional Parameters
 
