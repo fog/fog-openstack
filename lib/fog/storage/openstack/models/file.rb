@@ -7,6 +7,7 @@ module Fog
         identity  :key,             :aliases => 'name'
 
         attribute :access_control_allow_origin, :aliases => ['Access-Control-Allow-Origin']
+        attribute :cache_control,   :aliases => ['Cache-Control']
         attribute :content_length,  :aliases => ['bytes', 'Content-Length'], :type => :integer
         attribute :content_type,    :aliases => ['content_type', 'Content-Type']
         attribute :content_disposition, :aliases => ['content_disposition', 'Content-Disposition']
@@ -108,6 +109,7 @@ module Fog
 
         def save(options = {})
           requires :directory, :key
+          options['Cache-Control'] = cache_control if cache_control
           options['Content-Type'] = content_type if content_type
           options['Content-Disposition'] = content_disposition if content_disposition
           options['Access-Control-Allow-Origin'] = access_control_allow_origin if access_control_allow_origin

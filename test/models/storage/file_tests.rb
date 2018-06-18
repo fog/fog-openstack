@@ -74,6 +74,25 @@ unless Fog.mocking?
           end
         end
 
+        describe "#cache_control" do
+          before do
+            @instance = @directory.files.create(
+              :key           => 'meta-test',
+              :body          => lorem_file,
+              :cache_control => 'public, max-age=31536000'
+            )
+          end
+
+          after do
+            clear_metadata
+            @instance.save
+          end
+
+          it "sets Cache-Control on create" do
+            object_attributes(@instance)["Cache-Control"].must_equal "public, max-age=31536000"
+          end
+        end
+
         describe "#content_disposition" do
           before do
             @instance = @directory.files.create(
