@@ -1,4 +1,4 @@
-# Fog::Openstack
+# Fog::OpenStack
 
 [![Gem Version](https://badge.fury.io/rb/fog-openstack.svg)](http://badge.fury.io/rb/fog-openstack) [![Build Status](https://travis-ci.org/fog/fog-openstack.svg?branch=master)](https://travis-ci.org/fog/fog-openstack) [![Dependency Status](https://gemnasium.com/fog/fog-openstack.svg)](https://gemnasium.com/fog/fog-openstack) [![Coverage Status](https://coveralls.io/repos/github/fog/fog-openstack/badge.svg?branch=master)](https://coveralls.io/github/fog/fog-openstack?branch=master) [![Code Climate](https://codeclimate.com/github/fog/fog-openstack.svg)](https://codeclimate.com/github/fog/fog-openstack) [![Join the chat at https://gitter.im/fog/fog-openstack](https://badges.gitter.im/fog/fog-openstack.svg)](https://gitter.im/fog/fog-openstack?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -95,7 +95,7 @@ p compute.images
 #                   <Fog::Compute::OpenStack::Image
 #         id="57a67f8a-7bae-4578-b684-b9b4dcd48d7f",
 #         ...
-#       >    
+#       >
 #     ]
 #   >
 ```
@@ -401,7 +401,7 @@ identity.domains
 #         description="",
 #         enabled=true,
 #         name="Default",
-#       >    
+#       >
 #     ]
 #   >
 ```

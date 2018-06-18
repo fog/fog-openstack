@@ -1,7 +1,7 @@
 require 'fog/openstack/models/model'
 
 module Fog
-  module Openstack
+  module OpenStack
     class Planning
       class Role < Fog::OpenStack::Model
         identity :uuid

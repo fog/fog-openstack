@@ -2,10 +2,10 @@ require 'fog/openstack/models/collection'
 require 'fog/planning/openstack/models/plan'
 
 module Fog
-  module Openstack
+  module OpenStack
     class Planning
       class Plans < Fog::OpenStack::Collection
-        model Fog::Openstack::Planning::Plan
+        model Fog::OpenStack::Planning::Plan
 
         def all(options = {})
           load_response(service.list_plans(options))

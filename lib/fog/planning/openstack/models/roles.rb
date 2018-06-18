@@ -2,10 +2,10 @@ require 'fog/openstack/models/collection'
 require 'fog/planning/openstack/models/role'
 
 module Fog
-  module Openstack
+  module OpenStack
     class Planning
       class Roles < Fog::OpenStack::Collection
-        model Fog::Openstack::Planning::Role
+        model Fog::OpenStack::Planning::Role
 
         def all(options = {})
           load_response(service.list_roles(options))
