@@ -23,7 +23,7 @@ module Fog
           response.body = {}
           response
         end
-      end # mock
+      end
     end
   end
 end

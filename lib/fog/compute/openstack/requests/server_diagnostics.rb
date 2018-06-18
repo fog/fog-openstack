@@ -13,13 +13,13 @@ module Fog
             :method => 'GET',
             :path   => "servers/#{server_id}/diagnostics"
           )
-        end # def server_diagnostics
-      end # class Real
+        end
+      end
 
       class Mock
         def server_diagnostics(server_id)
-        end # def server_diagnostics
-      end # class Real
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+        end
+      end
+    end
+  end
+end

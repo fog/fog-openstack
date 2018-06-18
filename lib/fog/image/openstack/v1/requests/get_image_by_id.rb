@@ -10,7 +10,7 @@ module Fog
               :path    => "images/#{image_id}"
             )
           end
-        end # class Real
+        end
 
         class Mock
           def get_image_by_id(image_id)
@@ -36,9 +36,9 @@ module Fog
             }
             response.body = {}
             response
-          end # def list_tenants
-        end # class Mock
-      end # class OpenStack
+          end
+        end
+      end
     end
-  end # module Identity
-end # module Fog
+  end
+end

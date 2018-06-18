@@ -10,8 +10,8 @@ module Fog
               :path    => "tenants/#{id}",
               :body    => Fog::JSON.encode('tenant' => attributes)
             )
-          end # def create_tenant
-        end # class Real
+          end
+        end
 
         class Mock
           def update_tenant(_id, attributes)
@@ -22,9 +22,9 @@ module Fog
               'tenant' => attributes
             }
             response
-          end # def create_tenant
-        end # class Mock
-      end # class V2
-    end # class OpenStack
-  end # module Identity
-end # module Fog
+          end
+        end
+      end
+    end
+  end
+end

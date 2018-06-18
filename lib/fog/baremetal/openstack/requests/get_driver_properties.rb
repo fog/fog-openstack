@@ -11,7 +11,7 @@ module Fog
             :path    => "drivers/properties"
           )
         end
-      end # class Real
+      end
 
       class Mock
         def get_driver_properties(_driver_name)
@@ -33,8 +33,8 @@ module Fog
             "ipmi_bridging"        => "bridging_type."
           }
           response
-        end # def get_driver_properties
-      end # class Mock
-    end # class OpenStack
-  end # module Baremetal
-end # module Fog
+        end
+      end
+    end
+  end
+end

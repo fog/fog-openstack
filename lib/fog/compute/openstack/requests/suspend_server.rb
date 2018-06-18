@@ -11,14 +11,14 @@ module Fog
         def suspend_server(server_id)
           body = {'suspend' => nil}
           server_action(server_id, body).status == 202
-        end # def suspend_server
-      end # class Real
+        end
+      end
 
       class Mock
         def suspend_server(_server_id)
           true
-        end # def suspend_server
-      end # class Mock
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+        end
+      end
+    end
+  end
+end

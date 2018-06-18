@@ -9,15 +9,15 @@ module Fog
             :path    => "plans/#{plan_uuid}"
           )
         end
-      end # class Real
+      end
 
       class Mock
         def delete_plan(_plan_uuid)
           response = Excon::Response.new
           response.status = 204
           response
-        end # def delete_plans
-      end # class Mock
-    end # class Planning
-  end # module Openstack
-end # module Fog
+        end
+      end
+    end
+  end
+end

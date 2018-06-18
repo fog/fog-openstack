@@ -25,8 +25,8 @@ module Fog
             tenant = find_by_id(id)
             tenant.destroy
           end
-        end # class Tenants
-      end # class V2
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+        end
+      end
+    end
+  end
+end

@@ -9,7 +9,7 @@ module Fog
             :path    => "plans/#{plan_uuid}/templates"
           )
         end
-      end # class Real
+      end
 
       class Mock
         def get_plan_templates(_plan_uuid)
@@ -21,8 +21,8 @@ module Fog
             "provider-compute-1.yaml" => "... content of template file ..."
           }
           response
-        end # def get_plan_templates
-      end # class Mock
-    end # class Planning
-  end # module Openstack
-end # module Fog
+        end
+      end
+    end
+  end
+end

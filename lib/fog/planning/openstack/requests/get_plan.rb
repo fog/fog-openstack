@@ -9,7 +9,7 @@ module Fog
             :path    => "plans/#{plan_uuid}"
           )
         end
-      end # class Real
+      end
 
       class Mock
         def get_plan(_parameters = nil)
@@ -51,8 +51,8 @@ module Fog
             "uuid"        => "53268a27-afc8-4b21-839f-90227dd7a001"
           }
           response
-        end # def get_plan
-      end # class Mock
-    end # class Planning
-  end # module Openstack
-end # module Fog
+        end
+      end
+    end
+  end
+end

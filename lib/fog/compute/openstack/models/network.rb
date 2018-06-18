@@ -7,7 +7,7 @@ module Fog
         identity  :id
         attribute :name
         attribute :addresses
-      end # class Network
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+      end
+    end
+  end
+end

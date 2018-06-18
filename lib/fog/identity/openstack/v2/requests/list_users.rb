@@ -21,7 +21,7 @@ module Fog
               :query   => query
             )
           end
-        end # class Real
+        end
 
         class Mock
           def list_users(options = {})
@@ -40,8 +40,8 @@ module Fog
               :status => 200
             )
           end
-        end # class Mock
-      end # class V2
-    end # class OpenStack
-  end # module Identity
-end # module Fog
+        end
+      end
+    end
+  end
+end

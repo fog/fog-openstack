@@ -38,7 +38,7 @@ module Fog
           response.body = data[:chassis_collection].first
           response
         end
-      end # mock
-    end # openstack
-  end # baremetal
-end # fog
+      end
+    end
+  end
+end

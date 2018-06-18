@@ -10,7 +10,7 @@ module Fog
               :path    => "images/#{image_id}"
             )
           end
-        end # class Real
+        end
 
         class Mock
           def get_image(_image_id)
@@ -39,9 +39,9 @@ module Fog
                                "X-Image-Meta-Id" => "0e09fbd6-43c5-448a-83e9-0d3d05f9747e"}
             response.body = ""
             response
-          end # def list_tenants
-        end # class Mock
-      end # class OpenStack
+          end
+        end
+      end
     end
-  end # module Identity
-end # module Fog
+  end
+end
