@@ -446,7 +446,6 @@ describe Fog::Identity::OpenStack::V3 do
   it "Manipulates roles on domain groups" do
     VCR.use_cassette('idv3_domain_group_roles_mutation') do
       skip "Manipulates roles on domain groups to be fixed"
-=begin
       begin
         # Create a domain called foobar
         foobar_domain = @service.domains.create(:name => 'd-foobar')
@@ -508,7 +507,6 @@ describe Fog::Identity::OpenStack::V3 do
         foobar_domain.update(:enabled => false) if foobar_domain
         foobar_domain.destroy if foobar_domain
       end
-=end
     end
   end
 

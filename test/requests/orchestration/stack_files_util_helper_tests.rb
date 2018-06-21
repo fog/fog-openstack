@@ -36,15 +36,17 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     end
 
     it "#read_uri_remote" do
-      skip if Fog.mocking?
-      content = @file_resolver.send(:read_uri, "https://www.google.com/robots.txt")
-      assert_includes(content, "Disallow:")
+      unless Fog.mocking?
+        content = @file_resolver.send(:read_uri, "https://www.google.com/robots.txt")
+        assert_includes(content, "Disallow:")
+      end
     end
 
     it "#read_uri_404" do
-      skip if Fog.mocking?
-      assert_raises OpenURI::HTTPError do
-        @file_resolver.send(:read_uri, "https://www.google.com/NOOP")
+      unless Fog.mocking?
+        assert_raises OpenURI::HTTPError do
+          @file_resolver.send(:read_uri, "https://www.google.com/NOOP")
+        end
       end
     end
 

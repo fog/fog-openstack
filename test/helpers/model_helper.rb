@@ -9,13 +9,15 @@ def model_tests(collection, params = {})
     end
 
     it "#save" do
-      skip if Fog.mocking?
-      @instance.save.must_equal true
+      unless Fog.mocking?
+        @instance.save.must_equal true
+      end
     end
 
     it "#destroy" do
-      skip if Fog.mocking?
-      @instance.destroy.must_equal 200
+      unless Fog.mocking?
+        @instance.destroy.must_equal 200
+      end
     end
   end
 end

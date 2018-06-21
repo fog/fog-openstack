@@ -71,13 +71,14 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     end
 
     it "#get_file_contents_http_template" do
-      skip if Fog.mocking?
-      test_cases = @data["get_file_contents_http_template"].map do |testcase|
-        [testcase['input'], testcase['expected']]
-      end.compact
-      test_cases.each do |data, expected|
-        file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new(data)
-        assert_equal_set(file_resolver.files.keys, expected)
+      unless Fog.mocking?
+        test_cases = @data["get_file_contents_http_template"].map do |testcase|
+          [testcase['input'], testcase['expected']]
+        end.compact
+        test_cases.each do |data, expected|
+          file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new(data)
+          assert_equal_set(file_resolver.files.keys, expected)
+        end
       end
     end
 

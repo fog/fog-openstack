@@ -30,9 +30,10 @@ describe "Fog::Compute[:openstack] | image requests" do
     end
 
     it "#get_image_details(#{@image_id})" do
-      skip if Fog.mocking?
-      @compute.get_image_details(@image_id).body['image'].
-        must_match_schema(@image_format)
+      unless Fog.mocking?
+        @compute.get_image_details(@image_id).body['image'].
+          must_match_schema(@image_format)
+      end
     end
 
     it "#list_images" do
@@ -54,17 +55,19 @@ describe "Fog::Compute[:openstack] | image requests" do
 
   describe "failure" do
     it "#delete_image(0)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.delete_image(0)
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.delete_image(0)
+        end.must_raise Fog::Compute::OpenStack::NotFound
+      end
     end
 
     it "#get_image_details(0)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.get_image_details(0)
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.get_image_details(0)
+        end.must_raise Fog::Compute::OpenStack::NotFound
+      end
     end
   end
 end

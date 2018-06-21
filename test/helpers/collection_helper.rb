@@ -9,28 +9,32 @@ def collection_tests(collection, params = {})
     end
 
     it "#new(#{params.inspect})" do
-      skip if Fog.mocking?
-      collection.new(params).must_equal 200
+      unless Fog.mocking?
+        collection.new(params).must_equal 200
+      end
     end
 
     it "#create(#{params.inspect})" do
-      skip if Fog.mocking?
-      @instance.must_be_kind_of Fog::Network::OpenStack::SecurityGroup
+      unless Fog.mocking?
+        @instance.must_be_kind_of Fog::Network::OpenStack::SecurityGroup
+      end
     end
-    # FIXME: work around for timing issue on AWS describe_instances mocks
 
+    # FIXME: work around for timing issue on AWS describe_instances mocks
     if Fog.mocking? && @instance.respond_to?(:ready?)
       @instance.wait_for { ready? }
     end
 
     it "#all" do
-      skip if Fog.mocking?
-      collection.all.must_be_kind_of Fog::Network::OpenStack::SecurityGroups
+      unless Fog.mocking?
+        collection.all.must_be_kind_of Fog::Network::OpenStack::SecurityGroups
+      end
     end
 
     it "#get(#{@identity})" do
-      skip if Fog.mocking?
-      collection.get(@identity).must_be_kind_of Fog::Network::OpenStack::SecurityGroup
+      unless Fog.mocking?
+        collection.get(@identity).must_be_kind_of Fog::Network::OpenStack::SecurityGroup
+      end
     end
 
     unless Fog.mocking?
@@ -90,8 +94,9 @@ def collection_tests(collection, params = {})
     end
 
     it "#get(@identity" do
-      skip if Fog.mocking?
-      collection.get(@identity).must_equal nil
+      unless Fog.mocking?
+        collection.get(@identity).must_equal nil
+      end
     end
   end
 end

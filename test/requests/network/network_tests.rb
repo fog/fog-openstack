@@ -101,23 +101,24 @@ describe "Fog::Network[:openstack] | network requests" do
 
   describe "failure" do
     it "#create_network+provider extensions" do
-      skip if Fog.mocking?
-      proc do
-        attributes = {
-          :name                     => 'net_name',
-          :shared                   => false,
-          :admin_state_up           => true,
-          :tenant_id                => 'tenant_id',
-          :router_external          => true,
-          # local, gre, vlan. Depends on the provider.
-          # May rise an exception if the network_type isn't valid:
-          # QuantumError: "Invalid input for operation: provider:physical_network"
-          :provider_network_type    => 'foobar',
-          :provider_segmentation_id => 22,
-        }
+      unless Fog.mocking?
+        proc do
+          attributes = {
+            :name                     => 'net_name',
+            :shared                   => false,
+            :admin_state_up           => true,
+            :tenant_id                => 'tenant_id',
+            :router_external          => true,
+            # local, gre, vlan. Depends on the provider.
+            # May rise an exception if the network_type isn't valid:
+            # QuantumError: "Invalid input for operation: provider:physical_network"
+            :provider_network_type    => 'foobar',
+            :provider_segmentation_id => 22,
+          }
 
-        network.create_network(attributes)
-      end.must_raise Excon::Errors::BadRequest
+          network.create_network(attributes)
+        end.must_raise Excon::Errors::BadRequest
+      end
     end
 
     it "#get_network" do

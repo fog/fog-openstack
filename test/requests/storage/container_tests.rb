@@ -29,8 +29,9 @@ describe "Fog::Storage[:openstack] | container requests" do
 
   describe "success" do
     it "#put_container('fogcontainertests')" do
-      skip if Fog.mocking?
-      @storage.put_container('fogcontainertests').status.must_equal 201
+      unless Fog.mocking?
+        @storage.put_container('fogcontainertests').status.must_equal 201
+      end
     end
 
     describe "using container" do
@@ -45,55 +46,63 @@ describe "Fog::Storage[:openstack] | container requests" do
       end
 
       it "#get_container('fogcontainertests')" do
-        skip if Fog.mocking?
-        @storage.get_container('fogcontainertests').body.must_match_schema(@container_format)
+        unless Fog.mocking?
+          @storage.get_container('fogcontainertests').body.must_match_schema(@container_format)
+        end
       end
 
       it "#get_containers" do
-        skip if Fog.mocking?
-        @storage.get_containers.body.must_match_schema(@containers_format)
+        unless Fog.mocking?
+          @storage.get_containers.body.must_match_schema(@containers_format)
+        end
       end
 
       it "#head_container('fogcontainertests')" do
-        skip if Fog.mocking?
-        resp = @storage.head_container('fogcontainertests')
-        resp.status.must_equal 204
-        resp.headers['X-Container-Object-Count'].to_i.must_equal 0
+        unless Fog.mocking?
+          resp = @storage.head_container('fogcontainertests')
+          resp.status.must_equal 204
+          resp.headers['X-Container-Object-Count'].to_i.must_equal 0
+        end
       end
 
       it "#head_containers" do
-        skip if Fog.mocking?
-        resp = @storage.head_containers
-        resp.status.must_equal 204
-        resp.headers['X-Account-Container-Count'].to_i.must_equal 1
+        unless Fog.mocking?
+          resp = @storage.head_containers
+          resp.status.must_equal 204
+          resp.headers['X-Account-Container-Count'].to_i.must_equal 1
+        end
       end
       it "#delete_container('fogcontainertests')" do
-        skip if Fog.mocking?
-        @storage.delete_container('fogcontainertests').status.must_equal 204
+        unless Fog.mocking?
+          @storage.delete_container('fogcontainertests').status.must_equal 204
+        end
       end
     end
   end
 
   describe "failure" do
     it "#get_container('fognoncontainer')" do
-      skip if Fog.mocking?
-      proc do
-        @storage.get_container('fognoncontainer')
-      end.must_raise Fog::Storage::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @storage.get_container('fognoncontainer')
+        end.must_raise Fog::Storage::OpenStack::NotFound
+      end
     end
 
     it "#head_container('fognoncontainer')" do
-      skip if Fog.mocking?
-      proc do
-        @storage.head_container('fognoncontainer')
-      end.must_raise Fog::Storage::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @storage.head_container('fognoncontainer')
+        end.must_raise Fog::Storage::OpenStack::NotFound
+      end
     end
 
     it "#delete_container('fognoncontainer')" do
-      skip if Fog.mocking?
-      proc do
-        @storage.delete_container('fognoncontainer')
-      end.must_raise Fog::Storage::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @storage.delete_container('fognoncontainer')
+        end.must_raise Fog::Storage::OpenStack::NotFound
+      end
     end
   end
 end

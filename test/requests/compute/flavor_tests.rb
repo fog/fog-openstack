@@ -93,39 +93,44 @@ describe "Fog::Compute[:openstack] | flavor requests" do
     end
 
     it "add_flavor_access(1234, 1)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.add_flavor_access(1234, 1).body
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.add_flavor_access(1234, 1).body
+        end.must_raise Fog::Compute::OpenStack::NotFound
+      end
     end
 
     it "remove_flavor_access(1234, 1)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.remove_flavor_access(1234, 1).body
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.remove_flavor_access(1234, 1).body
+        end.must_raise Fog::Compute::OpenStack::NotFound
+      end
     end
 
     it "list_tenants_with_flavor_access(1234)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.list_tenants_with_flavor_access(1234)
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.list_tenants_with_flavor_access(1234)
+        end.must_raise Fog::Compute::OpenStack::NotFound
+      end
     end
 
     it "get_flavor_metadata(flavor_ref)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.get_flavor_metadata("1234").body
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.get_flavor_metadata("1234").body
+        end.must_raise Fog::Compute::OpenStack::NotFound
+      end
     end
 
     it "create_flavor_metadata(flavor_ref)" do
-      skip if Fog.mocking?
-      proc do
-        metadata = {:cpu_arch => 'x86_64'}
-        @compute.create_flavor_metadata("1234", metadata).body
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          metadata = {:cpu_arch => 'x86_64'}
+          @compute.create_flavor_metadata("1234", metadata).body
+        end.must_raise Fog::Compute::OpenStack::NotFound
+      end
     end
   end
 end
