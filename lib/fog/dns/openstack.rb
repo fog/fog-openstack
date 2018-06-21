@@ -1,6 +1,9 @@
 module Fog
   module DNS
     class OpenStack < Fog::Service
+      autoload :V1, 'fog/dns/openstack/v1'
+      autoload :V2, 'fog/dns/openstack/v2'
+
       # Fog::DNS::OpenStack.new() will return a Fog::DNS::OpenStack::V2 or a Fog::DNS::OpenStack::V1,
       # choosing the latest available
       def self.new(args = {})

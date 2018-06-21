@@ -3,6 +3,9 @@
 module Fog
   module Volume
     class OpenStack < Fog::Service
+      autoload :V1, 'fog/volume/openstack/v1'
+      autoload :V2, 'fog/volume/openstack/v2'
+
       @@recognizes = [:openstack_auth_token, :openstack_management_url,
                       :persistent, :openstack_service_type, :openstack_service_name,
                       :openstack_tenant, :openstack_tenant_id,
