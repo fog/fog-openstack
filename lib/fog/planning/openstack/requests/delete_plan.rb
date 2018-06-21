@@ -16,6 +16,7 @@ module Fog
           response = Excon::Response.new
           response.status = 204
           response
+
         end
       end
     end

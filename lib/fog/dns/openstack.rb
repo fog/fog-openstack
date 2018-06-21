@@ -1,6 +1,9 @@
 module Fog
   module DNS
     class OpenStack < Fog::Service
+      autoload :V1, File.expand_path('../openstack/v1', __FILE__)
+      autoload :V2, File.expand_path('../openstack/v2', __FILE__)
+
       # Fog::DNS::OpenStack.new() will return a Fog::DNS::OpenStack::V2 or a Fog::DNS::OpenStack::V1,
       # choosing the latest available
       def self.new(args = {})

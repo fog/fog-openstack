@@ -2,11 +2,6 @@ require 'fog/openstack/version'
 require 'fog/core'
 require 'fog/json'
 
-require 'fog/openstack/core'
-require 'fog/openstack/errors'
-
-require 'fog/planning/openstack'
-
 module Fog
   module Baremetal
     autoload :OpenStack, 'fog/baremetal/openstack'
@@ -110,6 +105,10 @@ module Fog
   end
 
   module OpenStack
+    autoload :Core, File.expand_path('../openstack/core', __FILE__)
+    autoload :Errors, File.expand_path('../openstack/errors', __FILE__)
+    autoload :Planning, File.expand_path('../planning/openstack', __FILE__)
+
     extend Fog::Provider
 
     service(:baremetal,          'Baremetal')

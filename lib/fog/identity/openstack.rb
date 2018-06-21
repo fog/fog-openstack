@@ -3,6 +3,9 @@
 module Fog
   module Identity
     class OpenStack < Fog::Service
+      autoload :V2, File.expand_path('../openstack/v2', __FILE__)
+      autoload :V3, File.expand_path('../openstack/v3', __FILE__)
+
       requires :openstack_auth_url
       recognizes :openstack_auth_token, :openstack_management_url, :persistent,
                  :openstack_service_type, :openstack_service_name, :openstack_tenant,
