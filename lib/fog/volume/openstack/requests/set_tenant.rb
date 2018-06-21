@@ -14,6 +14,6 @@ module Fog
           true
         end
       end
-    end # class OpenStack
-  end # module Volume
-end # module Fog
+    end
+  end
+end

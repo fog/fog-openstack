@@ -23,8 +23,8 @@ module Fog
               raise Fog::Identity::OpenStack::NotFound
             end
           end
-        end # class Mock
-      end # class V2
-    end # class OpenStack
-  end # module Identity
-end # module Fog
+        end
+      end
+    end
+  end
+end

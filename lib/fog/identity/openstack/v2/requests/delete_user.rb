@@ -25,7 +25,7 @@ module Fog
             raise Fog::Identity::OpenStack::NotFound
           end
         end
-      end # class V2
+      end
     end
   end
 end

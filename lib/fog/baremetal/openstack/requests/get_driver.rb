@@ -9,7 +9,7 @@ module Fog
             :path    => "drivers/#{driver_name}"
           )
         end
-      end # class Real
+      end
 
       class Mock
         def get_driver(_driver_name)
@@ -17,8 +17,8 @@ module Fog
           response.status = [200, 204][rand(2)]
           response.body = data[:drivers].first
           response
-        end # def get_driver
-      end # class Mock
-    end # class OpenStack
-  end # module Baremetal
-end # module Fog
+        end
+      end
+    end
+  end
+end

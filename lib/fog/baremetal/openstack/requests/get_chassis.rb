@@ -9,7 +9,7 @@ module Fog
             :path    => "chassis/#{chassis_uuid}"
           )
         end
-      end # class Real
+      end
 
       class Mock
         def get_chassis(_chassis_uuid)
@@ -17,8 +17,8 @@ module Fog
           response.status = [200, 204][rand(2)]
           response.body = data[:chassis_collection].first
           response
-        end # def get_chassis
-      end # class Mock
-    end # class OpenStack
-  end # module Baremetal
-end # module Fog
+        end
+      end
+    end
+  end
+end

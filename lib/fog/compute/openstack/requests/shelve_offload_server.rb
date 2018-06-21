@@ -11,14 +11,14 @@ module Fog
         def shelve_offload_server(server_id)
           body = {'shelveOffload' => nil}
           server_action(server_id, body).status == 202
-        end # def shelve_off_load_server
-      end # class Real
+        end
+      end
 
       class Mock
         def shelve_offload_server(_server_id)
           true
-        end # def shelve_off_load_server
-      end # class Mock
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+        end
+      end
+    end
+  end
+end

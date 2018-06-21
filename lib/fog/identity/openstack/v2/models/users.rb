@@ -38,8 +38,8 @@ module Fog
             user = find_by_id(id)
             user.destroy
           end
-        end # class Users
-      end # class V2
-    end # class OpenStack
-  end # module Identity
-end # module Fog
+        end
+      end
+    end
+  end
+end

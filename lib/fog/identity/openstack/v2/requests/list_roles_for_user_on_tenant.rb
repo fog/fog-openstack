@@ -9,8 +9,8 @@ module Fog
               :method  => 'GET',
               :path    => "tenants/#{tenant_id}/users/#{user_id}/roles"
             )
-          end # def list_roles_for_user_on_tenant
-        end # class Real
+          end
+        end
 
         class Mock
           def list_roles_for_user_on_tenant(tenant_id, user_id)
@@ -24,9 +24,9 @@ module Fog
               :body   => {'roles' => roles},
               :status => 200
             )
-          end # def list_roles_for_user_on_tenant
-        end # class Mock
-      end # class V2
-    end # class OpenStack
-  end # module Identity
-end # module Fog
+          end
+        end
+      end
+    end
+  end
+end

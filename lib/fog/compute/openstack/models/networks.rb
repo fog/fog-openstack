@@ -24,7 +24,7 @@ module Fog
           # TODO: convert to load_response?
           load(networks)
         end
-      end # class Networks
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+      end
+    end
+  end
+end

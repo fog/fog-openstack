@@ -10,7 +10,7 @@ module Fog
               :path    => "images/#{image_id}/members"
             )
           end
-        end # class Real
+        end
 
         class Mock
           def get_image_members(_image_id)
@@ -23,9 +23,9 @@ module Fog
               ]
             }
             response
-          end # def list_tenants
-        end # class Mock
-      end # class OpenStack
+          end
+        end
+      end
     end
-  end # module Identity
-end # module Fog
+  end
+end

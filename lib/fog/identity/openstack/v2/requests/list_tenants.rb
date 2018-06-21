@@ -21,7 +21,7 @@ module Fog
               :query   => params
             )
           end
-        end # class Real
+        end
 
         class Mock
           def list_tenants(_options = nil, _marker = nil)
@@ -45,9 +45,9 @@ module Fog
               },
               :status => [200, 204][rand(2)]
             )
-          end # def list_tenants
-        end # class Mock
-      end # class V2
-    end # class OpenStack
-  end # module Identity
-end # module Fog
+          end
+        end
+      end
+    end
+  end
+end
