@@ -41,23 +41,6 @@ module Fog
           attribute :instance_uuid
           attribute :user_id
 
-          # Overload super class since behaviour as changed since fog-core 1.40.0
-          # https://github.com/fog/fog-core/issues/236
-          def reload
-            requires :identity
-
-            object = collection.get(identity)
-
-            return unless object
-
-            merge_attributes(object.attributes)
-            merge_attributes(object.all_associations)
-
-            self
-          rescue Excon::Errors::SocketError
-            nil
-          end
-
           def method_missing(method_sym, *arguments, &block)
             if attributes.key?(method_sym)
               attributes[method_sym]
