@@ -1,7 +1,7 @@
 require 'fog/openstack/models/model'
 
 module Fog
-  module Openstack
+  module OpenStack
     class Planning
       class Plan < Fog::OpenStack::Model
         MASTER_TEMPLATE_NAME = 'plan.yaml'.freeze

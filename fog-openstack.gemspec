@@ -5,7 +5,7 @@ require 'fog/openstack/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "fog-openstack"
-  spec.version       = Fog::Openstack::VERSION
+  spec.version       = Fog::OpenStack::VERSION
   spec.authors       = ["Matt Darby"]
   spec.email         = ["matt.darby@rackspace.com"]
 

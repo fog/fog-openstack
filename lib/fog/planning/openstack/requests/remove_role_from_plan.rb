@@ -1,5 +1,5 @@
 module Fog
-  module Openstack
+  module OpenStack
     class Planning
       class Real
         def remove_role_from_plan(plan_uuid, role_uuid)
