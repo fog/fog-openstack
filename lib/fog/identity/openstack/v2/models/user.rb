@@ -62,8 +62,8 @@ module Fog
               []
             end
           end
-        end # class User
-      end # class V2
-    end # class OpenStack
-  end # module Identity
-end # module Fog
+        end
+      end
+    end
+  end
+end

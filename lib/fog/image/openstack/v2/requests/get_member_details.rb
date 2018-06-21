@@ -10,7 +10,7 @@ module Fog
               :path    => "images/#{image_id}/members/#{member_id}"
             ).body
           end
-        end # class Real
+        end
 
         class Mock
           def get_member_details(_image_id, _member_id)
@@ -25,9 +25,9 @@ module Fog
               :schema     => "/v2/schemas/member"
             }
             response
-          end # def list_tenants
-        end # class Mock
-      end # class OpenStack
+          end
+        end
+      end
     end
-  end # module Identity
-end # module Fog
+  end
+end

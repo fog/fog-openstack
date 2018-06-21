@@ -11,14 +11,14 @@ module Fog
         def rescue_server(server_id)
           body = {'rescue' => nil}
           server_action(server_id, body) == 202
-        end # def rescue_server
-      end # class Real
+        end
+      end
 
       class Mock
         def rescue_server(_server_id)
           true
-        end # def rescue_server
-      end # class Mock
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+        end
+      end
+    end
+  end
+end

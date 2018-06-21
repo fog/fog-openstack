@@ -16,14 +16,14 @@ module Fog
             }
           }
           server_action(server_id, body).status == 202
-        end # def remove_fixed_ip
-      end # class Real
+        end
+      end
 
       class Mock
         def remove_fixed_ip(_server_id, _address)
           true
-        end # def remove_fixed_ip
-      end # class Mock
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+        end
+      end
+    end
+  end
+end

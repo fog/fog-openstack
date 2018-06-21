@@ -56,7 +56,7 @@ module Fog
           }
           response
         end
-      end # mock
-    end # openstack
-  end # Compute
-end # fog
+      end
+    end
+  end
+end

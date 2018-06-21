@@ -14,7 +14,7 @@ module Fog
 
         class Mock
         end
-      end # class V2
+      end
     end
   end
 end

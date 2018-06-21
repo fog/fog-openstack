@@ -37,7 +37,7 @@ module Fog
           }
           response
         end
-      end # class Mock
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+      end
+    end
+  end
+end

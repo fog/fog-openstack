@@ -8,7 +8,7 @@ username = 'admin@example.net'
 password = 'secret'
 tenant   = 'My Compute Tenant' # String
 
-planning ||= ::Fog::Openstack.new(
+planning ||= ::Fog::OpenStack.new(
   :service            => :planning,
   :openstack_api_key  => password,
   :openstack_username => username,

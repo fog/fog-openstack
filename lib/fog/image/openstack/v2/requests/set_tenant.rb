@@ -15,7 +15,7 @@ module Fog
             true
           end
         end
-      end # class OpenStack
+      end
     end
-  end # module Compute
-end # module Fog
+  end
+end

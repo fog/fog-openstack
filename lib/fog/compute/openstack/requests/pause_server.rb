@@ -11,14 +11,14 @@ module Fog
         def pause_server(server_id)
           body = {'pause' => nil}
           server_action(server_id, body).status == 202
-        end # def pause_server
-      end # class Real
+        end
+      end
 
       class Mock
         def pause_server(_server_id)
           true
-        end # def pause_server
-      end # class Mock
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+        end
+      end
+    end
+  end
+end

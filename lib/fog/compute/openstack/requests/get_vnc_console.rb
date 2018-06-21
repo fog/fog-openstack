@@ -19,8 +19,8 @@ module Fog
             }
           }
           server_action(server_id, body)
-        end # def get_vnc_console
-      end # class Real
+        end
+      end
 
       class Mock
         def get_vnc_console(_server_id, _console_type)
@@ -33,8 +33,8 @@ module Fog
             }
           }
           response
-        end # def get_vnc_console
-      end # class Mock
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+        end
+      end
+    end
+  end
+end

@@ -11,16 +11,16 @@ module Fog
               :body    => Fog::JSON.encode(:member => tenant_id)
             )
           end
-        end # class Real
+        end
 
         class Mock
           def add_member_to_image(_image_id, _tenant_id)
             response = Excon::Response.new
             response.status = 200
             response
-          end # def list_tenants
-        end # class Mock
-      end # class OpenStack
+          end
+        end
+      end
     end
-  end # module Identity
-end # module Fog
+  end
+end

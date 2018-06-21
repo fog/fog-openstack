@@ -31,7 +31,7 @@ module Fog
           }}
           response
         end
-      end # mock
-    end # openstack
-  end # compute
-end # fog
+      end
+    end
+  end
+end

@@ -56,8 +56,8 @@ module Fog
           def revoke_user_role(user_id, role_id)
             service.remove_user_from_tenant(id, user_id, role_id)
           end
-        end # class Tenant
-      end # class V2
-    end # class OpenStack
-  end # module Identity
-end # module Fog
+        end
+      end
+    end
+  end
+end

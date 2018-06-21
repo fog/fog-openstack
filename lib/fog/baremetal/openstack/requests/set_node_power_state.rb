@@ -29,7 +29,7 @@ module Fog
           response.body = data[:nodes].first
           response
         end
-      end # mock
-    end # openstack
-  end # baremetal
-end # fog
+      end
+    end
+  end
+end

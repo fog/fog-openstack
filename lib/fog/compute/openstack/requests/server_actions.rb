@@ -14,8 +14,8 @@ module Fog
             :method  => 'GET',
             :path    => "servers/#{server_id}/os-instance-actions"
           ).body['instanceActions']
-        end # def server_actions
-      end # class Real
+        end
+      end
 
       class Mock
         def server_actions(server_id)
@@ -31,8 +31,8 @@ module Fog
             'project_id'    => '9d5d0b877cf449fdae078659cfa12e86'
           }]
           response
-        end # def server_actions
-      end # class Mock
-    end # class OpenStack
-  end # module Compute
-end # moduel Fog
+        end
+      end
+    end
+  end
+end

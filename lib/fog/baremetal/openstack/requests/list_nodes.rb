@@ -10,7 +10,7 @@ module Fog
             :query   => options
           )
         end
-      end # class Real
+      end
 
       class Mock
         def list_nodes(_options = {})
@@ -27,8 +27,8 @@ module Fog
             }]
           }
           response
-        end # def list_nodes
-      end # class Mock
-    end # class OpenStack
-  end # module Baremetal
-end # module Fog
+        end
+      end
+    end
+  end
+end

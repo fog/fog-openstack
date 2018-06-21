@@ -22,7 +22,7 @@ module Fog
         def create(*args)
           new(service.create_server_group(*args).body['server_group'])
         end
-      end # class ServerGroups
-    end # class OpenStack
-  end # module Compute
-end # module Fog
+      end
+    end
+  end
+end
