@@ -31,24 +31,27 @@ describe "Fog::Identity[:openstack] | users" do
 
   describe "fails" do
     it "#find_by_id" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Identity[:openstack].users.find_by_id('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Identity[:openstack].users.find_by_id('fake')
+        end.must_raise(Fog::Identity::OpenStack::NotFound)
+      end
     end
 
     it "#find_by_name" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Identity[:openstack].users.find_by_name('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Identity[:openstack].users.find_by_name('fake')
+        end.must_raise(Fog::Identity::OpenStack::NotFound)
+      end
     end
 
     it "#destroy" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Identity[:openstack].users.destroy('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Identity[:openstack].users.destroy('fake')
+        end.must_raise(Fog::Identity::OpenStack::NotFound)
+      end
     end
   end
 end

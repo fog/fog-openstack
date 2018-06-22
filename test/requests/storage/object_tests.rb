@@ -44,73 +44,86 @@ describe "Fog::Storage[:openstack] | object requests" do
       end
 
       it "#get_object('fogobjectests', 'fog_object')" do
-        skip if Fog.mocking?
-        resp = Fog::Storage[:openstack].get_object('fogobjecttests', 'fog_object')
-        resp.body.must_equal lorem_file.read
+        unless Fog.mocking?
+          resp = Fog::Storage[:openstack].get_object('fogobjecttests', 'fog_object')
+          resp.body.must_equal lorem_file.read
+        end
       end
 
       it "#get_object('fogobjecttests', 'fog_object', &block)" do
-        skip if Fog.mocking?
-        data = ''
-        Fog::Storage[:openstack].get_object('fogobjecttests', 'fog_object') do |chunk, _remaining_bytes, _total_bytes|
-          data << chunk
+        unless Fog.mocking?
+          data = ''
+          Fog::Storage[:openstack].get_object('fogobjecttests', 'fog_object') do |chunk, _remaining_bytes, _total_bytes|
+            data << chunk
+          end
+          data.must_equal lorem_file.read
         end
-        data.must_equal lorem_file.read
       end
 
       it "#public_url('fogobjectests', 'fog_object')" do
-        skip if Fog.mocking?
-        url = Fog::Storage[:openstack].directories.first.files.first.public_url
-        url.end_with?('/fogobjecttests/fog_object').must_equal true
+        unless Fog.mocking?
+          url = Fog::Storage[:openstack].directories.first.files.first.public_url
+          url.end_with?('/fogobjecttests/fog_object').must_equal true
+        end
       end
 
       it "#public_url('fogobjectests')" do
-        skip if Fog.mocking?
-        url = Fog::Storage[:openstack].directories.first.public_url
-        url.end_with?('/fogobjecttests').must_equal true
+        unless Fog.mocking?
+          url = Fog::Storage[:openstack].directories.first.public_url
+          url.end_with?('/fogobjecttests').must_equal true
+        end
       end
 
       it "#head_object('fogobjectests', 'fog_object')" do
-        skip if Fog.mocking?
-        resp = Fog::Storage[:openstack].head_object('fogobjecttests', 'fog_object')
-        resp.headers['ETag'].must_equal '80d7930fe13ff4e45156b6581656a247'
+        unless Fog.mocking?
+          resp = Fog::Storage[:openstack].head_object('fogobjecttests', 'fog_object')
+          resp.headers['ETag'].must_equal '80d7930fe13ff4e45156b6581656a247'
+        end
       end
 
       it "#post_object('fogobjecttests', 'fog_object')" do
-        skip if Fog.mocking?
-        Fog::Storage[:openstack].post_object('fogobjecttests', 'fog_object',
-                                             'X-Object-Meta-test-header' => 'fog-test-value')
-        resp = Fog::Storage[:openstack].head_object('fogobjecttests', 'fog_object')
-        resp.headers.must_include 'X-Object-Meta-Test-Header'
-        resp.headers['X-Object-Meta-Test-Header'].must_equal 'fog-test-value'
+        unless Fog.mocking?
+          Fog::Storage[:openstack].post_object(
+            'fogobjecttests',
+            'fog_object',
+            'X-Object-Meta-test-header' => 'fog-test-value'
+          )
+          resp = Fog::Storage[:openstack].head_object('fogobjecttests', 'fog_object')
+          resp.headers.must_include 'X-Object-Meta-Test-Header'
+          resp.headers['X-Object-Meta-Test-Header'].must_equal 'fog-test-value'
+        end
       end
 
       it "#delete_object('fogobjecttests', 'fog_object')" do
-        skip if Fog.mocking?
-        resp = Fog::Storage[:openstack].delete_object('fogobjecttests', 'fog_object')
-        resp.status.must_equal 204
+        unless Fog.mocking?
+          resp = Fog::Storage[:openstack].delete_object('fogobjecttests', 'fog_object')
+          resp.status.must_equal 204
+        end
       end
 
       it "#get_object_http_url('directory.identity', 'fog_object', expiration timestamp)" do
-        skip if Fog.mocking?
-        ts = Time.at(1_395_343_213)
-        url_s = Fog::Storage[:openstack].get_object_http_url(@directory.identity, 'fog_object', ts)
-        test_temp_url(url_s, ts, 'http')
+        unless Fog.mocking?
+          ts = Time.at(1_395_343_213)
+          url_s = Fog::Storage[:openstack].get_object_http_url(@directory.identity, 'fog_object', ts)
+          test_temp_url(url_s, ts, 'http')
+        end
       end
 
       it "#get_object_https_url('directory.identity', 'fog_object', expiration timestamp)" do
-        skip if Fog.mocking?
-        ts = Time.at(1_395_343_213)
-        url_s = Fog::Storage[:openstack].get_object_https_url(@directory.identity, 'fog_object', ts)
-        test_temp_url(url_s, ts, 'https')
+        unless Fog.mocking?
+          ts = Time.at(1_395_343_213)
+          url_s = Fog::Storage[:openstack].get_object_https_url(@directory.identity, 'fog_object', ts)
+          test_temp_url(url_s, ts, 'https')
+        end
       end
 
       it "#get_object_https_url_numeric('directory.identity', 'fog_object', expiration_timestamp)" do
-        skip if Fog.mocking?
-        ts = Time.at(1500000000)
-        fog = Fog::Storage.new(provider: :openstack, openstack_temp_url_key: '12345')
-        url_s = fog.get_object_https_url(@directory.identity, 'fog_object', ts)
-        test_temp_url(url_s, ts, 'https')
+        unless Fog.mocking?
+          ts = Time.at(1_500_000_000)
+          fog = Fog::Storage.new(:provider => :openstack, :openstack_temp_url_key => '12345')
+          url_s = fog.get_object_https_url(@directory.identity, 'fog_object', ts)
+          test_temp_url(url_s, ts, 'https')
+        end
       end
     end
 
@@ -138,15 +151,17 @@ describe "Fog::Storage[:openstack] | object requests" do
         end
 
         it "#get_object" do
-          skip if Fog.mocking?
-          resp = Fog::Storage[:openstack].get_object('fogobjecttests', 'fog_block_object')
-          resp.body.must_equal lorem_file.read
+          unless Fog.mocking?
+            resp = Fog::Storage[:openstack].get_object('fogobjecttests', 'fog_block_object')
+            resp.body.must_equal lorem_file.read
+          end
         end
 
         it "#delete_object" do
-          skip if Fog.mocking?
-          resp = Fog::Storage[:openstack].delete_object('fogobjecttests', 'fog_block_object')
-          resp.status.must_equal 204
+          unless Fog.mocking?
+            resp = Fog::Storage[:openstack].delete_object('fogobjecttests', 'fog_block_object')
+            resp.status.must_equal 204
+          end
         end
       end
     end
@@ -170,128 +185,145 @@ describe "Fog::Storage[:openstack] | object requests" do
       end
 
       after do
-        skip if Fog.mocking?
-        dir2 = Fog::Storage[:openstack].directories.get('fogobjecttests2')
-        if !dir2.nil?
-          dir2.files.each(&:destroy)
-          dir2.destroy
+        unless Fog.mocking?
+          dir2 = Fog::Storage[:openstack].directories.get('fogobjecttests2')
+          unless dir2.nil?
+            dir2.files.each(&:destroy)
+            dir2.destroy
+          end
         end
       end
 
       it "#delete_multiple_objects" do
-        skip if Fog.mocking?
-        resp = Fog::Storage[:openstack].delete_multiple_objects(
-            'fogobjecttests', %w[fog_object fog_object2])
-        resp.body.must_equal @expected
+        unless Fog.mocking?
+          resp = Fog::Storage[:openstack].delete_multiple_objects(
+            'fogobjecttests', %w[fog_object fog_object2]
+          )
+          resp.body.must_equal @expected
+        end
       end
 
       it "deletes object and container" do
-        skip if Fog.mocking?
-        resp = Fog::Storage[:openstack].delete_multiple_objects(
-          nil,
-          ['fogobjecttests2/fog_object', 'fogobjecttests2']
-        )
-        resp.body.must_equal @expected
+        unless Fog.mocking?
+          resp = Fog::Storage[:openstack].delete_multiple_objects(
+            nil,
+            ['fogobjecttests2/fog_object', 'fogobjecttests2']
+          )
+          resp.body.must_equal @expected
+        end
       end
     end
   end
 
   describe "failure" do
     it "#get_object('fogobjecttests', 'fog_non_object')" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Storage[:openstack].get_object('fogobjecttests', 'fog_non_object')
-      end.must_raise(Fog::Storage::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Storage[:openstack].get_object('fogobjecttests', 'fog_non_object')
+        end.must_raise(Fog::Storage::OpenStack::NotFound)
+      end
     end
 
     it "#get_object('fognoncontainer', 'fog_non_object')" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Storage[:openstack].get_object('fognoncontainer', 'fog_non_object')
-      end.must_raise(Fog::Storage::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Storage[:openstack].get_object('fognoncontainer', 'fog_non_object')
+        end.must_raise(Fog::Storage::OpenStack::NotFound)
+      end
     end
 
     it "#head_object('fogobjecttests', 'fog_non_object')" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Storage[:openstack].head_object('fogobjecttests', 'fog_non_object')
-      end.must_raise(Fog::Storage::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Storage[:openstack].head_object('fogobjecttests', 'fog_non_object')
+        end.must_raise(Fog::Storage::OpenStack::NotFound)
+      end
     end
 
     it "#head_object('fognoncontainer', 'fog_non_object')" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Storage[:openstack].head_object('fognoncontainer', 'fog_non_object')
-      end.must_raise(Fog::Storage::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Storage[:openstack].head_object('fognoncontainer', 'fog_non_object')
+        end.must_raise(Fog::Storage::OpenStack::NotFound)
+      end
     end
 
     it "#post_object('fognoncontainer', 'fog_non_object')" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Storage[:openstack].post_object('fognoncontainer', 'fog_non_object')
-      end.must_raise(Fog::Storage::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Storage[:openstack].post_object('fognoncontainer', 'fog_non_object')
+        end.must_raise(Fog::Storage::OpenStack::NotFound)
+      end
     end
 
     it "#delete_object('fogobjecttests', 'fog_non_object')" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Storage[:openstack].delete_object('fogobjecttests', 'fog_non_object')
-      end.must_raise(Fog::Storage::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Storage[:openstack].delete_object('fogobjecttests', 'fog_non_object')
+        end.must_raise(Fog::Storage::OpenStack::NotFound)
+      end
     end
 
     it "#delete_object('fognoncontainer', 'fog_non_object')" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Storage[:openstack].delete_object('fognoncontainer', 'fog_non_object')
-      end.must_raise(Fog::Storage::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Storage[:openstack].delete_object('fognoncontainer', 'fog_non_object')
+        end.must_raise(Fog::Storage::OpenStack::NotFound)
+      end
     end
 
     describe "#delete_multiple_objects" do
       before do
-        skip if Fog.mocking?
-        @expected = {
-          "Number Not Found" => 2,
-          "Response Status"  => "200 OK",
-          "Errors"           => [],
-          "Number Deleted"   => 0,
-          "Response Body"    => ""
-        }
+        unless Fog.mocking?
+          @expected = {
+            "Number Not Found" => 2,
+            "Response Status"  => "200 OK",
+            "Errors"           => [],
+            "Number Deleted"   => 0,
+            "Response Body"    => ""
+          }
+        end
       end
 
       it "reports missing objects" do
-        skip if Fog.mocking?
-        resp = Fog::Storage[:openstack].delete_multiple_objects(
-            'fogobjecttests', %w[fog_non_object fog_non_object2])
-        resp.body.must_equal @expected
+        unless Fog.mocking?
+          resp = Fog::Storage[:openstack].delete_multiple_objects(
+            'fogobjecttests', %w[fog_non_object fog_non_object2]
+          )
+          resp.body.must_equal @expected
+        end
       end
 
       it "reports missing container" do
-        skip if Fog.mocking?
-        resp = Fog::Storage[:openstack].delete_multiple_objects(
-            'fognoncontainer', %w[fog_non_object fog_non_object2])
-        resp.body.must_equal @expected
+        unless Fog.mocking?
+          resp = Fog::Storage[:openstack].delete_multiple_objects(
+            'fognoncontainer', %w[fog_non_object fog_non_object2]
+          )
+          resp.body.must_equal @expected
+        end
       end
 
       it "deleting non-empty container" do
-        skip if Fog.mocking?
-        file = lorem_file
-        resp = Fog::Storage[:openstack].put_object('fogobjecttests', 'fog_object', file)
-        file.close
-        resp.headers['ETag'].must_equal '80d7930fe13ff4e45156b6581656a247'
+        unless Fog.mocking?
+          file = lorem_file
+          resp = Fog::Storage[:openstack].put_object('fogobjecttests', 'fog_object', file)
+          file.close
+          resp.headers['ETag'].must_equal '80d7930fe13ff4e45156b6581656a247'
 
-        expected = {
-          "Number Not Found" => 0,
-          "Response Status"  => "400 Bad Request",
-          "Errors"           => [['fogobjecttests', '409 Conflict']],
-          "Number Deleted"   => 0,
-          "Response Body"    => ""
-        }
+          expected = {
+            "Number Not Found" => 0,
+            "Response Status"  => "400 Bad Request",
+            "Errors"           => [['fogobjecttests', '409 Conflict']],
+            "Number Deleted"   => 0,
+            "Response Body"    => ""
+          }
 
-        resp = Fog::Storage[:openstack].delete_multiple_objects(
-          nil,
-          %w[fogobjecttests]
-        )
-        resp.body.must_equal expected
+          resp = Fog::Storage[:openstack].delete_multiple_objects(
+            nil,
+            %w[fogobjecttests]
+          )
+          resp.body.must_equal expected
+        end
       end
     end
   end

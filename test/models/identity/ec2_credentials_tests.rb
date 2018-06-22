@@ -44,17 +44,19 @@ describe "Fog::Identity[:openstack] | ec2_credentials" do
 
   describe "fails" do
     it "#find_by_access_key" do
-      skip if Fog.mocking?
-      proc do
-        @user.ec2_credentials.find_by_access_key('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          @user.ec2_credentials.find_by_access_key('fake')
+        end.must_raise(Fog::Identity::OpenStack::NotFound)
+      end
     end
 
     it "#destroy" do
-      skip if Fog.mocking?
-      proc do
-        @user.ec2_credentials.destroy('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          @user.ec2_credentials.destroy('fake')
+        end.must_raise(Fog::Identity::OpenStack::NotFound)
+      end
     end
   end
 end

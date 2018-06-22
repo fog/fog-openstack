@@ -19,19 +19,19 @@ describe "Fog::Compute[:openstack] | tenants" do
 
   describe "failure" do
     it "#find_by_id" do
-      skip if Fog.mocking?
-
-      proc do
-        @identity.tenants.find_by_id('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          @identity.tenants.find_by_id('fake')
+        end.must_raise(Fog::Identity::OpenStack::NotFound)
+      end
     end
 
     it "#destroy" do
-      skip if Fog.mocking?
-
-      proc do
-        @identity.tenants.destroy('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          @identity.tenants.destroy('fake')
+        end.must_raise(Fog::Identity::OpenStack::NotFound)
+      end
     end
   end
 end

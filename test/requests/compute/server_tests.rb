@@ -357,24 +357,27 @@ describe "Fog::Compute[:openstack] | server requests" do
     end
 
     it "#reboot_server(0)" do
-      skip if Fog.mocking?
-      proc do
-        self.class.compute.reboot_server(0)
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          self.class.compute.reboot_server(0)
+        end.must_raise Fog::Compute::OpenStack::NotFound
+      end
     end
 
     it "#start_server(0)" do
-      skip if Fog.mocking?
-      proc do
-        self.class.compute.start_server(0)
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          self.class.compute.start_server(0)
+        end.must_raise Fog::Compute::OpenStack::NotFound
+      end
     end
 
     it "#stop_server(0)" do
-      skip if Fog.mocking?
-      proc do
-        self.class.compute.stop_server(0)
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          self.class.compute.stop_server(0)
+        end.must_raise Fog::Compute::OpenStack::NotFound
+      end
     end
   end
 end
