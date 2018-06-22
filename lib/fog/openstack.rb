@@ -1,11 +1,5 @@
-require 'fog/openstack/version'
 require 'fog/core'
 require 'fog/json'
-
-require 'fog/openstack/core'
-require 'fog/openstack/errors'
-
-require 'fog/planning/openstack'
 
 module Fog
   module Baremetal
@@ -22,11 +16,6 @@ module Fog
 
   module DNS
     autoload :OpenStack, 'fog/dns/openstack'
-
-    class OpenStack
-      autoload :V1, 'fog/dns/openstack/v1'
-      autoload :V2, 'fog/dns/openstack/v2'
-    end
   end
 
   module Event
@@ -35,20 +24,10 @@ module Fog
 
   module Identity
     autoload :OpenStack, 'fog/identity/openstack'
-
-    class OpenStack
-      autoload :V2, 'fog/identity/openstack/v2'
-      autoload :V3, 'fog/identity/openstack/v3'
-    end
   end
 
   module Image
     autoload :OpenStack, 'fog/image/openstack'
-
-    class OpenStack
-      autoload :V1, 'fog/image/openstack/v1'
-      autoload :V2, 'fog/image/openstack/v2'
-    end
   end
 
   module Introspection
@@ -94,11 +73,6 @@ module Fog
 
   module Volume
     autoload :OpenStack, 'fog/volume/openstack'
-
-    class OpenStack
-      autoload :V1, 'fog/volume/openstack/v1'
-      autoload :V2, 'fog/volume/openstack/v2'
-    end
   end
 
   module Workflow
@@ -110,6 +84,12 @@ module Fog
   end
 
   module OpenStack
+    autoload :VERSION, 'fog/openstack/version'
+
+    autoload :Core, 'fog/openstack/core'
+    autoload :Errors, 'fog/openstack/errors'
+    autoload :Planning, 'fog/planning/openstack'
+
     extend Fog::Provider
 
     service(:baremetal,          'Baremetal')

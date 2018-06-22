@@ -3,6 +3,9 @@
 module Fog
   module Image
     class OpenStack < Fog::Service
+      autoload :V1, 'fog/image/openstack/v1'
+      autoload :V2, 'fog/image/openstack/v2'
+
       # Fog::Image::OpenStack.new() will return a Fog::Image::OpenStack::V2 or a Fog::Image::OpenStack::V1,
       #  choosing the latest available
       def self.new(args = {})
