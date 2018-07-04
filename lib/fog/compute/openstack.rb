@@ -116,6 +116,9 @@ module Fog
       request :migrate_server
       request :evacuate_server
 
+      # Server Remote Consoles
+      request :remote_consoles
+
       # Service CRUD
       request :list_services
       request :enable_service
@@ -338,7 +341,7 @@ module Fog
                   "port_state" => "ACTIVE"
                 }
               ]
-            }  
+            }
           end
         end
 
