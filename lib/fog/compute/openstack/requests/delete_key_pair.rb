@@ -2,7 +2,9 @@ module Fog
   module Compute
     class OpenStack
       class Real
-        def delete_key_pair(key_name)
+        def delete_key_pair(key_name, user_id = nil)
+          options = {}
+          options[:user_id] = user_id unless user_id.nil?
           request(
             :expects => [202, 204],
             :method  => 'DELETE',
