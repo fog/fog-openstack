@@ -25,9 +25,9 @@ module Fog
           requires :name
 
           data = if public_key
-                   service.create_key_pair(name, public_key).body['keypair']
+                   service.create_key_pair(name, public_key, user_id).body['keypair']
                  else
-                   service.create_key_pair(name).body['keypair']
+                   service.create_key_pair(name, nil, user_id).body['keypair']
                  end
           new_attributes = data.reject { |key, _value| !['fingerprint', 'public_key', 'name', 'private_key', 'user_id'].include?(key) }
           merge_attributes(new_attributes)

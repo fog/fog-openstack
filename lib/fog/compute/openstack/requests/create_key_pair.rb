@@ -2,7 +2,7 @@ module Fog
   module Compute
     class OpenStack
       class Real
-        def create_key_pair(key_name, public_key = nil)
+        def create_key_pair(key_name, public_key = nil, user_id = nil)
           data = {
             'keypair' => {
               'name' => key_name
@@ -10,6 +10,7 @@ module Fog
           }
 
           data['keypair']['public_key'] = public_key unless public_key.nil?
+          data['keypair']['user_id'] = user_id unless user_id.nil?
 
           request(
             :body    => Fog::JSON.encode(data),
