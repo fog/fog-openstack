@@ -3,6 +3,7 @@ module Fog
     class OpenStack
       class Real
         # Get a vnc console for an instance.
+        # For microversion < 2.6 as it has been replaced with remote-consoles
         #
         # === Parameters
         # * server_id <~String> - The ID of the server.
@@ -13,12 +14,20 @@ module Fog
         #     * url <~String>
         #     * type <~String>
         def get_vnc_console(server_id, console_type)
+          fixed_microversion = nil
+          if microversion_newer_than?('2.5')
+            fixed_microversion = @microversion
+            @microversion = '2.5'
+          end
+
           body = {
             'os-getVNCConsole' => {
               'type' => console_type
             }
           }
-          server_action(server_id, body)
+          result = server_action(server_id, body)
+          @microversion = fixed_microversion if fixed_microversion
+          result
         end
       end
 
