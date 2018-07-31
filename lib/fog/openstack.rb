@@ -342,7 +342,10 @@ module Fog
 
       identity_service = get_service_v3(body, identity_service_type, nil, nil, :openstack_endpoint_path_matches => /\/v3/) if identity_service_type
 
-      management_url = service['endpoints'].find { |e| e['interface']==endpoint_type }['url']
+      service = service['endpoints'].find { |e| e['interface'] == endpoint_type }
+      if service.nil?
+        raise Fog::Errors::NotFound.new("Can't find service's endpoint with endpoint type: '#{endpoint_type}'.")
+      end
       identity_url = identity_service['endpoints'].find { |e| e['interface']=='public' }['url'] if identity_service
 
       if body['token']['project']
@@ -355,7 +358,7 @@ module Fog
           :user                     => body['token']['user']['name'],
           :tenant                   => tenant,
           :identity_public_endpoint => identity_url,
-          :server_management_url    => management_url,
+          :server_management_url    => service['url'],
           :token                    => token,
           :expires                  => body['token']['expires_at'],
           :current_user_id          => body['token']['user']['id'],
@@ -586,7 +589,12 @@ module Fog
     def self.get_version(supported_versions, uri, auth_token, connection_options = {})
       version_cache = "#{uri}#{supported_versions}"
       return @version[version_cache] if @version && @version[version_cache]
-      connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}", false, connection_options)
+      service_version_path = ''
+      unless uri.path.nil? || uri.path.split('/').reject!(&:empty?).nil?
+        service_version_path = "/" + uri.path.split('/').reject!(&:empty?)[0]
+      end
+      connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}#{service_version_path}/",
+                                             false, connection_options)
       response = connection.request(
         :expects => [200, 204, 300],
         :headers => {'Content-Type' => 'application/json',
