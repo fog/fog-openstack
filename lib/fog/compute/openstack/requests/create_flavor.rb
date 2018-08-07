@@ -10,16 +10,6 @@ module Fog
         # swap        = Swap space in MB
         # rxtx_factor = RX/TX factor
         def create_flavor(attributes)
-          # Get last flavor id
-          flavor_ids = []
-          flavors = list_flavors_detail.body['flavors'] + list_flavors_detail(:is_public => false).body['flavors']
-          flavors.each do |flavor|
-            flavor_ids << flavor['id'].to_i
-          end
-
-          # Set flavor id
-          attributes[:flavor_id] = attributes[:flavor_id] || (!flavor_ids.empty? ? flavor_ids.sort.last + 1 : 1)
-
           data = {
             'flavor' => {
               'name'                       => attributes[:name],
