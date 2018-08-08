@@ -586,7 +586,8 @@ module Fog
     def self.get_version(supported_versions, uri, auth_token, connection_options = {})
       version_cache = "#{uri}#{supported_versions}"
       return @version[version_cache] if @version && @version[version_cache]
-      connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}", false, connection_options)
+      connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/",
+                                             false, connection_options)
       response = connection.request(
         :expects => [200, 204, 300],
         :headers => {'Content-Type' => 'application/json',
