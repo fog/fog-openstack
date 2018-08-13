@@ -99,27 +99,10 @@ module Fog
         class Real
           include Fog::OpenStack::Core
 
-          def initialize(options = {})
-            initialize_identity options
+          DEFAULT_SERVICE_TYPE = %w(workflowv2).collect(&:freeze).freeze
 
-            @openstack_service_type  = options[:openstack_service_type] || ['workflowv2']
-            @openstack_service_name  = options[:openstack_service_name]
-
-            @connection_options = options[:connection_options] || {}
-
-            authenticate
-
-            unless @path.match(SUPPORTED_VERSIONS)
-              @path = "/" + Fog::OpenStack.get_supported_version(
-                SUPPORTED_VERSIONS,
-                @openstack_management_uri,
-                @auth_token,
-                @connection_options
-              )
-            end
-
-            @persistent = options[:persistent] || false
-            @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+          def default_path_prefix
+            'v2'
           end
 
           def request(params)

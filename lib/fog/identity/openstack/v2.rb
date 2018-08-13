@@ -169,10 +169,10 @@ module Fog
         end
 
         class Real < Fog::Identity::OpenStack::Real
-          private
+          DEFAULT_SERVICE_TYPE = %w(identity_v2 identityv2 identity).collect(&:freeze).freeze
 
-          def default_service_type(_)
-            DEFAULT_SERVICE_TYPE
+          def default_path_prefix
+            'v2.0'
           end
         end
       end

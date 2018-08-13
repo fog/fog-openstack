@@ -281,61 +281,60 @@ require_relative './shared_context'
           transfer.id.must_equal transfer_id
           transfer.name.must_equal transfer_name
           transfer.volume_id.must_equal volume.id
-
           # to accept the transfer, we need a second connection to a different project
           puts 'Checking object visibility from different projects...' if ENV['DEBUG_VERBOSE']
           other_service = service_class.new(
-            :openstack_auth_url     => "#{@os_auth_url}/auth/tokens",
+            :openstack_auth_url     => @os_auth_url,
             :openstack_region       => ENV['OS_REGION_NAME'] || 'RegionOne',
             :openstack_api_key      => ENV['OS_PASSWORD_OTHER'] || 'password',
             :openstack_username     => ENV['OS_USERNAME_OTHER'] || 'demo',
             :openstack_domain_name  => ENV['OS_USER_DOMAIN_NAME'] || 'Default',
             :openstack_project_name => ENV['OS_PROJECT_NAME_OTHER'] || 'demo'
-          )
+            )
 
-          # check that recipient cannot see the transfer object
-          assert_nil other_service.transfers.get(transfer.id)
-          other_service.transfers.all(:name => transfer_name).length.must_equal 0
+            # check that recipient cannot see the transfer object
+            assert_nil other_service.transfers.get(transfer.id)
+            other_service.transfers.all(:name => transfer_name).length.must_equal 0
 
-          # # check that recipient cannot see the volume before transfer
-          # proc { other_service.volumes.get(volume.id) }.must_raise Fog::Compute::OpenStack::NotFound
-          # other_service.volumes.all(@name_param => volume_name).length.must_equal 0
+            # # check that recipient cannot see the volume before transfer
+            # proc { other_service.volumes.get(volume.id) }.must_raise Fog::Compute::OpenStack::NotFound
+            # other_service.volumes.all(@name_param => volume_name).length.must_equal 0
 
-          # The recipient can inexplicably see the volume even before the
-          # transfer, so to confirm that the transfer happens, we record its tenant ID.
-          volume.tenant_id.must_match(/^[0-9a-f-]+$/) # should look like a UUID
-          source_tenant_id = volume.tenant_id
+            # The recipient can inexplicably see the volume even before the
+            # transfer, so to confirm that the transfer happens, we record its tenant ID.
+            volume.tenant_id.must_match(/^[0-9a-f-]+$/) # should look like a UUID
+            source_tenant_id = volume.tenant_id
 
-          # check that accept_transfer fails without valid transfer ID and auth key
-          bogus_uuid = 'ec8ff7e8-81e2-4e12-b9fb-3e8890612c2d' # from Fog::UUID.uuid, but fixed to play nice with VCR
-          proc { other_service.transfers.accept(bogus_uuid, auth_key) }.must_raise Fog::Volume::OpenStack::NotFound
-          proc { other_service.transfers.accept(transfer_id, 'invalidauthkey') }.must_raise Excon::Errors::BadRequest
+            # check that accept_transfer fails without valid transfer ID and auth key
+            bogus_uuid = 'ec8ff7e8-81e2-4e12-b9fb-3e8890612c2d' # from Fog::UUID.uuid, but fixed to play nice with VCR
+            proc { other_service.transfers.accept(bogus_uuid, auth_key) }.must_raise Fog::Volume::OpenStack::NotFound
+            proc { other_service.transfers.accept(transfer_id, 'invalidauthkey') }.must_raise Excon::Errors::BadRequest
 
-          # accept transfer
-          puts 'Accepting transfer...' if ENV['DEBUG_VERBOSE']
-          transfer = other_service.transfers.accept(transfer.id, auth_key)
-          transfer.must_be_kind_of Fog::Volume::OpenStack::Transfer
+            # accept transfer
+            puts 'Accepting transfer...' if ENV['DEBUG_VERBOSE']
+            transfer = other_service.transfers.accept(transfer.id, auth_key)
+            transfer.must_be_kind_of Fog::Volume::OpenStack::Transfer
 
-          transfer.id.must_equal transfer_id
-          transfer.name.must_equal transfer_name
+            transfer.id.must_equal transfer_id
+            transfer.name.must_equal transfer_name
 
-          # check that recipient can see the volume
-          volume = other_service.volumes.get(volume.id)
-          volume.must_be_kind_of Fog::Volume::OpenStack::Volume
+            # check that recipient can see the volume
+            volume = other_service.volumes.get(volume.id)
+            volume.must_be_kind_of Fog::Volume::OpenStack::Volume
 
-          # # check that sender cannot see the volume anymore
-          # proc { @service.volumes.get(volume.id) }.must_raise Fog::Compute::OpenStack::NotFound
-          # @service.volumes.all(@name_param => volume_name).length.must_equal 0
+            # # check that sender cannot see the volume anymore
+            # proc { @service.volumes.get(volume.id) }.must_raise Fog::Compute::OpenStack::NotFound
+            # @service.volumes.all(@name_param => volume_name).length.must_equal 0
 
-          # As noted above, both users seem to be able to see the volume at all times.
-          # Check change of ownership by looking at the tenant_id, instead.
-          volume.tenant_id.must_match(/^[0-9a-f-]+$/) # should look like a UUID
-          volume.tenant_id.wont_equal(source_tenant_id)
+            # As noted above, both users seem to be able to see the volume at all times.
+            # Check change of ownership by looking at the tenant_id, instead.
+            volume.tenant_id.must_match(/^[0-9a-f-]+$/) # should look like a UUID
+            volume.tenant_id.wont_equal(source_tenant_id)
 
-          # check that the transfer object is gone on both sides
-          [@service, other_service].each do |service|
-            assert_nil service.transfers.get(transfer.id)
-            service.transfers.all(:name => transfer_name).length.must_equal 0
+            # check that the transfer object is gone on both sides
+            [@service, other_service].each do |service|
+              assert_nil service.transfers.get(transfer.id)
+              service.transfers.all(:name => transfer_name).length.must_equal 0
           end
         ensure
           # cleanup volume
@@ -368,7 +367,7 @@ require_relative './shared_context'
 
             # to try to accept the transfer, we need a second connection to a different project
             other_service = service_class.new(
-              :openstack_auth_url     => "#{@os_auth_url}/auth/tokens",
+              :openstack_auth_url     => @os_auth_url,
               :openstack_region       => ENV['OS_REGION_NAME'] || 'RegionOne',
               :openstack_api_key      => ENV['OS_PASSWORD_OTHER'] || 'password',
               :openstack_username     => ENV['OS_USERNAME_OTHER'] || 'demo',

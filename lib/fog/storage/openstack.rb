@@ -123,7 +123,7 @@ module Fog
 
           authenticate
           @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+          @connection = Fog::Core::Connection.new(@openstack_management_url, @persistent, @connection_options)
         end
 
         # Change the current account while re-using the auth token.

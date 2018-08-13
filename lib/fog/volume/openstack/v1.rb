@@ -148,33 +148,14 @@ module Fog
         class Real
           include Fog::OpenStack::Core
 
+          DEFAULT_SERVICE_TYPE = %w(volume).collect(&:freeze).freeze
+
           def self.not_found_class
             Fog::Volume::OpenStack::NotFound
           end
 
-          def initialize(options = {})
-            initialize_identity options
-
-            @openstack_service_type  = options[:openstack_service_type] || ['volume']
-            @openstack_service_name  = options[:openstack_service_name]
-            @openstack_endpoint_type = options[:openstack_endpoint_type] || 'adminURL'
-
-            @connection_options = options[:connection_options] || {}
-
-            authenticate
-            set_api_path
-
-            @persistent = options[:persistent] || false
-            @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
-          end
-
-          def set_api_path
-            unless @path.match(SUPPORTED_VERSIONS)
-              @path = Fog::OpenStack.get_supported_version_path(SUPPORTED_VERSIONS,
-                                                                @openstack_management_uri,
-                                                                @auth_token,
-                                                                @connection_options)
-            end
+          def default_endtpoint_type
+            'admin'
           end
         end
       end

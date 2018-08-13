@@ -5,7 +5,7 @@ http_interactions:
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"admin"}}},"scope":{"project":{"name":"admin","domain":{"name":"Default"}}}}}'
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"name":"admin","domain":{"name":"Default"},"password":"password"}}},"scope":{"project":{"name":"admin","domain":{"name":"Default"}}}}}'
     headers:
       User-Agent:
       - fog-core/1.40.0
@@ -101,11 +101,10 @@ http_interactions:
         "f92bf0dad1e941d09d9a08cb50362510"}, {"url": "http://devstack.openstack.stack:8774/v2/c60a441e54cd435896a357026aa4050a",
         "interface": "admin", "region": "RegionOne", "region_id": "RegionOne", "id": "da09586d8bb44903a53efcebe67841d9"}],
         "type": "compute", "id": "45b131798dc240c4b5d75e024dffc5b5", "name": "nova"},
-        {"endpoints": [{"url": "https://devstack.openstack.stack:5000/v3", "interface":
+        {"endpoints": [{"url": "https://devstack.openstack.stack:5000", "interface":
         "public", "region": "RegionOne", "region_id": "RegionOne", "id": "7859f84c67d740b294c9a607d03c2991"},
-        {"url": "http://devstack.openstack.stack:5000/v3",
-        "interface": "internal", "region": "RegionOne", "region_id": "RegionOne", "id":
-        "a2cff5bcad944eb4a10c06e6c05140eb"}, {"url": "devstack.openstack.stack:5000/v3",
+        {"url": "http://devstack.openstack.stack:5000", "interface": "internal", "region": "RegionOne", "region_id": "RegionOne",
+        "id": "a2cff5bcad944eb4a10c06e6c05140eb"}, {"url": "devstack.openstack.stack:5000",
         "interface": "admin", "region": "RegionOne", "region_id": "RegionOne", "id": "5973c23918b8460886140c5ed6a5411b"}],
         "type": "identity", "id": "70c56d9a4833404e823ba1195a0f1a63", "name": "keystone"},
         {"endpoints": [{"url": "https://devstack.openstack.stack:8786/v1/c60a441e54cd435896a357026aa4050a",

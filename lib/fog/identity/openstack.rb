@@ -48,37 +48,8 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        DEFAULT_SERVICE_TYPE_V3 = %w(identity_v3 identityv3 identity).collect(&:freeze).freeze
-        DEFAULT_SERVICE_TYPE    = %w(identity).collect(&:freeze).freeze
-
         def self.not_found_class
           Fog::Identity::OpenStack::NotFound
-        end
-
-        def initialize(options = {})
-          if options.respond_to?(:config_service?) && options.config_service?
-            configure(options)
-            return
-          end
-
-          initialize_identity(options)
-
-          @openstack_service_type   = options[:openstack_service_type] || default_service_type(options)
-          @openstack_service_name   = options[:openstack_service_name]
-
-          @connection_options       = options[:connection_options] || {}
-
-          @openstack_endpoint_type  = options[:openstack_endpoint_type] || 'adminURL'
-          initialize_endpoint_path_matches(options)
-
-          authenticate
-
-          if options[:openstack_identity_prefix]
-            @path = "/#{options[:openstack_identity_prefix]}/#{@path}"
-          end
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
         end
 
         def config_service?
@@ -89,23 +60,11 @@ module Fog
           self
         end
 
+        def default_endpoint_type
+          'admin'
+        end
+
         private
-
-        def default_service_type(options)
-          unless options[:openstack_identity_prefix]
-            if @openstack_auth_uri.path =~ %r{/v3} ||
-               (options[:openstack_endpoint_path_matches] && options[:openstack_endpoint_path_matches] =~ '/v3')
-              return DEFAULT_SERVICE_TYPE_V3
-            end
-          end
-          DEFAULT_SERVICE_TYPE
-        end
-
-        def initialize_endpoint_path_matches(options)
-          if options[:openstack_endpoint_path_matches]
-            @openstack_endpoint_path_matches = options[:openstack_endpoint_path_matches]
-          end
-        end
 
         def configure(source)
           source.instance_variables.each do |v|

@@ -379,33 +379,21 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
+        DEFAULT_SERVICE_TYPE = %w(compute).collect(&:freeze).freeze
+
         def self.not_found_class
           Fog::Compute::OpenStack::NotFound
+        end
+
+        def default_path_prefix
+          'v2.1'
         end
 
         def initialize(options = {})
           @supported_versions = SUPPORTED_VERSIONS
           @supported_microversion = SUPPORTED_MICROVERSION
           @microversion_key = 'X-OpenStack-Nova-API-Version'
-
-          initialize_identity options
-
-          @openstack_identity_service_type = options[:openstack_identity_service_type] || 'identity'
-
-          @openstack_service_type   = options[:openstack_service_type] || %w(nova compute)
-          @openstack_service_name   = options[:openstack_service_name]
-
-          @connection_options       = options[:connection_options] || {}
-
-          authenticate
-
-          unless @path =~ %r{/(v2|v2\.0|v2\.1)}
-            raise Fog::OpenStack::Errors::ServiceUnavailable,
-                  "OpenStack compute binding only supports version v2 and v2.1"
-          end
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+          super
         end
       end
     end

@@ -73,29 +73,14 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
+        DEFAULT_SERVICE_TYPE = %w(baremetal-introspection).collect(&:freeze).freeze
+
         def self.not_found_class
           Fog::Introspection::OpenStack::NotFound
         end
 
-        def initialize(options = {})
-          initialize_identity options
-
-          @openstack_service_type  = options[:openstack_service_type] || ['baremetal-introspection']
-          @openstack_service_name  = options[:openstack_service_name]
-
-          @connection_options = options[:connection_options] || {}
-
-          authenticate
-          set_api_path
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
-        end
-
-        def set_api_path
-          unless @path.match(SUPPORTED_VERSIONS)
-            @path = "/v1"
-          end
+        def default_path_prefix
+          'v1'
         end
       end
     end

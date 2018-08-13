@@ -27,7 +27,6 @@ module Fog
         options.select { |x| x.to_s.start_with? 'openstack' }.each do |openstack_param, value|
           instance_variable_set "@#{openstack_param}".to_sym, value
         end
-
         @auth_token ||= options[:openstack_auth_token]
         @openstack_identity_public_endpoint = options[:openstack_identity_endpoint]
 
@@ -87,7 +86,6 @@ module Fog
           if error.response.body != 'Bad username or password' && @openstack_can_reauthenticate && !retried
             @openstack_must_reauthenticate = true
             authenticate
-            set_api_path
             retried = true
             retry
           # bad credentials or token renewal not possible
@@ -109,10 +107,6 @@ module Fog
         end
 
         response
-      end
-
-      def set_api_path
-        # if the service supports multiple versions, do the selection here
       end
 
       def set_microversion
@@ -172,12 +166,51 @@ module Fog
         options
       end
 
+      def initialize(options = {})
+        setup(options)
+        authenticate
+        @connection = Fog::Core::Connection.new(@openstack_management_url, @persistent, @connection_options)
+      end
+
+      def api_path_prefix
+        path = ''
+        if @openstack_management_uri && @openstack_management_uri.path != '/'
+          path = @openstack_management_uri.path
+        end
+        unless default_path_prefix.empty?
+          path << '/' + default_path_prefix
+        end
+        path
+      end
+
+      def default_endpoint_type
+        'public'
+      end
+
+      def default_path_prefix
+        ''
+      end
+
+      def setup(options)
+        if options.respond_to?(:config_service?) && options.config_service?
+          configure(options)
+          return
+        end
+
+        initialize_identity(options)
+        @openstack_service_type = options[:openstack_service_type] || self.class::DEFAULT_SERVICE_TYPE
+        @openstack_endpoint_type = options[:openstack_endpoint_type] || default_endpoint_type
+        @connection_options     = options[:connection_options] || {}
+        @persistent = options[:persistent] || false
+      end
+
       def authenticate
         if !@openstack_management_url || @openstack_must_reauthenticate
 
           options = openstack_options
 
           options[:openstack_auth_token] = @openstack_must_reauthenticate ? nil : @openstack_auth_token
+          options[:openstack_service_type] = @openstack_service_type
 
           credentials = Fog::OpenStack.authenticate(options, @connection_options)
 
@@ -187,19 +220,20 @@ module Fog
 
           @openstack_must_reauthenticate = false
           @auth_token = credentials[:token]
-          @openstack_management_url = credentials[:server_management_url]
+          @openstack_management_url = credentials[:openstack_management_url]
           @unscoped_token = credentials[:unscoped_token]
         else
           @auth_token = @openstack_auth_token
         end
+
         @openstack_management_uri = URI.parse(@openstack_management_url)
 
+        #TODO: Remove
         @host   = @openstack_management_uri.host
-        @path   = @openstack_management_uri.path
-        @path.sub!(%r{/$}, '')
         @port   = @openstack_management_uri.port
         @scheme = @openstack_management_uri.scheme
 
+        # TODO: Remove - Not use but list_tenants
         # Not all implementations have identity service in the catalog
         if @openstack_identity_public_endpoint || @openstack_management_url
           @identity_connection = Fog::Core::Connection.new(
@@ -210,6 +244,7 @@ module Fog
 
         # both need to be set in service's initialize for microversions to work
         set_microversion if @supported_microversion && @supported_versions
+        @path = api_path_prefix
 
         true
       end

@@ -5,7 +5,7 @@ http_interactions:
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","id":"205e0e39a2534743b517ed0aa2fbcda7"}}},"scope":{"domain":{"id":"default"}}}}'
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"id":"205e0e39a2534743b517ed0aa2fbcda7","password":"password"}}},"scope":{"domain":{"id":"default"}}}}'
     headers:
       User-Agent:
       - fog-core/1.38.0
@@ -87,6 +87,6 @@ http_interactions:
         "swift"}], "extras": {}, "user": {"domain": {"id": "default", "name": "Default"},
         "id": "205e0e39a2534743b517ed0aa2fbcda7", "name": "admin"}, "audit_ids": ["ySKiB4frRTSad2LVXZzW4A"],
         "issued_at": "2016-05-03T13:51:40.683240Z"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:40 GMT
 recorded_with: VCR 3.0.1

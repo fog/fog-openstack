@@ -18,7 +18,7 @@ describe Fog::Identity::OpenStack::V3 do
         :openstack_api_key   => @openstack_vcr.password,
         :openstack_userid    => @openstack_vcr.user_id,
         :openstack_region    => @openstack_vcr.region,
-        :openstack_auth_url  => "#{@os_auth_url}/auth/tokens"
+        :openstack_auth_url  => @os_auth_url
       )
     end
   end
@@ -30,7 +30,7 @@ describe Fog::Identity::OpenStack::V3 do
         :openstack_api_key   => @openstack_vcr.password,
         :openstack_username  => @openstack_vcr.username,
         :openstack_region    => @openstack_vcr.region,
-        :openstack_auth_url  => "#{@os_auth_url}/auth/tokens"
+        :openstack_auth_url  => @os_auth_url
       )
     end
   end
@@ -42,7 +42,7 @@ describe Fog::Identity::OpenStack::V3 do
         :openstack_api_key     => @openstack_vcr.password,
         :openstack_username    => @openstack_vcr.username,
         :openstack_region      => @openstack_vcr.region,
-        :openstack_auth_url    => "#{@os_auth_url}/auth/tokens"
+        :openstack_auth_url    => @os_auth_url
       )
     end
   end
@@ -56,7 +56,7 @@ describe Fog::Identity::OpenStack::V3 do
     VCR.use_cassette('idv3_other_region') do
       @fog = Fog::Identity::OpenStack::V3.new(
         :openstack_region   => @openstack_vcr.region_other,
-        :openstack_auth_url => "#{@os_auth_url}/auth/tokens",
+        :openstack_auth_url => @os_auth_url,
         :openstack_userid   => @openstack_vcr.user_id,
         :openstack_api_key  => @openstack_vcr.password
       )
@@ -70,13 +70,13 @@ describe Fog::Identity::OpenStack::V3 do
         :openstack_api_key  => @openstack_vcr.password,
         :openstack_userid   => @openstack_vcr.user_id,
         :openstack_region   => @openstack_vcr.region,
-        :openstack_auth_url => "#{@os_auth_url}/auth/tokens"
+        :openstack_auth_url => @os_auth_url
       )
 
       auth_params = {
         :provider             => "openstack",
         :openstack_auth_token => id_v3.credentials[:openstack_auth_token],
-        :openstack_auth_url   => "#{@os_auth_url}/auth/tokens",
+        :openstack_auth_url   => @os_auth_url,
         :openstack_region     => @openstack_vcr.region
       }
       @fog2 = Fog::Identity::OpenStack::V3.new(auth_params)
@@ -95,29 +95,27 @@ describe Fog::Identity::OpenStack::V3 do
         :openstack_api_key      => @openstack_vcr.password,
         :openstack_username     => @openstack_vcr.username,
         :openstack_region       => @openstack_vcr.region,
-        :openstack_auth_url     => "#{@os_auth_url}/auth/tokens"
+        :openstack_auth_url     => @os_auth_url
       )
     end
   end
 
   it 'get an unscoped token, then use it to get a scoped token' do
     VCR.use_cassette('authv3_unscoped') do
-      skip 'get an unscoped token, then use it to get a scoped token to be fixed'
       id_v3 = Fog::Identity::OpenStack::V3.new(
         :openstack_api_key  => @openstack_vcr.password,
         :openstack_userid   => @openstack_vcr.user_id,
         :openstack_region   => @openstack_vcr.region,
-        :openstack_auth_url => "#{@os_auth_url}/auth/tokens"
+        :openstack_auth_url => @os_auth_url
       )
 
       # Exchange it for a project-scoped token
       auth = Fog::Identity::OpenStack::V3.new(
         :openstack_project_name => @openstack_vcr.project_name,
         :openstack_domain_name  => @openstack_vcr.domain_name,
-        :openstack_tenant       => @openstack_vcr.username,
         :openstack_auth_token   => id_v3.credentials[:openstack_auth_token],
         :openstack_region       => @openstack_vcr.region,
-        :openstack_auth_url     => "#{@os_auth_url}/auth/tokens"
+        :openstack_auth_url     => @os_auth_url
       )
 
       token = auth.credentials[:openstack_auth_token]
@@ -301,7 +299,7 @@ describe Fog::Identity::OpenStack::V3 do
   it 'authenticates with a token' do
     VCR.use_cassette('authv3_token') do
       # Setup - get a non-admin token to check by using username/password authentication to start with
-      auth_url = "#{@os_auth_url}/auth/tokens"
+      auth_url = @os_auth_url
 
       begin
 
@@ -443,6 +441,7 @@ describe Fog::Identity::OpenStack::V3 do
       end
     end
   end
+
   it "Manipulates roles on domain groups" do
     VCR.use_cassette('idv3_domain_group_roles_mutation') do
       skip "Manipulates roles on domain groups to be fixed"
@@ -463,7 +462,6 @@ describe Fog::Identity::OpenStack::V3 do
 
         # User has no roles initially
         foobar_user.roles.length.must_equal 0
-
         # Create a role and add it to the domain group
         foobar_role = @service.roles.all.select { |role| role.name == 'foobar_role' }.first
         foobar_role.destroy if foobar_role
@@ -478,6 +476,7 @@ describe Fog::Identity::OpenStack::V3 do
         foobar_group.add_user foobar_user.id
         foobar_user.check_role(foobar_role.id).must_equal false # Still false in absolute assignment terms
         assignments = @service.role_assignments.all(:user_id => foobar_user.id, :effective => true)
+
         assignments.length.must_equal 1
         assignments.first.role['id'].must_equal foobar_role.id
         assignments.first.user['id'].must_equal foobar_user.id

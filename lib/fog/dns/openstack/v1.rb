@@ -98,28 +98,14 @@ module Fog
         class Real
           include Fog::OpenStack::Core
 
+          DEFAULT_SERVICE_TYPE = %w(dns).collect(&:freeze).freeze
+
           def self.not_found_class
             Fog::DNS::OpenStack::NotFound
           end
 
-          def initialize(options = {})
-            initialize_identity options
-
-            @openstack_service_type           = options[:openstack_service_type] || ['dns']
-            @openstack_service_name           = options[:openstack_service_name]
-
-            @connection_options               = options[:connection_options] || {}
-
-            authenticate
-            set_api_path
-            @persistent = options[:persistent] || false
-            @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
-          end
-
-          def set_api_path
-            # version explicitly set to allow usage also in 'DEPRECATED' mitaka version,
-            # where f.i. quota modification was not possible at the time of creation
-            @path = '/v1' unless @path =~ /v1/
+          def default_path_prefix
+            'v1'
           end
         end
       end

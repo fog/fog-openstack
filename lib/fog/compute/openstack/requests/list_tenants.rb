@@ -3,6 +3,7 @@ module Fog
     class OpenStack
       class Real
         def list_tenants
+          # TODO: replace with standard request (this is the only place using @identity_connection)
           response = @identity_connection.request(:expects => [200, 204],
                                                   :headers => {'Content-Type' => 'application/json',
                                                                'Accept'       => 'application/json',

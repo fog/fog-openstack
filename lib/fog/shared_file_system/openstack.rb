@@ -347,8 +347,14 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
+        DEFAULT_SERVICE_TYPE = %w(sharev2).collect(&:freeze).freeze
+
         def self.not_found_class
           Fog::SharedFileSystem::OpenStack::NotFound
+        end
+
+        def action_prefix
+          microversion_newer_than?('2.6') ? '' : 'os-'
         end
 
         def initialize(options = {})
@@ -357,31 +363,11 @@ module Fog
           @fixed_microversion     = options[:openstack_shared_file_system_microversion]
           @microversion_key       = 'X-Openstack-Manila-Api-Version'.freeze
 
-          initialize_identity options
-
-          @openstack_service_type  = options[:openstack_service_type] || ['sharev2']
-          @openstack_service_name  = options[:openstack_service_name]
-          @connection_options      = options[:connection_options] || {}
-
+          setup(options)
           authenticate
-          set_api_path
           set_microversion
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
-        end
-
-        def set_api_path
-          unless @path.match(@supported_versions)
-            @path = Fog::OpenStack.get_supported_version_path(@supported_versions,
-                                                              @openstack_management_uri,
-                                                              @auth_token,
-                                                              @connection_options)
-          end
-        end
-
-        def action_prefix
-          microversion_newer_than?('2.6') ? '' : 'os-'
+          @path = api_path_prefix
+          @connection = Fog::Core::Connection.new(@openstack_management_url, @persistent, @connection_options)
         end
       end
     end
