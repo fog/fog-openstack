@@ -17,22 +17,23 @@ module Fog
                  :current_user, :current_user_id, :current_tenant, :openstack_cache_ttl,
                  :provider, :openstack_identity_prefix, :openstack_endpoint_path_matches
 
-      # Fog::Identity::OpenStack.new() will return a Fog::Identity::OpenStack::V3 by default
       def self.new(args = {})
-        version = '3'
-        url = Fog.credentials[:openstack_auth_url] || args[:openstack_auth_url]
-        if url
-          uri = URI(url)
-          version = '2.0' if uri.path =~ /v2\.0/
+        if args[:openstack_identity_legacy_version]
+          version = '2.0'
+        else
+          url = Fog.credentials[:openstack_auth_url] || args[:openstack_auth_url]
+          if url
+            uri = URI(url)
+            version = '2.0' if uri.path =~ /v2\.0/
+          end
         end
 
-        service = case version
-                  when '2.0'
-                    Fog::Identity::OpenStack::V2.new(args)
-                  else
-                    Fog::Identity::OpenStack::V3.new(args)
-                  end
-        service
+        case version
+        when '2.0'
+          Fog::Identity::OpenStack::V2.new(args)
+        else
+          Fog::Identity::OpenStack::V3.new(args)
+        end
       end
 
       class Mock
