@@ -2,7 +2,7 @@ require 'test_helper'
 
 describe "Fog::Network[:openstack] | quota requests" do
   before do
-    @tenant_id = Fog::Compute[:openstack].list_tenants.body['tenants'].first['id']
+    @tenant_id = Fog::Identity[:openstack].list_tenants.body['tenants'].first['id']
     @quota_format = {
       'subnet'     => Fog::Nullable::Integer,
       'router'     => Fog::Nullable::Integer,

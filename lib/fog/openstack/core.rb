@@ -28,7 +28,6 @@ module Fog
           instance_variable_set "@#{openstack_param}".to_sym, value
         end
         @auth_token ||= options[:openstack_auth_token]
-        @openstack_identity_public_endpoint = options[:openstack_identity_endpoint]
 
         @openstack_auth_uri = URI.parse(options[:openstack_auth_url])
         @openstack_must_reauthenticate = false
@@ -59,7 +58,6 @@ module Fog
           :provider                    => 'openstack',
           :openstack_auth_url          => @openstack_auth_uri.to_s,
           :openstack_auth_token        => @auth_token,
-          :openstack_identity_endpoint => @openstack_identity_public_endpoint,
           :current_user                => @current_user,
           :current_user_id             => @current_user_id,
           :current_tenant              => @current_tenant,
@@ -227,20 +225,6 @@ module Fog
         end
 
         @openstack_management_uri = URI.parse(@openstack_management_url)
-
-        #TODO: Remove
-        @host   = @openstack_management_uri.host
-        @port   = @openstack_management_uri.port
-        @scheme = @openstack_management_uri.scheme
-
-        # TODO: Remove - Not use but list_tenants
-        # Not all implementations have identity service in the catalog
-        if @openstack_identity_public_endpoint || @openstack_management_url
-          @identity_connection = Fog::Core::Connection.new(
-            @openstack_identity_public_endpoint || @openstack_management_url,
-            false, @connection_options
-          )
-        end
 
         # both need to be set in service's initialize for microversions to work
         set_microversion if @supported_microversion && @supported_versions

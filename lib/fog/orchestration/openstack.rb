@@ -105,10 +105,6 @@ module Fog
           management_url.port = 8774
           management_url.path = '/v1'
           @openstack_management_url = management_url.to_s
-
-          identity_public_endpoint = URI.parse(options[:openstack_auth_url])
-          identity_public_endpoint.port = 5000
-          @openstack_identity_public_endpoint = identity_public_endpoint.to_s
         end
 
         def data
@@ -123,8 +119,7 @@ module Fog
           {:provider                    => 'openstack',
            :openstack_auth_url          => @openstack_auth_uri.to_s,
            :openstack_auth_token        => @auth_token,
-           :openstack_management_url    => @openstack_management_url,
-           :openstack_identity_endpoint => @openstack_identity_public_endpoint}
+           :openstack_management_url    => @openstack_management_url}
         end
       end
 

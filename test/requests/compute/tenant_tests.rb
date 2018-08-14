@@ -12,7 +12,7 @@ describe "Fog::Compute[:openstack] | tenant requests" do
 
   describe "success" do
     it "#list_tenants" do
-      Fog::Compute[:openstack].list_tenants.body.
+      Fog::Identity[:openstack].list_tenants.body.
         must_match_schema('tenants_links' => Array, 'tenants' => [@tenant_format])
     end
 

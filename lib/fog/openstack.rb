@@ -134,34 +134,24 @@ module Fog
 
       token = Fog::OpenStack::Auth::Token.build(options)
 
-      identity_service_type = options[:openstack_identity_service_type]
-
-      #TODO: remove as not seemed used
-      if identity_service_type
-        identity_url = nil
-      end
-
       endpoint_type = options[:openstack_endpoint_type]
       region = options[:openstack_region]
       service_type = options[:openstack_service_type]
 
-      if token.catalog
-        management_url = token.catalog.get_endpoint_url(service_type, endpoint_type, region)
-      else
-        management_url = options[:openstack_auth_url]
-      end
+      management_url = if token.catalog
+                         token.catalog.get_endpoint_url(service_type, endpoint_type, region)
+                       else
+                         options[:openstack_auth_url]
+                       end
 
       return {
-          :user                     => token.user['name'],
-          :current_user_id          => token.user['id'],
-          :tenant                   => token.tenant,
-
-          :identity_public_endpoint => identity_url,
-          :openstack_management_url => management_url,
-
-          :token                    => token.token,
-          :expires                  => token.expires,
-          :unscoped_token           => token.token,
+        :user                     => token.user['name'],
+        :current_user_id          => token.user['id'],
+        :tenant                   => token.tenant,
+        :openstack_management_url => management_url,
+        :token                    => token.token,
+        :expires                  => token.expires,
+        :unscoped_token           => token.token,
       }
     end
 

@@ -197,7 +197,6 @@ module Fog
       request :delete_key_pair
 
       # Tenant
-      request :list_tenants
       request :set_tenant
       request :get_limits
 
@@ -361,10 +360,6 @@ module Fog
           management_url.port = 8774
           management_url.path = '/v1.1/1'
           @openstack_management_url = management_url.to_s
-
-          identity_public_endpoint = URI.parse(options[:openstack_auth_url])
-          identity_public_endpoint.port = 5000
-          @openstack_identity_public_endpoint = identity_public_endpoint.to_s
         end
 
         def data
