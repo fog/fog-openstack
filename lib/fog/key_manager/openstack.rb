@@ -92,14 +92,16 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        DEFAULT_SERVICE_TYPE = %w(key-manager).collect(&:freeze).freeze
-
         def self.not_found_class
           Fog::KeyManager::OpenStack::NotFound
         end
 
         def default_path_prefix
           'v1'
+        end
+
+        def default_service_type
+          %w(key-manager)
         end
       end
     end

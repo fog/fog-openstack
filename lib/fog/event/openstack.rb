@@ -84,14 +84,16 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        DEFAULT_SERVICE_TYPE = %w(event).collect(&:freeze).freeze
-
         def self.not_found_class
           Fog::Event::OpenStack::NotFound
         end
 
         def default_path_prefix
           'v2'
+        end
+
+        def default_service_type
+          %w(event)
         end
       end
     end

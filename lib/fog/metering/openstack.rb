@@ -96,8 +96,6 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        DEFAULT_SERVICE_TYPE = %w(metering).collect(&:freeze).freeze
-
         def self.not_found_class
           Fog::Metering::OpenStack::NotFound
         end
@@ -108,6 +106,10 @@ module Fog
 
         def default_path_prefix
           'v2'
+        end
+
+        def default_service_type
+          %w(metering)
         end
       end
     end

@@ -90,14 +90,16 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        DEFAULT_SERVICE_TYPE = %w(metric).collect(&:freeze).freeze
-
         def default_path_prefix
           'v1'
         end
 
         def self.not_found_class
           Fog::Metric::OpenStack::NotFound
+        end
+
+        def default_service_type
+          %w(metric)
         end
       end
     end

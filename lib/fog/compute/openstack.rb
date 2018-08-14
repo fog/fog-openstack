@@ -354,8 +354,6 @@ module Fog
           @auth_token = Fog::Mock.random_base64(64)
           @auth_token_expiration = (Time.now.utc + 86400).iso8601
 
-          initialize_identity options
-
           management_url = URI.parse(options[:openstack_auth_url])
           management_url.port = 8774
           management_url.path = '/v1.1/1'
@@ -374,14 +372,16 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        DEFAULT_SERVICE_TYPE = %w(compute).collect(&:freeze).freeze
-
         def self.not_found_class
           Fog::Compute::OpenStack::NotFound
         end
 
         def default_path_prefix
           'v2.1'
+        end
+
+        def default_service_type
+          %w(compute)
         end
 
         def initialize(options = {})

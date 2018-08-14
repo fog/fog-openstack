@@ -347,14 +347,16 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        DEFAULT_SERVICE_TYPE = %w(sharev2).collect(&:freeze).freeze
-
         def self.not_found_class
           Fog::SharedFileSystem::OpenStack::NotFound
         end
 
         def action_prefix
           microversion_newer_than?('2.6') ? '' : 'os-'
+        end
+
+        def default_service_type
+          %w(sharev2)
         end
 
         def initialize(options = {})

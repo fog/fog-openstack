@@ -150,14 +150,16 @@ module Fog
         class Real
           include Fog::OpenStack::Core
 
-          DEFAULT_SERVICE_TYPE = %w(volumev2).collect(&:freeze).freeze
-
           def self.not_found_class
             Fog::Volume::OpenStack::NotFound
           end
 
           def default_endtpoint_type
             'admin'
+          end
+
+          def default_service_type
+            %w(volumev2)
           end
         end
       end

@@ -248,7 +248,9 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        DEFAULT_SERVICE_TYPE = %w(baremetal).collect(&:freeze).freeze
+        def default_service_type
+          %w(baremetal)
+        end
 
         # NOTE: uncommenting this should be treated as api-change!
         # def self.not_found_class

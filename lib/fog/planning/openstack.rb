@@ -97,14 +97,16 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        DEFAULT_SERVICE_TYPE = %w(management).collect(&:freeze).freeze
-
         def default_endpoint_type
           'admin'
         end
 
         def default_path_prefix
           'v2'
+        end
+
+        def default_service_type
+          %w(management)
         end
 
         # NOTE: uncommenting this should be treated as api-change!

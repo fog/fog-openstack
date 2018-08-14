@@ -15,8 +15,7 @@ module Fog
                  :openstack_user_domain_id, :openstack_project_domain_id,
                  :openstack_api_key, :openstack_current_user_id, :openstack_userid, :openstack_username,
                  :current_user, :current_user_id, :current_tenant, :openstack_cache_ttl,
-                 :provider, :openstack_identity_prefix, :openstack_endpoint_path_matches
-
+                 :provider, :openstack_identity_prefix
       def self.new(args = {})
         if args[:openstack_identity_legacy_version]
           version = '2.0'

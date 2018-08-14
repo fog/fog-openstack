@@ -114,7 +114,6 @@ module Fog
 
         def initialize(options = {})
           require_mime_types
-          initialize_identity options
 
           @openstack_service_type           = options[:openstack_service_type] || ['object-store']
           @openstack_service_name           = options[:openstack_service_name]

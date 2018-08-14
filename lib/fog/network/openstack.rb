@@ -427,8 +427,6 @@ module Fog
         def initialize(options = {})
           @auth_token = Fog::Mock.random_base64(64)
           @auth_token_expiration = (Time.now.utc + 86400).iso8601
-
-          initialize_identity options
         end
 
         def data
@@ -443,14 +441,16 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        DEFAULT_SERVICE_TYPE = %w(network).collect(&:freeze).freeze
-
         def self.not_found_class
           Fog::Network::OpenStack::NotFound
         end
 
         def default_path_prefix
           'v2.0'
+        end
+
+        def default_service_type
+          %w(network)
         end
       end
     end

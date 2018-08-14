@@ -126,10 +126,12 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        DEFAULT_SERVICE_TYPE = %w(orchestration).collect(&:freeze).freeze
-
         def self.not_found_class
           Fog::Orchestration::OpenStack::NotFound
+        end
+
+        def default_service_type
+          %w(orchestration)
         end
       end
     end

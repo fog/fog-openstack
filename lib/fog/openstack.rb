@@ -129,8 +129,6 @@ module Fog
       region.nil? || endpoint['region'] == region
     end
 
-    #TODO: Remove endpoint_path_matches
-
     def self.get_supported_version(supported_versions, uri, auth_token, connection_options = {})
       supported_version = get_version(supported_versions, uri, auth_token, connection_options)
       version = supported_version['id'] if supported_version

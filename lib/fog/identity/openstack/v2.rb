@@ -14,7 +14,7 @@ module Fog
                    :openstack_project_name, :openstack_project_id,
                    :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                    :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                   :openstack_identity_prefix, :openstack_endpoint_path_matches
+                   :openstack_identity_prefix
 
         model_path 'fog/identity/openstack/v2/models'
         model :tenant
@@ -169,10 +169,12 @@ module Fog
         end
 
         class Real < Fog::Identity::OpenStack::Real
-          DEFAULT_SERVICE_TYPE = %w(identity_v2 identityv2 identity).collect(&:freeze).freeze
-
           def default_path_prefix
             'v2.0'
+          end
+
+          def default_service_type
+            %w(identity_v2 identityv2 identity)
           end
         end
       end
