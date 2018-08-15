@@ -364,12 +364,7 @@ module Fog
           @supported_microversion = SUPPORTED_MICROVERSION
           @fixed_microversion     = options[:openstack_shared_file_system_microversion]
           @microversion_key       = 'X-Openstack-Manila-Api-Version'.freeze
-
-          setup(options)
-          authenticate
-          set_microversion
-          @path = api_path_prefix
-          @connection = Fog::Core::Connection.new(@openstack_management_url, @persistent, @connection_options)
+          super
         end
       end
     end

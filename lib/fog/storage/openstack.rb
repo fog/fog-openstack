@@ -118,10 +118,7 @@ module Fog
 
         def initialize(options = {})
           require_mime_types
-
-          setup(options)
-          authenticate
-          @connection = Fog::Core::Connection.new(@openstack_management_url, @persistent, @connection_options)
+          super
         end
 
         # Change the current account while re-using the auth token.
