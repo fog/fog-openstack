@@ -9,8 +9,6 @@ module Fog
       module Token
         attr_reader :catalog, :expires, :tenant, :token, :user, :data
 
-        SSL_VERIFY_MODE = true
-
         class ExpiryError < RuntimeError; end
         class StandardError < RuntimeError; end
         class URLError < RuntimeError; end
@@ -27,7 +25,6 @@ module Fog
           raise URLError, 'No URL provided' if auth[:openstack_auth_url].nil? || auth[:openstack_auth_url].empty?
           @creds = {
             :data            => set_credentials(auth),
-            :ssl_verify_mode => auth[:ssl_verify_mode].nil? ? SSL_VERIFY_MODE : auth[:ssl_verify_mode],
             :uri             => URI.parse(auth[:openstack_auth_url])
           }
           response = authenticate(@creds)

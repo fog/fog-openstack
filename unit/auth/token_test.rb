@@ -19,8 +19,7 @@ describe Fog::OpenStack::Auth::Token do
               :openstack_auth_url   => 'http://localhost/identity',
               :openstack_userid     => 'user_id',
               :openstack_api_key    => 'secret',
-              :openstack_project_id => 'project_id',
-              :ssl_verify_mode      => false
+              :openstack_project_id => 'project_id'
             }
 
             stub_request(:post, 'http://localhost/identity/v3/auth/tokens').
