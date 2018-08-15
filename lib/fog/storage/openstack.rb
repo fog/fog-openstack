@@ -112,16 +112,15 @@ module Fog
           Fog::Storage::OpenStack::NotFound
         end
 
+        def default_service_type
+          %w(object-store)
+        end
+
         def initialize(options = {})
           require_mime_types
 
-          @openstack_service_type           = options[:openstack_service_type] || ['object-store']
-          @openstack_service_name           = options[:openstack_service_name]
-
-          @connection_options               = options[:connection_options] || {}
-
+          setup(options)
           authenticate
-          @persistent = options[:persistent] || false
           @connection = Fog::Core::Connection.new(@openstack_management_url, @persistent, @connection_options)
         end
 
