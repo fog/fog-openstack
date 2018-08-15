@@ -13,16 +13,16 @@ module Fog
         end
 
         def get_endpoint_url(names, interfaces, region = nil)
-          #TODO: Inject OpenStack Service Types Authority
-          names_list = if names.is_a?(String)
-                          [names]
-                        else
-                          names
-                        end
+          # TODO: Inject OpenStack Service Types Authority
+          names_list = if names.kind_of?(String)
+                         [names]
+                       else
+                         names
+                       end
           entries = get_by_type(names_list)
           raise ServiceTypeError, 'No endpoint match' if entries.empty?
 
-          interfaces_list = if interfaces.is_a?(String)
+          interfaces_list = if interfaces.kind_of?(String)
                               [interfaces]
                             else
                               interfaces
@@ -50,10 +50,9 @@ module Fog
         def get_endpoint(entries, interface, region)
           list = []
           entries.each do |type|
-            if type['endpoints']
-              type['endpoints'].each do |endpoint|
-                list << endpoint_url(endpoint, interface) if endpoint_match(endpoint, interface, region)
-              end
+            next unless type.key?('endpoints')
+            type['endpoints'].each do |endpoint|
+              list << endpoint_url(endpoint, interface) if endpoint_match?(endpoint, interface, region)
             end
           end
           raise EndpointError, 'Multiple endpoints found' if list.size > 1

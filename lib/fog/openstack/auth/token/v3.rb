@@ -10,29 +10,30 @@ module Fog
           attr_reader :domain, :project
 
           # Default Domain ID
-          DOMAIN_ID = 'default'
+          DOMAIN_ID = 'default'.freeze
 
           def credentials
-            if @token
-              identity = {
-                'methods': ['token'],
-                'token': { 'id': @token }
-              }
-            else
-              identity = {
-                'methods': ['password'],
-                'password': @user.identity
-              }
-            end
+            identity = if @token
+                         {
+                           'methods' => ['token'],
+                           'token'   => {'id' => @token}
+                         }
+                       else
+                         {
+                           'methods'  => ['password'],
+                           'password' => @user.identity
+                         }
+                       end
+
             if scope
               {
-                'auth': {
-                  'identity': identity,
-                  'scope': scope
+                'auth' => {
+                  'identity' => identity,
+                  'scope'    => scope
                 }
               }
             else
-              { 'auth': { 'identity': identity } }
+              {'auth' => {'identity' => identity}}
             end
           end
 
@@ -57,23 +58,32 @@ module Fog
             end
           end
 
-          def set_credentials(auth)
+          def build_credentials(auth)
             if auth[:openstack_project_id] || auth[:openstack_project_name]
               # project scoped
-              @project = Fog::OpenStack::Auth::ProjectScope.new(auth[:openstack_project_id], auth[:openstack_project_name])
-
-              if auth[:openstack_project_domain_id] || auth[:openstack_project_domain_name]
-                @project.domain = Fog::OpenStack::Auth::Name.new(auth[:openstack_project_domain_id], auth[:openstack_project_domain_name])
-              else
-                if auth[:openstack_domain_id] || auth[:openstack_domain_name]
-                  @project.domain = Fog::OpenStack::Auth::Name.new(auth[:openstack_domain_id], auth[:openstack_domain_name])
-                else
-                  @project.domain = Fog::OpenStack::Auth::Name.new(DOMAIN_ID, nil)
-                end
-              end
+              @project = Fog::OpenStack::Auth::ProjectScope.new(
+                auth[:openstack_project_id],
+                auth[:openstack_project_name]
+              )
+              @project.domain = if auth[:openstack_project_domain_id] || auth[:openstack_project_domain_name]
+                                  Fog::OpenStack::Auth::Name.new(
+                                    auth[:openstack_project_domain_id],
+                                    auth[:openstack_project_domain_name]
+                                  )
+                                elsif auth[:openstack_domain_id] || auth[:openstack_domain_name]
+                                  Fog::OpenStack::Auth::Name.new(
+                                    auth[:openstack_domain_id],
+                                    auth[:openstack_domain_name]
+                                  )
+                                else
+                                  Fog::OpenStack::Auth::Name.new(DOMAIN_ID, nil)
+                                end
             elsif auth[:openstack_domain_id] || auth[:openstack_domain_name]
-                # domain scoped
-                @domain = Fog::OpenStack::Auth::DomainScope.new(auth[:openstack_domain_id], auth[:openstack_domain_name])
+              # domain scoped
+              @domain = Fog::OpenStack::Auth::DomainScope.new(
+                auth[:openstack_domain_id],
+                auth[:openstack_domain_name]
+              )
             end
 
             if auth[:openstack_auth_token]
@@ -82,15 +92,19 @@ module Fog
               @user = Fog::OpenStack::Auth::User.new(auth[:openstack_userid], auth[:openstack_username])
               @user.password = auth[:openstack_api_key]
 
-              if auth[:openstack_user_domain_id] || auth[:openstack_user_domain_name]
-                @user.domain = Fog::OpenStack::Auth::Name.new(auth[:openstack_user_domain_id], auth[:openstack_user_domain_name])
-              else
-                if auth[:openstack_domain_id] || auth[:openstack_domain_name]
-                  @user.domain = Fog::OpenStack::Auth::Name.new(auth[:openstack_domain_id], auth[:openstack_domain_name])
-                else
-                  @user.domain = Fog::OpenStack::Auth::Name.new(DOMAIN_ID, nil)
-                end
-              end
+              @user.domain = if auth[:openstack_user_domain_id] || auth[:openstack_user_domain_name]
+                               Fog::OpenStack::Auth::Name.new(
+                                 auth[:openstack_user_domain_id],
+                                 auth[:openstack_user_domain_name]
+                               )
+                             elsif auth[:openstack_domain_id] || auth[:openstack_domain_name]
+                               Fog::OpenStack::Auth::Name.new(
+                                 auth[:openstack_domain_id],
+                                 auth[:openstack_domain_name]
+                               )
+                             else
+                               Fog::OpenStack::Auth::Name.new(DOMAIN_ID, nil)
+                             end
             end
 
             credentials

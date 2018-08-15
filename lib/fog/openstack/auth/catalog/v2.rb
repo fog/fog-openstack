@@ -7,16 +7,14 @@ module Fog
         class V2
           include Fog::OpenStack::Auth::Catalog
 
-          def endpoint_match(endpoint, interface, region)
-            if region
-              return true if endpoint['region'] == region && endpoint["#{interface}URL"]
-            else
-              return true if endpoint["#{interface}URL"]
+          def endpoint_match?(endpoint, interface, region)
+            if endpoint.key?("#{interface}URL")
+              true unless !region.nil? && endpoint['region'] != region
             end
           end
 
           def endpoint_url(endpoint, interface)
-            return endpoint["#{interface}URL"]
+            endpoint["#{interface}URL"]
           end
         end
       end

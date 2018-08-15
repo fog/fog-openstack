@@ -24,13 +24,13 @@ module Fog
 
       def credentials
         options = {
-          :provider                    => 'openstack',
-          :openstack_auth_url          => @openstack_auth_uri.to_s,
-          :openstack_auth_token        => @auth_token,
-          :current_user                => @current_user,
-          :current_user_id             => @current_user_id,
-          :current_tenant              => @current_tenant,
-          :unscoped_token              => @unscoped_token
+          :provider             => 'openstack',
+          :openstack_auth_url   => @openstack_auth_uri.to_s,
+          :openstack_auth_token => @auth_token,
+          :current_user         => @current_user,
+          :current_user_id      => @current_user_id,
+          :current_tenant       => @current_tenant,
+          :unscoped_token       => @unscoped_token
         }
         openstack_options.merge options
       end
@@ -50,10 +50,12 @@ module Fog
       def request(params, parse_json = true)
         retried = false
         begin
-          response = @connection.request(params.merge(
-                                           :headers => headers(params.delete(:headers)),
-                                           :path    => "#{@path}/#{params[:path]}"
-          ))
+          response = @connection.request(
+            params.merge(
+              :headers => headers(params.delete(:headers)),
+              :path    => "#{@path}/#{params[:path]}"
+            )
+          )
         rescue Excon::Errors::Unauthorized => error
           # token expiration and token renewal possible
           if error.response.body != 'Bad username or password' && @openstack_can_reauthenticate && !retried
@@ -183,7 +185,9 @@ module Fog
           unless @openstack_username || @openstack_userid
             missing_credentials << 'openstack_username or openstack_userid'
           end
-          raise ArgumentError, "Missing required arguments: #{missing_credentials.join(', ')}" unless missing_credentials.empty?
+          unless missing_credentials.empty?
+            raise ArgumentError, "Missing required arguments: #{missing_credentials.join(', ')}"
+          end
           @openstack_can_reauthenticate = true
         end
 
@@ -191,7 +195,7 @@ module Fog
         @current_user_id = options[:current_user_id]
         @current_tenant  = options[:current_tenant]
 
-        @openstack_service_type = options[:openstack_service_type] || default_service_type #self.class::DEFAULT_SERVICE_TYPE
+        @openstack_service_type = options[:openstack_service_type] || default_service_type
         @openstack_endpoint_type = options[:openstack_endpoint_type] || default_endpoint_type
         @openstack_endpoint_type.gsub!(/URL/, '')
         @connection_options = options[:connection_options] || {}
@@ -205,10 +209,14 @@ module Fog
           token = Fog::OpenStack::Auth::Token.build(openstack_options)
 
           @openstack_management_url = if token.catalog
-            token.catalog.get_endpoint_url(@openstack_service_type, @openstack_endpoint_type, @openstack_region)
-          else
-            @openstack_auth_url
-          end
+                                        token.catalog.get_endpoint_url(
+                                          @openstack_service_type,
+                                          @openstack_endpoint_type,
+                                          @openstack_region
+                                        )
+                                      else
+                                        @openstack_auth_url
+                                      end
 
           @current_user = token.user['name']
           @current_user_id          = token.user['id']

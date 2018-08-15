@@ -36,5 +36,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'shindo',  '~> 0.3'
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'webmock',  '~> 1.24.6'
-  spec.add_development_dependency 'pry-byebug'
 end

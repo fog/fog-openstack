@@ -4,20 +4,20 @@ require 'rake/testtask'
 
 RuboCop::RakeTask.new
 
-task :default => ['tests:unit', 'tests:spec', 'tests:test']
+task :default => ['tests:mock', 'tests:spec', 'tests:unit']
 
-task :unit => 'tests:unit'
+task :mock => 'tests:mock'
 
 task :spec => "tests:spec"
 
-task :test => 'tests:test'
+task :unit => 'tests:unit'
 
 namespace :tests do
-  desc 'Run fog-openstack tests with Minitest'
+  desc 'Run fog-openstack tests with Mock class'
   Rake::TestTask.new do |t|
     ENV['FOG_MOCK']= ENV['FOG_MOCK'].nil? ? 'true' : ENV['FOG_MOCK']
 
-    t.name = 'unit'
+    t.name = 'mock'
     t.libs.push [ "lib", "test" ]
     t.test_files = FileList['test/**/*.rb']
     t.verbose = true
@@ -33,7 +33,7 @@ namespace :tests do
 
   desc 'Run fog-openstack unit tests'
   Rake::TestTask.new do |t|
-    t.name = 'test'
+    t.name = 'unit'
     t.libs.push [ "lib", "unit" ]
     t.pattern = 'unit/**/*_test.rb'
     t.verbose = true

@@ -24,8 +24,8 @@ module Fog
         def initialize(auth)
           raise URLError, 'No URL provided' if auth[:openstack_auth_url].nil? || auth[:openstack_auth_url].empty?
           @creds = {
-            :data            => set_credentials(auth),
-            :uri             => URI.parse(auth[:openstack_auth_url])
+            :data => build_credentials(auth),
+            :uri  => URI.parse(auth[:openstack_auth_url])
           }
           response = authenticate(@creds)
           set(response)
@@ -43,14 +43,14 @@ module Fog
           connection = Fog::Core::Connection.new(creds[:uri].to_s, false, connection_options)
 
           request = {
-            :expects => [200,201],
+            :expects => [200, 201],
             :headers => {'Content-Type' => 'application/json'},
             :body    => Fog::JSON.encode(creds[:data]),
             :method  => 'POST',
             :path    => creds[:uri].path + path
           }
 
-          response = connection.request(request)
+          connection.request(request)
         end
 
         def expired?

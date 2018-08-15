@@ -5,7 +5,6 @@ module Fog
   module OpenStack
     module Auth
       module Token
-
         class CredentialsError < RuntimeError; end
 
         class V2
@@ -14,22 +13,22 @@ module Fog
 
           def credentials
             if @token
-              identity = { 'token': { 'id': @token } }
+              identity = {'token' => {'id' => @token}}
             else
               raise CredentialsError, "#{self.class}: User name is required" if @user.name.nil?
               raise CredentialsError, "#{self.class}: User password is required" if @user.password.nil?
-              identity = { 'passwordCredentials': user_credentials }
+              identity = {'passwordCredentials' => user_credentials}
             end
 
             if @tenant.id
-              identity.merge!('tenantId': @tenant.id)
+              identity['tenantId'] = @tenant.id
             elsif @tenant.name
-              identity.merge!('tenantName': @tenant.name)
+              identity['tenantName'] = @tenant.name
             else
               raise CredentialsError, "#{self.class}: No tenant available"
             end
 
-            { 'auth': identity }
+            {'auth' => identity}
           end
 
           def path
@@ -38,8 +37,8 @@ module Fog
 
           def user_credentials
             {
-              'username': @user.name,
-              'password': @user.password
+              'username' => @user.name,
+              'password' => @user.password
             }
           end
 
@@ -53,7 +52,7 @@ module Fog
             @catalog = Fog::OpenStack::Auth::Catalog::V2.new(catalog) if catalog
           end
 
-          def set_credentials(auth)
+          def build_credentials(auth)
             if auth[:openstack_auth_token]
               @token = auth[:openstack_auth_token]
             else
