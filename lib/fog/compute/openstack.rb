@@ -376,10 +376,6 @@ module Fog
           Fog::Compute::OpenStack::NotFound
         end
 
-        def default_path_prefix
-          'v2.1'
-        end
-
         def default_service_type
           %w(compute)
         end
