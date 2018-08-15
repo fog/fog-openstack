@@ -200,26 +200,22 @@ module Fog
 
       def authenticate
         if !@openstack_management_url || @openstack_must_reauthenticate
-  #        options[:openstack_auth_token] = @openstack_must_reauthenticate ? nil : @openstack_auth_token
+          @openstack_auth_token = nil if @openstack_must_reauthenticate
 
           token = Fog::OpenStack::Auth::Token.build(openstack_options)
 
-          management_url = if token.catalog
-                             token.catalog.get_endpoint_url(@openstack_service_type, @openstack_endpoint_type, @openstack_region)
-                           else
-                             @openstack_auth_url
-                           end
+          @openstack_management_url = if token.catalog
+            token.catalog.get_endpoint_url(@openstack_service_type, @openstack_endpoint_type, @openstack_region)
+          else
+            @openstack_auth_url
+          end
 
           @current_user = token.user['name']
           @current_user_id          = token.user['id']
           @current_tenant           = token.tenant
-
           @expires                  = token.expires
-
           @auth_token               = token.token
-          @openstack_management_url = management_url
           @unscoped_token           = token.token
-
           @openstack_must_reauthenticate = false
         else
           @auth_token = @openstack_auth_token
