@@ -79,7 +79,7 @@ module Fog
         end
 
         def default_service_type
-          %w(monitoring)
+          %w[monitoring]
         end
       end
     end

@@ -109,7 +109,7 @@ module Fog
         end
 
         def default_service_type
-          %w(metering)
+          %w[metering]
         end
       end
     end

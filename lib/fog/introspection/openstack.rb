@@ -80,7 +80,7 @@ module Fog
         end
 
         def default_service_type
-          %w(baremetal-introspection)
+          %w[baremetal-introspection]
         end
       end
     end

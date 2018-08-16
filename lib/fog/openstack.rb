@@ -162,9 +162,7 @@ module Fog
       version_cache = "#{uri}#{supported_versions}"
       return @version[version_cache] if @version && @version[version_cache]
 
-      # Clear version suffix from path
-      # This is needed because when catalog endpoint is not top level
-      # or '/' to allow version discovery
+      # To allow version discovery we need a "version less" endpoint
       path = uri.path.gsub(/\/v([1-9]+\d*)(\.[1-9]+\d*)*.*$/, '/')
       url = "#{uri.scheme}://#{uri.host}:#{uri.port}#{path}"
       connection = Fog::Core::Connection.new(url, false, connection_options)

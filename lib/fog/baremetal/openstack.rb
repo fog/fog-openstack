@@ -249,7 +249,7 @@ module Fog
         include Fog::OpenStack::Core
 
         def default_service_type
-          %w(baremetal)
+          %w[baremetal]
         end
 
         # NOTE: uncommenting this should be treated as api-change!

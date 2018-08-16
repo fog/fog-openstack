@@ -101,7 +101,7 @@ module Fog
         end
 
         def default_service_type
-          %w(key-manager)
+          %w[key-manager]
         end
       end
     end

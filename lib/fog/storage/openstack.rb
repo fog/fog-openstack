@@ -113,7 +113,7 @@ module Fog
         end
 
         def default_service_type
-          %w(object-store)
+          %w[object-store]
         end
 
         def initialize(options = {})

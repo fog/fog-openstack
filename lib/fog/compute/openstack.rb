@@ -377,7 +377,7 @@ module Fog
         end
 
         def default_service_type
-          %w(compute)
+          %w[compute]
         end
 
         def initialize(options = {})

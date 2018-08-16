@@ -316,7 +316,7 @@ module Fog
           end
 
           def default_service_type
-            %w(dns)
+            %w[dns]
           end
         end
       end

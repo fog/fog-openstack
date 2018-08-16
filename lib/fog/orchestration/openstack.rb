@@ -131,7 +131,7 @@ module Fog
         end
 
         def default_service_type
-          %w(orchestration)
+          %w[orchestration]
         end
       end
     end

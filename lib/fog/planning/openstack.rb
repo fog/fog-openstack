@@ -106,7 +106,7 @@ module Fog
         end
 
         def default_service_type
-          %w(management)
+          %w[management]
         end
 
         # NOTE: uncommenting this should be treated as api-change!

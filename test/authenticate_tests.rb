@@ -82,22 +82,21 @@ describe "OpenStack authentication" do
     )
 
     expected = {
-      :user                     => @body['access']['user'],
-      :tenant                   => @body['access']['token']['tenant'],
-      :server_management_url    => @body['access']['serviceCatalog'].
+      :user                  => @body['access']['user'],
+      :tenant                => @body['access']['token']['tenant'],
+      :server_management_url => @body['access']['serviceCatalog'].
                                      first['endpoints'].first['publicURL'],
-      :token                    => @token,
-      :expires                  => @expires.iso8601,
-      :current_user_id          => @body['access']['user']['id'],
-      :unscoped_token           => @token
+      :token                 => @token,
+      :expires               => @expires.iso8601,
+      :current_user_id       => @body['access']['user']['id'],
+      :unscoped_token        => @token
     }
 
     assert(expected) do
       Fog::OpenStack.authenticate_v2(
         :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
         :openstack_tenant       => 'admin',
-        :openstack_service_type => %w[compute]
-      )
+        :openstack_service_type => %w[compute])
     end
   end
 
@@ -122,18 +121,17 @@ describe "OpenStack authentication" do
   it "v2 missing service" do
     Excon.stub(
       {:method => 'POST', :path => "/v2.0/tokens"},
-      {:status => 200, :body => Fog::JSON.encode(@body)}
-    )
+      {:status => 200, :body => Fog::JSON.encode(@body)})
 
     service = Object.new
     service.extend(Fog::OpenStack::Core)
-    service.send(:setup,
+    service.send(
+      :setup,
       :openstack_auth_url     => 'http://example',
       :openstack_tenant       => 'admin',
       :openstack_service_type => %w[network],
       :openstack_api_key      => 'secret',
-      :openstack_username     => 'user'
-    )
+      :openstack_username     => 'user')
     proc do
       service.send(:authenticate)
     end.must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
@@ -147,13 +145,13 @@ describe "OpenStack authentication" do
 
     service = Object.new
     service.extend(Fog::OpenStack::Core)
-    service.send(:setup,
+    service.send(
+      :setup,
       :openstack_auth_url     => 'http://example',
       :openstack_tenant       => 'admin',
       :openstack_api_key      => 'secret',
       :openstack_username     => 'user',
-      :openstack_service_type => 'object-store'
-    )
+      :openstack_service_type => 'object-store')
 
     proc do
       service.send(:authenticate)
@@ -180,18 +178,17 @@ describe "OpenStack authentication" do
 
     Excon.stub(
       {:method => 'POST', :path => "/v2.0/tokens"},
-      {:status => 200, :body => Fog::JSON.encode(body_clone)}
-    )
+      {:status => 200, :body => Fog::JSON.encode(body_clone)})
 
     service = Object.new
     service.extend(Fog::OpenStack::Core)
-    service.send(:setup,
+    service.send(
+      :setup,
       :openstack_auth_url     => 'http://example',
       :openstack_tenant       => 'admin',
       :openstack_api_key      => 'secret',
       :openstack_username     => 'user',
-      :openstack_service_type => 'compute'
-    )
+      :openstack_service_type => 'compute')
 
     proc do
       service.send(:authenticate)

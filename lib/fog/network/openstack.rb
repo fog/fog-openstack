@@ -450,7 +450,7 @@ module Fog
         end
 
         def default_service_type
-          %w(network)
+          %w[network]
         end
       end
     end

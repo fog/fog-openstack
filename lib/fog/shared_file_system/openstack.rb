@@ -356,7 +356,7 @@ module Fog
         end
 
         def default_service_type
-          %w(sharev2)
+          %w[sharev2]
         end
 
         def initialize(options = {})

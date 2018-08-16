@@ -93,7 +93,7 @@ module Fog
         end
 
         def default_service_type
-          %w(event)
+          %w[event]
         end
       end
     end

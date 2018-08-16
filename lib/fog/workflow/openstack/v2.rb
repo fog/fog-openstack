@@ -102,7 +102,7 @@ module Fog
           end
 
           def default_service_type
-            %w(workflowv2)
+            %w[workflowv2]
           end
 
           def request(params)

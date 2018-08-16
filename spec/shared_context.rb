@@ -69,7 +69,7 @@ class OpenStackVCR
       if use_recorded
         config.cassette_library_dir = ENV['SPEC_PATH'] || @vcr_directory
         config.default_cassette_options = {:record => :none}
-        config.default_cassette_options.merge! :match_requests_on => [:method, :uri, :body]
+        config.default_cassette_options.merge! :match_requests_on => %i[method uri body]
       else
         config.cassette_library_dir = "spec/debug"
         config.default_cassette_options = {:record => :all}
@@ -111,7 +111,7 @@ class OpenStackVCR
       # TODO: remove
       #   if @service_class == Fog::Identity::OpenStack::V3 || @os_auth_url.end_with?('/v3')
       if @identity_version == 'v3'
-          connection_options = {
+        connection_options = {
           :openstack_auth_url      => @os_auth_url,
           :openstack_region        => @region,
           :openstack_domain_name   => @domain_name,

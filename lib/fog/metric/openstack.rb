@@ -99,7 +99,7 @@ module Fog
         end
 
         def default_service_type
-          %w(metric)
+          %w[metric]
         end
       end
     end

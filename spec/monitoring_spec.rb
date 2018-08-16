@@ -71,10 +71,13 @@ describe Fog::Monitoring::OpenStack do
       metrics_name_list.wont_be_empty
 
       # failure cases
-      proc { @service.metrics.create(:name => "this won't be created due to insufficient args") }.
-        must_raise ArgumentError
-      proc { @service.metrics.create(:name => "this wont't be created due to invalid timestamp", :timestamp => 1234) }.
-        must_raise ArgumentError
+      proc do
+        @service.metrics.create(:name => "this won't be created due to insufficient args")
+      end.must_raise ArgumentError
+
+      proc do
+        @service.metrics.create(:name => "this wont't be created due to invalid timestamp", :timestamp => 1234)
+      end.must_raise ArgumentError
     end
   end
 
@@ -142,13 +145,15 @@ describe Fog::Monitoring::OpenStack do
         notification_method = nil
 
         # failure cases
-        proc { @service.notification_methods.create(:name => "this won't be created due to insufficient args") }.
-          must_raise ArgumentError
-        proc { @service.notification_methods.find_by_id('bogus_id') }.must_raise Fog::Monitoring::OpenStack::NotFound
+        proc do
+          @service.notification_methods.create(:name => "this won't be created due to insufficient args")
+        end.must_raise ArgumentError
 
+        proc do
+          @service.notification_methods.find_by_id('bogus_id')
+        end.must_raise Fog::Monitoring::OpenStack::NotFound
       ensure
         notification_method.destroy if notification_method
-
       end
     end
   end
@@ -219,13 +224,12 @@ describe Fog::Monitoring::OpenStack do
         notification_method = nil
 
         # failure cases
-        proc { @service.alarm_definitions.create(:name => "this won't be created due to insufficient args") }.
-          must_raise ArgumentError
-
+        proc do
+          @service.alarm_definitions.create(:name => "this won't be created due to insufficient args")
+        end.must_raise ArgumentError
       ensure
         alarm_definition.destroy if alarm_definition
         notification_method.destroy if notification_method
-
       end
     end
   end
@@ -308,12 +312,10 @@ describe Fog::Monitoring::OpenStack do
 
         alarm_definition    = nil
         notification_method = nil
-
       ensure
         # cleanup
         alarm_definition.destroy if alarm_definition
         notification_method.destroy if notification_method
-
       end
     end
   end

@@ -147,7 +147,7 @@ module Fog
           end
 
           def default_service_type
-            %w(identity_v3 identityv3 identity)
+            %w[identity_v3 identityv3 identity]
           end
         end
       end

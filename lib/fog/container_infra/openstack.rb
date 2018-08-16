@@ -131,7 +131,7 @@ module Fog
         end
 
         def default_service_type
-          %w(container-infra)
+          %w[container-infra]
         end
 
         def request(options = {})

@@ -157,7 +157,7 @@ module Fog
           end
 
           def default_service_type
-            %w(volume)
+            %w[volume]
           end
         end
       end
