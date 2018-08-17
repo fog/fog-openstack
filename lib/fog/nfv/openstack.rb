@@ -105,7 +105,7 @@ module Fog
         end
 
         def default_service_type
-          %[wservicevm]
+          %w[servicevm]
         end
       end
     end
