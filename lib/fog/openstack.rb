@@ -602,10 +602,17 @@ module Fog
     end
 
     def self.extract_version_from_body(body, supported_versions)
-      return nil if body['versions'].empty?
-      versions = body['versions'].kind_of?(Array) ? body['versions'] : body['versions']['values']
+      versions = []
+      unless body['versions'].nil? || body['versions'].empty?
+        versions = body['versions'].kind_of?(Array) ? body['versions'] : body['versions']['values']
+      end
+      # Some version API would return single endpoint rather than endpoints list, try to get it via 'version'.
+      unless body['version'].nil? or versions.length != 0
+        versions = [body['version']]
+      end
       version = nil
-      # order is important, preffered status should be first
+
+      # order is important, preferred status should be first
       %w(CURRENT stable SUPPORTED DEPRECATED).each do |status|
         version = versions.find { |x| x['id'].match(supported_versions) && (x['status'] == status) }
         break if version
