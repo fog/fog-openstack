@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://devstack.openstack.stack:8786/v2/c60a441e54cd435896a357026aa4050a/
+    uri: https://devstack.openstack.stack:8786/
     body:
       encoding: US-ASCII
       string: ''
