@@ -190,7 +190,7 @@ module Fog
 
           def patch_attributes_to_add(client_attributes, server_attributes)
             client_attributes.reject do |key, _|
-              server_attributes.key?(key)
+              server_attributes.key?(key) || client_attributes[key].nil?
             end
           end
 
