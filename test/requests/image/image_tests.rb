@@ -2,7 +2,7 @@ require "test_helper"
 
 describe "Fog::Image[:openstack] | image requests" do
   before(:all) do
-    openstack = Fog::Identity[:openstack]
+    openstack = Fog::Identity::OpenStack.new(:openstack_identity_api_version => 'v2.0')
 
     @image_attributes = {
       :name             => 'new image',

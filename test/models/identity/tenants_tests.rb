@@ -2,7 +2,7 @@ require "test_helper"
 
 describe "Fog::Compute[:openstack] | tenants" do
   before do
-    @identity = Fog::Identity[:openstack]
+    @identity = Fog::Identity::OpenStack.new(:openstack_identity_api_version => 'v2.0')
     @instance = @identity.tenants.create(:name => 'test')
   end
 

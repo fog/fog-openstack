@@ -3,7 +3,8 @@ require 'test_helper'
 describe "Fog::Volume[:openstack] | quota requests" do
   before do
     @volume = Fog::Volume[:openstack]
-    @tenant_id = Fog::Identity[:openstack].list_tenants.body['tenants'].first['id']
+    identity = Fog::Identity::OpenStack.new(:openstack_identity_api_version => 'v2.0')
+    @tenant_id = identity.list_tenants.body['tenants'].first['id']
     @quota_set_format = {
       'volumes'   => Fog::Nullable::Integer,
       'gigabytes' => Fog::Nullable::Integer,

@@ -1,4 +1,5 @@
 require "test_helper"
+require "helpers/network_helper"
 
 describe "Fog::Network[:openstack] | floating_ip" do
   describe "success" do

@@ -94,28 +94,30 @@ describe "OpenStack authentication" do
 
     assert(expected) do
       Fog::OpenStack.authenticate_v2(
-        :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
+        :openstack_auth_uri     => URI('http://example'),
         :openstack_tenant       => 'admin',
         :openstack_service_type => %w[compute])
     end
   end
 
   it "validates token" do
-    old_credentials = Fog.credentials
-    Fog.credentials = {:openstack_auth_url => 'http://openstack:35357/v2.0/tokens'}
-    identity = Fog::Identity[:openstack]
+    creds = {
+      :openstack_auth_url => 'http://openstack:35357',
+      :openstack_identity_api_version => 'v2.0'
+    }
+    identity = Fog::Identity::OpenStack.new(creds)
     identity.validate_token(@token, @tenant_token)
     identity.validate_token(@token)
-    Fog.credentials = old_credentials
   end
 
   it "checks token" do
-    old_credentials = Fog.credentials
-    Fog.credentials = {:openstack_auth_url => 'http://openstack:35357/v2.0/tokens'}
-    identity = Fog::Identity[:openstack]
+    creds = {
+      :openstack_auth_url => 'http://openstack:35357',
+      :openstack_identity_api_version => 'v2.0'
+    }
+    identity = Fog::Identity::OpenStack.new(creds)
     identity.check_token(@token, @tenant_token)
     identity.check_token(@token)
-    Fog.credentials = old_credentials
   end
 
   it "v2 missing service" do

@@ -1,31 +1,11 @@
-
-
 module Fog
   module Identity
     class OpenStack < Fog::Service
       autoload :V2, 'fog/identity/openstack/v2'
       autoload :V3, 'fog/identity/openstack/v3'
 
-      requires :openstack_auth_url
-      recognizes :openstack_auth_token, :openstack_management_url, :persistent,
-                 :openstack_service_type, :openstack_service_name, :openstack_tenant,
-                 :openstack_endpoint_type, :openstack_region, :openstack_domain_id,
-                 :openstack_project_name, :openstack_domain_name,
-                 :openstack_user_domain, :openstack_project_domain,
-                 :openstack_user_domain_id, :openstack_project_domain_id,
-                 :openstack_api_key, :openstack_current_user_id, :openstack_userid, :openstack_username,
-                 :current_user, :current_user_id, :current_tenant, :openstack_cache_ttl,
-                 :provider, :openstack_identity_prefix
       def self.new(args = {})
-        if args[:openstack_identity_legacy_version]
-          version = '2.0'
-        else
-          url = Fog.credentials[:openstack_auth_url] || args[:openstack_auth_url]
-          if url
-            uri = URI(url)
-            version = '2.0' if uri.path =~ /v2\.0/
-          end
-        end
+        version = '2.0' if args[:openstack_identity_api_version] =~ /(v)*2(\.0)*/i
 
         case version
         when '2.0'

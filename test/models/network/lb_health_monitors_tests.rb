@@ -1,4 +1,6 @@
 require "test_helper"
+require "helpers/network_helper"
+
 describe "Fog::Network[:openstack] | lb_health_monitors" do
   before do
     @lb_health_monitor = network.lb_health_monitors.create(
