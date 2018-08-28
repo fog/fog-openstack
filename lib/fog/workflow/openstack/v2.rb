@@ -83,8 +83,6 @@ module Fog
           def initialize(options = {})
             @auth_token = Fog::Mock.random_base64(64)
             @auth_token_expiration = (Time.now.utc + 86_400).iso8601
-
-            initialize_identity options
           end
 
           def data
@@ -99,27 +97,12 @@ module Fog
         class Real
           include Fog::OpenStack::Core
 
-          def initialize(options = {})
-            initialize_identity options
+          def default_path_prefix
+            'v2'
+          end
 
-            @openstack_service_type  = options[:openstack_service_type] || ['workflowv2']
-            @openstack_service_name  = options[:openstack_service_name]
-
-            @connection_options = options[:connection_options] || {}
-
-            authenticate
-
-            unless @path.match(SUPPORTED_VERSIONS)
-              @path = "/" + Fog::OpenStack.get_supported_version(
-                SUPPORTED_VERSIONS,
-                @openstack_management_uri,
-                @auth_token,
-                @connection_options
-              )
-            end
-
-            @persistent = options[:persistent] || false
-            @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+          def default_service_type
+            %w[workflowv2]
           end
 
           def request(params)

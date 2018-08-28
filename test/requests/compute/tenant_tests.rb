@@ -12,7 +12,8 @@ describe "Fog::Compute[:openstack] | tenant requests" do
 
   describe "success" do
     it "#list_tenants" do
-      Fog::Compute[:openstack].list_tenants.body.
+      identity = Fog::Identity::OpenStack.new(:openstack_identity_api_version => 'v2.0')
+      identity.list_tenants.body.
         must_match_schema('tenants_links' => Array, 'tenants' => [@tenant_format])
     end
 

@@ -41,7 +41,7 @@ describe Fog::Network::OpenStack do
     VCR.use_cassette('rbacs_crud') do
       begin
         own_project   = @identity_service.projects.select { |p| p.name == @current_project }.first
-        other_project = @identity_service.projects.select { |p| p.name != @current_project }.first
+        other_project = @identity_service.projects.reject { |p| p.name == @current_project }.first
 
         foonet = @service.networks.create(:name => 'foo-net23', :tenant_id => own_project.id)
         # create share access for other project

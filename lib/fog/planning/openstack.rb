@@ -15,7 +15,7 @@ module Fog
                  :openstack_project_name, :openstack_project_id,
                  :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                 :openstack_identity_prefix
+                 :openstack_identity_api_version
 
       ## MODELS
       #
@@ -97,32 +97,22 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
+        def default_endpoint_type
+          'admin'
+        end
+
+        def default_path_prefix
+          'v2'
+        end
+
+        def default_service_type
+          %w[management]
+        end
+
         # NOTE: uncommenting this should be treated as api-change!
         # def self.not_found_class
         #   Fog::Planning::OpenStack::NotFound
         # end
-
-        def initialize(options = {})
-          initialize_identity options
-
-          @openstack_service_type           = options[:openstack_service_type] || ['management'] # currently Tuskar is configured as 'management' service in Keystone
-          @openstack_service_name           = options[:openstack_service_name]
-          @openstack_endpoint_type          = options[:openstack_endpoint_type] || 'adminURL'
-
-          @connection_options               = options[:connection_options] || {}
-
-          authenticate
-          set_api_path
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
-        end
-
-        def set_api_path
-          unless @path.match(SUPPORTED_VERSIONS)
-            @path = "/v2"
-          end
-        end
       end
     end
 

@@ -57,8 +57,6 @@ module Fog
         def initialize(options = {})
           @auth_token = Fog::Mock.random_base64(64)
           @auth_token_expiration = (Time.now.utc + 86_400).iso8601
-
-          initialize_identity options
         end
 
         def data
@@ -77,25 +75,12 @@ module Fog
           Fog::Introspection::OpenStack::NotFound
         end
 
-        def initialize(options = {})
-          initialize_identity options
-
-          @openstack_service_type  = options[:openstack_service_type] || ['baremetal-introspection']
-          @openstack_service_name  = options[:openstack_service_name]
-
-          @connection_options = options[:connection_options] || {}
-
-          authenticate
-          set_api_path
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+        def default_path_prefix
+          'v1'
         end
 
-        def set_api_path
-          unless @path.match(SUPPORTED_VERSIONS)
-            @path = "/v1"
-          end
+        def default_service_type
+          %w[baremetal-introspection]
         end
       end
     end

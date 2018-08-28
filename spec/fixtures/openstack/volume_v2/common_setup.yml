@@ -5,7 +5,7 @@ http_interactions:
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"admin"}}},"scope":{"domain":{"name":"Default"}}}}'
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"name":"admin","domain":{"name":"Default"},"password":"password"}}},"scope":{"domain":{"name":"Default"}}}}'
     headers:
       User-Agent:
       - fog-core/1.38.0
@@ -34,10 +34,16 @@ http_interactions:
       encoding: UTF-8
       string: '{"token": {"domain": {"id": "default", "name": "Default"}, "methods":
         ["password"], "roles": [{"id": "5929fb4077c3415c9850e66f2c2be16b", "name":
-        "admin"}], "expires_at": "2016-05-03T15:21:21.043888Z", "catalog": [{"endpoints":
-        [], "type": "volumev2", "id": "1766683b2f9f4ef2acf7f9e4e359fb9a", "name":
-        "cinderv2"}, {"endpoints": [], "type": "metering", "id": "18dbb2f0ddeb45b99d11ed0568f153ab",
-        "name": "ceilometer"}, {"endpoints": [{"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
+        "admin"}], "expires_at": "2016-05-03T15:21:21.043888Z", "catalog": [{"endpoints": [
+          {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v2/2ab82e30d7984631874def67813dffd8",
+        "region": "RegionOne", "interface": "public", "id": "0e40a16fd8ad4045ae738b749818818e"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v2/2ab82e30d7984631874def67813dffd8",
+        "region": "RegionOne", "interface": "internal", "id": "1ebe166449b34147ac4df07e492571d9"},
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:8776/v2/2ab82e30d7984631874def67813dffd8",
+        "region": "RegionOne", "interface": "admin", "id": "b2ae2902e8104f05b5fd2def27a4537a"}],
+        "type": "volumev2", "id": "1766683b2f9f4ef2acf7f9e4e359fb9a", "name": "cinderv2"},{"endpoints": [],
+         "type": "metering", "id": "18dbb2f0ddeb45b99d11ed0568f153ab", "name": "ceilometer"}, {"endpoints": [
+        {"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
         "region": "RegionOne", "interface": "admin", "id": "6f44eb5bf4e646f9a7afebb1f32501f1"},
         {"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
         "region": "RegionOne", "interface": "public", "id": "9bb4f1c83833484e9d53ce2b57d6308b"},
@@ -87,7 +93,7 @@ http_interactions:
         "swift"}], "extras": {}, "user": {"domain": {"id": "default", "name": "Default"},
         "id": "205e0e39a2534743b517ed0aa2fbcda7", "name": "admin"}, "audit_ids": ["MEijdNGQQxWAfU2QVIgrog"],
         "issued_at": "2016-05-03T14:21:21.043966Z"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:21:21 GMT
 - request:
     method: get
@@ -137,7 +143,7 @@ http_interactions:
         "", "links": {"self": "http://devstack.openstack.stack:5000/v3/projects/f17a4813648d4b0bb82124ca1f5f1fd0"},
         "enabled": true, "id": "f17a4813648d4b0bb82124ca1f5f1fd0", "parent_id": null,
         "domain_id": "default", "name": "admin"}]}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:21:21 GMT
 - request:
     method: post
@@ -255,6 +261,6 @@ http_interactions:
         "extras": {}, "user": {"domain": {"id": "default", "name": "Default"}, "id":
         "205e0e39a2534743b517ed0aa2fbcda7", "name": "admin"}, "audit_ids": ["6alLvao6R12RiK-Jqyf5Xw",
         "MEijdNGQQxWAfU2QVIgrog"], "issued_at": "2016-05-03T14:21:21.540436Z"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:21:21 GMT
 recorded_with: VCR 3.0.1

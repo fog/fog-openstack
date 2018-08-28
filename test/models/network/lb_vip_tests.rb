@@ -1,4 +1,6 @@
 require "test_helper"
+require "helpers/network_helper"
+
 describe "Fog::Network[:openstack] | lb_vip" do
   describe "success" do
     before do

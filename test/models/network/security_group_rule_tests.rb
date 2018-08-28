@@ -1,5 +1,5 @@
 require "test_helper"
-
+require "helpers/network_helper"
 require "helpers/model_helper"
 
 describe "Fog::Network[:openstack] | security_group_rule model" do

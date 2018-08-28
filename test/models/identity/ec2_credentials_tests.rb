@@ -2,7 +2,7 @@ require "test_helper"
 
 describe "Fog::Identity[:openstack] | ec2_credentials" do
   before do
-    identity = Fog::Identity[:openstack]
+    identity = Fog::Identity::OpenStack.new(:openstack_identity_api_version => 'v2.0')
     tenant_id = identity.list_tenants.body['tenants'].first['id']
 
     @user = identity.users.find { |user| user.name == 'foobar' }

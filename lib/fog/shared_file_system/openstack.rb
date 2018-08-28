@@ -14,7 +14,7 @@ module Fog
                  :openstack_project_name, :openstack_project_id,
                  :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                 :openstack_identity_prefix, :openstack_shared_file_system_microversion
+                 :openstack_identity_api_version, :openstack_shared_file_system_microversion
 
       model_path 'fog/shared_file_system/openstack/models'
       model       :network
@@ -351,37 +351,20 @@ module Fog
           Fog::SharedFileSystem::OpenStack::NotFound
         end
 
+        def action_prefix
+          microversion_newer_than?('2.6') ? '' : 'os-'
+        end
+
+        def default_service_type
+          %w[sharev2]
+        end
+
         def initialize(options = {})
           @supported_versions     = SUPPORTED_VERSIONS
           @supported_microversion = SUPPORTED_MICROVERSION
           @fixed_microversion     = options[:openstack_shared_file_system_microversion]
           @microversion_key       = 'X-Openstack-Manila-Api-Version'.freeze
-
-          initialize_identity options
-
-          @openstack_service_type  = options[:openstack_service_type] || ['sharev2']
-          @openstack_service_name  = options[:openstack_service_name]
-          @connection_options      = options[:connection_options] || {}
-
-          authenticate
-          set_api_path
-          set_microversion
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
-        end
-
-        def set_api_path
-          unless @path.match(@supported_versions)
-            @path = Fog::OpenStack.get_supported_version_path(@supported_versions,
-                                                              @openstack_management_uri,
-                                                              @auth_token,
-                                                              @connection_options)
-          end
-        end
-
-        def action_prefix
-          microversion_newer_than?('2.6') ? '' : 'os-'
+          super
         end
       end
     end

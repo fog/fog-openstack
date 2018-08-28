@@ -13,7 +13,7 @@ module Fog
                    :openstack_user_domain_id, :openstack_project_domain_id,
                    :openstack_api_key, :openstack_current_user_id, :openstack_userid, :openstack_username,
                    :current_user, :current_user_id, :current_tenant,
-                   :provider, :openstack_identity_prefix, :openstack_endpoint_path_matches, :openstack_cache_ttl
+                   :provider, :openstack_identity_api_version, :openstack_cache_ttl
 
         model_path 'fog/identity/openstack/v3/models'
         model :domain
@@ -142,18 +142,12 @@ module Fog
         end
 
         class Real < Fog::Identity::OpenStack::Real
-          private
-
-          def default_service_type(_)
-            DEFAULT_SERVICE_TYPE_V3
+          def default_path_prefix
+            'v3'
           end
 
-          def initialize_endpoint_path_matches(options)
-            if options[:openstack_endpoint_path_matches]
-              @openstack_endpoint_path_matches = options[:openstack_endpoint_path_matches]
-            else
-              @openstack_endpoint_path_matches = %r{/v3} unless options[:openstack_identity_prefix]
-            end
+          def default_service_type
+            %w[identity_v3 identityv3 identity]
           end
         end
       end

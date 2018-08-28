@@ -13,7 +13,7 @@ module Fog
                  :openstack_project_name, :openstack_project_id,
                  :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                 :openstack_identity_prefix
+                 :openstack_identity_api_version
 
       model_path 'fog/orchestration/openstack/models'
       model       :stack
@@ -105,10 +105,6 @@ module Fog
           management_url.port = 8774
           management_url.path = '/v1'
           @openstack_management_url = management_url.to_s
-
-          identity_public_endpoint = URI.parse(options[:openstack_auth_url])
-          identity_public_endpoint.port = 5000
-          @openstack_identity_public_endpoint = identity_public_endpoint.to_s
         end
 
         def data
@@ -123,8 +119,7 @@ module Fog
           {:provider                    => 'openstack',
            :openstack_auth_url          => @openstack_auth_uri.to_s,
            :openstack_auth_token        => @auth_token,
-           :openstack_management_url    => @openstack_management_url,
-           :openstack_identity_endpoint => @openstack_identity_public_endpoint}
+           :openstack_management_url    => @openstack_management_url}
         end
       end
 
@@ -135,20 +130,8 @@ module Fog
           Fog::Orchestration::OpenStack::NotFound
         end
 
-        def initialize(options = {})
-          initialize_identity options
-
-          @openstack_identity_service_type = options[:openstack_identity_service_type] || 'identity'
-
-          @openstack_service_type           = options[:openstack_service_type] || ['orchestration']
-          @openstack_service_name           = options[:openstack_service_name]
-
-          @connection_options               = options[:connection_options] || {}
-
-          authenticate
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+        def default_service_type
+          %w[orchestration]
         end
       end
     end

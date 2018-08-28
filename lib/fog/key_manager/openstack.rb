@@ -13,7 +13,7 @@ module Fog
                  :openstack_project_name, :openstack_project_id,
                  :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                 :openstack_identity_prefix, :openstack_temp_url_key, :openstack_cache_ttl
+                 :openstack_identity_api_version, :openstack_temp_url_key, :openstack_cache_ttl
 
 
       ## MODELS
@@ -96,55 +96,13 @@ module Fog
           Fog::KeyManager::OpenStack::NotFound
         end
 
-        def initialize(options = {})
-          initialize_identity options
-
-          @openstack_service_type           = options[:openstack_service_type] || ['key-manager']
-          @openstack_service_name           = options[:openstack_service_name]
-          @connection_options               = options[:connection_options] || {}
-
-          authenticate
-          set_api_path
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+        def default_path_prefix
+          'v1'
         end
 
-        def set_api_path
-          @path.sub!(%r{/$}, '')
-          unless @path.match(SUPPORTED_VERSIONS)
-            @path = supported_version(SUPPORTED_VERSIONS, @openstack_management_uri, @auth_token, @connection_options)
-          end
+        def default_service_type
+          %w[key-manager]
         end
-
-        def supported_version(supported_versions, uri, auth_token, connection_options = {})
-          connection = Fog::Core::Connection.new("#{uri.scheme}://#{uri.host}:#{uri.port}", false, connection_options)
-          response = connection.request({ :expects => [200, 204, 300],
-                                          :headers => {'Content-Type' => 'application/json',
-                                                       'Accept' => 'application/json',
-                                                       'X-Auth-Token' => auth_token},
-                                          :method => 'GET'
-                                        })
-
-          body = Fog::JSON.decode(response.body)
-          version = nil
-
-          versions =  body.fetch('versions',{}).fetch('values',[])
-          versions.each do |v|
-            if v.fetch('id', "").match(supported_versions) &&
-              ['current', 'supported', 'stable'].include?(v.fetch('status','').downcase)
-              version = v['id']
-            end
-          end
-
-          if !version  || version.empty?
-            raise Fog::OpenStack::Errors::ServiceUnavailable.new(
-                    "OpenStack service only supports API versions #{supported_versions.inspect}")
-          end
-
-          version
-        end
-
       end
     end
   end

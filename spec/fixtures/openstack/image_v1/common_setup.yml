@@ -5,7 +5,7 @@ http_interactions:
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"admin"}}},"scope":{"domain":{"name":"Default"}}}}'
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"name":"admin","domain":{"name":"Default"},"password":"password"}}},"scope":{"domain":{"name":"Default"}}}}'
     headers:
       User-Agent:
       - fog-core/1.38.0
@@ -87,7 +87,7 @@ http_interactions:
         "swift"}], "extras": {}, "user": {"domain": {"id": "default", "name": "Default"},
         "id": "205e0e39a2534743b517ed0aa2fbcda7", "name": "admin"}, "audit_ids": ["Nvg8MsIeQjWU68Vg_3U_JA"],
         "issued_at": "2016-05-03T14:00:03.863306Z"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:00:04 GMT
 - request:
     method: get
@@ -136,6 +136,6 @@ http_interactions:
         "id": "v1.1", "links": [{"href": "http://devstack.openstack.stack:9292/v1/", "rel": "self"}]},
         {"status": "SUPPORTED", "id": "v1.0", "links": [{"href": "http://devstack.openstack.stack:9292/v1/",
         "rel": "self"}]}]}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:00:04 GMT
 recorded_with: VCR 3.0.1

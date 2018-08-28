@@ -14,7 +14,7 @@ module Fog
                  :openstack_project_name, :openstack_project_id,
                  :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                 :openstack_identity_prefix
+                 :openstack_identity_api_version
 
       ## MODELS
       #
@@ -197,7 +197,6 @@ module Fog
       request :delete_key_pair
 
       # Tenant
-      request :list_tenants
       request :set_tenant
       request :get_limits
 
@@ -355,16 +354,10 @@ module Fog
           @auth_token = Fog::Mock.random_base64(64)
           @auth_token_expiration = (Time.now.utc + 86400).iso8601
 
-          initialize_identity options
-
           management_url = URI.parse(options[:openstack_auth_url])
           management_url.port = 8774
           management_url.path = '/v1.1/1'
           @openstack_management_url = management_url.to_s
-
-          identity_public_endpoint = URI.parse(options[:openstack_auth_url])
-          identity_public_endpoint.port = 5000
-          @openstack_identity_public_endpoint = identity_public_endpoint.to_s
         end
 
         def data
@@ -383,29 +376,15 @@ module Fog
           Fog::Compute::OpenStack::NotFound
         end
 
+        def default_service_type
+          %w[compute]
+        end
+
         def initialize(options = {})
           @supported_versions = SUPPORTED_VERSIONS
           @supported_microversion = SUPPORTED_MICROVERSION
           @microversion_key = 'X-OpenStack-Nova-API-Version'
-
-          initialize_identity options
-
-          @openstack_identity_service_type = options[:openstack_identity_service_type] || 'identity'
-
-          @openstack_service_type   = options[:openstack_service_type] || %w(nova compute)
-          @openstack_service_name   = options[:openstack_service_name]
-
-          @connection_options       = options[:connection_options] || {}
-
-          authenticate
-
-          unless @path =~ %r{/(v2|v2\.0|v2\.1)}
-            raise Fog::OpenStack::Errors::ServiceUnavailable,
-                  "OpenStack compute binding only supports version v2 and v2.1"
-          end
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+          super
         end
       end
     end

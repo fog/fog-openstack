@@ -255,7 +255,6 @@ describe Fog::SharedFileSystem::OpenStack do
         new_rule.id.must_equal access_rule.id
         share.revoke_access(access_rule.id)
         Fog.wait_for { share.access_rules.empty? }
-
       ensure
         # delete the share(s)
         @service.shares.all(:name => share_name).each(&:destroy)

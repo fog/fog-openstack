@@ -5,7 +5,7 @@ http_interactions:
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"admin"}}},"scope":{"domain":{"name":"Default"}}}}'
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"name":"admin","domain":{"name":"Default"},"password":"password"}}},"scope":{"domain":{"name":"Default"}}}}'
     headers:
       User-Agent:
       - fog-core/1.38.0
@@ -243,5 +243,5 @@ http_interactions:
                        "issued_at": "2016-05-03T14:00:45.703534Z"
                    }
                }'
-    http_version: 
+    http_version:
   recorded_at: Fri, 20 May 2016 15:16:07 GMT

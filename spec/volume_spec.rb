@@ -72,7 +72,7 @@ require_relative './shared_context'
         begin
           object = collection.get(id)
           puts "Current status: #{object ? object.status : 'deleted'}" if ENV['DEBUG_VERBOSE']
-          object.nil? || (%w(available error).include? object.status.downcase)
+          object.nil? || (%w[available error].include? object.status.downcase)
         end
       end
 
@@ -108,8 +108,7 @@ require_relative './shared_context'
           volume_id              = setup_test_object(:type              => :volume,
                                                      @name_param        => volume_name,
                                                      @description_param => volume_description,
-                                                     :size              => volume_size
-                                                    ).id
+                                                     :size              => volume_size).id
 
           @service.volumes.all(@name_param => volume_name).length.must_equal 1
 
@@ -208,8 +207,7 @@ require_relative './shared_context'
 
           volume = setup_test_object(:type       => :volume,
                                      @name_param => 'fog-testvolume-1',
-                                     :size       => volume_size_small
-                                    )
+                                     :size       => volume_size_small)
           volume.wait_for { ready? && size == volume_size_small }
 
           # extend volume
@@ -225,8 +223,7 @@ require_relative './shared_context'
           proc do
             volume.extend(volume_size_small)
           end.must_raise(Excon::Errors::BadRequest,
-                         /Invalid input received: New size for extend must be greater than current size./
-                        )
+                         /Invalid input received: New size for extend must be greater than current size./)
         ensure
           # delete volume
           cleanup_test_object(@service.volumes, volume.nil? ? nil : volume.id)
@@ -246,15 +243,13 @@ require_relative './shared_context'
           # create volume object
           volume        = setup_test_object(:type       => :volume,
                                             @name_param => 'fog-testvolume-1',
-                                            :size       => 1
-                                           )
+                                            :size       => 1)
           volume.wait_for { ready? }
 
           # create transfer object
           transfer = setup_test_object(:type      => :transfer,
                                        :name      => transfer_name,
-                                       :volume_id => volume.id
-                                      )
+                                       :volume_id => volume.id)
           # we need to save the auth_key NOW, it's only present in the response
           # from the create_transfer request
           auth_key    = transfer.auth_key
@@ -281,11 +276,10 @@ require_relative './shared_context'
           transfer.id.must_equal transfer_id
           transfer.name.must_equal transfer_name
           transfer.volume_id.must_equal volume.id
-
           # to accept the transfer, we need a second connection to a different project
           puts 'Checking object visibility from different projects...' if ENV['DEBUG_VERBOSE']
           other_service = service_class.new(
-            :openstack_auth_url     => "#{@os_auth_url}/auth/tokens",
+            :openstack_auth_url     => @os_auth_url,
             :openstack_region       => ENV['OS_REGION_NAME'] || 'RegionOne',
             :openstack_api_key      => ENV['OS_PASSWORD_OTHER'] || 'password',
             :openstack_username     => ENV['OS_USERNAME_OTHER'] || 'demo',
@@ -352,15 +346,13 @@ require_relative './shared_context'
             # create volume object
             volume = setup_test_object(:type       => :volume,
                                        @name_param => 'fog-testvolume-1',
-                                       :size       => 1
-                                      )
+                                       :size       => 1)
             volume.wait_for { ready? }
 
             # create transfer object
             transfer = setup_test_object(:type      => :transfer,
                                          :name      => 'fog-testtransfer-1',
-                                         :volume_id => volume.id
-                                        )
+                                         :volume_id => volume.id)
             # we need to save the auth_key NOW, it's only present in the response
             # from the create_transfer request
             auth_key      = transfer.auth_key
@@ -368,7 +360,7 @@ require_relative './shared_context'
 
             # to try to accept the transfer, we need a second connection to a different project
             other_service = service_class.new(
-              :openstack_auth_url     => "#{@os_auth_url}/auth/tokens",
+              :openstack_auth_url     => @os_auth_url,
               :openstack_region       => ENV['OS_REGION_NAME'] || 'RegionOne',
               :openstack_api_key      => ENV['OS_PASSWORD_OTHER'] || 'password',
               :openstack_username     => ENV['OS_USERNAME_OTHER'] || 'demo',
@@ -396,16 +388,14 @@ require_relative './shared_context'
           # create volume object
           volume = setup_test_object(:type       => :volume,
                                      @name_param => 'fog-testvolume-1',
-                                     :size       => 1
-                                    )
+                                     :size       => 1)
           volume.wait_for { ready? }
 
           # create snapshot object
           snapshot = setup_test_object(:type              => :snapshot,
                                        @name_param        => 'fog-testsnapshot-1',
                                        @description_param => 'Test snapshot',
-                                       :volume_id         => volume.id
-                                      )
+                                       :volume_id         => volume.id)
           snapshot_id = snapshot.id
 
           # wait for the snapshot to be available
@@ -414,7 +404,7 @@ require_relative './shared_context'
               object = @service.snapshots.get(snapshot.id)
               object.wont_be_nil
               puts "Current status: #{object ? object.status : 'deleted'}" if ENV['DEBUG_VERBOSE']
-              object.nil? || (%w(available error).include? object.status.downcase)
+              object.nil? || (%w[available error].include? object.status.downcase)
             end
           end
 
@@ -456,8 +446,7 @@ require_relative './shared_context'
                                      @name_param => 'fog-testvolume-1',
                                      :size       => 1,
                                      :metadata   => {'some_metadata' => 'this is meta',
-                                                     'more_metadata' => 'even more meta'}
-                                    )
+                                                     'more_metadata' => 'even more meta'})
           volume.wait_for { ready? }
 
           updated_volume = @service.volumes.get(volume.id)
@@ -494,7 +483,6 @@ require_relative './shared_context'
           check_metadata = updated_volume.metadata
           check_metadata.size.must_equal 1
           check_metadata['newer_metadata'].must_equal 'this is newer'
-
         ensure
           # cleanup volume
           cleanup_test_object(@service.volumes, volume.id) if volume
@@ -510,16 +498,14 @@ require_relative './shared_context'
                                      @name_param => 'fog-testvolume-1',
                                      :size       => 1,
                                      :metadata   => {'some_metadata' => 'this is meta',
-                                                     'more_metadata' => 'even more meta'}
-                                    )
+                                                     'more_metadata' => 'even more meta'})
           volume.wait_for { ready? }
 
           # create snapshot object
           snapshot = setup_test_object(:type              => :snapshot,
                                        @name_param        => 'fog-testsnapshot-1',
                                        @description_param => 'Test snapshot',
-                                       :volume_id         => volume.id
-                                      )
+                                       :volume_id         => volume.id)
           snapshot_id = snapshot.id
 
           # wait for the snapshot to be available
@@ -528,7 +514,7 @@ require_relative './shared_context'
               object = @service.snapshots.get(snapshot_id)
               object.wont_be_nil
               puts "Current status: #{object ? object.status : 'deleted'}" if ENV['DEBUG_VERBOSE']
-              object.nil? || (%w(available error).include? object.status.downcase)
+              object.nil? || (%w[available error].include? object.status.downcase)
             end
           end
 
@@ -553,7 +539,6 @@ require_relative './shared_context'
           check_metadata   = updated_snapshot.metadata
           check_metadata.size.must_equal 1
           check_metadata['new_snapshot_metadata'].must_equal 'this is new'
-
         ensure
           # cleanup volume
           cleanup_test_object(@service.snapshots, snapshot.id) if snapshot

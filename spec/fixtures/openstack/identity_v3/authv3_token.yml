@@ -47,7 +47,7 @@ http_interactions:
       string: '{"user": {"name": "foobar_385", "links": {"self": "http://devstack.openstack.stack:35357/v3/users/304d38f9e15c4603b70326120db88a7d"},
         "domain_id": "default", "enabled": true, "email": "foobar_demo@example.com",
         "id": "304d38f9e15c4603b70326120db88a7d"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:54 GMT
 - request:
     method: post
@@ -96,7 +96,7 @@ http_interactions:
       string: '{"role": {"id": "d121bd07dec845f29915ae2956249e34", "links": {"self":
         "http://devstack.openstack.stack:35357/v3/roles/d121bd07dec845f29915ae2956249e34"}, "name":
         "foobar_role390"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:54 GMT
 - request:
     method: put
@@ -141,14 +141,14 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:54 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"s3cret!","domain":{"id":"default"},"name":"foobar_385"}}},"scope":{"domain":{"id":"default"}}}}'
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"name":"foobar_385","domain":{"id":"default"},"password":"s3cret!"}}},"scope":{"domain":{"id":"default"}}}}'
     headers:
       User-Agent:
       - fog-core/1.38.0
@@ -230,7 +230,7 @@ http_interactions:
         "swift"}], "extras": {}, "user": {"domain": {"id": "default", "name": "Default"},
         "id": "304d38f9e15c4603b70326120db88a7d", "name": "foobar_385"}, "audit_ids":
         ["oQ8CEopyS3mQECayU-uUow"], "issued_at": "2016-05-03T13:51:54.629230Z"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:54 GMT
 - request:
     method: post
@@ -268,7 +268,7 @@ http_interactions:
         "extras": {}, "user": {"domain": {"id": "default", "name": "Default"}, "id":
         "304d38f9e15c4603b70326120db88a7d", "name": "foobar_385"}, "audit_ids": ["4ALKzx4mQtW74Rmu30d2AQ",
         "oQ8CEopyS3mQECayU-uUow"], "issued_at": "2016-05-03T13:51:54.844344Z"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:55 GMT
 - request:
     method: get
@@ -306,7 +306,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"links": {"self": "http://devstack.openstack.stack:5000/v3/users/304d38f9e15c4603b70326120db88a7d/projects",
         "previous": null, "next": null}, "projects": []}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:55 GMT
 - request:
     method: post
@@ -395,7 +395,7 @@ http_interactions:
         "swift"}], "extras": {}, "user": {"domain": {"id": "default", "name": "Default"},
         "id": "304d38f9e15c4603b70326120db88a7d", "name": "foobar_385"}, "audit_ids":
         ["jxnOeLmfQgKVzWBXzZcadg", "oQ8CEopyS3mQECayU-uUow"], "issued_at": "2016-05-03T13:51:55.299668Z"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:55 GMT
 - request:
     method: post
@@ -429,7 +429,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"error": {"message": "Could not find token: blahblahblah", "code":
         404, "title": "Not Found"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:55 GMT
 - request:
     method: delete
@@ -474,7 +474,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:55 GMT
 - request:
     method: delete
@@ -519,6 +519,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:56 GMT
 recorded_with: VCR 3.0.1

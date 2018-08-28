@@ -14,7 +14,7 @@ module Fog
                  :openstack_project_name, :openstack_project_id,
                  :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                 :openstack_identity_prefix
+                 :openstack_identity_api_version
 
       model_path 'fog/container_infra/openstack/models'
 
@@ -126,36 +126,17 @@ module Fog
           Fog::ContainerInfra::OpenStack::NotFound
         end
 
-        def initialize(options = {})
-          initialize_identity options
+        def default_path_prefix
+          'v1'
+        end
 
-          @openstack_service_type           = options[:openstack_service_type] || ['container-infra']
-          @openstack_service_name           = options[:openstack_service_name]
-          @openstack_endpoint_type          = options[:openstack_endpoint_type] || 'publicURL'
-
-          @connection_options               = options[:connection_options] || {}
-
-          authenticate
-          set_api_path
-
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+        def default_service_type
+          %w[container-infra]
         end
 
         def request(options = {})
           options[:headers] = {'OpenStack-API-Version' => "container-infra #{SUPPORTED_MICROVERSION}"}
           super(options)
-        end
-
-        def set_api_path
-          unless @path.match(SUPPORTED_VERSIONS)
-            @path = Fog::OpenStack.get_supported_version_path(
-              SUPPORTED_VERSIONS,
-              @openstack_management_uri,
-              @auth_token,
-              @connection_options
-            )
-          end
         end
       end
     end

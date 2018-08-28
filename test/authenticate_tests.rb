@@ -82,57 +82,61 @@ describe "OpenStack authentication" do
     )
 
     expected = {
-      :user                     => @body['access']['user'],
-      :tenant                   => @body['access']['token']['tenant'],
-      :identity_public_endpoint => nil,
-      :server_management_url    => @body['access']['serviceCatalog'].
+      :user                  => @body['access']['user'],
+      :tenant                => @body['access']['token']['tenant'],
+      :server_management_url => @body['access']['serviceCatalog'].
                                      first['endpoints'].first['publicURL'],
-      :token                    => @token,
-      :expires                  => @expires.iso8601,
-      :current_user_id          => @body['access']['user']['id'],
-      :unscoped_token           => @token
+      :token                 => @token,
+      :expires               => @expires.iso8601,
+      :current_user_id       => @body['access']['user']['id'],
+      :unscoped_token        => @token
     }
 
     assert(expected) do
       Fog::OpenStack.authenticate_v2(
-        :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
+        :openstack_auth_uri     => URI('http://example'),
         :openstack_tenant       => 'admin',
-        :openstack_service_type => %w[compute]
-      )
+        :openstack_service_type => %w[compute])
     end
   end
 
   it "validates token" do
-    old_credentials = Fog.credentials
-    Fog.credentials = {:openstack_auth_url => 'http://openstack:35357/v2.0/tokens'}
-    identity = Fog::Identity[:openstack]
+    creds = {
+      :openstack_auth_url => 'http://openstack:35357',
+      :openstack_identity_api_version => 'v2.0'
+    }
+    identity = Fog::Identity::OpenStack.new(creds)
     identity.validate_token(@token, @tenant_token)
     identity.validate_token(@token)
-    Fog.credentials = old_credentials
   end
 
   it "checks token" do
-    old_credentials = Fog.credentials
-    Fog.credentials = {:openstack_auth_url => 'http://openstack:35357/v2.0/tokens'}
-    identity = Fog::Identity[:openstack]
+    creds = {
+      :openstack_auth_url => 'http://openstack:35357',
+      :openstack_identity_api_version => 'v2.0'
+    }
+    identity = Fog::Identity::OpenStack.new(creds)
     identity.check_token(@token, @tenant_token)
     identity.check_token(@token)
-    Fog.credentials = old_credentials
   end
 
   it "v2 missing service" do
     Excon.stub(
       {:method => 'POST', :path => "/v2.0/tokens"},
-      {:status => 200, :body => Fog::JSON.encode(@body)}
-    )
+      {:status => 200, :body => Fog::JSON.encode(@body)})
 
+    service = Object.new
+    service.extend(Fog::OpenStack::Core)
+    service.send(
+      :setup,
+      :openstack_auth_url     => 'http://example',
+      :openstack_tenant       => 'admin',
+      :openstack_service_type => %w[network],
+      :openstack_api_key      => 'secret',
+      :openstack_username     => 'user')
     proc do
-      Fog::OpenStack.authenticate_v2(
-        :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
-        :openstack_tenant       => 'admin',
-        :openstack_service_type => %w[network]
-      )
-    end.must_raise Fog::Errors::NotFound, 'Could not find service network.  Have compute, image'
+      service.send(:authenticate)
+    end.must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
   end
 
   it "v2 missing storage service" do
@@ -141,21 +145,19 @@ describe "OpenStack authentication" do
       {:status => 200, :body => Fog::JSON.encode(@body)}
     )
 
-    proc do
-      Fog::OpenStack.authenticate_v2(
-        :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
-        :openstack_tenant       => 'admin',
-        :openstack_service_type => 'object-store'
-      )
-    end.must_raise NoMethodError, "undefined method `join' for \"object-store\":String"
+    service = Object.new
+    service.extend(Fog::OpenStack::Core)
+    service.send(
+      :setup,
+      :openstack_auth_url     => 'http://example',
+      :openstack_tenant       => 'admin',
+      :openstack_api_key      => 'secret',
+      :openstack_username     => 'user',
+      :openstack_service_type => 'object-store')
 
     proc do
-      Fog::OpenStack.authenticate_v2(
-        :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
-        :openstack_tenant       => 'admin',
-        :openstack_service_type => %w[object-store]
-      )
-    end.must_raise Fog::Errors::NotFound, "Could not find service object-store.  Have compute, image"
+      service.send(:authenticate)
+    end.must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
   end
 
   it "v2 auth with two compute services" do
@@ -178,39 +180,21 @@ describe "OpenStack authentication" do
 
     Excon.stub(
       {:method => 'POST', :path => "/v2.0/tokens"},
-      {:status => 200, :body => Fog::JSON.encode(body_clone)}
-    )
+      {:status => 200, :body => Fog::JSON.encode(body_clone)})
 
-    assert("http://example2:8774/v2/#{@tenant_token}") do
-      Fog::OpenStack.authenticate_v2(
-        :openstack_auth_uri     => URI('http://example/v2.0/tokens'),
-        :openstack_tenant       => 'admin',
-        :openstack_service_type => %w[compute],
-        :openstack_service_name => 'nova2')[:server_management_url]
-    end
-  end
+    service = Object.new
+    service.extend(Fog::OpenStack::Core)
+    service.send(
+      :setup,
+      :openstack_auth_url     => 'http://example',
+      :openstack_tenant       => 'admin',
+      :openstack_api_key      => 'secret',
+      :openstack_username     => 'user',
+      :openstack_service_type => 'compute')
 
-  it "legacy v1 auth" do
-    headers = {
-      "X-Storage-Url"  => "https://swift.myhost.com/v1/AUTH_tenant",
-      "X-Auth-Token"   => "AUTH_yui193bdc00c1c46c5858788yuio0e1e2p",
-      "X-Trans-Id"     => "iu99nm9999f9b999c9b999dad9cd999e99",
-      "Content-Length" => "0",
-      "Date"           => "Wed, 07 Aug 2013 11:11:11 GMT"
-    }
-
-    Excon.stub(
-      {:method => 'GET', :path => "/auth/v1.0"},
-      {:status => 200, :body => "", :headers => headers}
-    )
-
-    assert("https://swift.myhost.com/v1/AUTH_tenant") do
-      Fog::OpenStack.authenticate_v1(
-        :openstack_auth_uri     => URI('https://swift.myhost.com/auth/v1.0'),
-        :openstack_username     => 'tenant:dev',
-        :openstack_api_key      => 'secret_key',
-        :openstack_service_type => %w[storage])[:server_management_url]
-    end
+    proc do
+      service.send(:authenticate)
+    end.must_raise Fog::OpenStack::Auth::Catalog::EndpointError, 'Multiple endpoints found'
   end
 
   after do

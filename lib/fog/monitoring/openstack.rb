@@ -12,7 +12,7 @@ module Fog
                  :openstack_project_name, :openstack_project_id,
                  :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                  :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                 :openstack_identity_prefix, :openstack_temp_url_key, :openstack_cache_ttl
+                 :openstack_identity_api_version, :openstack_temp_url_key, :openstack_cache_ttl
 
       model_path 'fog/monitoring/openstack/models'
       model       :metric
@@ -78,17 +78,8 @@ module Fog
           Fog::Monitoring::OpenStack::NotFound
         end
 
-        def initialize(options = {})
-          initialize_identity options
-
-          @openstack_service_type           = options[:openstack_service_type] || ['monitoring']
-          @openstack_service_name           = options[:openstack_service_name]
-
-          @connection_options               = options[:connection_options] || {}
-
-          authenticate
-          @persistent = options[:persistent] || false
-          @connection = Fog::Core::Connection.new("#{@scheme}://#{@host}:#{@port}", @persistent, @connection_options)
+        def default_service_type
+          %w[monitoring]
         end
       end
     end
