@@ -30,9 +30,9 @@ module Fog
           true
         end
 
-        def restore(volume_id)
+        def restore(volume_id = nil, name = nil)
           requires :id
-          service.restore_backup(id, volume_id)
+          service.restore_backup(id, volume_id, name)
           true
         end
 
