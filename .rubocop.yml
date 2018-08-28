@@ -41,7 +41,7 @@ Metrics/BlockLength:
   - it
   - model_tests
   - namespace
-  - draw  
+  - draw
 ParameterLists:
   Severity: refactor
 PerceivedComplexity:
@@ -54,6 +54,9 @@ SingleLineMethods:
   AllowIfMethodIsEmpty: false
 SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+  AllowInnerSlashes: true
 TrivialAccessors:
   AllowPredicates: true
 #
