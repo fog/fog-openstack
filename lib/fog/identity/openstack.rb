@@ -12,11 +12,13 @@ module Fog
                     # Will be removed in future after hard deprecation is enforced for a couple of releases
                     Fog::Logger.deprecation("An authentication URL including a version is deprecated")
                     case args[:openstack_auth_url]
-                    when /v3/
-                      args[:openstack_auth_url].gsub!(/\/v3(\/)*.*/, '')
-                      'v3'
-                    when /v2(\.0)*/
-                      args[:openstack_auth_url].gsub!(/\/v2(\.0)*(\/)*.*/, '')
+                    when /\/v3(\/)*.*$/
+                      args[:openstack_auth_url].gsub!(/\/v3(\/)*.*$/, '')
+                      args[:no_path_prefix] = true
+                      '3'
+                    when /\/v2(\.0)*(\/)*.*$/
+                      args[:openstack_auth_url].gsub!(/\/v2(\.0)*(\/)*.*$/, '')
+                      args[:no_path_prefix] = true
                       '2.0'
                     end
                   end
