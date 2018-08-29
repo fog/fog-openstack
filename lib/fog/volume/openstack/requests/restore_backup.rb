@@ -3,7 +3,7 @@ module Fog
     class OpenStack
       module Real
         def restore_backup(backup_id, volume_id = nil, name = nil)
-          data = { 'restore' => { 'volume_id' => volume_id, 'name' => name } }
+          data = {'restore' => {'volume_id' => volume_id, 'name' => name}}
           request(
             :expects  => 202,
             :method   => 'POST',
