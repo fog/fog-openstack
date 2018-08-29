@@ -47,7 +47,7 @@ module Fog
             elsif attributes.key?(method_sym.to_s)
               attributes[method_sym.to_s]
             elsif method_sym.to_s.end_with?('=')
-              attributes[method_sym.to_s.gsub(/=$/, '')] = arguments[0]
+              attributes[method_sym.to_s.gsub(/=$/, '').to_sym] = arguments[0]
             else
               super
             end
