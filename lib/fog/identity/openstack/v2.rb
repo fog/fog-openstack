@@ -14,7 +14,7 @@ module Fog
                    :openstack_project_name, :openstack_project_id,
                    :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                    :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                   :openstack_identity_api_version
+                   :openstack_identity_api_version, :no_path_prefix
 
         model_path 'fog/identity/openstack/v2/models'
         model :tenant
@@ -169,8 +169,17 @@ module Fog
         end
 
         class Real < Fog::Identity::OpenStack::Real
+          def initialize(args)
+            @path_prefix = if args[:no_path_prefix]
+                             ''
+                           else
+                             'v2.0'
+                           end
+            super
+          end
+
           def default_path_prefix
-            'v2.0'
+            @path_prefix
           end
 
           def default_service_type
