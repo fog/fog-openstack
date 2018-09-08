@@ -2,6 +2,12 @@ require "test_helper"
 describe "Fog::Image[:openstack] | images" do
   before do
     @instance = Fog::Image[:openstack].create_image(:name => "model test image").body
+    @private = Fog::Image[:openstack].create_image(
+      :name => "private test image",
+      :visibility => "private").body
+    @public = Fog::Image[:openstack].create_image(
+      :name => "public test image",
+      :visibility => "public").body
   end
 
   describe "success" do
@@ -13,6 +19,16 @@ describe "Fog::Image[:openstack] | images" do
     it "#get" do
       image = Fog::Image[:openstack].images.get(@instance['image']['id'])
       image.id.must_equal @instance['image']['id']
+    end
+
+    it "#public" do
+      image = Fog::Image[:openstack].images.public.first
+      image.visibility.must_equal "public"
+    end
+
+    it "#private" do
+      image = Fog::Image[:openstack].images.private.first
+      image.visibility.must_equal "private"
     end
 
     it "#destroy" do
