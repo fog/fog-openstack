@@ -234,6 +234,7 @@ module Fog
         # both need to be set in service's initialize for microversions to work
         set_microversion if @supported_microversion && @supported_versions
         @path = api_path_prefix
+        @host = @openstack_management_uri.host
 
         true
       end
