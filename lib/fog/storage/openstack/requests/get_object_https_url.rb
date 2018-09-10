@@ -38,9 +38,9 @@ module Fog
           raise ArgumentError, "Insufficient parameters specified." unless container && object && expires && method
           raise ArgumentError, "Storage must be instantiated with the :openstack_temp_url_key option" if @openstack_temp_url_key.nil?
 
-          scheme = options[:scheme] || @scheme
-          host = options[:host] || @host
-          port = options[:port] || @port
+          scheme = options[:scheme] || @openstack_management_uri.scheme
+          host = options[:host] || @openstack_management_uri.host
+          port = options[:port] || @openstack_management_uri.port
 
           # POST not allowed
           allowed_methods = %w(GET PUT HEAD)

@@ -18,7 +18,8 @@ module Fog
         private
 
         def url
-          "#{@scheme}://#{@host}:#{@port}#{@path}"
+          "#{@openstack_management_uri.scheme}://#{@openstack_management_uri.host}:"\
+          "#{@openstack_management_uri.port}#{@path}"
         end
       end
 
