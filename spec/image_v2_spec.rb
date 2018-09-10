@@ -130,29 +130,28 @@ describe Fog::Image::OpenStack do
       image_name = 'reloaded_image'
       begin
         created_image = @service.images.create(
-          :name                => image_name,
-          :service             => @service,
-          :reloadable_property => 'original'
+          :name    => image_name + '_original',
+          :service => @service,
         )
         identifier = created_image.id
 
         found_image = @service.images.find_by_id(identifier)
 
         # verify an image provided by `create` can be reloaded
-        found_image.reloadable_property = 'updated'
+        found_image.name = image_name + '_updated'
         found_image.save
 
-        created_image.reloadable_property.must_equal 'original'
+        created_image.name.must_equal image_name + '_original',
         created_image.reload
-        created_image.reloadable_property.must_equal 'updated'
+        created_image.name.must_equal image_name + '_updated'
 
         # verify an image provided by `find_by_id` can be reloaded
-        created_image.reloadable_property = 'updated_again'
+        created_image.name = image_name + '_updated_again'
         created_image.save
 
-        found_image.reloadable_property.must_equal 'updated'
+        found_image.name.must_equal image_name + '_updated'
         found_image.reload
-        found_image.reloadable_property.must_equal 'updated_again'
+        found_image.name.must_equal image_name + '_updated_again'
       ensure
         cleanup_image nil, image_name
       end
