@@ -3,13 +3,15 @@
 require 'fog/openstack'
 require 'pp'
 
-auth_url = "https://example.net/v2.0/tokens"
+auth_url = "https://example.net"
 username = 'admin@example.net'
 password = 'secret'
+tenant   = 'admin'
 
 keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
                                         :openstack_username => username,
-                                        :openstack_api_key  => password
+                                        :openstack_api_key  => password,
+                                        :openstack_tenant   => tenant
                                         # Optional, self-signed certs
                                         #:connection_options => { :ssl_verify_peer => false }
 

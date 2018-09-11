@@ -42,12 +42,12 @@ Checklist:
 * All following examples assume that `@connection_params` is a hash of valid connection information for an OpenStack cloud.
 * The `:openstack_username` and `:openstack_api_key` keys must map to a valid user/password combination in Keystone.
 * If you don't know what domain your user belongs to, chances are it's the `default` domain. By default, all users are a member of the `default` domain unless otherwise specified.
-
+* Keystone endpoints are version less. Version 3 is the default as v2.0 is deprecated. Meanwhile Keystone V3 still supports v2.0 for backward compatibility. Therefore passing a tenant instead of a project (along with a domain) makes Keystone provide v2.0 token.
 Connection parameters:
 
 ```ruby
 @connection_params = {
-  openstack_auth_url:     "http://devstack.test:5000/v3/auth/tokens",
+  openstack_auth_url:     "http://devstack.test:5000",
   openstack_username:     "admin",
   openstack_api_key:      "password",
   openstack_project_name: "admin",
@@ -55,14 +55,15 @@ Connection parameters:
 }
 ```
 
-If you're using Keystone V2, you don't need to supply domain details but ensure the `openstack_auth_url` parameter references the correct endpoint.
+If you're using Keystone V2, you don't need to supply domain details but ensure to either provide a tenant name (`openstack_tenant`)
+or a tenant id (`openstack_tenant_id`). Alternatively you can use `:openstack_identity_api_version` parameter with 'v2.0'.
 
 ```ruby
 @connection_params = {
-  openstack_auth_url:     "http://devstack.test:5000/v2.0/tokens",
-  openstack_username:     "admin",
-  openstack_api_key:      "password",
-  openstack_project_name: "admin"
+  openstack_auth_url: "http://devstack.test:5000",
+  openstack_username: "admin",
+  openstack_api_key:  "password",
+  openstack_tenant:   "admin"
 }
 ```
 

@@ -3,13 +3,11 @@
 require 'fog/openstack'
 require 'pp'
 
-auth_url = "https://example.net:35357/v3/auth/tokens"
+auth_url = "https://example.net:35357"
 username = 'admin@example.net'
 password = 'secret'
 project = 'admin'
 domain = 'Default'
-
-
 
 keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
                                         :openstack_username => username,
