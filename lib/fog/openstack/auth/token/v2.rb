@@ -37,7 +37,7 @@ module Fog
 
           def user_credentials
             {
-              'username' => @user.name,
+              'username' => @user.name.to_s,
               'password' => @user.password
             }
           end
