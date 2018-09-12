@@ -21,9 +21,9 @@ module Fog
             end
 
             if @tenant.id
-              identity['tenantId'] = @tenant.id
+              identity['tenantId'] = @tenant.id.to_s
             elsif @tenant.name
-              identity['tenantName'] = @tenant.name
+              identity['tenantName'] = @tenant.name.to_s
             else
               raise CredentialsError, "#{self.class}: No tenant available"
             end
