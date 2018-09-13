@@ -249,17 +249,12 @@ module Fog
       class Real
         include Fog::OpenStack::Core
 
-        def default_service_type
-          %w[baremetal]
+        def self.not_found_class
+          Fog::Baremetal::OpenStack::NotFound
         end
 
-        # NOTE: uncommenting this should be treated as api-change!
-        # def self.not_found_class
-        #   Fog::Baremetal::OpenStack::NotFound
-        # end
-
-        def default_path_prefix
-          'v1'
+        def default_service_type
+          %w[baremetal]
         end
       end
     end
