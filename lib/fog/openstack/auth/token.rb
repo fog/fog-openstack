@@ -14,7 +14,8 @@ module Fog
         class URLError < RuntimeError; end
 
         def self.build(auth)
-          if auth[:openstack_tenant_id] || auth[:openstack_tenant]
+          if auth[:openstack_identity_api_version] =~ /(v)*2(\.0)*/i ||
+             auth[:openstack_tenant_id] || auth[:openstack_tenant]
             Fog::OpenStack::Auth::Token::V2.new(auth)
           else
             Fog::OpenStack::Auth::Token::V3.new(auth)
