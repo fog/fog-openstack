@@ -7,7 +7,6 @@ module Fog
         identity :id
 
         attribute :name
-        attribute :subnets
         attribute :shared
         attribute :status
         attribute :admin_state_up
