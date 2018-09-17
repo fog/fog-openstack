@@ -3,6 +3,7 @@ module Fog
     class Volume
       module Real
         def update_volume(volume_id, data = {})
+          data = data.select { |key| key == :name || key == :description || key == :metadata }
           request(
             :body    => Fog::JSON.encode('volume' => data),
             :expects => 200,
