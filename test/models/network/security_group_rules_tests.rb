@@ -2,7 +2,7 @@ require "test_helper"
 require "helpers/network_helper"
 require "helpers/collection_helper"
 
-describe "Fog::Network[:openstack] | security_group_rules collection" do
+describe "Fog::OpenStack::Network | security_group_rules collection" do
   @secgroup   = network.security_groups.create(:name => "my_secgroup")
   attributes  = {:security_group_id => @secgroup.id, :direction => "ingress"}
   collection_tests(network.security_group_rules, attributes)

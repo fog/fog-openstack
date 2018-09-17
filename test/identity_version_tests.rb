@@ -9,7 +9,7 @@ describe "Fog::Identity[:openstack] | versions" do
   it "v2" do
     Fog.credentials = {:openstack_auth_url => 'http://openstack:35357'}
 
-    assert(Fog::Identity::OpenStack::V2::Real) do
+    assert(Fog::OpenStack::Identity::V2::Real) do
       Fog::Identity[:openstack].class
     end
   end
@@ -17,7 +17,7 @@ describe "Fog::Identity[:openstack] | versions" do
   it "v3" do
     Fog.credentials = {:openstack_auth_url => 'http://openstack:35357'}
 
-    assert(Fog::Identity::OpenStack::V3::Real) do
+    assert(Fog::OpenStack::Identity::V3::Real) do
       Fog::Identity[:openstack].class
     end
   end

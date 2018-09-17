@@ -29,8 +29,8 @@ auth_options = {
   :connection_options     => {:ssl_verify_peer => ENV['SSL_VERIFY'] != 'false'}
 }
 
-network_service = Fog::Network::OpenStack.new(auth_options)
-share_service   = Fog::SharedFileSystem::OpenStack.new(auth_options)
+network_service = Fog::OpenStack::Network.new(auth_options)
+share_service   = Fog::OpenStack::SharedFileSystem.new(auth_options)
 
 net = network_service.networks.first
 raise 'no network exists' if net.nil?

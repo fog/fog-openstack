@@ -1,14 +1,14 @@
 require 'spec_helper'
 require_relative './shared_context'
 
-describe Fog::DNS::OpenStack::V2 do
+describe Fog::OpenStack::DNS::V2 do
   spec_data_folder = 'spec/fixtures/openstack/dns_v2'
 
   before :all do
     openstack_vcr = OpenStackVCR.new(
       :vcr_directory  => spec_data_folder,
       :project_scoped => true,
-      :service_class  => Fog::DNS::OpenStack # Fog to choose latest available version
+      :service_class  => Fog::OpenStack::DNS # Fog to choose latest available version
     )
     @service = openstack_vcr.service
   end

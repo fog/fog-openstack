@@ -2,7 +2,7 @@ require "test_helper"
 
 describe "Fog::Identity[:openstack] | users" do
   before do
-    @identity = Fog::Identity::OpenStack.new(:openstack_identity_api_version => 'v2.0')
+    @identity = Fog::OpenStack::Identity.new(:openstack_identity_api_version => 'v2.0')
     tenant_id = @identity.list_tenants.body['tenants'].first['id']
     @instance = @identity.users.create(
       :name      => 'foobar',
@@ -34,7 +34,7 @@ describe "Fog::Identity[:openstack] | users" do
       unless Fog.mocking?
         proc do
           Fog::Identity[:openstack].users.find_by_id('fake')
-        end.must_raise(Fog::Identity::OpenStack::NotFound)
+        end.must_raise(Fog::OpenStack::Identity::NotFound)
       end
     end
 
@@ -42,7 +42,7 @@ describe "Fog::Identity[:openstack] | users" do
       unless Fog.mocking?
         proc do
           Fog::Identity[:openstack].users.find_by_name('fake')
-        end.must_raise(Fog::Identity::OpenStack::NotFound)
+        end.must_raise(Fog::OpenStack::Identity::NotFound)
       end
     end
 
@@ -50,7 +50,7 @@ describe "Fog::Identity[:openstack] | users" do
       unless Fog.mocking?
         proc do
           Fog::Identity[:openstack].users.destroy('fake')
-        end.must_raise(Fog::Identity::OpenStack::NotFound)
+        end.must_raise(Fog::OpenStack::Identity::NotFound)
       end
     end
   end

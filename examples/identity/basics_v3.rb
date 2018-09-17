@@ -9,11 +9,11 @@ password = 'secret'
 project = 'admin'
 domain = 'Default'
 
-keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
-                                        :openstack_username => username,
-                                        :openstack_api_key  => password,
+keystone = Fog::OpenStack::Identity.new :openstack_auth_url     => auth_url,
+                                        :openstack_username     => username,
+                                        :openstack_api_key      => password,
                                         :openstack_project_name => project,
-                                        :openstack_domain_name => domain
+                                        :openstack_domain_name  => domain
                                         # Optional, self-signed certs
                                         #:connection_options => { :ssl_verify_peer => false }
 
@@ -21,17 +21,17 @@ keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
 # List keystone projects
 #
 keystone.projects.each do |project|
-  #<Fog::Identity::OpenStack::V3::Project
-  #  id="17775c",
-  #  domain_id="default",
-  #  description="admin tenant",
-  #  enabled=true,
-  #  name="admin",
-  #  links={"self"=>"http://example.net:35357/..."},
-  #  parent_id=nil,
-  #  subtree=nil,
-  #  parents=nil
-  #>
+  # <Fog::OpenStack::Identity::V3::Project
+  #   id="17775c",
+  #   domain_id="default",
+  #   description="admin tenant",
+  #   enabled=true,
+  #   name="admin",
+  #   links={"self"=>"http://example.net:35357/..."},
+  #   parent_id=nil,
+  #   subtree=nil,
+  #   parents=nil
+  # >
   # ...
   pp project
 end
@@ -40,17 +40,17 @@ end
 # List users
 #
 keystone.users.each do |user|
-  #<Fog::Identity::OpenStack::V3::User
-  #  id="02124b...",
-  #  default_project_id=2f534e...,
-  #  description=nil,
-  #  domain_id="default",
-  #  email="quantum@example.net",
-  #  enabled=true,
-  #  name="quantum",
-  #  links={"self"=>"http://example.net:35357/..."},
-  #  password=nil
-  #>
+  # <Fog::OpenStack::Identity::V3::User
+  #   id="02124b...",
+  #   default_project_id=2f534e...,
+  #   description=nil,
+  #   domain_id="default",
+  #   email="quantum@example.net",
+  #   enabled=true,
+  #   name="quantum",
+  #   links={"self"=>"http://example.net:35357/..."},
+  #   password=nil
+  # >
   # ...
   pp user
 end

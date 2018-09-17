@@ -4,7 +4,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 
 describe "Fog::Identity[:openstack] | user requests" do
   before do
-    @identity = Fog::Identity::OpenStack.new(:openstack_identity_api_version => 'v2.0')
+    @identity = Fog::OpenStack::Identity.new(:openstack_identity_api_version => 'v2.0')
 
     @user_format = {
       'id'       => String,

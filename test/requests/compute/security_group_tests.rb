@@ -22,7 +22,7 @@ describe "Shindo.tests('@compute | security group requests" do
       "parent_group_id" => Integer
     }
 
-    @compute = Fog::Compute[:openstack]
+    @compute = Fog::OpenStack::Compute.new
     @security_group = @compute.create_security_group('from_shindo_test',
                                                      'this is from the shindo test'
     ).body
