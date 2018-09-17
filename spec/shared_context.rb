@@ -33,7 +33,7 @@ class OpenStackVCR
 
   # This method should be called in a "before :all" call to set everything up.
   # A properly configured instance of the service class (e.g.
-  # Fog::Volume::OpenStack) is then made available in @service.
+  # Fog::OpenStack::Volume) is then made available in @service.
   def initialize(options)
     # read arguments
     # must_be_kind_of String
@@ -109,7 +109,7 @@ class OpenStackVCR
       end
 
       # TODO: remove
-      #   if @service_class == Fog::Identity::OpenStack::V3 || @os_auth_url.end_with?('/v3')
+      #   if @service_class == Fog::OpenStack::Identity::V3 || @os_auth_url.end_with?('/v3')
       if @identity_version == 'v3'
         connection_options = {
           :openstack_auth_url      => @os_auth_url,

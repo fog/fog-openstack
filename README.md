@@ -82,18 +82,18 @@ The exception is if you're using Nova (and not Neutron) for your instance networ
 Initialise a connection to the compute service:
 
 ```ruby
-compute = Fog::Compute::OpenStack.new(@connection_params)
+compute = Fog::OpenStack::Compute.new(@connection_params)
 ```
 
 Get a list of available images for use with booting new instances:
 
 ```ruby
 p compute.images
-# =>   <Fog::Compute::OpenStack::Images
+# =>   <Fog::OpenStack::Compute::Images
 #     filters={},
 #     server=nil
 #     [
-#                   <Fog::Compute::OpenStack::Image
+#                   <Fog::OpenStack::Compute::Image
 #         id="57a67f8a-7bae-4578-b684-b9b4dcd48d7f",
 #         ...
 #       >
@@ -105,9 +105,9 @@ List available flavors so we can decide how powerful to make this instance:
 
 ```ruby
 p compute.flavors
-# =>   <Fog::Compute::OpenStack::Flavors
+# =>   <Fog::OpenStack::Compute::Flavors
 #     [
-#                   <Fog::Compute::OpenStack::Flavor
+#                   <Fog::OpenStack::Compute::Flavor
 #         id="1",
 #         name="m1.tiny",
 #         ram=512,
@@ -115,7 +115,7 @@ p compute.flavors
 #         vcpus=1,
 #         ...
 #       >,
-#                   <Fog::Compute::OpenStack::Flavor
+#                   <Fog::OpenStack::Compute::Flavor
 #         id="2",
 #         name="m1.small",
 #         ram=2048,
@@ -141,7 +141,7 @@ instance.wait_for { ready? }
 # => {:duration=>17.359134}
 
 p instance
-# =>   <Fog::Compute::OpenStack::Server
+# =>   <Fog::OpenStack::Compute::Server
 #     id="63633125-26b5-4fe1-a909-0f44d1ab3337",
 #     instance_name=nil,
 #     addresses={"public"=>[{"OS-EXT-IPS-MAC:mac_addr"=>"fa:16:3e:f4:75:ab", "version"=>4, "addr"=>"1.2.3.4", "OS-EXT-IPS:type"=>"fixed"}]},
@@ -177,11 +177,11 @@ Allow TCP traffic through port 22:
 ```ruby
 security_group = compute.security_groups.create name:  "Test SSH",
                                                 description: "Allow access to port 22"
-# =>   <Fog::Compute::OpenStack::SecurityGroup
+# =>   <Fog::OpenStack::Compute::SecurityGroup
 #     id="e5d53d00-b3f9-471a-b90f-985694b966ed",
 #     name="Test SSH",
 #     description="Allow access to port 22",
-#     security_group_rules=    <Fog::Compute::OpenStack::SecurityGroupRules
+#     security_group_rules=    <Fog::OpenStack::Compute::SecurityGroupRules
 #       [
 
 #       ]
@@ -196,7 +196,7 @@ compute.security_group_rules.create parent_group_id: security_group.id,
 
 key_pair = compute.key_pairs.create name:       "My Public Key",
                                     public_key: "/full/path/to/ssh.pub"
-# =>   <Fog::Compute::OpenStack::KeyPair
+# =>   <Fog::OpenStack::Compute::KeyPair
 #     name="My Public Key",
 #     ...
 #     user_id="20746f49211e4037a91269df6a3fbf7b",
@@ -212,7 +212,7 @@ instance = compute.servers.create name:            "Test 2",
                                   flavor_ref:      flavor.id,
                                   key_name:        key_pair.name,
                                   security_groups: security_group
-# =>   <Fog::Compute::OpenStack::Server
+# =>   <Fog::OpenStack::Compute::Server
 #     id="e18ebdfb-e5f5-4a45-929f-4cc9926dc2c7",
 #     name="Test 2",
 #     state="ACTIVE",
@@ -230,7 +230,7 @@ floating_ip_address = compute.addresses.create pool: pool_name
 instance.associate_address floating_ip_address.ip
 
 p floating_ip_address
-# =>   <Fog::Compute::OpenStack::Address
+# =>   <Fog::OpenStack::Compute::Address
 #     id="54064324-ce7d-448d-9753-94497b29dc91",
 #     ip="1.2.3.4",
 #     pool="external",
@@ -256,12 +256,12 @@ $ pwd
 Create and attach a volume to a running instance:
 
 ```ruby
-compute = Fog::Compute::OpenStack.new(@connection_params)
+compute = Fog::OpenStack::Compute.new(@connection_params)
 
 volume = compute.volumes.create name:        "Test",
                                 description: "Testing",
                                 size:        1
-# =>   <Fog::Compute::OpenStack::Volume
+# =>   <Fog::OpenStack::Compute::Volume
 #     id="4a212986-c6b6-4a93-8319-c6a98e347750",
 #     name="Test",
 #     description="Testing",
@@ -292,7 +292,7 @@ volume.reload
 compute.snapshots.create volume_id:   volume.id,
                          name:        "test",
                          description: "test"
-# =>   <Fog::Compute::OpenStack::Snapshot
+# =>   <Fog::OpenStack::Compute::Snapshot
 #     id="7a8c9192-25ee-4364-be91-070b7a6d9855",
 #     name="test",
 #     description="test",
@@ -315,7 +315,7 @@ Download Glance image:
 
 ```ruby
 
-image = Fog::Image::OpenStack.new(@connection_params)
+image = Fog::OpenStack::Image.new(@connection_params)
 
 image_out = File.open("/tmp/cirros-image-download", 'wb')
 
@@ -345,7 +345,7 @@ image_handle = image.images.create name:             "cirros",
                                    disk_format:      "qcow2",
                                    container_format: "bare"
 
-# => <Fog::Image::OpenStack::V2::Image
+# => <Fog::OpenStack::Image::V2::Image
 #      id="67c4d02c-5601-4619-bd14-d2f7f96a046c",
 #      name="cirros",
 #      visibility="private",
@@ -392,12 +392,12 @@ cirros.destroy
 List domains (Keystone V3 only):
 
 ```ruby
-identity = Fog::Identity::OpenStack.new(@connection_params)
+identity = Fog::OpenStack::Identity.new(@connection_params)
 
 identity.domains
-# =>   <Fog::Identity::OpenStack::V3::Domains
+# =>   <Fog::OpenStack::Identity::V3::Domains
 #     [
-#                   <Fog::Identity::OpenStack::V3::Domain
+#                   <Fog::OpenStack::Identity::V3::Domain
 #         id="default",
 #         description="",
 #         enabled=true,
@@ -411,9 +411,9 @@ List projects (aka tenants):
 
 ```ruby
 identity.projects
-# =>   <Fog::Identity::OpenStack::V3::Projects
+# =>   <Fog::OpenStack::Identity::V3::Projects
 #     [
-#                   <Fog::Identity::OpenStack::V3::Project
+#                   <Fog::OpenStack::Identity::V3::Project
 #         id="008e5537d3424295a03560abc923693c",
 #         domain_id="default",
 #         description="Project 1",
@@ -425,7 +425,7 @@ identity.projects
 
 # On Keystone V2
 identity.tenants
-# =>   <Fog::Identity::OpenStack::V2::Tenants
+# =>   <Fog::OpenStack::Identity::V2::Tenants
 #     [ ... ]
 ```
 
@@ -433,7 +433,7 @@ List users:
 
 ```ruby
 identity.users
-# =>   <Fog::Identity::OpenStack::V3::Users
+# =>   <Fog::OpenStack::Identity::V3::Users
 #     [ ... ]
 ```
 
@@ -446,7 +446,7 @@ user = identity.users.create name: "test",
                              project_id: project_id,
                              email: "test@test.com",
                              password: "test"
-# =>   <Fog::Identity::OpenStack::V3::User
+# =>   <Fog::OpenStack::Identity::V3::User
 #     id="474a59153ebd4e709938e5e9b614dc57",
 #     default_project_id=nil,
 #     description=nil,
@@ -467,7 +467,7 @@ Create/destroy new tenant:
 
 project = identity.projects.create name: "test",
                                    description: "test"
-# =>   <Fog::Identity::OpenStack::V3::Project
+# =>   <Fog::OpenStack::Identity::V3::Project
 #     id="423559128a7249f2973cdb7d5d581c4d",
 #     domain_id="default",
 #     description="test",
@@ -486,7 +486,7 @@ Grant user role on tenant and revoke it:
 
 ```ruby
 role = identity.roles.select{|role| role.name == "_member_"}[0]
-# =>   <Fog::Identity::OpenStack::V3::Role
+# =>   <Fog::OpenStack::Identity::V3::Role
 #     id="9fe2ff9ee4384b1894a90878d3e92bab",
 #     name="_member_",
 #   >
@@ -502,7 +502,7 @@ Set up a project's public gateway (needed for external access):
 
 ```ruby
 
-identity  = Fog::Identity::OpenStack.new(@connection_params)
+identity  = Fog::OpenStack::Identity.new(@connection_params)
 
 tenants = identity.projects.select do |project|
   project.name == @connection_params[:openstack_project_name]
@@ -510,7 +510,7 @@ end
 
 tenant_id = tenants[0].id
 
-neutron = Fog::Network::OpenStack.new(@connection_params)
+neutron = Fog::OpenStack::Network.new(@connection_params)
 
 network = neutron.networks.create name:      "default",
                                   tenant_id: tenant_id

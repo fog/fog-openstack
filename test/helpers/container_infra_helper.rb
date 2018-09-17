@@ -4,7 +4,7 @@ module Minitest
       class_variable_get(:@@container_infra)
     end
 
-    class_variable_set(:@@container_infra, Fog::ContainerInfra::OpenStack.new)
+    class_variable_set(:@@container_infra, Fog::OpenStack::ContainerInfra.new)
   end
 end
 

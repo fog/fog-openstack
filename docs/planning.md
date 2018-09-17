@@ -48,7 +48,7 @@ Fog provides both a **model** and **request** abstraction. The request abstracti
 
 ### Request Layer
 
-The `Fog::OpenStack[:planning]` object supports a number of methods that wrap individual HTTP requests to the Tuskar API.
+The `Fog::OpenStack::Planning.new` object supports a number of methods that wrap individual HTTP requests to the Tuskar API.
 
 To see a list of requests supported by the planning service:
 
@@ -170,7 +170,7 @@ This will return hash similar to:
 ```
 
 [//]: # (TODO: Specify URL to rubydoc.info when OpenStack Planning service is part of release and pages are built)
-To learn more about `Fog::OpenStack[:planning]` request methods refer to [rdoc](http://rubydoc.info/gems/fog/Fog). To learn more about Excon refer to [Excon GitHub repo](https://github.com/geemus/excon).
+To learn more about `Fog::OpenStack::Planning.new` request methods refer to [rdoc](http://rubydoc.info/gems/fog/Fog). To learn more about Excon refer to [Excon GitHub repo](https://github.com/geemus/excon).
 
 ### Model Layer
 
