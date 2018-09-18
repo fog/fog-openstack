@@ -1,5 +1,5 @@
 def set_nfv_data
-  @nfv = Fog::NFV::OpenStack.new
+  @nfv = Fog::OpenStack::NFV.new
 
   @vnfd_data = {
     :attributes    => {

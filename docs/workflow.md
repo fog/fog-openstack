@@ -9,7 +9,7 @@ Fog uses the [OpenStack Mistral API](http://docs.openstack.org/developer/mistral
 Get a handle for the Workflow service:
 
 ```ruby
-service = Fog::Workflow::OpenStack.new({
+service = Fog::OpenStack::Workflow.new({
   :openstack_auth_url  => 'http://KEYSTONE_HOST:KEYSTONE_PORT/v2.0/tokens', # OpenStack Keystone endpoint
   :openstack_username  => OPEN_STACK_USER,                                  # Your OpenStack Username
   :openstack_tenant    => OPEN_STACK_TENANT,                                # Your tenant id

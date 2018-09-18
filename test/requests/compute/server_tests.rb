@@ -2,12 +2,12 @@ require "test_helper"
 
 require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 
-describe "Fog::Compute[:openstack] | server requests" do
+describe "Fog::OpenStack::Compute | server requests" do
   def self.compute
     class_variable_get(:@@compute)
   end
 
-  class_variable_set(:@@compute, Fog::Compute[:openstack])
+  class_variable_set(:@@compute, Fog::OpenStack::Compute.new)
 
   def compute
     self.class.compute
@@ -153,7 +153,7 @@ describe "Fog::Compute[:openstack] | server requests" do
         @data = compute.create_server("test", @image_id, @flavor_id).body['server']
         @server_id = @data['id']
         compute.servers.get(@server_id).wait_for { ready? } unless Fog.mocking?
-        #  Fog::Compute[:openstack].servers.get(@server_id).wait_for { ready? }
+        #  Fog::OpenStack::Compute.new.servers.get(@server_id).wait_for { ready? }
       end
 
       it "#create_server('test', #{@image_id}, 19)" do
@@ -331,7 +331,7 @@ describe "Fog::Compute[:openstack] | server requests" do
 
       # DELETE IMAGE
       it "#delete_image(#{@snapshot_id})" do
-        Fog::Compute[:openstack].servers.get(@server_id).wait_for { ready? }
+        Fog::OpenStack::Compute.new.servers.get(@server_id).wait_for { ready? }
         assert(compute.delete_image(@snapshot_id))
       end
     end
@@ -341,26 +341,26 @@ describe "Fog::Compute[:openstack] | server requests" do
     it "#delete_server(0)" do
       proc do
         self.class.compute.delete_server(0)
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Compute::NotFound
     end
 
     it "#get_server_details(0)" do
       proc do
         self.class.compute.get_server_details(0)
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Compute::NotFound
     end
 
     it "#update_server(0, :name => 'fogupdatedserver', :adminPass => 'fogupdatedserver')" do
       proc do
         self.class.compute.update_server(0, :name => 'fogupdatedserver', :adminPass => 'fogupdatedserver')
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Compute::NotFound
     end
 
     it "#reboot_server(0)" do
       unless Fog.mocking?
         proc do
           self.class.compute.reboot_server(0)
-        end.must_raise Fog::Compute::OpenStack::NotFound
+        end.must_raise Fog::OpenStack::Compute::NotFound
       end
     end
 
@@ -368,7 +368,7 @@ describe "Fog::Compute[:openstack] | server requests" do
       unless Fog.mocking?
         proc do
           self.class.compute.start_server(0)
-        end.must_raise Fog::Compute::OpenStack::NotFound
+        end.must_raise Fog::OpenStack::Compute::NotFound
       end
     end
 
@@ -376,7 +376,7 @@ describe "Fog::Compute[:openstack] | server requests" do
       unless Fog.mocking?
         proc do
           self.class.compute.stop_server(0)
-        end.must_raise Fog::Compute::OpenStack::NotFound
+        end.must_raise Fog::OpenStack::Compute::NotFound
       end
     end
   end

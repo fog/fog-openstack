@@ -1,8 +1,8 @@
 require "test_helper"
 
-describe "Fog::Compute[:openstack] | tenants" do
+describe "Fog::OpenStack::Compute | tenants" do
   before do
-    @identity = Fog::Identity::OpenStack.new(:openstack_identity_api_version => 'v2.0')
+    @identity = Fog::OpenStack::Identity.new(:openstack_identity_api_version => 'v2.0')
     @instance = @identity.tenants.create(:name => 'test')
   end
 
@@ -22,7 +22,7 @@ describe "Fog::Compute[:openstack] | tenants" do
       unless Fog.mocking?
         proc do
           @identity.tenants.find_by_id('fake')
-        end.must_raise(Fog::Identity::OpenStack::NotFound)
+        end.must_raise(Fog::OpenStack::Identity::NotFound)
       end
     end
 
@@ -30,7 +30,7 @@ describe "Fog::Compute[:openstack] | tenants" do
       unless Fog.mocking?
         proc do
           @identity.tenants.destroy('fake')
-        end.must_raise(Fog::Identity::OpenStack::NotFound)
+        end.must_raise(Fog::OpenStack::Identity::NotFound)
       end
     end
   end

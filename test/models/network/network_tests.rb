@@ -1,7 +1,7 @@
 require "test_helper"
 require "helpers/network_helper"
 
-describe "Fog::Network[:openstack] | network" do
+describe "Fog::OpenStack::Network | network" do
   describe "success" do
     before do
       @instance = network.networks.create(

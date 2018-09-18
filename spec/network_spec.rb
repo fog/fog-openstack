@@ -1,11 +1,11 @@
 require 'spec_helper'
 require_relative './shared_context'
 
-describe Fog::Network::OpenStack do
+describe Fog::OpenStack::Network do
   before :all do
     openstack_vcr = OpenStackVCR.new(
       :vcr_directory  => 'spec/fixtures/openstack/network',
-      :service_class  => Fog::Network::OpenStack,
+      :service_class  => Fog::OpenStack::Network,
       :project_scoped => true
     )
     @service          = openstack_vcr.service
@@ -13,7 +13,7 @@ describe Fog::Network::OpenStack do
 
     openstack_vcr = OpenStackVCR.new(
       :vcr_directory => 'spec/fixtures/openstack/network',
-      :service_class => Fog::Identity::OpenStack::V3
+      :service_class => Fog::OpenStack::Identity::V3
     )
     @identity_service = openstack_vcr.service
   end
@@ -81,7 +81,7 @@ describe Fog::Network::OpenStack do
       @auth_token = @identity_service.credentials[:openstack_auth_token]
       openstack_vcr = OpenStackVCR.new(
         :vcr_directory  => 'spec/fixtures/openstack/network',
-        :service_class  => Fog::Network::OpenStack,
+        :service_class  => Fog::OpenStack::Network,
         :project_scoped => true,
         :token_auth     => true,
         :token          => @auth_token

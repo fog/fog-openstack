@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'helpers/container_infra_helper'
 
-describe "Fog::ContainerInfra[:openstack] | cluster requests" do
+describe "Fog::OpenStack::ContainerInfra | cluster requests" do
   before do
     @cluster_format = {
       "status"              => String,

@@ -1,5 +1,5 @@
 require 'fog/openstack'
-require 'fog/workflow/openstack/v2'
+require 'fog/openstack/workflow/v2'
 
 auth_url = "http://192.0.2.1:5000/v3/auth/tokens"
 username = "admin"
@@ -14,7 +14,7 @@ project  = "admin"
   :openstack_domain_id    => "default",
 }
 
-mistral = Fog::Workflow::OpenStack.new(@connection_params)
+mistral = Fog::OpenStack::Workflow.new(@connection_params)
 
 puts "INFO: create_execution"
 
