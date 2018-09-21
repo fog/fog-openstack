@@ -13,7 +13,7 @@ password = 'D78JVyRnzJG8j7Mb6fgpeUMp7'
 
 puts "### SERVICE CONNECTION ###"
 
-event_service = Fog::Event::OpenStack.new(@connection_params)
+event_service = Fog::OpenStack::Event.new(@connection_params)
 
 p event_service
 

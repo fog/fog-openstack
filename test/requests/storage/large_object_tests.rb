@@ -1,8 +1,8 @@
 require "test_helper"
 
-describe "Fog::Storage[:openstack] | large object requests" do
+describe "Fog::OpenStack::Storage | large object requests" do
   before do
-    @storage = Fog::Storage[:openstack]
+    @storage = Fog::OpenStack::Storage.new
 
     unless Fog.mocking?
       @directory  = @storage.directories.create(:key => 'foglargeobjecttests')
@@ -280,7 +280,7 @@ describe "Fog::Storage[:openstack] | large object requests" do
         unless Fog.mocking?
           proc do
             @storage.put_dynamic_obj_manifest('fognoncontainer', 'fog_large_object')
-          end.must_raise Fog::Storage::OpenStack::NotFound
+          end.must_raise Fog::OpenStack::Storage::NotFound
         end
       end
     end
@@ -290,7 +290,7 @@ describe "Fog::Storage[:openstack] | large object requests" do
         unless Fog.mocking?
           proc do
             @storage.put_static_obj_manifest('fognoncontainer', 'fog_large_object', [])
-          end.must_raise Fog::Storage::OpenStack::NotFound
+          end.must_raise Fog::OpenStack::Storage::NotFound
         end
       end
 

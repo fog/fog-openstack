@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe "Fog::Network[:openstack] | subnet requests" do
+describe "Fog::OpenStack::Network | subnet requests" do
   before do
     @subnet_format = {
       'id'               => String,
@@ -70,19 +70,19 @@ describe "Fog::Network[:openstack] | subnet requests" do
     it "#get_subnet" do
       proc do
         network.get_subnet(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_subnet" do
       proc do
         network.update_subnet(0, {})
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_subnet" do
       proc do
         network.delete_subnet(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

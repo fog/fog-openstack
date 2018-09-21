@@ -1,7 +1,7 @@
 require "test_helper"
 require 'helpers/container_infra_helper'
 
-describe "Fog::ContainerInfra[:openstack] | certificate" do
+describe "Fog::OpenStack::ContainerInfra | certificate" do
   describe "success" do
     before do
       @instance = container_infra.certificates.create(

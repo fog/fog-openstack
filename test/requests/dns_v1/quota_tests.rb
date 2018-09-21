@@ -1,8 +1,8 @@
 require "test_helper"
 
-describe "Fog::DNS::OpenStack::V1 | quota requests" do
+describe "Fog::OpenStack::DNS::V1 | quota requests" do
   before do
-    @dns = Fog::DNS::OpenStack::V1.new
+    @dns = Fog::OpenStack::DNS::V1.new
 
     @project_id = Fog::Mock.random_numbers(6).to_s
 

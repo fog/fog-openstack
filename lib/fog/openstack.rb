@@ -2,87 +2,6 @@ require 'fog/core'
 require 'fog/json'
 
 module Fog
-  module Baremetal
-    autoload :OpenStack, 'fog/baremetal/openstack'
-  end
-
-  module Compute
-    autoload :OpenStack, 'fog/compute/openstack'
-  end
-
-  module ContainerInfra
-    autoload :OpenStack, 'fog/container_infra/openstack'
-  end
-
-  module DNS
-    autoload :OpenStack, 'fog/dns/openstack'
-  end
-
-  module Event
-    autoload :OpenStack, 'fog/event/openstack'
-  end
-
-  module Identity
-    autoload :OpenStack, 'fog/identity/openstack'
-  end
-
-  module Image
-    autoload :OpenStack, 'fog/image/openstack'
-  end
-
-  module Introspection
-    autoload :OpenStack, 'fog/introspection/openstack'
-  end
-
-  module KeyManager
-    autoload :OpenStack, 'fog/key_manager/openstack'
-  end
-
-  module Metering
-    autoload :OpenStack, 'fog/metering/openstack'
-  end
-
-  module Metric
-    autoload :OpenStack, 'fog/metric/openstack'
-  end
-
-  module Monitoring
-    autoload :OpenStack, 'fog/monitoring/openstack'
-  end
-
-  module Network
-    autoload :OpenStack, 'fog/network/openstack'
-  end
-
-  module NFV
-    autoload :OpenStack, 'fog/nfv/openstack'
-  end
-
-  module Orchestration
-    autoload :OpenStack, 'fog/orchestration/openstack'
-    autoload :Util, 'fog/orchestration/util/recursive_hot_file_loader'
-  end
-
-  module SharedFileSystem
-    autoload :OpenStack, 'fog/shared_file_system/openstack'
-  end
-
-  module Storage
-    autoload :OpenStack, 'fog/storage/openstack'
-  end
-
-  module Volume
-    autoload :OpenStack, 'fog/volume/openstack'
-  end
-
-  module Workflow
-    autoload :OpenStack, 'fog/workflow/openstack'
-
-    class OpenStack
-      autoload :V2, 'fog/workflow/openstack/v2'
-    end
-  end
-
   module OpenStack
     require 'fog/openstack/auth/token'
 
@@ -90,7 +9,28 @@ module Fog
 
     autoload :Core, 'fog/openstack/core'
     autoload :Errors, 'fog/openstack/errors'
-    autoload :Planning, 'fog/planning/openstack'
+
+    autoload :Baremetal, 'fog/openstack/baremetal/baremetal'
+    autoload :Compute, 'fog/openstack/compute/compute'
+    autoload :ContainerInfra, 'fog/openstack/container_infra/container_infra'
+    autoload :DNS, 'fog/openstack/dns/dns'
+    autoload :Event, 'fog/openstack/event/event'
+    autoload :Identity, 'fog/openstack/identity/identity'
+    autoload :Image, 'fog/openstack/image/image'
+    autoload :Introspection, 'fog/openstack/introspection/introspection'
+    autoload :KeyManager, 'fog/openstack/key_manager/key_manager'
+    autoload :Metering, 'fog/openstack/metering/metering'
+    autoload :Metric, 'fog/openstack/metric/metric'
+    autoload :Monitoring, 'fog/openstack/monitoring/monitoring'
+    autoload :Network, 'fog/openstack/network/network'
+    autoload :NFV, 'fog/openstack/nfv/nfv'
+    autoload :Orchestration, 'fog/openstack/orchestration/orchestration'
+    autoload :OrchestrationUtil, 'fog/openstack/orchestration/util/recursive_hot_file_loader'
+    autoload :Planning, 'fog/openstack/planning/planning'
+    autoload :SharedFileSystem, 'fog/openstack/shared_file_system/shared_file_system'
+    autoload :Storage, 'fog/openstack/storage/storage'
+    autoload :Workflow, 'fog/openstack/workflow/workflow'
+    autoload :Volume, 'fog/openstack/volume/volume'
 
     extend Fog::Provider
 

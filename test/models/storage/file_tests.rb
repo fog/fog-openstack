@@ -29,7 +29,7 @@ unless Fog.mocking?
     :key => "fogfilestests-#{rand(65536)}"
   }
 
-  @directory = Fog::Storage[:openstack].directories.create(directory_attributes)
+  @directory = Fog::OpenStack::Storage.new.directories.create(directory_attributes)
 
   describe "Fog::OpenStack::Storage | file" do
     after do

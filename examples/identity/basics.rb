@@ -8,7 +8,7 @@ username = 'admin@example.net'
 password = 'secret'
 tenant   = 'admin'
 
-keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
+keystone = Fog::OpenStack::Identity.new :openstack_auth_url => auth_url,
                                         :openstack_username => username,
                                         :openstack_api_key  => password,
                                         :openstack_tenant   => tenant
@@ -19,7 +19,7 @@ keystone = Fog::Identity::OpenStack.new :openstack_auth_url => auth_url,
 # Listing keystone tenants
 #
 keystone.tenants.each do |tenant|
-  # <Fog::Identity::OpenStack::Tenant
+  # <Fog::OpenStack::Identity::Tenant
   #   id="46b4ab...",
   #   description=nil,
   #   enabled=1,
@@ -32,7 +32,7 @@ end
 # List users
 #
 keystone.users.each do |user|
-  # <Fog::Identity::OpenStack::User
+  # <Fog::OpenStack::Identity::User
   #   id="c975f...",
   #   email="quantum@example.net",
   #   enabled=true,

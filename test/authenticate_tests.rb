@@ -105,7 +105,7 @@ describe "OpenStack authentication" do
       :openstack_auth_url => 'http://openstack:35357',
       :openstack_identity_api_version => 'v2.0'
     }
-    identity = Fog::Identity::OpenStack.new(creds)
+    identity = Fog::OpenStack::Identity.new(creds)
     identity.validate_token(@token, @tenant_token)
     identity.validate_token(@token)
   end
@@ -115,7 +115,7 @@ describe "OpenStack authentication" do
       :openstack_auth_url => 'http://openstack:35357',
       :openstack_identity_api_version => 'v2.0'
     }
-    identity = Fog::Identity::OpenStack.new(creds)
+    identity = Fog::OpenStack::Identity.new(creds)
     identity.check_token(@token, @tenant_token)
     identity.check_token(@token)
   end

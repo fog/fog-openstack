@@ -1,8 +1,8 @@
 require "test_helper"
 
-describe "Fog::Image[:openstack] | image requests" do
+describe "Fog::OpenStack::Image | image requests" do
   before(:all) do
-    openstack = Fog::Identity::OpenStack.new(:openstack_identity_api_version => 'v2.0')
+    openstack = Fog::OpenStack::Identity.new(:openstack_identity_api_version => 'v2.0')
 
     @image_attributes = {
       :name             => 'new image',
@@ -90,7 +90,7 @@ describe "Fog::Image[:openstack] | image requests" do
       image_attributes[:location] = @test_iso.path
     end
 
-    @instance = Fog::Image[:openstack].create_image(image_attributes).body
+    @instance = Fog::OpenStack::Image.new.create_image(image_attributes).body
   end
 
   after do
@@ -99,11 +99,11 @@ describe "Fog::Image[:openstack] | image requests" do
 
   describe "success" do
     it "#list_public_images" do
-      Fog::Image[:openstack].list_public_images.body.must_match_schema('images' => [@image_format])
+      Fog::OpenStack::Image.new.list_public_images.body.must_match_schema('images' => [@image_format])
     end
 
     it "#list_public_images_detailed" do
-      Fog::Image[:openstack].list_public_images_detailed.body.
+      Fog::OpenStack::Image.new.list_public_images_detailed.body.
         must_match_schema('images' => [@detailed_image_format])
     end
 
@@ -112,12 +112,12 @@ describe "Fog::Image[:openstack] | image requests" do
     end
 
     it "#get_image" do
-      Fog::Image[:openstack].get_image(@instance['image']['id']).headers.
+      Fog::OpenStack::Image.new.get_image(@instance['image']['id']).headers.
         must_match_schema(@image_meta_format)
     end
 
     it "#update_image" do
-      Fog::Image[:openstack].update_image(
+      Fog::OpenStack::Image.new.update_image(
         :id   => @instance['image']['id'],
         :name => 'edit image'
       ).body['image'].must_match_schema(@detailed_image_format)
@@ -125,30 +125,30 @@ describe "Fog::Image[:openstack] | image requests" do
 
     it "#add_member_to_image" do
       [200, 204].must_include(
-        Fog::Image[:openstack].add_member_to_image(
+        Fog::OpenStack::Image.new.add_member_to_image(
           @instance['image']['id'], @instance['image']['owner']
         ).status
       )
     end
 
     it "#get_image_members" do
-      [200, 204].must_include(Fog::Image[:openstack].get_image_members(@instance['image']['id']).status)
+      [200, 204].must_include(Fog::OpenStack::Image.new.get_image_members(@instance['image']['id']).status)
     end
 
     it "#get_shared_images" do
-      [200, 204].must_include(Fog::Image[:openstack].get_shared_images(@instance['image']['owner']).status)
+      [200, 204].must_include(Fog::OpenStack::Image.new.get_shared_images(@instance['image']['owner']).status)
     end
 
     it "#remove_member_from_image" do
       [200, 204].must_include(
-        Fog::Image[:openstack].remove_member_from_image(
+        Fog::OpenStack::Image.new.remove_member_from_image(
           @instance['image']['id'], @instance['image']['owner']
         ).status
       )
     end
 
     it "#delete_image" do
-      Fog::Image[:openstack].delete_image(@instance['image']['id']).status.must_equal 200
+      Fog::OpenStack::Image.new.delete_image(@instance['image']['id']).status.must_equal 200
     end
   end
 end
