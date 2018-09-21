@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'helpers/container_infra_helper'
 
-describe "Fog::OpenStack::ContainerInfra | certificate requests" do
+describe "Fog::ContainerInfra[:openstack] | certificate requests" do
   before do
     @certificate_format = {
       "pem"          => String,

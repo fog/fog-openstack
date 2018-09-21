@@ -1,6 +1,6 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Compute | Compute aggregate requests" do
+describe "Fog::Compute[:openstack] | Compute aggregate requests" do
   before do
     @aggregate_format = {
       "availability_zone" => Fog::Nullable::String,
@@ -14,7 +14,7 @@ describe "Fog::OpenStack::Compute | Compute aggregate requests" do
 
     @detailed_aggregate_format = @aggregate_format.merge('hosts' => Array)
     @metadata_aggregate_format = @aggregate_format.merge("metadata" => Hash)
-    @compute = Fog::OpenStack::Compute.new
+    @compute = Fog::Compute[:openstack]
 
     @aggregate_body = @compute.create_aggregate('test_aggregate').body
     @aggregate = @aggregate_body['aggregate']

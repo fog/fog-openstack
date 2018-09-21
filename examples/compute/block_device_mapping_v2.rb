@@ -7,7 +7,7 @@ username = 'admin@example.net'
 password = 'secret'
 tenant   = 'My Compute Tenant' # String
 
-compute_client ||= ::Fog::OpenStack::Compute.new(
+compute_client ||= ::Fog::Compute::OpenStack.new(
   :openstack_api_key  => password,
   :openstack_username => username,
   :openstack_auth_url => auth_url,

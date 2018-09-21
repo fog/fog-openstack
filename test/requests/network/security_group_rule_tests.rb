@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe "Fog::OpenStack::Network | security_grouprule requests" do
+describe "Fog::Network[:openstack] | security_grouprule requests" do
   before do
     @security_group_rule_format = {
       "id"                => String,
@@ -59,13 +59,13 @@ describe "Fog::OpenStack::Network | security_grouprule requests" do
     it "#get_security_group_rule(0)" do
       proc do
         network.get_security_group_rule(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
 
     it "#delete_security_group_rule(0)" do
       proc do
         network.delete_security_group_rule(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
   end
 end

@@ -1,13 +1,13 @@
 require 'spec_helper'
 require_relative './shared_context'
 
-describe Fog::OpenStack::Image do
+describe Fog::Image::OpenStack do
   spec_data_folder = 'spec/fixtures/openstack/image_v2'
 
   before :all do
     openstack_vcr = OpenStackVCR.new(
       :vcr_directory => spec_data_folder,
-      :service_class => Fog::OpenStack::Image # Fog to choose latest available version
+      :service_class => Fog::Image::OpenStack # Fog to choose latest available version
     )
     @service = openstack_vcr.service
   end
@@ -95,7 +95,7 @@ describe Fog::OpenStack::Image do
       identifier = "11111111-2222-3333-aaaa-bbbbbbcccce2"
       begin
         # Create an image with a specified ID
-        foobar_image = Fog::OpenStack::Image::V2::Image.new(
+        foobar_image = Fog::Image::OpenStack::V2::Image.new(
           :name               => 'original_name',
           :id                 => identifier,
           :service            => @service,

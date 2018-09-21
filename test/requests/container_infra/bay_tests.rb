@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'helpers/container_infra_helper'
 
-describe "Fog::OpenStack::ContainerInfra | bay requests" do
+describe "Fog::ContainerInfra[:openstack] | bay requests" do
   before do
     @bay_format = {
       "status"              => String,

@@ -1,16 +1,16 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Storage | container requests" do
+describe "Fog::Storage[:openstack] | container requests" do
   def cleanup_container
     return if Fog.mocking?
     if @storage.head_container(@container_name)
       @storage.delete_container(@container_name)
     end
-  rescue Fog::OpenStack::Storage::NotFound
+  rescue Fog::Storage::OpenStack::NotFound
   end
 
   before do
-    @storage = Fog::OpenStack::Storage.new
+    @storage = Fog::Storage[:openstack]
     @container_format = [String]
     @container_name = 'fogcontainertests'
 
@@ -85,7 +85,7 @@ describe "Fog::OpenStack::Storage | container requests" do
       unless Fog.mocking?
         proc do
           @storage.get_container('fognoncontainer')
-        end.must_raise Fog::OpenStack::Storage::NotFound
+        end.must_raise Fog::Storage::OpenStack::NotFound
       end
     end
 
@@ -93,7 +93,7 @@ describe "Fog::OpenStack::Storage | container requests" do
       unless Fog.mocking?
         proc do
           @storage.head_container('fognoncontainer')
-        end.must_raise Fog::OpenStack::Storage::NotFound
+        end.must_raise Fog::Storage::OpenStack::NotFound
       end
     end
 
@@ -101,7 +101,7 @@ describe "Fog::OpenStack::Storage | container requests" do
       unless Fog.mocking?
         proc do
           @storage.delete_container('fognoncontainer')
-        end.must_raise Fog::OpenStack::Storage::NotFound
+        end.must_raise Fog::Storage::OpenStack::NotFound
       end
     end
   end

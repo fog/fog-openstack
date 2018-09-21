@@ -2,7 +2,7 @@ require "test_helper"
 
 require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 
-describe "Fog::OpenStack::Compute | flavor requests" do
+describe "Fog::Compute[:openstack] | flavor requests" do
   before do
     @flavor_format = {
       'id'                         => String,
@@ -18,7 +18,7 @@ describe "Fog::OpenStack::Compute | flavor requests" do
       'vcpus'                      => Integer
     }
 
-    @compute = Fog::OpenStack::Compute.new
+    @compute = Fog::Compute[:openstack]
   end
 
   describe "success" do
@@ -89,14 +89,14 @@ describe "Fog::OpenStack::Compute | flavor requests" do
     it "#get_flavor_details(0)" do
       proc do
         @compute.get_flavor_details("0")
-      end.must_raise Fog::OpenStack::Compute::NotFound
+      end.must_raise Fog::Compute::OpenStack::NotFound
     end
 
     it "add_flavor_access(1234, 1)" do
       unless Fog.mocking?
         proc do
           @compute.add_flavor_access(1234, 1).body
-        end.must_raise Fog::OpenStack::Compute::NotFound
+        end.must_raise Fog::Compute::OpenStack::NotFound
       end
     end
 
@@ -104,7 +104,7 @@ describe "Fog::OpenStack::Compute | flavor requests" do
       unless Fog.mocking?
         proc do
           @compute.remove_flavor_access(1234, 1).body
-        end.must_raise Fog::OpenStack::Compute::NotFound
+        end.must_raise Fog::Compute::OpenStack::NotFound
       end
     end
 
@@ -112,7 +112,7 @@ describe "Fog::OpenStack::Compute | flavor requests" do
       unless Fog.mocking?
         proc do
           @compute.list_tenants_with_flavor_access(1234)
-        end.must_raise Fog::OpenStack::Compute::NotFound
+        end.must_raise Fog::Compute::OpenStack::NotFound
       end
     end
 
@@ -120,7 +120,7 @@ describe "Fog::OpenStack::Compute | flavor requests" do
       unless Fog.mocking?
         proc do
           @compute.get_flavor_metadata("1234").body
-        end.must_raise Fog::OpenStack::Compute::NotFound
+        end.must_raise Fog::Compute::OpenStack::NotFound
       end
     end
 
@@ -129,7 +129,7 @@ describe "Fog::OpenStack::Compute | flavor requests" do
         proc do
           metadata = {:cpu_arch => 'x86_64'}
           @compute.create_flavor_metadata("1234", metadata).body
-        end.must_raise Fog::OpenStack::Compute::NotFound
+        end.must_raise Fog::Compute::OpenStack::NotFound
       end
     end
   end

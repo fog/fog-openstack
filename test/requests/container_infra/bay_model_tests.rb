@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'helpers/container_infra_helper'
 
-describe "Fog::OpenStack::ContainerInfra | bay model requests" do
+describe "Fog::ContainerInfra[:openstack] | bay model requests" do
   before do
     @bay_model_format = {
       "insecure_registry"     => Fog::Nullable::String,

@@ -15,10 +15,10 @@ project  = 'admin'
   :openstack_domain_id    => "default"
 }
 
-inspector = Fog::OpenStack::Introspection.new(@connection_params)
+inspector = Fog::Introspection::OpenStack.new(@connection_params)
 
 # Introspection of an Ironic node
-ironic = Fog::OpenStack::Baremetal.new(@connection_params)
+ironic = Fog::Baremetal::OpenStack.new(@connection_params)
 nodes = ironic.list_nodes
 node1_uuid = nodes.body["nodes"][0]["uuid"]
 

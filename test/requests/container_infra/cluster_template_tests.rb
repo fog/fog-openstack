@@ -3,7 +3,7 @@ require 'helpers/container_infra_helper'
 
 @cluster_templates = []
 
-describe "Fog::OpenStack::ContainerInfra | cluster template requests" do
+describe "Fog::ContainerInfra[:openstack] | cluster template requests" do
   before do
     @cluster_template_format = {
       "insecure_registry"     => Fog::Nullable::String,

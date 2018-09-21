@@ -29,8 +29,8 @@ auth_options = {
   :connection_options     => {:ssl_verify_peer => ENV['SSL_VERIFY'] != 'false'}
 }
 
-identity_service = Fog::OpenStack::Identity::V3.new(auth_options)
-network_service  = Fog::OpenStack::Network.new(auth_options)
+identity_service = Fog::Identity::OpenStack::V3.new(auth_options)
+network_service  = Fog::Network::OpenStack.new(auth_options)
 
 own_project   = identity_service.projects.select { |p| p.name == ENV['OS_PROJECT_NAME'] }.first
 other_project = identity_service.projects.select { |p| p.name != ENV['OS_PROJECT_NAME'] }.first

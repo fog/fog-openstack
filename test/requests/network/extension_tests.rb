@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe "Fog::OpenStack::Network | extension requests" do
+describe "Fog::Network[:openstack] | extension requests" do
   before do
     @extension_format = {
       'id'          => String,
@@ -28,7 +28,7 @@ describe "Fog::OpenStack::Network | extension requests" do
     it "#get_extension" do
       proc do
         network.get_extension(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
   end
 end

@@ -1,6 +1,6 @@
 module Fog
-  module OpenStack
-    class Compute
+  module Compute
+    class OpenStack
       module MetaParent
         def parent
           @parent
@@ -11,9 +11,9 @@ module Fog
         end
 
         def collection_name
-          if @parent.class == Fog::OpenStack::Compute::Image
+          if @parent.class == Fog::Compute::OpenStack::Image
             return "images"
-          elsif @parent.class == Fog::OpenStack::Compute::Server
+          elsif @parent.class == Fog::Compute::OpenStack::Server
             return "servers"
           else
             raise "Metadata is not supported for this model type."

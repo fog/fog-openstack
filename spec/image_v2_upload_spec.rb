@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Fog::OpenStack::Image do
+describe Fog::Image::OpenStack do
   it "Upload/download image data using chunked IO" do
     # We only run this against a live system,
     # because VCR's use of Webmock stops Excon :response_block from working correctly
@@ -12,7 +12,7 @@ describe Fog::OpenStack::Image do
       Excon.defaults[:ssl_verify_peer] = false if ENV['SSL_VERIFY_PEER'] == 'false'
 
       # setup the service object
-      @service ||= Fog::OpenStack::Image.new(
+      @service ||= Fog::Image::OpenStack.new(
         :openstack_auth_url     => "#{@os_auth_url}/auth/tokens",
         :openstack_project_name => ENV.fetch('OS_PROJECT_NAME'),
         :openstack_username     => ENV.fetch('OS_USERNAME'),
@@ -65,7 +65,7 @@ describe Fog::OpenStack::Image do
         if foobar_id
           proc do
             @service.images.find_by_id foobar_id
-          end.must_raise Fog::OpenStack::Image::NotFound
+          end.must_raise Fog::Image::OpenStack::NotFound
         end
         @service.images.all(:name => 'foobar_up2').length.must_equal 0
       end

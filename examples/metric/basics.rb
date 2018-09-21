@@ -16,7 +16,7 @@ project  = 'admin'
 
 puts "### SERVICE CONNECTION ###"
 
-metric = Fog::OpenStack::Metric.new(@connection_params)
+metric = Fog::Metric::OpenStack.new(@connection_params)
 
 p metric
 

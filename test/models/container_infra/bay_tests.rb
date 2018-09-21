@@ -1,7 +1,7 @@
 require "test_helper"
 require 'helpers/container_infra_helper'
 
-describe "Fog::OpenStack::ContainerInfra | bay" do
+describe "Fog::ContainerInfra[:openstack] | bay" do
   describe "success" do
     before do
       @instance = container_infra.bays.create(

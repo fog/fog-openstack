@@ -1,8 +1,8 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Metric | metric requests" do
+describe "Fog::Metric::OpenStack | metric requests" do
   before do
-    @metric = Fog::OpenStack::Metric.new
+    @metric = Fog::Metric::OpenStack.new
   end
 
   describe "success" do

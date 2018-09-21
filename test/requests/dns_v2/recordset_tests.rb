@@ -1,7 +1,7 @@
 require "test_helper"
 require "helpers/dns_v2_helper"
 
-describe "Fog::OpenStack::DNS::V2 | recordset requests" do
+describe "Fog::DNS::OpenStack::V2 | recordset requests" do
   before do
     @dns, @zone, @zone_id = set_dns_data
 

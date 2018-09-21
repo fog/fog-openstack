@@ -1,8 +1,8 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Metering | resource requests" do
+describe "Fog::Metering[:openstack] | resource requests" do
   before do
-    @metering = Fog::OpenStack::Metering.new
+    @metering = Fog::Metering[:openstack]
 
     @resource_format = {
       'resource_id' => String,

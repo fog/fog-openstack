@@ -1,7 +1,7 @@
 require "test_helper"
 require "helpers/network_helper"
 
-describe "Fog::OpenStack::Network | routers" do
+describe "Fog::Network[:openstack] | routers" do
   before do
     @router = network.routers.create(
       :name           => 'router_name',
