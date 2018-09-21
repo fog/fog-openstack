@@ -1,9 +1,9 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Compute | images collection" do
+describe "Fog::Compute[:openstack] | images collection" do
   describe "success" do
     describe "#all" do
-      let (:fog) { Fog::OpenStack::Compute.new }
+      let (:fog) { Fog::Compute[:openstack] }
 
       it "must be an Array" do
         fog.images.all.must_be_kind_of Array

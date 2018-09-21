@@ -2,7 +2,7 @@ require "test_helper"
 
 describe "@inspector | Introspection rules requests" do
   before do
-    @inspector = Fog::OpenStack::Introspection.new
+    @inspector = Fog::Introspection::OpenStack.new
     @rules_id = Fog::UUID.uuid
     @rules = {
       'description' => Fog::Nullable::String,

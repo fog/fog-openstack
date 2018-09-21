@@ -1,7 +1,7 @@
 require "test_helper"
 require "helpers/network_helper"
 
-describe "Fog::OpenStack::Network | lb_vip" do
+describe "Fog::Network[:openstack] | lb_vip" do
   describe "success" do
     before do
       attributes = {

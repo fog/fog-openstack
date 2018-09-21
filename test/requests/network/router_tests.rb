@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe "Fog::OpenStack::Network | router requests" do
+describe "Fog::Network[:openstack] | router requests" do
   before do
     @router_format = {
       :id                    => String,
@@ -69,19 +69,19 @@ describe "Fog::OpenStack::Network | router requests" do
     it "#get_router" do
       proc do
         network.get_router(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
 
     it "#update_router" do
       proc do
         network.update_router(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
 
     it "#delete_router" do
       proc do
         network.delete_router(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
   end
 end

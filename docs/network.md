@@ -16,7 +16,7 @@ require 'fog/openstack'
 
 Next, create a connection to the Network Service:
 ```
-service = Fog::OpenStack::Network.new(
+service = Fog::Network::OpenStack.new(
 	:openstack_auth_url     => 'http://KEYSTONE_HOST:KEYSTONE_PORT/v3/auth/tokens', # OpenStack Keystone v3 endpoint
 	:openstack_username     => OPEN_STACK_USER,                                     # Your OpenStack Username
 	:openstack_domain_name  => OPEN_STACK_DOMAIN,                                   # Your OpenStack Domain name
@@ -104,7 +104,7 @@ This will return:
   {"id"=>"e624a36d-762b-481f-9b50-4154ceb78bbb", "name"=>"network_1", "subnets"=>["2e4ec6a4-0150-47f5-8523-e899ac03026e"], "shared"=>false, "status"=>"ACTIVE", "admin_state_up"=>true, "tenant_id"=>"f8b26a6032bc47718a7702233ac708b9"}]
 }
 ```
-To learn more about Network request methods refer to [rdoc](http://www.rubydoc.info/gems/fog-openstack/fog/openstack/network/Real). To learn more about Excon refer to [Excon GitHub repo](https://github.com/geemus/excon).
+To learn more about Network request methods refer to [rdoc](http://www.rubydoc.info/gems/fog-openstack/Fog/Network/OpenStack/Real). To learn more about Excon refer to [Excon GitHub repo](https://github.com/geemus/excon).
 
 ### Model Layer
 
@@ -182,14 +182,14 @@ networks = service.networks
 ```
 This returns in the following `Fog::OpenStack::Model`:
 ```
-<Fog::OpenStack::Network::Networks
+<Fog::Network::OpenStack::Networks
   filters={}
-  [<Fog::OpenStack::Network::Network
+  [<Fog::Network::OpenStack::Network
       id="f9c54735-a230-443e-9379-b87f741cc1b1",
       name="Public",
-      subnets=        <Fog::OpenStack::Network::Subnets
+      subnets=        <Fog::Network::OpenStack::Subnets
         filters={}
-        [<Fog::OpenStack::Network::Subnet ... >]
+        [<Fog::Network::OpenStack::Subnet ... >]
       >,
       shared=true,
       status="ACTIVE",
@@ -200,10 +200,10 @@ This returns in the following `Fog::OpenStack::Model`:
       provider_segmentation_id=nil,
       router_external=false
     >,
-                <Fog::OpenStack::Network::Network
+                <Fog::Network::OpenStack::Network
       id="e624a36d-762b-481f-9b50-4154ceb78bbb",
       name="network_1",
-      subnets=        <Fog::OpenStack::Network::Subnets
+      subnets=        <Fog::Network::OpenStack::Subnets
         filters={}
         []
       >,

@@ -1,8 +1,8 @@
 require 'test_helper'
 
-describe "Fog::OpenStack::Volume | backup requests" do
+describe "Fog::Volume[:openstack] | backup requests" do
   before do
-    @volume = Fog::OpenStack::Volume.new
+    @volume = Fog::Volume[:openstack]
     @backup_format = {
       'id'           => String,
       'volume_id'    => String,

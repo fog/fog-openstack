@@ -1,9 +1,9 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Baremetal | Baremetal chassis requests" do
+describe "Fog::Baremetal[:openstack] | Baremetal chassis requests" do
   describe "success" do
     before do
-      @baremetal = Fog::OpenStack::Baremetal.new
+      @baremetal = Fog::Baremetal[:openstack]
 
       @chassis_format = {
         'description' => String,

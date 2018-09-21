@@ -2,7 +2,7 @@ require "test_helper"
 require "yaml"
 require "open-uri"
 
-describe "Fog::OpenStack::Orchestration | stack requests" do
+describe "Fog::Orchestration[:openstack] | stack requests" do
   @create_format_files = {
     'id'    => String,
     'links' => Array,
@@ -15,8 +15,8 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
     @data = YAML.load_file("stack_files_util_tests.yaml")
     @template_yaml = YAML.load_file("template.yaml")
     @local_yaml = YAML.load_file("local.yaml")
-    @orchestration = Fog::OpenStack::Orchestration.new
-    @file_resolver = Fog::OpenStack::OrchestrationUtil::RecursiveHotFileLoader.new({})
+    @orchestration = Fog::Orchestration[:openstack]
+    @file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new({})
   end
   after do
     Dir.chdir(@oldcwd)

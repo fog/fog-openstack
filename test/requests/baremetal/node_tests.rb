@@ -1,8 +1,8 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Baremetal | Baremetal node requests" do
+describe "Fog::Baremetal[:openstack] | Baremetal node requests" do
   before do
-    @baremetal = Fog::OpenStack::Baremetal.new
+    @baremetal = Fog::Baremetal[:openstack]
     @node_format = {
       'instance_uuid'   => Fog::Nullable::String,
       'maintenance'     => Fog::Boolean,

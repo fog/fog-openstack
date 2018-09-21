@@ -11,15 +11,15 @@ class OpenStack
 end
 
 def get_flavor_ref
-  ENV['OPENSTACK_FLAVOR_REF'] || Fog::OpenStack::Compute.new.list_flavors.body['flavors'].first['id']
+  ENV['OPENSTACK_FLAVOR_REF'] || Fog::Compute[:openstack].list_flavors.body['flavors'].first['id']
 end
 
 def get_image_ref
-  ENV['OPENSTACK_IMAGE_REF'] || Fog::OpenStack::Compute.new.list_images.body['images'].first['id']
+  ENV['OPENSTACK_IMAGE_REF'] || Fog::Compute[:openstack].list_images.body['images'].first['id']
 end
 
 def get_volume_ref
-  ENV['OPENSTACK_VOLUME_REF'] || Fog::OpenStack::Compute.new.list_volumes.body['volumes'].first['id']
+  ENV['OPENSTACK_VOLUME_REF'] || Fog::Compute[:openstack].list_volumes.body['volumes'].first['id']
 end
 
 def get_flavor_ref_resize
@@ -34,5 +34,5 @@ end
 
 def get_security_group_ref
   ENV['OPENSTACK_SECURITY_GROUP_REF'] ||
-    Fog::OpenStack::Compute.new.list_security_groups.body['security_groups'].first['name']
+    Fog::Compute[:openstack].list_security_groups.body['security_groups'].first['name']
 end

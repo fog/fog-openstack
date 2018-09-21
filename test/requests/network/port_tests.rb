@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe "Fog::OpenStack::Network | port requests" do
+describe "Fog::Network[:openstack] | port requests" do
   before do
     @port_format = {
       'id'                    => String,
@@ -75,19 +75,19 @@ describe "Fog::OpenStack::Network | port requests" do
     it "#get_port" do
       proc do
         network.get_port(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
 
     it "#update_port" do
       proc do
         network.update_port(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
 
     it "#delete_port" do
       proc do
         network.delete_port(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
   end
 end

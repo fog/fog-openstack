@@ -1,21 +1,21 @@
 require 'spec_helper'
 require_relative './shared_context'
 
-describe Fog::OpenStack::SharedFileSystem do
+describe Fog::SharedFileSystem::OpenStack do
   spec_data_folder = 'spec/fixtures/openstack/shared_file_system'
 
   before :all do
     openstack_vcr = OpenStackVCR.new(
       :vcr_directory  => spec_data_folder,
       :project_scoped => true,
-      :service_class  => Fog::OpenStack::SharedFileSystem
+      :service_class  => Fog::SharedFileSystem::OpenStack
     )
     @service = openstack_vcr.service
 
     net_openstack_vcr = OpenStackVCR.new(
       :vcr_directory  => spec_data_folder,
       :project_scoped => true,
-      :service_class  => Fog::OpenStack::Network
+      :service_class  => Fog::Network::OpenStack
     )
     @network_service = net_openstack_vcr.service
   end

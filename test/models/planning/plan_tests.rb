@@ -1,9 +1,9 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Planning | plan" do
+describe "Fog::OpenStack[:planning] | plan" do
   describe "success" do
     before do
-      @planning = Fog::OpenStack::Planning.new
+      @planning = Fog::OpenStack[:planning]
       @instance = @planning.plans.first
       @role = @planning.list_roles.body.first
     end

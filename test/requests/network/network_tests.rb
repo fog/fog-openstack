@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'helpers/network_helper.rb'
 
-describe "Fog::OpenStack::Network | network requests" do
+describe "Fog::Network[:openstack] | network requests" do
   describe "success" do
     let(:network_format) do
       {
@@ -124,19 +124,19 @@ describe "Fog::OpenStack::Network | network requests" do
     it "#get_network" do
       proc do
         network.get_network(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
 
     it "#update_network" do
       proc do
         network.update_network(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
 
     it "#delete_network" do
       proc do
         network.delete_network(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
   end
 

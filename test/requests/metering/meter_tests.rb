@@ -1,8 +1,8 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Metering | meter requests" do
+describe "Fog::Metering[:openstack] | meter requests" do
   before do
-    @metering = Fog::OpenStack::Metering.new
+    @metering = Fog::Metering[:openstack]
 
     @sample_format = {
       'counter_name'      => String,

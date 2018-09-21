@@ -6,7 +6,7 @@ def travis?
   File.exist?('/home/travis/build/fog/fog-openstack')
 end
 
-describe "Fog::OpenStack::Orchestration | stack requests" do
+describe "Fog::Orchestration[:openstack] | stack requests" do
   @create_format_files = {
     'id'    => String,
     'links' => Array,
@@ -19,8 +19,8 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
     @data = YAML.load_file("stack_files_util_tests.yaml")
     @template_yaml = YAML.load_file("template.yaml")
     @local_yaml = YAML.load_file("local.yaml")
-    @orchestration = Fog::OpenStack::Orchestration.new
-    @file_resolver = Fog::OpenStack::OrchestrationUtil::RecursiveHotFileLoader.new({})
+    @orchestration = Fog::Orchestration[:openstack]
+    @file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new({})
   end
   after do
     Dir.chdir(@oldcwd)
@@ -36,7 +36,7 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
         [{"get_file" => "foo.sh", "b" => "values"}, {'foo.sh'=>'# Just a mock'}],
       ]
       test_cases.each do |data, expected|
-        file_resolver = Fog::OpenStack::OrchestrationUtil::RecursiveHotFileLoader.new({})
+        file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new({})
         file_resolver.send(:get_file_contents, data, nil)
         assert_equal(file_resolver.files, expected)
       end
@@ -53,7 +53,7 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
       test_cases.each do |data, expected|
         Fog::Logger.warning("Testing with #{data} #{expected}")
         expected = prefix_with_url(expected, @base_url)
-        file_resolver = Fog::OpenStack::OrchestrationUtil::RecursiveHotFileLoader.new({})
+        file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new({})
         file_resolver.send(:get_file_contents, data, @base_url)
         assert_equal(file_resolver.files.keys, expected)
       end
@@ -65,7 +65,7 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
       end.compact
       test_cases.each do |data, _|
         assert_raises ArgumentError, URI::InvalidURIError do
-          Fog::OpenStack::OrchestrationUtil::RecursiveHotFileLoader.new(data)
+          Fog::Orchestration::Util::RecursiveHotFileLoader.new(data)
         end
       end
     end
@@ -76,7 +76,7 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
           [testcase['input'], testcase['expected']]
         end.compact
         test_cases.each do |data, expected|
-          file_resolver = Fog::OpenStack::OrchestrationUtil::RecursiveHotFileLoader.new(data)
+          file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new(data)
           assert_equal_set(file_resolver.files.keys, expected)
         end
       end
@@ -90,13 +90,13 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
       test_cases.push([@local_yaml, ["local.yaml", "hot_1.yaml"]])
       test_cases.each do |data, expected|
         expected = prefix_with_url(expected, @base_url)
-        file_resolver = Fog::OpenStack::OrchestrationUtil::RecursiveHotFileLoader.new(data)
+        file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new(data)
         assert_equal_set(file_resolver.files.keys, expected)
       end
     end
 
     it "#dont_modify_passed_template" do
-      file_resolver = Fog::OpenStack::OrchestrationUtil::RecursiveHotFileLoader.new(@local_yaml)
+      file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new(@local_yaml)
       template = file_resolver.template
 
       # The template argument should be modified.

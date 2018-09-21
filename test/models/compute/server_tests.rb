@@ -1,7 +1,7 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Compute | server" do
-  let (:compute) { Fog::OpenStack::Compute.new }
+describe "Fog::Compute[:openstack] | server" do
+  let (:compute) { Fog::Compute[:openstack] }
 
   describe "success" do
     it "#floating_ips" do
@@ -14,7 +14,7 @@ describe "Fog::OpenStack::Compute | server" do
       )
       server.save
 
-      ip1 = Fog::OpenStack::Network.new.floating_ips.create(
+      ip1 = Fog::Network[:openstack].floating_ips.create(
         :floating_network_id => 'f0000000-0000-0000-0000-000000000000',
         :fixed_ip_address    => '192.168.11.3'
       )

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe "Fog::OpenStack::Network | lb_vip requests" do
+describe "Fog::Network[:openstack] | lb_vip requests" do
   describe "success" do
     before do
       @lb_vip_format = {
@@ -74,19 +74,19 @@ describe "Fog::OpenStack::Network | lb_vip requests" do
     it "#get_lb_vip" do
       proc do
         network.get_lb_vip(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
 
     it "#update_lb_vip" do
       proc do
         network.update_lb_vip(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
 
     it "#delete_lb_vip" do
       proc do
         network.delete_lb_vip(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end.must_raise Fog::Network::OpenStack::NotFound
     end
   end
 end

@@ -2,7 +2,7 @@ require "test_helper"
 require "helpers/network_helper"
 require "helpers/model_helper"
 
-describe "Fog::OpenStack::Network | security_group_rule model" do
+describe "Fog::Network[:openstack] | security_group_rule model" do
   @secgroup = network.security_groups.create(:name => "fogsecgroup")
   attributes = {:security_group_id => @secgroup.id, :direction => "ingress"}
   model_tests(network.security_group_rules, attributes)

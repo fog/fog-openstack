@@ -22,7 +22,7 @@ require 'fog/openstack'
 
 Next, create a connection to the Shared File System Service:
 ```
-service = Fog::OpenStack::SharedFileSystem.new(
+service = Fog::SharedFileSystem::OpenStack.new(
 	:openstack_auth_url     => 'http://KEYSTONE_HOST:KEYSTONE_PORT/v3/auth/tokens', # OpenStack Keystone v3 endpoint
 	:openstack_username     => OPEN_STACK_USER,                                     # Your OpenStack Username
 	:openstack_domain_name  => OPEN_STACK_DOMAIN,                                   # Your OpenStack Domain name

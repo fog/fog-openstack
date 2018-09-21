@@ -16,7 +16,7 @@ def collection_tests(collection, params = {})
 
     it "#create(#{params.inspect})" do
       unless Fog.mocking?
-        @instance.must_be_kind_of Fog::OpenStack::Network::SecurityGroup
+        @instance.must_be_kind_of Fog::Network::OpenStack::SecurityGroup
       end
     end
 
@@ -27,13 +27,13 @@ def collection_tests(collection, params = {})
 
     it "#all" do
       unless Fog.mocking?
-        collection.all.must_be_kind_of Fog::OpenStack::Network::SecurityGroups
+        collection.all.must_be_kind_of Fog::Network::OpenStack::SecurityGroups
       end
     end
 
     it "#get(#{@identity})" do
       unless Fog.mocking?
-        collection.get(@identity).must_be_kind_of Fog::OpenStack::Network::SecurityGroup
+        collection.get(@identity).must_be_kind_of Fog::Network::OpenStack::SecurityGroup
       end
     end
 

@@ -1,9 +1,9 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Compute | services" do
+describe "Fog::Compute[:openstack] | services" do
   describe "success" do
     before do
-      services = Fog::OpenStack::Compute.new.services.all
+      services = Fog::Compute[:openstack].services.all
       @service = services.first
     end
 
@@ -12,7 +12,7 @@ describe "Fog::OpenStack::Compute | services" do
     end
 
     it "#get" do
-      service = Fog::OpenStack::Compute.new.services.get(@service.id)
+      service = Fog::Compute[:openstack].services.get(@service.id)
       %w(id binary host).all? do |attr|
         attr1 = service.send(attr.to_sym)
         attr2 = @service.send(attr.to_sym)

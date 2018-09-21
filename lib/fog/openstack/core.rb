@@ -19,7 +19,7 @@ module Fog
 
       # fallback
       def self.not_found_class
-        Fog::OpenStack::Compute::NotFound
+        Fog::Compute::OpenStack::NotFound
       end
 
       def credentials

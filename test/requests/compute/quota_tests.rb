@@ -1,8 +1,8 @@
 require "test_helper"
 
-describe "Fog::OpenStack::Compute | quota requests" do
+describe "Fog::Compute[:openstack] | quota requests" do
   before do
-    identity = Fog::OpenStack::Identity.new(:openstack_identity_api_version => 'v2.0')
+    identity = Fog::Identity::OpenStack.new(:openstack_identity_api_version => 'v2.0')
     @tenant_id = identity.list_tenants.body['tenants'].first['id']
     @quota_set_format = {
       'key_pairs'                   => Integer,
@@ -21,7 +21,7 @@ describe "Fog::OpenStack::Compute | quota requests" do
       'id'                          => String
     }
 
-    @compute = Fog::OpenStack::Compute.new
+    @compute = Fog::Compute[:openstack]
     @quota = @compute.get_quota(@tenant_id).body['quota_set']
   end
 

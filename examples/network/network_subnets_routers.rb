@@ -17,7 +17,7 @@ def create_tenant_network( tenant_name,
                            subnet_gateway = '10.0.0.1',
                            private_network_name = 'private' )
 
-  network = Fog::OpenStack::Network.new
+  network = Fog::Network[:openstack]
   id = Fog::Identity[:openstack]
 
   tenant = id.tenants.find { |t| t.name == tenant_name }

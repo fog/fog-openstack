@@ -1,10 +1,10 @@
 require "test_helper"
-require 'fog/openstack/workflow/workflow'
-require 'fog/openstack/workflow/v2'
+require 'fog/workflow/openstack'
+require 'fog/workflow/openstack/v2'
 
-describe "Fog::OpenStack::Workflow | Workflow requests" do
+describe "Fog::Workflow::OpenStack | Workflow requests" do
   before do
-    @workflow = Fog::OpenStack::Workflow.new
+    @workflow = Fog::Workflow::OpenStack.new
     @execution_id = Fog::UUID.uuid
 
     @workflow_name = "tripleo.plan_management.v1.create_default_deployment_plan"

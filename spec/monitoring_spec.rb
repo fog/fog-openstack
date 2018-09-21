@@ -1,15 +1,15 @@
 require 'spec_helper'
 require_relative './shared_context'
-require 'fog/openstack/monitoring/models/metric'
+require 'fog/monitoring/openstack/models/metric'
 require 'time'
 
-describe Fog::OpenStack::Monitoring do
+describe Fog::Monitoring::OpenStack do
   spec_data_folder = 'spec/fixtures/openstack/monitoring'
 
   before :all do
     openstack_vcr = OpenStackVCR.new(
       :vcr_directory => spec_data_folder,
-      :service_class => Fog::OpenStack::Monitoring
+      :service_class => Fog::Monitoring::OpenStack
     )
     @service      = openstack_vcr.service
     @timestamp    = 146_375_736_714_3
@@ -28,13 +28,13 @@ describe Fog::OpenStack::Monitoring do
 
       # create multiple metrics
 
-      metric_1 = Fog::OpenStack::Monitoring::Metric.new(:name       => 'sample_metric_1',
+      metric_1 = Fog::Monitoring::OpenStack::Metric.new(:name       => 'sample_metric_1',
                                                         :timestamp  => @timestamp,
                                                         :dimensions => {"key1" => "value1"},
                                                         :value      => 42,
                                                         :value_meta => {"meta_key1" => "meta_value1"})
 
-      metric_2 = Fog::OpenStack::Monitoring::Metric.new(:name       => 'sample_metric_2',
+      metric_2 = Fog::Monitoring::OpenStack::Metric.new(:name       => 'sample_metric_2',
                                                         :timestamp  => @timestamp,
                                                         :dimensions => {"key1" => "value1"},
                                                         :value      => 42,
@@ -151,7 +151,7 @@ describe Fog::OpenStack::Monitoring do
 
         proc do
           @service.notification_methods.find_by_id('bogus_id')
-        end.must_raise Fog::OpenStack::Monitoring::NotFound
+        end.must_raise Fog::Monitoring::OpenStack::NotFound
       ensure
         notification_method.destroy if notification_method
       end

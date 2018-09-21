@@ -2,7 +2,7 @@ require "test_helper"
 
 describe "Fog::Identity[:openstack] | tenant" do
   before do
-    @identity = Fog::OpenStack::Identity.new(:openstack_identity_api_version => 'v2.0')
+    @identity = Fog::Identity::OpenStack.new(:openstack_identity_api_version => 'v2.0')
   end
 
   describe "success" do
