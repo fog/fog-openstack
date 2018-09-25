@@ -2,6 +2,39 @@ require 'fog/core'
 require 'fog/json'
 
 module Fog
+  # Monkey patch to reflect https://github.com/fog/fog-core/commit/06b7ab4
+  # needed because fog-core 2.1.1+ implies entire namespace change
+  # is only availabe from fog-openstack 1.0.0+
+  module Attributes
+    module InstanceMethods
+      def all_attributes
+        self.class.attributes.reduce({}) do |hash, attribute|
+          if masks[attribute].nil?
+            Fog::Logger.deprecation("Please define #{attribute} using the Fog DSL")
+            hash[attribute] = send(attribute)
+          else
+            hash[masks[attribute]] = send(attribute)
+          end
+
+          hash
+        end
+      end
+
+      def all_associations
+        self.class.associations.keys.reduce({}) do |hash, association|
+          if masks[association].nil?
+            Fog::Logger.deprecation("Please define #{association} using the Fog DSL")
+            hash[association] = associations[association] || send(association)
+          else
+            hash[masks[association]] = associations[association] || send(association)
+          end
+
+          hash
+        end
+      end
+    end
+  end
+
   module Baremetal
     autoload :OpenStack, 'fog/baremetal/openstack'
   end
