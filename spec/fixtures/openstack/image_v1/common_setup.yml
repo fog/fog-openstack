@@ -73,7 +73,7 @@ http_interactions:
         {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:9292", "region": "RegionOne",
         "interface": "public", "id": "b3b24c2c4ef44ff48049caff79149091"}, {"region_id":
         "RegionOne", "url": "http://devstack.openstack.stack:9292", "region": "RegionOne", "interface":
-        "internal", "id": "b9d30173e66148baa3ab2dc2df33cb5e"}], "type": "image", "id":
+        "internal", "id": "b9d30173e66148baa3ab2dc2df33cb5e"}], "type": "imagev1", "id":
         "b936e5bfd38e4a3b97fcb8d08840881f", "name": "glance"}, {"endpoints": [{"region_id":
         "RegionOne", "url": "http://devstack.openstack.stack:9696/", "region": "RegionOne", "interface":
         "admin", "id": "1a6718d75cd94e24993a27d275442a17"}, {"region_id": "RegionOne",
