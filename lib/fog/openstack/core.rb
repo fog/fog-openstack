@@ -206,7 +206,7 @@ module Fog
         if !@openstack_management_url || @openstack_must_reauthenticate
           @openstack_auth_token = nil if @openstack_must_reauthenticate
 
-          token = Fog::OpenStack::Auth::Token.build(openstack_options)
+          token = Fog::OpenStack::Auth::Token.build(openstack_options, @connection_options)
 
           @openstack_management_url = if token.catalog
                                         token.catalog.get_endpoint_url(
