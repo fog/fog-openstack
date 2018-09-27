@@ -13,7 +13,7 @@ module Fog
                    :openstack_user_domain_id, :openstack_project_domain_id,
                    :openstack_api_key, :openstack_current_user_id, :openstack_userid, :openstack_username,
                    :current_user, :current_user_id, :current_tenant,
-                   :provider, :openstack_identity_api_version, :openstack_cache_ttl, :no_path_prefix
+                   :provider, :openstack_identity_api_version, :openstack_cache_ttl
 
         model_path 'fog/openstack/identity/v3/models'
         model :domain
@@ -142,12 +142,8 @@ module Fog
         end
 
         class Real < Fog::OpenStack::Identity::Real
-          def initialize(args)
-            @path_prefix = if args[:no_path_prefix]
-                             ''
-                           else
-                             'v3'
-                           end
+          def api_path_prefix
+            @path_prefix = version_in_path?(@openstack_management_uri.path) ? '' : 'v3'
             super
           end
 
@@ -157,6 +153,10 @@ module Fog
 
           def default_service_type
             %w[identity_v3 identityv3 identity]
+          end
+
+          def version_in_path?(url)
+            true if url =~ /\/v3(\/)*.*$/
           end
         end
       end
