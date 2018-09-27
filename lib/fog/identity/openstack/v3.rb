@@ -142,12 +142,8 @@ module Fog
         end
 
         class Real < Fog::Identity::OpenStack::Real
-          def initialize(args)
-            @path_prefix = if args[:no_path_prefix]
-                             ''
-                           else
-                             'v3'
-                           end
+          def api_path_prefix
+            @path_prefix = version_in_path?(@openstack_management_uri.path) ? '' : 'v3'
             super
           end
 
@@ -157,6 +153,10 @@ module Fog
 
           def default_service_type
             %w[identity_v3 identityv3 identity]
+          end
+
+          def version_in_path?(url)
+            true if url =~ /\/v3(\/)*.*$/
           end
         end
       end
