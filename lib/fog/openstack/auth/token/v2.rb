@@ -29,8 +29,16 @@ module Fog
             {'auth' => identity}
           end
 
+          def prefix_path(uri)
+            if uri.path =~ /\/v2(\.0)*(\/)*.*$/
+              ''
+            else
+              '/v2.0'
+            end
+          end
+
           def path
-            '/v2.0/tokens'
+            '/tokens'
           end
 
           def user_credentials

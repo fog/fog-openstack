@@ -37,8 +37,16 @@ module Fog
             end
           end
 
+          def prefix_path(uri)
+            if uri.path =~ /\/v3(\/)*.*$/
+              ''
+            else
+              '/v3'
+            end
+          end
+
           def path
-            '/v3/auth/tokens'
+            '/auth/tokens'
           end
 
           def scope
