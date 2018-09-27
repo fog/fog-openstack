@@ -5,26 +5,7 @@ module Fog
       autoload :V3, 'fog/identity/openstack/v3'
 
       def self.new(args = {})
-        version = if args[:openstack_identity_api_version] =~ /(v)*2(\.0)*/i
-                    '2.0'
-                  elsif args[:openstack_auth_url] =~ /v3|v2(\.0)*/
-                    # Deprecated from fog-openstack 0.2.0
-                    # Will be removed in future after hard deprecation is enforced for a couple of releases
-                    Fog::Logger.deprecation("An authentication URL including a version is deprecated")
-                    case args[:openstack_auth_url]
-                    when /\/v3(\/)*.*$/
-                      args[:openstack_auth_url].gsub!(/\/v3(\/)*.*$/, '')
-                      args[:no_path_prefix] = true
-                      '3'
-                    when /\/v2(\.0)*(\/)*.*$/
-                      args[:openstack_auth_url].gsub!(/\/v2(\.0)*(\/)*.*$/, '')
-                      args[:no_path_prefix] = true
-                      '2.0'
-                    end
-                  end
-
-        case version
-        when '2.0'
+        if args[:openstack_identity_api_version] =~ /(v)*2(\.0)*/i
           Fog::Identity::OpenStack::V2.new(args)
         else
           Fog::Identity::OpenStack::V3.new(args)
