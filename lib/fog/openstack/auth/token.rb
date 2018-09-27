@@ -47,7 +47,7 @@ module Fog
             :headers => {'Content-Type' => 'application/json'},
             :body    => Fog::JSON.encode(creds[:data]),
             :method  => 'POST',
-            :path    => creds[:uri].path + path
+            :path    => creds[:uri].path + prefix_path(creds[:uri]) + path
           }
 
           connection.request(request)
