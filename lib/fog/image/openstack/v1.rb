@@ -111,7 +111,7 @@ module Fog
           end
 
           def default_service_type
-            %w[image]
+            %w[imagev1]
           end
         end
       end
