@@ -169,12 +169,8 @@ module Fog
         end
 
         class Real < Fog::OpenStack::Identity::Real
-          def initialize(args)
-            @path_prefix = if args[:no_path_prefix]
-                             ''
-                           else
-                             'v2.0'
-                           end
+          def api_path_prefix
+            @path_prefix = version_in_path?(@openstack_management_uri.path) ? '' : 'v2.0'
             super
           end
 
@@ -184,6 +180,10 @@ module Fog
 
           def default_service_type
             %w[identity_v2 identityv2 identity]
+          end
+
+          def version_in_path?(url)
+            true if url =~ /\/v2(\.0)*(\/)*.*$/
           end
         end
       end
