@@ -56,12 +56,14 @@ module Fog
           hmac = Fog::HMAC.new('sha1', @openstack_temp_url_key.to_s)
           sig  = sig_to_hex(hmac.sign(string_to_sign))
 
+          filename = options[:filename]
+
           temp_url_options = {
             :scheme => scheme,
             :host   => host,
             :port   => port,
             :path   => object_path_escaped,
-            :query  => "temp_url_sig=#{sig}&temp_url_expires=#{expires}"
+            :query  => "temp_url_sig=#{sig}&temp_url_expires=#{expires}&filename=#{filename}"
           }
           URI::Generic.build(temp_url_options).to_s
         end
