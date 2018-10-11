@@ -43,7 +43,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"volumes": []}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:51 GMT
 - request:
     method: post
@@ -94,7 +94,7 @@ http_interactions:
         "display_description": "This is the volume description.", "volume_type": "lvmdriver-1",
         "snapshot_id": null, "source_volid": null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f",
         "size": 1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:51 GMT
 - request:
     method: get
@@ -147,7 +147,7 @@ http_interactions:
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "os-vol-mig-status-attr:name_id":
         null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "os-vol-mig-status-attr:migstat":
         null, "size": 1}]}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:51 GMT
 - request:
     method: get
@@ -200,7 +200,7 @@ http_interactions:
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "os-vol-mig-status-attr:name_id":
         null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "os-vol-mig-status-attr:migstat":
         null, "size": 1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:52 GMT
 - request:
     method: get
@@ -253,7 +253,7 @@ http_interactions:
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "os-vol-mig-status-attr:name_id":
         null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "os-vol-mig-status-attr:migstat":
         null, "size": 1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:52 GMT
 - request:
     method: get
@@ -306,7 +306,7 @@ http_interactions:
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "os-vol-mig-status-attr:name_id":
         null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "os-vol-mig-status-attr:migstat":
         null, "size": 1}]}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:52 GMT
 - request:
     method: put
@@ -356,7 +356,7 @@ http_interactions:
         "display_description": "This is the volume description.", "volume_type": "lvmdriver-1",
         "snapshot_id": null, "source_volid": null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f",
         "size": 1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:53 GMT
 - request:
     method: get
@@ -409,15 +409,14 @@ http_interactions:
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "os-vol-mig-status-attr:name_id":
         null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "os-vol-mig-status-attr:migstat":
         null, "size": 1}]}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:53 GMT
 - request:
     method: put
     uri: http://devstack.openstack.stack:8776/v1/2ab82e30d7984631874def67813dffd8/volumes/3b59e23e-d5b5-42be-b297-f4880c1bbb5f
     body:
       encoding: UTF-8
-      string: '{"volume":{"status":"available","display_name":"fog-updated-testvolume-1","attachments":[],"availability_zone":"nova","bootable":"false","encrypted":false,"created_at":"2016-05-03T14:17:51.000000","multiattach":"false","tenant_id":"2ab82e30d7984631874def67813dffd8","os-volume-replication:driver_data":null,"display_description":"This
-        is the updated volume description.","os-volume-replication:extended_status":null,"os-vol-host-attr:host":"mo-0e4c34476@lvmdriver-1#lvmdriver-1","volume_type":"lvmdriver-1","snapshot_id":null,"source_volid":null,"os-vol-mig-status-attr:name_id":null,"metadata":{},"os-vol-mig-status-attr:migstat":null,"size":1}}'
+      string: '{"volume":{"display_name":"fog-updated-testvolume-1","display_description":"This is the updated volume description.","metadata":{}}}'
     headers:
       User-Agent:
       - fog-core/1.38.0
@@ -460,7 +459,7 @@ http_interactions:
         "display_description": "This is the updated volume description.", "volume_type":
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "metadata": {},
         "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "size": 1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:54 GMT
 - request:
     method: get
@@ -513,7 +512,7 @@ http_interactions:
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "os-vol-mig-status-attr:name_id":
         null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "os-vol-mig-status-attr:migstat":
         null, "size": 1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:54 GMT
 - request:
     method: get
@@ -566,7 +565,7 @@ http_interactions:
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "os-vol-mig-status-attr:name_id":
         null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "os-vol-mig-status-attr:migstat":
         null, "size": 1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:55 GMT
 - request:
     method: get
@@ -619,7 +618,7 @@ http_interactions:
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "os-vol-mig-status-attr:name_id":
         null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "os-vol-mig-status-attr:migstat":
         null, "size": 1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:55 GMT
 - request:
     method: delete
@@ -662,7 +661,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:55 GMT
 - request:
     method: get
@@ -715,7 +714,7 @@ http_interactions:
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "os-vol-mig-status-attr:name_id":
         null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "os-vol-mig-status-attr:migstat":
         null, "size": 1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:56 GMT
 - request:
     method: get
@@ -768,7 +767,7 @@ http_interactions:
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "os-vol-mig-status-attr:name_id":
         null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "os-vol-mig-status-attr:migstat":
         null, "size": 1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:57 GMT
 - request:
     method: get
@@ -821,7 +820,7 @@ http_interactions:
         "lvmdriver-1", "snapshot_id": null, "source_volid": null, "os-vol-mig-status-attr:name_id":
         null, "metadata": {}, "id": "3b59e23e-d5b5-42be-b297-f4880c1bbb5f", "os-vol-mig-status-attr:migstat":
         null, "size": 1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:17:59 GMT
 - request:
     method: get
@@ -867,6 +866,6 @@ http_interactions:
       encoding: UTF-8
       string: '{"itemNotFound": {"message": "The resource could not be found.", "code":
         404}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:18:04 GMT
 recorded_with: VCR 3.0.1
