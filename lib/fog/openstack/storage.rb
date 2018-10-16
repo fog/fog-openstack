@@ -108,8 +108,8 @@ module Fog
       end
 
       class Real
-        include Utils
         include Fog::OpenStack::Core
+        include Utils
 
         def self.not_found_class
           Fog::OpenStack::Storage::NotFound
