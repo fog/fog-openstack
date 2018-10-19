@@ -208,7 +208,7 @@ module Fog
 
           token = Fog::OpenStack::Auth::Token.build(openstack_options, @connection_options)
 
-          @openstack_management_url = if token.catalog
+          @openstack_management_url = if token.catalog && !token.catalog.payload.empty?
                                         token.catalog.get_endpoint_url(
                                           @openstack_service_type,
                                           @openstack_endpoint_type,
