@@ -26,7 +26,7 @@ module Fog
           end
 
           params.merge!(
-            :expects    => 201,
+            :expects    => [201, 202],
             :idempotent => !params[:request_block],
             :headers    => headers,
             :method     => 'PUT',
