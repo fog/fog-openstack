@@ -12,7 +12,7 @@ module Fog
         # * options<~Hash> - Additional headers
         def copy_object(source_container_name, source_object_name, target_container_name, target_object_name, options = {})
           headers = {'X-Copy-From' => "/#{source_container_name}/#{source_object_name}"}.merge(options)
-          request(:expects => 201,
+          request(:expects => [201, 202],
                   :headers => headers,
                   :method  => 'PUT',
                   :path    => "#{Fog::OpenStack.escape(target_container_name)}/#{Fog::OpenStack.escape(target_object_name)}")
