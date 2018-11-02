@@ -8,7 +8,8 @@ module Fog
 
         requires :openstack_auth_url
         recognizes :openstack_username, :openstack_api_key,
-                   :openstack_project_name, :openstack_domain_id
+                   :openstack_project_name, :openstack_domain_id,
+                   :idempotent, :retry_interval, :retry_limit
 
         ## REQUESTS
         #
