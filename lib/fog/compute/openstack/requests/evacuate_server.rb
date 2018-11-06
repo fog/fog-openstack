@@ -5,7 +5,11 @@ module Fog
         def evacuate_server(server_id, host = nil, on_shared_storage = nil, admin_password = nil)
           evacuate                    = {}
           evacuate['host']            = host if host
-          evacuate['onSharedStorage'] = on_shared_storage if on_shared_storage
+
+          if !microversion_newwer_than('2.13') && on_shared_storage
+            evacuate['onSharedStorage'] = on_shared_storage
+          end
+
           evacuate['adminPass']       = admin_password if admin_password
           body                        = {
             'evacuate' => evacuate
