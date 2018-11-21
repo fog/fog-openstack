@@ -40,6 +40,7 @@ module Fog
           attribute :image_type
           attribute :instance_uuid
           attribute :user_id
+          attribute :block_device_mapping
 
           def method_missing(method_sym, *arguments, &block)
             if attributes.key?(method_sym)
