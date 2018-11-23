@@ -3,11 +3,12 @@ module Fog
     class Identity
       class V3
         class Real
-          def get_project(id, options = [])
+          def get_project(id, options = {})
             request(
               :expects => [200],
               :method  => 'GET',
-              :path    => "projects/#{id}?#{options.join '&'}"
+              :path    => "projects/#{id}",
+              :query   => options
             )
           end
         end
