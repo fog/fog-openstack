@@ -1,4 +1,4 @@
-require 'fog/openstack/image/image'
+require 'fog/openstack/image'
 
 module Fog
   module OpenStack

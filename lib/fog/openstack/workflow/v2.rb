@@ -1,4 +1,4 @@
-require 'fog/openstack/workflow/workflow'
+require 'fog/openstack/workflow'
 
 module Fog
   module OpenStack

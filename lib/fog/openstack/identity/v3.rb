@@ -1,4 +1,4 @@
-require 'fog/openstack/identity/identity'
+require 'fog/openstack/identity'
 
 module Fog
   module OpenStack
