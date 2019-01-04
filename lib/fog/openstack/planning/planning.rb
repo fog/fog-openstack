@@ -120,9 +120,6 @@ module Fog
     end
 
     def self.new(attributes)
-      require 'pry-byebug'
-      binding.pry
-
       attributes = attributes.dup # Prevent delete from having side effects
       service = attributes.delete(:service).to_s.downcase.to_sym
       if services.include?(service)
