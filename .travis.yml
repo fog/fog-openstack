@@ -1,7 +1,7 @@
 language: ruby
 sudo: false
 before_install:
-  - gem install bundler --version '~> 1.6'
+  - gem install bundler
 script:
   - bundle exec rake test TESTOPTS="--verbose"
   - bundle exec rake spec
