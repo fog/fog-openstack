@@ -6,7 +6,7 @@ module Fog
           evacuate                    = {}
           evacuate['host']            = host if host
 
-          if !microversion_newwer_than('2.13') && on_shared_storage
+          if !microversion_newer_than('2.13') && on_shared_storage
             evacuate['onSharedStorage'] = on_shared_storage
           end
 
