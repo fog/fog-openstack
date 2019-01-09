@@ -12,10 +12,10 @@
     run: playbooks/fog-openstack-unittest-test/run.yaml
     vars:
       rvm:
-        2.2.10
-        2.3.7
-        2.4.4
-        2.5.1
+        2.3.8
+        2.4.5
+        2.5.3
+        2.6.0
         jruby-head
     nodeset: ubuntu-xenial
 
@@ -27,9 +27,9 @@
     run: playbooks/fog-openstack-unittest-spec/run.yaml
     vars:
       rvm:
-        2.2.10
-        2.3.7
-        2.4.4
-        2.5.1
+        2.3.8
+        2.4.5
+        2.5.3
+        2.6.0
         jruby-head
     nodeset: ubuntu-xenial
