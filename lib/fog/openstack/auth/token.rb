@@ -42,9 +42,13 @@ module Fog
         def authenticate(creds, options)
           connection = Fog::Core::Connection.new(creds[:uri].to_s, false, options)
 
-          request = {
+          headers = {
+            'Accept'       => 'application/json',
+            'Content-Type' => 'application/json'
+          }
+          options = {
             :expects => [200, 201],
-            :headers => {'Content-Type' => 'application/json'},
+            :headers => headers,
             :body    => Fog::JSON.encode(creds[:data]),
             :method  => 'POST',
             :path    => creds[:uri].path + prefix_path(creds[:uri]) + path
