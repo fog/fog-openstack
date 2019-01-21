@@ -1,5 +1,5 @@
 require 'fog/openstack/core'
-require 'fog/openstack/volume/volume'
+require 'fog/openstack/volume'
 
 module Fog
   module OpenStack

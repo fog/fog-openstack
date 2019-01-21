@@ -1,4 +1,4 @@
-require 'fog/openstack/dns/dns'
+require 'fog/openstack/dns'
 
 module Fog
   module OpenStack
