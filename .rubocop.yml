@@ -21,6 +21,8 @@ CollectionMethods:
     reduce: inject
 CyclomaticComplexity:
   Severity: refactor
+Debugger:
+  Enabled: true
 FormatString:
   EnforcedStyle: percent
 HashSyntax:
