@@ -6,7 +6,8 @@ module Fog
 
         def _create_volume(data, options = {})
           vanilla_options = [:snapshot_id, :imageRef, :volume_type,
-                             :source_volid, :availability_zone, :metadata]
+                             :source_volid, :availability_zone, :metadata,
+                             :multiattach]
           vanilla_options.select { |o| options[o] }.each do |key|
             data['volume'][key] = options[key]
           end
