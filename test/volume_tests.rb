@@ -1,6 +1,6 @@
 require 'test_helper'
 
-require 'fog/openstack/volume/volume'
+require 'fog/openstack/volume'
 require 'fog/openstack/volume/v1'
 require 'fog/openstack/volume/v2'
 
