@@ -113,6 +113,7 @@ module Fog
         end
 
         def initialize(options = {})
+          options.each { |k, v| options[k] = v.to_s if k.to_s.start_with?('openstack_') }
           require_mime_types
           super
         end
