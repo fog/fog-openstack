@@ -27,6 +27,7 @@ module Fog
         #   * 'scheme'<~String> - The scheme to use (http, https)
         #   * 'host'<~String> - The host to use
         #   * 'port'<~Integer> - The port to use
+        #   * 'filename'<~String> - Filename returned Content-Disposition response header
         #
         # ==== Returns
         # * response<~Excon::Response>:
@@ -34,6 +35,7 @@ module Fog
         #
         # ==== See Also
         # http://docs.rackspace.com/files/api/v1/cf-devguide/content/Create_TempURL-d1a444.html
+        # https://developer.openstack.org/api-ref/object-store/?expanded=get-object-content-and-metadata-detail#get-object-content-and-metadata
         def create_temp_url(container, object, expires, method, options = {})
           raise ArgumentError, "Insufficient parameters specified." unless container && object && expires && method
           raise ArgumentError, "Storage must be instantiated with the :openstack_temp_url_key option" if @openstack_temp_url_key.nil?
@@ -54,14 +56,19 @@ module Fog
           string_to_sign = "#{method}\n#{expires}\n#{object_path_unescaped}"
 
           hmac = Fog::HMAC.new('sha1', @openstack_temp_url_key.to_s)
-          sig  = sig_to_hex(hmac.sign(string_to_sign))
+
+          query = {
+            temp_url_sig: sig_to_hex(hmac.sign(string_to_sign)),
+            temp_url_expires: expires
+          }
+          query[:filename] = options[:filename] if options[:filename]
 
           temp_url_options = {
             :scheme => scheme,
             :host   => host,
             :port   => port,
             :path   => object_path_escaped,
-            :query  => "temp_url_sig=#{sig}&temp_url_expires=#{expires}"
+            :query  => query.map { |k, v| "#{k}=#{v}" }.join('&')
           }
           URI::Generic.build(temp_url_options).to_s
         end
