@@ -50,17 +50,18 @@ module Fog
       def request(params, parse_json = true)
         retried = false
         begin
+          authenticate! if @expires && (@expires - Time.now.utc).to_i < 60
+
           response = @connection.request(
             params.merge(
               :headers => headers(params.delete(:headers)),
               :path    => "#{@path}/#{params[:path]}"
             )
           )
-        rescue Excon::Errors::Unauthorized => error
+        rescue Excon::Errors::Unauthorized, Excon::Error::Unauthorized => error
           # token expiration and token renewal possible
           if error.response.body != 'Bad username or password' && @openstack_can_reauthenticate && !retried
-            @openstack_must_reauthenticate = true
-            authenticate
+            authenticate!
             retried = true
             retry
           # bad credentials or token renewal not possible
@@ -221,7 +222,7 @@ module Fog
           @current_user = token.user['name']
           @current_user_id          = token.user['id']
           @current_tenant           = token.tenant
-          @expires                  = token.expires
+          @expires                  = Time.parse(token.expires)
           @auth_token               = token.token
           @unscoped_token           = token.token
           @openstack_must_reauthenticate = false
@@ -236,6 +237,11 @@ module Fog
         @path = api_path_prefix
 
         true
+      end
+
+      def authenticate!
+        @openstack_must_reauthenticate = true
+        authenticate
       end
     end
   end
