@@ -74,6 +74,21 @@ class OpenStackVCR
         config.cassette_library_dir = "spec/debug"
         config.default_cassette_options = {:record => :all}
       end
+
+      config.before_playback do |interaction|
+        # shift issued_at and expires_at to Time.now and Time.now + 1.day in json cassette body
+        next unless interaction.response.headers["Content-Type"] == ["application/json"]
+
+        interaction.response.body.scan(/"(issued_at|expires_at)": "(.*?)"/m).each do |match|
+          time_to =
+            case match[0]
+            when 'issued_at' then Time.now
+            when 'expires_at' then Time.now + 86400
+            end
+
+          interaction.response.body.gsub!("\"#{match[0]}\": \"#{match[1]}\"", "\"#{match[0]}\": \"#{time_to}\"")
+        end
+      end
     end
 
     # allow us to ignore dev certificates on servers
