@@ -15,7 +15,7 @@ module Fog
       end
 
       class Mock
-        def cancel_update(_)
+        def cancel_update(_stack)
           response = Excon::Response.new
           response.status = 200
           response.body = {}

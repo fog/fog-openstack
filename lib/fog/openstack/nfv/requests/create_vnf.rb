@@ -23,7 +23,7 @@ module Fog
       end
 
       class Mock
-        def create_vnf(_)
+        def create_vnf(_options)
           response = Excon::Response.new
           response.status = 201
 

@@ -13,7 +13,7 @@ module Fog
             end
           end
 
-          def endpoint_url(endpoint, _)
+          def endpoint_url(endpoint, _ignored_interface)
             endpoint['url']
           end
         end

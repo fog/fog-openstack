@@ -23,7 +23,7 @@ module Fog
       end
 
       class Mock
-        def create_vnfd(_)
+        def create_vnfd(_options)
           response = Excon::Response.new
           response.status = 201
           response.body = { "vnfd" => data[:vnfds].first }

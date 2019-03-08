@@ -23,7 +23,7 @@ module Fog
       end
 
       class Mock
-        def update_vnf(_, _)
+        def update_vnf(_id, _options)
           response = Excon::Response.new
           response.status = 200
           response.body = { "vnf" => data[:vnfs].first }

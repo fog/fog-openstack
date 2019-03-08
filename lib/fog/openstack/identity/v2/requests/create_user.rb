@@ -3,12 +3,12 @@ module Fog
     class Identity
       class V2
         class Real
-          def create_user(name, password, email, tenantId = nil, enabled = true)
+          def create_user(name, password, email, tenant_id = nil, enabled = true)
             data = {
               'user' => {
                 'name' => name,
                 'password' => password,
-                'tenantId' => tenantId,
+                'tenantId' => tenant_id,
                 'email' => email,
                 'enabled' => enabled
               }
@@ -24,14 +24,14 @@ module Fog
         end
 
         class Mock
-          def create_user(name, _password, email, tenantId = nil, enabled = true)
+          def create_user(name, _password, email, tenant_id = nil, enabled = true)
             response = Excon::Response.new
             response.status = 200
             data = {
               'id' => Fog::Mock.random_hex(32),
               'name' => name,
               'email' => email,
-              'tenantId' => tenantId,
+              'tenantId' => tenant_id,
               'enabled' => enabled
             }
             self.data[:users][data['id']] = data

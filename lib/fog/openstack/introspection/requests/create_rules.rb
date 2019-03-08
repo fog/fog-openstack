@@ -25,7 +25,7 @@ module Fog
       end
 
       class Mock
-        def create_rules(_)
+        def create_rules(_attributes)
           response = Excon::Response.new
           response.status = 200
           response.body = { "rules" => data[:rules].first }

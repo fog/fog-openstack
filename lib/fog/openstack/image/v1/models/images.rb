@@ -81,18 +81,18 @@ module Fog
 
           private
 
-          def convert_to_type(v)
-            case v
+          def convert_to_type(value)
+            case value
             when /^\d+$/
-              v.to_i
+              value.to_i
             when 'True'
               true
             when 'False'
               false
             when /^\d\d\d\d\-\d\d\-\d\dT/
-              ::Time.parse(v)
+              ::Time.parse(value)
             else
-              v
+              value
             end
           end
 
