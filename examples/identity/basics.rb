@@ -18,14 +18,14 @@ keystone = Fog::OpenStack::Identity.new openstack_auth_url: auth_url,
 #
 # Listing keystone tenants
 #
-keystone.tenants.each do |tenant|
+keystone.tenants.each do |l_tenant|
   # <Fog::OpenStack::Identity::Tenant
   #   id="46b4ab...",
   #   description=nil,
   #   enabled=1,
   #   name="admin@example.net"
   # >
-  pp tenant
+  pp l_tenant
 end
 
 #
