@@ -5,7 +5,7 @@ http_interactions:
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"admin"}}},"scope":{"domain":{"name":"Default"}}}}'
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"name":"admin","domain":{"name":"Default"},"password":"password"}}},"scope":{"domain":{"name":"Default"}}}}'
     headers:
       User-Agent:
       - fog-core/1.38.0
@@ -44,11 +44,11 @@ http_interactions:
         {"region_id": "RegionOne", "url": "http://mo-edbdf14f1.mo.sap.corp:8777/",
         "region": "RegionOne", "interface": "internal", "id": "e62f1c8709554031ace717700c431635"}],
         "type": "metering", "id": "261a2c1f467c4b148f38822ae9f179a3", "name": "ceilometer"},
-        {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:35357/v3",
+        {"endpoints": [{"region_id": "RegionOne", "url": "http://devstack.openstack.stack:35357",
         "region": "RegionOne", "interface": "admin", "id": "634d57ce5d534c808afb24127b7ac355"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:5000/v3", "region":
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:5000", "region":
         "RegionOne", "interface": "public", "id": "8a7a2620740c4c2fb6fabf15746c101f"},
-        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:5000/v3", "region":
+        {"region_id": "RegionOne", "url": "http://devstack.openstack.stack:5000", "region":
         "RegionOne", "interface": "internal", "id": "b53b60875b214e7f925f96d3a2a57464"}],
         "type": "identity", "id": "311850187e5a47108ac9b43ec5346658", "name": "keystone"},
         {"endpoints": [], "type": "compute", "id": "3fd114ff2cff43be8bd3ecc5bc117ec8",
@@ -87,6 +87,6 @@ http_interactions:
         "swift"}], "extras": {}, "user": {"domain": {"id": "default", "name": "Default"},
         "id": "205e0e39a2534743b517ed0aa2fbcda7", "name": "admin"}, "audit_ids": ["lLjqZsXsSj-Qs4FlZPGp7A"],
         "issued_at": "2016-05-03T13:51:40.395192Z"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 13:51:40 GMT
 recorded_with: VCR 3.0.1

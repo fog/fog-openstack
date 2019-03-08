@@ -2,7 +2,7 @@ require "test_helper"
 
 describe "Fog::Identity[:openstack] | ec2_credentials" do
   before do
-    identity = Fog::Identity[:openstack]
+    identity = Fog::OpenStack::Identity.new(:openstack_identity_api_version => 'v2.0')
     tenant_id = identity.list_tenants.body['tenants'].first['id']
 
     @user = identity.users.find { |user| user.name == 'foobar' }
@@ -44,17 +44,19 @@ describe "Fog::Identity[:openstack] | ec2_credentials" do
 
   describe "fails" do
     it "#find_by_access_key" do
-      skip if Fog.mocking?
-      proc do
-        @user.ec2_credentials.find_by_access_key('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          @user.ec2_credentials.find_by_access_key('fake')
+        end.must_raise(Fog::OpenStack::Identity::NotFound)
+      end
     end
 
     it "#destroy" do
-      skip if Fog.mocking?
-      proc do
-        @user.ec2_credentials.destroy('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          @user.ec2_credentials.destroy('fake')
+        end.must_raise(Fog::OpenStack::Identity::NotFound)
+      end
     end
   end
 end

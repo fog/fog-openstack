@@ -12,7 +12,7 @@ params = {
 container_infra = Fog::ContainerInfra::OpenStack.new(params)
 
 # Get the Fedora Atomic image
-image = Fog::Image::OpenStack.new(params)
+image = Fog::OpenStack::Image.new(params)
 
 unless image.images.map(&:name).include?("fedora-atomic-latest")
   puts "Couldn't find Fedora Atomic. Uploading to Glance..."

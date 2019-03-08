@@ -33,13 +33,17 @@ class OpenStackVCR
 
   # This method should be called in a "before :all" call to set everything up.
   # A properly configured instance of the service class (e.g.
-  # Fog::Volume::OpenStack) is then made available in @service.
+  # Fog::OpenStack::Volume) is then made available in @service.
   def initialize(options)
     # read arguments
     # must_be_kind_of String
     @vcr_directory = options[:vcr_directory]
     # must_be_kind_of Class
     @service_class = options[:service_class]
+
+    # v3 by default (nil)
+    @identity_version = options[:identity] == 'v2' ? 'v2' : 'v3'
+
     # will be used as condition
     @with_project_scope = options[:project_scoped]
     # will be used as condition
@@ -51,20 +55,7 @@ class OpenStackVCR
       Fog.interval = 0
       # use an auth URL that matches our VCR recordings (IdentityV2 for most
       # services, but IdentityV3 test obviously needs IdentityV3 auth URL)
-      @os_auth_url = if [Fog::Identity::OpenStack::V3,
-                         Fog::Volume::OpenStack,
-                         Fog::Volume::OpenStack::V1,
-                         Fog::Volume::OpenStack::V2,
-                         Fog::Image::OpenStack,
-                         Fog::Image::OpenStack::V1,
-                         Fog::Network::OpenStack,
-                         Fog::DNS::OpenStack,
-                         Fog::SharedFileSystem::OpenStack,
-                         Fog::Monitoring::OpenStack].include? @service_class
-                       'http://devstack.openstack.stack:5000/v3'
-                     else
-                       'http://devstack.openstack.stack:5000/v2.0'
-                     end
+      @os_auth_url = 'http://devstack.openstack.stack:5000'
     else
       # when an auth URL is given, we talk to a real OpenStack
       @os_auth_url = ENV['OS_AUTH_URL']
@@ -78,10 +69,25 @@ class OpenStackVCR
       if use_recorded
         config.cassette_library_dir = ENV['SPEC_PATH'] || @vcr_directory
         config.default_cassette_options = { record: :none }
-        config.default_cassette_options.merge! match_requests_on: [:method, :uri, :body]
+        config.default_cassette_options.merge! match_requests_on: %i[method uri body]
       else
         config.cassette_library_dir = "spec/debug"
         config.default_cassette_options = { record: :all }
+      end
+
+      config.before_playback do |interaction|
+        # shift issued_at and expires_at to Time.now and Time.now + 1.day in json cassette body
+        next unless interaction.response.headers["Content-Type"] == ["application/json"]
+
+        interaction.response.body.scan(/"(issued_at|expires_at)": "(.*?)"/m).each do |match|
+          time_to =
+            case match[0]
+            when 'issued_at' then Time.now
+            when 'expires_at' then Time.now + 86400
+            end
+
+          interaction.response.body.gsub!("\"#{match[0]}\": \"#{match[1]}\"", "\"#{match[0]}\": \"#{time_to}\"")
+        end
       end
     end
 
@@ -99,7 +105,7 @@ class OpenStackVCR
       @username      = 'admin'
       # keep in sync with the token obtained in the "common_setup.yml"
       @token         = '5c28403cf669414d8ee179f1e7f205ee'
-      @interface     = 'adminURL'
+      @interface     = 'admin'
       @domain_id     = 'default'
       @domain_name   = 'Default'
       @project_name  = 'admin'
@@ -117,9 +123,11 @@ class OpenStackVCR
         @project_name  = ENV['OS_PROJECT_NAME']      || options[:project_name] || @project_name
       end
 
-      if @service_class == Fog::Identity::OpenStack::V3 || @os_auth_url.end_with?('/v3')
+      # TODO: remove
+      #   if @service_class == Fog::OpenStack::Identity::V3 || @os_auth_url.end_with?('/v3')
+      if @identity_version == 'v3'
         connection_options = {
-          openstack_auth_url: "#{@os_auth_url}/auth/tokens",
+          openstack_auth_url: @os_auth_url,
           openstack_region: @region,
           openstack_domain_name: @domain_name,
           openstack_endpoint_type: @interface,
@@ -129,7 +137,7 @@ class OpenStackVCR
         connection_options[:openstack_service_type] = [ENV['OS_AUTH_SERVICE']] if ENV['OS_AUTH_SERVICE']
       else
         connection_options = {
-          openstack_auth_url: "#{@os_auth_url}/tokens",
+          openstack_auth_url: @os_auth_url,
           openstack_region: @region,
           openstack_tenant: @project_name,
           openstack_cache_ttl: 0

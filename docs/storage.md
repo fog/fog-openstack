@@ -29,7 +29,7 @@ require 'fog/openstack'
 Next, create a connection to Swift:
 
 ```ruby
-service = Fog::Storage::OpenStack.new({
+service = Fog::OpenStack::Storage.new({
   :openstack_username  => USERNAME,      # Your OpenStack Username
   :openstack_api_key   => PASSWORD,      # Your OpenStack Password
   :openstack_auth_url  => 'http://YOUR_OPENSTACK_ENDPOINT:PORT/v2.0/tokens',
@@ -126,7 +126,7 @@ This will return:
 {"X-Account-Bytes-Used"=>"2563554", "Date"=>"Thu, 21 Feb 2013 21:57:02 GMT", "X-Account-Meta-Temp-Url-Key"=>"super_secret_key", "X-Timestamp"=>"1354552916.82056", "Content-Length"=>"0", "Content-Type"=>"application/json; charset=utf-8", "X-Trans-Id"=>"txe934924374a744c8a6c40dd8f29ab94a", "Accept-Ranges"=>"bytes", "X-Account-Container-Count"=>"7", "X-Account-Object-Count"=>"5"}
 ```
 
-To learn more about `Fog::Storage` request methods refer to [rdoc](http://rubydoc.info/gems/fog/Fog/Storage/OpenStack/Real). To learn more about Excon refer to [Excon GitHub repo](https://github.com/geemus/excon).
+To learn more about `Fog::Storage` request methods refer to [rdoc](http://rubydoc.info/gems/fog/fog/openstack/storage/Real). To learn more about Excon refer to [Excon GitHub repo](https://github.com/geemus/excon).
 
 ### Model Layer
 
@@ -184,7 +184,7 @@ To retrieve a list of directories:
 service.directories
 ```
 
-This returns a collection of `Fog::Storage::OpenStack::Directory` models:
+This returns a collection of `Fog::OpenStack::Storage::Directory` models:
 
 ## Get Directory
 
@@ -194,7 +194,7 @@ To retrieve a specific directory:
 service.directories.get "blue"
 ```
 
-This returns a `Fog::Storage::OpenStack::Directory` instance:
+This returns a `Fog::OpenStack::Storage::Directory` instance:
 
 ## Create Directory
 
@@ -257,7 +257,7 @@ To upload a file into a directory:
 file = directory.files.create :key => 'space.jpg', :body => File.open "space.jpg"
 ```
 
-**Note**: For files larger than 5 GB please refer to the [Upload Large Files](#upload_large_files) section.
+**Note**: For files larger than 5 GB please refer to the [Upload Large Files](#upload-large-files) section.
 
 ### Additional Parameters
 

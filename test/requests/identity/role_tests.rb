@@ -2,7 +2,7 @@ require "test_helper"
 
 describe "Fog::Identity[:openstack] | role requests" do
   before do
-    @identity = Fog::Identity[:openstack]
+    @identity = Fog::OpenStack::Identity.new(:openstack_identity_api_version => 'v2.0')
 
     @role_format = {
       'id'   => String,

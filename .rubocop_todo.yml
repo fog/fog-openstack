@@ -344,15 +344,10 @@ Style/MethodDefParentheses:
   Exclude:
     - 'lib/fog/openstack.rb'
 
-# Offense count: 7
-Style/MethodMissing:
+# Offense count: 2
+Style/MissingRespondToMissing:
   Exclude:
-    - 'lib/fog/baremetal/openstack/models/chassis_collection.rb'
-    - 'lib/fog/baremetal/openstack/models/nodes.rb'
-    - 'lib/fog/baremetal/openstack/models/ports.rb'
-    - 'lib/fog/image/openstack/v1/models/images.rb'
     - 'lib/fog/image/openstack/v2/models/image.rb'
-    - 'lib/fog/image/openstack/v2/models/images.rb'
     - 'lib/fog/planning/openstack/models/plans.rb'
 
 # Offense count: 2

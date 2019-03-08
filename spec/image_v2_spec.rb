@@ -1,13 +1,13 @@
 require 'spec_helper'
 require_relative './shared_context'
 
-describe Fog::Image::OpenStack do
+describe Fog::OpenStack::Image do
   spec_data_folder = 'spec/fixtures/openstack/image_v2'
 
   before :all do
     openstack_vcr = OpenStackVCR.new(
       vcr_directory: spec_data_folder,
-      service_class: Fog::Image::OpenStack # Fog to choose latest available version
+      service_class: Fog::OpenStack::Image # Fog to choose latest available version
     )
     @service = openstack_vcr.service
   end
@@ -15,7 +15,13 @@ describe Fog::Image::OpenStack do
   def cleanup_image(image, image_name = nil, image_id = nil)
     # Delete the image
     image.destroy if image
-    image_by_id = @service.images.find_by_id(image_id) rescue false if image_id
+    if image_id
+      begin
+        image_by_id = @service.images.find_by_id(image_id)
+      rescue
+        false
+      end
+    end
     image_by_id.destroy if image_by_id
     if image_name
       @service.images.all(name: image_name).each(&:destroy)
@@ -89,7 +95,7 @@ describe Fog::Image::OpenStack do
       identifier = "11111111-2222-3333-aaaa-bbbbbbcccce2"
       begin
         # Create an image with a specified ID
-        foobar_image = Fog::Image::OpenStack::V2::Image.new(
+        foobar_image = Fog::OpenStack::Image::V2::Image.new(
           name: 'original_name',
           id: identifier,
           service: @service,
@@ -124,29 +130,28 @@ describe Fog::Image::OpenStack do
       image_name = 'reloaded_image'
       begin
         created_image = @service.images.create(
-          name: image_name,
-          service: @service,
-          reloadable_property: 'original'
+          name: image_name + '_original',
+          service: @service
         )
         identifier = created_image.id
 
         found_image = @service.images.find_by_id(identifier)
 
         # verify an image provided by `create` can be reloaded
-        found_image.reloadable_property = 'updated'
+        found_image.name = image_name + '_updated'
         found_image.save
 
-        created_image.reloadable_property.must_equal 'original'
+        created_image.name.must_equal image_name + '_original',
         created_image.reload
-        created_image.reloadable_property.must_equal 'updated'
+        created_image.name.must_equal image_name + '_updated'
 
         # verify an image provided by `find_by_id` can be reloaded
-        created_image.reloadable_property = 'updated_again'
+        created_image.name = image_name + '_updated_again'
         created_image.save
 
-        found_image.reloadable_property.must_equal 'updated'
+        found_image.name.must_equal image_name + '_updated'
         found_image.reload
-        found_image.reloadable_property.must_equal 'updated_again'
+        found_image.name.must_equal image_name + '_updated_again'
       ensure
         cleanup_image nil, image_name
       end
@@ -239,13 +244,13 @@ describe Fog::Image::OpenStack do
         foobar_image.add_tag 'tag1'
         @service.images.find_by_id(foobar_id).tags.must_include 'tag1'
 
-        foobar_image.add_tags %w(tag2 tag3 tag4)
-        @service.images.find_by_id(foobar_id).tags.must_equal %w(tag4 tag1 tag2 tag3)
+        foobar_image.add_tags %w[tag2 tag3 tag4]
+        @service.images.find_by_id(foobar_id).tags.must_equal %w[tag4 tag1 tag2 tag3]
 
         foobar_image.remove_tag 'tag2'
-        @service.images.find_by_id(foobar_id).tags.must_equal %w(tag4 tag1 tag3)
+        @service.images.find_by_id(foobar_id).tags.must_equal %w[tag4 tag1 tag3]
 
-        foobar_image.remove_tags %w(tag1 tag3)
+        foobar_image.remove_tags %w[tag1 tag3]
         @service.images.find_by_id(foobar_id).tags.must_include 'tag4'
       ensure
         cleanup_image foobar_image, image_name

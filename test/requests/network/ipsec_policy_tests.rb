@@ -1,6 +1,6 @@
 require "test_helper"
 
-describe "Fog::Network[:openstack] | ipsec_policy requests" do
+describe "Fog::OpenStack::Network | ipsec_policy requests" do
   before do
     @ipsec_policy_format = {
       'id'                   => String,
@@ -76,19 +76,19 @@ describe "Fog::Network[:openstack] | ipsec_policy requests" do
     it "#get_ipsec_policy" do
       proc do
         network.get_ipsec_policy(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_ipsec_policy" do
       proc do
         network.update_ipsec_policy(0, {})
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_ipsec_policy" do
       proc do
         network.delete_ipsec_policy(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

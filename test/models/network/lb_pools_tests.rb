@@ -1,6 +1,7 @@
 require "test_helper"
+require "helpers/network_helper"
 
-describe "Fog::Network[:openstack] | lb_pools" do
+describe "Fog::OpenStack::Network | lb_pools" do
   before do
     @lb_pool = network.lb_pools.create(
       subnet_id: 'subnet_id',

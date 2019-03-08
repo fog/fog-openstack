@@ -1,6 +1,7 @@
 require "test_helper"
+require "helpers/network_helper"
 
-describe "Fog::Network[:openstack] | networks" do
+describe "Fog::OpenStack::Network | networks" do
   before do
     @network = network.networks.create(
       name: 'net_name',

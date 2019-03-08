@@ -2,7 +2,7 @@ require "test_helper"
 
 describe "Fog::Identity[:openstack] | users" do
   before do
-    @identity = Fog::Identity[:openstack]
+    @identity = Fog::OpenStack::Identity.new(:openstack_identity_api_version => 'v2.0')
     tenant_id = @identity.list_tenants.body['tenants'].first['id']
     @instance = @identity.users.create(
       name: 'foobar',
@@ -31,24 +31,27 @@ describe "Fog::Identity[:openstack] | users" do
 
   describe "fails" do
     it "#find_by_id" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Identity[:openstack].users.find_by_id('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Identity[:openstack].users.find_by_id('fake')
+        end.must_raise(Fog::OpenStack::Identity::NotFound)
+      end
     end
 
     it "#find_by_name" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Identity[:openstack].users.find_by_name('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Identity[:openstack].users.find_by_name('fake')
+        end.must_raise(Fog::OpenStack::Identity::NotFound)
+      end
     end
 
     it "#destroy" do
-      skip if Fog.mocking?
-      proc do
-        Fog::Identity[:openstack].users.destroy('fake')
-      end.must_raise(Fog::Identity::OpenStack::NotFound)
+      unless Fog.mocking?
+        proc do
+          Fog::Identity[:openstack].users.destroy('fake')
+        end.must_raise(Fog::OpenStack::Identity::NotFound)
+      end
     end
   end
 end

@@ -2,7 +2,7 @@ require "test_helper"
 
 require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 
-describe "Fog::Compute[:openstack] | image requests" do
+describe "Fog::OpenStack::Compute | image requests" do
   before do
     @image_format = {
       'created'  => Fog::Nullable::String,
@@ -18,12 +18,12 @@ describe "Fog::Compute[:openstack] | image requests" do
       'links'    => Array
     }
 
-    @compute = Fog::Compute[:openstack]
+    @compute = Fog::OpenStack::Compute.new
   end
 
   describe "success" do
     before do
-      @image_id = Fog::Compute[:openstack].images[0].id
+      @image_id = Fog::OpenStack::Compute.new.images[0].id
       unless Fog.mocking?
         @compute.images.get(@image_id).wait_for { ready? }
       end
@@ -54,17 +54,19 @@ describe "Fog::Compute[:openstack] | image requests" do
 
   describe "failure" do
     it "#delete_image(0)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.delete_image(0)
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.delete_image(0)
+        end.must_raise Fog::OpenStack::Compute::NotFound
+      end
     end
 
     it "#get_image_details(0)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.get_image_details(0)
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.get_image_details(0)
+        end.must_raise Fog::OpenStack::Compute::NotFound
+      end
     end
   end
 end

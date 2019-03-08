@@ -2,7 +2,7 @@ require "test_helper"
 
 require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 
-describe "Fog::Compute[:openstack] | flavor requests" do
+describe "Fog::OpenStack::Compute | flavor requests" do
   before do
     @flavor_format = {
       'id'                         => String,
@@ -18,7 +18,7 @@ describe "Fog::Compute[:openstack] | flavor requests" do
       'vcpus'                      => Integer
     }
 
-    @compute = Fog::Compute[:openstack]
+    @compute = Fog::OpenStack::Compute.new
   end
 
   describe "success" do
@@ -89,43 +89,48 @@ describe "Fog::Compute[:openstack] | flavor requests" do
     it "#get_flavor_details(0)" do
       proc do
         @compute.get_flavor_details("0")
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Compute::NotFound
     end
 
     it "add_flavor_access(1234, 1)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.add_flavor_access(1234, 1).body
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.add_flavor_access(1234, 1).body
+        end.must_raise Fog::OpenStack::Compute::NotFound
+      end
     end
 
     it "remove_flavor_access(1234, 1)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.remove_flavor_access(1234, 1).body
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.remove_flavor_access(1234, 1).body
+        end.must_raise Fog::OpenStack::Compute::NotFound
+      end
     end
 
     it "list_tenants_with_flavor_access(1234)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.list_tenants_with_flavor_access(1234)
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.list_tenants_with_flavor_access(1234)
+        end.must_raise Fog::OpenStack::Compute::NotFound
+      end
     end
 
     it "get_flavor_metadata(flavor_ref)" do
-      skip if Fog.mocking?
-      proc do
-        @compute.get_flavor_metadata("1234").body
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          @compute.get_flavor_metadata("1234").body
+        end.must_raise Fog::OpenStack::Compute::NotFound
+      end
     end
 
     it "create_flavor_metadata(flavor_ref)" do
-      skip if Fog.mocking?
-      proc do
-        metadata = { cpu_arch: 'x86_64' }
-        @compute.create_flavor_metadata("1234", metadata).body
-      end.must_raise Fog::Compute::OpenStack::NotFound
+      unless Fog.mocking?
+        proc do
+          metadata = { cpu_arch: 'x86_64' }
+          @compute.create_flavor_metadata("1234", metadata).body
+        end.must_raise Fog::OpenStack::Compute::NotFound
+      end
     end
   end
 end

@@ -25,7 +25,7 @@ _Source: [OpenStack Wiki](https://wiki.openstack.org/wiki/Heat)_
 Get a handle on the Orchestration service:
 
 ```ruby
-service = Fog::Orchestration::OpenStack.new({
+service = Fog::OpenStack::Orchestration.new({
   :openstack_auth_url  => 'http://KEYSTONE_HOST:KEYSTONE_PORT/v2.0/tokens', # OpenStack Keystone endpoint
   :openstack_username  => OPEN_STACK_USER,                                  # Your OpenStack Username
   :openstack_tenant    => OPEN_STACK_TENANT,                                # Your tenant id
@@ -46,9 +46,9 @@ service.stacks
 ```
 This returns a list of stacks with minimum attributes, leaving other attributes empty
 ```ruby
-=> <Fog::Orchestration::OpenStack::Stacks
+=> <Fog::OpenStack::Orchestration::Stacks
     [
-      <Fog::Orchestration::OpenStack::Stack
+      <Fog::OpenStack::Orchestration::Stack
         id="0b8e4060-419b-416b-a927-097d4afbf26d",
         capabilities=nil,
         description="Simple template to deploy a single compute instance",
@@ -93,7 +93,7 @@ stack = service.stacks.get("stack4", "0b8e4060-419b-416b-a927-097d4afbf26d")
 ```
 This returns a stack with all attributes filled
 ```ruby
-=>   <Fog::Orchestration::OpenStack::Stack
+=>   <Fog::OpenStack::Orchestration::Stack
     id="0b8e4060-419b-416b-a927-097d4afbf26d",
     capabilities=[],
     description="Simple template to deploy a single compute instance",
@@ -143,9 +143,9 @@ A stack knows about related `events`:
 
 ```ruby
 stack.events
-=>   <Fog::Orchestration::OpenStack::Events
+=>   <Fog::OpenStack::Orchestration::Events
     [
-      <Fog::Orchestration::OpenStack::Event
+      <Fog::OpenStack::Orchestration::Event
         id="251",
         resource_name="my_instance",
         event_time="2015-01-21T20:08:51Z",
@@ -160,9 +160,9 @@ A stack knows about related `resources`:
 
 ```ruby
 stack.resources
-=>   <Fog::Orchestration::OpenStack::Resources
+=>   <Fog::OpenStack::Orchestration::Resources
     [
-      <Fog::Orchestration::OpenStack::Resource
+      <Fog::OpenStack::Orchestration::Resource
         id=nil,
         resource_name="my_instance",
         description=nil,
@@ -182,7 +182,7 @@ You can get a stack's `template`
 
 ```ruby
 stack.template
-=>   <Fog::Orchestration::OpenStack::Template
+=>   <Fog::OpenStack::Orchestration::Template
     format="HOT",
     description="Simple template to deploy a single compute instance",
     template_version="2013-05-23",
@@ -201,7 +201,7 @@ Reload any object by calling `reload` on it:
 
 ```ruby
 stacks.reload
-=>   <Fog::Orchestration::OpenStack::Stacks
+=>   <Fog::OpenStack::Orchestration::Stacks
     [...]
   >
 ```
@@ -212,9 +212,9 @@ You can list `Events` of a `stack`:
 
 ```ruby
 stack.events
-=>   <Fog::Orchestration::OpenStack::Events
+=>   <Fog::OpenStack::Orchestration::Events
     [
-      <Fog::Orchestration::OpenStack::Event
+      <Fog::OpenStack::Orchestration::Event
         id="15",
         resource_name="my_instance",
         event_time="2014-09-12T20:43:58Z",
@@ -230,7 +230,7 @@ stack.events
 
 ```ruby
 event = service.events.get(stack, resource, event_id)
-=>   <Fog::Orchestration::OpenStack::Event
+=>   <Fog::OpenStack::Orchestration::Event
     id="15",
     resource_name="my_instance",
     event_time="2014-09-12T20:43:58Z",
@@ -246,7 +246,7 @@ An `event` knows about its associated `stack`:
 
 ```ruby
 event.stack
-=>   <Fog::Orchestration::OpenStack::Stack
+=>   <Fog::OpenStack::Orchestration::Stack
     id="0c9ee370-ef64-4a80-a6cc-65d2277caeb9",
     description="Simple template to deploy a single compute instance",
     links=[{"href"=>"http://10.8.96.4:8004/v1/5d139d95546240748508b2a518aa5bef/stacks/progenerated/0c9ee370-ef64-4a80-a6cc-65d2277caeb9", "rel"=>"self"}],
@@ -260,7 +260,7 @@ An  `event` has an associated `resource`:
 
 ```ruby
 resource = event.resource
-=>   <Fog::Orchestration::OpenStack::Resource
+=>   <Fog::OpenStack::Orchestration::Resource
     id=nil,
     resource_name="my_instance",
     description="",
@@ -280,9 +280,9 @@ resource = event.resource
 
 ```ruby
 service.resources.all(stack, {:nested_depth => 1})
-=>   <Fog::Orchestration::OpenStack::Resources
+=>   <Fog::OpenStack::Orchestration::Resources
     [
-      <Fog::Orchestration::OpenStack::Resource
+      <Fog::OpenStack::Orchestration::Resource
         id=nil,
         resource_name="my_instance",
         description=nil,
@@ -302,7 +302,7 @@ A `resource` knows about its associated `stack`:
 
 ```ruby
 resource.stack
-=>   <Fog::Orchestration::OpenStack::Stack
+=>   <Fog::OpenStack::Orchestration::Stack
     id="0c9ee370-ef64-4a80-a6cc-65d2277caeb9",
     description="Simple template to deploy a single compute instance",
     links=[{"href"=>"http://10.8.96.4:8004/v1/5d139d95546240748508b2a518aa5bef/stacks/progenerated/0c9ee370-ef64-4a80-a6cc-65d2277caeb9", "rel"=>"self"}],
@@ -332,7 +332,7 @@ You can validate a template (either HOT or CFN) before using it:
 
 ```ruby
 service.templates.validate(:template => content)
-=>   <Fog::Orchestration::OpenStack::Template
+=>   <Fog::OpenStack::Orchestration::Template
     format=nil,
     description="Simple template to deploy a single compute instance",
     template_version=nil,

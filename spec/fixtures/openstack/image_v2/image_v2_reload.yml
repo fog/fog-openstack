@@ -5,7 +5,7 @@ http_interactions:
     uri: http://devstack.openstack.stack:9292/v2/images
     body:
       encoding: UTF-8
-      string: '{"name":"reloaded_image","reloadable_property":"original"}'
+      string: '{"name":"reloaded_image_original"}'
     headers:
       User-Agent:
       - fog-core/1.42.0
@@ -34,13 +34,13 @@ http_interactions:
       - close
     body:
       encoding: UTF-8
-      string: '{"status": "queued", "name": "reloaded_image", "tags": [], "container_format":
+      string: '{"status": "queued", "name": "reloaded_image_original", "tags": [], "container_format":
         null, "created_at": "2016-08-25T17:09:06Z", "size": null, "disk_format": null,
         "locations": [], "visibility": "private", "updated_at": "2016-08-25T17:09:06Z",
         "self": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778",
         "protected": false, "min_ram": 0, "file": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886/file",
         "checksum": null, "id": "bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "min_disk":
-        0, "virtual_size": null, "reloadable_property": "original", "schema": "/v2/schemas/image"}'
+        0, "virtual_size": null, "schema": "/v2/schemas/image"}'
     http_version:
   recorded_at: Thu, 25 Aug 2016 17:09:06 GMT
 - request:
@@ -75,13 +75,13 @@ http_interactions:
       - close
     body:
       encoding: UTF-8
-      string: '{"status": "queued", "name": "reloaded_image", "tags": [], "container_format":
+      string: '{"status": "queued", "name": "reloaded_image_original", "tags": [], "container_format":
         null, "created_at": "2016-08-25T17:09:06Z", "size": null, "disk_format": null,
         "locations": [], "visibility": "private", "updated_at": "2016-08-25T17:09:06Z",
         "self": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778",
         "protected": false, "min_ram": 0, "file": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886/file",
         "checksum": null, "id": "bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "min_disk":
-        0, "virtual_size": null, "reloadable_property": "original", "schema": "/v2/schemas/image"}'
+        0, "virtual_size": null, "schema": "/v2/schemas/image"}'
     http_version:
   recorded_at: Thu, 25 Aug 2016 17:09:06 GMT
 - request:
@@ -116,13 +116,13 @@ http_interactions:
       - close
     body:
       encoding: UTF-8
-      string: '{"status": "queued", "name": "reloaded_image", "tags": [], "container_format":
+      string: '{"status": "queued", "name": "reloaded_image_original", "tags": [], "container_format":
         null, "created_at": "2016-08-25T17:09:06Z", "size": null, "disk_format": null,
         "locations": [], "visibility": "private", "updated_at": "2016-08-25T17:09:06Z",
         "self": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778",
         "protected": false, "min_ram": 0, "file": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886/file",
         "checksum": null, "id": "bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "min_disk":
-        0, "virtual_size": null, "reloadable_property": "original", "schema": "/v2/schemas/image"}'
+        0, "virtual_size": null, "schema": "/v2/schemas/image"}'
     http_version:
   recorded_at: Thu, 25 Aug 2016 17:09:06 GMT
 - request:
@@ -130,7 +130,7 @@ http_interactions:
     uri: http://devstack.openstack.stack:9292/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886
     body:
       encoding: UTF-8
-      string: '[{"op":"replace","path":"/reloadable_property","value":"updated"}]'
+      string: '[{"op":"replace","path":"/name","value":"reloaded_image_updated"}]'
     headers:
       User-Agent:
       - fog-core/1.42.0
@@ -157,13 +157,13 @@ http_interactions:
       - close
     body:
       encoding: UTF-8
-      string: '{"status": "queued", "name": "reloaded_image", "tags": [], "container_format":
+      string: '{"status": "queued", "name": "reloaded_image_updated", "tags": [], "container_format":
         null, "created_at": "2016-08-25T17:09:06Z", "size": null, "disk_format": null,
         "locations": [], "visibility": "private", "updated_at": "2016-08-25T17:09:07Z",
         "self": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778",
         "protected": false, "min_ram": 0, "file": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886/file",
         "checksum": null, "id": "bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "min_disk":
-        0, "virtual_size": null, "reloadable_property": "updated", "schema": "/v2/schemas/image"}'
+        0, "virtual_size": null, "schema": "/v2/schemas/image"}'
     http_version:
   recorded_at: Thu, 25 Aug 2016 17:09:07 GMT
 - request:
@@ -198,13 +198,13 @@ http_interactions:
       - close
     body:
       encoding: UTF-8
-      string: '{"status": "queued", "name": "reloaded_image", "tags": [], "container_format":
+      string: '{"status": "queued", "name": "reloaded_image_updated", "tags": [], "container_format":
         null, "created_at": "2016-08-25T17:09:06Z", "size": null, "disk_format": null,
         "locations": [], "visibility": "private", "updated_at": "2016-08-25T17:09:07Z",
         "self": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778",
         "protected": false, "min_ram": 0, "file": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886/file",
         "checksum": null, "id": "bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "min_disk":
-        0, "virtual_size": null, "reloadable_property": "updated", "schema": "/v2/schemas/image"}'
+        0, "virtual_size": null, "schema": "/v2/schemas/image"}'
     http_version:
   recorded_at: Thu, 25 Aug 2016 17:09:07 GMT
 - request:
@@ -239,13 +239,13 @@ http_interactions:
       - close
     body:
       encoding: UTF-8
-      string: '{"status": "queued", "name": "reloaded_image", "tags": [], "container_format":
+      string: '{"status": "queued", "name": "reloaded_image_updated", "tags": [], "container_format":
         null, "created_at": "2016-08-25T17:09:06Z", "size": null, "disk_format": null,
         "locations": [], "visibility": "private", "updated_at": "2016-08-25T17:09:07Z",
         "self": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778",
         "protected": false, "min_ram": 0, "file": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886/file",
         "checksum": null, "id": "bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "min_disk":
-        0, "virtual_size": null, "reloadable_property": "updated", "schema": "/v2/schemas/image"}'
+        0, "virtual_size": null, "schema": "/v2/schemas/image"}'
     http_version:
   recorded_at: Thu, 25 Aug 2016 17:09:07 GMT
 - request:
@@ -253,7 +253,7 @@ http_interactions:
     uri: http://devstack.openstack.stack:9292/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886
     body:
       encoding: UTF-8
-      string: '[{"op":"replace","path":"/reloadable_property","value":"updated_again"}]'
+      string: '[{"op":"replace","path":"/name","value":"reloaded_image_updated_again"}]'
     headers:
       User-Agent:
       - fog-core/1.42.0
@@ -280,13 +280,13 @@ http_interactions:
       - close
     body:
       encoding: UTF-8
-      string: '{"status": "queued", "name": "reloaded_image", "tags": [], "container_format":
+      string: '{"status": "queued", "name": "reloaded_image_updated_again", "tags": [], "container_format":
         null, "created_at": "2016-08-25T17:09:06Z", "size": null, "disk_format": null,
         "locations": [], "visibility": "private", "updated_at": "2016-08-25T17:09:08Z",
         "self": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778",
         "protected": false, "min_ram": 0, "file": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886/file",
         "checksum": null, "id": "bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "min_disk":
-        0, "virtual_size": null, "reloadable_property": "updated_again", "schema":
+        0, "virtual_size": null, "schema":
         "/v2/schemas/image"}'
     http_version:
   recorded_at: Thu, 25 Aug 2016 17:09:08 GMT
@@ -322,13 +322,13 @@ http_interactions:
       - close
     body:
       encoding: UTF-8
-      string: '{"status": "queued", "name": "reloaded_image", "tags": [], "container_format":
+      string: '{"status": "queued", "name": "reloaded_image_updated_again", "tags": [], "container_format":
         null, "created_at": "2016-08-25T17:09:06Z", "size": null, "disk_format": null,
         "locations": [], "visibility": "private", "updated_at": "2016-08-25T17:09:08Z",
         "self": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "owner": "7b7688e5eecd4d6aa5b5b2cb3e93a778",
         "protected": false, "min_ram": 0, "file": "/v2/images/bc3cfc5a-0c88-47b6-82c2-c6957c30d886/file",
         "checksum": null, "id": "bc3cfc5a-0c88-47b6-82c2-c6957c30d886", "min_disk":
-        0, "virtual_size": null, "reloadable_property": "updated_again", "schema":
+        0, "virtual_size": null, "schema":
         "/v2/schemas/image"}'
     http_version:
   recorded_at: Thu, 25 Aug 2016 17:09:08 GMT

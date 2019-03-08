@@ -2,7 +2,7 @@ require "test_helper"
 require "yaml"
 require "open-uri"
 
-describe "Fog::Orchestration[:openstack] | stack requests" do
+describe "Fog::OpenStack::Orchestration | stack requests" do
   @create_format_files = {
     'id'    => String,
     'links' => Array,
@@ -15,8 +15,8 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     @data = YAML.load_file("stack_files_util_tests.yaml")
     @template_yaml = YAML.load_file("template.yaml")
     @local_yaml = YAML.load_file("local.yaml")
-    @orchestration = Fog::Orchestration[:openstack]
-    @file_resolver = Fog::Orchestration::Util::RecursiveHotFileLoader.new({})
+    @orchestration = Fog::OpenStack::Orchestration.new
+    @file_resolver = Fog::OpenStack::OrchestrationUtil::RecursiveHotFileLoader.new({})
   end
   after do
     Dir.chdir(@oldcwd)
@@ -36,15 +36,17 @@ describe "Fog::Orchestration[:openstack] | stack requests" do
     end
 
     it "#read_uri_remote" do
-      skip if Fog.mocking?
-      content = @file_resolver.send(:read_uri, "https://www.google.com/robots.txt")
-      assert_includes(content, "Disallow:")
+      unless Fog.mocking?
+        content = @file_resolver.send(:read_uri, "https://www.google.com/robots.txt")
+        assert_includes(content, "Disallow:")
+      end
     end
 
     it "#read_uri_404" do
-      skip if Fog.mocking?
-      assert_raises OpenURI::HTTPError do
-        @file_resolver.send(:read_uri, "https://www.google.com/NOOP")
+      unless Fog.mocking?
+        assert_raises OpenURI::HTTPError do
+          @file_resolver.send(:read_uri, "https://www.google.com/NOOP")
+        end
       end
     end
 

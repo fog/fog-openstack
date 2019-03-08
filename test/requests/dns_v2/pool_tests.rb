@@ -1,7 +1,7 @@
 require "test_helper"
 require "helpers/dns_v2_helper"
 
-describe "Fog::DNS::OpenStack::V2 | pool requests" do
+describe "Fog::OpenStack::DNS::V2 | pool requests" do
   before do
     @dns, = set_dns_data
 

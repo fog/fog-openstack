@@ -43,7 +43,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"volumes": []}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:02 GMT
 - request:
     method: post
@@ -97,7 +97,7 @@ http_interactions:
         "consistencygroup_id": null, "source_volid": null, "snapshot_id": null, "multiattach":
         false, "metadata": {}, "id": "ba81402e-55ff-42cd-ba12-3bce34c1dbcd", "size":
         1}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:02 GMT
 - request:
     method: get
@@ -154,7 +154,7 @@ http_interactions:
         null, "os-vol-mig-status-attr:name_id": null, "name": "fog-testvolume-1",
         "bootable": "false", "created_at": "2016-05-03T14:22:02.000000", "volume_type":
         "lvmdriver-1"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:03 GMT
 - request:
     method: get
@@ -211,7 +211,7 @@ http_interactions:
         null, "os-vol-mig-status-attr:name_id": null, "name": "fog-testvolume-1",
         "bootable": "false", "created_at": "2016-05-03T14:22:02.000000", "volume_type":
         "lvmdriver-1"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:04 GMT
 - request:
     method: get
@@ -256,7 +256,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"transfers": []}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:04 GMT
 - request:
     method: post
@@ -305,14 +305,14 @@ http_interactions:
         "rel": "bookmark"}], "created_at": "2016-05-03T14:22:04.917297", "volume_id":
         "ba81402e-55ff-42cd-ba12-3bce34c1dbcd", "id": "6d55169a-e4dc-45d8-99c9-6a640105f7af",
         "name": "fog-testtransfer-1"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:05 GMT
 - request:
     method: post
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"demo"}}},"scope":{"project":{"name":"demo","domain":{"name":"Default"}}}}}'
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"name":"demo","domain":{"name":"Default"},"password":"password"}}},"scope":{"project":{"name":"demo","domain":{"name":"Default"}}}}}'
     headers:
       User-Agent:
       - fog-core/1.38.0
@@ -423,7 +423,7 @@ http_interactions:
         "extras": {}, "user": {"domain": {"id": "default", "name": "Default"}, "id":
         "d66fbe28f45a405a87fd32bb30f7c42e", "name": "demo"}, "audit_ids": ["ncT95PyFSCSW3DTap6lfBQ"],
         "issued_at": "2016-05-03T14:22:05.363375Z"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:05 GMT
 - request:
     method: delete
@@ -466,7 +466,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:05 GMT
 - request:
     method: post
@@ -512,7 +512,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"itemNotFound": {"message": "TransferNotFound: Transfer 6d55169a-e4dc-45d8-99c9-6a640105f7af
         could not be found.", "code": 404}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:06 GMT
 - request:
     method: get
@@ -569,7 +569,7 @@ http_interactions:
         null, "os-vol-mig-status-attr:name_id": null, "name": "fog-testvolume-1",
         "bootable": "false", "created_at": "2016-05-03T14:22:02.000000", "volume_type":
         "lvmdriver-1"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:06 GMT
 - request:
     method: get
@@ -626,7 +626,7 @@ http_interactions:
         null, "os-vol-mig-status-attr:name_id": null, "name": "fog-testvolume-1",
         "bootable": "false", "created_at": "2016-05-03T14:22:02.000000", "volume_type":
         "lvmdriver-1"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:07 GMT
 - request:
     method: delete
@@ -669,7 +669,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:07 GMT
 - request:
     method: get
@@ -726,7 +726,7 @@ http_interactions:
         null, "os-vol-mig-status-attr:name_id": null, "name": "fog-testvolume-1",
         "bootable": "false", "created_at": "2016-05-03T14:22:02.000000", "volume_type":
         "lvmdriver-1"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:07 GMT
 - request:
     method: get
@@ -783,7 +783,7 @@ http_interactions:
         null, "os-vol-mig-status-attr:name_id": null, "name": "fog-testvolume-1",
         "bootable": "false", "created_at": "2016-05-03T14:22:02.000000", "volume_type":
         "lvmdriver-1"}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:09 GMT
 - request:
     method: get
@@ -829,6 +829,6 @@ http_interactions:
       encoding: UTF-8
       string: '{"itemNotFound": {"message": "Volume ba81402e-55ff-42cd-ba12-3bce34c1dbcd
         could not be found.", "code": 404}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 03 May 2016 14:22:11 GMT
 recorded_with: VCR 3.0.1

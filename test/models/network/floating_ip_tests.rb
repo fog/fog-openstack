@@ -1,6 +1,7 @@
 require "test_helper"
+require "helpers/network_helper"
 
-describe "Fog::Network[:openstack] | floating_ip" do
+describe "Fog::OpenStack::Network | floating_ip" do
   describe "success" do
     let (:instance) do
       network.floating_ips.create(

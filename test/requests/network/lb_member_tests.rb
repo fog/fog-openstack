@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe "Fog::Network[:openstack] | lb_member requests" do
+describe "Fog::OpenStack::Network | lb_member requests" do
   describe "success" do
     before do
       @lb_member_format = {
@@ -63,19 +63,19 @@ describe "Fog::Network[:openstack] | lb_member requests" do
     it "#get_lb_member" do
       proc do
         network.get_lb_member(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_lb_member" do
       proc do
         network.update_lb_member(0, {})
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_lb_member" do
       proc do
         network.delete_lb_member(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end
