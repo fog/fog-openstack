@@ -18,7 +18,7 @@ describe Fog::OpenStack::Identity::V3 do
         openstack_api_key: @openstack_vcr.password,
         openstack_userid: @openstack_vcr.user_id,
         openstack_region: @openstack_vcr.region,
-        openstack_auth_url: "#{@os_auth_url}/auth/tokens"
+        openstack_auth_url: @os_auth_url
       )
     end
   end
