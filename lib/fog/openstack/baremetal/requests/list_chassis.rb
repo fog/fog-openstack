@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_chassis(options = {})
           request(
-            :expects => [200, 204],
-            :method  => 'GET',
-            :path    => 'chassis',
-            :query   => options
+            expects: [200, 204],
+            method: 'GET',
+            path: 'chassis',
+            query: options
           )
         end
       end
@@ -20,17 +20,17 @@ module Fog
             "chassis" => [
               {
                 "description" => "Sample chassis",
-                "links"       => [
+                "links" => [
                   {
                     "href" => "http =>//localhost:6385/v1/chassis/eaaca217-e7d8-47b4-bb41-3f99f20eed89",
-                    "rel"  => "self"
+                    "rel" => "self"
                   },
                   {
                     "href" => "http =>//localhost:6385/chassis/eaaca217-e7d8-47b4-bb41-3f99f20eed89",
-                    "rel"  => "bookmark"
+                    "rel" => "bookmark"
                   }
                 ],
-                "uuid"        => Fog::UUID.uuid
+                "uuid" => Fog::UUID.uuid
               }
             ]
           }

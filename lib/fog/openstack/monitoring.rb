@@ -1,4 +1,3 @@
-
 module Fog
   module OpenStack
     class Monitoring < Fog::Service

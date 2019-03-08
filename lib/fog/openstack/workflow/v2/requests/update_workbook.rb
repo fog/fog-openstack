@@ -6,10 +6,10 @@ module Fog
           def update_workbook(definition)
             body = Fog::JSON.encode(definition)
             request(
-              :body    => body,
-              :expects => 200,
-              :method  => "PUT",
-              :path    => "workbooks"
+              body: body,
+              expects: 200,
+              method: "PUT",
+              path: "workbooks"
             )
           end
         end

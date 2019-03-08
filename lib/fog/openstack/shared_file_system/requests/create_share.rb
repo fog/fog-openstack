@@ -5,7 +5,7 @@ module Fog
         def create_share(protocol, size, options = {})
           data = {
             'share_proto' => protocol,
-            'size'        => size
+            'size' => size
           }
 
           vanilla_options = [
@@ -18,10 +18,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode('share' => data),
-            :expects => 200,
-            :method  => 'POST',
-            :path    => 'shares'
+            body: Fog::JSON.encode('share' => data),
+            expects: 200,
+            method: 'POST',
+            path: 'shares'
           )
         end
       end
@@ -40,7 +40,7 @@ module Fog
           share['size']        = size
           share['status']      = 'creating'
 
-          response.body = {'share' => share.merge(options)}
+          response.body = { 'share' => share.merge(options) }
           response
         end
       end

@@ -14,13 +14,13 @@ module Fog
             response.status = 200
             response.body   = {
               'snapshot' => {
-                'id'          => '1',
-                'name'        => 'Snapshot1',
+                'id' => '1',
+                'name' => 'Snapshot1',
                 'description' => 'Volume1 snapshot',
-                'size'        => 1,
-                'volume_id'   => '1',
-                'status'      => 'available',
-                'created_at'  => Time.now
+                'size' => 1,
+                'volume_id' => '1',
+                'status' => 'available',
+                'created_at' => Time.now
               }
             }
             response

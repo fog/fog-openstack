@@ -18,7 +18,7 @@ describe Fog::OpenStack::Image do
     if image_id
       begin
         image_by_id = @service.images.find_by_id(image_id)
-      rescue
+      rescue StandardError
         false
       end
     end
@@ -142,7 +142,7 @@ describe Fog::OpenStack::Image do
         found_image.save
 
         created_image.name.must_equal image_name + '_original',
-        created_image.reload
+                                      created_image.reload
         created_image.name.must_equal image_name + '_updated'
 
         # verify an image provided by `find_by_id` can be reloaded

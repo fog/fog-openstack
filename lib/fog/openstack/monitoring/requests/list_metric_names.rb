@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_metric_names(options = {})
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "metrics/names",
-            :query   => options
+            expects: [200],
+            method: 'GET',
+            path: "metrics/names",
+            query: options
           )
         end
       end

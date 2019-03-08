@@ -9,7 +9,7 @@ module Fog
         # the external gateway.
         # @see http://docs.openstack.org/api/openstack-network/2.0/content/router_update.html
         def update_router(router_id, options = {})
-          data = {'router' => {}}
+          data = { 'router' => {} }
 
           [:name, :admin_state_up, :routes].each do |key|
             data['router'][key] = options[key] if options[key]
@@ -21,7 +21,7 @@ module Fog
             if egi.kind_of?(Fog::OpenStack::Network::Network)
               Fog::Logger.deprecation "Passing a model objects into options[:external_gateway_info] is deprecated. \
               Please pass  external external gateway as follows options[:external_gateway_info] = { :network_id => NETWORK_ID }]"
-              data['router'][:external_gateway_info] = {:network_id => egi.id}
+              data['router'][:external_gateway_info] = { network_id: egi.id }
             elsif egi.kind_of?(Hash)
               data['router'][:external_gateway_info] = egi
             else
@@ -30,10 +30,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "routers/#{router_id}.json"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "routers/#{router_id}.json"
           )
         end
       end
@@ -53,15 +53,15 @@ module Fog
             if egi.kind_of?(Fog::OpenStack::Network::Network)
               Fog::Logger.deprecation "Passing a model objects into options[:external_gateway_info] is deprecated. \
               Please pass  external external gateway as follows options[:external_gateway_info] = { :network_id => NETWORK_ID }]"
-              router[:external_gateway_info] = { :network_id => egi.id }
+              router[:external_gateway_info] = { network_id: egi.id }
             elsif egi.is_a?(Hash)
               router[:external_gateway_info] = egi
             else
-              raise ArgumentError.new('Invalid external_gateway_info attribute')
+              raise ArgumentError, 'Invalid external_gateway_info attribute'
             end
           end
 
-          response.body = {'router' => router}
+          response.body = { 'router' => router }
           response.status = 200
           response
         end

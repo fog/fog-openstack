@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_subnet(subnet_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "subnets/#{subnet_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "subnets/#{subnet_id}"
           )
         end
       end

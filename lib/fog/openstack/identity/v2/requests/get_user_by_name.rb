@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_user_by_name(name)
             request(
-              :expects => [200, 203],
-              :method  => 'GET',
-              :path    => "users?name=#{name}"
+              expects: [200, 203],
+              method: 'GET',
+              path: "users?name=#{name}"
             )
           end
         end

@@ -1,10 +1,8 @@
-
 require 'fog/openstack/models/model'
 
 module Fog
   module OpenStack
     class KeyManager
-
       class ACL < Fog::OpenStack::Model
         identity :acl_ref
 
@@ -16,7 +14,6 @@ module Fog
         attribute :created
         attribute :creator_id
         attribute :updated
-
       end
     end
   end

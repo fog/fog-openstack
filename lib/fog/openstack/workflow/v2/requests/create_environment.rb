@@ -9,10 +9,10 @@ module Fog
             end
             body = Fog::JSON.encode(definition)
             request(
-              :body    => body,
-              :expects => 201,
-              :method  => "POST",
-              :path    => "environments"
+              body: body,
+              expects: 201,
+              method: "POST",
+              path: "environments"
             )
           end
         end

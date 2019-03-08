@@ -4,7 +4,7 @@ module Fog
       class Real
         def update_lbaas_loadbalancer(loadbalancer_id, options = {})
           data = {
-              'loadbalancer' => {}
+            'loadbalancer' => {}
           }
 
           vanilla_options = [:name, :description, :admin_state_up]
@@ -13,10 +13,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "lbaas/loadbalancers/#{loadbalancer_id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "lbaas/loadbalancers/#{loadbalancer_id}"
           )
         end
       end
@@ -28,7 +28,7 @@ module Fog
             loadbalancer['name']                = options[:name]
             loadbalancer['description']         = options[:description]
             loadbalancer['admin_state_up']      = options[:admin_state_up]
-            response.body = {'loadbalancer' => loadbalancer}
+            response.body = { 'loadbalancer' => loadbalancer }
             response.status = 200
             response
           else

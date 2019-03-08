@@ -37,6 +37,7 @@ module Fog
 
         def save
           raise Fog::Errors::Error, 'Resaving an existing object may create a duplicate' if persisted?
+
           requires :size, :share_proto
           merge_attributes(service.create_share(share_proto, size, attributes).body['share'])
           true
@@ -83,11 +84,11 @@ module Fog
         end
 
         def access_rules
-          service.share_access_rules(:share => self)
+          service.share_access_rules(share: self)
         end
 
         def export_locations
-          service.share_export_locations(:share => self)
+          service.share_export_locations(share: self)
         end
       end
     end

@@ -10,10 +10,10 @@ module Fog
           end
 
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => 'servers',
-            :query   => params
+            expects: [200, 203],
+            method: 'GET',
+            path: 'servers',
+            query: params
           )
         end
       end
@@ -24,10 +24,10 @@ module Fog
           data = list_servers_detail.body['servers']
           servers = []
           data.each do |server|
-            servers << server.reject { |key, _value| !['id', 'name', 'links'].include?(key) }
+            servers << server.select { |key, _value| ['id', 'name', 'links'].include?(key) }
           end
           response.status = [200, 203][rand(2)]
-          response.body = {'servers' => servers}
+          response.body = { 'servers' => servers }
           response
         end
       end

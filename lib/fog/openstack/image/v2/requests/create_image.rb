@@ -9,11 +9,11 @@ module Fog
             headers["Location"] = location if location
 
             request(
-              :headers => headers,
-              :expects => [201],
-              :method  => 'POST',
-              :path    => "images",
-              :body    => Fog::JSON.encode(image)
+              headers: headers,
+              expects: [201],
+              method: 'POST',
+              path: "images",
+              body: Fog::JSON.encode(image)
             )
           end
         end
@@ -25,21 +25,21 @@ module Fog
 
             image_id = Fog::Mock.random_hex(32)
             image = data[:images][image_id] = {
-              'tags'             => attributes[:tags] || [],
-              'name'             => attributes[:name],
-              'size'             => nil,
-              'min_disk'         => attributes[:min_disk] || 0,
-              'disk_format'      => attributes[:disk_format] || 'raw',
-              'created_at'       => Time.now.strftime('%FT%T.%6N'),
+              'tags' => attributes[:tags] || [],
+              'name' => attributes[:name],
+              'size' => nil,
+              'min_disk' => attributes[:min_disk] || 0,
+              'disk_format' => attributes[:disk_format] || 'raw',
+              'created_at' => Time.now.strftime('%FT%T.%6N'),
               'container_format' => attributes[:container_format] || 'bare',
-              'deleted_at'       => nil,
-              'updated_at'       => Time.now.strftime('%FT%T.%6N'),
-              'checksum'         => nil,
-              'id'               => image_id,
-              'visibility'       => attributes[:visibility] || 'public',
-              'status'           => 'queued',
-              'min_ram'          => attributes[:min_ram] || 0,
-              'owner'            => attributes[:owner] || Fog::Mock.random_hex(32)
+              'deleted_at' => nil,
+              'updated_at' => Time.now.strftime('%FT%T.%6N'),
+              'checksum' => nil,
+              'id' => image_id,
+              'visibility' => attributes[:visibility] || 'public',
+              'status' => 'queued',
+              'min_ram' => attributes[:min_ram] || 0,
+              'owner' => attributes[:owner] || Fog::Mock.random_hex(32)
             }
             response.body = image
             response

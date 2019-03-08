@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_introspection(node_id)
           request(
-            :expects => 200,
-            :method  => "GET",
-            :path    => "introspection/#{node_id}"
+            expects: 200,
+            method: "GET",
+            path: "introspection/#{node_id}"
           )
         end
       end
@@ -15,7 +15,7 @@ module Fog
         def get_introspection(_node_id)
           response = Excon::Response.new
           response.status = 200
-          response.body = {"error" => "null", "finished" => "true"}
+          response.body = { "error" => "null", "finished" => "true" }
           response
         end
       end

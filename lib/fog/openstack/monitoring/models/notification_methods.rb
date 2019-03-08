@@ -22,9 +22,10 @@ module Fog
         def find_by_id(id)
           cached_notification_method = detect { |notification_method| notification_method.id == id }
           return cached_notification_method if cached_notification_method
+
           notification_method_hash = service.get_notification_method(id).body
           Fog::OpenStack::Monitoring::NotificationMethod.new(
-            notification_method_hash.merge(:service => service)
+            notification_method_hash.merge(service: service)
           )
         end
 

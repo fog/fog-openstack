@@ -21,6 +21,7 @@ module Fog
 
         def save
           raise Fog::Errors::Error, 'Resaving an existing object may create a duplicate' if persisted?
+
           merge_attributes(service.create_share_network(attributes).body['share_network'])
           true
         end

@@ -4,9 +4,9 @@ module Fog
       class Real
         def show_resource_data(stack_name, stack_id, resource_name)
           request(
-            :method  => 'GET',
-            :path    => "stacks/#{stack_name}/#{stack_id}/resources/#{resource_name}",
-            :expects => 200
+            method: 'GET',
+            path: "stacks/#{stack_name}/#{stack_id}/resources/#{resource_name}",
+            expects: 200
           )
         end
       end
@@ -16,8 +16,8 @@ module Fog
           resources = data[:resources].values
 
           Excon::Response.new(
-            :body   => {'resources' => resources},
-            :status => 200
+            body: { 'resources' => resources },
+            status: 200
           )
         end
       end

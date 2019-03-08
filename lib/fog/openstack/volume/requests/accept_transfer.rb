@@ -10,10 +10,10 @@ module Fog
           }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 202],
-            :method  => 'POST',
-            :path    => "os-volume-transfer/#{transfer_id}/accept"
+            body: Fog::JSON.encode(data),
+            expects: [200, 202],
+            method: 'POST',
+            path: "os-volume-transfer/#{transfer_id}/accept"
           )
         end
       end

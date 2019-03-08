@@ -7,14 +7,14 @@ module Fog
             # valid values for name are:
             # state, description, env
             # https://github.com/openstack/python-mistralclient/blob/master/mistralclient/commands/v2/executions.py
-            data = {:id => id}
+            data = { id: id }
             data[name] = Fog::JSON.encode(value)
             body = Fog::JSON.encode(data)
             request(
-              :body    => body,
-              :expects => 200,
-              :method  => "PUT",
-              :path    => "executions"
+              body: body,
+              expects: 200,
+              method: "PUT",
+              path: "executions"
             )
           end
         end

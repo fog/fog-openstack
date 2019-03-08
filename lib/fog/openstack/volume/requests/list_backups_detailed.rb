@@ -4,10 +4,10 @@ module Fog
       module Real
         def list_backups_detailed(options = {})
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => 'backups/detail',
-            :query    => options
+            expects: 200,
+            method: 'GET',
+            path: 'backups/detail',
+            query: options
           )
         end
       end
@@ -24,7 +24,7 @@ module Fog
               "status" => "available",
               "size" => 1,
               "object_count" => 16,
-              "container" => "testcontainer",
+              "container" => "testcontainer"
             },
             {
               "id" => "2",
@@ -33,7 +33,7 @@ module Fog
               "status" => "available",
               "size" => 1,
               "object_count" => 16,
-              "container" => "testcontainer",
+              "container" => "testcontainer"
             }
           ]
           response.body = { 'backups' => data[:backups] }

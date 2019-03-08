@@ -15,9 +15,10 @@ module Fog
           def find_by_id(id)
             cached_credential = find { |credential| credential.id == id }
             return cached_credential if cached_credential
+
             credential_hash = service.get_os_credential(id).body['credential']
             Fog::OpenStack::Identity::V3::Credential.new(
-              credential_hash.merge(:service => service)
+              credential_hash.merge(service: service)
             )
           end
 

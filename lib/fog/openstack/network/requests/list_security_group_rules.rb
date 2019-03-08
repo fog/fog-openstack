@@ -23,10 +23,10 @@ module Fog
         #     * 'tenant_id'<~String> - Tenant id that owns the security group rule
         def list_security_group_rules(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'security-group-rules',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'security-group-rules',
+            query: options
           )
         end
       end
@@ -39,7 +39,7 @@ module Fog
           sec_group_rules = data[:security_group_rules].values unless data[:security_group_rules].nil?
 
           response.status = 200
-          response.body = {'security_group_rules' => sec_group_rules}
+          response.body = { 'security_group_rules' => sec_group_rules }
           response
         end
       end

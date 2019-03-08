@@ -4,26 +4,26 @@ require "helpers/nfv_helper"
 describe "@vnf | NFV vnfs requests" do
   before do
     @vnfs_create = {
-      "status"      => String,
+      "status" => String,
       "description" => String,
-      "tenant_id"   => String,
-      "name"        => String,
+      "tenant_id" => String,
+      "name" => String,
       "instance_id" => String,
-      "mgmt_url"    => Fog::Nullable::String,
-      "attributes"  => Hash,
-      "id"          => String,
-      "vnfd_id"     => String
+      "mgmt_url" => Fog::Nullable::String,
+      "attributes" => Hash,
+      "id" => String,
+      "vnfd_id" => String
     }
 
     @vnfs = {
-      "status"      => String,
+      "status" => String,
       "description" => String,
-      "tenant_id"   => String,
-      "name"        => String,
+      "tenant_id" => String,
+      "name" => String,
       "instance_id" => String,
-      "mgmt_url"    => Fog::Nullable::String,
-      "attributes"  => Hash,
-      "id"          => String
+      "mgmt_url" => Fog::Nullable::String,
+      "attributes" => Hash,
+      "id" => String
     }
 
     @nfv, @vnf_data, @auth = set_nfv_data

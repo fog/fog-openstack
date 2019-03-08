@@ -109,7 +109,7 @@ module Fog
       response = connection.request(
         expects: [200, 204, 300],
         headers: { 'Content-Type' => 'application/json',
-                   'Accept'       => 'application/json',
+                   'Accept' => 'application/json',
                    'X-Auth-Token' => auth_token },
         method: 'GET'
       )
@@ -126,7 +126,7 @@ module Fog
         versions = body['versions'].kind_of?(Array) ? body['versions'] : body['versions']['values']
       end
       # Some version API would return single endpoint rather than endpoints list, try to get it via 'version'.
-      unless body['version'].nil? or versions.length != 0
+      unless body['version'].nil? || !versions.empty?
         versions = [body['version']]
       end
       version = nil

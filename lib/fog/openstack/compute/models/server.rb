@@ -6,11 +6,11 @@ module Fog
     class Compute
       class Server < Fog::Compute::Server
         identity :id
-        attribute :instance_name, :aliases => 'OS-EXT-SRV-ATTR:instance_name'
+        attribute :instance_name, aliases: 'OS-EXT-SRV-ATTR:instance_name'
 
         attribute :addresses
         attribute :flavor
-        attribute :host_id, :aliases => 'hostId'
+        attribute :host_id, aliases: 'hostId'
         attribute :image
         attribute :metadata
         attribute :links
@@ -30,24 +30,24 @@ module Fog
         attribute :progress
         attribute :accessIPv4
         attribute :accessIPv6
-        attribute :availability_zone, :aliases => 'OS-EXT-AZ:availability_zone'
+        attribute :availability_zone, aliases: 'OS-EXT-AZ:availability_zone'
         attribute :user_data_encoded
-        attribute :state,       :aliases => 'status'
-        attribute :created,     :type => :time
-        attribute :updated,     :type => :time
+        attribute :state,       aliases: 'status'
+        attribute :created,     type: :time
+        attribute :updated,     type: :time
 
         attribute :tenant_id
         attribute :user_id
         attribute :key_name
         attribute :fault
         attribute :config_drive
-        attribute :os_dcf_disk_config, :aliases => 'OS-DCF:diskConfig'
-        attribute :os_ext_srv_attr_host, :aliases => 'OS-EXT-SRV-ATTR:host'
-        attribute :os_ext_srv_attr_hypervisor_hostname, :aliases => 'OS-EXT-SRV-ATTR:hypervisor_hostname'
-        attribute :os_ext_srv_attr_instance_name, :aliases => 'OS-EXT-SRV-ATTR:instance_name'
-        attribute :os_ext_sts_power_state, :aliases => 'OS-EXT-STS:power_state'
-        attribute :os_ext_sts_task_state, :aliases => 'OS-EXT-STS:task_state'
-        attribute :os_ext_sts_vm_state, :aliases => 'OS-EXT-STS:vm_state'
+        attribute :os_dcf_disk_config, aliases: 'OS-DCF:diskConfig'
+        attribute :os_ext_srv_attr_host, aliases: 'OS-EXT-SRV-ATTR:host'
+        attribute :os_ext_srv_attr_hypervisor_hostname, aliases: 'OS-EXT-SRV-ATTR:hypervisor_hostname'
+        attribute :os_ext_srv_attr_instance_name, aliases: 'OS-EXT-SRV-ATTR:instance_name'
+        attribute :os_ext_sts_power_state, aliases: 'OS-EXT-STS:power_state'
+        attribute :os_ext_sts_task_state, aliases: 'OS-EXT-STS:task_state'
+        attribute :os_ext_sts_vm_state, aliases: 'OS-EXT-STS:vm_state'
 
         attr_reader :password
         attr_writer :image_ref, :flavor_ref, :nics, :os_scheduler_hints
@@ -74,15 +74,16 @@ module Fog
 
         def metadata
           @metadata ||= begin
-            Fog::OpenStack::Compute::Metadata.new(:service => service,
-                                                  :parent  => self)
+            Fog::OpenStack::Compute::Metadata.new(service: service,
+                                                  parent: self)
           end
         end
 
         def metadata=(new_metadata = {})
           return unless new_metadata
+
           metas = []
-          new_metadata.each { |k, v| metas << {"key" => k, "value" => v} }
+          new_metadata.each { |k, v| metas << { "key" => k, "value" => v } }
           @metadata = metadata.load(metas)
         end
 
@@ -98,7 +99,7 @@ module Fog
 
         def images
           requires :id
-          service.images(:server => self)
+          service.images(server: self)
         end
 
         def all_addresses
@@ -110,7 +111,7 @@ module Fog
 
         def os_interfaces
           requires :id
-          service.os_interfaces(:server => self)
+          service.os_interfaces(server: self)
         end
 
         def reload
@@ -230,10 +231,10 @@ module Fog
           if id
             requires :id
 
-            groups = service.list_security_groups(:server_id => id).body['security_groups']
+            groups = service.list_security_groups(server_id: id).body['security_groups']
 
             groups.map do |group|
-              Fog::OpenStack::Compute::SecurityGroup.new group.merge(:service => service)
+              Fog::OpenStack::Compute::SecurityGroup.new group.merge(service: service)
             end
           else
             service.security_groups.all
@@ -336,7 +337,7 @@ module Fog
         attr_writer :max_count
 
         def networks
-          service.networks(:server => self)
+          service.networks(server: self)
         end
 
         def volumes
@@ -365,23 +366,24 @@ module Fog
 
         def save
           raise Fog::Errors::Error, 'Resaving an existing object may create a duplicate' if persisted?
+
           requires :flavor_ref, :name
           requires_one :image_ref, :block_device_mapping, :block_device_mapping_v2
           options = {
-            'personality'             => personality,
-            'accessIPv4'              => accessIPv4,
-            'accessIPv6'              => accessIPv6,
-            'availability_zone'       => availability_zone,
-            'user_data'               => user_data_encoded,
-            'key_name'                => key_name,
-            'config_drive'            => config_drive,
-            'security_groups'         => @security_groups,
-            'min_count'               => @min_count,
-            'max_count'               => @max_count,
-            'nics'                    => @nics,
-            'os:scheduler_hints'      => @os_scheduler_hints,
-            'block_device_mapping'    => @block_device_mapping,
-            'block_device_mapping_v2' => @block_device_mapping_v2,
+            'personality' => personality,
+            'accessIPv4' => accessIPv4,
+            'accessIPv6' => accessIPv6,
+            'availability_zone' => availability_zone,
+            'user_data' => user_data_encoded,
+            'key_name' => key_name,
+            'config_drive' => config_drive,
+            'security_groups' => @security_groups,
+            'min_count' => @min_count,
+            'max_count' => @max_count,
+            'nics' => @nics,
+            'os:scheduler_hints' => @os_scheduler_hints,
+            'block_device_mapping' => @block_device_mapping,
+            'block_device_mapping_v2' => @block_device_mapping_v2
           }
           options['metadata'] = metadata.to_hash unless @metadata.nil?
           options = options.reject { |_key, value| value.nil? }

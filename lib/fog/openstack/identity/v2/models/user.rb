@@ -10,18 +10,19 @@ module Fog
           attribute :email
           attribute :enabled
           attribute :name
-          attribute :tenant_id, :aliases => 'tenantId'
+          attribute :tenant_id, aliases: 'tenantId'
           attribute :password
 
           attr_accessor :email, :name, :tenant_id, :enabled, :password
 
           def ec2_credentials
             requires :id
-            service.ec2_credentials(:user => self)
+            service.ec2_credentials(user: self)
           end
 
           def save
             raise Fog::Errors::Error, 'Resaving an existing object may create a duplicate' if persisted?
+
             requires :name
             enabled = true if enabled.nil?
             data = service.create_user(name, password, email, tenant_id, enabled)

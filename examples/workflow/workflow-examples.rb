@@ -225,7 +225,7 @@ action_def = {
   version: "2.0",
   myaction: {
     :input => ['execution_id'],
-    :base  => "std.email",
+    :base => "std.email",
     "base-input" => {
       to_addrs: ['admin@mywebsite.org'],
       subject: "subject1",
@@ -266,7 +266,7 @@ action_def = {
   version: "2.0",
   myaction: {
     :input => ['execution_id'],
-    :base  => "std.email",
+    :base => "std.email",
     "base-input" => {
       to_addrs: ['admin@mywebsite.org'],
       subject: "subject updated",

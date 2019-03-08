@@ -6,17 +6,17 @@ describe "Fog::OpenStack::Baremetal | Baremetal port requests" do
 
     @port_format = {
       'address' => String,
-      'uuid'    => String
+      'uuid' => String
     }
 
     @detailed_port_format = {
-      'address'    => String,
-      'uuid'       => String,
+      'address' => String,
+      'uuid' => String,
       'created_at' => String,
       'updated_at' => Fog::Nullable::String,
-      'extra'      => Hash,
-      'node_uuid'  => String,
-      'links'      => Array
+      'extra' => Hash,
+      'node_uuid' => String,
+      'links' => Array
     }
   end
 

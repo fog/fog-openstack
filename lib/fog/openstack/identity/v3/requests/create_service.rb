@@ -5,10 +5,10 @@ module Fog
         class Real
           def create_service(service)
             request(
-              :expects => [201],
-              :method  => 'POST',
-              :path    => "services",
-              :body    => Fog::JSON.encode(:service => service)
+              expects: [201],
+              method: 'POST',
+              path: "services",
+              body: Fog::JSON.encode(service: service)
             )
           end
         end

@@ -1,5 +1,3 @@
-
-
 module Fog
   module OpenStack
     class Storage < Fog::Service
@@ -48,13 +46,13 @@ module Fog
         def require_mime_types
           # Use mime/types/columnar if available, for reduced memory usage
           require 'mime/types/columnar'
+        rescue LoadError
+          begin
+            require 'mime/types'
           rescue LoadError
-            begin
-              require 'mime/types'
-            rescue LoadError
-              Fog::Logger.warning("'mime-types' missing, please install and try again.")
-              exit(1)
-            end
+            Fog::Logger.warning("'mime-types' missing, please install and try again.")
+            exit(1)
+          end
           end
       end
 
@@ -77,7 +75,7 @@ module Fog
           @openstack_management_url = options[:openstack_management_url] || 'http://example:8774/v2/AUTH_1234'
 
           @openstack_management_uri = URI.parse(@openstack_management_url)
-          @path   = @openstack_management_uri.path
+          @path = @openstack_management_uri.path
           @path.sub!(%r{/$}, '')
         end
 

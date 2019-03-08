@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_share_network(id)
           request(
-            :expects => 202,
-            :method  => 'DELETE',
-            :path    => "share-networks/#{id}"
+            expects: 202,
+            method: 'DELETE',
+            path: "share-networks/#{id}"
           )
         end
       end
@@ -19,7 +19,7 @@ module Fog
           share_net       = data[:share_net_updated] || data[:share_networks_detail].first.dup
           share_net['id'] = id
 
-          response.body = {'share_network' => share_net}
+          response.body = { 'share_network' => share_net }
           response
         end
       end

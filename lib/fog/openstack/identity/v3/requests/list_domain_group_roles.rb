@@ -5,16 +5,15 @@ module Fog
         class Real
           def list_domain_group_roles(id, group_id)
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "domains/#{id}/groups/#{group_id}/roles"
+              expects: [200],
+              method: 'GET',
+              path: "domains/#{id}/groups/#{group_id}/roles"
             )
           end
         end
 
         class Mock
-          def list_domain_user_roles(id, group_id)
-          end
+          def list_domain_user_roles(id, group_id); end
         end
       end
     end

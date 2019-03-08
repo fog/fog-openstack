@@ -17,14 +17,14 @@ module Fog
 
           def roles_for(user)
             service.roles(
-              :tenant => self,
-              :user   => user
+              tenant: self,
+              user: user
             )
           end
 
           def users
             requires :id
-            service.users(:tenant_id => id)
+            service.users(tenant_id: id)
           end
 
           def destroy

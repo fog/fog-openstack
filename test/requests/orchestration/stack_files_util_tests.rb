@@ -8,7 +8,7 @@ end
 
 describe "Fog::OpenStack::Orchestration | stack requests" do
   @create_format_files = {
-    'id'    => String,
+    'id' => String,
     'links' => Array,
     'files' => Hash
   }

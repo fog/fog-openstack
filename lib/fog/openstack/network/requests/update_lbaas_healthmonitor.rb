@@ -3,7 +3,7 @@ module Fog
     class Network
       class Real
         def update_lbaas_healthmonitor(healthmonitor_id, options = {})
-          data = {'healthmonitor' => {}}
+          data = { 'healthmonitor' => {} }
 
           vanilla_options = [:name, :delay, :timeout, :max_retries, :http_method, :url_path, :expected_codes, :admin_state_up]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
@@ -11,10 +11,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "lbaas/healthmonitors/#{healthmonitor_id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "lbaas/healthmonitors/#{healthmonitor_id}"
           )
         end
       end
@@ -30,7 +30,7 @@ module Fog
             healthmonitor['url_path']       = options[:url_path]
             healthmonitor['expected_codes'] = options[:expected_codes]
             healthmonitor['admin_state_up'] = options[:admin_state_up]
-            response.body = {'healthmonitor' => healthmonitor}
+            response.body = { 'healthmonitor' => healthmonitor }
             response.status = 200
             response
           else

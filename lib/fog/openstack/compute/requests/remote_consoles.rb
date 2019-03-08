@@ -26,10 +26,10 @@ module Fog
             }
 
             request(
-              :body    => Fog::JSON.encode(body),
-              :expects => 200,
-              :method  => 'POST',
-              :path    => "servers/#{server_id}/remote-consoles"
+              body: Fog::JSON.encode(body),
+              expects: 200,
+              method: 'POST',
+              path: "servers/#{server_id}/remote-consoles"
             )
           end
         end
@@ -41,8 +41,8 @@ module Fog
           response.status = 200
           response.body = {
             "remote_console" => {
-              "url"      => "http://192.168.27.100:6080/vnc_auto.html?token=e629bcbf-6f9e-4276-9ea1-d6eb0e618da5",
-              "type"     => "novnc",
+              "url" => "http://192.168.27.100:6080/vnc_auto.html?token=e629bcbf-6f9e-4276-9ea1-d6eb0e618da5",
+              "type" => "novnc",
               "protocol" => "vnc"
             }
           }

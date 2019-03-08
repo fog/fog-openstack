@@ -4,9 +4,9 @@ module Fog
       module Real
         def get_quota_usage(tenant_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "/os-quota-sets/#{tenant_id}?usage=True"
+            expects: 200,
+            method: 'GET',
+            path: "/os-quota-sets/#{tenant_id}?usage=True"
           )
         end
       end
@@ -19,20 +19,20 @@ module Fog
             'quota_set' => {
               'gigabytes' => {
                 'reserved' => 0,
-                'limit'    => -1,
-                'in_use'   => 160
+                'limit' => -1,
+                'in_use' => 160
               },
               'snapshots' => {
                 'reserved' => 0,
-                'limit'    => 50,
-                'in_use'   => 3
+                'limit' => 50,
+                'in_use' => 3
               },
-              'volumes'   => {
+              'volumes' => {
                 'reserved' => 0,
-                'limit'    => 50,
-                'in_use'   => 5
+                'limit' => 50,
+                'in_use' => 5
               },
-              'id'        => tenant_id
+              'id' => tenant_id
             }
           }
           response

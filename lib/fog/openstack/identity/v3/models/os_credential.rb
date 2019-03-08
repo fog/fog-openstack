@@ -48,7 +48,7 @@ module Fog
           end
 
           def parsed_blob
-            @parsed_blob = ::JSON.parse(blob) unless @parsed_blob
+            @parsed_blob ||= ::JSON.parse(blob)
             @parsed_blob
           end
 

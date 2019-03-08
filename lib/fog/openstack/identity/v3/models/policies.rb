@@ -15,9 +15,10 @@ module Fog
           def find_by_id(id)
             cached_policy = find { |policy| policy.id == id }
             return cached_policy if cached_policy
+
             policy_hash = service.get_policy(id).body['policy']
             Fog::OpenStack::Identity::V3::Policy.new(
-              policy_hash.merge(:service => service)
+              policy_hash.merge(service: service)
             )
           end
 

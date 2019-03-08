@@ -4,9 +4,9 @@ module Fog
       class Real
         def list_address_pools
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => "os-floating-ip-pools"
+            expects: [200, 203],
+            method: 'GET',
+            path: "os-floating-ip-pools"
           )
         end
       end
@@ -17,7 +17,7 @@ module Fog
           response.status = 200
           response.body = {
             'floating_ip_pools' => [
-              {'name' => 'nova'}
+              { 'name' => 'nova' }
             ]
           }
           response

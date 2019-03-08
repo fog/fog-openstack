@@ -5,10 +5,10 @@ module Fog
         class Real
           def token_authenticate(auth)
             request(
-              :expects => [201],
-              :method  => 'POST',
-              :path    => "auth/tokens",
-              :body    => Fog::JSON.encode(auth)
+              expects: [201],
+              method: 'POST',
+              path: "auth/tokens",
+              body: Fog::JSON.encode(auth)
             )
           end
         end

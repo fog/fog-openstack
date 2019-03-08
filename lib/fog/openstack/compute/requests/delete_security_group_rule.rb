@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_security_group_rule(security_group_rule_id)
           request(
-            :expects => 202,
-            :method  => 'DELETE',
-            :path    => "os-security-group-rules/#{security_group_rule_id}"
+            expects: 202,
+            method: 'DELETE',
+            path: "os-security-group-rules/#{security_group_rule_id}"
           )
         end
       end
@@ -18,9 +18,9 @@ module Fog
           response = Excon::Response.new
           response.status = 202
           response.headers = {
-            "Content-Type"   => "text/html; charset=UTF-8",
+            "Content-Type" => "text/html; charset=UTF-8",
             "Content-Length" => "0",
-            "Date"           => Date.new
+            "Date" => Date.new
           }
           response.body = {}
           response

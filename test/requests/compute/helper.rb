@@ -2,8 +2,8 @@ class OpenStack
   module Compute
     module Formats
       SUMMARY = {
-        'id'    => String,
-        'name'  => String,
+        'id' => String,
+        'name' => String,
         'links' => Array
       }
     end

@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_project(id)
             request(
-              :expects => [204],
-              :method  => 'DELETE',
-              :path    => "projects/#{id}"
+              expects: [204],
+              method: 'DELETE',
+              path: "projects/#{id}"
             )
           end
         end

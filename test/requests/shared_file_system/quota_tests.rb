@@ -7,12 +7,12 @@ describe "Fog::OpenStack::SharedFileSystem | quota requests" do
     @project_id = @manila.respond_to?(:current_tenant) ? @manila.current_tenant['id'] : Fog::Mock.random_numbers(6).to_s
 
     @quota_format = {
-      "gigabytes"          => Integer,
-      "shares"             => Integer,
-      "snapshots"          => Integer,
+      "gigabytes" => Integer,
+      "shares" => Integer,
+      "snapshots" => Integer,
       "snapshot_gigabytes" => Integer,
-      "share_networks"     => Integer,
-      "id"                 => String
+      "share_networks" => Integer,
+      "id" => String
     }
     @quota = @manila.get_quota(@project_id).body['quota_set']
   end
@@ -24,7 +24,7 @@ describe "Fog::OpenStack::SharedFileSystem | quota requests" do
 
     it "#update_quota" do
       new_values = @quota.merge(
-        'shares'    => @quota['shares'] + 1,
+        'shares' => @quota['shares'] + 1,
         'snapshots' => @quota['snapshots'] + 2
       )
 

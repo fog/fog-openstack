@@ -12,10 +12,10 @@ module Fog
           headers['X-Container-Read'] = '.r:*' if options[:public]
           headers['X-Remove-Container-Read'] = 'x' if options[:public] == false
           request(
-            :expects => [201, 202],
-            :method  => 'PUT',
-            :path    => Fog::OpenStack.escape(name),
-            :headers => headers
+            expects: [201, 202],
+            method: 'PUT',
+            path: Fog::OpenStack.escape(name),
+            headers: headers
           )
         end
       end

@@ -8,11 +8,11 @@ module Fog
 
         attribute :name
         attribute :description
-        attribute :security_group_rules, :aliases => "rules"
+        attribute :security_group_rules, aliases: "rules"
         attribute :tenant_id
 
         def security_group_rules
-          Fog::OpenStack::Compute::SecurityGroupRules.new(:service => service).load(attributes[:security_group_rules])
+          Fog::OpenStack::Compute::SecurityGroupRules.new(service: service).load(attributes[:security_group_rules])
         end
 
         def rules

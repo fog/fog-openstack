@@ -6,7 +6,7 @@ module Fog
           data = {
             'server' => {
               'flavorRef' => flavor_ref,
-              'name'      => name
+              'name' => name
             }
           }
           data['server']['imageRef'] = image_ref if image_ref
@@ -28,7 +28,7 @@ module Fog
                        else
                          sg
                        end
-                {:name => name}
+                { name: name }
               end
           end
 
@@ -37,7 +37,7 @@ module Fog
             options['personality'].each do |file|
               data['server']['personality'] << {
                 'contents' => Base64.encode64(file['contents'] || file[:contents]),
-                'path'     => file['path'] || file[:path]
+                'path' => file['path'] || file[:path]
               }
             end
           end
@@ -70,9 +70,9 @@ module Fog
             data['server']['block_device_mapping'] = [block_device_mapping].flatten.collect do |mapping|
               {
                 'delete_on_termination' => mapping[:delete_on_termination],
-                'device_name'           => mapping[:device_name],
-                'volume_id'             => mapping[:volume_id],
-                'volume_size'           => mapping[:volume_size],
+                'device_name' => mapping[:device_name],
+                'volume_id' => mapping[:volume_id],
+                'volume_size' => mapping[:volume_size]
               }
             end
           end
@@ -80,10 +80,10 @@ module Fog
           path = options['block_device_mapping'] ? 'os-volumes_boot' : 'servers'
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 202],
-            :method  => 'POST',
-            :path    => path
+            body: Fog::JSON.encode(data),
+            expects: [200, 202],
+            method: 'POST',
+            path: path
           )
         end
       end
@@ -94,7 +94,7 @@ module Fog
           response.status = 202
 
           server_id = Fog::Mock.random_numbers(6).to_s
-          identity = Fog::OpenStack::Identity.new(:openstack_auth_url => credentials[:openstack_auth_url], :openstack_identity_api_version => 'v2.0')
+          identity = Fog::OpenStack::Identity.new(openstack_auth_url: credentials[:openstack_auth_url], openstack_identity_api_version: 'v2.0')
           user = identity.users.find do |u|
             u.name == @openstack_username
           end
@@ -109,22 +109,22 @@ module Fog
                     end
 
           mock_data = {
-            'addresses'    => {"Private" => [{"addr" => Fog::Mock.random_ip}]},
-            'flavor'       => {"id" => flavor_ref, "links" => [{"href" => "http://nova1:8774/admin/flavors/1", "rel" => "bookmark"}]},
-            'id'           => server_id,
-            'image'        => {"id" => image_ref, "links" => [{"href" => "http://nova1:8774/admin/images/#{image_ref}", "rel" => "bookmark"}]},
-            'links'        => [{"href" => "http://nova1:8774/v1.1/admin/servers/5", "rel" => "self"}, {"href" => "http://nova1:8774/admin/servers/5", "rel" => "bookmark"}],
-            'hostId'       => "123456789ABCDEF01234567890ABCDEF",
-            'metadata'     => options['metadata'] || {},
-            'name'         => name || "server_#{rand(999)}",
-            'accessIPv4'   => options['accessIPv4'] || "",
-            'accessIPv6'   => options['accessIPv6'] || "",
-            'progress'     => 0,
-            'status'       => 'BUILD',
-            'created'      => '2012-09-27T00:04:18Z',
-            'updated'      => '2012-09-27T00:04:27Z',
-            'user_id'      => user_id,
-            'config_drive' => options['config_drive'] || '',
+            'addresses' => { "Private" => [{ "addr" => Fog::Mock.random_ip }] },
+            'flavor' => { "id" => flavor_ref, "links" => [{ "href" => "http://nova1:8774/admin/flavors/1", "rel" => "bookmark" }] },
+            'id' => server_id,
+            'image' => { "id" => image_ref, "links" => [{ "href" => "http://nova1:8774/admin/images/#{image_ref}", "rel" => "bookmark" }] },
+            'links' => [{ "href" => "http://nova1:8774/v1.1/admin/servers/5", "rel" => "self" }, { "href" => "http://nova1:8774/admin/servers/5", "rel" => "bookmark" }],
+            'hostId' => "123456789ABCDEF01234567890ABCDEF",
+            'metadata' => options['metadata'] || {},
+            'name' => name || "server_#{rand(999)}",
+            'accessIPv4' => options['accessIPv4'] || "",
+            'accessIPv6' => options['accessIPv6'] || "",
+            'progress' => 0,
+            'status' => 'BUILD',
+            'created' => '2012-09-27T00:04:18Z',
+            'updated' => '2012-09-27T00:04:27Z',
+            'user_id' => user_id,
+            'config_drive' => options['config_drive'] || ''
           }
 
           nics = options['nics']
@@ -132,18 +132,18 @@ module Fog
           if nics
             nics.each do |_nic|
               mock_data["addresses"].merge!(
-                "Public" => [{'addr' => Fog::Mock.random_ip}]
+                "Public" => [{ 'addr' => Fog::Mock.random_ip }]
               )
             end
           end
 
           response_data = if options['return_reservation_id'] == 'True'
-                            {'reservation_id' => "r-#{Fog::Mock.random_numbers(6)}"}
+                            { 'reservation_id' => "r-#{Fog::Mock.random_numbers(6)}" }
                           else
                             {
                               'adminPass' => 'password',
-                              'id'        => server_id,
-                              'links'     => mock_data['links'],
+                              'id' => server_id,
+                              'links' => mock_data['links']
                             }
                           end
 
@@ -177,7 +177,7 @@ module Fog
           response.body = if options['return_reservation_id'] == 'True'
                             response_data
                           else
-                            {'server' => response_data}
+                            { 'server' => response_data }
                           end
           response
         end

@@ -5,9 +5,9 @@ module Fog
         class Real
           def add_member_to_image(image_id, tenant_id)
             request(
-              :expects => [200, 204],
-              :method  => 'PUT',
-              :path    => "images/#{image_id}/members/#{tenant_id}"
+              expects: [200, 204],
+              method: 'PUT',
+              path: "images/#{image_id}/members/#{tenant_id}"
             )
           end
         end

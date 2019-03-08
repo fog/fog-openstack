@@ -8,9 +8,9 @@ module Fog
           def create_volume(name, description, size, options = {})
             data = {
               'volume' => {
-                'name'        => name,
+                'name' => name,
                 'description' => description,
-                'size'        => size
+                'size' => size
               }
             }
 
@@ -26,18 +26,18 @@ module Fog
             response.status = 202
             response.body   = {
               'volume' => {
-                'id'                => Fog::Mock.random_numbers(2),
-                'name'              => name,
-                'description'       => description,
-                'metadata'          => options['metadata'] || {},
-                'size'              => size,
-                'status'            => 'creating',
-                'snapshot_id'       => options[:snapshot_id] || nil,
-                'image_id'          => options[:imageRef] || nil,
-                'volume_type'       => nil,
+                'id' => Fog::Mock.random_numbers(2),
+                'name' => name,
+                'description' => description,
+                'metadata' => options['metadata'] || {},
+                'size' => size,
+                'status' => 'creating',
+                'snapshot_id' => options[:snapshot_id] || nil,
+                'image_id' => options[:imageRef] || nil,
+                'volume_type' => nil,
                 'availability_zone' => 'nova',
-                'created_at'        => Time.now,
-                'attachments'       => []
+                'created_at' => Time.now,
+                'attachments' => []
               }
             }
             response

@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_zones_detailed(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'os-availability-zone/detail',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'os-availability-zone/detail',
+            query: options
           )
         end
       end
@@ -15,51 +15,51 @@ module Fog
       class Mock
         def list_zones_detailed(_options = {})
           Excon::Response.new(
-            :body   => {
+            body: {
               "availabilityZoneInfo" => [
                 {
                   "zoneState" => {
                     "available" => true
                   },
-                  "hosts"     => {
+                  "hosts" => {
                     "instack.localdomain" => {
-                      "nova-conductor"   => {
-                        "available"  => true,
-                        "active"     => true,
+                      "nova-conductor" => {
+                        "available" => true,
+                        "active" => true,
                         "updated_at" => "2015-07-22T07:40:08.000000"
                       },
-                      "nova-scheduler"   => {
-                        "available"  => true,
-                        "active"     => true,
+                      "nova-scheduler" => {
+                        "available" => true,
+                        "active" => true,
                         "updated_at" => "2015-07-22T07:40:04.000000"
                       },
                       "nova-consoleauth" => {
-                        "available"  => true,
-                        "active"     => true,
+                        "available" => true,
+                        "active" => true,
                         "updated_at" => "2015-07-22T07:40:09.000000"
                       }
                     }
                   },
-                  "zoneName"  => "internal"
+                  "zoneName" => "internal"
                 },
                 {
                   "zoneState" => {
                     "available" => true
                   },
-                  "hosts"     => {
+                  "hosts" => {
                     "instack.localdomain" => {
                       "nova-compute" => {
-                        "available"  => true,
-                        "active"     => true,
+                        "available" => true,
+                        "active" => true,
                         "updated_at" => "2015-07-22T07:40:04.000000"
                       }
                     }
                   },
-                  "zoneName"  => "nova"
+                  "zoneName" => "nova"
                 }
               ]
             },
-            :status => 200
+            status: 200
           )
         end
       end

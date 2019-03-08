@@ -3,7 +3,7 @@ module Fog
     class Compute
       class Real
         def add_security_group(server_id, group_name)
-          body = {'addSecurityGroup' => {"name" => group_name}}
+          body = { 'addSecurityGroup' => { "name" => group_name } }
           server_action(server_id, body)
         end
       end

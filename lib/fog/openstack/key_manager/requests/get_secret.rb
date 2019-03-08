@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_secret(uuid)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "secrets/#{uuid}",
+            expects: [200],
+            method: 'GET',
+            path: "secrets/#{uuid}"
           )
         end
       end

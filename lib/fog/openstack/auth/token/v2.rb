@@ -13,11 +13,12 @@ module Fog
 
           def credentials
             if @token
-              identity = {'token' => {'id' => @token}}
+              identity = { 'token' => { 'id' => @token } }
             else
               raise CredentialsError, "#{self.class}: User name is required" if @user.name.nil?
               raise CredentialsError, "#{self.class}: User password is required" if @user.password.nil?
-              identity = {'passwordCredentials' => user_credentials}
+
+              identity = { 'passwordCredentials' => user_credentials }
             end
 
             if @tenant.id
@@ -26,11 +27,11 @@ module Fog
               identity['tenantName'] = @tenant.name.to_s
             end
 
-            {'auth' => identity}
+            { 'auth' => identity }
           end
 
           def prefix_path(uri)
-            if uri.path =~ /\/v2(\.0)*(\/)*.*$/
+            if uri.path =~ %r{/v2(\.0)*(/)*.*$}
               ''
             else
               '/v2.0'

@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_image_details(image_id)
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => "images/#{image_id}"
+            expects: [200, 203],
+            method: 'GET',
+            path: "images/#{image_id}"
           )
         end
       end
@@ -17,7 +17,7 @@ module Fog
           image = list_images_detail.body['images'].find { |im| im['id'] == image_id }
           if image
             response.status = [200, 203][rand(2)]
-            response.body = {'image' => image}
+            response.body = { 'image' => image }
             response
           else
             raise Fog::OpenStack::Compute::NotFound

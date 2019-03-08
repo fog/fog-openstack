@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_alarm_definition(id)
           request(
-            :expects => [204],
-            :method  => 'DELETE',
-            :path    => "alarm-definitions/#{id}"
+            expects: [204],
+            method: 'DELETE',
+            path: "alarm-definitions/#{id}"
           )
         end
       end

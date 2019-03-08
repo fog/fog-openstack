@@ -4,14 +4,14 @@ describe "Fog::OpenStack::Network | lb_member requests" do
   describe "success" do
     before do
       @lb_member_format = {
-        'id'             => String,
-        'pool_id'        => String,
-        'address'        => String,
-        'protocol_port'  => Integer,
-        'weight'         => Integer,
-        'status'         => String,
+        'id' => String,
+        'pool_id' => String,
+        'address' => String,
+        'protocol_port' => Integer,
+        'weight' => Integer,
+        'status' => String,
         'admin_state_up' => Fog::Boolean,
-        'tenant_id'      => String
+        'tenant_id' => String
       }
 
       pool_id = "pool_id"

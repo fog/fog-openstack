@@ -5,9 +5,9 @@ module Fog
         class Real
           def list_action_executions
             request(
-              :expects => 200,
-              :method  => "GET",
-              :path    => "action_executions"
+              expects: 200,
+              method: "GET",
+              path: "action_executions"
             )
           end
         end
@@ -16,9 +16,9 @@ module Fog
           def list_action_executions
             response = Excon::Response.new
             response.status = 200
-            response.body = {"action_executions" =>
-                                                    [{"state" => "ERROR", "id" => "1111"},
-                                                     {"state" => "RUNNING", "id" => "2222"}]}
+            response.body = { "action_executions" =>
+                                                    [{ "state" => "ERROR", "id" => "1111" },
+                                                     { "state" => "RUNNING", "id" => "2222" }] }
             response
           end
         end

@@ -5,10 +5,10 @@ module Fog
         class Real
           def upload_image(image_id, body, params = {})
             request_hash = {
-              :headers => {'Content-Type' => 'application/octet-stream'},
-              :expects => 204,
-              :method  => 'PUT',
-              :path    => "images/#{image_id}/file"
+              headers: { 'Content-Type' => 'application/octet-stream' },
+              expects: 204,
+              method: 'PUT',
+              path: "images/#{image_id}/file"
             }
             request_hash[:request_block] = params[:request_block] if params[:request_block]
             request_hash[:body] = body if body

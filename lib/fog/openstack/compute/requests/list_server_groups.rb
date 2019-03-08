@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_server_groups(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'os-server-groups',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'os-server-groups',
+            query: options
           )
         end
       end
@@ -18,8 +18,8 @@ module Fog
             group.merge('id' => id, 'project_id' => 'test-project', 'user_id' => 'test-user')
           end
           Excon::Response.new(
-            :body   => {'server_groups' => groups},
-            :status => 200
+            body: { 'server_groups' => groups },
+            status: 200
           )
         end
       end

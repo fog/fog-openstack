@@ -3,10 +3,10 @@ module Fog
     class Compute
       class Real
         def rebuild_server(server_id, image_ref, name, admin_pass = nil, metadata = nil, personality = nil)
-          body = {'rebuild' => {
+          body = { 'rebuild' => {
             'imageRef' => image_ref,
-            'name'     => name
-          }}
+            'name' => name
+          } }
           body['rebuild']['adminPass'] = admin_pass if admin_pass
           body['rebuild']['metadata'] = metadata if metadata
           if personality
@@ -14,7 +14,7 @@ module Fog
             personality.each do |file|
               body['rebuild']['personality'] << {
                 'contents' => Base64.encode64(file['contents']),
-                'path'     => file['path']
+                'path' => file['path']
               }
             end
           end

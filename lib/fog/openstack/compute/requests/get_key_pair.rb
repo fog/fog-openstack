@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_key_pair(key_name)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "os-keypairs/#{Fog::OpenStack.escape(key_name)}"
+            expects: 200,
+            method: 'GET',
+            path: "os-keypairs/#{Fog::OpenStack.escape(key_name)}"
           )
         end
       end
@@ -17,13 +17,13 @@ module Fog
           response.status = 200
           response.headers = {
             "X-Compute-Request-Id" => "req-c373a42c-2825-4e60-8d34-99416ea850be",
-            "Content-Type"         => "application/json",
-            "Content-Length"       => "1289",
-            "Date"                 => Date.new
+            "Content-Type" => "application/json",
+            "Content-Length" => "1289",
+            "Date" => Date.new
           }
           response.body = {
             "keypair" => {
-              "public_key"  => "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDCdAZLjljntJbLVVkNHjWFSoKen2nZbk39ZfqhZJOMdeFdz"\
+              "public_key" => "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDCdAZLjljntJbLVVkNHjWFSoKen2nZbk39ZfqhZJOMdeFdz"\
                                "02GWBS45rcuboeGg/gozKRwsLu4N6NLPlYtbK/NapJIvgO/djBp+FQG1QZNtLPsx7j4hVJac3yISGms+Xtu4c"\
                                "Ev6j5sFDzAgTQbWez0Z1+9qOq9ngdaoW+YClfQ== vagrant@nova\n",
               "private_key" => "-----BEGIN RSA PRIVATE KEY-----\nMIICXgIBAAKBgQDCdAZLjljn1tJbLVVkNHjWFSoKen2nZbk39Zfq"\
@@ -37,8 +37,8 @@ module Fog
                                "50t6YkCQQC9\nwfcAskqieSuS9A9LcCIrojhXctf0e+T0Ij2N89DlF4sHEuqXf/IZ4IB5gsfTfdE3\nUDnAkK"\
                                "9yogaEbu/r0uKbAkEAy5kl71bIqvKTKsY2mES9ziVxfftl/9UIi5LI+QHb\nmC/c6cTrGVCM71fi2GMxGgBeE"\
                                "ea4+7xwoWTL4CxA00kmTg==\n-----END RSA PRIVATE KEY-----\n",
-              "user_id"     => "admin",
-              "name"        => key_name,
+              "user_id" => "admin",
+              "name" => key_name,
               "fingerprint" => "97:86:f4:15:68:0c:7b:a7:e5:8f:f0:bd:1f:27:65:ad"
             }
           }

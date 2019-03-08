@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_user_role(tenant_id, user_id, role_id)
             request(
-              :expects => 204,
-              :method  => 'DELETE',
-              :path    => "/tenants/#{tenant_id}/users/#{user_id}/roles/OS-KSADM/#{role_id}"
+              expects: 204,
+              method: 'DELETE',
+              path: "/tenants/#{tenant_id}/users/#{user_id}/roles/OS-KSADM/#{role_id}"
             )
           end
         end

@@ -118,16 +118,15 @@ module Fog
 
         class Mock
           include Fog::OpenStack::Core
-          def initialize(options = {})
-          end
+          def initialize(options = {}); end
         end
 
         def self.get_api_version(uri, connection_options = {})
           connection = Fog::Core::Connection.new(uri, false, connection_options)
-          response = connection.request(:expects => [200],
-                                        :headers => {'Content-Type' => 'application/json',
-                                                     'Accept'       => 'application/json'},
-                                        :method  => 'GET')
+          response = connection.request(expects: [200],
+                                        headers: { 'Content-Type' => 'application/json',
+                                                   'Accept' => 'application/json' },
+                                        method: 'GET')
 
           body = Fog::JSON.decode(response.body)
           version = nil
@@ -156,7 +155,7 @@ module Fog
           end
 
           def version_in_path?(url)
-            true if url =~ /\/v3(\/)*.*$/
+            true if url =~ %r{/v3(/)*.*$}
           end
         end
       end

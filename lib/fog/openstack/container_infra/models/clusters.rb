@@ -3,9 +3,8 @@ require 'fog/openstack/container_infra/models/cluster'
 
 module Fog
   module OpenStack
-    class  ContainerInfra
+    class ContainerInfra
       class Clusters < Fog::OpenStack::Collection
-
         model Fog::OpenStack::ContainerInfra::Cluster
 
         def all

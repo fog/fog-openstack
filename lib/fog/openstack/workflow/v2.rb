@@ -4,7 +4,7 @@ module Fog
   module OpenStack
     class Workflow
       class V2 < Fog::Service
-        SUPPORTED_VERSIONS = /v2/
+        SUPPORTED_VERSIONS = /v2/.freeze
 
         requires :openstack_auth_url
         recognizes :openstack_username, :openstack_api_key,
@@ -69,7 +69,7 @@ module Fog
           def self.data
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                :workflows => {}
+                workflows: {}
               }
             end
           end
@@ -80,7 +80,7 @@ module Fog
 
           include Fog::OpenStack::Core
 
-          def initialize(options = {})
+          def initialize(_options = {})
             @auth_token = Fog::Mock.random_base64(64)
             @auth_token_expiration = (Time.now.utc + 86_400).iso8601
           end
@@ -108,11 +108,11 @@ module Fog
           def request(params)
             response = @connection.request(
               params.merge(
-                :headers => {
+                headers: {
                   'Content-Type' => 'application/json',
                   'X-Auth-Token' => @auth_token
                 }.merge!(params[:headers] || {}),
-                :path    => "#{@path}/#{params[:path]}"
+                path: "#{@path}/#{params[:path]}"
               )
             )
           rescue Excon::Errors::Unauthorized    => error

@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_alarm_definitions(options = {})
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "alarm-definitions",
-            :query   => options
+            expects: [200],
+            method: 'GET',
+            path: "alarm-definitions",
+            query: options
           )
         end
       end

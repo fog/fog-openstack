@@ -3,6 +3,7 @@ require "test_helper"
 describe "Fog::OpenStack::Storage | container requests" do
   def cleanup_container
     return if Fog.mocking?
+
     if @storage.head_container(@container_name)
       @storage.delete_container(@container_name)
     end
@@ -19,7 +20,7 @@ describe "Fog::OpenStack::Storage | container requests" do
     @containers_format = [{
       'bytes' => Integer,
       'count' => Integer,
-      'name'  => String
+      'name' => String
     }]
   end
 

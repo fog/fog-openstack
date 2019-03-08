@@ -20,7 +20,7 @@ module Fog
             rule[:share_id] = share_id
           end
 
-          response.body = {'access_list' => rules}
+          response.body = { 'access_list' => rules }
           response
         end
       end

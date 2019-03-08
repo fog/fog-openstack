@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_image_by_id(image_id)
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "images/#{image_id}"
+              expects: [200],
+              method: 'GET',
+              path: "images/#{image_id}"
             )
           end
         end
@@ -18,12 +18,12 @@ module Fog
             response.status = [200][rand(2)]
             response.body = {
               "images" => [{
-                "name"             => "mock-image-name",
-                "size"             => 25165824,
-                "disk_format"      => "ami",
+                "name" => "mock-image-name",
+                "size" => 25165824,
+                "disk_format" => "ami",
                 "container_format" => "ami",
-                "id"               => "0e09fbd6-43c5-448a-83e9-0d3d05f9747e",
-                "checksum"         => "2f81976cae15c16ef0010c51e3a6c163"
+                "id" => "0e09fbd6-43c5-448a-83e9-0d3d05f9747e",
+                "checksum" => "2f81976cae15c16ef0010c51e3a6c163"
               }]
             }
             response

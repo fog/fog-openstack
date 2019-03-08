@@ -4,10 +4,10 @@ module Fog
       class Real
         def update_quota(tenant_id, options = {})
           request(
-            :body    => Fog::JSON.encode('quota_set' => options),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "/os-quota-sets/#{tenant_id}"
+            body: Fog::JSON.encode('quota_set' => options),
+            expects: 200,
+            method: 'PUT',
+            path: "/os-quota-sets/#{tenant_id}"
           )
         end
       end
@@ -18,7 +18,7 @@ module Fog
 
           response = Excon::Response.new
           response.status = 200
-          response.body = {'quota_set' => data[:quota_updated]}
+          response.body = { 'quota_set' => data[:quota_updated] }
           response
         end
       end

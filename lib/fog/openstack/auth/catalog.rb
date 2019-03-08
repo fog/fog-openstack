@@ -35,6 +35,7 @@ module Fog
           end
 
           raise EndpointError, 'No endpoint found' if list.empty?
+
           list[0]
         end
 
@@ -42,6 +43,7 @@ module Fog
 
         def get_by_type(names)
           raise CatalogError, 'Empty content' unless @payload
+
           @payload.select do |e|
             names.include?(e['type'])
           end
@@ -51,11 +53,13 @@ module Fog
           list = []
           entries.each do |type|
             next unless type.key?('endpoints')
+
             type['endpoints'].each do |endpoint|
               list << endpoint_url(endpoint, interface) if endpoint_match?(endpoint, interface, region)
             end
           end
           raise EndpointError, 'Multiple endpoints found' if list.size > 1
+
           list[0]
         end
       end

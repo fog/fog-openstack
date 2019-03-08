@@ -6,10 +6,10 @@ module Fog
           def get_pool(id, options = {})
             headers, _options = Fog::OpenStack::DNS::V2.setup_headers(options)
             request(
-              :expects => 200,
-              :method  => 'GET',
-              :path    => "pools/#{id}",
-              :headers => headers
+              expects: 200,
+              method: 'GET',
+              path: "pools/#{id}",
+              headers: headers
             )
           end
         end

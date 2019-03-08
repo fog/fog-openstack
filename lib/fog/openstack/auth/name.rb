@@ -26,17 +26,18 @@ module Fog
         def identity
           return to_h(:id) unless id.nil?
           return to_h(:name) unless name.nil?
+
           raise Fog::OpenStack::Auth::CredentialsError, "#{self.class}: No available id or name"
         end
 
         def to_h(var)
-          {var => send(var)}
+          { var => send(var) }
         end
       end
 
       class DomainScope < Name
         def identity
-          {:domain => super}
+          { domain: super }
         end
       end
 
@@ -44,7 +45,7 @@ module Fog
         include Fog::OpenStack::Auth::Domain
 
         def identity
-          {:project => super}
+          { project: super }
         end
       end
 
@@ -56,8 +57,9 @@ module Fog
         def identity
           data = super
           raise CredentialsError, "#{self.class}: No password available" if password.nil?
+
           data.merge!(to_h(:password))
-          {:user => data}
+          { user: data }
         end
       end
     end

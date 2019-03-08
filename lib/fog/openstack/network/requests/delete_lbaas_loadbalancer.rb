@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_lbaas_loadbalancer(loadbalancer_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "lbaas/loadbalancers/#{loadbalancer_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "lbaas/loadbalancers/#{loadbalancer_id}"
           )
         end
       end

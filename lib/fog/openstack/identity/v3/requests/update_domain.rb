@@ -5,10 +5,10 @@ module Fog
         class Real
           def update_domain(id, domain)
             request(
-              :expects => [200],
-              :method  => 'PATCH',
-              :path    => "domains/#{id}",
-              :body    => Fog::JSON.encode(:domain => domain)
+              expects: [200],
+              method: 'PATCH',
+              path: "domains/#{id}",
+              body: Fog::JSON.encode(domain: domain)
             )
           end
         end

@@ -3,21 +3,21 @@ require 'test_helper'
 describe "Fog::OpenStack::Network | subnet_pool requests" do
   before do
     @subnet_pool_format = {
-      'id'                => String,
-      'name'              => String,
-      'prefixes'          => Array,
-      'description'       => Fog::Nullable::String,
-      'address_scope_id'  => Fog::Nullable::String,
-      'shared'            => Fog::Boolean,
-      'ip_version'        => Integer,
-      'min_prefixlen'     => Integer,
-      'max_prefixlen'     => Integer,
+      'id' => String,
+      'name' => String,
+      'prefixes' => Array,
+      'description' => Fog::Nullable::String,
+      'address_scope_id' => Fog::Nullable::String,
+      'shared' => Fog::Boolean,
+      'ip_version' => Integer,
+      'min_prefixlen' => Integer,
+      'max_prefixlen' => Integer,
       'default_prefixlen' => Integer,
-      'is_default'        => Fog::Boolean,
-      'default_quota'     => Fog::Nullable::String,
-      'created_at'        => String,
-      'updated_at'        => String,
-      'tenant_id'         => String
+      'is_default' => Fog::Boolean,
+      'default_quota' => Fog::Nullable::String,
+      'created_at' => String,
+      'updated_at' => String,
+      'tenant_id' => String
     }
   end
 

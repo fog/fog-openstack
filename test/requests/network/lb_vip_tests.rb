@@ -4,20 +4,20 @@ describe "Fog::OpenStack::Network | lb_vip requests" do
   describe "success" do
     before do
       @lb_vip_format = {
-        'id'                  => String,
-        'subnet_id'           => String,
-        'pool_id'             => String,
-        'protocol'            => String,
-        'protocol_port'       => Integer,
-        'name'                => String,
-        'description'         => String,
-        'address'             => String,
-        'port_id'             => String,
+        'id' => String,
+        'subnet_id' => String,
+        'pool_id' => String,
+        'protocol' => String,
+        'protocol_port' => Integer,
+        'name' => String,
+        'description' => String,
+        'address' => String,
+        'port_id' => String,
         'session_persistence' => Hash,
-        'connection_limit'    => Integer,
-        'status'              => String,
-        'admin_state_up'      => Fog::Boolean,
-        'tenant_id'           => String
+        'connection_limit' => Integer,
+        'status' => String,
+        'admin_state_up' => Fog::Boolean,
+        'tenant_id' => String
       }
       subnet_id = "subnet_id"
       pool_id = "pool_id"

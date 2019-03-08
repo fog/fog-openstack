@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_tenant(id)
             request(
-              :expects => [200, 204],
-              :method  => 'DELETE',
-              :path    => "tenants/#{id}"
+              expects: [200, 204],
+              method: 'DELETE',
+              path: "tenants/#{id}"
             )
           end
         end
@@ -18,10 +18,10 @@ module Fog
             response.status = [200, 204][rand(2)]
             response.body = {
               'tenant' => {
-                'id'          => '1',
+                'id' => '1',
                 'description' => 'Has access to everything',
-                'enabled'     => true,
-                'name'        => 'admin'
+                'enabled' => true,
+                'name' => 'admin'
               }
             }
             response

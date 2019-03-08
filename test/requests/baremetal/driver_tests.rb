@@ -6,23 +6,23 @@ describe "Fog::OpenStack::Baremetal | Baremetal driver requests" do
 
     @driver_format = {
       'hosts' => Array,
-      'name'  => String
+      'name' => String
     }
 
     @driver_properties_format = {
-      "pxe_deploy_ramdisk"   => String,
+      "pxe_deploy_ramdisk" => String,
       "ipmi_transit_address" => String,
-      "ipmi_terminal_port"   => String,
-      "ipmi_target_channel"  => String,
+      "ipmi_terminal_port" => String,
+      "ipmi_target_channel" => String,
       "ipmi_transit_channel" => String,
-      "ipmi_local_address"   => String,
-      "ipmi_username"        => String,
-      "ipmi_address"         => String,
-      "ipmi_target_address"  => String,
-      "ipmi_password"        => String,
-      "pxe_deploy_kernel"    => String,
-      "ipmi_priv_level"      => String,
-      "ipmi_bridging"        => String
+      "ipmi_local_address" => String,
+      "ipmi_username" => String,
+      "ipmi_address" => String,
+      "ipmi_target_address" => String,
+      "ipmi_password" => String,
+      "pxe_deploy_kernel" => String,
+      "ipmi_priv_level" => String,
+      "ipmi_bridging" => String
     }
 
     @instances = @baremetal.list_drivers.body

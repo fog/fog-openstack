@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_aggregate(uuid)
           request(
-            :expects => [200, 202, 204],
-            :method  => 'DELETE',
-            :path    => "os-aggregates/#{uuid}"
+            expects: [200, 202, 204],
+            method: 'DELETE',
+            path: "os-aggregates/#{uuid}"
           )
         end
       end
@@ -16,9 +16,9 @@ module Fog
           response = Excon::Response.new
           response.status = 200
           response.headers = {
-            "Content-Type"   => "text/html; charset=UTF-8",
+            "Content-Type" => "text/html; charset=UTF-8",
             "Content-Length" => "0",
-            "Date"           => Date.new
+            "Date" => Date.new
           }
           response
         end

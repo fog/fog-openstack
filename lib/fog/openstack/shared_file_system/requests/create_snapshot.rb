@@ -16,10 +16,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode('snapshot' => data),
-            :expects => 202,
-            :method  => 'POST',
-            :path    => 'snapshots'
+            body: Fog::JSON.encode('snapshot' => data),
+            expects: 202,
+            method: 'POST',
+            path: 'snapshots'
           )
         end
       end
@@ -37,7 +37,7 @@ module Fog
           snapshot['share_id'] = share_id
           snapshot['status']   = 'creating'
 
-          response.body = {'snapshot' => snapshot.merge(options)}
+          response.body = { 'snapshot' => snapshot.merge(options) }
           response
         end
       end

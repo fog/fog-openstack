@@ -3,13 +3,13 @@ require "test_helper"
 describe "Shindo.tests('Fog::OpenStack::Compute.new | service requests" do
   before do
     @service_format = {
-      "id"              => Integer,
-      "binary"          => String,
-      "host"            => String,
-      "state"           => String,
-      "status"          => String,
-      "updated_at"      => String,
-      "zone"            => String,
+      "id" => Integer,
+      "binary" => String,
+      "host" => String,
+      "state" => String,
+      "status" => String,
+      "updated_at" => String,
+      "zone" => String,
       'disabled_reason' => Fog::Nullable::String
     }
     @services = Fog::OpenStack::Compute.new.list_services.body

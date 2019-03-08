@@ -4,10 +4,10 @@ module Fog
       class Real
         def set_node_maintenance(node_uuid, parameters = nil)
           request(
-            :expects => [200, 202, 204],
-            :method  => 'PUT',
-            :path    => "nodes/#{node_uuid}/maintenance",
-            :query   => parameters
+            expects: [200, 202, 204],
+            method: 'PUT',
+            path: "nodes/#{node_uuid}/maintenance",
+            query: parameters
           )
         end
       end
@@ -18,9 +18,9 @@ module Fog
           response.status = 202
           response.headers = {
             "X-Compute-Request-Id" => "req-fdc6f99e-55a2-4ab1-8904-0892753828cf",
-            "Content-Type"         => "application/json",
-            "Content-Length"       => "356",
-            "Date"                 => Date.new
+            "Content-Type" => "application/json",
+            "Content-Length" => "356",
+            "Date" => Date.new
           }
           response
         end

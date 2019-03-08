@@ -4,16 +4,16 @@ describe "Fog::OpenStack::Network | ike_policy requests" do
   describe "success" do
     before do
       @ike_policy_format = {
-        'id'                      => String,
-        'name'                    => String,
-        'description'             => String,
-        'tenant_id'               => String,
-        'auth_algorithm'          => String,
-        'encryption_algorithm'    => String,
-        'pfs'                     => String,
+        'id' => String,
+        'name' => String,
+        'description' => String,
+        'tenant_id' => String,
+        'auth_algorithm' => String,
+        'encryption_algorithm' => String,
+        'pfs' => String,
         'phase1_negotiation_mode' => String,
-        'lifetime'                => Hash,
-        'ike_version'             => String
+        'lifetime' => Hash,
+        'ike_version' => String
       }
 
       attributes = {

@@ -204,10 +204,10 @@ describe "Fog::OpenStack::Storage | large object requests" do
             unless Fog.mocking?
               expected = {
                 'Number Not Found' => 0,
-                'Response Status'  => '200 OK',
-                'Errors'           => [],
-                'Number Deleted'   => 3,
-                'Response Body'    => ''
+                'Response Status' => '200 OK',
+                'Errors' => [],
+                'Number Deleted' => 3,
+                'Response Body' => ''
               }
               @storage.delete_static_large_object(@directory.identity, 'fog_large_object').body.must_equal expected
             end
@@ -260,10 +260,10 @@ describe "Fog::OpenStack::Storage | large object requests" do
           unless Fog.mocking?
             expected = {
               'Number Not Found' => 0,
-              'Response Status'  => '200 OK',
-              'Errors'           => [],
-              'Number Deleted'   => 3,
-              'Response Body'    => ''
+              'Response Status' => '200 OK',
+              'Errors' => [],
+              'Number Deleted' => 3,
+              'Response Body' => ''
             }
             resp = @storage.delete_static_large_object(@directory2.identity, 'fog_large_object')
             resp.body.must_equal expected
@@ -375,10 +375,10 @@ describe "Fog::OpenStack::Storage | large object requests" do
             unless Fog.mocking?
               expected = {
                 'Number Not Found' => 1,
-                'Response Status'  => '200 OK',
-                'Errors'           => [],
-                'Number Deleted'   => 2,
-                'Response Body'    => ''
+                'Response Status' => '200 OK',
+                'Errors' => [],
+                'Number Deleted' => 2,
+                'Response Body' => ''
               }
               @storage.delete_static_large_object(@directory.identity, 'fog_large_object').body.must_equal expected
             end
@@ -390,10 +390,10 @@ describe "Fog::OpenStack::Storage | large object requests" do
         unless Fog.mocking?
           expected = {
             'Number Not Found' => 1,
-            'Response Status'  => '200 OK',
-            'Errors'           => [],
-            'Number Deleted'   => 0,
-            'Response Body'    => ''
+            'Response Status' => '200 OK',
+            'Errors' => [],
+            'Number Deleted' => 0,
+            'Response Body' => ''
           }
 
           resp = @storage.delete_static_large_object('fognoncontainer', 'fog_large_object')
@@ -405,10 +405,10 @@ describe "Fog::OpenStack::Storage | large object requests" do
         unless Fog.mocking?
           expected = {
             'Number Not Found' => 1,
-            'Response Status'  => '200 OK',
-            'Errors'           => [],
-            'Number Deleted'   => 0,
-            'Response Body'    => ''
+            'Response Status' => '200 OK',
+            'Errors' => [],
+            'Number Deleted' => 0,
+            'Response Body' => ''
           }
 
           @storage.delete_static_large_object(@directory.identity, 'fog_non_object').body.must_equal expected

@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_ipsec_site_connection(ipsec_site_connection_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "vpn/ipsec-site-connections/#{ipsec_site_connection_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "vpn/ipsec-site-connections/#{ipsec_site_connection_id}"
           )
         end
       end

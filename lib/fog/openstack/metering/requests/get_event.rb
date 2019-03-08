@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_event(message_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "events/#{message_id}"
+            expects: 200,
+            method: 'GET',
+            path: "events/#{message_id}"
           )
         end
       end
@@ -17,7 +17,7 @@ module Fog
           response.status = 200
           response.body = {
             'event_type' => 'compute.instance.create',
-            'message_id' => 'd646b40dea6347dfb8caee2da1484c56',
+            'message_id' => 'd646b40dea6347dfb8caee2da1484c56'
           }
           response
         end

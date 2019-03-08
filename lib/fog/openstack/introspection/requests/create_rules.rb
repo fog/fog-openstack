@@ -16,10 +16,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => "POST",
-            :path    => "rules"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: "POST",
+            path: "rules"
           )
         end
       end
@@ -28,7 +28,7 @@ module Fog
         def create_rules(_)
           response = Excon::Response.new
           response.status = 200
-          response.body = {"rules" => data[:rules].first}
+          response.body = { "rules" => data[:rules].first }
           response
         end
       end

@@ -4,9 +4,9 @@ module Fog
       class Real
         def show_stack_details(name, id)
           request(
-            :method  => 'GET',
-            :path    => "stacks/#{name}/#{id}",
-            :expects => 200
+            method: 'GET',
+            path: "stacks/#{name}/#{id}",
+            expects: 200
           )
         end
       end
@@ -16,8 +16,8 @@ module Fog
           stack = data[:stack].values
 
           Excon::Response.new(
-            :body   => {'stack' => stack},
-            :status => 200
+            body: { 'stack' => stack },
+            status: 200
           )
         end
       end

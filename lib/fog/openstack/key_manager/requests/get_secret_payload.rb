@@ -4,10 +4,10 @@ module Fog
       class Real
         def get_secret_payload(uuid)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "secrets/#{uuid}/payload",
-            :headers => {
+            expects: [200],
+            method: 'GET',
+            path: "secrets/#{uuid}/payload",
+            headers: {
               'Accept' => '*/*'
             }
           )

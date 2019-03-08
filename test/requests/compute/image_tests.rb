@@ -5,17 +5,17 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 describe "Fog::OpenStack::Compute | image requests" do
   before do
     @image_format = {
-      'created'  => Fog::Nullable::String,
-      'id'       => String,
-      'name'     => String,
+      'created' => Fog::Nullable::String,
+      'id' => String,
+      'name' => String,
       'progress' => Fog::Nullable::Integer,
-      'status'   => String,
-      'updated'  => String,
-      'minRam'   => Integer,
-      'minDisk'  => Integer,
-      'server'   => Fog::Nullable::Hash,
+      'status' => String,
+      'updated' => String,
+      'minRam' => Integer,
+      'minDisk' => Integer,
+      'server' => Fog::Nullable::Hash,
       'metadata' => Hash,
-      'links'    => Array
+      'links' => Array
     }
 
     @compute = Fog::OpenStack::Compute.new

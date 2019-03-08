@@ -4,10 +4,10 @@ module Fog
       class Real
         def put_notification_method(id, notification)
           request(
-            :expects => [200],
-            :method  => 'PUT',
-            :path    => "notification-methods/#{id}",
-            :body    => Fog::JSON.encode(notification)
+            expects: [200],
+            method: 'PUT',
+            path: "notification-methods/#{id}",
+            body: Fog::JSON.encode(notification)
           )
         end
       end

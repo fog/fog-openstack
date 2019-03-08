@@ -5,24 +5,24 @@ describe "Fog::OpenStack::Network | network requests" do
   describe "success" do
     let(:network_format) do
       {
-        "id"                    => String,
-        "subnets"               => Array,
-        "status"                => String,
-        "name"                  => String,
-        "shared"                => Fog::Boolean,
-        "admin_state_up"        => Fog::Boolean,
-        "qos_policy_id"         => Fog::Nullable::String,
+        "id" => String,
+        "subnets" => Array,
+        "status" => String,
+        "name" => String,
+        "shared" => Fog::Boolean,
+        "admin_state_up" => Fog::Boolean,
+        "qos_policy_id" => Fog::Nullable::String,
         "port_security_enabled" => Fog::Boolean,
-        "tenant_id"             => String
+        "tenant_id" => String
       }
     end
 
     let(:network_extentions_format) do
       {
-        "router:external"           => Fog::Boolean,
-        "provider:network_type"     => String,
+        "router:external" => Fog::Boolean,
+        "provider:network_type" => String,
         "provider:physical_network" => Fog::Nullable::String,
-        "provider:segmentation_id"  => Integer
+        "provider:segmentation_id" => Integer
       }
     end
 

@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_plan(plan_uuid)
           request(
-            :expects => [204],
-            :method  => 'DELETE',
-            :path    => "plans/#{plan_uuid}"
+            expects: [204],
+            method: 'DELETE',
+            path: "plans/#{plan_uuid}"
           )
         end
       end

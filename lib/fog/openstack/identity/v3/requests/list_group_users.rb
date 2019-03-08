@@ -5,17 +5,16 @@ module Fog
         class Real
           def list_group_users(id, options = {})
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "groups/#{id}/users",
-              :query   => options
+              expects: [200],
+              method: 'GET',
+              path: "groups/#{id}/users",
+              query: options
             )
           end
         end
 
         class Mock
-          def list_group_users
-          end
+          def list_group_users; end
         end
       end
     end

@@ -14,7 +14,7 @@ describe "Fog::OpenStack::Network | lb_vip" do
         address: '10.0.0.1',
         session_persistence: {
           "cookie_name" => "COOKIE_NAME",
-          "type"        => "APP_COOKIE"
+          "type" => "APP_COOKIE"
         },
         connection_limit: 10,
         admin_state_up: true,

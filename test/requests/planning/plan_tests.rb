@@ -3,14 +3,14 @@ require "test_helper"
 describe "Fog::OpenStack::Planning | Planning plan requests" do
   before do
     @plan_format = {
-      "created_at"  => Fog::Nullable::String,
+      "created_at" => Fog::Nullable::String,
       "description" => Fog::Nullable::String,
-      "name"        => String,
-      "parameters"  => Fog::Nullable::Array,
-      "roles"       => Fog::Nullable::Array,
-      "updated_at"  => Fog::Nullable::String,
-      "uuid"        => String,
-      "version"     => Fog::Nullable::Integer
+      "name" => String,
+      "parameters" => Fog::Nullable::Array,
+      "roles" => Fog::Nullable::Array,
+      "updated_at" => Fog::Nullable::String,
+      "uuid" => String,
+      "version" => Fog::Nullable::Integer
     }
 
     @plan_templates_format = Hash
@@ -53,7 +53,7 @@ describe "Fog::OpenStack::Planning | Planning plan requests" do
                                            .body['parameters'][0..1]
       plan_parameters = parameters.collect do |parameter|
         {
-          "name"  => parameter['name'],
+          "name" => parameter['name'],
           "value" => "test-#{parameter['name']}-value"
         }
       end

@@ -7,11 +7,11 @@ module Fog
             headers, options = Fog::OpenStack::DNS::V2.setup_headers(options)
 
             request(
-              :body    => Fog::JSON.encode(options),
-              :expects => 202,
-              :method  => 'PUT',
-              :path    => "zones/#{zone_id}/recordsets/#{id}",
-              :headers => headers
+              body: Fog::JSON.encode(options),
+              expects: 202,
+              method: 'PUT',
+              path: "zones/#{zone_id}/recordsets/#{id}",
+              headers: headers
             )
           end
         end

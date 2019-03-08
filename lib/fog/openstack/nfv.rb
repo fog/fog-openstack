@@ -3,7 +3,7 @@ require 'yaml'
 module Fog
   module OpenStack
     class NFV < Fog::Service
-      SUPPORTED_VERSIONS = /v1.0/
+      SUPPORTED_VERSIONS = /v1.0/.freeze
 
       requires :openstack_auth_url
       recognizes :openstack_auth_token, :openstack_management_url,
@@ -46,28 +46,28 @@ module Fog
         def self.data
           @data ||= Hash.new do |hash, key|
             hash[key] = {
-              :vnfs  => [
+              vnfs: [
                 {
-                  "status"      => "ACTIVE",
+                  "status" => "ACTIVE",
                   "description" => "demo-example",
-                  "tenant_id"   => "943b6ff8229a4ec2bed0a306f869a0ea",
+                  "tenant_id" => "943b6ff8229a4ec2bed0a306f869a0ea",
                   "instance_id" => "5a9a7d3b-24f5-4226-8d43-262972a1776e",
-                  "mgmt_url"    => "{\"vdu1\": \"192.168.0.8\"}",
-                  "attributes"  => {"monitoring_policy" => "{\"vdus\": {}}"},
-                  "id"          => "cb4cdbd8-cf1a-4758-8d36-40db788a37a1",
-                  "name"        => "LadasTest"
+                  "mgmt_url" => "{\"vdu1\": \"192.168.0.8\"}",
+                  "attributes" => { "monitoring_policy" => "{\"vdus\": {}}" },
+                  "id" => "cb4cdbd8-cf1a-4758-8d36-40db788a37a1",
+                  "name" => "LadasTest"
                 }
               ],
-              :vnfds => [
+              vnfds: [
                 {
-                  "service_types" => [{"service_type" => "vnfd", "id" => "f9211d81-b58a-4849-8d38-e25376c421bd"}],
-                  "description"   => "demo-example",
-                  "tenant_id"     => "943b6ff8229a4ec2bed0a306f869a0ea",
-                  "mgmt_driver"   => "noop",
-                  "infra_driver"  => "heat",
-                  "attributes"    => {"vnfd" => "template_name: sample-vnfd"},
-                  "id"            => "1f8f33cf-8c94-427e-a040-f3e393b773b7",
-                  "name"          => "sample-vnfd"
+                  "service_types" => [{ "service_type" => "vnfd", "id" => "f9211d81-b58a-4849-8d38-e25376c421bd" }],
+                  "description" => "demo-example",
+                  "tenant_id" => "943b6ff8229a4ec2bed0a306f869a0ea",
+                  "mgmt_driver" => "noop",
+                  "infra_driver" => "heat",
+                  "attributes" => { "vnfd" => "template_name: sample-vnfd" },
+                  "id" => "1f8f33cf-8c94-427e-a040-f3e393b773b7",
+                  "name" => "sample-vnfd"
                 }
               ]
             }
@@ -80,7 +80,7 @@ module Fog
 
         include Fog::OpenStack::Core
 
-        def initialize(options = {})
+        def initialize(_options = {})
           @auth_token = Fog::Mock.random_base64(64)
           @auth_token_expiration = (Time.now.utc + 86_400).iso8601
         end

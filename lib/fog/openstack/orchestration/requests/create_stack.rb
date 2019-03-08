@@ -25,7 +25,7 @@ module Fog
             # Deprecated: create_stack(stack_name, options = {})
             Fog::Logger.deprecation("#create_stack(stack_name, options) is deprecated, use #create_stack(options) instead [light_black](#{caller.first})[/]")
             options = {
-              :stack_name => arg1
+              stack_name: arg1
             }.merge(arg2.nil? ? {} : arg2)
           end
 
@@ -42,10 +42,10 @@ module Fog
           options[:files] = file_resolver.files unless file_resolver.files.empty?
 
           request(
-            :expects => 201,
-            :path    => 'stacks',
-            :method  => 'POST',
-            :body    => Fog::JSON.encode(options)
+            expects: 201,
+            path: 'stacks',
+            method: 'POST',
+            body: Fog::JSON.encode(options)
           )
         end
       end
@@ -59,31 +59,31 @@ module Fog
             # Deprecated: create_stack(stack_name, options = {})
             Fog::Logger.deprecation("#create_stack(stack_name, options) is deprecated, use #create_stack(options) instead [light_black](#{caller.first})[/]")
             options = {
-              :stack_name => arg1
+              stack_name: arg1
             }.merge(arg2.nil? ? {} : arg2)
           end
 
           stack_id = Fog::Mock.random_hex(32)
           stack = data[:stacks][stack_id] = {
-            'id'                  => stack_id,
-            'stack_name'          => options[:stack_name],
-            'links'               => [],
-            'description'         => options[:description],
-            'stack_status'        => 'CREATE_COMPLETE',
+            'id' => stack_id,
+            'stack_name' => options[:stack_name],
+            'links' => [],
+            'description' => options[:description],
+            'stack_status' => 'CREATE_COMPLETE',
             'stack_status_reason' => 'Stack successfully created',
-            'creation_time'       => Time.now,
-            'updated_time'        => Time.now
+            'creation_time' => Time.now,
+            'updated_time' => Time.now
           }
 
           response = Excon::Response.new
           response.status = 201
           response.body = {
-            'id'    => stack_id,
-            'links' => [{"href" => "http://localhost:8004/v1/fake_tenant_id/stacks/#{options[:stack_name]}/#{stack_id}", "rel" => "self"}]
+            'id' => stack_id,
+            'links' => [{ "href" => "http://localhost:8004/v1/fake_tenant_id/stacks/#{options[:stack_name]}/#{stack_id}", "rel" => "self" }]
           }
 
           if options.key?(:files)
-            response.body['files'] = {'foo.sh' => 'hello'}
+            response.body['files'] = { 'foo.sh' => 'hello' }
           end
 
           if options.key?(:template) || options.key?(:template_url)

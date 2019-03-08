@@ -14,10 +14,10 @@ module Fog
           end
 
           request(
-            :body    => body,
-            :expects => 202,
-            :method  => "POST",
-            :path    => "introspection/#{node_id}"
+            body: body,
+            expects: 202,
+            method: "POST",
+            path: "introspection/#{node_id}"
           )
         end
       end

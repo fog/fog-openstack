@@ -23,9 +23,9 @@ module Fog
         #     * 'tenant_id'<~String> - Tenant id that owns the security group rule
         def get_security_group_rule(security_group_rule_id)
           request(
-            :expects => 200,
-            :method  => "GET",
-            :path    => "security-group-rules/#{security_group_rule_id}"
+            expects: 200,
+            method: "GET",
+            path: "security-group-rules/#{security_group_rule_id}"
           )
         end
       end
@@ -35,7 +35,7 @@ module Fog
           response = Excon::Response.new
           if sec_group_rule = data[:security_group_rules][security_group_rule_id]
             response.status = 200
-            response.body   = {"security_group_rule" => sec_group_rule}
+            response.body   = { "security_group_rule" => sec_group_rule }
             response
           else
             raise Fog::OpenStack::Network::NotFound

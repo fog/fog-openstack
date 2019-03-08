@@ -82,11 +82,11 @@ module Fog
 
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                :users                  => @users,
-                :roles                  => @roles,
-                :tenants                => @tenants,
-                :ec2_credentials        => @ec2_credentials,
-                :user_tenant_membership => @user_tenant_membership
+                users: @users,
+                roles: @roles,
+                tenants: @tenants,
+                ec2_credentials: @ec2_credentials,
+                user_tenant_membership: @user_tenant_membership
               }
             end
           end
@@ -122,7 +122,7 @@ module Fog
               else
                 @current_tenant_id = Fog::Mock.random_hex(32)
                 @current_tenant = data[:tenants][@current_tenant_id] = {
-                  'id'   => @current_tenant_id,
+                  'id' => @current_tenant_id,
                   'name' => @openstack_tenant
                 }
               end
@@ -140,11 +140,11 @@ module Fog
             else
               @current_user_id = Fog::Mock.random_hex(32)
               @current_user = data[:users][@current_user_id] = {
-                'id'       => @current_user_id,
-                'name'     => @openstack_username,
-                'email'    => "#{@openstack_username}@mock.com",
+                'id' => @current_user_id,
+                'name' => @openstack_username,
+                'email' => "#{@openstack_username}@mock.com",
                 'tenantId' => Fog::Mock.random_numbers(6).to_s,
-                'enabled'  => true
+                'enabled' => true
               }
             end
           end
@@ -158,13 +158,13 @@ module Fog
           end
 
           def credentials
-            {:provider                  => 'openstack',
-             :openstack_auth_url        => @openstack_auth_uri.to_s,
-             :openstack_auth_token      => @auth_token,
-             :openstack_management_url  => @openstack_management_url,
-             :openstack_current_user_id => @openstack_current_user_id,
-             :current_user              => @current_user,
-             :current_tenant            => @current_tenant}
+            { provider: 'openstack',
+              openstack_auth_url: @openstack_auth_uri.to_s,
+              openstack_auth_token: @auth_token,
+              openstack_management_url: @openstack_management_url,
+              openstack_current_user_id: @openstack_current_user_id,
+              current_user: @current_user,
+              current_tenant: @current_tenant }
           end
         end
 
@@ -183,7 +183,7 @@ module Fog
           end
 
           def version_in_path?(url)
-            true if url =~ /\/v2(\.0)*(\/)*.*$/
+            true if url =~ %r{/v2(\.0)*(/)*.*$}
           end
         end
       end

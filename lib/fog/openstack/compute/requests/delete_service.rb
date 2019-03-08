@@ -7,10 +7,10 @@ module Fog
           optional_params = optional_params.each { |k, v| optional_params[k] = URI.encode(v) } if optional_params
 
           request(
-            :expects => [202, 204],
-            :method  => 'DELETE',
-            :path    => "os-services/#{uuid}",
-            :query   => optional_params
+            expects: [202, 204],
+            method: 'DELETE',
+            path: "os-services/#{uuid}",
+            query: optional_params
           )
         end
       end
@@ -20,9 +20,9 @@ module Fog
           response = Excon::Response.new
           response.status = 204
           response.headers = {
-            "Content-Type"   => "text/html; charset=UTF-8",
+            "Content-Type" => "text/html; charset=UTF-8",
             "Content-Length" => "0",
-            "Date"           => Date.new
+            "Date" => Date.new
           }
           response
         end

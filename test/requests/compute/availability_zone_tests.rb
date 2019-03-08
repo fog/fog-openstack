@@ -3,8 +3,8 @@ require "test_helper"
 describe "Fog::OpenStack::Compute | availability zone requests" do
   before do
     @flavor_format = {
-      'zoneName'  => String,
-      'hosts'     => Fog::Nullable::Hash,
+      'zoneName' => String,
+      'hosts' => Fog::Nullable::Hash,
       'zoneState' => Hash
     }
   end

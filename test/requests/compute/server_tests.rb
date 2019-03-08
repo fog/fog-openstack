@@ -16,27 +16,27 @@ describe "Fog::OpenStack::Compute | server requests" do
   describe "success" do
     before do
       @create_format = {
-        'adminPass'       => String,
-        'id'              => String,
-        'links'           => Array,
+        'adminPass' => String,
+        'id' => String,
+        'links' => Array,
         'security_groups' => Fog::Nullable::Array
       }
 
       @base_server_format = {
-        'id'           => String,
-        'addresses'    => Hash,
-        'flavor'       => Hash,
-        'hostId'       => String,
-        'metadata'     => Hash,
-        'name'         => String,
-        'progress'     => Integer,
-        'status'       => String,
-        'accessIPv4'   => Fog::Nullable::String,
-        'accessIPv6'   => Fog::Nullable::String,
-        'links'        => Array,
-        'created'      => String,
-        'updated'      => String,
-        'user_id'      => String,
+        'id' => String,
+        'addresses' => Hash,
+        'flavor' => Hash,
+        'hostId' => String,
+        'metadata' => Hash,
+        'name' => String,
+        'progress' => Integer,
+        'status' => String,
+        'accessIPv4' => Fog::Nullable::String,
+        'accessIPv6' => Fog::Nullable::String,
+        'links' => Array,
+        'created' => String,
+        'updated' => String,
+        'user_id' => String,
         'config_drive' => String
       }
 
@@ -45,17 +45,17 @@ describe "Fog::OpenStack::Compute | server requests" do
       @server_from_image_format = @base_server_format.merge('image' => Hash)
 
       @image_format = {
-        'created'  => Fog::Nullable::String,
-        'id'       => String,
-        'name'     => String,
+        'created' => Fog::Nullable::String,
+        'id' => String,
+        'name' => String,
         'progress' => Fog::Nullable::Integer,
-        'status'   => String,
-        'updated'  => String,
-        'minRam'   => Integer,
-        'minDisk'  => Integer,
-        'server'   => Hash,
+        'status' => String,
+        'updated' => String,
+        'minRam' => Integer,
+        'minDisk' => Integer,
+        'server' => Hash,
         'metadata' => Hash,
-        'links'    => Array
+        'links' => Array
       }
 
       @image_id = get_image_ref

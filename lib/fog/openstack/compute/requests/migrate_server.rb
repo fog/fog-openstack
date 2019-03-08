@@ -3,7 +3,7 @@ module Fog
     class Compute
       class Real
         def migrate_server(server_id)
-          body = {'migrate' => nil}
+          body = { 'migrate' => nil }
           server_action(server_id, body)
         end
       end

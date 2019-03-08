@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_snapshot(id)
           request(
-            :expects => 202,
-            :method  => 'DELETE',
-            :path    => "snapshots/#{id}"
+            expects: 202,
+            method: 'DELETE',
+            path: "snapshots/#{id}"
           )
         end
       end
@@ -21,7 +21,7 @@ module Fog
           snapshot['status']        = 'deleting'
           snapshot['links']['self'] = "https://127.0.0.1:8786/v2/snapshots/#{id}"
 
-          response.body = {'snapshot' => snapshot}
+          response.body = { 'snapshot' => snapshot }
           response
         end
       end

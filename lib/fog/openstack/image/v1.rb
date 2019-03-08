@@ -4,7 +4,7 @@ module Fog
   module OpenStack
     class Image
       class V1 < Fog::Service
-        SUPPORTED_VERSIONS = /v1(\.(0|1))*/
+        SUPPORTED_VERSIONS = /v1(\.(0|1))*/.freeze
 
         requires :openstack_auth_url
         recognizes :openstack_auth_token, :openstack_management_url,
@@ -43,7 +43,7 @@ module Fog
           def self.data
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                :images => {}
+                images: {}
               }
             end
           end
@@ -65,15 +65,15 @@ module Fog
             management_url.path = '/v1'
             @openstack_management_url = management_url.to_s
 
-            @data ||= {:users => {}}
+            @data ||= { users: {} }
             unless @data[:users].detect { |u| u['name'] == options[:openstack_username] }
               id = Fog::Mock.random_numbers(6).to_s
               @data[:users][id] = {
-                'id'       => id,
-                'name'     => options[:openstack_username],
-                'email'    => "#{options[:openstack_username]}@mock.com",
+                'id' => id,
+                'name' => options[:openstack_username],
+                'email' => "#{options[:openstack_username]}@mock.com",
                 'tenantId' => Fog::Mock.random_numbers(6).to_s,
-                'enabled'  => true
+                'enabled' => true
               }
             end
           end
@@ -87,11 +87,11 @@ module Fog
           end
 
           def credentials
-            {:provider                 => 'openstack',
-             :openstack_auth_url       => @openstack_auth_uri.to_s,
-             :openstack_auth_token     => @auth_token,
-             :openstack_region         => @openstack_region,
-             :openstack_management_url => @openstack_management_url}
+            { provider: 'openstack',
+              openstack_auth_url: @openstack_auth_uri.to_s,
+              openstack_auth_token: @auth_token,
+              openstack_region: @openstack_region,
+              openstack_management_url: @openstack_management_url }
           end
         end
 

@@ -4,12 +4,12 @@ describe "Fog::OpenStack::Compute | Compute aggregate requests" do
   before do
     @aggregate_format = {
       "availability_zone" => Fog::Nullable::String,
-      "created_at"        => String,
-      "deleted"           => Fog::Boolean,
-      "deleted_at"        => Fog::Nullable::String,
-      "id"                => Integer,
-      "name"              => String,
-      "updated_at"        => Fog::Nullable::String
+      "created_at" => String,
+      "deleted" => Fog::Boolean,
+      "deleted_at" => Fog::Nullable::String,
+      "id" => Integer,
+      "name" => String,
+      "updated_at" => Fog::Nullable::String
     }
 
     @detailed_aggregate_format = @aggregate_format.merge('hosts' => Array)

@@ -3,7 +3,7 @@ module Fog
     class Network
       class Real
         def update_ike_policy(ike_policy_id, options = {})
-          data = {'ikepolicy' => {}}
+          data = { 'ikepolicy' => {} }
 
           vanilla_options = [:name, :description, :tenant_id,
                              :auth_algorithm, :encryption_algorithm,
@@ -14,10 +14,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "vpn/ikepolicies/#{ike_policy_id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "vpn/ikepolicies/#{ike_policy_id}"
           )
         end
       end
@@ -35,7 +35,7 @@ module Fog
             ike_policy['phase1_negotiation_mode'] = options[:phase1_negotiation_mode]
             ike_policy['lifetime']                = options[:lifetime]
             ike_policy['ike_version']             = options[:ike_version]
-            response.body = {'ikepolicy' => ike_policy}
+            response.body = { 'ikepolicy' => ike_policy }
             response.status = 200
             response
           else

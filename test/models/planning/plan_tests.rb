@@ -33,7 +33,7 @@ describe "Fog::OpenStack::Planning | plan" do
       @instance.patch(
         parameters: [
           {
-            "name"  => parameter['name'],
+            "name" => parameter['name'],
             "value" => 'new_value'
           }
         ]

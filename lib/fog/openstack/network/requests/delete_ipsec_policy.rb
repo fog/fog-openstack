@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_ipsec_policy(ipsec_policy_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "vpn/ipsecpolicies/#{ipsec_policy_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "vpn/ipsecpolicies/#{ipsec_policy_id}"
           )
         end
       end

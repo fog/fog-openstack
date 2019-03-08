@@ -3,7 +3,7 @@ module Fog
     class Network
       class Real
         def update_lb_member(member_id, options = {})
-          data = {'member' => {}}
+          data = { 'member' => {} }
 
           vanilla_options = [:pool_id, :weight, :admin_state_up]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
@@ -11,10 +11,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "lb/members/#{member_id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "lb/members/#{member_id}"
           )
         end
       end
@@ -26,7 +26,7 @@ module Fog
             member['pool_id']        = options[:pool_id]
             member['weight']         = options[:weight]
             member['admin_state_up'] = options[:admin_state_up]
-            response.body = {'member' => member}
+            response.body = { 'member' => member }
             response.status = 200
             response
           else

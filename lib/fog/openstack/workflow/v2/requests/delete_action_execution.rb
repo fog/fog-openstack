@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_action_execution(id)
             request(
-              :expects => 204,
-              :method  => "DELETE",
-              :path    => "action_executions/#{id}"
+              expects: 204,
+              method: "DELETE",
+              path: "action_executions/#{id}"
             )
           end
         end

@@ -5,18 +5,18 @@ module Fog
         def create_snapshot(volume_id, name, description, force = false)
           data = {
             'snapshot' => {
-              'volume_id'           => volume_id,
-              'display_name'        => name,
+              'volume_id' => volume_id,
+              'display_name' => name,
               'display_description' => description,
-              'force'               => force
+              'force' => force
             }
           }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 202],
-            :method  => 'POST',
-            :path    => "os-snapshots"
+            body: Fog::JSON.encode(data),
+            expects: [200, 202],
+            method: 'POST',
+            path: "os-snapshots"
           )
         end
       end
@@ -30,17 +30,17 @@ module Fog
           else
             response = Excon::Response.new
             data = {
-              "status"      => "availble",
-              "name"        => name,
-              "created_at"  => Time.now,
+              "status" => "availble",
+              "name" => name,
+              "created_at" => Time.now,
               "description" => description,
-              "volume_id"   => volume_id,
-              "id"          => Fog::Mock.random_numbers(2),
-              "size"        => volume['size']
+              "volume_id" => volume_id,
+              "id" => Fog::Mock.random_numbers(2),
+              "size" => volume['size']
             }
 
             self.data[:snapshots][data['id']] = data
-            response.body = {"snapshot" => data}
+            response.body = { "snapshot" => data }
             response.status = 202
             response
           end

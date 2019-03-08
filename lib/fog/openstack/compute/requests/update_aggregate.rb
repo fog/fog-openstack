@@ -5,16 +5,16 @@ module Fog
         def update_aggregate(uuid, options = {})
           vanilla_options = [:name, :availability_zone]
 
-          data = {'aggregate' => {}}
+          data = { 'aggregate' => {} }
           vanilla_options.select { |o| options[o] }.each do |key|
             data['aggregate'][key] = options[key]
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200],
-            :method  => 'PUT',
-            :path    => "os-aggregates/#{uuid}"
+            body: Fog::JSON.encode(data),
+            expects: [200],
+            method: 'PUT',
+            path: "os-aggregates/#{uuid}"
           )
         end
       end
@@ -24,11 +24,11 @@ module Fog
           response = Excon::Response.new
           response.status = 200
           response.headers = {
-            "Content-Type"   => "text/html; charset=UTF-8",
+            "Content-Type" => "text/html; charset=UTF-8",
             "Content-Length" => "0",
-            "Date"           => Date.new
+            "Date" => Date.new
           }
-          response.body = {'aggregate' => data[:aggregates].first}
+          response.body = { 'aggregate' => data[:aggregates].first }
           response
         end
       end

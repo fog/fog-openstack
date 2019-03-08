@@ -4,10 +4,10 @@ module Fog
       module Real
         def update_snapshot(snapshot_id, data = {})
           request(
-            :body    => Fog::JSON.encode('snapshot' => data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "snapshots/#{snapshot_id}"
+            body: Fog::JSON.encode('snapshot' => data),
+            expects: 200,
+            method: 'PUT',
+            path: "snapshots/#{snapshot_id}"
           )
         end
       end
@@ -17,6 +17,7 @@ module Fog
           unless snapshot_id
             raise ArgumentError, 'snapshot_id is required'
           end
+
           response = Excon::Response.new
           if snapshot = data[:snapshots][snapshot_id]
             response.status                 = 200
@@ -25,7 +26,7 @@ module Fog
             snapshot['name']                = options['name'] if options['name']
             snapshot['description']         = options['description'] if options['description']
             snapshot['metadata']            = options['metadata'] if options['metadata']
-            response.body                   = {'snapshot' => snapshot}
+            response.body                   = { 'snapshot' => snapshot }
             response
           else
             raise Fog::HP::BlockStorageV2::NotFound

@@ -18,7 +18,6 @@ module Fog
         rescue Fog::OpenStack::Compute::NotFound
           nil
         end
-
       end
     end
   end

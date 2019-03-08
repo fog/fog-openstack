@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_network(network_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "networks/#{network_id}"
+            expects: [200],
+            method: 'GET',
+            path: "networks/#{network_id}"
           )
         end
       end
@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:networks][network_id]
             response.status = 200
-            response.body = {'network' => data}
+            response.body = { 'network' => data }
             response
           else
             raise Fog::OpenStack::Network::NotFound

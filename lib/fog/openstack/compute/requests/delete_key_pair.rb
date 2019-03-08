@@ -6,9 +6,9 @@ module Fog
           options = {}
           options[:user_id] = user_id unless user_id.nil?
           request(
-            :expects => [202, 204],
-            :method  => 'DELETE',
-            :path    => "os-keypairs/#{Fog::OpenStack.escape(key_name)}"
+            expects: [202, 204],
+            method: 'DELETE',
+            path: "os-keypairs/#{Fog::OpenStack.escape(key_name)}"
           )
         end
       end
@@ -18,9 +18,9 @@ module Fog
           response = Excon::Response.new
           response.status = 202
           response.headers = {
-            "Content-Type"   => "text/html; charset=UTF-8",
+            "Content-Type" => "text/html; charset=UTF-8",
             "Content-Length" => "0",
-            "Date"           => Date.new
+            "Date" => Date.new
           }
           response.body = {}
           response

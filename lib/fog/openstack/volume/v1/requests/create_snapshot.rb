@@ -10,10 +10,10 @@ module Fog
           def create_snapshot(volume_id, name, description, force = false)
             data = {
               'snapshot' => {
-                'volume_id'           => volume_id,
-                'display_name'        => name,
+                'volume_id' => volume_id,
+                'display_name' => name,
                 'display_description' => description,
-                'force'               => force.nil? ? false : force
+                'force' => force.nil? ? false : force
               }
             }
 
@@ -27,13 +27,13 @@ module Fog
             response.status = 202
             response.body   = {
               "snapshot" => {
-                "status"              => "creating",
-                "display_name"        => name,
-                "created_at"          => Time.now,
+                "status" => "creating",
+                "display_name" => name,
+                "created_at" => Time.now,
                 "display_description" => description,
-                "volume_id"           => volume_id,
-                "id"                  => "5",
-                "size"                => 1
+                "volume_id" => volume_id,
+                "id" => "5",
+                "size" => 1
               }
             }
             response

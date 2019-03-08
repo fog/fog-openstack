@@ -4,13 +4,13 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 
 describe "Fog::Identity[:openstack] | EC2 credential requests" do
   before do
-    @identity = Fog::OpenStack::Identity.new(:openstack_identity_api_version => 'v2.0')
+    @identity = Fog::OpenStack::Identity.new(openstack_identity_api_version: 'v2.0')
 
     @credential_format = {
-      'access'    => String,
+      'access' => String,
       'tenant_id' => String,
-      'secret'    => String,
-      'user_id'   => String
+      'secret' => String,
+      'user_id' => String
     }
 
     @user_id = OpenStack::Identity.get_user_id(@identity)

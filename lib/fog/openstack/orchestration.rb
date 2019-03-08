@@ -54,7 +54,7 @@ module Fog
       request :cancel_update
 
       module Reflectable
-        REFLECTION_REGEX = /\/stacks\/(\w+)\/([\w|-]+)\/resources\/(\w+)/
+        REFLECTION_REGEX = %r{/stacks/(\w+)/([\w|-]+)/resources/(\w+)}.freeze
 
         def resource
           @resource ||= service.resources.get(r[3], stack)
@@ -81,7 +81,7 @@ module Fog
         def self.data
           @data ||= Hash.new do |hash, key|
             hash[key] = {
-              :stacks => {}
+              stacks: {}
             }
           end
         end
@@ -114,10 +114,10 @@ module Fog
         end
 
         def credentials
-          {:provider                    => 'openstack',
-           :openstack_auth_url          => @openstack_auth_uri.to_s,
-           :openstack_auth_token        => @auth_token,
-           :openstack_management_url    => @openstack_management_url}
+          { provider: 'openstack',
+            openstack_auth_url: @openstack_auth_uri.to_s,
+            openstack_auth_token: @auth_token,
+            openstack_management_url: @openstack_management_url }
         end
       end
 

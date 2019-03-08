@@ -10,9 +10,9 @@ module Fog
         # * actions <~Array>
         def server_actions(server_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "servers/#{server_id}/os-instance-actions"
+            expects: 200,
+            method: 'GET',
+            path: "servers/#{server_id}/os-instance-actions"
           ).body['instanceActions']
         end
       end
@@ -23,12 +23,12 @@ module Fog
           response.status = 200
           response.body = [{
             'instance_uuid' => server_id,
-            'user_id'       => '7067d67a2b23435ca2366588680b66c3',
-            'start_time'    => Time.now.iso8601,
-            'request_id'    => "req-#{server_id}",
-            'action'        => 'stop',
-            'message'       => nil,
-            'project_id'    => '9d5d0b877cf449fdae078659cfa12e86'
+            'user_id' => '7067d67a2b23435ca2366588680b66c3',
+            'start_time' => Time.now.iso8601,
+            'request_id' => "req-#{server_id}",
+            'action' => 'stop',
+            'message' => nil,
+            'project_id' => '9d5d0b877cf449fdae078659cfa12e86'
           }]
           response
         end

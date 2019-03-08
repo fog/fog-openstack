@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_rules(rule_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "rules/#{rule_id}"
+            expects: 200,
+            method: 'GET',
+            path: "rules/#{rule_id}"
           )
         end
       end
@@ -15,7 +15,7 @@ module Fog
         def get_rules(_rule_id)
           response = Excon::Response.new
           response.status = 200
-          response.body = {"rules" => data[:rules].first}
+          response.body = { "rules" => data[:rules].first }
           response
         end
       end

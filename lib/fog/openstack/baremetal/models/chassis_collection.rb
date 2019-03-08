@@ -33,7 +33,7 @@ module Fog
 
         def method_missing(method_sym, *arguments, &block)
           if method_sym.to_s =~ /^find_by_(.*)$/
-            load(service.list_chassis_detailed($1 => arguments.first).body['chassis'])
+            load(service.list_chassis_detailed(Regexp.last_match(1) => arguments.first).body['chassis'])
           else
             super
           end

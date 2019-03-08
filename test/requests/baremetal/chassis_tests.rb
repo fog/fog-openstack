@@ -7,18 +7,18 @@ describe "Fog::OpenStack::Baremetal | Baremetal chassis requests" do
 
       @chassis_format = {
         'description' => String,
-        'uuid'        => String,
-        'links'       => Array
+        'uuid' => String,
+        'links' => Array
       }
 
       @detailed_chassis_format = {
         'description' => String,
-        'uuid'        => String,
-        'created_at'  => String,
-        'updated_at'  => Fog::Nullable::String,
-        'extra'       => Hash,
-        'nodes'       => Array,
-        'links'       => Array
+        'uuid' => String,
+        'created_at' => String,
+        'updated_at' => Fog::Nullable::String,
+        'extra' => Hash,
+        'nodes' => Array,
+        'links' => Array
       }
 
       chassis_attributes = { description: 'description' }

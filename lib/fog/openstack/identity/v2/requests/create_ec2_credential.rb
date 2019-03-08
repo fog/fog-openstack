@@ -23,13 +23,13 @@ module Fog
           #       * 'tenant_id'<~String>: The tenant id
 
           def create_ec2_credential(user_id, tenant_id)
-            data = {'tenant_id' => tenant_id}
+            data = { 'tenant_id' => tenant_id }
 
             request(
-              :body    => Fog::JSON.encode(data),
-              :expects => [200, 202],
-              :method  => 'POST',
-              :path    => "users/#{user_id}/credentials/OS-EC2"
+              body: Fog::JSON.encode(data),
+              expects: [200, 202],
+              method: 'POST',
+              path: "users/#{user_id}/credentials/OS-EC2"
             )
           end
         end
@@ -40,15 +40,15 @@ module Fog
             response.status = 200
 
             data = {
-              'access'    => Fog::Mock.random_hex(32),
-              'secret'    => Fog::Mock.random_hex(32),
+              'access' => Fog::Mock.random_hex(32),
+              'secret' => Fog::Mock.random_hex(32),
               'tenant_id' => tenant_id,
-              'user_id'   => user_id,
+              'user_id' => user_id
             }
 
             self.data[:ec2_credentials][user_id][data['access']] = data
 
-            response.body = {'credential' => data}
+            response.body = { 'credential' => data }
 
             response
           end

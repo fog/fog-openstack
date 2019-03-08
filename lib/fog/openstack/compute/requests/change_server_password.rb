@@ -3,7 +3,7 @@ module Fog
     class Compute
       class Real
         def change_server_password(server_id, admin_password)
-          body = {'changePassword' => {'adminPass' => admin_password}}
+          body = { 'changePassword' => { 'adminPass' => admin_password } }
           server_action(server_id, body)
         end
       end

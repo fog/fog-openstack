@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_resource_types(_options = {})
           request(
-            :method  => 'GET',
-            :path    => "resource_types",
-            :expects => 200,
-            :query   => {}
+            method: 'GET',
+            path: "resource_types",
+            expects: 200,
+            query: {}
           )
         end
       end
@@ -17,8 +17,8 @@ module Fog
           resources = data[:resource_types].values
 
           Excon::Response.new(
-            :body   => {'resource_types' => resources},
-            :status => 200
+            body: { 'resource_types' => resources },
+            status: 200
           )
         end
       end

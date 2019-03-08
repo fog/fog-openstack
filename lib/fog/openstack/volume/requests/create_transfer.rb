@@ -13,10 +13,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 202],
-            :method  => 'POST',
-            :path    => 'os-volume-transfer'
+            body: Fog::JSON.encode(data),
+            expects: [200, 202],
+            method: 'POST',
+            path: 'os-volume-transfer'
           )
         end
       end

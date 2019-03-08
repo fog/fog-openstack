@@ -6,7 +6,7 @@ module Fog
           data = {
             'pool' => {
               'listener_id' => listener_id,
-              'protocol'  => protocol,
+              'protocol' => protocol,
               'lb_algorithm' => lb_algorithm
             }
           }
@@ -17,10 +17,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [201],
-            :method  => 'POST',
-            :path    => 'lbaas/pools'
+            body: Fog::JSON.encode(data),
+            expects: [201],
+            method: 'POST',
+            path: 'lbaas/pools'
           )
         end
       end
@@ -30,21 +30,21 @@ module Fog
           response = Excon::Response.new
           response.status = 201
           data = {
-            'id'                 => Fog::Mock.random_numbers(6).to_s,
-            'protocol'           => protocol,
-            'lb_algorithm'       => lb_algorithm,
-            'name'               => options[:name],
-            'description'        => options[:description],
-            'healthmonitor_id'   => Fog::Mock.random_numbers(6).to_s,
-            'members'            => [Fog::Mock.random_numbers(6).to_s],
-            'status'             => 'ACTIVE',
-            'admin_state_up'     => options[:admin_state_up],
-            'tenant_id'          => options[:tenant_id],
-            'listeners'          => [ 'id' => listener_id ],
+            'id' => Fog::Mock.random_numbers(6).to_s,
+            'protocol' => protocol,
+            'lb_algorithm' => lb_algorithm,
+            'name' => options[:name],
+            'description' => options[:description],
+            'healthmonitor_id' => Fog::Mock.random_numbers(6).to_s,
+            'members' => [Fog::Mock.random_numbers(6).to_s],
+            'status' => 'ACTIVE',
+            'admin_state_up' => options[:admin_state_up],
+            'tenant_id' => options[:tenant_id],
+            'listeners' => ['id' => listener_id],
             'session_persistence' => {}
           }
           self.data[:lbaas_pools][data['id']] = data
-          response.body = {'pool' => data}
+          response.body = { 'pool' => data }
           response
         end
       end

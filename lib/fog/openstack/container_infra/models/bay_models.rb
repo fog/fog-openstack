@@ -3,7 +3,7 @@ require 'fog/openstack/container_infra/models/bay_model'
 
 module Fog
   module OpenStack
-    class  ContainerInfra
+    class ContainerInfra
       class BayModels < Fog::OpenStack::Collection
         model Fog::OpenStack::ContainerInfra::BayModel
 

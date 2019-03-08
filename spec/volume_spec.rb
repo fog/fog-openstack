@@ -105,10 +105,10 @@ require_relative './shared_context'
           volume_size            = 1 # in GB
 
           # create volume
-          volume_id              = setup_test_object(:type              => :volume,
-                                                     @name_param        => volume_name,
+          volume_id              = setup_test_object(:type => :volume,
+                                                     @name_param => volume_name,
                                                      @description_param => volume_description,
-                                                     :size              => volume_size).id
+                                                     :size => volume_size).id
 
           @service.volumes.all(@name_param => volume_name).length.must_equal 1
 
@@ -205,9 +205,9 @@ require_relative './shared_context'
           volume_size_small = 1 # in GB
           volume_size_large = 2 # in GB
 
-          volume = setup_test_object(:type       => :volume,
+          volume = setup_test_object(:type => :volume,
                                      @name_param => 'fog-testvolume-1',
-                                     :size       => volume_size_small)
+                                     :size => volume_size_small)
           volume.wait_for { ready? && size == volume_size_small }
 
           # extend volume
@@ -241,9 +241,9 @@ require_relative './shared_context'
           transfer_name = 'fog-testtransfer-1'
 
           # create volume object
-          volume        = setup_test_object(:type       => :volume,
+          volume        = setup_test_object(:type => :volume,
                                             @name_param => 'fog-testvolume-1',
-                                            :size       => 1)
+                                            :size => 1)
           volume.wait_for { ready? }
 
           # create transfer object
@@ -344,9 +344,9 @@ require_relative './shared_context'
         VCR.use_cassette('volume_transfer_and_delete') do
           begin
             # create volume object
-            volume = setup_test_object(:type       => :volume,
+            volume = setup_test_object(:type => :volume,
                                        @name_param => 'fog-testvolume-1',
-                                       :size       => 1)
+                                       :size => 1)
             volume.wait_for { ready? }
 
             # create transfer object
@@ -386,16 +386,16 @@ require_relative './shared_context'
       VCR.use_cassette('volume_snapshot_and_delete') do
         begin
           # create volume object
-          volume = setup_test_object(:type       => :volume,
+          volume = setup_test_object(:type => :volume,
                                      @name_param => 'fog-testvolume-1',
-                                     :size       => 1)
+                                     :size => 1)
           volume.wait_for { ready? }
 
           # create snapshot object
-          snapshot = setup_test_object(:type              => :snapshot,
-                                       @name_param        => 'fog-testsnapshot-1',
+          snapshot = setup_test_object(:type => :snapshot,
+                                       @name_param => 'fog-testsnapshot-1',
                                        @description_param => 'Test snapshot',
-                                       :volume_id         => volume.id)
+                                       :volume_id => volume.id)
           snapshot_id = snapshot.id
 
           # wait for the snapshot to be available
@@ -442,11 +442,11 @@ require_relative './shared_context'
       VCR.use_cassette('volume_metadata_crud') do
         begin
           # create volume object with metadata
-          volume = setup_test_object(:type       => :volume,
+          volume = setup_test_object(:type => :volume,
                                      @name_param => 'fog-testvolume-1',
-                                     :size       => 1,
-                                     :metadata   => { 'some_metadata' => 'this is meta',
-                                                      'more_metadata' => 'even more meta' })
+                                     :size => 1,
+                                     :metadata => { 'some_metadata' => 'this is meta',
+                                                    'more_metadata' => 'even more meta' })
           volume.wait_for { ready? }
 
           updated_volume = @service.volumes.get(volume.id)
@@ -457,7 +457,7 @@ require_relative './shared_context'
 
           # update metadata
           volume.update_metadata('some_metadata' => 'this is updated',
-                                 'new_metadata'  => 'this is new')
+                                 'new_metadata' => 'this is new')
 
           updated_volume = @service.volumes.get(volume.id)
           check_metadata = updated_volume.metadata
@@ -467,7 +467,7 @@ require_relative './shared_context'
           check_metadata['new_metadata'].must_equal 'this is new'
 
           # replace metadata
-          volume.replace_metadata('some_metadata'  => 'this is updated again',
+          volume.replace_metadata('some_metadata' => 'this is updated again',
                                   'newer_metadata' => 'this is newer')
 
           updated_volume = @service.volumes.get(volume.id)
@@ -494,18 +494,18 @@ require_relative './shared_context'
       VCR.use_cassette('volume_snapshot_metadata_crud') do
         begin
           # create volume object with metadata
-          volume = setup_test_object(:type       => :volume,
+          volume = setup_test_object(:type => :volume,
                                      @name_param => 'fog-testvolume-1',
-                                     :size       => 1,
-                                     :metadata   => { 'some_metadata' => 'this is meta',
-                                                      'more_metadata' => 'even more meta' })
+                                     :size => 1,
+                                     :metadata => { 'some_metadata' => 'this is meta',
+                                                    'more_metadata' => 'even more meta' })
           volume.wait_for { ready? }
 
           # create snapshot object
-          snapshot = setup_test_object(:type              => :snapshot,
-                                       @name_param        => 'fog-testsnapshot-1',
+          snapshot = setup_test_object(:type => :snapshot,
+                                       @name_param => 'fog-testsnapshot-1',
                                        @description_param => 'Test snapshot',
-                                       :volume_id         => volume.id)
+                                       :volume_id => volume.id)
           snapshot_id = snapshot.id
 
           # wait for the snapshot to be available
@@ -524,7 +524,7 @@ require_relative './shared_context'
 
           # update metadata
           snapshot.update_metadata('some_snapshot_metadata' => 'this is data',
-                                   'new_snapshot_metadata'  => 'this is new')
+                                   'new_snapshot_metadata' => 'this is new')
 
           updated_snapshot = @service.snapshots.get(snapshot_id)
           check_metadata   = updated_snapshot.metadata

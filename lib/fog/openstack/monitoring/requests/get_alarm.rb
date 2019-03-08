@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_alarm(id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "alarms/#{id}"
+            expects: [200],
+            method: 'GET',
+            path: "alarms/#{id}"
           )
         end
       end

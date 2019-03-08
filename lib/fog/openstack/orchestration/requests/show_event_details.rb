@@ -4,9 +4,9 @@ module Fog
       class Real
         def show_event_details(stack, resource, event_id)
           request(
-            :method  => 'GET',
-            :path    => "stacks/#{stack.stack_name}/#{stack.id}/resources/#{resource.resource_name}/events/#{event_id}",
-            :expects => 200
+            method: 'GET',
+            path: "stacks/#{stack.stack_name}/#{stack.id}/resources/#{resource.resource_name}/events/#{event_id}",
+            expects: 200
           )
         end
       end
@@ -16,8 +16,8 @@ module Fog
           events = data[:events].values
 
           Excon::Response.new(
-            :body   => {'events' => events},
-            :status => 200
+            body: { 'events' => events },
+            status: 200
           )
         end
       end

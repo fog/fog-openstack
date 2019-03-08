@@ -27,10 +27,10 @@ module Fog
           data = attributes.select { |key, _value| desired_options.include?(key.to_sym) }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 201],
-            :method  => 'POST',
-            :path    => 'nodes'
+            body: Fog::JSON.encode(data),
+            expects: [200, 201],
+            method: 'POST',
+            path: 'nodes'
           )
         end
       end
@@ -41,9 +41,9 @@ module Fog
           response.status = 200
           response.headers = {
             "X-Compute-Request-Id" => "req-fdc6f99e-55a2-4ab1-8904-0892753828cf",
-            "Content-Type"         => "application/json",
-            "Content-Length"       => "356",
-            "Date"                 => Date.new
+            "Content-Type" => "application/json",
+            "Content-Length" => "356",
+            "Date" => Date.new
           }
           response.body = data[:nodes].first
           response

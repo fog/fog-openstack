@@ -18,10 +18,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'meters'
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'GET',
+            path: 'meters'
           )
         end
       end
@@ -31,12 +31,12 @@ module Fog
           response = Excon::Response.new
           response.status = 200
           response.body = [{
-            'user_id'     => '1d5fd9eda19142289a60ed9330b5d284',
-            'name'        => 'image.size',
+            'user_id' => '1d5fd9eda19142289a60ed9330b5d284',
+            'name' => 'image.size',
             'resource_id' => 'glance',
-            'project_id'  => 'd646b40dea6347dfb8caee2da1484c56',
-            'type'        => 'gauge',
-            'unit'        => 'bytes'
+            'project_id' => 'd646b40dea6347dfb8caee2da1484c56',
+            'type' => 'gauge',
+            'unit' => 'bytes'
           }]
           response
         end

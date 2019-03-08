@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_security_group_rule(security_group_rule_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "os-security-group-rules/#{security_group_rule_id}"
+            expects: [200],
+            method: 'GET',
+            path: "os-security-group-rules/#{security_group_rule_id}"
           )
         end
       end
@@ -20,9 +20,9 @@ module Fog
             response.status = 200
             response.headers = {
               "X-Compute-Request-Id" => "req-63a90344-7c4d-42e2-936c-fd748bced1b3",
-              "Content-Type"         => "application/json",
-              "Content-Length"       => "167",
-              "Date"                 => Date.new
+              "Content-Type" => "application/json",
+              "Content-Length" => "167",
+              "Date" => Date.new
             }
             response.body = {
               "security_group_rule" => security_group_rule

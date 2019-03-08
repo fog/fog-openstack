@@ -3,7 +3,7 @@ require 'yaml'
 module Fog
   module OpenStack
     class Introspection < Fog::Service
-      SUPPORTED_VERSIONS = /v1/
+      SUPPORTED_VERSIONS = /v1/.freeze
 
       requires :openstack_auth_url
       recognizes :openstack_auth_token, :openstack_management_url,
@@ -45,7 +45,7 @@ module Fog
           @data ||= Hash.new do |hash, key|
             # Introspection data is *huge* we load it from a yaml file
             file = "test/fixtures/introspection.yaml"
-            hash[key] = YAML.load(File.read(file))
+            hash[key] = YAML.safe_load(File.read(file))
           end
         end
 
@@ -55,7 +55,7 @@ module Fog
 
         include Fog::OpenStack::Core
 
-        def initialize(options = {})
+        def initialize(_options = {})
           @auth_token = Fog::Mock.random_base64(64)
           @auth_token_expiration = (Time.now.utc + 86_400).iso8601
         end

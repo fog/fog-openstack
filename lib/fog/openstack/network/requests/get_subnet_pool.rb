@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_subnet_pool(subnet_pool_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "subnetpools/#{subnet_pool_id}"
+            expects: [200],
+            method: 'GET',
+            path: "subnetpools/#{subnet_pool_id}"
           )
         end
       end
@@ -17,7 +17,7 @@ module Fog
           if data
             response = Excon::Response.new
             response.status = 200
-            response.body = {'subnetpool' => data}
+            response.body = { 'subnetpool' => data }
             response
           else
             raise Fog::OpenStack::Network::NotFound

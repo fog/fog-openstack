@@ -6,113 +6,113 @@ describe Fog::OpenStack::Auth::Catalog::V3 do
       "endpoints" => [
         {
           "region_id" => "regionOne",
-          "url"       => "http://localhost:9696",
-          "region"    => "regionOne",
+          "url" => "http://localhost:9696",
+          "region" => "regionOne",
           "interface" => "internal",
-          "id"        => "id_endpoint1_internal"
+          "id" => "id_endpoint1_internal"
         },
         {
           "region_id" => "regionOne",
-          "url"       => "http://localhost:9696",
-          "region"    => "regionOne",
+          "url" => "http://localhost:9696",
+          "region" => "regionOne",
           "interface" => "public",
-          "id"        => "id_endpoint1_public"
+          "id" => "id_endpoint1_public"
         },
         {
           "region_id" => "regionOne",
-          "url"       => "http://localhost:9696",
-          "region"    => "regionOne",
+          "url" => "http://localhost:9696",
+          "region" => "regionOne",
           "interface" => "admin",
-          "id"        => "id_endpoint1_admin"
+          "id" => "id_endpoint1_admin"
         }
       ],
-      "type"      => "network",
-      "id"        => "id1",
-      "name"      => "neutron"
+      "type" => "network",
+      "id" => "id1",
+      "name" => "neutron"
     },
     {
       "endpoints" => [
         {
           "region_id" => "regionOne",
-          "url"       => "http://localhost:9292",
-          "region"    => "regionOne",
+          "url" => "http://localhost:9292",
+          "region" => "regionOne",
           "interface" => "internal",
-          "id"        => "id_endpoint1_internal"
+          "id" => "id_endpoint1_internal"
         },
         {
           "region_id" => "regionOne",
-          "url"       => "http://localhost:9292",
-          "region"    => "regionOne",
+          "url" => "http://localhost:9292",
+          "region" => "regionOne",
           "interface" => "public",
-          "id"        => "id_endpoint1_public"
+          "id" => "id_endpoint1_public"
         },
         {
           "region_id" => "regionOne",
-          "url"       => "http://localhost:9292",
-          "region"    => "regionOne",
+          "url" => "http://localhost:9292",
+          "region" => "regionOne",
           "interface" => "admin",
-          "id"        => "id_endpoint1_admin"
+          "id" => "id_endpoint1_admin"
         }
       ],
-      "type"      => "image",
-      "id"        => "id2",
-      "name"      => "glance"
+      "type" => "image",
+      "id" => "id2",
+      "name" => "glance"
     },
     {
       "endpoints" => [
         {
           "region_id" => "regionOne",
-          "url"       => "http://localhost:5000",
-          "region"    => "regionOne",
+          "url" => "http://localhost:5000",
+          "region" => "regionOne",
           "interface" => "internal",
-          "id"        => "id_endpoint1_internal"
+          "id" => "id_endpoint1_internal"
         },
         {
           "region_id" => "regionOne",
-          "url"       => "http://localhost:5000",
-          "region"    => "regionOne",
+          "url" => "http://localhost:5000",
+          "region" => "regionOne",
           "interface" => "public",
-          "id"        => "id_endpoint1_public"
+          "id" => "id_endpoint1_public"
         },
         {
           "region_id" => "regionOne",
-          "url"       => "http://localhost:35357",
-          "region"    => "regionOne",
+          "url" => "http://localhost:35357",
+          "region" => "regionOne",
           "interface" => "admin",
-          "id"        => "id_endpoint1_admin"
+          "id" => "id_endpoint1_admin"
         }
       ],
-      "type"      => "identity",
-      "id"        => "id3",
-      "name"      => "keystone"
+      "type" => "identity",
+      "id" => "id3",
+      "name" => "keystone"
     },
     {
       "endpoints" => [
         {
           "region_id" => "regionOne",
-          "url"       => "http://localhost2:5000",
-          "region"    => "regionTwo",
+          "url" => "http://localhost2:5000",
+          "region" => "regionTwo",
           "interface" => "internal",
-          "id"        => "id_endpoint1_internal"
+          "id" => "id_endpoint1_internal"
         },
         {
           "region_id" => "regionTwo",
-          "url"       => "http://localhost2:5000",
-          "region"    => "regionTwo",
+          "url" => "http://localhost2:5000",
+          "region" => "regionTwo",
           "interface" => "public",
-          "id"        => "id_endpoint1_public"
+          "id" => "id_endpoint1_public"
         },
         {
           "region_id" => "regionTwo",
-          "url"       => "http://localhost2:35357",
-          "region"    => "regionTwo",
+          "url" => "http://localhost2:35357",
+          "region" => "regionTwo",
           "interface" => "admin",
-          "id"        => "id_endpoint1_admin"
+          "id" => "id_endpoint1_admin"
         }
       ],
-      "type"      => "identity",
-      "id"        => "id3",
-      "name"      => "keystone"
+      "type" => "identity",
+      "id" => "id3",
+      "name" => "keystone"
     }
   ].freeze
 
@@ -169,40 +169,40 @@ end
 describe Fog::OpenStack::Auth::Catalog::V2 do
   CATALOGV2 = [
     {
-      'endpoints'       => [{
-        'adminURL'    => 'http://localhost',
-        'region'      => 'regionOne',
+      'endpoints' => [{
+        'adminURL' => 'http://localhost',
+        'region' => 'regionOne',
         'internalURL' => 'http://localhost:8888/v2.0',
-        'id'          => 'id_endpoints',
-        'publicURL'   => 'http://localhost'
+        'id' => 'id_endpoints',
+        'publicURL' => 'http://localhost'
       }],
       'endpoints_links' => [],
-      'type'            => 'identity',
-      'name'            => 'keystone'
+      'type' => 'identity',
+      'name' => 'keystone'
     },
     {
-      'endpoints'       => [{
-        'adminURL'    => 'http://localhost',
-        'region'      => 'regionTwo',
+      'endpoints' => [{
+        'adminURL' => 'http://localhost',
+        'region' => 'regionTwo',
         'internalURL' => 'http://localhost:9999/v2.0',
-        'id'          => 'id_endpoints',
-        'publicURL'   => 'http://localhost'
+        'id' => 'id_endpoints',
+        'publicURL' => 'http://localhost'
       }],
       'endpoints_links' => [],
-      'type'            => 'identity',
-      'name'            => 'keystone'
+      'type' => 'identity',
+      'name' => 'keystone'
     },
     {
-      'endpoints'       => [{
-        'adminURL'    => 'http://localhost',
-        'region'      => 'regionOne',
+      'endpoints' => [{
+        'adminURL' => 'http://localhost',
+        'region' => 'regionOne',
         'internalURL' => 'http://localhost:7777/v1.0',
-        'id'          => 'id_endpoints',
-        'publicURL'   => 'http://localhost'
+        'id' => 'id_endpoints',
+        'publicURL' => 'http://localhost'
       }],
       'endpoints_links' => [],
-      'type'            => 'compute',
-      'name'            => 'nova'
+      'type' => 'compute',
+      'name' => 'nova'
     }
   ].freeze
 

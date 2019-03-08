@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_quota_defaults(tenant_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "/os-quota-sets/#{tenant_id}/defaults"
+            expects: 200,
+            method: 'GET',
+            path: "/os-quota-sets/#{tenant_id}/defaults"
           )
         end
       end

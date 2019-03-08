@@ -3,7 +3,7 @@ module Fog
     class Compute
       class Real
         def revert_resize_server(server_id)
-          body = {'revertResize' => nil}
+          body = { 'revertResize' => nil }
           server_action(server_id, body)
         end
       end

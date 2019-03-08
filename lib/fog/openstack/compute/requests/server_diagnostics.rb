@@ -10,15 +10,14 @@ module Fog
         # * actions <~Array>
         def server_diagnostics(server_id)
           request(
-            :method => 'GET',
-            :path   => "servers/#{server_id}/diagnostics"
+            method: 'GET',
+            path: "servers/#{server_id}/diagnostics"
           )
         end
       end
 
       class Mock
-        def server_diagnostics(server_id)
-        end
+        def server_diagnostics(server_id); end
       end
     end
   end

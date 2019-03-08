@@ -15,9 +15,10 @@ module Fog
           def find_by_id(id)
             cached_endpoint = find { |endpoint| endpoint.id == id }
             return cached_endpoint if cached_endpoint
+
             endpoint_hash = service.get_endpoint(id).body['endpoint']
             Fog::OpenStack::Identity::V3::Endpoint.new(
-              endpoint_hash.merge(:service => service)
+              endpoint_hash.merge(service: service)
             )
           end
         end

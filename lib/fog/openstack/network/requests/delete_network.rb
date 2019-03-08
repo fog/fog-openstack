@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_network(network_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "networks/#{network_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "networks/#{network_id}"
           )
         end
       end

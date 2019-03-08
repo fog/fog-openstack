@@ -21,7 +21,6 @@ module Fog
         def create
           requires :floating_network_id
           merge_attributes(service.create_floating_ip(floating_network_id,
-
                                                       attributes).body['floatingip'])
           self
         end
@@ -56,7 +55,7 @@ module Fog
         private
 
         def options(fixed_ip_address)
-          fixed_ip_address ? {'fixed_ip_address' => fixed_ip_address} : {}
+          fixed_ip_address ? { 'fixed_ip_address' => fixed_ip_address } : {}
         end
       end
     end

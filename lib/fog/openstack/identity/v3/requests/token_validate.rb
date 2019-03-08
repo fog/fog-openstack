@@ -5,10 +5,10 @@ module Fog
         class Real
           def token_validate(subject_token)
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "auth/tokens",
-              :headers => {"X-Subject-Token" => subject_token, "X-Auth-Token" => auth_token}
+              expects: [200],
+              method: 'GET',
+              path: "auth/tokens",
+              headers: { "X-Subject-Token" => subject_token, "X-Auth-Token" => auth_token }
             )
           end
         end

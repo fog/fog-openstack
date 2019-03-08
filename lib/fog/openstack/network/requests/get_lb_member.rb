@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_lb_member(member_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "lb/members/#{member_id}"
+            expects: [200],
+            method: 'GET',
+            path: "lb/members/#{member_id}"
           )
         end
       end
@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:lb_members][member_id]
             response.status = 200
-            response.body = {'member' => data}
+            response.body = { 'member' => data }
             response
           else
             raise Fog::OpenStack::Network::NotFound

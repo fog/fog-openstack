@@ -24,9 +24,10 @@ module Fog
 
         def initialize(auth, options)
           raise URLError, 'No URL provided' if auth[:openstack_auth_url].nil? || auth[:openstack_auth_url].empty?
+
           @creds = {
-            :data => build_credentials(auth),
-            :uri  => URI.parse(auth[:openstack_auth_url])
+            data: build_credentials(auth),
+            uri: URI.parse(auth[:openstack_auth_url])
           }
           response = authenticate(@creds, options)
           set(response)
@@ -43,11 +44,11 @@ module Fog
           connection = Fog::Core::Connection.new(creds[:uri].to_s, false, options)
 
           request = {
-            :expects => [200, 201],
-            :headers => {'Content-Type' => 'application/json'},
-            :body    => Fog::JSON.encode(creds[:data]),
-            :method  => 'POST',
-            :path    => creds[:uri].path + prefix_path(creds[:uri]) + path
+            expects: [200, 201],
+            headers: { 'Content-Type' => 'application/json' },
+            body: Fog::JSON.encode(creds[:data]),
+            method: 'POST',
+            path: creds[:uri].path + prefix_path(creds[:uri]) + path
           }
 
           connection.request(request)
@@ -57,6 +58,7 @@ module Fog
           if @expires.nil? || @expires.empty?
             raise ExpiryError, 'Missing token expiration data'
           end
+
           Time.parse(@expires) < Time.now.utc
         end
 

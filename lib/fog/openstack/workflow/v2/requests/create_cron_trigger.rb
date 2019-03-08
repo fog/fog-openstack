@@ -11,10 +11,10 @@ module Fog
                                   first_time = nil,
                                   count = nil)
             data = {
-              :name                 => name,
-              :pattern              => pattern,
-              :first_execution_time => first_time,
-              :remaining_executions => count
+              name: name,
+              pattern: pattern,
+              first_execution_time: first_time,
+              remaining_executions: count
             }
             if workflow_identifier
               data[:workflow_id] = workflow_identifier
@@ -27,10 +27,10 @@ module Fog
             end
             body = Fog::JSON.encode(data)
             request(
-              :body    => body,
-              :expects => 201,
-              :method  => "POST",
-              :path    => "cron_triggers"
+              body: body,
+              expects: 201,
+              method: "POST",
+              path: "cron_triggers"
             )
           end
         end

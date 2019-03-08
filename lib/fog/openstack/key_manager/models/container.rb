@@ -4,7 +4,6 @@ require 'uri'
 module Fog
   module OpenStack
     class KeyManager
-
       class Container < Fog::OpenStack::Model
         identity :container_ref
 
@@ -21,8 +20,8 @@ module Fog
         attribute :updated
 
         def uuid
-          URI(self.container_ref).path.split('/').last
-        rescue
+          URI(container_ref).path.split('/').last
+        rescue StandardError
           nil
         end
 
@@ -36,9 +35,7 @@ module Fog
           service.delete_container(uuid)
           true
         end
-
       end
-
     end
   end
 end

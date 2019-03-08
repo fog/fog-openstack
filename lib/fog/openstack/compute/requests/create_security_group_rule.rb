@@ -6,19 +6,19 @@ module Fog
           data = {
             'security_group_rule' => {
               'parent_group_id' => parent_group_id,
-              'ip_protocol'     => ip_protocol,
-              'from_port'       => from_port,
-              'to_port'         => to_port,
-              'cidr'            => cidr,
-              'group_id'        => group_id
+              'ip_protocol' => ip_protocol,
+              'from_port' => from_port,
+              'to_port' => to_port,
+              'cidr' => cidr,
+              'group_id' => group_id
             }
           }
 
           request(
-            :expects => 200,
-            :method  => 'POST',
-            :body    => Fog::JSON.encode(data),
-            :path    => 'os-security-group-rules'
+            expects: 200,
+            method: 'POST',
+            body: Fog::JSON.encode(data),
+            path: 'os-security-group-rules'
           )
         end
       end
@@ -30,18 +30,18 @@ module Fog
           response.status = 200
           response.headers = {
             'X-Compute-Request-Id' => "req-#{Fog::Mock.random_hex(32)}",
-            'Content-Type'         => 'application/json',
-            'Content-Length'       => Fog::Mock.random_numbers(3).to_s,
-            'Date'                 => Date.new
+            'Content-Type' => 'application/json',
+            'Content-Length' => Fog::Mock.random_numbers(3).to_s,
+            'Date' => Date.new
           }
           rule = {
-            'id'              => Fog::Mock.random_numbers(2).to_i,
-            'from_port'       => from_port,
-            'group'           => group_id || {},
-            'ip_protocol'     => ip_protocol,
-            'to_port'         => to_port,
+            'id' => Fog::Mock.random_numbers(2).to_i,
+            'from_port' => from_port,
+            'group' => group_id || {},
+            'ip_protocol' => ip_protocol,
+            'to_port' => to_port,
             'parent_group_id' => parent_group_id,
-            'ip_range'        => {
+            'ip_range' => {
               'cidr' => cidr
             }
           }

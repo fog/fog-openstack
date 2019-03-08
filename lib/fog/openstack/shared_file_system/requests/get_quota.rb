@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_quota(project_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "#{action_prefix}quota-sets/#{project_id}"
+            expects: 200,
+            method: 'GET',
+            path: "#{action_prefix}quota-sets/#{project_id}"
           )
         end
       end
@@ -17,7 +17,7 @@ module Fog
           response.status = 200
           quota_data = data[:quota_updated] || data[:quota]
           quota_data['id'] = project_id
-          response.body = {'quota_set' => quota_data}
+          response.body = { 'quota_set' => quota_data }
           response
         end
       end

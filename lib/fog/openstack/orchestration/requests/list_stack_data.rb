@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_stack_data(options = {})
           request(
-            :method  => 'GET',
-            :path    => 'stacks',
-            :expects => 200,
-            :query   => options
+            method: 'GET',
+            path: 'stacks',
+            expects: 200,
+            query: options
           )
         end
       end
@@ -17,8 +17,8 @@ module Fog
           stacks = data[:stacks].values
 
           Excon::Response.new(
-            :body   => {'stacks' => stacks},
-            :status => 200
+            body: { 'stacks' => stacks },
+            status: 200
           )
         end
       end

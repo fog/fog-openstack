@@ -3,7 +3,7 @@ module Fog
     class Network
       class Real
         def update_port(port_id, options = {})
-          data = {'port' => {}}
+          data = { 'port' => {} }
 
           vanilla_options = [:name, :fixed_ips, :admin_state_up, :device_owner,
                              :device_id, :security_groups, :allowed_address_pairs]
@@ -12,10 +12,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "ports/#{port_id}.json"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "ports/#{port_id}.json"
           )
         end
       end
@@ -31,7 +31,7 @@ module Fog
             port['device_id']             = options[:device_id]
             port['security_groups']       = options[:security_groups] || []
             port['allowed_address_pairs'] = options[:allowed_address_pairs] || []
-            response.body = {'port' => port}
+            response.body = { 'port' => port }
             response.status = 200
             response
           else

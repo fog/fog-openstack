@@ -6,10 +6,10 @@ module Fog
       module Real
         def list_transfers_detailed(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'os-volume-transfer/detail',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'os-volume-transfer/detail',
+            query: options
           )
         end
       end

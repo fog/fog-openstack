@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_quota(tenant_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "/quotas/#{tenant_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "/quotas/#{tenant_id}"
           )
         end
       end

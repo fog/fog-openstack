@@ -14,49 +14,49 @@ describe "OpenStack authentication" do
       "access" => {
         "token" => {
           "expires" => @expires.iso8601,
-          "id"      => @token,
-          "tenant"  => {
-            "enabled"     => true,
+          "id" => @token,
+          "tenant" => {
+            "enabled" => true,
             "description" => nil,
-            "name"        => "admin",
-            "id"          => @tenant_token
+            "name" => "admin",
+            "id" => @tenant_token
           }
         },
         "serviceCatalog" => [
           {
             "endpoints" => [
               {
-                "adminURL"    => "http://example:8774/v2/#{@tenant_token}",
-                "region"      => "RegionOne",
+                "adminURL" => "http://example:8774/v2/#{@tenant_token}",
+                "region" => "RegionOne",
                 "internalURL" => "http://example:8774/v2/#{@tenant_token}",
-                "id"          => Fog::Mock.random_numbers(8).to_s,
-                "publicURL"   => "http://example:8774/v2/#{@tenant_token}"
+                "id" => Fog::Mock.random_numbers(8).to_s,
+                "publicURL" => "http://example:8774/v2/#{@tenant_token}"
               }
             ],
             "endpoints_links" => [],
-            "type"            => "compute",
-            "name"            => "nova"
+            "type" => "compute",
+            "name" => "nova"
           },
           {
-            "endpoints"       => [
+            "endpoints" => [
               {
-                "adminURL"    => "http://example:9292",
-                "region"      => "RegionOne",
+                "adminURL" => "http://example:9292",
+                "region" => "RegionOne",
                 "internalURL" => "http://example:9292",
-                "id"          => Fog::Mock.random_numbers(8).to_s,
-                "publicURL"   => "http://example:9292"
+                "id" => Fog::Mock.random_numbers(8).to_s,
+                "publicURL" => "http://example:9292"
               }
             ],
             "endpoints_links" => [],
-            "type"            => "image",
-            "name"            => "glance"
+            "type" => "image",
+            "name" => "glance"
           }
         ],
         "user" => {
-          "username"    => "admin",
+          "username" => "admin",
           "roles_links" => [],
-          "id"          => Fog::Mock.random_numbers(8).to_s,
-          "roles"       => [
+          "id" => Fog::Mock.random_numbers(8).to_s,
+          "roles" => [
             { "name" => "admin" },
             { "name" => "KeystoneAdmin" },
             { "name" => "KeystoneServiceAdmin" }
@@ -65,7 +65,7 @@ describe "OpenStack authentication" do
         },
         "metadata" => {
           "is_admin" => 0,
-          "roles"    => [
+          "roles" => [
             Fog::Mock.random_numbers(8).to_s,
             Fog::Mock.random_numbers(8).to_s,
             Fog::Mock.random_numbers(8).to_s
@@ -123,7 +123,8 @@ describe "OpenStack authentication" do
   it "v2 missing service" do
     Excon.stub(
       { method: 'POST', path: '/v2.0/tokens' },
-      { status: 200, body: Fog::JSON.encode(@body) })
+      status: 200, body: Fog::JSON.encode(@body)
+    )
 
     service = Object.new
     service.extend(Fog::OpenStack::Core)
@@ -133,7 +134,8 @@ describe "OpenStack authentication" do
       openstack_tenant: 'admin',
       openstack_service_type: %w[network],
       openstack_api_key: 'secret',
-      openstack_username: 'user')
+      openstack_username: 'user'
+    )
     proc do
       service.send(:authenticate)
     end.must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
@@ -153,7 +155,8 @@ describe "OpenStack authentication" do
       openstack_tenant: 'admin',
       openstack_api_key: 'secret',
       openstack_username: 'user',
-      openstack_service_type: 'object-store')
+      openstack_service_type: 'object-store'
+    )
 
     proc do
       service.send(:authenticate)
@@ -166,21 +169,22 @@ describe "OpenStack authentication" do
       {
         "endpoints" => [
           {
-            "adminURL"    => "http://example2:8774/v2/#{@tenant_token}",
-            "region"      => "RegionOne",
+            "adminURL" => "http://example2:8774/v2/#{@tenant_token}",
+            "region" => "RegionOne",
             "internalURL" => "http://example2:8774/v2/#{@tenant_token}",
-            "id"          => Fog::Mock.random_numbers(8).to_s,
-            "publicURL"   => "http://example2:8774/v2/#{@tenant_token}"
+            "id" => Fog::Mock.random_numbers(8).to_s,
+            "publicURL" => "http://example2:8774/v2/#{@tenant_token}"
           }
         ],
         "endpoints_links" => [],
-        "type"            => "compute",
-        "name"            => "nova2"
+        "type" => "compute",
+        "name" => "nova2"
       }
 
     Excon.stub(
       { method: 'POST', path: "/v2.0/tokens" },
-      { status: 200, body: Fog::JSON.encode(body_clone) })
+      status: 200, body: Fog::JSON.encode(body_clone)
+    )
 
     service = Object.new
     service.extend(Fog::OpenStack::Core)
@@ -190,7 +194,8 @@ describe "OpenStack authentication" do
       openstack_tenant: 'admin',
       openstack_api_key: 'secret',
       openstack_username: 'user',
-      openstack_service_type: 'compute')
+      openstack_service_type: 'compute'
+    )
 
     proc do
       service.send(:authenticate)

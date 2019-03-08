@@ -18,7 +18,7 @@ module Fog
         end
 
         def security_group_rules
-          Fog::OpenStack::Network::SecurityGroupRules.new(:service => service).load(attributes[:security_group_rules])
+          Fog::OpenStack::Network::SecurityGroupRules.new(service: service).load(attributes[:security_group_rules])
         end
 
         def save

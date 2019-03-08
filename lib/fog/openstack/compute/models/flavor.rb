@@ -14,9 +14,9 @@ module Fog
         attribute :swap
         attribute :rxtx_factor
         attribute :metadata
-        attribute :ephemeral, :aliases => 'OS-FLV-EXT-DATA:ephemeral'
-        attribute :is_public, :aliases => 'os-flavor-access:is_public'
-        attribute :disabled, :aliases => 'OS-FLV-DISABLED:disabled'
+        attribute :ephemeral, aliases: 'OS-FLV-EXT-DATA:ephemeral'
+        attribute :is_public, aliases: 'os-flavor-access:is_public'
+        attribute :disabled, aliases: 'OS-FLV-DISABLED:disabled'
 
         def save
           requires :name, :ram, :vcpus, :disk

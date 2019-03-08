@@ -15,10 +15,10 @@ module Fog
 
             path = tenant_id ? "tenants/#{tenant_id}/users" : 'users'
             request(
-              :expects => [200, 204],
-              :method  => 'GET',
-              :path    => path,
-              :query   => query
+              expects: [200, 204],
+              method: 'GET',
+              path: path,
+              query: query
             )
           end
         end
@@ -36,8 +36,8 @@ module Fog
             end
 
             Excon::Response.new(
-              :body   => {'users' => users},
-              :status => 200
+              body: { 'users' => users },
+              status: 200
             )
           end
         end

@@ -5,7 +5,7 @@ module Fog
   module OpenStack
     class Volume
       class V1 < Fog::OpenStack::Volume
-        SUPPORTED_VERSIONS = /v1(\.(0-9))*/
+        SUPPORTED_VERSIONS = /v1(\.(0-9))*/.freeze
 
         requires :openstack_auth_url
 

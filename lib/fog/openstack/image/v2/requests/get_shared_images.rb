@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_shared_images(tenant_id)
             request(
-              :expects => [200, 204],
-              :method  => 'GET',
-              :path    => "shared-images/#{tenant_id}"
+              expects: [200, 204],
+              method: 'GET',
+              path: "shared-images/#{tenant_id}"
             )
           end
         end
@@ -18,8 +18,8 @@ module Fog
             response.status = [200, 204][rand(2)]
             response.body = {
               "shared_images" => [
-                {"image_id"  => "ff528b20431645ebb5fa4b0a71ca002f",
-                 "can_share" => false}
+                { "image_id" => "ff528b20431645ebb5fa4b0a71ca002f",
+                  "can_share" => false }
               ]
             }
             response

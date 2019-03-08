@@ -16,6 +16,7 @@ module Fog
         def save
           requires :share, :access_level, :access_type, :access_to
           raise Fog::Errors::Error, 'Resaving an existing object may create a duplicate' if persisted?
+
           merge_attributes(service.grant_share_access(@share.id, access_to, access_type, access_level).body['access'])
           true
         end

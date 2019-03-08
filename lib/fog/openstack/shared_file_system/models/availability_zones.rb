@@ -8,7 +8,7 @@ module Fog
         model Fog::OpenStack::SharedFileSystem::AvailabilityZone
 
         def all
-          load_response(service.list_availability_zones(), 'availability_zones')
+          load_response(service.list_availability_zones, 'availability_zones')
         end
       end
     end

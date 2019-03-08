@@ -6,10 +6,10 @@ module Fog
           def create_action(definition)
             body = Fog::JSON.encode(definition)
             request(
-              :body    => body,
-              :expects => 201,
-              :method  => "POST",
-              :path    => "actions"
+              body: body,
+              expects: 201,
+              method: "POST",
+              path: "actions"
             )
           end
         end

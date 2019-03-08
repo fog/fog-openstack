@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_port(port_id)
           request(
-            :expects => [200, 204],
-            :method  => 'GET',
-            :path    => "ports/#{port_id}"
+            expects: [200, 204],
+            method: 'GET',
+            path: "ports/#{port_id}"
           )
         end
       end

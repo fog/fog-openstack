@@ -77,9 +77,9 @@ unless Fog.mocking?
         describe "#cache_control" do
           before do
             @instance = @directory.files.create(
-              :key           => 'meta-test',
-              :body          => lorem_file,
-              :cache_control => 'public, max-age=31536000'
+              key: 'meta-test',
+              body: lorem_file,
+              cache_control: 'public, max-age=31536000'
             )
           end
 

@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_cron_trigger(name)
             request(
-              :expects => 204,
-              :method  => "DELETE",
-              :path    => "cron_triggers/#{URI.encode(name)}"
+              expects: 204,
+              method: "DELETE",
+              path: "cron_triggers/#{URI.encode(name)}"
             )
           end
         end

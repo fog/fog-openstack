@@ -5,10 +5,10 @@ module Fog
   module OpenStack
     class Storage
       class Directory < Fog::OpenStack::Model
-        identity  :key, :aliases => 'name'
+        identity  :key, aliases: 'name'
 
-        attribute :bytes, :aliases => 'X-Container-Bytes-Used'
-        attribute :count, :aliases => 'X-Container-Object-Count'
+        attribute :bytes, aliases: 'X-Container-Bytes-Used'
+        attribute :count, aliases: 'X-Container-Object-Count'
 
         attr_writer :public
 
@@ -23,8 +23,8 @@ module Fog
         def files
           @files ||= begin
             Fog::OpenStack::Storage::Files.new(
-              :directory => self,
-              :service   => service
+              directory: self,
+              service: service
             )
           end
         end
@@ -34,14 +34,14 @@ module Fog
 
           @public_url ||= begin
             service.public_url(key)
-          rescue Fog::OpenStack::Storage::NotFound => err
-            nil
+                          rescue Fog::OpenStack::Storage::NotFound => err
+                            nil
           end
         end
 
         def save
           requires :key
-          service.put_container(key, :public => @public)
+          service.put_container(key, public: @public)
           true
         end
       end

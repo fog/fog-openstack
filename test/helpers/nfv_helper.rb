@@ -18,7 +18,7 @@ def set_nfv_data
   }
 
   @auth = {
-    "tenantName"          => "admin",
+    "tenantName" => "admin",
     "passwordCredentials" => {
       "username" => "admin",
       "password" => "password"

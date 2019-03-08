@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_lbaas_pool(pool_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "lbaas/pools/#{pool_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "lbaas/pools/#{pool_id}"
           )
         end
       end

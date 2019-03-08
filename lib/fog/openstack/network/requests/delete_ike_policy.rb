@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_ike_policy(ike_policy_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "vpn/ikepolicies/#{ike_policy_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "vpn/ikepolicies/#{ike_policy_id}"
           )
         end
       end

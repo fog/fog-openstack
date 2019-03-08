@@ -6,10 +6,10 @@ module Fog
           def validate_workbook(definition)
             body = Fog::JSON.encode(definition)
             request(
-              :body    => body,
-              :expects => 200,
-              :method  => "POST",
-              :path    => "workbooks/validate"
+              body: body,
+              expects: 200,
+              method: "POST",
+              path: "workbooks/validate"
             )
           end
         end

@@ -5,20 +5,20 @@ describe "Shindo.tests('@compute | security group requests" do
     @security_group = {}
     @security_group_rule = {}
     @security_group_format = {
-      "id"          => Integer,
-      "rules"       => Array,
-      "tenant_id"   => String,
-      "name"        => String,
+      "id" => Integer,
+      "rules" => Array,
+      "tenant_id" => String,
+      "name" => String,
       "description" => String
     }
 
     @security_group_rule_format = {
-      "id"              => Integer,
-      "from_port"       => Integer,
-      "to_port"         => Integer,
-      "ip_protocol"     => String,
-      "group"           => Hash,
-      "ip_range"        => Hash,
+      "id" => Integer,
+      "from_port" => Integer,
+      "to_port" => Integer,
+      "ip_protocol" => String,
+      "group" => Hash,
+      "ip_range" => Hash,
       "parent_group_id" => Integer
     }
 

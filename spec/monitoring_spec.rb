@@ -76,7 +76,7 @@ describe Fog::OpenStack::Monitoring do
       end.must_raise ArgumentError
 
       proc do
-        @service.metrics.create(name: "this wont't be created due to invalid timestamp", :timestamp => 1234)
+        @service.metrics.create(name: "this wont't be created due to invalid timestamp", timestamp: 1234)
       end.must_raise ArgumentError
     end
   end

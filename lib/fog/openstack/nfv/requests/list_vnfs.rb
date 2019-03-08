@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_vnfs(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "vnfs",
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: "vnfs",
+            query: options
           )
         end
       end
@@ -16,7 +16,7 @@ module Fog
         def list_vnfs(_options = {})
           response = Excon::Response.new
           response.status = 200
-          response.body = {"vnfs" => data[:vnfs]}
+          response.body = { "vnfs" => data[:vnfs] }
           response
         end
       end

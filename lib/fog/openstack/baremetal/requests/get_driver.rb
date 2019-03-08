@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_driver(driver_name)
           request(
-            :expects => [200, 204],
-            :method  => 'GET',
-            :path    => "drivers/#{driver_name}"
+            expects: [200, 204],
+            method: 'GET',
+            path: "drivers/#{driver_name}"
           )
         end
       end

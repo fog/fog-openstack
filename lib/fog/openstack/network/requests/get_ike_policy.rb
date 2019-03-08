@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_ike_policy(ike_policy_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "vpn/ikepolicies/#{ike_policy_id}"
+            expects: [200],
+            method: 'GET',
+            path: "vpn/ikepolicies/#{ike_policy_id}"
           )
         end
       end
@@ -16,7 +16,7 @@ module Fog
           response = Excon::Response.new
           if data = self.data[:ike_policies][ike_policy_id]
             response.status = 200
-            response.body   = {'ikepolicy' => data}
+            response.body   = { 'ikepolicy' => data }
             response
           else
             raise Fog::OpenStack::Network::NotFound

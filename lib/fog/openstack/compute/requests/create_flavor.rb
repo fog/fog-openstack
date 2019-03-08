@@ -12,23 +12,23 @@ module Fog
         def create_flavor(attributes)
           data = {
             'flavor' => {
-              'name'                       => attributes[:name],
-              'ram'                        => attributes[:ram],
-              'vcpus'                      => attributes[:vcpus],
-              'disk'                       => attributes[:disk],
-              'id'                         => attributes[:flavor_id],
-              'swap'                       => attributes[:swap],
-              'OS-FLV-EXT-DATA:ephemeral'  => attributes[:ephemeral],
+              'name' => attributes[:name],
+              'ram' => attributes[:ram],
+              'vcpus' => attributes[:vcpus],
+              'disk' => attributes[:disk],
+              'id' => attributes[:flavor_id],
+              'swap' => attributes[:swap],
+              'OS-FLV-EXT-DATA:ephemeral' => attributes[:ephemeral],
               'os-flavor-access:is_public' => attributes[:is_public],
-              'rxtx_factor'                => attributes[:rxtx_factor]
+              'rxtx_factor' => attributes[:rxtx_factor]
             }
           }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'POST',
-            :path    => 'flavors'
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'POST',
+            path: 'flavors'
           )
         end
       end
@@ -39,32 +39,32 @@ module Fog
           response.status = 200
           response.headers = {
             "X-Compute-Request-Id" => "req-fdc6f99e-55a2-4ab1-8904-0892753828cf",
-            "Content-Type"         => "application/json",
-            "Content-Length"       => "356",
-            "Date"                 => Date.new
+            "Content-Type" => "application/json",
+            "Content-Length" => "356",
+            "Date" => Date.new
           }
           response.body = {
             "flavor" => {
-              "vcpus"                      => attributes[:vcpus],
-              "disk"                       => attributes[:disk],
-              "name"                       => attributes[:name],
-              "links"                      => [
+              "vcpus" => attributes[:vcpus],
+              "disk" => attributes[:disk],
+              "name" => attributes[:name],
+              "links" => [
                 {
                   "href" => "http://192.168.27.100:8774/v1.1/6733e93c5f5c4eb1bcabc6902ba208d6/flavors/11",
-                  "rel"  => "self"
+                  "rel" => "self"
                 },
                 {
                   "href" => "http://192.168.27.100:8774/6733e93c5f5c4eb1bcabc6902ba208d6/flavors/11",
-                  "rel"  => "bookmark"
+                  "rel" => "bookmark"
                 }
               ],
-              "rxtx_factor"                => attributes[:rxtx_factor] || 1.0,
-              "OS-FLV-EXT-DATA:ephemeral"  => attributes[:ephemeral] || 0,
+              "rxtx_factor" => attributes[:rxtx_factor] || 1.0,
+              "OS-FLV-EXT-DATA:ephemeral" => attributes[:ephemeral] || 0,
               "os-flavor-access:is_public" => attributes[:is_public] || false,
-              "OS-FLV-DISABLED:disabled"   => attributes[:disabled] || false,
-              "ram"                        => attributes[:ram],
-              "id"                         => "11",
-              "swap"                       => attributes[:swap] || ""
+              "OS-FLV-DISABLED:disabled" => attributes[:disabled] || false,
+              "ram" => attributes[:ram],
+              "id" => "11",
+              "swap" => attributes[:swap] || ""
             }
           }
           response

@@ -5,9 +5,9 @@ module Fog
         class Real
           def add_tag_to_image(image_id, tag)
             request(
-              :expects => [204],
-              :method  => 'PUT',
-              :path    => "images/#{image_id}/tags/#{tag}"
+              expects: [204],
+              method: 'PUT',
+              path: "images/#{image_id}/tags/#{tag}"
             )
           end
         end

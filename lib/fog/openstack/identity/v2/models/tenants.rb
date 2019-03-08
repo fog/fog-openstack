@@ -15,9 +15,10 @@ module Fog
           def find_by_id(id)
             cached_tenant = find { |tenant| tenant.id == id }
             return cached_tenant if cached_tenant
+
             tenant_hash = service.get_tenant(id).body['tenant']
             Fog::OpenStack::Identity::V2::Tenant.new(
-              tenant_hash.merge(:service => service)
+              tenant_hash.merge(service: service)
             )
           end
 

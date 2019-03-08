@@ -23,9 +23,10 @@ module Fog
           def find_by_id(id)
             cached_role = find { |role| role.id == id }
             return cached_role if cached_role
+
             role_hash = service.get_role(id).body['role']
             Fog::OpenStack::Identity::V3.role.new(
-              role_hash.merge(:service => service)
+              role_hash.merge(service: service)
             )
           end
 

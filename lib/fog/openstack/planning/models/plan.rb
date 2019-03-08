@@ -29,8 +29,8 @@ module Fog
         end
 
         def provider_resource_templates
-          templates.select do |key, _template|
-            ![MASTER_TEMPLATE_NAME, ENVIRONMENT_NAME].include?(key)
+          templates.reject do |key, _template|
+            [MASTER_TEMPLATE_NAME, ENVIRONMENT_NAME].include?(key)
           end
         end
 

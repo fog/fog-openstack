@@ -3,7 +3,7 @@ module Fog
     class Network
       class Real
         def update_ipsec_policy(ipsec_policy_id, options = {})
-          data = {'ipsecpolicy' => {}}
+          data = { 'ipsecpolicy' => {} }
 
           vanilla_options = [:name, :description, :tenant_id,
                              :auth_algorithm, :encryption_algorithm,
@@ -14,10 +14,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "vpn/ipsecpolicies/#{ipsec_policy_id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "vpn/ipsecpolicies/#{ipsec_policy_id}"
           )
         end
       end
@@ -38,7 +38,7 @@ module Fog
             ipsec_policy['transform_protocol']   = options[:transform_protocol]
             ipsec_policy['encapsulation_mode']   = options[:encapsulation_mode]
             ipsec_policy['lifetime']             = options[:lifetime]
-            response.body = {'ipsecpolicy' => ipsec_policy}
+            response.body = { 'ipsecpolicy' => ipsec_policy }
             response.status = 200
             response
           else

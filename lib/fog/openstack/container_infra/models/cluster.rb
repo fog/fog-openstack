@@ -2,7 +2,7 @@ require_relative 'base'
 
 module Fog
   module OpenStack
-    class  ContainerInfra
+    class ContainerInfra
       class Cluster < Fog::OpenStack::ContainerInfra::Base
         identity :uuid
 
@@ -30,7 +30,7 @@ module Fog
 
         def update
           requires :uuid, :name, :cluster_template_id
-          attrs = attributes.select{|k,_| allowed_update_attributes.include? k}
+          attrs = attributes.select { |k, _| allowed_update_attributes.include? k }
           attrs = convert_update_params(attrs)
           merge_attributes(service.update_cluster(uuid, attrs).body)
           self
@@ -49,7 +49,6 @@ module Fog
             :node_count
           ]
         end
-
       end
     end
   end

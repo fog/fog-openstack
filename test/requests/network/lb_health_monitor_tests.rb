@@ -3,17 +3,17 @@ require 'test_helper'
 describe "Fog::OpenStack::Network | lb_health_monitor requests" do
   before do
     @lb_health_monitor_format = {
-      'id'             => String,
-      'type'           => String,
-      'delay'          => Integer,
-      'timeout'        => Integer,
-      'max_retries'    => Integer,
-      'http_method'    => String,
-      'url_path'       => String,
+      'id' => String,
+      'type' => String,
+      'delay' => Integer,
+      'timeout' => Integer,
+      'max_retries' => Integer,
+      'http_method' => String,
+      'url_path' => String,
       'expected_codes' => String,
-      'status'         => String,
+      'status' => String,
       'admin_state_up' => Fog::Boolean,
-      'tenant_id'      => String
+      'tenant_id' => String
     }
   end
 

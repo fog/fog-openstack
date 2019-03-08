@@ -12,10 +12,10 @@ module Fog
             data['volume_type'][key] = options[key]
           end
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 202],
-            :method  => 'PUT',
-            :path    => "types/#{volume_type_id}"
+            body: Fog::JSON.encode(data),
+            expects: [200, 202],
+            method: 'PUT',
+            path: "types/#{volume_type_id}"
           )
         end
       end
@@ -26,8 +26,8 @@ module Fog
           response.status = 202
           response.body = {
             "volume_type" => {
-              "id"          => "6685584b-1eac-4da6-b5c3-555430cf68ff",
-              "name"        => "vol-type-001",
+              "id" => "6685584b-1eac-4da6-b5c3-555430cf68ff",
+              "name" => "vol-type-001",
               "extra_specs" => {
                 "capabilities" => "gpu"
               }

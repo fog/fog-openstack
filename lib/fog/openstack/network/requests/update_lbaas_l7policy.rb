@@ -3,8 +3,7 @@ module Fog
     class Network
       class Real
         def update_lbaas_l7policy(l7policy_id, options = {})
-
-          data = {'l7policy' => {}}
+          data = { 'l7policy' => {} }
 
           vanilla_options = [:action, :name, :description, :redirect_pool_id, :redirect_url, :position]
           vanilla_options.select { |o| options.key?(o) }.each do |key|
@@ -12,10 +11,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200],
-            :method  => 'PUT',
-            :path    => "lbaas/l7policies/#{l7policy_id}"
+            body: Fog::JSON.encode(data),
+            expects: [200],
+            method: 'PUT',
+            path: "lbaas/l7policies/#{l7policy_id}"
           )
         end
       end
@@ -30,7 +29,7 @@ module Fog
             l7policy['redirect_pool_id'] = options[:redirect_pool_id]
             l7policy['redirect_url']  = options[:redirect_url]
             l7policy['position']      = options[:position]
-            response.body = {'l7policy' => l7policy}
+            response.body = { 'l7policy' => l7policy }
             response.status = 200
             response
           else

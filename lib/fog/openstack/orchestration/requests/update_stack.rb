@@ -25,7 +25,7 @@ module Fog
             stack_id = arg1
             stack_name = arg2
             options = {
-              :stack_name => stack_name
+              stack_name: stack_name
             }.merge(arg3.nil? ? {} : arg3)
           end
 
@@ -42,10 +42,10 @@ module Fog
           options[:files] = file_resolver.files unless file_resolver.files.empty?
 
           request(
-            :expects => 202,
-            :path    => "stacks/#{stack_name}/#{stack_id}",
-            :method  => 'PUT',
-            :body    => Fog::JSON.encode(options)
+            expects: 202,
+            path: "stacks/#{stack_name}/#{stack_id}",
+            method: 'PUT',
+            body: Fog::JSON.encode(options)
           )
         end
       end
@@ -64,12 +64,12 @@ module Fog
             stack_id = arg1
             stack_name = arg2
             options = {
-              :stack_name => stack_name
+              stack_name: stack_name
             }.merge(arg3.nil? ? {} : arg3)
           end
 
           if options.key?(:files)
-            response.body['files'] = {'foo.sh' => 'hello'}
+            response.body['files'] = { 'foo.sh' => 'hello' }
           end
 
           if options.key?(:template) || options.key?(:template_url)

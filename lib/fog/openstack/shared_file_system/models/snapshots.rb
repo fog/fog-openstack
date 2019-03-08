@@ -13,7 +13,7 @@ module Fog
 
         def find_by_id(id)
           snapshot_hash = service.get_snapshot(id).body['snapshot']
-          new(snapshot_hash.merge(:service => service))
+          new(snapshot_hash.merge(service: service))
         end
 
         alias get find_by_id

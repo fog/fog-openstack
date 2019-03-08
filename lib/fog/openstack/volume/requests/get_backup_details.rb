@@ -4,9 +4,9 @@ module Fog
       module Real
         def get_backup_details(backup_id)
           request(
-            :expects  => 200,
-            :method   => 'GET',
-            :path     => "backups/#{backup_id}"
+            expects: 200,
+            method: 'GET',
+            path: "backups/#{backup_id}"
           )
         end
       end
@@ -23,7 +23,7 @@ module Fog
               "status" => "available",
               "size" => 1,
               "object_count" => 16,
-              "container" => "testcontainer",
+              "container" => "testcontainer"
             }
           }
           response

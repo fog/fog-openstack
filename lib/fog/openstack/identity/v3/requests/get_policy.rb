@@ -5,16 +5,15 @@ module Fog
         class Real
           def get_policy(id)
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "policies/#{id}"
+              expects: [200],
+              method: 'GET',
+              path: "policies/#{id}"
             )
           end
         end
 
         class Mock
-          def get_policy(id)
-          end
+          def get_policy(id); end
         end
       end
     end

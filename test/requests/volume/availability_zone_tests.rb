@@ -3,7 +3,7 @@ require 'test_helper'
 describe "Fog::OpenStack::Volume | availability zone requests" do
   before do
     @flavor_format = {
-      'zoneName'  => String,
+      'zoneName' => String,
       'zoneState' => Hash
     }
   end

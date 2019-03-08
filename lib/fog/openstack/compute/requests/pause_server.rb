@@ -9,7 +9,7 @@ module Fog
         # === Returns
         # * success <~Boolean>
         def pause_server(server_id)
-          body = {'pause' => nil}
+          body = { 'pause' => nil }
           server_action(server_id, body).status == 202
         end
       end

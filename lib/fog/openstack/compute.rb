@@ -1,7 +1,7 @@
 module Fog
   module OpenStack
     class Compute < Fog::Service
-      SUPPORTED_VERSIONS = /v2\.0|v2\.1/
+      SUPPORTED_VERSIONS = /v2\.0|v2\.1/.freeze
       SUPPORTED_MICROVERSION = '2.15'.freeze
 
       requires :openstack_auth_url
@@ -257,76 +257,76 @@ module Fog
         def self.data
           @data ||= Hash.new do |hash, key|
             hash[key] = {
-              :last_modified             => {
-                :images          => {},
-                :servers         => {},
-                :key_pairs       => {},
-                :security_groups => {},
-                :addresses       => {}
+              last_modified: {
+                images: {},
+                servers: {},
+                key_pairs: {},
+                security_groups: {},
+                addresses: {}
               },
-              :aggregates                => [{
+              aggregates: [{
                 "availability_zone" => "nova",
-                "created_at"        => "2012-11-16T06:22:23.032493",
-                "deleted"           => false,
-                "deleted_at"        => nil,
-                "id"                => 1,
-                "name"              => "name",
-                "updated_at"        => nil
+                "created_at" => "2012-11-16T06:22:23.032493",
+                "deleted" => false,
+                "deleted_at" => nil,
+                "id" => 1,
+                "name" => "name",
+                "updated_at" => nil
               }],
-              :images                    => {
+              images: {
                 "0e09fbd6-43c5-448a-83e9-0d3d05f9747e" => {
-                  "id"       => "0e09fbd6-43c5-448a-83e9-0d3d05f9747e",
-                  "name"     => "cirros-0.3.0-x86_64-blank",
+                  "id" => "0e09fbd6-43c5-448a-83e9-0d3d05f9747e",
+                  "name" => "cirros-0.3.0-x86_64-blank",
                   'progress' => 100,
-                  'status'   => "ACTIVE",
-                  'updated'  => "",
-                  'minRam'   => 0,
-                  'minDisk'  => 0,
+                  'status' => "ACTIVE",
+                  'updated' => "",
+                  'minRam' => 0,
+                  'minDisk' => 0,
                   'metadata' => {},
-                  'links'    => [{"href" => "http://nova1:8774/v1.1/admin/images/1", "rel" => "self"},
-                                 {"href" => "http://nova1:8774/admin/images/2", "rel" => "bookmark"}]
+                  'links' => [{ "href" => "http://nova1:8774/v1.1/admin/images/1", "rel" => "self" },
+                              { "href" => "http://nova1:8774/admin/images/2", "rel" => "bookmark" }]
                 }
               },
-              :servers                   => {},
-              :key_pairs                 => {},
-              :security_groups           => {
+              servers: {},
+              key_pairs: {},
+              security_groups: {
                 '0' => {
-                  "id"          => 0,
-                  "tenant_id"   => Fog::Mock.random_hex(8),
-                  "name"        => "default",
+                  "id" => 0,
+                  "tenant_id" => Fog::Mock.random_hex(8),
+                  "name" => "default",
                   "description" => "default",
-                  "rules"       => [
-                    {"id"              => 0,
-                     "parent_group_id" => 0,
-                     "from_port"       => 68,
-                     "to_port"         => 68,
-                     "ip_protocol"     => "udp",
-                     "ip_range"        => {"cidr" => "0.0.0.0/0"},
-                     "group"           => {}},
-                  ],
-                },
+                  "rules" => [
+                    { "id" => 0,
+                      "parent_group_id" => 0,
+                      "from_port" => 68,
+                      "to_port" => 68,
+                      "ip_protocol" => "udp",
+                      "ip_range" => { "cidr" => "0.0.0.0/0" },
+                      "group" => {} }
+                  ]
+                }
               },
-              :server_groups             => {},
-              :server_security_group_map => {},
-              :addresses                 => {},
-              :quota                     => {
-                'security_group_rules'        => 20,
-                'security_groups'             => 10,
+              server_groups: {},
+              server_security_group_map: {},
+              addresses: {},
+              quota: {
+                'security_group_rules' => 20,
+                'security_groups' => 10,
                 'injected_file_content_bytes' => 10240,
-                'injected_file_path_bytes'    => 256,
-                'injected_files'              => 5,
-                'metadata_items'              => 128,
-                'floating_ips'                => 10,
-                'instances'                   => 10,
-                'key_pairs'                   => 10,
-                'gigabytes'                   => 5000,
-                'volumes'                     => 10,
-                'cores'                       => 20,
-                'ram'                         => 51200
+                'injected_file_path_bytes' => 256,
+                'injected_files' => 5,
+                'metadata_items' => 128,
+                'floating_ips' => 10,
+                'instances' => 10,
+                'key_pairs' => 10,
+                'gigabytes' => 5000,
+                'volumes' => 10,
+                'cores' => 20,
+                'ram' => 51200
               },
-              :volumes                   => {},
-              :snapshots                 => {},
-              :os_interfaces             => [
+              volumes: {},
+              snapshots: {},
+              os_interfaces: [
                 {
                   "fixed_ips" => [
                     {

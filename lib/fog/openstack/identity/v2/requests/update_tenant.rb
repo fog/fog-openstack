@@ -5,10 +5,10 @@ module Fog
         class Real
           def update_tenant(id, attributes)
             request(
-              :expects => [200],
-              :method  => 'PUT',
-              :path    => "tenants/#{id}",
-              :body    => Fog::JSON.encode('tenant' => attributes)
+              expects: [200],
+              method: 'PUT',
+              path: "tenants/#{id}",
+              body: Fog::JSON.encode('tenant' => attributes)
             )
           end
         end
@@ -17,7 +17,7 @@ module Fog
           def update_tenant(_id, attributes)
             response = Excon::Response.new
             response.status = [200, 204][rand(2)]
-            attributes = {'enabled' => true, 'id' => '1'}.merge(attributes)
+            attributes = { 'enabled' => true, 'id' => '1' }.merge(attributes)
             response.body = {
               'tenant' => attributes
             }

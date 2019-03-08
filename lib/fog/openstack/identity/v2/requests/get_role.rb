@@ -5,9 +5,9 @@ module Fog
         class Real
           def get_role(id)
             request(
-              :expects => [200, 204],
-              :method  => 'GET',
-              :path    => "/OS-KSADM/roles/#{id}"
+              expects: [200, 204],
+              method: 'GET',
+              path: "/OS-KSADM/roles/#{id}"
             )
           end
         end
@@ -17,7 +17,7 @@ module Fog
             response = Excon::Response.new
             if data = self.data[:roles][id]
               response.status = 200
-              response.body = {'role' => data}
+              response.body = { 'role' => data }
               response
             else
               raise Fog::OpenStack::Identity::NotFound

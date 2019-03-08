@@ -7,11 +7,11 @@ module Fog
             headers, options = Fog::OpenStack::DNS::V2.setup_headers(options)
 
             request(
-              :expects => 200,
-              :method  => 'GET',
-              :path    => 'pools',
-              :query   => options,
-              :headers => headers
+              expects: 200,
+              method: 'GET',
+              path: 'pools',
+              query: options,
+              headers: headers
             )
           end
         end

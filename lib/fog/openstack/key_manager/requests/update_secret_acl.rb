@@ -4,10 +4,10 @@ module Fog
       class Real
         def update_secret_acl(uuid, options)
           request(
-            :body    => Fog::JSON.encode(options),
-            :expects => [200],
-            :method  => 'PATCH',
-            :path    => "secrets/#{uuid}/acl"
+            body: Fog::JSON.encode(options),
+            expects: [200],
+            method: 'PATCH',
+            path: "secrets/#{uuid}/acl"
           )
         end
       end

@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_lb_vip(vip_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "lb/vips/#{vip_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "lb/vips/#{vip_id}"
           )
         end
       end

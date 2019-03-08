@@ -102,6 +102,7 @@ module Fog
 
           # I'm on a Hash, process it.
           return unless from_data.kind_of?(Hash)
+
           from_data.each do |key, value|
             next if ignore_if(key, value)
 

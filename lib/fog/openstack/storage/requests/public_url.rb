@@ -10,6 +10,7 @@ module Fog
         #
         def public_url(container = nil, object = nil)
           return nil if container.nil?
+
           u = "#{url}/#{Fog::OpenStack.escape(container)}"
           u << "/#{Fog::OpenStack.escape(object)}" unless object.nil?
           u

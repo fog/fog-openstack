@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_server(server_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "servers/#{server_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "servers/#{server_id}"
           )
         end
       end
@@ -18,7 +18,7 @@ module Fog
           if server
             if server['status'] == 'BUILD'
               response.status = 409
-              raise(Excon::Errors.status_error({:expects => 204}, response))
+              raise(Excon::Errors.status_error({ expects: 204 }, response))
             else
               data[:last_modified][:servers].delete(server_id)
               data[:servers].delete(server_id)

@@ -3,15 +3,15 @@ require "test_helper"
 describe "Fog::OpenStack::Network | ipsec_policy requests" do
   before do
     @ipsec_policy_format = {
-      'id'                   => String,
-      'name'                 => String,
-      'description'          => String,
-      'tenant_id'            => String,
-      'lifetime'             => Hash,
-      'pfs'                  => String,
-      'transform_protocol'   => String,
-      'auth_algorithm'       => String,
-      'encapsulation_mode'   => String,
+      'id' => String,
+      'name' => String,
+      'description' => String,
+      'tenant_id' => String,
+      'lifetime' => Hash,
+      'pfs' => String,
+      'transform_protocol' => String,
+      'auth_algorithm' => String,
+      'encapsulation_mode' => String,
       'encryption_algorithm' => String
     }
   end

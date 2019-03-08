@@ -5,7 +5,7 @@ module Fog
         class Real
           def create_zone(name, email, options = {})
             data = {
-              'name'  => name,
+              'name' => name,
               'email' => email
             }
 
@@ -16,10 +16,10 @@ module Fog
             end
 
             request(
-              :body    => Fog::JSON.encode(data),
-              :expects => 202,
-              :method  => 'POST',
-              :path    => "zones"
+              body: Fog::JSON.encode(data),
+              expects: 202,
+              method: 'POST',
+              path: "zones"
             )
           end
         end

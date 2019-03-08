@@ -17,10 +17,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode('security_service' => data),
-            :expects => 200,
-            :method  => 'POST',
-            :path    => 'security-services'
+            body: Fog::JSON.encode('security_service' => data),
+            expects: 200,
+            method: 'POST',
+            path: 'security-services'
           )
         end
       end
@@ -38,7 +38,7 @@ module Fog
           security_service['type'] = type
           security_service['name'] = name
 
-          response.body = {'security_service' => security_service.merge(options)}
+          response.body = { 'security_service' => security_service.merge(options) }
           response
         end
       end

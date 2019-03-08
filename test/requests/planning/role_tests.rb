@@ -4,9 +4,9 @@ describe "Fog::OpenStack::Planning | Planning role requests" do
   before do
     @role_format = {
       'description' => Fog::Nullable::String,
-      'name'        => Fog::Nullable::String,
-      'uuid'        => String,
-      'version'     => Integer
+      'name' => Fog::Nullable::String,
+      'uuid' => String,
+      'version' => Integer
     }
   end
 

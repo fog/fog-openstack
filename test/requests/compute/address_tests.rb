@@ -49,10 +49,10 @@ describe "Fog::OpenStack::Compute | address requests" do
     def address_format
       {
         "instance_id" => NilClass,
-        "ip"          => String,
-        "fixed_ip"    => NilClass,
-        "id"          => Integer,
-        "pool"        => String
+        "ip" => String,
+        "fixed_ip" => NilClass,
+        "id" => Integer,
+        "pool" => String
       }
     end
 

@@ -13,7 +13,7 @@ module Fog
         # * response<~Excon::Response>:
         #   * body<~String> - url for object
         def get_object_https_url(container, object, expires, options = {})
-          create_temp_url(container, object, expires, "GET", {:port => 443}.merge(options).merge(:scheme => "https"))
+          create_temp_url(container, object, expires, "GET", { port: 443 }.merge(options).merge(scheme: "https"))
         end
 
         # creates a temporary url
@@ -51,7 +51,7 @@ module Fog
           end
 
           expires = expires.to_i
-          object_path_escaped   = "#{@path}/#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object, "/")}"
+          object_path_escaped   = "#{@path}/#{Fog::OpenStack.escape(container)}/#{Fog::OpenStack.escape(object, '/')}"
           object_path_unescaped = "#{@path}/#{Fog::OpenStack.escape(container)}/#{object}"
           string_to_sign = "#{method}\n#{expires}\n#{object_path_unescaped}"
 
@@ -64,11 +64,11 @@ module Fog
           query[:filename] = options[:filename] if options[:filename]
 
           temp_url_options = {
-            :scheme => scheme,
-            :host   => host,
-            :port   => port,
-            :path   => object_path_escaped,
-            :query  => query.map { |k, v| "#{k}=#{v}" }.join('&')
+            scheme: scheme,
+            host: host,
+            port: port,
+            path: object_path_escaped,
+            query: query.map { |k, v| "#{k}=#{v}" }.join('&')
           }
           URI::Generic.build(temp_url_options).to_s
         end

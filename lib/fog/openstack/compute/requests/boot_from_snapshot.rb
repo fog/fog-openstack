@@ -6,8 +6,8 @@ module Fog
           data = {
             'server' => {
               'flavorRef' => flavor_ref,
-              'imageRef'  => image_ref,
-              'name'      => name
+              'imageRef' => image_ref,
+              'name' => name
             }
           }
 
@@ -23,16 +23,16 @@ module Fog
             options['personality'].each do |file|
               data['server']['personality'] << {
                 'contents' => Base64.encode64(file['contents']),
-                'path'     => file['path']
+                'path' => file['path']
               }
             end
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [200, 202],
-            :method  => 'POST',
-            :path    => '/os-volumes_boot'
+            body: Fog::JSON.encode(data),
+            expects: [200, 202],
+            method: 'POST',
+            path: '/os-volumes_boot'
           )
         end
       end

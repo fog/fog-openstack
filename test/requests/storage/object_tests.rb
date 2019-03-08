@@ -120,7 +120,7 @@ describe "Fog::OpenStack::Storage | object requests" do
       it "#get_object_https_url_numeric('directory.identity', 'fog_object', expiration_timestamp)" do
         unless Fog.mocking?
           ts = Time.at(1_500_000_000)
-          fog = Fog::Storage.new(:provider => :openstack, :openstack_temp_url_key => '12345')
+          fog = Fog::Storage.new(provider: :openstack, openstack_temp_url_key: '12345')
           url_s = fog.get_object_https_url(@directory.identity, 'fog_object', ts)
           test_temp_url(url_s, ts, 'https')
         end
@@ -177,10 +177,10 @@ describe "Fog::OpenStack::Storage | object requests" do
 
         @expected = {
           "Number Not Found" => 0,
-          "Response Status"  => "200 OK",
-          "Errors"           => [],
-          "Number Deleted"   => 2,
-          "Response Body"    => ""
+          "Response Status" => "200 OK",
+          "Errors" => [],
+          "Number Deleted" => 2,
+          "Response Body" => ""
         }
       end
 
@@ -276,10 +276,10 @@ describe "Fog::OpenStack::Storage | object requests" do
         unless Fog.mocking?
           @expected = {
             "Number Not Found" => 2,
-            "Response Status"  => "200 OK",
-            "Errors"           => [],
-            "Number Deleted"   => 0,
-            "Response Body"    => ""
+            "Response Status" => "200 OK",
+            "Errors" => [],
+            "Number Deleted" => 0,
+            "Response Body" => ""
           }
         end
       end
@@ -309,10 +309,10 @@ describe "Fog::OpenStack::Storage | object requests" do
 
           expected = {
             "Number Not Found" => 0,
-            "Response Status"  => "400 Bad Request",
-            "Errors"           => [['fogobjecttests', '409 Conflict']],
-            "Number Deleted"   => 0,
-            "Response Body"    => ""
+            "Response Status" => "400 Bad Request",
+            "Errors" => [['fogobjecttests', '409 Conflict']],
+            "Number Deleted" => 0,
+            "Response Body" => ""
           }
 
           resp = Fog::OpenStack::Storage.new.delete_multiple_objects(

@@ -5,9 +5,9 @@ module Fog
     class Identity
       class V2
         class Ec2Credential < Fog::OpenStack::Model
-          identity :access, :aliases => 'access_key'
+          identity :access, aliases: 'access_key'
 
-          attribute :secret, :aliases => 'secret_key'
+          attribute :secret, aliases: 'secret_key'
           attribute :tenant_id
           attribute :user_id
 

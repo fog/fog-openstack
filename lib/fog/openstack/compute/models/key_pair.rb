@@ -29,7 +29,7 @@ module Fog
                  else
                    service.create_key_pair(name, nil, user_id).body['keypair']
                  end
-          new_attributes = data.reject { |key, _value| !['fingerprint', 'public_key', 'name', 'private_key', 'user_id'].include?(key) }
+          new_attributes = data.select { |key, _value| ['fingerprint', 'public_key', 'name', 'private_key', 'user_id'].include?(key) }
           merge_attributes(new_attributes)
           true
         end
@@ -39,7 +39,7 @@ module Fog
             split_private_key = private_key.split(/\n/)
             File.open(path, "w") do |f|
               split_private_key.each { |line| f.puts line }
-              f.chmod 0600
+              f.chmod 0o600
             end
             "Key file built: #{path}"
           else

@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_vpn_services(filters = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'vpn/vpnservices',
-            :query   => filters
+            expects: 200,
+            method: 'GET',
+            path: 'vpn/vpnservices',
+            query: filters
           )
         end
       end
@@ -15,8 +15,8 @@ module Fog
       class Mock
         def list_vpn_services(*)
           Excon::Response.new(
-            :body   => {'vpnservices' => data[:vpn_services].values},
-            :status => 200
+            body: { 'vpnservices' => data[:vpn_services].values },
+            status: 200
           )
         end
       end

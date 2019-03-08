@@ -13,7 +13,7 @@ module Fog
 
         def find_by_id(id)
           net_hash = service.get_share_network(id).body['share_network']
-          new(net_hash.merge(:service => service))
+          new(net_hash.merge(service: service))
         end
 
         alias get find_by_id

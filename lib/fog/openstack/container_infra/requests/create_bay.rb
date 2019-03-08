@@ -1,13 +1,13 @@
 module Fog
   module OpenStack
-    class  ContainerInfra
+    class ContainerInfra
       class Real
         def create_bay(params)
           request(
-            :expects => [202, 201, 200],
-            :method  => 'POST',
-            :path    => "bays",
-            :body    => Fog::JSON.encode(params)
+            expects: [202, 201, 200],
+            method: 'POST',
+            path: "bays",
+            body: Fog::JSON.encode(params)
           )
         end
       end

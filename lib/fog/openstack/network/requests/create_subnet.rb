@@ -6,7 +6,7 @@ module Fog
           data = {
             'subnet' => {
               'network_id' => network_id,
-              'cidr'       => cidr,
+              'cidr' => cidr,
               'ip_version' => ip_version
             }
           }
@@ -19,10 +19,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [201],
-            :method  => 'POST',
-            :path    => 'subnets'
+            body: Fog::JSON.encode(data),
+            expects: [201],
+            method: 'POST',
+            path: 'subnets'
           )
         end
       end
@@ -32,20 +32,20 @@ module Fog
           response = Excon::Response.new
           response.status = 201
           data = {
-            'id'               => Fog::Mock.random_numbers(6).to_s,
-            'name'             => options[:name],
-            'network_id'       => network_id,
-            'cidr'             => cidr,
-            'ip_version'       => ip_version,
-            'gateway_ip'       => options[:gateway_ip],
+            'id' => Fog::Mock.random_numbers(6).to_s,
+            'name' => options[:name],
+            'network_id' => network_id,
+            'cidr' => cidr,
+            'ip_version' => ip_version,
+            'gateway_ip' => options[:gateway_ip],
             'allocation_pools' => options[:allocation_pools],
-            'dns_nameservers'  => options[:dns_nameservers],
-            'host_routes'      => options[:host_routes],
-            'enable_dhcp'      => options[:enable_dhcp],
-            'tenant_id'        => options[:tenant_id]
+            'dns_nameservers' => options[:dns_nameservers],
+            'host_routes' => options[:host_routes],
+            'enable_dhcp' => options[:enable_dhcp],
+            'tenant_id' => options[:tenant_id]
           }
           self.data[:subnets][data['id']] = data
-          response.body = {'subnet' => data}
+          response.body = { 'subnet' => data }
           response
         end
       end

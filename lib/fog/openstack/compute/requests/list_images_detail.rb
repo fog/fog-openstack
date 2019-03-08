@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_images_detail(filters = {})
           request(
-            :expects => [200, 203],
-            :method  => 'GET',
-            :path    => 'images/detail',
-            :query   => filters
+            expects: [200, 203],
+            method: 'GET',
+            path: 'images/detail',
+            query: filters
           )
         end
       end
@@ -27,7 +27,7 @@ module Fog
           end
 
           response.status = [200, 203][rand(2)]
-          response.body = {'images' => images.map { |image| image.reject { |key, _value| !['id', 'name', 'links', 'minRam', 'minDisk', 'metadata', 'status', 'updated'].include?(key) } }}
+          response.body = { 'images' => images.map { |image| image.select { |key, _value| ['id', 'name', 'links', 'minRam', 'minDisk', 'metadata', 'status', 'updated'].include?(key) } } }
           response
         end
       end

@@ -4,39 +4,39 @@ describe "Fog::OpenStack::Compute | limits requests" do
   before do
     @rate_limit_format = {
       'regex' => String,
-      'uri'   => String,
+      'uri' => String,
       'limit' => Array
     }
 
     @rate_limit_usage_format = {
       'next-available' => String,
-      'unit'           => String,
-      'verb'           => String,
-      'remaining'      => Integer,
-      'value'          => Integer
+      'unit' => String,
+      'verb' => String,
+      'remaining' => Integer,
+      'value' => Integer
     }
 
     @absolute_limits_format = {
-      'maxServerMeta'           => Integer,
-      'maxTotalInstances'       => Integer,
-      'maxPersonality'          => Integer,
-      'maxImageMeta'            => Integer,
-      'maxPersonalitySize'      => Integer,
-      'maxSecurityGroupRules'   => Integer,
-      'maxTotalKeypairs'        => Integer,
-      'maxSecurityGroups'       => Integer,
-      'maxTotalCores'           => Integer,
-      'maxTotalFloatingIps'     => Integer,
-      'maxTotalRAMSize'         => Integer,
-      'totalCoresUsed'          => Integer,
-      'totalRAMUsed'            => Integer,
-      'totalInstancesUsed'      => Integer,
+      'maxServerMeta' => Integer,
+      'maxTotalInstances' => Integer,
+      'maxPersonality' => Integer,
+      'maxImageMeta' => Integer,
+      'maxPersonalitySize' => Integer,
+      'maxSecurityGroupRules' => Integer,
+      'maxTotalKeypairs' => Integer,
+      'maxSecurityGroups' => Integer,
+      'maxTotalCores' => Integer,
+      'maxTotalFloatingIps' => Integer,
+      'maxTotalRAMSize' => Integer,
+      'totalCoresUsed' => Integer,
+      'totalRAMUsed' => Integer,
+      'totalInstancesUsed' => Integer,
       'totalSecurityGroupsUsed' => Integer,
-      'totalFloatingIpsUsed'    => Integer
+      'totalFloatingIpsUsed' => Integer
     }
 
     @limits_format = {
-      'rate'     => Array,
+      'rate' => Array,
       'absolute' => Hash
     }
   end

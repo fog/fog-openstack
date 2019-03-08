@@ -6,10 +6,10 @@ module Fog
           def update_workflow(definition)
             body = Fog::JSON.encode(definition)
             request(
-              :body    => body,
-              :expects => 200,
-              :method  => "PUT",
-              :path    => "workflows"
+              body: body,
+              expects: 200,
+              method: "PUT",
+              path: "workflows"
             )
           end
         end

@@ -3,17 +3,17 @@ require 'test_helper'
 describe "Fog::OpenStack::Network | port requests" do
   before do
     @port_format = {
-      'id'                    => String,
-      'name'                  => String,
-      'network_id'            => String,
-      'fixed_ips'             => Array,
-      'mac_address'           => String,
-      'status'                => String,
-      'admin_state_up'        => Fog::Boolean,
-      'device_owner'          => String,
-      'device_id'             => String,
-      'tenant_id'             => String,
-      'security_groups'       => Array,
+      'id' => String,
+      'name' => String,
+      'network_id' => String,
+      'fixed_ips' => Array,
+      'mac_address' => String,
+      'status' => String,
+      'admin_state_up' => Fog::Boolean,
+      'device_owner' => String,
+      'device_id' => String,
+      'tenant_id' => String,
+      'security_groups' => Array,
       'allowed_address_pairs' => Array
     }
   end

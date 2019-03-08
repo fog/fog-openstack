@@ -4,10 +4,10 @@ require 'helpers/container_infra_helper'
 describe "Fog::OpenStack::ContainerInfra | certificate requests" do
   before do
     @certificate_format = {
-      "pem"          => String,
-      "bay_uuid"     => Fog::Nullable::String,
+      "pem" => String,
+      "bay_uuid" => Fog::Nullable::String,
       "cluster_uuid" => Fog::Nullable::String,
-      "csr"          => Fog::Nullable::String
+      "csr" => Fog::Nullable::String
     }
   end
 

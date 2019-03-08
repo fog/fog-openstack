@@ -15,44 +15,44 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
     )
 
     @stack_format = {
-      'links'               => Array,
-      'id'                  => String,
-      'stack_name'          => String,
-      'description'         => Fog::Nullable::String,
-      'stack_status'        => String,
+      'links' => Array,
+      'id' => String,
+      'stack_name' => String,
+      'description' => Fog::Nullable::String,
+      'stack_status' => String,
       'stack_status_reason' => String,
-      'creation_time'       => Time,
-      'updated_time'        => Time
+      'creation_time' => Time,
+      'updated_time' => Time
     }
 
     @stack_detailed_format = {
-      "parent"                => Fog::Nullable::String,
-      "disable_rollback"      => Fog::Boolean,
-      "description"           => String,
-      "links"                 => Array,
-      "stack_status_reason"   => String,
-      "stack_name"            => String,
+      "parent" => Fog::Nullable::String,
+      "disable_rollback" => Fog::Boolean,
+      "description" => String,
+      "links" => Array,
+      "stack_status_reason" => String,
+      "stack_name" => String,
       "stack_user_project_id" => String,
-      "stack_owner"           => String,
-      "creation_time"         => Fog::Nullable::String,
-      "capabilities"          => Array,
-      "notification_topics"   => Array,
-      "updated_time"          => Fog::Nullable::String,
-      "timeout_mins"          => Fog::Nullable::String,
-      "stack_status"          => String,
-      "parameters"            => Hash,
-      "id"                    => String,
-      "outputs"               => Array,
-      "template_description"  => String
+      "stack_owner" => String,
+      "creation_time" => Fog::Nullable::String,
+      "capabilities" => Array,
+      "notification_topics" => Array,
+      "updated_time" => Fog::Nullable::String,
+      "timeout_mins" => Fog::Nullable::String,
+      "stack_status" => String,
+      "parameters" => Hash,
+      "id" => String,
+      "outputs" => Array,
+      "template_description" => String
     }
 
     @create_format = {
-      'id'    => String,
+      'id' => String,
       'links' => Array
     }
 
     @create_format_files = {
-      'id'    => String,
+      'id' => String,
       'links' => Array,
       'files' => Hash
     }

@@ -5,7 +5,7 @@ module Fog
         def update_vnf(id, options)
           options_valid = [
             :auth,
-            :vnf,
+            :vnf
           ]
 
           # Filter only allowed creation attributes
@@ -14,10 +14,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => "PUT",
-            :path    => "vnfs/#{id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: "PUT",
+            path: "vnfs/#{id}"
           )
         end
       end
@@ -26,7 +26,7 @@ module Fog
         def update_vnf(_, _)
           response = Excon::Response.new
           response.status = 200
-          response.body = {"vnf" => data[:vnfs].first}
+          response.body = { "vnf" => data[:vnfs].first }
           response
         end
       end

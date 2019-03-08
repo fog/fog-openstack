@@ -17,9 +17,9 @@ describe "Fog::OpenStack::Network | ipsec_site_connection" do
         psk: "secret",
         mtu: 1500,
         dpd: {
-          "action"   => "hold",
+          "action" => "hold",
           "interval" => 30,
-          "timeout"  => 120
+          "timeout" => 120
         },
         initiator: "bi-directional",
         admin_state_up: true
@@ -43,9 +43,9 @@ describe "Fog::OpenStack::Network | ipsec_site_connection" do
       @instance.initiator      = "bi-directional"
       @instance.admin_state_up = false
       @instance.dpd            = {
-        "action"   => "hold",
+        "action" => "hold",
         "interval" => 50,
-        "timeout"  => 120
+        "timeout" => 120
       }
 
       @instance.update.name.must_equal "rename-test-ipsec-site-connection"

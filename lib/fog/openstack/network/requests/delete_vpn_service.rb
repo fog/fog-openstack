@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_vpn_service(vpn_service_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "vpn/vpnservices/#{vpn_service_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "vpn/vpnservices/#{vpn_service_id}"
           )
         end
       end

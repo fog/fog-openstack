@@ -37,7 +37,7 @@ module Fog
           response.status = 200
           response.body = {
             "console" => {
-              "url"  => "http://192.168.27.100:6080/vnc_auto.html?token=c3606020-d1b7-445d-a88f-f7af48dd6a20",
+              "url" => "http://192.168.27.100:6080/vnc_auto.html?token=c3606020-d1b7-445d-a88f-f7af48dd6a20",
               "type" => "novnc"
             }
           }

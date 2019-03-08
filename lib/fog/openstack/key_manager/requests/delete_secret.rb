@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_secret(id)
           request(
-            :expects => [204],
-            :method  => 'DELETE',
-            :path    => "secrets/#{id}"
+            expects: [204],
+            method: 'DELETE',
+            path: "secrets/#{id}"
           )
         end
       end

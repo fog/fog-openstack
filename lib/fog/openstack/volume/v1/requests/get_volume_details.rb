@@ -14,16 +14,16 @@ module Fog
             response.status = 200
             response.body   = {
               'volume' => {
-                'id'                  => '1',
-                'display_name'        => Fog::Mock.random_letters(rand(8) + 5),
-                'display_description' => Fog::Mock.random_letters(rand(12) + 10),
-                'size'                => 3,
-                'volume_type'         => nil,
-                'snapshot_id'         => '4',
-                'status'              => 'online',
-                'availability_zone'   => 'nova',
-                'created_at'          => Time.now,
-                'attachments'         => []
+                'id' => '1',
+                'display_name' => Fog::Mock.random_letters(rand(5..12)),
+                'display_description' => Fog::Mock.random_letters(rand(10..21)),
+                'size' => 3,
+                'volume_type' => nil,
+                'snapshot_id' => '4',
+                'status' => 'online',
+                'availability_zone' => 'nova',
+                'created_at' => Time.now,
+                'attachments' => []
               }
             }
             response

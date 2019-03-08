@@ -5,8 +5,8 @@ module Fog
         class Real
           def create_recordset(zone_id, name, type, records, options = {})
             data = {
-              'name'    => name,
-              'type'    => type,
+              'name' => name,
+              'type' => type,
               'records' => records
             }
 
@@ -17,10 +17,10 @@ module Fog
             end
 
             request(
-              :body    => Fog::JSON.encode(data),
-              :expects => 202,
-              :method  => 'POST',
-              :path    => "zones/#{zone_id}/recordsets"
+              body: Fog::JSON.encode(data),
+              expects: 202,
+              method: 'POST',
+              path: "zones/#{zone_id}/recordsets"
             )
           end
         end

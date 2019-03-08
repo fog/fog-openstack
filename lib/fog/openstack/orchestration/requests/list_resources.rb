@@ -24,10 +24,10 @@ module Fog
             params = options_deprecated
           end
 
-          request(:method  => 'GET',
-                  :path    => path,
-                  :expects => 200,
-                  :query   => params)
+          request(method: 'GET',
+                  path: path,
+                  expects: 200,
+                  query: params)
         end
       end
 
@@ -36,8 +36,8 @@ module Fog
           resources = data[:resources].values
 
           Excon::Response.new(
-            :body   => {'resources' => resources},
-            :status => 200
+            body: { 'resources' => resources },
+            status: 200
           )
         end
       end

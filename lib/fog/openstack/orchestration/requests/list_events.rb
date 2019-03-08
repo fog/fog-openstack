@@ -24,10 +24,10 @@ module Fog
                    "stacks/#{stack_name}/#{stack_id}/events"
                  end
 
-          request(:method  => 'GET',
-                  :path    => path,
-                  :expects => 200,
-                  :query   => options)
+          request(method: 'GET',
+                  path: path,
+                  expects: 200,
+                  query: options)
         end
       end
 
@@ -36,8 +36,8 @@ module Fog
           events = data[:events].values
 
           Excon::Response.new(
-            :body   => {'events' => events},
-            :status => 200
+            body: { 'events' => events },
+            status: 200
           )
         end
       end

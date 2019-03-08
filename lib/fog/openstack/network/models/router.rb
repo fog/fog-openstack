@@ -47,11 +47,11 @@ module Fog
           options = attributes.dup
 
           if options[:external_gateway_info]
-            if options[:external_gateway_info].kind_of?(Fog::OpenStack::Network::Network)
-              options[:external_gateway_info] = {:network_id => options[:external_gateway_info].id}
-            else
-              options[:external_gateway_info] = {:network_id => options[:external_gateway_info]}
-            end
+            options[:external_gateway_info] = if options[:external_gateway_info].kind_of?(Fog::OpenStack::Network::Network)
+                                                { network_id: options[:external_gateway_info].id }
+                                              else
+                                                { network_id: options[:external_gateway_info] }
+                                              end
           end
           options
         end

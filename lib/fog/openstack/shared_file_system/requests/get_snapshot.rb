@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_snapshot(id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "snapshots/#{id}"
+            expects: 200,
+            method: 'GET',
+            path: "snapshots/#{id}"
           )
         end
       end

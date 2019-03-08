@@ -15,9 +15,10 @@ module Fog
           def find_by_id(id)
             cached_service = find { |service| service.id == id }
             return cached_service if cached_service
+
             service_hash = service.get_service(id).body['service']
             Fog::OpenStack::Identity::V3::Service.new(
-              service_hash.merge(:service => service)
+              service_hash.merge(service: service)
             )
           end
 

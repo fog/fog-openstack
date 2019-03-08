@@ -1,7 +1,7 @@
 module Fog
   module OpenStack
     class Planning < Fog::Service
-      SUPPORTED_VERSIONS = /v2/
+      SUPPORTED_VERSIONS = /v2/.freeze
 
       requires :openstack_auth_url
       recognizes :openstack_auth_token, :openstack_management_url,
@@ -62,15 +62,15 @@ module Fog
           management_url.path = '/v1'
           @openstack_management_url = management_url.to_s
 
-          @data ||= {:users => {}}
+          @data ||= { users: {} }
           unless @data[:users].find { |u| u['name'] == options[:openstack_username] }
             id = Fog::Mock.random_numbers(6).to_s
             @data[:users][id] = {
-              'id'       => id,
-              'name'     => options[:openstack_username],
-              'email'    => "#{options[:openstack_username]}@mock.com",
+              'id' => id,
+              'name' => options[:openstack_username],
+              'email' => "#{options[:openstack_username]}@mock.com",
               'tenantId' => Fog::Mock.random_numbers(6).to_s,
-              'enabled'  => true
+              'enabled' => true
             }
           end
         end
@@ -84,11 +84,11 @@ module Fog
         end
 
         def credentials
-          {:provider                 => 'openstack',
-           :openstack_auth_url       => @openstack_auth_uri.to_s,
-           :openstack_auth_token     => @auth_token,
-           :openstack_region         => @openstack_region,
-           :openstack_management_url => @openstack_management_url}
+          { provider: 'openstack',
+            openstack_auth_url: @openstack_auth_uri.to_s,
+            openstack_auth_token: @auth_token,
+            openstack_region: @openstack_region,
+            openstack_management_url: @openstack_management_url }
         end
       end
 
@@ -116,7 +116,7 @@ module Fog
 
     # TODO: get rid of inconform self.[] & self.new & self.services
     def self.[](service)
-      new(:service => service)
+      new(service: service)
     end
 
     def self.new(attributes)
@@ -125,6 +125,7 @@ module Fog
       if services.include?(service)
         return Fog::OpenStack.const_get(service.to_s.capitalize).new(attributes)
       end
+
       raise ArgumentError, "Openstack has no #{service} service"
     end
 

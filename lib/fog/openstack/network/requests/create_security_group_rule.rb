@@ -31,7 +31,7 @@ module Fog
         #     * 'remote_ip_prefix'<~String> - IP cidr range address i.e. '0.0.0.0/0'
         #     * 'tenant_id'<~String> - Tenant id that owns the security group rule
         def create_security_group_rule(security_group_id, direction, options = {})
-          data            = {"security_group_rule" => {"security_group_id" => security_group_id, "direction" => direction}}
+          data            = { "security_group_rule" => { "security_group_id" => security_group_id, "direction" => direction } }
           desired_options = [
             :port_range_min,
             :port_range_max,
@@ -45,10 +45,10 @@ module Fog
           selected_options.each { |key| data["security_group_rule"][key] = options[key] }
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 201,
-            :method  => "POST",
-            :path    => "security-group-rules"
+            body: Fog::JSON.encode(data),
+            expects: 201,
+            method: "POST",
+            path: "security-group-rules"
           )
         end
       end
@@ -57,20 +57,20 @@ module Fog
         def create_security_group_rule(security_group_id, direction, options = {})
           response = Excon::Response.new
           data = {
-            "id"                => Fog::UUID.uuid,
-            "remote_group_id"   => options[:remote_group_id],
-            "direction"         => direction,
-            "remote_ip_prefix"  => options[:remote_ip_prefix],
-            "protocol"          => options[:protocol],
-            "ethertype"         => options[:ethertype] || "IPv4",
-            "tenant_id"         => options[:tenant_id] || Fog::Mock.random_numbers(14).to_s,
-            "port_range_max"    => options[:port_range_max],
-            "port_range_min"    => options[:port_range_min],
+            "id" => Fog::UUID.uuid,
+            "remote_group_id" => options[:remote_group_id],
+            "direction" => direction,
+            "remote_ip_prefix" => options[:remote_ip_prefix],
+            "protocol" => options[:protocol],
+            "ethertype" => options[:ethertype] || "IPv4",
+            "tenant_id" => options[:tenant_id] || Fog::Mock.random_numbers(14).to_s,
+            "port_range_max" => options[:port_range_max],
+            "port_range_min" => options[:port_range_min],
             "security_group_id" => security_group_id
           }
           self.data[:security_group_rules][data["id"]] = data
           response.status = 201
-          response.body   = {"security_group_rule" => data}
+          response.body   = { "security_group_rule" => data }
           response
         end
       end

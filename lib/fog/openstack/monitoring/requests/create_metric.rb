@@ -14,10 +14,10 @@ module Fog
 
           # _create_metric(data)
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => [204],
-            :method  => 'POST',
-            :path    => 'metrics'
+            body: Fog::JSON.encode(data),
+            expects: [204],
+            method: 'POST',
+            path: 'metrics'
           )
         end
       end

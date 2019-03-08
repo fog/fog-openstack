@@ -1,12 +1,12 @@
 module Fog
   module OpenStack
-    class  ContainerInfra
+    class ContainerInfra
       class Real
         def delete_bay_model(uuid_or_name)
           request(
-            :expects => [204],
-            :method  => 'DELETE',
-            :path    => "baymodels/#{uuid_or_name}"
+            expects: [204],
+            method: 'DELETE',
+            path: "baymodels/#{uuid_or_name}"
           )
         end
       end

@@ -5,10 +5,10 @@ module Fog
         class Real
           def update_endpoint(id, endpoint)
             request(
-              :expects => [200],
-              :method  => 'PATCH',
-              :path    => "endpoints/#{id}",
-              :body    => Fog::JSON.encode(:endpoint => endpoint)
+              expects: [200],
+              method: 'PATCH',
+              path: "endpoints/#{id}",
+              body: Fog::JSON.encode(endpoint: endpoint)
             )
           end
         end

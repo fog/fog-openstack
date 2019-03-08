@@ -3,11 +3,11 @@ require 'test_helper'
 describe "Fog::OpenStack::Network | extension requests" do
   before do
     @extension_format = {
-      'id'          => String,
-      'alias'       => String,
+      'id' => String,
+      'alias' => String,
       'description' => String,
-      'links'       => Array,
-      'name'        => String
+      'links' => Array,
+      'name' => String
     }
   end
 

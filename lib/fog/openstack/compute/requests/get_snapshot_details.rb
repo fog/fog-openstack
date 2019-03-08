@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_snapshot_details(snapshot_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "os-snapshots/#{snapshot_id}"
+            expects: 200,
+            method: 'GET',
+            path: "os-snapshots/#{snapshot_id}"
           )
         end
       end
@@ -18,7 +18,7 @@ module Fog
             snap['id'] == snapshot_id
           end
             response.status = 200
-            response.body = {'snapshot' => snapshot}
+            response.body = { 'snapshot' => snapshot }
             response
           else
             raise Fog::OpenStack::Compute::NotFound

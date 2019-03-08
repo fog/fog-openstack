@@ -25,7 +25,7 @@ describe Fog::OpenStack::Identity::V3 do
 
   it 'authenticates with password, username and domain_id' do
     VCR.use_cassette('authv3_b') do
-Fog::OpenStack::Identity::V3.new(
+      Fog::OpenStack::Identity::V3.new(
         openstack_domain_id: @openstack_vcr.domain_id,
         openstack_api_key: @openstack_vcr.password,
         openstack_username: @openstack_vcr.username,
@@ -453,35 +453,35 @@ Fog::OpenStack::Identity::V3.new(
       skip "Manipulates roles on domain groups to be fixed"
       begin
         # Create a domain called foobar
-        foobar_domain = @service.domains.create(:name => 'd-foobar')
+        foobar_domain = @service.domains.create(name: 'd-foobar')
 
         # Create a group in this domain
-        foobar_group = @service.groups.create(:name        => 'g-foobar',
-                                              :description => "Group of Foobar users",
-                                              :domain_id   => foobar_domain.id)
+        foobar_group = @service.groups.create(name: 'g-foobar',
+                                              description: "Group of Foobar users",
+                                              domain_id: foobar_domain.id)
 
         # Create a user in the domain
-        foobar_user = @service.users.create(:name      => 'u-foobar_foobar',
-                                            :email     => 'foobar@example.com',
-                                            :password  => 's3cret!',
-                                            :domain_id => foobar_domain.id)
+        foobar_user = @service.users.create(name: 'u-foobar_foobar',
+                                            email: 'foobar@example.com',
+                                            password: 's3cret!',
+                                            domain_id: foobar_domain.id)
 
         # User has no roles initially
         foobar_user.roles.length.must_equal 0
         # Create a role and add it to the domain group
         foobar_role = @service.roles.all.select { |role| role.name == 'foobar_role' }.first
         foobar_role.destroy if foobar_role
-        foobar_role = @service.roles.create(:name => 'foobar_role')
+        foobar_role = @service.roles.create(name: 'foobar_role')
 
         foobar_group.grant_role foobar_role.id
         foobar_group.roles.length.must_equal 1
 
         # Add user to the group and check that it inherits the role
         foobar_user.check_role foobar_role.id.wont_equal nil
-        @service.role_assignments.all(:user_id => foobar_user.id, :effective => true).length.must_equal 0
+        @service.role_assignments.all(user_id: foobar_user.id, effective: true).length.must_equal 0
         foobar_group.add_user foobar_user.id
         foobar_user.check_role(foobar_role.id).must_equal false # Still false in absolute assignment terms
-        assignments = @service.role_assignments.all(:user_id => foobar_user.id, :effective => true)
+        assignments = @service.role_assignments.all(user_id: foobar_user.id, effective: true)
 
         assignments.length.must_equal 1
         assignments.first.role['id'].must_equal foobar_role.id
@@ -490,7 +490,7 @@ Fog::OpenStack::Identity::V3.new(
         assignments.first.links['assignment'].must_match %r{/v3/domains/#{foobar_domain.id}/groups/#{foobar_group.id}/roles/#{foobar_role.id}}
         assignments.first.links['membership'].must_match %r{/v3/groups/#{foobar_group.id}/users/#{foobar_user.id}}
 
-        group_assignments = @service.role_assignments.all(:group_id => foobar_group.id)
+        group_assignments = @service.role_assignments.all(group_id: foobar_group.id)
         group_assignments.length.must_equal 1
         group_assignments.first.role['id'].must_equal foobar_role.id
         group_assignments.first.group['id'].must_equal foobar_group.id
@@ -499,7 +499,7 @@ Fog::OpenStack::Identity::V3.new(
 
         # Revoke the role from the group and check the user no longer has it
         foobar_group.revoke_role foobar_role.id
-        @service.role_assignments.all(:user_id => foobar_user.id, :effective => true).length.must_equal 0
+        @service.role_assignments.all(user_id: foobar_user.id, effective: true).length.must_equal 0
       ensure
         # Clean up
         foobar_user ||= @service.users.find_by_name('u-foobar_foobar').first
@@ -510,7 +510,7 @@ Fog::OpenStack::Identity::V3.new(
         foobar_role.destroyif foobar_role
         foobar_domain ||= @service.domains.all.select { |domain| domain.name == 'd-foobar' }.first
         if foobar_domain
-          foobar_domain.update(:enabled => false)
+          foobar_domain.update(enabled: false)
           foobar_domain.destroy
         end
       end

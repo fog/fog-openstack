@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_server_volumes(server_id)
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => "servers/#{server_id}/os-volume_attachments"
+            expects: 200,
+            method: 'GET',
+            path: "servers/#{server_id}/os-volume_attachments"
           )
         end
       end
@@ -18,7 +18,7 @@ module Fog
           data = self.data[:volumes].values.select do |vol|
             vol['attachments'].find { |attachment| attachment["serverId"] == server_id }
           end
-          response.body = {'volumeAttachments' => data.map! { |vol| vol['attachments'] }.flatten(1)}
+          response.body = { 'volumeAttachments' => data.map! { |vol| vol['attachments'] }.flatten(1) }
           response
         end
       end

@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_subnet_pool(subnet_pool_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "subnetpools/#{subnet_pool_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "subnetpools/#{subnet_pool_id}"
           )
         end
       end

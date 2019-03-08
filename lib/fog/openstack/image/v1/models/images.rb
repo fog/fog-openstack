@@ -60,7 +60,7 @@ module Fog
 
           def method_missing(method_sym, *arguments, &block)
             if method_sym.to_s =~ /^find_by_(.*)$/
-              load(service.list_public_images_detailed($1, arguments.first).body['images'])
+              load(service.list_public_images_detailed(Regexp.last_match(1), arguments.first).body['images'])
             else
               super
             end

@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_shares(options = {})
           request(
-            :expects => 200,
-            :method  => 'GET',
-            :path    => 'shares',
-            :query   => options
+            expects: 200,
+            method: 'GET',
+            path: 'shares',
+            query: options
           )
         end
       end
@@ -16,7 +16,7 @@ module Fog
         def list_shares(_options = {})
           response = Excon::Response.new
           response.status = 200
-          response.body = {'shares' => data[:shares]}
+          response.body = { 'shares' => data[:shares] }
           response
         end
       end

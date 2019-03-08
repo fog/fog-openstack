@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_environment(name)
             request(
-              :expects => 204,
-              :method  => "DELETE",
-              :path    => "environments/#{URI.encode(name)}"
+              expects: 204,
+              method: "DELETE",
+              path: "environments/#{URI.encode(name)}"
             )
           end
         end

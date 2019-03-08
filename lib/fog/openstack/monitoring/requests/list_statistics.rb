@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_statistics(options = {})
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "metrics/statistics",
-            :query   => options
+            expects: [200],
+            method: 'GET',
+            path: "metrics/statistics",
+            query: options
           )
         end
       end

@@ -6,9 +6,9 @@ describe "Fog::OpenStack::Metering | resource requests" do
 
     @resource_format = {
       'resource_id' => String,
-      'project_id'  => String,
-      'user_id'     => String,
-      'metadata'    => Hash
+      'project_id' => String,
+      'user_id' => String,
+      'metadata' => Hash
     }
   end
 

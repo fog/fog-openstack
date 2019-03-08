@@ -3,16 +3,16 @@ require 'test_helper'
 describe "Fog::OpenStack::Network | security_grouprule requests" do
   before do
     @security_group_rule_format = {
-      "id"                => String,
-      "remote_group_id"   => Fog::Nullable::String,
-      "direction"         => String,
-      "remote_ip_prefix"  => Fog::Nullable::String,
-      "protocol"          => Fog::Nullable::String,
-      "ethertype"         => String,
-      "port_range_max"    => Fog::Nullable::Integer,
-      "port_range_min"    => Fog::Nullable::Integer,
+      "id" => String,
+      "remote_group_id" => Fog::Nullable::String,
+      "direction" => String,
+      "remote_ip_prefix" => Fog::Nullable::String,
+      "protocol" => Fog::Nullable::String,
+      "ethertype" => String,
+      "port_range_max" => Fog::Nullable::Integer,
+      "port_range_min" => Fog::Nullable::Integer,
       "security_group_id" => String,
-      "tenant_id"         => String
+      "tenant_id" => String
     }
   end
 

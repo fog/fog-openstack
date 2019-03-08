@@ -7,11 +7,11 @@ module Fog
             headers, options = Fog::OpenStack::DNS::V2.setup_headers(options)
 
             request(
-              :expects => 200,
-              :method  => 'GET',
-              :path    => 'zones',
-              :query   => options,
-              :headers => headers
+              expects: 200,
+              method: 'GET',
+              path: 'zones',
+              query: options,
+              headers: headers
             )
           end
         end
@@ -20,7 +20,7 @@ module Fog
           def list_zones(_options = {})
             response = Excon::Response.new
             response.status = 200
-            response.body = {'zones' => data[:zones]}
+            response.body = { 'zones' => data[:zones] }
             response
           end
         end

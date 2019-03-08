@@ -5,9 +5,9 @@ module Fog
         class Real
           def delete_user(user_id)
             request(
-              :expects => [200, 204],
-              :method  => 'DELETE',
-              :path    => "users/#{user_id}"
+              expects: [200, 204],
+              method: 'DELETE',
+              path: "users/#{user_id}"
             )
           end
         end
@@ -21,7 +21,7 @@ module Fog
             response = Excon::Response.new
             response.status = 204
             response
-          rescue
+          rescue StandardError
             raise Fog::OpenStack::Identity::NotFound
           end
         end

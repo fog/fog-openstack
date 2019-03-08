@@ -4,10 +4,10 @@ require 'helpers/network_helper'
 describe "Fog::OpenStack::Network | security_group requests" do
   before do
     @security_group_format = {
-      "id"                   => String,
-      "name"                 => String,
-      "description"          => String,
-      "tenant_id"            => String,
+      "id" => String,
+      "name" => String,
+      "description" => String,
+      "tenant_id" => String,
       "security_group_rules" => [Hash]
     }
   end

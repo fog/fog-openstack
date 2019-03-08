@@ -5,17 +5,17 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 describe "Fog::OpenStack::Compute | flavor requests" do
   before do
     @flavor_format = {
-      'id'                         => String,
-      'name'                       => String,
-      'disk'                       => Integer,
-      'ram'                        => Integer,
-      'links'                      => Array,
-      'swap'                       => Fog::Nullable::String,
-      'rxtx_factor'                => Fog::Nullable::Float,
-      'OS-FLV-EXT-DATA:ephemeral'  => Integer,
+      'id' => String,
+      'name' => String,
+      'disk' => Integer,
+      'ram' => Integer,
+      'links' => Array,
+      'swap' => Fog::Nullable::String,
+      'rxtx_factor' => Fog::Nullable::Float,
+      'OS-FLV-EXT-DATA:ephemeral' => Integer,
       'os-flavor-access:is_public' => Fog::Nullable::Boolean,
-      'OS-FLV-DISABLED:disabled'   => Fog::Nullable::Boolean,
-      'vcpus'                      => Integer
+      'OS-FLV-DISABLED:disabled' => Fog::Nullable::Boolean,
+      'vcpus' => Integer
     }
 
     @compute = Fog::OpenStack::Compute.new

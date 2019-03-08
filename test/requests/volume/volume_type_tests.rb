@@ -5,9 +5,9 @@ describe "Fog::OpenStack::Volume | volume_type requests" do
     @volume = Fog::OpenStack::Volume.new
 
     @volume_type_format = {
-      'name'        => String,
+      'name' => String,
       'extra_specs' => Hash,
-      'id'          => String
+      'id' => String
     }
 
     @volume_type = @volume.create_volume_type(name: 'test_volume_type').body['volume_type']

@@ -12,17 +12,16 @@ module Fog
                    end
 
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => path,
-              :query   => options
+              expects: [200],
+              method: 'GET',
+              path: path,
+              query: options
             )
           end
         end
 
         class Mock
-          def list_projects(options = {})
-          end
+          def list_projects(options = {}); end
         end
       end
     end

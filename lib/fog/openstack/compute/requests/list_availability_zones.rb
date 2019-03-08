@@ -6,17 +6,16 @@ module Fog
           params = options
 
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "os-availability-zone",
-            :query   => params
+            expects: [200],
+            method: 'GET',
+            path: "os-availability-zone",
+            query: params
           )
         end
       end
 
       class Mock
-        def list_endpoints
-        end
+        def list_endpoints; end
       end
     end
   end

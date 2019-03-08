@@ -2,7 +2,7 @@ require_relative 'base'
 
 module Fog
   module OpenStack
-    class  ContainerInfra
+    class ContainerInfra
       class Certificate < Fog::OpenStack::ContainerInfra::Base
         identity :bay_uuid
 

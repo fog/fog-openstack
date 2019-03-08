@@ -3,17 +3,17 @@ require 'test_helper'
 describe "Fog::OpenStack::Network | subnet requests" do
   before do
     @subnet_format = {
-      'id'               => String,
-      'name'             => String,
-      'network_id'       => String,
-      'cidr'             => String,
-      'ip_version'       => Integer,
-      'gateway_ip'       => String,
+      'id' => String,
+      'name' => String,
+      'network_id' => String,
+      'cidr' => String,
+      'ip_version' => Integer,
+      'gateway_ip' => String,
       'allocation_pools' => Array,
-      'dns_nameservers'  => Array,
-      'host_routes'      => Array,
-      'enable_dhcp'      => Fog::Boolean,
-      'tenant_id'        => String
+      'dns_nameservers' => Array,
+      'host_routes' => Array,
+      'enable_dhcp' => Fog::Boolean,
+      'tenant_id' => String
     }
   end
 

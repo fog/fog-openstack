@@ -27,6 +27,7 @@ module Fog
 
           def save
             raise Fog::Errors::Error, 'Resaving an existing object may create a duplicate' if persisted?
+
             requires :name, :email
             merge_attributes(service.create_zone(name, email, attributes).body)
             true

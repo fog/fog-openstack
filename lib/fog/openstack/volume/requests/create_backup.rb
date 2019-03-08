@@ -9,19 +9,19 @@ module Fog
             :description,
             :volume_id,
             :incremental,
-            :force,
+            :force
           ]
 
           # Filter only allowed creation attributes
           data = {
-            :backup => attributes.select { |key, _value| desired_options.include?(key.to_sym) }
+            backup: attributes.select { |key, _value| desired_options.include?(key.to_sym) }
           }
 
           request(
-            :body => Fog::JSON.encode(data),
-            :expects => [200, 202],
-            :method => 'POST',
-            :path => 'backups'
+            body: Fog::JSON.encode(data),
+            expects: [200, 202],
+            method: 'POST',
+            path: 'backups'
           )
         end
       end
@@ -38,7 +38,7 @@ module Fog
               "status" => "available",
               "size" => 1,
               "object_count" => 16,
-              "container" => "testcontainer",
+              "container" => "testcontainer"
             }
           }
           response

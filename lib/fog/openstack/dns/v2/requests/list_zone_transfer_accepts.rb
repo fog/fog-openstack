@@ -3,18 +3,18 @@ module Fog
     class DNS
       class V2
         class Real
-          def list_zone_transfer_accepts(options={})
+          def list_zone_transfer_accepts(options = {})
             request(
-              :expects => 200,
-              :method  => 'GET',
-              :path    => "zones/tasks/transfer_accepts",
-              :query   => options
+              expects: 200,
+              method: 'GET',
+              path: "zones/tasks/transfer_accepts",
+              query: options
             )
           end
         end
 
         class Mock
-          def list_zone_transfer_accepts(options={})
+          def list_zone_transfer_accepts(_options = {})
             response = Excon::Response.new
             response.status = 200
             response.body = data[:zone_transfer_accepts]["transfer_accepts"]

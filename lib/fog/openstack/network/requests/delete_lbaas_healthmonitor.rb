@@ -4,9 +4,9 @@ module Fog
       class Real
         def delete_lbaas_healthmonitor(healthmonitor_id)
           request(
-            :expects => 204,
-            :method  => 'DELETE',
-            :path    => "lbaas/healthmonitors/#{healthmonitor_id}"
+            expects: 204,
+            method: 'DELETE',
+            path: "lbaas/healthmonitors/#{healthmonitor_id}"
           )
         end
       end

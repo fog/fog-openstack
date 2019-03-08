@@ -41,7 +41,7 @@ module Fog
 
           def method_missing(method_sym, *arguments, &block)
             if method_sym.to_s =~ /^find_by_(.*)$/
-              load(service.list_images($1.to_sym => arguments.first).body['images'])
+              load(service.list_images(Regexp.last_match(1).to_sym => arguments.first).body['images'])
             else
               super
             end

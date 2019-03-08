@@ -4,10 +4,10 @@ module Fog
       class Real
         def list_dimension_values(dimension_name, options = {})
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "metrics/dimensions/names/values",
-            :query   => options.merge(:dimension_name => dimension_name)
+            expects: [200],
+            method: 'GET',
+            path: "metrics/dimensions/names/values",
+            query: options.merge(dimension_name: dimension_name)
           )
         end
       end

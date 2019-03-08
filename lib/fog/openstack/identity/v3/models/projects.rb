@@ -10,16 +10,16 @@ module Fog
 
           def all(options = {})
             if service.openstack_cache_ttl > 0
-              cached_project, expires = Fog::OpenStack::Identity::V3::Project.cache[{:token   => service.auth_token,
-                                                                                     :options => options}]
+              cached_project, expires = Fog::OpenStack::Identity::V3::Project.cache[{ token: service.auth_token,
+                                                                                      options: options }]
               return cached_project if cached_project && expires > Time.now
             end
 
             project_to_cache = load_response(service.list_projects(options), 'projects')
             if service.openstack_cache_ttl > 0
               cache = Fog::OpenStack::Identity::V3::Project.cache
-              cache[{:token => service.auth_token, :options => options}] = [project_to_cache,
-                                                                            Time.now + service.openstack_cache_ttl]
+              cache[{ token: service.auth_token, options: options }] = [project_to_cache,
+                                                                        Time.now + service.openstack_cache_ttl]
               Fog::OpenStack::Identity::V3::Project.cache = cache
             end
             project_to_cache
@@ -35,13 +35,13 @@ module Fog
 
           def find_by_id(id, options = {}) # options can include :subtree_as_ids, :subtree_as_list, :parents_as_ids, :parents_as_list
             if options.kind_of? Symbol # Deal with a single option being passed on its own
-              options = {options => nil}
+              options = { options => nil }
             end
 
             if service.openstack_cache_ttl > 0
-              cached_project, expires = Fog::OpenStack::Identity::V3::Project.cache[{:token   => service.auth_token,
-                                                                                     :id      => id,
-                                                                                     :options => options}]
+              cached_project, expires = Fog::OpenStack::Identity::V3::Project.cache[{ token: service.auth_token,
+                                                                                      id: id,
+                                                                                      options: options }]
               return cached_project if cached_project && expires > Time.now
             end
             project_hash = service.get_project(id, options).body['project']
@@ -55,7 +55,7 @@ module Fog
 
             if service.openstack_cache_ttl > 0
               cache = Fog::OpenStack::Identity::V3::Project.cache
-              cache[{:token => service.auth_token, :id => id, :options => options}] = [
+              cache[{ token: service.auth_token, id: id, options: options }] = [
                 top_project, Time.now + service.openstack_cache_ttl
               ]
               Fog::OpenStack::Identity::V3::Project.cache = cache
@@ -66,7 +66,7 @@ module Fog
           private
 
           def project_from_hash(project_hash, service)
-            Fog::OpenStack::Identity::V3::Project.new(project_hash.merge(:service => service))
+            Fog::OpenStack::Identity::V3::Project.new(project_hash.merge(service: service))
           end
         end
       end

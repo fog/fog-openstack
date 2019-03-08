@@ -16,11 +16,11 @@ module Fog
             identity = if @token
                          {
                            'methods' => ['token'],
-                           'token'   => {'id' => @token}
+                           'token' => { 'id' => @token }
                          }
                        else
                          {
-                           'methods'  => ['password'],
+                           'methods' => ['password'],
                            'password' => @user.identity
                          }
                        end
@@ -29,16 +29,16 @@ module Fog
               {
                 'auth' => {
                   'identity' => identity,
-                  'scope'    => scope
+                  'scope' => scope
                 }
               }
             else
-              {'auth' => {'identity' => identity}}
+              { 'auth' => { 'identity' => identity } }
             end
           end
 
           def prefix_path(uri)
-            if uri.path =~ /\/v3(\/)*.*$/
+            if uri.path =~ %r{/v3(/)*.*$}
               ''
             else
               '/v3'

@@ -5,16 +5,16 @@ module Fog
         class Real
           def rerun_task(task_ex_id)
             rerun_payload = {
-              :id    => task_ex_id,
-              :state => 'RUNNING',
-              :reset => true
+              id: task_ex_id,
+              state: 'RUNNING',
+              reset: true
             }
             body = Fog::JSON.encode(rerun_payload)
             request(
-              :body    => body,
-              :expects => 200,
-              :method  => "PUT",
-              :path    => "tasks/#{task_ex_id}"
+              body: body,
+              expects: 200,
+              method: "PUT",
+              path: "tasks/#{task_ex_id}"
             )
           end
         end

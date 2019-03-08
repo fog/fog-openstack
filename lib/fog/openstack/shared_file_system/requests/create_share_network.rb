@@ -14,10 +14,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode('share_network' => data),
-            :expects => 200,
-            :method  => 'POST',
-            :path    => 'share-networks'
+            body: Fog::JSON.encode('share_network' => data),
+            expects: 200,
+            method: 'POST',
+            path: 'share-networks'
           )
         end
       end
@@ -32,7 +32,7 @@ module Fog
 
           share_net = data[:share_networks_detail].first.dup
 
-          response.body = {'share_networks' => share_net.merge(options)}
+          response.body = { 'share_networks' => share_net.merge(options) }
           response
         end
       end

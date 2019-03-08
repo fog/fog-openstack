@@ -2,7 +2,7 @@ require_relative 'base'
 
 module Fog
   module OpenStack
-    class  ContainerInfra
+    class ContainerInfra
       class BayModel < Fog::OpenStack::ContainerInfra::Base
         identity :uuid
 
@@ -37,14 +37,14 @@ module Fog
         attribute :volume_driver
 
         def create
-          requires :name, :keypair_id,  :flavor_id, :image_id,
+          requires :name, :keypair_id, :flavor_id, :image_id,
                    :external_network_id, :coe
           merge_attributes(service.create_bay_model(attributes).body)
           self
         end
 
         def update
-          requires :uuid, :name, :keypair_id,  :flavor_id, :image_id,
+          requires :uuid, :name, :keypair_id, :flavor_id, :image_id,
                    :external_network_id, :coe
           attrs = convert_update_params(attributes)
           merge_attributes(service.update_bay_model(uuid, attrs).body)

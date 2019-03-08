@@ -4,7 +4,7 @@ module Fog
   module OpenStack
     class DNS
       class V2 < Fog::Service
-        SUPPORTED_VERSIONS = /v2/
+        SUPPORTED_VERSIONS = /v2/.freeze
 
         requires   :openstack_auth_url
         recognizes :openstack_auth_token, :openstack_management_url,
@@ -60,7 +60,6 @@ module Fog
         request :get_zone_transfer_accept
         request :list_zone_transfer_accepts
 
-
         def self.setup_headers(options)
           # user needs to have admin privileges to ask for all projects
           all_projects = options.delete(:all_projects) || false
@@ -69,7 +68,7 @@ module Fog
           # don't ask for all and one project at the same time
           project_id = options.delete(:project_id) unless all_projects
 
-          headers = {'X-Auth-All-Projects' => all_projects}
+          headers = { 'X-Auth-All-Projects' => all_projects }
           headers['X-Auth-Sudo-Project-Id'] = project_id unless project_id.nil?
 
           [headers, options]
@@ -79,111 +78,111 @@ module Fog
           def self.data
             @data ||= Hash.new do |hash, key|
               hash[key] = {
-                :zones      => [{
-                  "id"             => "a86dba58-0043-4cc6-a1bb-69d5e86f3ca3",
-                  "pool_id"        => "572ba08c-d929-4c70-8e42-03824bb24ca2",
-                  "project_id"     => "4335d1f0-f793-11e2-b778-0800200c9a66",
-                  "name"           => "example.org.",
-                  "email"          => "joe@example.org",
-                  "ttl"            => 7200,
-                  "serial"         => 1_404_757_531,
-                  "status"         => "ACTIVE",
-                  "action"         => "NONE",
-                  "description"    => "This is an example zone.",
-                  "masters"        => [],
-                  "type"           => "PRIMARY",
+                zones: [{
+                  "id" => "a86dba58-0043-4cc6-a1bb-69d5e86f3ca3",
+                  "pool_id" => "572ba08c-d929-4c70-8e42-03824bb24ca2",
+                  "project_id" => "4335d1f0-f793-11e2-b778-0800200c9a66",
+                  "name" => "example.org.",
+                  "email" => "joe@example.org",
+                  "ttl" => 7200,
+                  "serial" => 1_404_757_531,
+                  "status" => "ACTIVE",
+                  "action" => "NONE",
+                  "description" => "This is an example zone.",
+                  "masters" => [],
+                  "type" => "PRIMARY",
                   "transferred_at" => '',
-                  "version"        => 1,
-                  "created_at"     => "2014-07-07T18:25:31.275934",
-                  "updated_at"     => '',
-                  "links"          => {
+                  "version" => 1,
+                  "created_at" => "2014-07-07T18:25:31.275934",
+                  "updated_at" => '',
+                  "links" => {
                     "self" => "https://127.0.0.1:9001/v2/zones/a86dba58-0043-4cc6-a1bb-69d5e86f3ca3"
                   }
                 }],
-                :pools      => {
+                pools: {
                   "metadata" => {
                     "total_count" => 2
                   },
-                  "links"    => {
+                  "links" => {
                     "self" => "http://127.0.0.1:9001/v2/pools"
                   },
-                  "pools"    => [
+                  "pools" => [
                     {
                       "description" => '',
-                      "id"          => "794ccc2c-d751-44fe-b57f-8894c9f5c842",
-                      "project_id"  => '',
-                      "created_at"  => "2015-02-18T22:18:58.000000",
-                      "attributes"  => '',
-                      "ns_records"  => [
+                      "id" => "794ccc2c-d751-44fe-b57f-8894c9f5c842",
+                      "project_id" => '',
+                      "created_at" => "2015-02-18T22:18:58.000000",
+                      "attributes" => '',
+                      "ns_records" => [
                         {
                           "hostname" => "ns1.example.org.",
                           "priority" => 1
                         }
                       ],
-                      "links"       => {
+                      "links" => {
                         "self" => "http://127.0.0.1:9001/v2/pools/794ccc2c-d751-44fe-b57f-8894c9f5c842"
                       },
-                      "name"        => "default",
-                      "updated_at"  => "2015-02-19T15:59:44.000000"
+                      "name" => "default",
+                      "updated_at" => "2015-02-19T15:59:44.000000"
                     },
                     {
                       "description" => '',
-                      "id"          => "d1716333-8c16-490f-85ee-29af36907605",
-                      "project_id"  => "noauth-project",
-                      "created_at"  => "2015-02-23T21:56:33.000000",
-                      "attributes"  => '',
-                      "ns_records"  => [
+                      "id" => "d1716333-8c16-490f-85ee-29af36907605",
+                      "project_id" => "noauth-project",
+                      "created_at" => "2015-02-23T21:56:33.000000",
+                      "attributes" => '',
+                      "ns_records" => [
                         {
                           "hostname" => "ns2.example.org.",
                           "priority" => 1
                         }
                       ],
-                      "links"       => {
+                      "links" => {
                         "self" => "http://127.0.0.1:9001/v2/pools/d1716333-8c16-490f-85ee-29af36907605"
                       },
-                      "name"        => "example_pool",
-                      "updated_at"  => ''
+                      "name" => "example_pool",
+                      "updated_at" => ''
                     }
                   ]
                 },
-                :quota      => {
-                  "api_export_size"   => 1000,
+                quota: {
+                  "api_export_size" => 1000,
                   "recordset_records" => 20,
-                  "zone_records"      => 500,
-                  "zone_recordsets"   => 500,
-                  "zones"             => 100
+                  "zone_records" => 500,
+                  "zone_recordsets" => 500,
+                  "zones" => 100
                 },
-                :recordsets => {
+                recordsets: {
                   "recordsets" => [{
                     "description" => "This is an example record set.",
-                    "links"       => {
+                    "links" => {
                       "self" => "https://127.0.0.1:9001/v2/zones/2150b1bf-dee2-4221-9d85-11f7886fb15f/recordsets/f7b10e9b-0cae-4a91-b162-562bc6096648"
                     },
-                    "updated_at"  => '',
-                    "records"     => [
+                    "updated_at" => '',
+                    "records" => [
                       "10.1.0.2"
                     ],
-                    "ttl"         => 3600,
-                    "id"          => "f7b10e9b-0cae-4a91-b162-562bc6096648",
-                    "name"        => "example.org.",
-                    "project_id"  => "4335d1f0-f793-11e2-b778-0800200c9a66",
-                    "zone_id"     => "2150b1bf-dee2-4221-9d85-11f7886fb15f",
-                    "zone_name"   => "example.com.",
-                    "created_at"  => "2014-10-24T19:59:44.000000",
-                    "version"     => 1,
-                    "type"        => "A",
-                    "status"      => "ACTIVE",
-                    "action"      => "NONE"
+                    "ttl" => 3600,
+                    "id" => "f7b10e9b-0cae-4a91-b162-562bc6096648",
+                    "name" => "example.org.",
+                    "project_id" => "4335d1f0-f793-11e2-b778-0800200c9a66",
+                    "zone_id" => "2150b1bf-dee2-4221-9d85-11f7886fb15f",
+                    "zone_name" => "example.com.",
+                    "created_at" => "2014-10-24T19:59:44.000000",
+                    "version" => 1,
+                    "type" => "A",
+                    "status" => "ACTIVE",
+                    "action" => "NONE"
                   }],
-                  "links"      => {
+                  "links" => {
                     "self" => "http://127.0.0.1:9001/v2/recordsets?limit=1",
                     "next" => "http://127.0.0.1:9001/v2/recordsets?limit=1&marker=45fd892d-7a67-4f65-9df0-87273f228d6c"
                   },
-                  "metadata"   => {
+                  "metadata" => {
                     "total_count" => 2
                   }
                 },
-                :zone_transfer_requests => {
+                zone_transfer_requests: {
                   "transfer_requests" => [
                     {
                       "created_at" => "2014-07-17T20:34:40.882579",
@@ -215,44 +214,44 @@ module Fog
                     "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_requests"
                   }
                 },
-                :zone_transfer_accepts => {
+                zone_transfer_accepts: {
                   "metadata" => {
-                     "total_count" => 2
-                   },
-                   "links" => {
-                     "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts"
-                   },
-                   "transfer_accepts" => [
-                     {
-                       "status" => "COMPLETE",
-                       "zone_id" => "8db93d1a-59e3-4143-a393-5821abea0a46",
-                       "links" => {
-                           "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts/afb4222b-18b3-44b3-9f54-e0dfdba1be44",
-                           "zone" => "http://127.0.0.1:9001/v2/zones/8db93d1a-59e3-4143-a393-5821abea0a46"
-                       },
-                       "created_at" => "2016-06-01 05:35:35",
-                       "updated_at" => "2016-06-01 05:35:35",
-                       "key" => nil,
-                       "project_id" => "85604ecfb5334b50bd40ca53fc1d710f",
-                       "id" => "afb4222b-18b3-44b3-9f54-e0dfdba1be44",
-                       "zone_transfer_request_id" => "d223f7ef-77a6-459e-abd3-b4dbc97338e7"
-                     },
-                     {
-                       "status" => "COMPLETE",
-                       "zone_id" => "925bfc45-8901-4aca-aa12-18afaf0879e2",
-                       "links" => {
-                           "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts/ecbc7091-c498-4ec4-9893-68b06297fe50",
-                           "zone" => "http://127.0.0.1:9001/v2/zones/925bfc45-8901-4aca-aa12-18afaf0879e2"
-                       },
-                       "created_at" => "2016-06-01 10:06:36",
-                       "updated_at" => "2016-06-01 10:06:37",
-                       "key" => nil,
-                       "project_id" => "85604ecfb5334b50bd40ca53fc1d710f",
-                       "id" => "ecbc7091-c498-4ec4-9893-68b06297fe50",
-                       "zone_transfer_request_id" => "94cf9bd3-4137-430b-bf75-4e690430258c"
-                     }
-                   ]
-                 }
+                    "total_count" => 2
+                  },
+                  "links" => {
+                    "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts"
+                  },
+                  "transfer_accepts" => [
+                    {
+                      "status" => "COMPLETE",
+                      "zone_id" => "8db93d1a-59e3-4143-a393-5821abea0a46",
+                      "links" => {
+                        "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts/afb4222b-18b3-44b3-9f54-e0dfdba1be44",
+                        "zone" => "http://127.0.0.1:9001/v2/zones/8db93d1a-59e3-4143-a393-5821abea0a46"
+                      },
+                      "created_at" => "2016-06-01 05:35:35",
+                      "updated_at" => "2016-06-01 05:35:35",
+                      "key" => nil,
+                      "project_id" => "85604ecfb5334b50bd40ca53fc1d710f",
+                      "id" => "afb4222b-18b3-44b3-9f54-e0dfdba1be44",
+                      "zone_transfer_request_id" => "d223f7ef-77a6-459e-abd3-b4dbc97338e7"
+                    },
+                    {
+                      "status" => "COMPLETE",
+                      "zone_id" => "925bfc45-8901-4aca-aa12-18afaf0879e2",
+                      "links" => {
+                        "self" => "http://127.0.0.1:9001/v2/zones/tasks/transfer_accepts/ecbc7091-c498-4ec4-9893-68b06297fe50",
+                        "zone" => "http://127.0.0.1:9001/v2/zones/925bfc45-8901-4aca-aa12-18afaf0879e2"
+                      },
+                      "created_at" => "2016-06-01 10:06:36",
+                      "updated_at" => "2016-06-01 10:06:37",
+                      "key" => nil,
+                      "project_id" => "85604ecfb5334b50bd40ca53fc1d710f",
+                      "id" => "ecbc7091-c498-4ec4-9893-68b06297fe50",
+                      "zone_transfer_request_id" => "94cf9bd3-4137-430b-bf75-4e690430258c"
+                    }
+                  ]
+                }
               }
             end
           end
@@ -274,15 +273,15 @@ module Fog
             management_url.path = '/v2'
             @openstack_management_url = management_url.to_s
 
-            @data ||= {:users => {}}
+            @data ||= { users: {} }
             unless @data[:users].detect { |u| u['name'] == options[:openstack_username] }
               id = Fog::Mock.random_numbers(6).to_s
               @data[:users][id] = {
-                'id'       => id,
-                'name'     => options[:openstack_username],
-                'email'    => "#{options[:openstack_username]}@mock.com",
+                'id' => id,
+                'name' => options[:openstack_username],
+                'email' => "#{options[:openstack_username]}@mock.com",
                 'tenantId' => Fog::Mock.random_numbers(6).to_s,
-                'enabled'  => true
+                'enabled' => true
               }
             end
           end
@@ -296,11 +295,11 @@ module Fog
           end
 
           def credentials
-            {:provider                 => 'openstack',
-             :openstack_auth_url       => @openstack_auth_uri.to_s,
-             :openstack_auth_token     => @auth_token,
-             :openstack_region         => @openstack_region,
-             :openstack_management_url => @openstack_management_url}
+            { provider: 'openstack',
+              openstack_auth_url: @openstack_auth_uri.to_s,
+              openstack_auth_token: @auth_token,
+              openstack_region: @openstack_region,
+              openstack_management_url: @openstack_management_url }
           end
         end
 

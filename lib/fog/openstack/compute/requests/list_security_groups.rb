@@ -20,10 +20,10 @@ module Fog
           end
 
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => path,
-            :query   => query
+            expects: [200],
+            method: 'GET',
+            path: path,
+            query: query
           )
         end
       end
@@ -52,13 +52,13 @@ module Fog
                    end
 
           Excon::Response.new(
-            :body    => {'security_groups' => groups},
-            :headers => {
+            body: { 'security_groups' => groups },
+            headers: {
               "X-Compute-Request-Id" => "req-#{Fog::Mock.random_base64(36)}",
-              "Content-Type"         => "application/json",
-              "Date"                 => Date.new
+              "Content-Type" => "application/json",
+              "Date" => Date.new
             },
-            :status  => 200
+            status: 200
           )
         end
       end

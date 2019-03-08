@@ -5,7 +5,7 @@ module Fog
         def create_vnf(options)
           options_valid = [
             :auth,
-            :vnf,
+            :vnf
           ]
 
           # Filter only allowed creation attributes
@@ -14,10 +14,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 201,
-            :method  => "POST",
-            :path    => "vnfs"
+            body: Fog::JSON.encode(data),
+            expects: 201,
+            method: "POST",
+            path: "vnfs"
           )
         end
       end
@@ -28,7 +28,7 @@ module Fog
           response.status = 201
 
           create_data = data[:vnfs].first.merge("vnfd_id" => "id")
-          response.body = {"vnf" => create_data}
+          response.body = { "vnf" => create_data }
           response
         end
       end

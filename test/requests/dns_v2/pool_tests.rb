@@ -7,14 +7,14 @@ describe "Fog::OpenStack::DNS::V2 | pool requests" do
 
     @pool_format = {
       "description" => String,
-      "id"          => String,
-      "project_id"  => String,
-      "created_at"  => String,
-      "attributes"  => String,
-      "ns_records"  => Array,
-      "links"       => Hash,
-      "name"        => String,
-      "updated_at"  => String
+      "id" => String,
+      "project_id" => String,
+      "created_at" => String,
+      "attributes" => String,
+      "ns_records" => Array,
+      "links" => Hash,
+      "name" => String,
+      "updated_at" => String
     }
 
     @pool_id = @dns.list_pools.body['pools'].first['id']

@@ -2,7 +2,7 @@ require "test_helper"
 
 describe "Fog::Identity[:openstack] | roles" do
   before do
-    @identity = Fog::OpenStack::Identity.new(:openstack_identity_api_version => 'v2.0')
+    @identity = Fog::OpenStack::Identity.new(openstack_identity_api_version: 'v2.0')
     @tenant   = @identity.tenants.create(name: 'test_user')
     @user     = @identity.users.create(name: 'test_user', tenant_id: @tenant.id, password: 'spoof')
     @role     = @identity.roles(user: @user, tenant: @tenant).create(name: 'test_role')

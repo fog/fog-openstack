@@ -5,15 +5,15 @@ module Fog
         def create_server_group(name, policy)
           Fog::OpenStack::Compute::ServerGroup.validate_server_group_policy policy
 
-          body = {'server_group' => {
-            'name'     => name,
+          body = { 'server_group' => {
+            'name' => name,
             'policies' => [policy]
-          }}
+          } }
           request(
-            :body    => Fog::JSON.encode(body),
-            :expects => 200,
-            :method  => 'POST',
-            :path    => 'os-server-groups'
+            body: Fog::JSON.encode(body),
+            expects: 200,
+            method: 'POST',
+            path: 'os-server-groups'
           )
         end
       end
@@ -22,7 +22,7 @@ module Fog
         def create_server_group(name, policy)
           Fog::OpenStack::Compute::ServerGroup.validate_server_group_policy policy
           id = SecureRandom.uuid
-          data[:server_groups][id] = {:name => name, :policies => [policy], :members => []}
+          data[:server_groups][id] = { name: name, policies: [policy], members: [] }
           get_server_group id
         end
       end

@@ -5,7 +5,7 @@ module Fog
         # === Parameters
         # * server_id <~String>
         # * options <~Hash>
-        def create_os_interface(server_id, options={})
+        def create_os_interface(server_id, options = {})
           body = {
             'interfaceAttachment' => {}
           }
@@ -17,23 +17,23 @@ module Fog
           end
 
           if options[:ip_address]
-            body['interfaceAttachment']['fixed_ips'] = {ip_address: options[:ip_address]}
+            body['interfaceAttachment']['fixed_ips'] = { ip_address: options[:ip_address] }
           end
 
           request(
-            :body    => Fog::JSON.encode(body),
-            :expects => [200, 201, 202, 204],
-            :method  => 'POST',
-            :path    => "servers/#{server_id}/os-interface"
+            body: Fog::JSON.encode(body),
+            expects: [200, 201, 202, 204],
+            method: 'POST',
+            path: "servers/#{server_id}/os-interface"
           )
         end
       end
 
       class Mock
-        def create_os_interface(server_id, options={})
+        def create_os_interface(_server_id, _options = {})
           Excon::Response.new(
-            :body   => {'interfaceAttachment' => data[:os_interfaces].first},
-            :status => 200
+            body: { 'interfaceAttachment' => data[:os_interfaces].first },
+            status: 200
           )
         end
       end

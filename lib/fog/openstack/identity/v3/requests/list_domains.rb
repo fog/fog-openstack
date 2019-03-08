@@ -5,17 +5,16 @@ module Fog
         class Real
           def list_domains(options = {})
             request(
-              :expects => [200],
-              :method  => 'GET',
-              :path    => "domains",
-              :query   => options
+              expects: [200],
+              method: 'GET',
+              path: "domains",
+              query: options
             )
           end
         end
 
         class Mock
-          def list_domains(options = {})
-          end
+          def list_domains(options = {}); end
         end
       end
     end

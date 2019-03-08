@@ -3,17 +3,17 @@ module Fog
     class Network
       class Real
         def update_security_group(security_group_id, options = {})
-          data = {'security_group' => {}}
+          data = { 'security_group' => {} }
 
           [:name, :description].each do |key|
             data['security_group'][key] = options[key] if options[key]
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "security-groups/#{security_group_id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "security-groups/#{security_group_id}"
           )
         end
       end
@@ -28,7 +28,7 @@ module Fog
           if security_group
             security_group['name']        = options[:name]
             security_group['description'] = options[:description]
-            response.body = {'security_group' => security_group}
+            response.body = { 'security_group' => security_group }
             response.status = 200
             response
           else

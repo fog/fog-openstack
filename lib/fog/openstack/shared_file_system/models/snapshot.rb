@@ -19,6 +19,7 @@ module Fog
 
         def save
           raise Fog::Errors::Error, 'Resaving an existing object may create a duplicate' if persisted?
+
           requires :share_id
           merge_attributes(service.create_snapshot(share_id, attributes).body['snapshot'])
           true

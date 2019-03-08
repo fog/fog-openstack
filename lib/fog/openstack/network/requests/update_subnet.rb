@@ -3,7 +3,7 @@ module Fog
     class Network
       class Real
         def update_subnet(subnet_id, options = {})
-          data = {'subnet' => {}}
+          data = { 'subnet' => {} }
 
           vanilla_options = [:name, :gateway_ip, :allocation_pools,
                              :dns_nameservers, :host_routes, :enable_dhcp]
@@ -12,10 +12,10 @@ module Fog
           end
 
           request(
-            :body    => Fog::JSON.encode(data),
-            :expects => 200,
-            :method  => 'PUT',
-            :path    => "subnets/#{subnet_id}"
+            body: Fog::JSON.encode(data),
+            expects: 200,
+            method: 'PUT',
+            path: "subnets/#{subnet_id}"
           )
         end
       end
@@ -30,7 +30,7 @@ module Fog
             subnet['host_routes']       = options[:host_routes]       || []
             subnet['allocation_pools']  = options[:allocation_pools]  || []
             subnet['enable_dhcp']       = options[:enable_dhcp]
-            response.body = {'subnet' => subnet}
+            response.body = { 'subnet' => subnet }
             response.status = 200
             response
           else

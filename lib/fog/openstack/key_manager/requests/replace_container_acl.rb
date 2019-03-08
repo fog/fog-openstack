@@ -4,10 +4,10 @@ module Fog
       class Real
         def replace_container_acl(uuid, options)
           request(
-            :body    => Fog::JSON.encode(options),
-            :expects => [200],
-            :method  => 'PUT',
-            :path    => "containers/#{uuid}/acl"
+            body: Fog::JSON.encode(options),
+            expects: [200],
+            method: 'PUT',
+            path: "containers/#{uuid}/acl"
           )
         end
       end

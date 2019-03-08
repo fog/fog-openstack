@@ -4,9 +4,9 @@ module Fog
       class Real
         def get_lb_pool_stats(pool_id)
           request(
-            :expects => [200],
-            :method  => 'GET',
-            :path    => "lb/pools/#{pool_id}/stats"
+            expects: [200],
+            method: 'GET',
+            path: "lb/pools/#{pool_id}/stats"
           )
         end
       end
@@ -21,7 +21,7 @@ module Fog
             stats["bytes_out"] = 0
             stats["total_connections"] = 0
             response.status = 200
-            response.body = {'stats' => stats}
+            response.body = { 'stats' => stats }
             response
           else
             raise Fog::OpenStack::Network::NotFound

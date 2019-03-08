@@ -1,5 +1,3 @@
-
-
 module Fog
   module OpenStack
     class Volume < Fog::Service

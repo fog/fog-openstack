@@ -3,9 +3,8 @@ require 'fog/openstack/container_infra/models/certificate'
 
 module Fog
   module OpenStack
-    class  ContainerInfra
+    class ContainerInfra
       class Certificates < Fog::OpenStack::Collection
-
         model Fog::OpenStack::ContainerInfra::Certificate
 
         def create(bay_uuid)

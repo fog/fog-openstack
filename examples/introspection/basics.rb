@@ -1,4 +1,3 @@
-
 require 'rubygems'
 require 'fog/openstack' # version >= 1.37
 
@@ -39,22 +38,22 @@ inspector.get_introspection_details(node1_uuid)
 # Create a set of rules
 rules = {
   "description" => "Successful Rule",
-  "actions"     => [
+  "actions" => [
     {
       "action" => "set-attribute",
-      "path"   => "/extra/rule_success",
-      "value"  => "yes"
+      "path" => "/extra/rule_success",
+      "value" => "yes"
     }
   ],
   "conditions" => [
     {
       "field" => "memory_mb",
-      "op"    => "ge",
+      "op" => "ge",
       "value" => 256
     },
     {
       "field" => "local_gb",
-      "op"    => "ge",
+      "op" => "ge",
       "value" => 1
     }
   ]

@@ -5,10 +5,10 @@ module Fog
         class Real
           def update_service(id, service)
             request(
-              :expects => [200],
-              :method  => 'PATCH',
-              :path    => "services/#{id}",
-              :body    => Fog::JSON.encode(:service => service)
+              expects: [200],
+              method: 'PATCH',
+              path: "services/#{id}",
+              body: Fog::JSON.encode(service: service)
             )
           end
         end
