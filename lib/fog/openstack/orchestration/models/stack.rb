@@ -99,7 +99,7 @@ module Fog
         # Deprecated
         def timeout_in_minutes=(minutes)
           Fog::Logger.deprecation("#timeout_in_minutes=(minutes) is deprecated, set timeout_mins in options for save(options) instead [light_black](#{caller.first})[/]")
-          timeout_mins = minutes
+          self.timeout_mins = minutes
         end
 
         # build options to create or update stack

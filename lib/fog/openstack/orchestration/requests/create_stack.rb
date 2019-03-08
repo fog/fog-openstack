@@ -64,7 +64,7 @@ module Fog
           end
 
           stack_id = Fog::Mock.random_hex(32)
-          stack = data[:stacks][stack_id] = {
+          data[:stacks][stack_id] = {
             'id' => stack_id,
             'stack_name' => options[:stack_name],
             'links' => [],

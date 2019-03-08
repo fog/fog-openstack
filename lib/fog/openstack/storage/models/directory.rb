@@ -33,10 +33,10 @@ module Fog
           requires :key
 
           @public_url ||= begin
-            service.public_url(key)
-                          rescue Fog::OpenStack::Storage::NotFound => err
+                            service.public_url(key)
+                          rescue Fog::OpenStack::Storage::NotFound => _err
                             nil
-          end
+                          end
         end
 
         def save

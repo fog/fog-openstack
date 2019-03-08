@@ -36,12 +36,10 @@ module Fog
           if arg1.kind_of?(Stack)
             # Normal use: delete_stack(stack)
             stack = arg1
-            stack_name = stack.stack_name
             stack_id = stack.id
           else
             # Deprecated: delete_stack(stack_name, stack_id)
             Fog::Logger.deprecation("#delete_stack(stack_name, stack_id) is deprecated, use #delete_stack(stack) instead [light_black](#{caller.first})[/]")
-            stack_name = arg1
             stack_id = arg2
           end
 
