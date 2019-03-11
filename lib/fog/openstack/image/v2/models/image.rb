@@ -53,6 +53,18 @@ module Fog
             end
           end
 
+          def respond_to_missing?(method_sym, include_private = false)
+            method_name = method_sym.to_s
+            tested_name = method_name.end_with?('=') ? method_name[0..-1] : method_name
+            if attributes.key?(tested_name.to_sym)
+              true
+            elsif attributes.key?(tested_name)
+              true
+            else
+              super
+            end
+          end
+
           def respond_to?(method_sym, include_all = false)
             if attributes.key?(method_sym)
               true

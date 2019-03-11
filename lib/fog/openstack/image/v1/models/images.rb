@@ -66,6 +66,10 @@ module Fog
             end
           end
 
+          def respond_to_missing?(method_sym, include_private = false)
+            method_sym.to_s.start_with?('find_by_') || super
+          end
+
           def find_by_size_min(size)
             find_attribute(__method__, size)
           end

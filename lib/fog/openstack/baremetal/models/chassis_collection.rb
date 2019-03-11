@@ -38,6 +38,10 @@ module Fog
             super
           end
         end
+
+        def respond_to_missing?(method_sym, include_private = false)
+          method_sym.to_s.start_with?('find_by_') || super
+        end
       end
     end
   end
