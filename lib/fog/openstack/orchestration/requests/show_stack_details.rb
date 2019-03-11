@@ -12,11 +12,12 @@ module Fog
       end
 
       class Mock
-        def show_stack_details(_name, _id)
-          stack = data[:stack].values
+        def show_stack_details(_name, id)
+          stack = data[:stacks][id]
+          raise Fog::OpenStack::Orchestration::NotFound if stack.nil?
 
           Excon::Response.new(
-            body: { 'stack' => stack },
+            body: { 'stack' => stack.values },
             status: 200
           )
         end
