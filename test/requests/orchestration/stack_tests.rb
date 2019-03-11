@@ -11,7 +11,7 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
 
     created_stack = @orchestration.create_stack(stack_name: 'stack_mock')
     @stack_mock = Fog::OpenStack::Orchestration::Stack.new(
-      @orchestration.show_stack_details('stack_mock', created_stack.body['id']).body
+      @orchestration.show_stack_details('stack_mock', created_stack.body['id']).body['stack']
     )
 
     @stack_format = {

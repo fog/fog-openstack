@@ -17,7 +17,7 @@ module Fog
           raise Fog::OpenStack::Orchestration::NotFound if stack.nil?
 
           Excon::Response.new(
-            body: { 'stack' => stack.values },
+            body: { 'stack' => stack },
             status: 200
           )
         end
