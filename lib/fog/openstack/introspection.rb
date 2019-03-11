@@ -45,7 +45,7 @@ module Fog
           @data ||= Hash.new do |hash, key|
             # Introspection data is *huge* we load it from a yaml file
             file = "test/fixtures/introspection.yaml"
-            hash[key] = YAML.safe_load(File.read(file))
+            hash[key] = YAML.safe_load(File.read(file), [Symbol])
           end
         end
 
