@@ -1,39 +1,39 @@
 require 'test_helper'
 require 'helpers/container_infra_helper'
 
-describe "Fog::ContainerInfra[:openstack] | bay model requests" do
+describe "Fog::OpenStack::ContainerInfra | bay model requests" do
   before do
     @bay_model_format = {
-      "insecure_registry"     => Fog::Nullable::String,
-      "http_proxy"            => Fog::Nullable::String,
-      "updated_at"            => Fog::Nullable::String,
-      "floating_ip_enabled"   => Fog::Nullable::Boolean,
-      "fixed_subnet"          => Fog::Nullable::String,
-      "master_flavor_id"      => Fog::Nullable::String,
-      "uuid"                  => Fog::Nullable::String,
-      "no_proxy"              => Fog::Nullable::String,
-      "https_proxy"           => Fog::Nullable::String,
-      "tls_disabled"          => Fog::Nullable::Boolean,
-      "keypair_id"            => String,
-      "public"                => Fog::Nullable::Boolean,
-      "labels"                => Fog::Nullable::Hash,
-      "docker_volume_size"    => Fog::Nullable::Integer,
-      "server_type"           => Fog::Nullable::String,
-      "external_network_id"   => Fog::Nullable::String,
-      "cluster_distro"        => Fog::Nullable::String,
-      "image_id"              => Fog::Nullable::String,
-      "volume_driver"         => Fog::Nullable::String,
-      "registry_enabled"      => Fog::Nullable::Boolean,
+      "insecure_registry" => Fog::Nullable::String,
+      "http_proxy" => Fog::Nullable::String,
+      "updated_at" => Fog::Nullable::String,
+      "floating_ip_enabled" => Fog::Nullable::Boolean,
+      "fixed_subnet" => Fog::Nullable::String,
+      "master_flavor_id" => Fog::Nullable::String,
+      "uuid" => Fog::Nullable::String,
+      "no_proxy" => Fog::Nullable::String,
+      "https_proxy" => Fog::Nullable::String,
+      "tls_disabled" => Fog::Nullable::Boolean,
+      "keypair_id" => String,
+      "public" => Fog::Nullable::Boolean,
+      "labels" => Fog::Nullable::Hash,
+      "docker_volume_size" => Fog::Nullable::Integer,
+      "server_type" => Fog::Nullable::String,
+      "external_network_id" => Fog::Nullable::String,
+      "cluster_distro" => Fog::Nullable::String,
+      "image_id" => Fog::Nullable::String,
+      "volume_driver" => Fog::Nullable::String,
+      "registry_enabled" => Fog::Nullable::Boolean,
       "docker_storage_driver" => Fog::Nullable::String,
-      "apiserver_port"        => Fog::Nullable::Integer,
-      "name"                  => String,
-      "created_at"            => Fog::Nullable::String,
-      "network_driver"        => Fog::Nullable::String,
-      "fixed_network"         => Fog::Nullable::String,
-      "coe"                   => Fog::Nullable::String,
-      "flavor_id"             => Fog::Nullable::String,
-      "master_lb_enabled"     => Fog::Nullable::Boolean,
-      "dns_nameserver"        => Fog::Nullable::String
+      "apiserver_port" => Fog::Nullable::Integer,
+      "name" => String,
+      "created_at" => Fog::Nullable::String,
+      "network_driver" => Fog::Nullable::String,
+      "fixed_network" => Fog::Nullable::String,
+      "coe" => Fog::Nullable::String,
+      "flavor_id" => Fog::Nullable::String,
+      "master_lb_enabled" => Fog::Nullable::Boolean,
+      "dns_nameserver" => Fog::Nullable::String
     }
   end
 
@@ -71,14 +71,14 @@ describe "Fog::ContainerInfra[:openstack] | bay model requests" do
       bay_model_uuid = container_infra.bay_models.all.first.uuid
       attributes = [
         {
-          "path"  => "/master_lb_enabled",
+          "path" => "/master_lb_enabled",
           "value" => "True",
-          "op"    => "replace"
+          "op" => "replace"
         },
         {
-          "path"  => "/registry_enabled",
+          "path" => "/registry_enabled",
           "value" => "True",
-          "op"    => "replace"
+          "op" => "replace"
         }
       ]
 

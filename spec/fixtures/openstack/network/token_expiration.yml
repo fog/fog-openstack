@@ -221,7 +221,7 @@ http_interactions:
     uri: http://devstack.openstack.stack:5000/v3/auth/tokens
     body:
       encoding: UTF-8
-      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"password":"password","domain":{"name":"Default"},"name":"admin"}}},"scope":{"project":{"name":"admin","domain":{"name":"Default"}}}}}'
+      string: '{"auth":{"identity":{"methods":["password"],"password":{"user":{"name":"admin","domain":{"name":"Default"},"password":"password"}}},"scope":{"project":{"name":"admin","domain":{"name":"Default"}}}}}'
     headers:
       User-Agent:
       - fog-core/1.40.0

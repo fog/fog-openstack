@@ -1,18 +1,18 @@
 require "test_helper"
 
-describe "Fog::SharedFileSystem::OpenStack | quota requests" do
+describe "Fog::OpenStack::SharedFileSystem | quota requests" do
   before do
-    @manila = Fog::SharedFileSystem::OpenStack.new
+    @manila = Fog::OpenStack::SharedFileSystem.new
 
     @project_id = @manila.respond_to?(:current_tenant) ? @manila.current_tenant['id'] : Fog::Mock.random_numbers(6).to_s
 
     @quota_format = {
-      "gigabytes"          => Integer,
-      "shares"             => Integer,
-      "snapshots"          => Integer,
+      "gigabytes" => Integer,
+      "shares" => Integer,
+      "snapshots" => Integer,
       "snapshot_gigabytes" => Integer,
-      "share_networks"     => Integer,
-      "id"                 => String
+      "share_networks" => Integer,
+      "id" => String
     }
     @quota = @manila.get_quota(@project_id).body['quota_set']
   end
@@ -24,7 +24,7 @@ describe "Fog::SharedFileSystem::OpenStack | quota requests" do
 
     it "#update_quota" do
       new_values = @quota.merge(
-        'shares'    => @quota['shares'] + 1,
+        'shares' => @quota['shares'] + 1,
         'snapshots' => @quota['snapshots'] + 2
       )
 

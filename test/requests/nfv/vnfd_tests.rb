@@ -5,13 +5,13 @@ describe "@vnfd | NFV vnfds requests" do
   before do
     @vnfds = {
       "service_types" => Array,
-      "description"   => String,
-      "tenant_id"     => String,
-      "mgmt_driver"   => String,
-      "infra_driver"  => String,
-      "attributes"    => Hash,
-      "id"            => String,
-      "name"          => String
+      "description" => String,
+      "tenant_id" => String,
+      "mgmt_driver" => String,
+      "infra_driver" => String,
+      "attributes" => Hash,
+      "id" => String,
+      "name" => String
     }
     @nfv, @vnf_data, @auth = set_nfv_data
     @vnfd_body = @nfv.create_vnfd(vnfd: @vnfd_data, auth: @auth).body

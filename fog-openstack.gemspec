@@ -6,7 +6,7 @@ require 'fog/openstack/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "fog-openstack"
-  spec.version       = Fog::Openstack::VERSION
+  spec.version       = Fog::OpenStack::VERSION
   spec.authors       = ["Matt Darby"]
   spec.email         = ["matt.darby@rackspace.com"]
 
@@ -20,17 +20,18 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = '>= 2.1.0'
+  spec.required_ruby_version = '>= 2.2.0'
 
-  spec.add_dependency 'fog-core',  '~> 1.40'
+  spec.add_dependency 'fog-core',  '~> 2.1'
   spec.add_dependency 'fog-json',  '>= 1.0'
   spec.add_dependency 'ipaddress', '>= 0.8'
 
-  spec.add_development_dependency 'bundler', '~> 1.6'
+  spec.add_development_dependency 'bundler', '~> 1'
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency "mime-types"
   spec.add_development_dependency "mime-types-data"
   spec.add_development_dependency 'minitest'
+  spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'shindo', '~> 0.3'

@@ -1,58 +1,58 @@
 require "test_helper"
 require 'fog/core'
 
-describe "Fog::Orchestration[:openstack] | stack requests" do
+describe "Fog::OpenStack::Orchestration | stack requests" do
   before do
     @oldcwd = Dir.pwd
     Dir.chdir("test/requests/orchestration")
     @base_url = "file://" + File.absolute_path(".")
 
-    @orchestration = Fog::Orchestration[:openstack]
+    @orchestration = Fog::OpenStack::Orchestration.new
 
-    @stack_mock = Fog::Orchestration::OpenStack::Stack.new(
-      template_name: "stack_mock",
-      id: "stack_id"
+    created_stack = @orchestration.create_stack(stack_name: 'stack_mock')
+    @stack_mock = Fog::OpenStack::Orchestration::Stack.new(
+      @orchestration.show_stack_details('stack_mock', created_stack.body['id']).body['stack']
     )
 
     @stack_format = {
-      'links'               => Array,
-      'id'                  => String,
-      'stack_name'          => String,
-      'description'         => Fog::Nullable::String,
-      'stack_status'        => String,
+      'links' => Array,
+      'id' => String,
+      'stack_name' => String,
+      'description' => Fog::Nullable::String,
+      'stack_status' => String,
       'stack_status_reason' => String,
-      'creation_time'       => Time,
-      'updated_time'        => Time
+      'creation_time' => Time,
+      'updated_time' => Time
     }
 
     @stack_detailed_format = {
-      "parent"                => Fog::Nullable::String,
-      "disable_rollback"      => Fog::Boolean,
-      "description"           => String,
-      "links"                 => Array,
-      "stack_status_reason"   => String,
-      "stack_name"            => String,
+      "parent" => Fog::Nullable::String,
+      "disable_rollback" => Fog::Boolean,
+      "description" => String,
+      "links" => Array,
+      "stack_status_reason" => String,
+      "stack_name" => String,
       "stack_user_project_id" => String,
-      "stack_owner"           => String,
-      "creation_time"         => Fog::Nullable::String,
-      "capabilities"          => Array,
-      "notification_topics"   => Array,
-      "updated_time"          => Fog::Nullable::String,
-      "timeout_mins"          => Fog::Nullable::String,
-      "stack_status"          => String,
-      "parameters"            => Hash,
-      "id"                    => String,
-      "outputs"               => Array,
-      "template_description"  => String
+      "stack_owner" => String,
+      "creation_time" => Fog::Nullable::String,
+      "capabilities" => Array,
+      "notification_topics" => Array,
+      "updated_time" => Fog::Nullable::String,
+      "timeout_mins" => Fog::Nullable::String,
+      "stack_status" => String,
+      "parameters" => Hash,
+      "id" => String,
+      "outputs" => Array,
+      "template_description" => String
     }
 
     @create_format = {
-      'id'    => String,
+      'id' => String,
       'links' => Array
     }
 
     @create_format_files = {
-      'id'    => String,
+      'id' => String,
       'links' => Array,
       'files' => Hash
     }

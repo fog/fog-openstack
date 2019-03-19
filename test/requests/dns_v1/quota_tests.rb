@@ -1,17 +1,17 @@
 require "test_helper"
 
-describe "Fog::DNS::OpenStack::V1 | quota requests" do
+describe "Fog::OpenStack::DNS::V1 | quota requests" do
   before do
-    @dns = Fog::DNS::OpenStack::V1.new
+    @dns = Fog::OpenStack::DNS::V1.new
 
     @project_id = Fog::Mock.random_numbers(6).to_s
 
     @quota_format = {
-      "api_export_size"   => Integer,
+      "api_export_size" => Integer,
       "recordset_records" => Integer,
-      "domain_records"    => Integer,
+      "domain_records" => Integer,
       "domain_recordsets" => Integer,
-      "domains"           => Integer
+      "domains" => Integer
     }
 
     @quota = @dns.get_quota(@project_id).body
@@ -25,7 +25,7 @@ describe "Fog::DNS::OpenStack::V1 | quota requests" do
     it "#update_quota" do
       new_values = @quota.merge(
         'recordset_records' => @quota['recordset_records'] + 1,
-        'domains'           => @quota['domains'] + 2
+        'domains' => @quota['domains'] + 2
       )
 
       @dns.update_quota(@project_id, new_values.clone).status.must_equal 200

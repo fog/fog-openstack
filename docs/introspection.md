@@ -92,7 +92,7 @@ require 'fog/openstack'
 Find the available Baremetal nodes.
 
 ```ruby
-iron = Fog::Baremetal::OpenStack.new(@connection_params)
+iron = Fog::OpenStack::Baremetal.new(@connection_params)
 
 nodes = iron.node_list
 ```
@@ -109,7 +109,7 @@ http://docs.openstack.org/developer/ironic/deploy/install-guide.html#hardware-in
 
 ```ruby
 node_id = nodes.body["nodes"][0]["uuid"]
-inspector = Fog::Introspection::OpenStack.new(@connection_params)
+inspector = Fog::OpenStack::Introspection.new(@connection_params)
 
 introspection1 = inspector.create_introspection(node_id)
 ```

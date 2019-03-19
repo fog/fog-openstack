@@ -1,28 +1,28 @@
 require "test_helper"
 require "helpers/dns_v2_helper"
 
-describe "Fog::DNS::OpenStack::V2 | zone requests" do
+describe "Fog::OpenStack::DNS::V2 | zone requests" do
   before do
     @dns, @zone, @zone_id = set_dns_data
 
     @zone_format = {
-      "id"             => String,
-      "pool_id"        => String,
-      "project_id"     => String,
-      "name"           => String,
-      "email"          => String,
-      "ttl"            => Integer,
-      "serial"         => Integer,
-      "status"         => String,
-      "action"         => String,
-      "description"    => String,
-      "masters"        => Array,
-      "type"           => String,
+      "id" => String,
+      "pool_id" => String,
+      "project_id" => String,
+      "name" => String,
+      "email" => String,
+      "ttl" => Integer,
+      "serial" => Integer,
+      "status" => String,
+      "action" => String,
+      "description" => String,
+      "masters" => Array,
+      "type" => String,
       "transferred_at" => String,
-      "version"        => Integer,
-      "created_at"     => String,
-      "updated_at"     => String,
-      "links"          => Hash
+      "version" => Integer,
+      "created_at" => String,
+      "updated_at" => String,
+      "links" => Hash
     }
   end
 

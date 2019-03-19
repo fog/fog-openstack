@@ -1,23 +1,23 @@
 require 'test_helper'
 
-describe "Fog::Network[:openstack] | lb_vip requests" do
+describe "Fog::OpenStack::Network | lb_vip requests" do
   describe "success" do
     before do
       @lb_vip_format = {
-        'id'                  => String,
-        'subnet_id'           => String,
-        'pool_id'             => String,
-        'protocol'            => String,
-        'protocol_port'       => Integer,
-        'name'                => String,
-        'description'         => String,
-        'address'             => String,
-        'port_id'             => String,
+        'id' => String,
+        'subnet_id' => String,
+        'pool_id' => String,
+        'protocol' => String,
+        'protocol_port' => Integer,
+        'name' => String,
+        'description' => String,
+        'address' => String,
+        'port_id' => String,
         'session_persistence' => Hash,
-        'connection_limit'    => Integer,
-        'status'              => String,
-        'admin_state_up'      => Fog::Boolean,
-        'tenant_id'           => String
+        'connection_limit' => Integer,
+        'status' => String,
+        'admin_state_up' => Fog::Boolean,
+        'tenant_id' => String
       }
       subnet_id = "subnet_id"
       pool_id = "pool_id"
@@ -74,19 +74,19 @@ describe "Fog::Network[:openstack] | lb_vip requests" do
     it "#get_lb_vip" do
       proc do
         network.get_lb_vip(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_lb_vip" do
       proc do
         network.update_lb_vip(0, {})
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_lb_vip" do
       proc do
         network.delete_lb_vip(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

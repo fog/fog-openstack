@@ -1,44 +1,44 @@
 require "test_helper"
 
-describe "Fog::Metering[:openstack] | meter requests" do
+describe "Fog::OpenStack::Metering | meter requests" do
   before do
-    @metering = Fog::Metering[:openstack]
+    @metering = Fog::OpenStack::Metering.new
 
     @sample_format = {
-      'counter_name'      => String,
-      'user_id'           => String,
-      'resource_id'       => String,
-      'timestamp'         => String,
+      'counter_name' => String,
+      'user_id' => String,
+      'resource_id' => String,
+      'timestamp' => String,
       'resource_metadata' => Hash,
-      'source'            => String,
-      'counter_unit'      => String,
-      'counter_volume'    => Float,
-      'project_id'        => String,
-      'message_id'        => String,
-      'counter_type'      => String
+      'source' => String,
+      'counter_unit' => String,
+      'counter_volume' => Float,
+      'project_id' => String,
+      'message_id' => String,
+      'counter_type' => String
     }
 
     @meter_format = {
-      'user_id'     => String,
-      'name'        => String,
+      'user_id' => String,
+      'name' => String,
       'resource_id' => String,
-      'project_id'  => String,
-      'type'        => String,
-      'unit'        => String
+      'project_id' => String,
+      'type' => String,
+      'unit' => String
     }
 
     @statistics_format = {
-      'count'          => Integer,
+      'count' => Integer,
       'duration_start' => String,
-      'min'            => Float,
-      'max'            => Float,
-      'duration_end'   => String,
-      'period'         => Integer,
-      'period_end'     => String,
-      'duration'       => Float,
-      'period_start'   => String,
-      'avg'            => Float,
-      'sum'            => Float
+      'min' => Float,
+      'max' => Float,
+      'duration_end' => String,
+      'period' => Integer,
+      'period_end' => String,
+      'duration' => Float,
+      'period_start' => String,
+      'avg' => Float,
+      'sum' => Float
     }
   end
 

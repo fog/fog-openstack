@@ -1,22 +1,22 @@
 require "test_helper"
 
-describe "Fog::Baremetal[:openstack] | Baremetal port requests" do
+describe "Fog::OpenStack::Baremetal | Baremetal port requests" do
   before do
-    @baremetal = Fog::Baremetal[:openstack]
+    @baremetal = Fog::OpenStack::Baremetal.new
 
     @port_format = {
       'address' => String,
-      'uuid'    => String
+      'uuid' => String
     }
 
     @detailed_port_format = {
-      'address'    => String,
-      'uuid'       => String,
+      'address' => String,
+      'uuid' => String,
       'created_at' => String,
       'updated_at' => Fog::Nullable::String,
-      'extra'      => Hash,
-      'node_uuid'  => String,
-      'links'      => Array
+      'extra' => Hash,
+      'node_uuid' => String,
+      'links' => Array
     }
   end
 
@@ -31,13 +31,13 @@ describe "Fog::Baremetal[:openstack] | Baremetal port requests" do
 
     before do
       node_attributes = { driver: 'pxe_ipmitool' }
-      @instance = Fog::Baremetal[:openstack].create_node(node_attributes).body
+      @instance = Fog::OpenStack::Baremetal.new.create_node(node_attributes).body
 
       port_attributes = {
         address: '00:c2:08:85:de:ca',
         node_uuid: @instance['uuid']
       }
-      @port = Fog::Baremetal[:openstack].create_port(port_attributes).body
+      @port = Fog::OpenStack::Baremetal.new.create_port(port_attributes).body
     end
 
     it "#create_port" do

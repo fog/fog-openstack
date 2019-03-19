@@ -1,11 +1,11 @@
 require 'spec_helper'
 require_relative './shared_context'
 
-describe Fog::Identity::OpenStack::V3 do
+describe Fog::OpenStack::Identity::V3 do
   before :all do
     @openstack_vcr = OpenStackVCR.new(
       vcr_directory: 'spec/fixtures/openstack/identity_v3',
-      service_class: Fog::Identity::OpenStack::V3
+      service_class: Fog::OpenStack::Identity::V3
     )
     @service = @openstack_vcr.service
     @os_auth_url = @openstack_vcr.os_auth_url
@@ -13,36 +13,36 @@ describe Fog::Identity::OpenStack::V3 do
 
   it 'authenticates with password, userid and domain_id' do
     VCR.use_cassette('authv3_a') do
-      Fog::Identity::OpenStack::V3.new(
+      Fog::OpenStack::Identity::V3.new(
         openstack_domain_id: @openstack_vcr.domain_id,
         openstack_api_key: @openstack_vcr.password,
         openstack_userid: @openstack_vcr.user_id,
         openstack_region: @openstack_vcr.region,
-        openstack_auth_url: "#{@os_auth_url}/auth/tokens"
+        openstack_auth_url: @os_auth_url
       )
     end
   end
 
   it 'authenticates with password, username and domain_id' do
     VCR.use_cassette('authv3_b') do
-      Fog::Identity::OpenStack::V3.new(
+      Fog::OpenStack::Identity::V3.new(
         openstack_domain_id: @openstack_vcr.domain_id,
         openstack_api_key: @openstack_vcr.password,
         openstack_username: @openstack_vcr.username,
         openstack_region: @openstack_vcr.region,
-        openstack_auth_url: "#{@os_auth_url}/auth/tokens"
+        openstack_auth_url: @os_auth_url
       )
     end
   end
 
   it 'authenticates with password, username and domain_name' do
     VCR.use_cassette('authv3_c') do
-      Fog::Identity::OpenStack::V3.new(
+      Fog::OpenStack::Identity::V3.new(
         openstack_user_domain: @openstack_vcr.domain_name,
         openstack_api_key: @openstack_vcr.password,
         openstack_username: @openstack_vcr.username,
         openstack_region: @openstack_vcr.region,
-        openstack_auth_url: "#{@os_auth_url}/auth/tokens"
+        openstack_auth_url: @os_auth_url
       )
     end
   end
@@ -54,9 +54,9 @@ describe Fog::Identity::OpenStack::V3 do
     endpoints_in_region = @endpoints_all.select { |endpoint| endpoint.region == @openstack_vcr.region_other }
 
     VCR.use_cassette('idv3_other_region') do
-      @fog = Fog::Identity::OpenStack::V3.new(
+      @fog = Fog::OpenStack::Identity::V3.new(
         openstack_region: @openstack_vcr.region_other,
-        openstack_auth_url: "#{@os_auth_url}/auth/tokens",
+        openstack_auth_url: @os_auth_url,
         openstack_userid: @openstack_vcr.user_id,
         openstack_api_key: @openstack_vcr.password
       )
@@ -66,20 +66,20 @@ describe Fog::Identity::OpenStack::V3 do
 
   it 'get an unscoped token, then reauthenticate with it' do
     VCR.use_cassette('authv3_unscoped_reauth') do
-      id_v3 = Fog::Identity::OpenStack::V3.new(
+      id_v3 = Fog::OpenStack::Identity::V3.new(
         openstack_api_key: @openstack_vcr.password,
         openstack_userid: @openstack_vcr.user_id,
         openstack_region: @openstack_vcr.region,
-        openstack_auth_url: "#{@os_auth_url}/auth/tokens"
+        openstack_auth_url: @os_auth_url
       )
 
       auth_params = {
         provider: "openstack",
         openstack_auth_token: id_v3.credentials[:openstack_auth_token],
-        openstack_auth_url: "#{@os_auth_url}/auth/tokens",
+        openstack_auth_url: @os_auth_url,
         openstack_region: @openstack_vcr.region
       }
-      @fog2 = Fog::Identity::OpenStack::V3.new(auth_params)
+      @fog2 = Fog::OpenStack::Identity::V3.new(auth_params)
 
       @fog2.wont_equal nil
       token = @fog2.credentials[:openstack_auth_token]
@@ -89,13 +89,13 @@ describe Fog::Identity::OpenStack::V3 do
 
   it 'authenticates with project scope' do
     VCR.use_cassette('authv3_project') do
-      Fog::Identity::OpenStack::V3.new(
+      Fog::OpenStack::Identity::V3.new(
         openstack_project_name: @openstack_vcr.project_name,
         openstack_domain_name: @openstack_vcr.domain_name,
         openstack_api_key: @openstack_vcr.password,
         openstack_username: @openstack_vcr.username,
         openstack_region: @openstack_vcr.region,
-        openstack_auth_url: "#{@os_auth_url}/auth/tokens"
+        openstack_auth_url: @os_auth_url
       )
     end
   end
@@ -103,21 +103,20 @@ describe Fog::Identity::OpenStack::V3 do
   it 'get an unscoped token, then use it to get a scoped token' do
     VCR.use_cassette('authv3_unscoped') do
       skip 'get an unscoped token, then use it to get a scoped token to be fixed'
-      id_v3 = Fog::Identity::OpenStack::V3.new(
+      id_v3 = Fog::OpenStack::Identity::V3.new(
         openstack_api_key: @openstack_vcr.password,
         openstack_userid: @openstack_vcr.user_id,
         openstack_region: @openstack_vcr.region,
-        openstack_auth_url: "#{@os_auth_url}/auth/tokens"
+        openstack_auth_url: @os_auth_url
       )
 
       # Exchange it for a project-scoped token
       auth = Fog::Identity::OpenStack::V3.new(
         openstack_project_name: @openstack_vcr.project_name,
         openstack_domain_name: @openstack_vcr.domain_name,
-        openstack_tenant: @openstack_vcr.username,
         openstack_auth_token: id_v3.credentials[:openstack_auth_token],
         openstack_region: @openstack_vcr.region,
-        openstack_auth_url: "#{@os_auth_url}/auth/tokens"
+        openstack_auth_url: @os_auth_url
       )
 
       token = auth.credentials[:openstack_auth_token]
@@ -127,13 +126,13 @@ describe Fog::Identity::OpenStack::V3 do
       validated_token.wont_equal nil
 
       id_v3.tokens.check(token)
-      proc { id_v3.tokens.check('random-token') }.must_raise Fog::Identity::OpenStack::NotFound
+      proc { id_v3.tokens.check('random-token') }.must_raise Fog::OpenStack::Identity::NotFound
     end
   end
 
   it "find specific user, lists users" do
     VCR.use_cassette('idv3_users') do
-      proc { nonexistent_user = @service.users.find_by_id 'u-random-blah' }.must_raise Fog::Identity::OpenStack::NotFound
+      proc { @service.users.find_by_id 'u-random-blah' }.must_raise Fog::OpenStack::Identity::NotFound
 
       admin_user = @service.users.find_by_name @openstack_vcr.username
       admin_user.length.must_equal 1
@@ -156,10 +155,12 @@ describe Fog::Identity::OpenStack::V3 do
   it 'CRUD users' do
     VCR.use_cassette('idv3_user_crud') do
       # Make sure there are no existing users called foobar or baz
-      ['foobar', 'baz'].each do |username|
+      %w[foobar baz].each do |username|
         user = @service.users.find_by_name(username).first
-        user.update(enabled: false) if user
-        user.destroy if user
+        if user
+          user.update(enabled: false)
+          user.destroy
+        end
       end
       @service.users.find_by_name('foobar').length.must_equal 0
       @service.users.find_by_name('baz').length.must_equal 0
@@ -193,8 +194,8 @@ describe Fog::Identity::OpenStack::V3 do
       # Delete the user
       baz_user.destroy
       # Check that the deletion worked
-      proc { @service.users.find_by_id foobar_id }.must_raise Fog::Identity::OpenStack::NotFound
-      @service.users.all.select { |user| ['foobar', 'baz'].include? user.name }.length.must_equal 0
+      proc { @service.users.find_by_id foobar_id }.must_raise Fog::OpenStack::Identity::NotFound
+      @service.users.all.select { |user| %w[foobar baz].include? user.name }.length.must_equal 0
       @service.users.find_by_name('foobar').length.must_equal 0
       @service.users.find_by_name('baz').length.must_equal 0
     end
@@ -203,8 +204,8 @@ describe Fog::Identity::OpenStack::V3 do
   it "CRUD & manipulate groups" do
     VCR.use_cassette('idv3_group_crud_mutation') do
       # Make sure there are no existing groups called foobar or baz
-      @service.groups.all.select { |group| %w(foobar baz).include? group.name }.each(&:destroy)
-      @service.groups.all.select { |group| %w(foobar baz).include? group.name }.length.must_equal 0
+      @service.groups.all.select { |group| %w[foobar baz].include? group.name }.each(&:destroy)
+      @service.groups.all.select { |group| %w[foobar baz].include? group.name }.length.must_equal 0
 
       # Create a group called foobar
       foobar_group = @service.groups.create(name: 'foobar', description: "Group of Foobar users")
@@ -256,8 +257,8 @@ describe Fog::Identity::OpenStack::V3 do
 
       # Delete the group
       baz_group.destroy
-      proc { @service.groups.find_by_id foobar_id }.must_raise Fog::Identity::OpenStack::NotFound
-      @service.groups.all.select { |group| ['foobar', 'baz'].include? group.name }.length.must_equal 0
+      proc { @service.groups.find_by_id foobar_id }.must_raise Fog::OpenStack::Identity::NotFound
+      @service.groups.all.select { |group| %w[foobar baz].include? group.name }.length.must_equal 0
     end
   end
 
@@ -294,14 +295,14 @@ describe Fog::Identity::OpenStack::V3 do
       @service.tokens.check(token.value)
       @service.tokens.revoke(token.value)
 
-      proc { @service.tokens.check(token.value) }.must_raise Fog::Identity::OpenStack::NotFound
+      proc { @service.tokens.check(token.value) }.must_raise Fog::OpenStack::Identity::NotFound
     end
   end
 
   it 'authenticates with a token' do
     VCR.use_cassette('authv3_token') do
       # Setup - get a non-admin token to check by using username/password authentication to start with
-      auth_url = "#{@os_auth_url}/auth/tokens"
+      auth_url = @os_auth_url
 
       begin
         foobar_user = @service.users.create(
@@ -314,7 +315,7 @@ describe Fog::Identity::OpenStack::V3 do
         foobar_role = @service.roles.create(name: 'foobar_role390')
         foobar_user.grant_role(foobar_role.id)
 
-        nonadmin_v3 = Fog::Identity::OpenStack::V3.new(
+        nonadmin_v3 = Fog::OpenStack::Identity::V3.new(
           openstack_domain_id: foobar_user.domain_id,
           openstack_api_key: 's3cret!',
           openstack_username: 'foobar_385',
@@ -323,7 +324,7 @@ describe Fog::Identity::OpenStack::V3 do
         )
 
         # Test - check the token validity by using it to create a new Fog::Identity::OpenStack::V3 instance
-        token_check = Fog::Identity::OpenStack::V3.new(
+        token_check = Fog::OpenStack::Identity::V3.new(
           openstack_auth_token: nonadmin_v3.auth_token,
           openstack_region: @openstack_vcr.region,
           openstack_auth_url: auth_url
@@ -332,7 +333,7 @@ describe Fog::Identity::OpenStack::V3 do
         token_check.wont_equal nil
 
         proc do
-          Fog::Identity::OpenStack::V3.new(
+          Fog::OpenStack::Identity::V3.new(
             openstack_auth_token: 'blahblahblah',
             openstack_region: @openstack_vcr.region,
             openstack_auth_url: auth_url
@@ -340,9 +341,9 @@ describe Fog::Identity::OpenStack::V3 do
         end.must_raise Excon::Errors::NotFound
       ensure
         # Clean up
-        foobar_user = @service.users.find_by_name('foobar_385').first unless foobar_user
+        foobar_user ||= @service.users.find_by_name('foobar_385').first
         foobar_user.destroy if foobar_user
-        foobar_role = @service.roles.all.select { |role| role.name == 'foobar_role390' }.first unless foobar_role
+        foobar_role ||= @service.roles.all.select { |role| role.name == 'foobar_role390' }.first
         foobar_role.destroy if foobar_role
       end
     end
@@ -361,7 +362,7 @@ describe Fog::Identity::OpenStack::V3 do
       default_domain = @service.domains.find_by_id @openstack_vcr.domain_id
       default_domain.wont_equal nil
 
-      proc { @service.domains.find_by_id 'atlantis' }.must_raise Fog::Identity::OpenStack::NotFound
+      proc { @service.domains.find_by_id 'atlantis' }.must_raise Fog::OpenStack::Identity::NotFound
     end
   end
 
@@ -386,15 +387,19 @@ describe Fog::Identity::OpenStack::V3 do
       ensure
         # Delete the domains
         begin
-          baz_domain.update(enabled: false) if baz_domain
-          baz_domain.destroy if baz_domain
-          foobar_domain.update(enabled: false) if foobar_domain
-          foobar_domain.destroy if foobar_domain
+          if baz_domain
+            baz_domain.update(enabled: false)
+            baz_domain.destroy
+          end
+          if foobar_domain
+            foobar_domain.update(enabled: false)
+            foobar_domain.destroy
+          end
         rescue
         end
         # Check that the deletion worked
-        proc { @service.domains.find_by_id foobar_id }.must_raise Fog::Identity::OpenStack::NotFound if foobar_id
-        ['foobar', 'baz'].each do |domain_name|
+        proc { @service.domains.find_by_id foobar_id }.must_raise Fog::OpenStack::Identity::NotFound if foobar_id
+        %w[foobar baz].each do |domain_name|
           @service.domains.all(name: domain_name).length.must_equal 0
         end
       end
@@ -435,49 +440,49 @@ describe Fog::Identity::OpenStack::V3 do
         foobar_user.revoke_role(foobar_role.id)
         foobar_user.check_role(foobar_role.id).must_equal false
       ensure
-        foobar_user = @service.users.find_by_name('foobar_role_user').first unless foobar_user
+        foobar_user ||= @service.users.find_by_name('foobar_role_user').first
         foobar_user.destroy if foobar_user
-        foobar_role = @service.roles.all.select { |role| role.name == 'foobar_role' }.first unless foobar_role
+        foobar_role ||= @service.roles.all.select { |role| role.name == 'foobar_role' }.first
         foobar_role.destroy if foobar_role
       end
     end
   end
+
   it "Manipulates roles on domain groups" do
     VCR.use_cassette('idv3_domain_group_roles_mutation') do
       skip "Manipulates roles on domain groups to be fixed"
-=begin
       begin
         # Create a domain called foobar
-        foobar_domain = @service.domains.create(:name => 'd-foobar')
+        foobar_domain = @service.domains.create(name: 'd-foobar')
 
         # Create a group in this domain
-        foobar_group = @service.groups.create(:name => 'g-foobar',
-                                              :description => "Group of Foobar users",
-                                              :domain_id => foobar_domain.id)
+        foobar_group = @service.groups.create(name: 'g-foobar',
+                                              description: "Group of Foobar users",
+                                              domain_id: foobar_domain.id)
 
         # Create a user in the domain
-        foobar_user = @service.users.create(:name => 'u-foobar_foobar',
-                                            :email => 'foobar@example.com',
-                                            :password => 's3cret!',
-                                            :domain_id => foobar_domain.id)
+        foobar_user = @service.users.create(name: 'u-foobar_foobar',
+                                            email: 'foobar@example.com',
+                                            password: 's3cret!',
+                                            domain_id: foobar_domain.id)
 
         # User has no roles initially
         foobar_user.roles.length.must_equal 0
-
         # Create a role and add it to the domain group
         foobar_role = @service.roles.all.select { |role| role.name == 'foobar_role' }.first
         foobar_role.destroy if foobar_role
-        foobar_role = @service.roles.create(:name => 'foobar_role')
+        foobar_role = @service.roles.create(name: 'foobar_role')
 
         foobar_group.grant_role foobar_role.id
         foobar_group.roles.length.must_equal 1
 
         # Add user to the group and check that it inherits the role
         foobar_user.check_role foobar_role.id.wont_equal nil
-        @service.role_assignments.all(:user_id => foobar_user.id, :effective => true).length.must_equal 0
+        @service.role_assignments.all(user_id: foobar_user.id, effective: true).length.must_equal 0
         foobar_group.add_user foobar_user.id
         foobar_user.check_role(foobar_role.id).must_equal false # Still false in absolute assignment terms
-        assignments = @service.role_assignments.all(:user_id => foobar_user.id, :effective => true)
+        assignments = @service.role_assignments.all(user_id: foobar_user.id, effective: true)
+
         assignments.length.must_equal 1
         assignments.first.role['id'].must_equal foobar_role.id
         assignments.first.user['id'].must_equal foobar_user.id
@@ -485,7 +490,7 @@ describe Fog::Identity::OpenStack::V3 do
         assignments.first.links['assignment'].must_match %r{/v3/domains/#{foobar_domain.id}/groups/#{foobar_group.id}/roles/#{foobar_role.id}}
         assignments.first.links['membership'].must_match %r{/v3/groups/#{foobar_group.id}/users/#{foobar_user.id}}
 
-        group_assignments = @service.role_assignments.all(:group_id => foobar_group.id)
+        group_assignments = @service.role_assignments.all(group_id: foobar_group.id)
         group_assignments.length.must_equal 1
         group_assignments.first.role['id'].must_equal foobar_role.id
         group_assignments.first.group['id'].must_equal foobar_group.id
@@ -494,20 +499,21 @@ describe Fog::Identity::OpenStack::V3 do
 
         # Revoke the role from the group and check the user no longer has it
         foobar_group.revoke_role foobar_role.id
-        @service.role_assignments.all(:user_id => foobar_user.id, :effective => true).length.must_equal 0
+        @service.role_assignments.all(user_id: foobar_user.id, effective: true).length.must_equal 0
       ensure
         # Clean up
-        foobar_user = @service.users.find_by_name('u-foobar_foobar').first unless foobar_user
+        foobar_user ||= @service.users.find_by_name('u-foobar_foobar').first
         foobar_user.destroy if foobar_user
-        foobar_group = @service.groups.all.select { |group| group.name == 'g-foobar' }.first unless foobar_group
+        foobar_group ||= @service.groups.all.select { |group| group.name == 'g-foobar' }.first
         foobar_group.destroy if foobar_group
-        foobar_role = @service.roles.all.select { |role| role.name == 'foobar_role' }.first unless foobar_role
-        foobar_role.destroy if foobar_role
-        foobar_domain = @service.domains.all.select { |domain| domain.name == 'd-foobar' }.first unless foobar_domain
-        foobar_domain.update(:enabled => false) if foobar_domain
-        foobar_domain.destroy if foobar_domain
+        foobar_role ||= @service.roles.all.select { |role| role.name == 'foobar_role' }.first
+        foobar_role.destroyif foobar_role
+        foobar_domain ||= @service.domains.all.select { |domain| domain.name == 'd-foobar' }.first
+        if foobar_domain
+          foobar_domain.update(enabled: false)
+          foobar_domain.destroy
+        end
       end
-=end
     end
   end
 
@@ -524,7 +530,7 @@ describe Fog::Identity::OpenStack::V3 do
       role_by_id = @service.roles.find_by_id roles_all.first.id
       role_by_id.wont_equal nil
 
-      proc { @service.roles.find_by_id 'atlantis' }.must_raise Fog::Identity::OpenStack::NotFound
+      proc { @service.roles.find_by_id 'atlantis' }.must_raise Fog::OpenStack::Identity::NotFound
     end
   end
 
@@ -548,8 +554,8 @@ describe Fog::Identity::OpenStack::V3 do
         baz_role.destroy
         baz_role = nil
         # Check that the deletion worked
-        proc { @service.roles.find_by_id foobar_id }.must_raise Fog::Identity::OpenStack::NotFound if foobar_id
-        ['foobar23', 'baz23'].each do |role_name|
+        proc { @service.roles.find_by_id foobar_id }.must_raise Fog::OpenStack::Identity::NotFound if foobar_id
+        %w[foobar23 baz23].each do |role_name|
           @service.roles.all(name: role_name).length.must_equal 0
         end
       ensure
@@ -575,7 +581,7 @@ describe Fog::Identity::OpenStack::V3 do
       project_byid = @service.projects.find_by_id projects_all.first.id
       project_byid.wont_equal nil
 
-      proc { @service.projects.find_by_id 'atlantis' }.must_raise Fog::Identity::OpenStack::NotFound
+      proc { @service.projects.find_by_id 'atlantis' }.must_raise Fog::OpenStack::Identity::NotFound
     end
   end
 
@@ -605,7 +611,7 @@ describe Fog::Identity::OpenStack::V3 do
         baz_project.destroy
 
         # Check that the deletion worked
-        proc { @service.projects.find_by_id foobar_id }.must_raise Fog::Identity::OpenStack::NotFound
+        proc { @service.projects.find_by_id foobar_id }.must_raise Fog::OpenStack::Identity::NotFound
         ['p-foobar46', 'p-baz46'].each do |project_name|
           @service.projects.all(name: project_name).length.must_equal 0
         end
@@ -676,7 +682,7 @@ describe Fog::Identity::OpenStack::V3 do
         booboo_parents[booboo_parent_id].length.must_equal 1
         booboo_grandparent_id = booboo_parents[booboo_parent_id].keys.first
         booboo_grandparent_id.must_equal foobar_id
-        booboo_parents[booboo_parent_id][booboo_grandparent_id].must_equal nil
+        assert_nil booboo_parents[booboo_parent_id][booboo_grandparent_id]
 
         # Get the parents of booboo, as a list of objects
         booboo_parents = @service.projects.find_by_id(booboo_id, :parents_as_list).parents
@@ -689,10 +695,10 @@ describe Fog::Identity::OpenStack::V3 do
         boo_project.destroy if boo_project
         baz_project.destroy if baz_project
         foobar_project.destroy if foobar_project
-        prj_role = @service.roles.all(name: 'r-project67').first unless prj_role
+        prj_role ||= @service.roles.all(name: 'r-project67').first
         prj_role.destroy if prj_role
         # Check that the deletion worked
-        proc { @service.projects.find_by_id foobar_id }.must_raise Fog::Identity::OpenStack::NotFound if foobar_id
+        proc { @service.projects.find_by_id foobar_id }.must_raise Fog::OpenStack::Identity::NotFound if foobar_id
         ['p-booboo67', 'p-fooboo67', 'p-boo67', 'p-baz67', 'p-foobar67'].each do |project_name|
           prj = @service.projects.all(name: project_name).first
           prj.destroy if prj
@@ -784,8 +790,10 @@ describe Fog::Identity::OpenStack::V3 do
         foobar_user.destroy if foobar_user
         foobar_group.destroy if foobar_group
         baz_role.destroy if baz_role
-        foobar_project.update(enabled: false) if foobar_project
-        foobar_project.destroy if foobar_project
+        if foobar_project
+          foobar_project.update(enabled: false)
+          foobar_project.destroy
+        end
       end
     end
   end
@@ -803,13 +811,13 @@ describe Fog::Identity::OpenStack::V3 do
       some_service = @service.services.find_by_id services_all.first.id
       some_service.wont_equal nil
 
-      proc { @service.services.find_by_id 'atlantis' }.must_raise Fog::Identity::OpenStack::NotFound
+      proc { @service.services.find_by_id 'atlantis' }.must_raise Fog::OpenStack::Identity::NotFound
     end
   end
 
   it "CRUD services" do
     VCR.use_cassette('idv3_services_crud') do
-      all_services = @service.services.all
+      @service.services.all
 
       begin
         # Create a service called foobar
@@ -832,8 +840,8 @@ describe Fog::Identity::OpenStack::V3 do
         baz_service.destroy if baz_service
 
         # Check that the deletion worked
-        proc { @service.services.find_by_id foobar_id }.must_raise Fog::Identity::OpenStack::NotFound if foobar_id
-        @service.services.all.select { |service| ['foobar', 'baz'].include? service.name }.length.must_equal 0
+        proc { @service.services.find_by_id foobar_id }.must_raise Fog::OpenStack::Identity::NotFound if foobar_id
+        @service.services.all.select { |service| %w[foobar baz].include? service.name }.length.must_equal 0
       end
     end
   end
@@ -851,14 +859,14 @@ describe Fog::Identity::OpenStack::V3 do
       some_endpoint = @service.endpoints.find_by_id endpoints_all.first.id
       some_endpoint.wont_equal nil
 
-      proc { @service.endpoints.find_by_id 'atlantis' }.must_raise Fog::Identity::OpenStack::NotFound
+      proc { @service.endpoints.find_by_id 'atlantis' }.must_raise Fog::OpenStack::Identity::NotFound
     end
   end
 
   it "CRUD endpoints" do
     VCR.use_cassette('idv3_endpoints_crud') do
       service = @service.services.all.first
-      all_endpoints = @service.endpoints.all
+      @service.endpoints.all
 
       begin
         # Create a endpoint called foobar
@@ -868,7 +876,9 @@ describe Fog::Identity::OpenStack::V3 do
                                                     url: 'http://example.com/foobar',
                                                     enabled: false)
         foobar_id = foobar_endpoint.id
-        @service.endpoints.all(interface: 'internal').select { |endpoint| endpoint.name == 'foobar' }.length.must_equal 1
+        @service.endpoints.all(interface: 'internal').select do |endpoint|
+          endpoint.name == 'foobar'
+        end.length.must_equal 1
 
         # Rename it to baz
         foobar_endpoint.update(name: 'baz', url: 'http://example.com/baz')
@@ -876,7 +886,9 @@ describe Fog::Identity::OpenStack::V3 do
         foobar_endpoint.url.must_equal 'http://example.com/baz'
 
         # Read the endpoint freshly and check the name
-        @service.endpoints.all(interface: 'internal').select { |endpoint| endpoint.name == 'baz' }.length.must_equal 1
+        @service.endpoints.all(interface: 'internal').select do |endpoint|
+          endpoint.name == 'baz'
+        end.length.must_equal 1
         baz_endpoint = @service.endpoints.find_by_id foobar_id
         baz_endpoint.wont_equal nil
         baz_endpoint.name.must_equal 'baz'
@@ -887,8 +899,8 @@ describe Fog::Identity::OpenStack::V3 do
         baz_endpoint.destroy
 
         # Check that the deletion worked
-        proc { @service.endpoints.find_by_id foobar_id }.must_raise Fog::Identity::OpenStack::NotFound
-        @service.endpoints.all.select { |endpoint| ['foobar', 'baz'].include? endpoint.name }.length.must_equal 0
+        proc { @service.endpoints.find_by_id foobar_id }.must_raise Fog::OpenStack::Identity::NotFound
+        @service.endpoints.all.select { |endpoint| %w[foobar baz].include? endpoint.name }.length.must_equal 0
       end
     end
   end
@@ -901,7 +913,7 @@ describe Fog::Identity::OpenStack::V3 do
       credentials_all = @service.os_credentials.all
       credentials_all.wont_equal nil
 
-      proc { @service.os_credentials.find_by_id 'atlantis' }.must_raise Fog::Identity::OpenStack::NotFound
+      proc { @service.os_credentials.find_by_id 'atlantis' }.must_raise Fog::OpenStack::Identity::NotFound
     end
   end
 
@@ -951,7 +963,7 @@ describe Fog::Identity::OpenStack::V3 do
         updated_credential.type.must_equal 'ec2'
         JSON.parse(updated_credential.blob)['secret'].must_equal new_secret_key
       ensure
-        foobar_user = @service.users.find_by_name('u-foobar_cred').first unless foobar_user
+        foobar_user ||= @service.users.find_by_name('u-foobar_cred').first
         foobar_user.destroy if foobar_user
         # Delete the credential
         begin
@@ -962,7 +974,9 @@ describe Fog::Identity::OpenStack::V3 do
         end
 
         # Check that the deletion worked
-        proc { @service.os_credentials.find_by_id credential_id }.must_raise Fog::Identity::OpenStack::NotFound if credential_id
+        if credential_id
+          proc { @service.os_credentials.find_by_id credential_id }.must_raise Fog::OpenStack::Identity::NotFound
+        end
         @service.os_credentials.all.select { |credential| credential.type == 'ec2' }.length.must_equal 0
       end
     end
@@ -978,7 +992,7 @@ describe Fog::Identity::OpenStack::V3 do
       policies_all.wont_equal nil
       policies_all.length.must_equal 0
 
-      proc { @service.policies.find_by_id 'atlantis' }.must_raise Fog::Identity::OpenStack::NotFound
+      proc { @service.policies.find_by_id 'atlantis' }.must_raise Fog::OpenStack::Identity::NotFound
     end
   end
 
@@ -1011,7 +1025,7 @@ describe Fog::Identity::OpenStack::V3 do
       updated_policy.destroy
 
       # Check that the deletion worked
-      proc { @service.policies.find_by_id policy_id }.must_raise Fog::Identity::OpenStack::NotFound
+      proc { @service.policies.find_by_id policy_id }.must_raise Fog::OpenStack::Identity::NotFound
       @service.policies.all.select { |policy| policy.type == 'application/json' }.length.must_equal 0
     end
   end

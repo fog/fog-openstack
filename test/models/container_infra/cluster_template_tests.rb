@@ -1,7 +1,7 @@
 require "test_helper"
 require 'helpers/container_infra_helper'
 
-describe "Fog::ContainerInfra[:openstack] | cluster template" do
+describe "Fog::OpenStack::ContainerInfra | cluster template" do
   describe "success" do
     before do
       @instance = container_infra.cluster_templates.create(

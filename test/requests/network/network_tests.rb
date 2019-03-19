@@ -1,28 +1,28 @@
 require 'test_helper'
 require 'helpers/network_helper.rb'
 
-describe "Fog::Network[:openstack] | network requests" do
+describe "Fog::OpenStack::Network | network requests" do
   describe "success" do
     let(:network_format) do
       {
-        "id"                    => String,
-        "subnets"               => Array,
-        "status"                => String,
-        "name"                  => String,
-        "shared"                => Fog::Boolean,
-        "admin_state_up"        => Fog::Boolean,
-        "qos_policy_id"         => Fog::Nullable::String,
+        "id" => String,
+        "subnets" => Array,
+        "status" => String,
+        "name" => String,
+        "shared" => Fog::Boolean,
+        "admin_state_up" => Fog::Boolean,
+        "qos_policy_id" => Fog::Nullable::String,
         "port_security_enabled" => Fog::Boolean,
-        "tenant_id"             => String
+        "tenant_id" => String
       }
     end
 
     let(:network_extentions_format) do
       {
-        "router:external"           => Fog::Boolean,
-        "provider:network_type"     => String,
+        "router:external" => Fog::Boolean,
+        "provider:network_type" => String,
         "provider:physical_network" => Fog::Nullable::String,
-        "provider:segmentation_id"  => Integer
+        "provider:segmentation_id" => Integer
       }
     end
 
@@ -123,19 +123,19 @@ describe "Fog::Network[:openstack] | network requests" do
     it "#get_network" do
       proc do
         network.get_network(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_network" do
       proc do
         network.update_network(0, {})
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_network" do
       proc do
         network.delete_network(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
   end
 

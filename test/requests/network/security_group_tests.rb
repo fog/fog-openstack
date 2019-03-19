@@ -1,13 +1,13 @@
 require 'test_helper'
 require 'helpers/network_helper'
 
-describe "Fog::Network[:openstack] | security_group requests" do
+describe "Fog::OpenStack::Network | security_group requests" do
   before do
     @security_group_format = {
-      "id"                   => String,
-      "name"                 => String,
-      "description"          => String,
-      "tenant_id"            => String,
+      "id" => String,
+      "name" => String,
+      "description" => String,
+      "tenant_id" => String,
       "security_group_rules" => [Hash]
     }
   end
@@ -54,13 +54,13 @@ describe "Fog::Network[:openstack] | security_group requests" do
     it "#get_security_group(0)" do
       proc do
         network.get_security_group(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_security_group(0)" do
       proc do
         network.delete_security_group(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

@@ -1,19 +1,19 @@
 require 'test_helper'
 
-describe "Fog::Network[:openstack] | port requests" do
+describe "Fog::OpenStack::Network | port requests" do
   before do
     @port_format = {
-      'id'                    => String,
-      'name'                  => String,
-      'network_id'            => String,
-      'fixed_ips'             => Array,
-      'mac_address'           => String,
-      'status'                => String,
-      'admin_state_up'        => Fog::Boolean,
-      'device_owner'          => String,
-      'device_id'             => String,
-      'tenant_id'             => String,
-      'security_groups'       => Array,
+      'id' => String,
+      'name' => String,
+      'network_id' => String,
+      'fixed_ips' => Array,
+      'mac_address' => String,
+      'status' => String,
+      'admin_state_up' => Fog::Boolean,
+      'device_owner' => String,
+      'device_id' => String,
+      'tenant_id' => String,
+      'security_groups' => Array,
       'allowed_address_pairs' => Array
     }
   end
@@ -75,19 +75,19 @@ describe "Fog::Network[:openstack] | port requests" do
     it "#get_port" do
       proc do
         network.get_port(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_port" do
       proc do
         network.update_port(0, {})
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_port" do
       proc do
         network.delete_port(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

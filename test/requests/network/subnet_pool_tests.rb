@@ -1,23 +1,23 @@
 require 'test_helper'
 
-describe "Fog::Network[:openstack] | subnet_pool requests" do
+describe "Fog::OpenStack::Network | subnet_pool requests" do
   before do
     @subnet_pool_format = {
-      'id'                => String,
-      'name'              => String,
-      'prefixes'          => Array,
-      'description'       => Fog::Nullable::String,
-      'address_scope_id'  => Fog::Nullable::String,
-      'shared'            => Fog::Boolean,
-      'ip_version'        => Integer,
-      'min_prefixlen'     => Integer,
-      'max_prefixlen'     => Integer,
+      'id' => String,
+      'name' => String,
+      'prefixes' => Array,
+      'description' => Fog::Nullable::String,
+      'address_scope_id' => Fog::Nullable::String,
+      'shared' => Fog::Boolean,
+      'ip_version' => Integer,
+      'min_prefixlen' => Integer,
+      'max_prefixlen' => Integer,
       'default_prefixlen' => Integer,
-      'is_default'        => Fog::Boolean,
-      'default_quota'     => Fog::Nullable::String,
-      'created_at'        => String,
-      'updated_at'        => String,
-      'tenant_id'         => String
+      'is_default' => Fog::Boolean,
+      'default_quota' => Fog::Nullable::String,
+      'created_at' => String,
+      'updated_at' => String,
+      'tenant_id' => String
     }
   end
 
@@ -59,19 +59,19 @@ describe "Fog::Network[:openstack] | subnet_pool requests" do
     it "#get_subnet_pool" do
       proc do
         network.get_subnet_pool(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_subnet_pool" do
       proc do
         network.update_subnet_pool(0, {})
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_subnet_pool" do
       proc do
         network.delete_subnet_pool(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

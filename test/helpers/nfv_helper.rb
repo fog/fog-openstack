@@ -1,5 +1,5 @@
 def set_nfv_data
-  @nfv = Fog::NFV::OpenStack.new
+  @nfv = Fog::OpenStack::NFV.new
 
   @vnfd_data = {
     attributes: {
@@ -18,7 +18,7 @@ def set_nfv_data
   }
 
   @auth = {
-    "tenantName"          => "admin",
+    "tenantName" => "admin",
     "passwordCredentials" => {
       "username" => "admin",
       "password" => "password"

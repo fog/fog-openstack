@@ -1,16 +1,16 @@
 require 'test_helper'
 
-describe "Fog::Network[:openstack] | vpn_service requests" do
+describe "Fog::OpenStack::Network | vpn_service requests" do
   before do
     @vpn_service_format = {
-      'id'             => String,
-      'subnet_id'      => String,
-      'router_id'      => String,
-      'name'           => String,
-      'description'    => String,
-      'status'         => String,
+      'id' => String,
+      'subnet_id' => String,
+      'router_id' => String,
+      'name' => String,
+      'description' => String,
+      'status' => String,
       'admin_state_up' => Fog::Boolean,
-      'tenant_id'      => String,
+      'tenant_id' => String,
       'external_v4_ip' => String,
       'external_v6_ip' => String
     }
@@ -68,19 +68,19 @@ describe "Fog::Network[:openstack] | vpn_service requests" do
     it "#get_vpn_service" do
       proc do
         network.get_vpn_service(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_lb_pool" do
       proc do
         network.update_lb_pool(0, {})
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_vpn_service" do
       proc do
         network.delete_vpn_service(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

@@ -2,13 +2,13 @@ require "test_helper"
 
 describe "@inspector | Introspection rules requests" do
   before do
-    @inspector = Fog::Introspection::OpenStack.new
+    @inspector = Fog::OpenStack::Introspection.new
     @rules_id = Fog::UUID.uuid
     @rules = {
       'description' => Fog::Nullable::String,
-      'actions'     => Array,
-      'conditions'  => Array,
-      'uuid'        => Fog::Nullable::String
+      'actions' => Array,
+      'conditions' => Array,
+      'uuid' => Fog::Nullable::String
     }
   end
 
@@ -21,16 +21,16 @@ describe "@inspector | Introspection rules requests" do
       attributes = {
         "actions" => {
           "action" => "set-attribute",
-          "path"   => "/driver_info/ipmi_address",
-          "value"  => "{data[inventory][bmc_address]}"
+          "path" => "/driver_info/ipmi_address",
+          "value" => "{data[inventory][bmc_address]}"
         },
         "conditions" => {
           "field" => "node://property.path",
-          "op"    => "eq",
+          "op" => "eq",
           "value" => "val"
         },
         "description" => "",
-        "uuid"        => ""
+        "uuid" => ""
       }
       @inspector.create_rules(attributes).body.must_match_schema('rules' => @rules)
     end

@@ -134,17 +134,31 @@ Metrics/PerceivedComplexity:
 # Offense count: 25
 Naming/AccessorMethodName:
   Exclude:
-    - 'lib/fog/baremetal/openstack/models/node.rb'
-    - 'lib/fog/compute/openstack/models/addresses.rb'
-    - 'lib/fog/compute/openstack/requests/set_tenant.rb'
-    - 'lib/fog/identity/openstack/v2/requests/set_tenant.rb'
-    - 'lib/fog/image/openstack/v1/requests/set_tenant.rb'
-    - 'lib/fog/image/openstack/v2/requests/set_tenant.rb'
-    - 'lib/fog/network/openstack/requests/get_quotas.rb'
-    - 'lib/fog/network/openstack/requests/set_tenant.rb'
-    - 'lib/fog/shared_file_system/openstack/requests/get_limits.rb'
-    - 'lib/fog/volume/openstack/requests/set_tenant.rb'
     - 'test/requests/compute/helper.rb'
+    - 'test/requests/compute/helper.rb'
+    - 'test/requests/compute/helper.rb'
+    - 'test/requests/compute/helper.rb'
+    - 'test/requests/compute/helper.rb'
+    - 'lib/fog/openstack/identity/v2/requests/set_tenant.rb'
+    - 'lib/fog/openstack/identity/v2/requests/set_tenant.rb'
+    - 'lib/fog/openstack/network/requests/set_tenant.rb'
+    - 'lib/fog/openstack/network/requests/set_tenant.rb'
+    - 'lib/fog/openstack/network/requests/get_quotas.rb'
+    - 'lib/fog/openstack/network/requests/get_quotas.rb'
+    - 'lib/fog/openstack/baremetal/models/node.rb'
+    - 'lib/fog/openstack/baremetal/models/node.rb'
+    - 'lib/fog/openstack/baremetal/models/node.rb'
+    - 'lib/fog/openstack/image/v1/requests/set_tenant.rb'
+    - 'lib/fog/openstack/image/v1/requests/set_tenant.rb'
+    - 'lib/fog/openstack/image/v2/requests/set_tenant.rb'
+    - 'lib/fog/openstack/image/v2/requests/set_tenant.rb'
+    - 'lib/fog/openstack/shared_file_system/requests/get_limits.rb'
+    - 'lib/fog/openstack/shared_file_system/requests/get_limits.rb'
+    - 'lib/fog/openstack/compute/models/addresses.rb'
+    - 'lib/fog/openstack/compute/requests/set_tenant.rb'
+    - 'lib/fog/openstack/compute/requests/set_tenant.rb'
+    - 'lib/fog/openstack/volume/requests/set_tenant.rb'
+    - 'lib/fog/openstack/volume/requests/set_tenant.rb'
 
 # Offense count: 3
 # Configuration parameters: ExpectMatchingDefinition, Regex, IgnoreExecutableScripts, AllowedAcronyms.
@@ -344,15 +358,10 @@ Style/MethodDefParentheses:
   Exclude:
     - 'lib/fog/openstack.rb'
 
-# Offense count: 7
-Style/MethodMissing:
+# Offense count: 2
+Style/MissingRespondToMissing:
   Exclude:
-    - 'lib/fog/baremetal/openstack/models/chassis_collection.rb'
-    - 'lib/fog/baremetal/openstack/models/nodes.rb'
-    - 'lib/fog/baremetal/openstack/models/ports.rb'
-    - 'lib/fog/image/openstack/v1/models/images.rb'
     - 'lib/fog/image/openstack/v2/models/image.rb'
-    - 'lib/fog/image/openstack/v2/models/images.rb'
     - 'lib/fog/planning/openstack/models/plans.rb'
 
 # Offense count: 2

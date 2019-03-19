@@ -1,7 +1,7 @@
 require "test_helper"
 require "helpers/dns_v2_helper"
 
-describe "Fog::DNS::OpenStack::V2 | recordset requests" do
+describe "Fog::OpenStack::DNS::V2 | recordset requests" do
   before do
     @dns, @zone, @zone_id = set_dns_data
 
@@ -9,20 +9,20 @@ describe "Fog::DNS::OpenStack::V2 | recordset requests" do
 
     @recordset_format = {
       "description" => String,
-      "links"       => Hash,
-      "updated_at"  => String,
-      "records"     => Array,
-      "ttl"         => Integer,
-      "id"          => String,
-      "name"        => String,
-      "project_id"  => String,
-      "zone_id"     => String,
-      "zone_name"   => String,
-      "created_at"  => String,
-      "version"     => Integer,
-      "type"        => String,
-      "status"      => String,
-      "action"      => String
+      "links" => Hash,
+      "updated_at" => String,
+      "records" => Array,
+      "ttl" => Integer,
+      "id" => String,
+      "name" => String,
+      "project_id" => String,
+      "zone_id" => String,
+      "zone_name" => String,
+      "created_at" => String,
+      "version" => Integer,
+      "type" => String,
+      "status" => String,
+      "action" => String
     }
 
     recordset_links_format = {
@@ -36,8 +36,8 @@ describe "Fog::DNS::OpenStack::V2 | recordset requests" do
 
     @recordset_list_format = {
       "recordsets" => [@recordset_format],
-      "links"      => recordset_links_format,
-      "metadata"   => recordset_metadata_format
+      "links" => recordset_links_format,
+      "metadata" => recordset_metadata_format
     }
   end
 

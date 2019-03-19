@@ -1,6 +1,7 @@
 require "test_helper"
+require "helpers/network_helper"
 
-describe "Fog::Network[:openstack] | floating_ip" do
+describe "Fog::OpenStack::Network | floating_ip" do
   describe "success" do
     let (:instance) do
       network.floating_ips.create(
@@ -40,11 +41,11 @@ describe "Fog::Network[:openstack] | floating_ip" do
       let(:disassociate) { instance.disassociate(fixed_ip_address) }
 
       it "resets port_id" do
-        disassociate.port_id.must_equal nil
+        disassociate.port_id.must_be_nil
       end
 
       it "resets fixed_ip_address" do
-        disassociate.fixed_ip_address.must_equal nil
+        disassociate.fixed_ip_address.must_be_nil
       end
     end
 

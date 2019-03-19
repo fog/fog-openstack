@@ -1,25 +1,25 @@
 require 'test_helper'
 require 'helpers/container_infra_helper'
 
-describe "Fog::ContainerInfra[:openstack] | cluster requests" do
+describe "Fog::OpenStack::ContainerInfra | cluster requests" do
   before do
     @cluster_format = {
-      "status"              => String,
-      "uuid"                => String,
-      "stack_id"            => Fog::Nullable::String,
-      "created_at"          => Fog::Nullable::String,
-      "api_address"         => Fog::Nullable::String,
-      "discovery_url"       => Fog::Nullable::String,
-      "updated_at"          => Fog::Nullable::String,
-      "master_count"        => Fog::Nullable::Integer,
-      "coe_version"         => Fog::Nullable::String,
+      "status" => String,
+      "uuid" => String,
+      "stack_id" => Fog::Nullable::String,
+      "created_at" => Fog::Nullable::String,
+      "api_address" => Fog::Nullable::String,
+      "discovery_url" => Fog::Nullable::String,
+      "updated_at" => Fog::Nullable::String,
+      "master_count" => Fog::Nullable::Integer,
+      "coe_version" => Fog::Nullable::String,
       "cluster_template_id" => String,
-      "master_addresses"    => Fog::Nullable::Array,
-      "node_count"          => Fog::Nullable::Integer,
-      "node_addresses"      => Fog::Nullable::Array,
-      "status_reason"       => Fog::Nullable::String,
-      "create_timeout"      => Fog::Nullable::Integer,
-      "name"                => String
+      "master_addresses" => Fog::Nullable::Array,
+      "node_count" => Fog::Nullable::Integer,
+      "node_addresses" => Fog::Nullable::Array,
+      "status_reason" => Fog::Nullable::String,
+      "create_timeout" => Fog::Nullable::Integer,
+      "name" => String
     }
   end
 
@@ -63,9 +63,9 @@ describe "Fog::ContainerInfra[:openstack] | cluster requests" do
       cluster_uuid = container_infra.clusters.all.first.uuid
       attributes = [
         {
-          "path"  => "/node_count",
+          "path" => "/node_count",
           "value" => 2,
-          "op"    => "replace"
+          "op" => "replace"
         }
       ]
 

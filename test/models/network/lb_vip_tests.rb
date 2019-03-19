@@ -1,5 +1,7 @@
 require "test_helper"
-describe "Fog::Network[:openstack] | lb_vip" do
+require "helpers/network_helper"
+
+describe "Fog::OpenStack::Network | lb_vip" do
   describe "success" do
     before do
       attributes = {
@@ -12,7 +14,7 @@ describe "Fog::Network[:openstack] | lb_vip" do
         address: '10.0.0.1',
         session_persistence: {
           "cookie_name" => "COOKIE_NAME",
-          "type"        => "APP_COOKIE"
+          "type" => "APP_COOKIE"
         },
         connection_limit: 10,
         admin_state_up: true,

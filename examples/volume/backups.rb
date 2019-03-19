@@ -1,5 +1,5 @@
 require 'fog/openstack'
-require 'fog/workflow/openstack/v2'
+require 'fog/openstack/workflow/v2'
 
 auth_url = "http://192.0.2.1:5000/v3/auth/tokens"
 username = "admin"
@@ -14,7 +14,7 @@ project  = "admin"
   openstack_domain_id: "default"
 }
 
-cinder = Fog::Volume::OpenStack.new(@connection_params)
+cinder = Fog::OpenStack::Volume.new(@connection_params)
 
 puts "INFO: create backup of existing volume named test"
 

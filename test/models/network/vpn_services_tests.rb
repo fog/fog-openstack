@@ -1,6 +1,7 @@
 require "test_helper"
+require "helpers/network_helper"
 
-describe "Fog::Network[:openstack] | vpn_services" do
+describe "Fog::OpenStack::Network | vpn_services" do
   before do
     @vpn_service = network.vpn_services.create(
       subnet_id: 'foo',

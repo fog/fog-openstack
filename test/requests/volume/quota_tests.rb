@@ -1,14 +1,15 @@
 require 'test_helper'
 
-describe "Fog::Volume[:openstack] | quota requests" do
+describe "Fog::OpenStack::Volume | quota requests" do
   before do
-    @volume = Fog::Volume[:openstack]
-    @tenant_id = Fog::Compute[:openstack].list_tenants.body['tenants'].first['id']
+    @volume = Fog::OpenStack::Volume.new
+    identity = Fog::OpenStack::Identity.new(openstack_identity_api_version: 'v2.0')
+    @tenant_id = identity.list_tenants.body['tenants'].first['id']
     @quota_set_format = {
-      'volumes'   => Fog::Nullable::Integer,
+      'volumes' => Fog::Nullable::Integer,
       'gigabytes' => Fog::Nullable::Integer,
       'snapshots' => Fog::Nullable::Integer,
-      'id'        => String
+      'id' => String
     }
     @quota = @volume.get_quota(@tenant_id).body['quota_set']
   end
@@ -25,7 +26,7 @@ describe "Fog::Volume[:openstack] | quota requests" do
 
     it "updates quota" do
       @new_values = @quota.merge(
-        'volumes'   => @quota['volumes'] / 2,
+        'volumes' => @quota['volumes'] / 2,
         'snapshots' => @quota['snapshots'] / 2
       )
 

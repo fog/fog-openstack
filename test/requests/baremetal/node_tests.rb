@@ -1,39 +1,39 @@
 require "test_helper"
 
-describe "Fog::Baremetal[:openstack] | Baremetal node requests" do
+describe "Fog::OpenStack::Baremetal | Baremetal node requests" do
   before do
-    @baremetal = Fog::Baremetal[:openstack]
+    @baremetal = Fog::OpenStack::Baremetal.new
     @node_format = {
-      'instance_uuid'   => Fog::Nullable::String,
-      'maintenance'     => Fog::Boolean,
-      'power_state'     => Fog::Nullable::String,
+      'instance_uuid' => Fog::Nullable::String,
+      'maintenance' => Fog::Boolean,
+      'power_state' => Fog::Nullable::String,
       'provision_state' => Fog::Nullable::String,
-      'uuid'            => String,
-      'links'           => Array
+      'uuid' => String,
+      'links' => Array
     }
 
     @detailed_node_format = {
-      'instance_uuid'          => Fog::Nullable::String,
-      'maintenance'            => Fog::Boolean,
-      'power_state'            => Fog::Nullable::String,
-      'provision_state'        => Fog::Nullable::String,
-      'uuid'                   => String,
-      'created_at'             => String,
-      'updated_at'             => Fog::Nullable::String,
-      'chassis_uuid'           => Fog::Nullable::String,
-      'console_enabled'        => Fog::Boolean,
-      'driver'                 => String,
-      'driver_info'            => Hash,
-      'extra'                  => Hash,
-      'instance_info'          => Hash,
-      'last_error'             => Fog::Nullable::String,
-      'maintenance_reason'     => Fog::Nullable::String,
-      'properties'             => Hash,
-      'provision_updated_at'   => Fog::Nullable::String,
-      'reservation'            => Fog::Nullable::String,
-      'target_power_state'     => Fog::Nullable::String,
+      'instance_uuid' => Fog::Nullable::String,
+      'maintenance' => Fog::Boolean,
+      'power_state' => Fog::Nullable::String,
+      'provision_state' => Fog::Nullable::String,
+      'uuid' => String,
+      'created_at' => String,
+      'updated_at' => Fog::Nullable::String,
+      'chassis_uuid' => Fog::Nullable::String,
+      'console_enabled' => Fog::Boolean,
+      'driver' => String,
+      'driver_info' => Hash,
+      'extra' => Hash,
+      'instance_info' => Hash,
+      'last_error' => Fog::Nullable::String,
+      'maintenance_reason' => Fog::Nullable::String,
+      'properties' => Hash,
+      'provision_updated_at' => Fog::Nullable::String,
+      'reservation' => Fog::Nullable::String,
+      'target_power_state' => Fog::Nullable::String,
       'target_provision_state' => Fog::Nullable::String,
-      'links'                  => Array
+      'links' => Array
     }
   end
 

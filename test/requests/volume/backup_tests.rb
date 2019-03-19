@@ -1,16 +1,16 @@
 require 'test_helper'
 
-describe "Fog::Volume[:openstack] | backup requests" do
+describe "Fog::OpenStack::Volume | backup requests" do
   before do
-    @volume = Fog::Volume[:openstack]
+    @volume = Fog::OpenStack::Volume.new
     @backup_format = {
-      'id'           => String,
-      'volume_id'    => String,
-      'status'       => String,
-      'name'         => String,
-      'size'         => Integer,
+      'id' => String,
+      'volume_id' => String,
+      'status' => String,
+      'name' => String,
+      'size' => Integer,
       'object_count' => Integer,
-      'container'    => String
+      'container' => String
     }
 
     @backup = @volume.create_backup(name: 'test_backup', volume_id: '2').body['backup']

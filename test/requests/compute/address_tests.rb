@@ -7,7 +7,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 # such as "warning: class variable access from toplevel" which pollute the tests
 # output. The latter has been avoided using class_variable_set/get and class
 # methods to wrap them.
-describe "Fog::Compute[:openstack] | address requests" do
+describe "Fog::OpenStack::Compute | address requests" do
   def self.compute
     class_variable_get(:@@compute)
   end
@@ -20,7 +20,7 @@ describe "Fog::Compute[:openstack] | address requests" do
     class_variable_get(:@@data)
   end
 
-  class_variable_set(:@@compute, Fog::Compute[:openstack])
+  class_variable_set(:@@compute, Fog::OpenStack::Compute.new)
   class_variable_set(:@@server_id,
                      compute.create_server("test_server",
                                            get_image_ref,
@@ -49,10 +49,10 @@ describe "Fog::Compute[:openstack] | address requests" do
     def address_format
       {
         "instance_id" => NilClass,
-        "ip"          => String,
-        "fixed_ip"    => NilClass,
-        "id"          => Integer,
-        "pool"        => String
+        "ip" => String,
+        "fixed_ip" => NilClass,
+        "id" => Integer,
+        "pool" => String
       }
     end
 

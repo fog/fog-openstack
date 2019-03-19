@@ -1,28 +1,28 @@
 require 'test_helper'
 
-describe "Fog::Network[:openstack] | ipsec_site_connection requests" do
+describe "Fog::OpenStack::Network | ipsec_site_connection requests" do
   before do
     @ipsec_site_connection_format = {
-      'id'                => String,
-      'name'              => String,
-      'description'       => String,
-      'status'            => String,
-      'tenant_id'         => String,
-      'admin_state_up'    => Fog::Boolean,
-      'psk'               => String,
-      'initiator'         => String,
-      'auth_mode'         => String,
-      'peer_cidrs'        => Array,
-      'mtu'               => Integer,
-      'peer_ep_group_id'  => String,
-      'ikepolicy_id'      => String,
-      'vpnservice_id'     => String,
-      'dpd'               => Hash,
-      'route_mode'        => String,
-      'ipsecpolicy_id'    => String,
+      'id' => String,
+      'name' => String,
+      'description' => String,
+      'status' => String,
+      'tenant_id' => String,
+      'admin_state_up' => Fog::Boolean,
+      'psk' => String,
+      'initiator' => String,
+      'auth_mode' => String,
+      'peer_cidrs' => Array,
+      'mtu' => Integer,
+      'peer_ep_group_id' => String,
+      'ikepolicy_id' => String,
+      'vpnservice_id' => String,
+      'dpd' => Hash,
+      'route_mode' => String,
+      'ipsecpolicy_id' => String,
       'local_ep_group_id' => String,
-      'peer_address'      => String,
-      'peer_id'           => String
+      'peer_address' => String,
+      'peer_id' => String
     }
   end
 
@@ -100,19 +100,19 @@ describe "Fog::Network[:openstack] | ipsec_site_connection requests" do
     it "#get_ipsec_site_connection" do
       proc do
         network.get_ipsec_site_connection(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_ipsec_site_connection" do
       proc do
         network.update_ipsec_site_connection(0, {})
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_ipsec_site_connection" do
       proc do
         network.delete_ipsec_site_connection(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

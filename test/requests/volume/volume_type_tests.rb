@@ -1,13 +1,13 @@
 require 'test_helper'
 
-describe "Fog::Volume[:openstack] | volume_type requests" do
+describe "Fog::OpenStack::Volume | volume_type requests" do
   before do
-    @volume = Fog::Volume[:openstack]
+    @volume = Fog::OpenStack::Volume.new
 
     @volume_type_format = {
-      'name'        => String,
+      'name' => String,
       'extra_specs' => Hash,
-      'id'          => String
+      'id' => String
     }
 
     @volume_type = @volume.create_volume_type(name: 'test_volume_type').body['volume_type']

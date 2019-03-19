@@ -4,17 +4,17 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'helper'))
 
 describe "Fog::Identity[:openstack] | tenant requests" do
   before do
-    @identity = Fog::Identity[:openstack]
+    @identity = Fog::OpenStack::Identity.new(openstack_identity_api_version: 'v2.0')
 
     @tenant_format = {
-      'id'          => String,
-      'name'        => String,
-      'enabled'     => Fog::Nullable::Boolean,
+      'id' => String,
+      'name' => String,
+      'enabled' => Fog::Nullable::Boolean,
       'description' => Fog::Nullable::String
     }
 
     @role_format = {
-      'id'   => String,
+      'id' => String,
       'name' => String
     }
 

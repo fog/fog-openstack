@@ -3,39 +3,39 @@ require 'helpers/container_infra_helper'
 
 @cluster_templates = []
 
-describe "Fog::ContainerInfra[:openstack] | cluster template requests" do
+describe "Fog::OpenStack::ContainerInfra | cluster template requests" do
   before do
     @cluster_template_format = {
-      "insecure_registry"     => Fog::Nullable::String,
-      "http_proxy"            => Fog::Nullable::String,
-      "updated_at"            => Fog::Nullable::String,
-      "floating_ip_enabled"   => Fog::Boolean,
-      "fixed_subnet"          => Fog::Nullable::String,
-      "master_flavor_id"      => Fog::Nullable::String,
-      "uuid"                  => Fog::Nullable::String,
-      "no_proxy"              => Fog::Nullable::String,
-      "https_proxy"           => Fog::Nullable::String,
-      "tls_disabled"          => Fog::Boolean,
-      "keypair_id"            => String,
-      "public"                => Fog::Boolean,
-      "labels"                => Fog::Nullable::Hash,
-      "docker_volume_size"    => Integer,
-      "server_type"           => String,
-      "external_network_id"   => String,
-      "cluster_distro"        => String,
-      "image_id"              => String,
-      "volume_driver"         => String,
-      "registry_enabled"      => Fog::Nullable::Boolean,
+      "insecure_registry" => Fog::Nullable::String,
+      "http_proxy" => Fog::Nullable::String,
+      "updated_at" => Fog::Nullable::String,
+      "floating_ip_enabled" => Fog::Boolean,
+      "fixed_subnet" => Fog::Nullable::String,
+      "master_flavor_id" => Fog::Nullable::String,
+      "uuid" => Fog::Nullable::String,
+      "no_proxy" => Fog::Nullable::String,
+      "https_proxy" => Fog::Nullable::String,
+      "tls_disabled" => Fog::Boolean,
+      "keypair_id" => String,
+      "public" => Fog::Boolean,
+      "labels" => Fog::Nullable::Hash,
+      "docker_volume_size" => Integer,
+      "server_type" => String,
+      "external_network_id" => String,
+      "cluster_distro" => String,
+      "image_id" => String,
+      "volume_driver" => String,
+      "registry_enabled" => Fog::Nullable::Boolean,
       "docker_storage_driver" => String,
-      "apiserver_port"        => Fog::Nullable::Integer,
-      "name"                  => String,
-      "created_at"            => Fog::Nullable::String,
-      "network_driver"        => String,
-      "fixed_network"         => Fog::Nullable::String,
-      "coe"                   => String,
-      "flavor_id"             => String,
-      "master_lb_enabled"     => Fog::Boolean,
-      "dns_nameserver"        => String
+      "apiserver_port" => Fog::Nullable::Integer,
+      "name" => String,
+      "created_at" => Fog::Nullable::String,
+      "network_driver" => String,
+      "fixed_network" => Fog::Nullable::String,
+      "coe" => String,
+      "flavor_id" => String,
+      "master_lb_enabled" => Fog::Boolean,
+      "dns_nameserver" => String
     }
   end
 
@@ -72,14 +72,14 @@ describe "Fog::ContainerInfra[:openstack] | cluster template requests" do
       cluster_template_uuid = container_infra.cluster_templates.all.first.uuid
       attributes = [
         {
-          "path"  => "/master_lb_enabled",
+          "path" => "/master_lb_enabled",
           "value" => "True",
-          "op"    => "replace"
+          "op" => "replace"
         },
         {
-          "path"  => "/registry_enabled",
+          "path" => "/registry_enabled",
           "value" => "True",
-          "op"    => "replace"
+          "op" => "replace"
         }
       ]
 

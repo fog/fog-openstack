@@ -69,6 +69,6 @@ image_service.images.create name: 'cirros-0.3.0-amd64',
                             container_format: 'ami',
                             location: ami,
                             properties: {
-                              'kernel_id'  => aki.id,
+                              'kernel_id' => aki.id,
                               'ramdisk_id' => ari.id
                             }

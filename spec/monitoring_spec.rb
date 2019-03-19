@@ -1,15 +1,15 @@
 require 'spec_helper'
 require_relative './shared_context'
-require 'fog/monitoring/openstack/models/metric'
+require 'fog/openstack/monitoring/models/metric'
 require 'time'
 
-describe Fog::Monitoring::OpenStack do
+describe Fog::OpenStack::Monitoring do
   spec_data_folder = 'spec/fixtures/openstack/monitoring'
 
   before :all do
     openstack_vcr = OpenStackVCR.new(
       vcr_directory: spec_data_folder,
-      service_class: Fog::Monitoring::OpenStack
+      service_class: Fog::OpenStack::Monitoring
     )
     @service      = openstack_vcr.service
     @timestamp    = 146_375_736_714_3
@@ -28,13 +28,13 @@ describe Fog::Monitoring::OpenStack do
 
       # create multiple metrics
 
-      metric_1 = Fog::Monitoring::OpenStack::Metric.new(name: 'sample_metric_1',
+      metric_1 = Fog::OpenStack::Monitoring::Metric.new(name: 'sample_metric_1',
                                                         timestamp: @timestamp,
                                                         dimensions: { "key1" => "value1" },
                                                         value: 42,
                                                         value_meta: { "meta_key1" => "meta_value1" })
 
-      metric_2 = Fog::Monitoring::OpenStack::Metric.new(name: 'sample_metric_2',
+      metric_2 = Fog::OpenStack::Monitoring::Metric.new(name: 'sample_metric_2',
                                                         timestamp: @timestamp,
                                                         dimensions: { "key1" => "value1" },
                                                         value: 42,
@@ -71,10 +71,13 @@ describe Fog::Monitoring::OpenStack do
       metrics_name_list.wont_be_empty
 
       # failure cases
-      proc { @service.metrics.create(name: "this won't be created due to insufficient args") }
-        .must_raise Fog::Monitoring::OpenStack::ArgumentError
-      proc { @service.metrics.create(name: "this wont't be created due to invalid timestamp", timestamp: 1234) }
-        .must_raise Fog::Monitoring::OpenStack::ArgumentError
+      proc do
+        @service.metrics.create(name: "this won't be created due to insufficient args")
+      end.must_raise ArgumentError
+
+      proc do
+        @service.metrics.create(name: "this wont't be created due to invalid timestamp", timestamp: 1234)
+      end.must_raise ArgumentError
     end
   end
 
@@ -142,9 +145,13 @@ describe Fog::Monitoring::OpenStack do
         notification_method = nil
 
         # failure cases
-        proc { @service.notification_methods.create(name: "this won't be created due to insufficient args") }
-          .must_raise Fog::Monitoring::OpenStack::ArgumentError
-        proc { @service.notification_methods.find_by_id('bogus_id') }.must_raise Fog::Monitoring::OpenStack::NotFound
+        proc do
+          @service.notification_methods.create(name: "this won't be created due to insufficient args")
+        end.must_raise ArgumentError
+
+        proc do
+          @service.notification_methods.find_by_id('bogus_id')
+        end.must_raise Fog::OpenStack::Monitoring::NotFound
       ensure
         notification_method.destroy if notification_method
       end
@@ -217,8 +224,9 @@ describe Fog::Monitoring::OpenStack do
         notification_method = nil
 
         # failure cases
-        proc { @service.alarm_definitions.create(name: "this won't be created due to insufficient args") }
-          .must_raise Fog::Monitoring::OpenStack::ArgumentError
+        proc do
+          @service.alarm_definitions.create(name: "this won't be created due to insufficient args")
+        end.must_raise ArgumentError
       ensure
         alarm_definition.destroy if alarm_definition
         notification_method.destroy if notification_method

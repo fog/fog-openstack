@@ -1,24 +1,25 @@
 require 'test_helper'
 
-describe "Fog::Network[:openstack] | quota requests" do
+describe "Fog::OpenStack::Network | quota requests" do
   before do
-    @tenant_id = Fog::Compute[:openstack].list_tenants.body['tenants'].first['id']
+    identity = Fog::OpenStack::Identity.new(openstack_identity_api_version: 'v2.0')
+    @tenant_id = identity.list_tenants.body['tenants'].first['id']
     @quota_format = {
-      'subnet'     => Fog::Nullable::Integer,
-      'router'     => Fog::Nullable::Integer,
-      'port'       => Fog::Nullable::Integer,
-      'network'    => Fog::Nullable::Integer,
+      'subnet' => Fog::Nullable::Integer,
+      'router' => Fog::Nullable::Integer,
+      'port' => Fog::Nullable::Integer,
+      'network' => Fog::Nullable::Integer,
       'floatingip' => Fog::Nullable::Integer
     }
 
     @quotas_format = [
       {
-        'subnet'     => Fog::Nullable::Integer,
-        'router'     => Fog::Nullable::Integer,
-        'port'       => Fog::Nullable::Integer,
-        'network'    => Fog::Nullable::Integer,
+        'subnet' => Fog::Nullable::Integer,
+        'router' => Fog::Nullable::Integer,
+        'port' => Fog::Nullable::Integer,
+        'network' => Fog::Nullable::Integer,
         'floatingip' => Fog::Nullable::Integer,
-        'tenant_id'  => Fog::Nullable::String
+        'tenant_id' => Fog::Nullable::String
       }
     ]
 
@@ -36,7 +37,7 @@ describe "Fog::Network[:openstack] | quota requests" do
 
     it "#update_quota" do
       new_values = @quota.merge(
-        'volumes'   => @quota['subnet'] / 2,
+        'volumes' => @quota['subnet'] / 2,
         'snapshots' => @quota['router'] / 2
       )
 

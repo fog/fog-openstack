@@ -1,19 +1,19 @@
 require 'test_helper'
 
-describe "Fog::Network[:openstack] | ike_policy requests" do
+describe "Fog::OpenStack::Network | ike_policy requests" do
   describe "success" do
     before do
       @ike_policy_format = {
-        'id'                      => String,
-        'name'                    => String,
-        'description'             => String,
-        'tenant_id'               => String,
-        'auth_algorithm'          => String,
-        'encryption_algorithm'    => String,
-        'pfs'                     => String,
+        'id' => String,
+        'name' => String,
+        'description' => String,
+        'tenant_id' => String,
+        'auth_algorithm' => String,
+        'encryption_algorithm' => String,
+        'pfs' => String,
         'phase1_negotiation_mode' => String,
-        'lifetime'                => Hash,
-        'ike_version'             => String
+        'lifetime' => Hash,
+        'ike_version' => String
       }
 
       attributes = {
@@ -74,19 +74,19 @@ describe "Fog::Network[:openstack] | ike_policy requests" do
     it "#get_ike_policy" do
       proc do
         network.get_ike_policy(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_ike_policy" do
       proc do
         network.update_ike_policy(0, {})
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_ike_policy" do
       proc do
         network.delete_ike_policy(0)
-      end.must_raise Fog::Network::OpenStack::NotFound
+      end.must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

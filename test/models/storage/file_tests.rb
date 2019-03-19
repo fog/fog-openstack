@@ -29,7 +29,7 @@ unless Fog.mocking?
     key: "fogfilestests-#{rand(65536)}"
   }
 
-  @directory = Fog::Storage[:openstack].directories.create(directory_attributes)
+  @directory = Fog::OpenStack::Storage.new.directories.create(directory_attributes)
 
   describe "Fog::OpenStack::Storage | file" do
     after do
@@ -71,6 +71,25 @@ unless Fog.mocking?
             @instance.metadata[:foo] = nil
             @instance.save
             object_meta_attributes.must_equal {}
+          end
+        end
+
+        describe "#cache_control" do
+          before do
+            @instance = @directory.files.create(
+              key: 'meta-test',
+              body: lorem_file,
+              cache_control: 'public, max-age=31536000'
+            )
+          end
+
+          after do
+            clear_metadata
+            @instance.save
+          end
+
+          it "sets Cache-Control on create" do
+            object_attributes(@instance)["Cache-Control"].must_equal "public, max-age=31536000"
           end
         end
 

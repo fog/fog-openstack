@@ -1,22 +1,22 @@
 require "test_helper"
 
-describe "Fog::Compute[:openstack] | volume requests" do
+describe "Fog::OpenStack::Compute | volume requests" do
   before do
     @volume_format = {
-      'id'                 => String,
-      'displayName'        => String,
-      'size'               => Integer,
+      'id' => String,
+      'displayName' => String,
+      'size' => Integer,
       'displayDescription' => String,
-      'status'             => String,
-      'snapshotId'         => Fog::Nullable::String,
-      'availabilityZone'   => String,
-      'attachments'        => Array,
-      'volumeType'         => Fog::Nullable::String,
-      'createdAt'          => String,
-      'metadata'           => Hash
+      'status' => String,
+      'snapshotId' => Fog::Nullable::String,
+      'availabilityZone' => String,
+      'attachments' => Array,
+      'volumeType' => Fog::Nullable::String,
+      'createdAt' => String,
+      'metadata' => Hash
     }
 
-    @compute = Fog::Compute[:openstack]
+    @compute = Fog::OpenStack::Compute.new
     @volume = @compute.create_volume('loud', 'this is a loud volume', 3).body
   end
 
