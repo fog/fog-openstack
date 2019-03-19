@@ -6,7 +6,9 @@ module Fog
           data = { "host" => host, "binary" => binary, "disabled_reason" => disabled_reason }
 
           # Encode all params
-          optional_params = optional_params.each { |k, v| optional_params[k] = URI.encode(v) } if optional_params
+          if optional_params
+            optional_params = optional_params.each { |k, v| optional_params[k] = URI.encode_www_form_component(v) }
+          end
 
           request(
             body: Fog::JSON.encode(data),

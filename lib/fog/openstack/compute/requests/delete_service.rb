@@ -4,7 +4,9 @@ module Fog
       class Real
         def delete_service(uuid, optional_params = nil)
           # Encode all params
-          optional_params = optional_params.each { |k, v| optional_params[k] = URI.encode(v) } if optional_params
+          if optional_params
+            optional_params = optional_params.each { |k, v| optional_params[k] = URI.encode_www_form_component(v) }
+          end
 
           request(
             expects: [202, 204],

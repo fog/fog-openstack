@@ -7,7 +7,7 @@ module Fog
             request(
               expects: 204,
               method: "DELETE",
-              path: "actions/#{URI.encode(name)}"
+              path: "actions/#{URI.encode_www_form_component(name)}"
             )
           end
         end

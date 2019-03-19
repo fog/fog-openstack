@@ -7,7 +7,7 @@ module Fog
             request(
               expects: 200,
               method: "GET",
-              path: "workbooks/#{URI.encode(name)}"
+              path: "workbooks/#{URI.encode_www_form_component(name)}"
             )
           end
         end

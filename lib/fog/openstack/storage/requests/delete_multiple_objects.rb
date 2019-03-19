@@ -45,7 +45,7 @@ module Fog
         def delete_multiple_objects(container, object_names, options = {})
           body = object_names.map do |name|
             object_name = container ? "#{container}/#{name}" : name
-            URI.encode(object_name)
+            URI.encode_www_form_component(object_name)
           end.join("\n")
 
           response = request({

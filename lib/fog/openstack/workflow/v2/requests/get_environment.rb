@@ -7,7 +7,7 @@ module Fog
             request(
               expects: 200,
               method: "GET",
-              path: "environments/#{URI.encode(name)}"
+              path: "environments/#{URI.encode_www_form_component(name)}"
             )
           end
         end

@@ -7,7 +7,7 @@ module Fog
             request(
               expects: 204,
               method: "DELETE",
-              path: "workbooks/#{URI.encode(name)}"
+              path: "workbooks/#{URI.encode_www_form_component(name)}"
             )
           end
         end
