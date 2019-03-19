@@ -22,6 +22,7 @@ module Fog
           def upload_image(_image_id, _body)
             response = Excon::Response.new
             response.status = 204
+            response
           end
         end
       end

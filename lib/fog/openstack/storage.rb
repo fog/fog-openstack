@@ -53,7 +53,7 @@ module Fog
             Fog::Logger.warning("'mime-types' missing, please install and try again.")
             exit(1)
           end
-          end
+        end
       end
 
       class Mock

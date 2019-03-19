@@ -3,7 +3,9 @@ module Fog
     class Image
       class V2
         class Real
-          def download_image(image_id, _content_range = nil, params) # TODO: implement content range handling
+          # TODO: implement content range handling
+          # removed _content_range = nil because in the middle of parameters and not used.
+          def download_image(image_id, _content_range, params)
             request_hash = {
               expects: [200, 204],
               method: 'GET',

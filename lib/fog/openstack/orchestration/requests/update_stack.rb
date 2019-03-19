@@ -90,7 +90,7 @@ module Fog
               end
             else
               key_s = key.to_s
-              if !stack_obj.key? key_s || stack_obj[key_s].nil? || clear_parameters.include?(key)
+              if !stack_obj.key?(key_s) || stack_obj[key_s].nil? || clear_parameters.include?(key)
                 stack_obj[key_s] = value
               elsif stack_obj[key_s].kind_of(Array)
                 if value.kind_of(Array)

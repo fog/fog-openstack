@@ -14,7 +14,7 @@ module Fog
       class Mock
         def get_lb_pool_stats(pool_id)
           response = Excon::Response.new
-          if self.data[:lb_pools][pool_id]
+          if data[:lb_pools][pool_id]
             stats = {}
             stats["active_connections"] = 0
             stats["bytes_in"] = 0

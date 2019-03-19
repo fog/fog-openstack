@@ -33,7 +33,8 @@ module Fog
             load(service.auth_projects(options).body['projects'])
           end
 
-          def find_by_id(id, options = {}) # options can include :subtree_as_ids, :subtree_as_list, :parents_as_ids, :parents_as_list
+          def find_by_id(id, options = {})
+            # options can include :subtree_as_ids, :subtree_as_list, :parents_as_ids, :parents_as_list
             if options.kind_of? Symbol # Deal with a single option being passed on its own
               options = { options => nil }
             end

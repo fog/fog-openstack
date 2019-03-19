@@ -161,7 +161,7 @@ module Fog
           # open-uri doesn't open "file:///" uris.
           uri_or_filename = uri_or_filename.sub(/^file:/, "")
 
-          open(uri_or_filename) { |f| content = f.read }
+          File.open(uri_or_filename) { |f| content = f.read }
           content
         end
 

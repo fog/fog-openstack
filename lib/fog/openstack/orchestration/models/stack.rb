@@ -102,6 +102,8 @@ module Fog
           self.timeout_mins = minutes
         end
 
+        private
+
         # build options to create or update stack
         def default_options
           template_content =
@@ -121,7 +123,6 @@ module Fog
           options[:files] = @files if @files
           options
         end
-        private :default_options
       end
     end
   end

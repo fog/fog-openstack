@@ -34,9 +34,7 @@ module Fog
 
         alias each_file_this_page each
         def each
-          if !block_given?
-            self
-          else
+          if block_given?
             subset = dup.all
 
             subset.each_file_this_page { |f| yield f }
@@ -44,9 +42,8 @@ module Fog
               subset = subset.all(marker: subset.last.key)
               subset.each_file_this_page { |f| yield f }
             end
-
-            self
           end
+          self
         end
 
         def get(key, &block)

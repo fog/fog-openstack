@@ -29,9 +29,7 @@ module Fog
 
             # partioning on the longer prefix, leaving X-Image-Meta
             # headers in the second returned hash.
-            custom_properties, params = headers.partition do |k, _|
-              k.start_with?(property_marker)
-            end.map { |p| Hash[p] }
+            custom_properties, params = headers.partition { |k, _| k.start_with?(property_marker) }.map { |p| Hash[p] }
 
             params            = remove_prefix_and_convert_type(params, marker)
             custom_properties = remove_prefix_and_convert_type(custom_properties, property_marker)

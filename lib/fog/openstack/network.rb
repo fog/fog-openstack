@@ -258,6 +258,8 @@ module Fog
       request :delete_quota
 
       class Mock
+        # rubocop:disable Metrics/MethodLength
+        # TODO: move all these in a yaml file?
         def self.data
           @data ||= Hash.new do |hash, key|
             qos_policy_id = Fog::UUID.uuid
@@ -444,6 +446,7 @@ module Fog
             }
           end
         end
+        # rubocop:enable Metrics/MethodLength
 
         def self.reset
           @data = nil

@@ -76,11 +76,13 @@ module Fog
         private
 
         def sig_to_hex(str)
-          str.unpack("C*").map do |c|
+          str = str.unpack("C*").map do |c|
             c.to_s(16)
-          end.map do |h|
+          end
+          str = str.map do |h|
             h.size == 1 ? "0#{h}" : h
-          end.join
+          end
+          str.join
         end
       end
     end
