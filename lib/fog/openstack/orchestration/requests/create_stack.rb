@@ -23,7 +23,10 @@ module Fog
             options = arg1
           else
             # Deprecated: create_stack(stack_name, options = {})
-            Fog::Logger.deprecation("#create_stack(stack_name, options) is deprecated, use #create_stack(options) instead [light_black](#{caller.first})[/]")
+            Fog::Logger.deprecation(
+              "#create_stack(stack_name, options) is deprecated, use #create_stack(options)" \
+              "instead [light_black](#{caller(1..1).first})[/]"
+            )
             options = {
               stack_name: arg1
             }.merge(arg2.nil? ? {} : arg2)
@@ -57,7 +60,7 @@ module Fog
             options = arg1
           else
             # Deprecated: create_stack(stack_name, options = {})
-            Fog::Logger.deprecation("#create_stack(stack_name, options) is deprecated, use #create_stack(options) instead [light_black](#{caller.first})[/]")
+            Fog::Logger.deprecation("#create_stack(stack_name, options) is deprecated, use #create_stack(options) instead [light_black](#{caller(1..1).first})[/]")
             options = {
               stack_name: arg1
             }.merge(arg2.nil? ? {} : arg2)

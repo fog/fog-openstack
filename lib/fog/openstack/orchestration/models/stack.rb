@@ -26,14 +26,14 @@ module Fog
 
         # Deprecated
         def create
-          Fog::Logger.deprecation("#create is deprecated, use #save(options) instead [light_black](#{caller.first})[/]")
+          Fog::Logger.deprecation("#create is deprecated, use #save(options) instead [light_black](#{caller(1..1).first})[/]")
           requires :stack_name
           service.stacks.create(default_options)
         end
 
         # Deprecated
         def update
-          Fog::Logger.deprecation("#update is deprecated, use #save(options) instead [light_black](#{caller.first})[/]")
+          Fog::Logger.deprecation("#update is deprecated, use #save(options) instead [light_black](#{caller(1..1).first})[/]")
           requires :stack_name
           service.update_stack(self, default_options).body['stack']
         end
@@ -74,31 +74,31 @@ module Fog
 
         # Deprecated
         def template_url
-          Fog::Logger.deprecation("#template_url is deprecated, use it in options for #save(options) instead [light_black](#{caller.first})[/]")
+          Fog::Logger.deprecation("#template_url is deprecated, use it in options for #save(options) instead [light_black](#{caller(1..1).first})[/]")
           @template_url
         end
 
         # Deprecated
         def template_url=(url)
-          Fog::Logger.deprecation("#template_url= is deprecated, use it in options for #save(options) instead [light_black](#{caller.first})[/]")
+          Fog::Logger.deprecation("#template_url= is deprecated, use it in options for #save(options) instead [light_black](#{caller(1..1).first})[/]")
           @template_url = url
         end
 
         # Deprecated
         def template=(content)
-          Fog::Logger.deprecation("#template=(content) is deprecated, use it in options for #save(options) instead [light_black](#{caller.first})[/]")
+          Fog::Logger.deprecation("#template=(content) is deprecated, use it in options for #save(options) instead [light_black](#{caller(1..1).first})[/]")
           @template = content
         end
 
         # Deprecated
         def timeout_in_minutes
-          Fog::Logger.deprecation("#timeout_in_minutes is deprecated, set timeout_mins in options for save(options) instead [light_black](#{caller.first})[/]")
+          Fog::Logger.deprecation("#timeout_in_minutes is deprecated, set timeout_mins in options for save(options) instead [light_black](#{caller(1..1).first})[/]")
           timeout_mins
         end
 
         # Deprecated
         def timeout_in_minutes=(minutes)
-          Fog::Logger.deprecation("#timeout_in_minutes=(minutes) is deprecated, set timeout_mins in options for save(options) instead [light_black](#{caller.first})[/]")
+          Fog::Logger.deprecation("#timeout_in_minutes=(minutes) is deprecated, set timeout_mins in options for save(options) instead [light_black](#{caller(1..1).first})[/]")
           self.timeout_mins = minutes
         end
 

@@ -21,7 +21,7 @@ module Fog
             options = arg2.nil? ? {} : arg2
           else
             # Deprecated, update_stack(stack_id, stack_name, options = {})
-            Fog::Logger.deprecation("#update_stack(stack_id, stack_name, options) is deprecated, use #update_stack(stack, options) instead [light_black](#{caller.first})[/]")
+            Fog::Logger.deprecation("#update_stack(stack_id, stack_name, options) is deprecated, use #update_stack(stack, options) instead [light_black](#{caller(1..1).first})[/]")
             stack_id = arg1
             stack_name = arg2
             options = {
@@ -59,7 +59,7 @@ module Fog
             options = arg2.nil? ? {} : arg2
           else
             # Deprecated, update_stack(stack_id, stack_name, options = {})
-            Fog::Logger.deprecation("#update_stack(stack_id, stack_name, options) is deprecated, use #update_stack(stack, options) instead [light_black](#{caller.first})[/]")
+            Fog::Logger.deprecation("#update_stack(stack_id, stack_name, options) is deprecated, use #update_stack(stack, options) instead [light_black](#{caller(1..1).first})[/]")
             stack_id = arg1
             stack_name = arg2
             options = {

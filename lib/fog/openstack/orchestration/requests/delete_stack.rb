@@ -18,7 +18,7 @@ module Fog
             stack_id = stack.id
           else
             # Deprecated: delete_stack(stack_name, stack_id)
-            Fog::Logger.deprecation("#delete_stack(stack_name, stack_id) is deprecated, use #delete_stack(stack) instead [light_black](#{caller.first})[/]")
+            Fog::Logger.deprecation("#delete_stack(stack_name, stack_id) is deprecated, use #delete_stack(stack) instead [light_black](#{caller(1..1).first})[/]")
             stack_name = arg1
             stack_id = arg2
           end
@@ -39,7 +39,7 @@ module Fog
             stack_id = stack.id
           else
             # Deprecated: delete_stack(stack_name, stack_id)
-            Fog::Logger.deprecation("#delete_stack(stack_name, stack_id) is deprecated, use #delete_stack(stack) instead [light_black](#{caller.first})[/]")
+            Fog::Logger.deprecation("#delete_stack(stack_name, stack_id) is deprecated, use #delete_stack(stack) instead [light_black](#{caller(1..1).first})[/]")
             stack_id = arg2
           end
 
