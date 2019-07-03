@@ -198,7 +198,7 @@ module Fog
 
         @openstack_service_type = options[:openstack_service_type] || default_service_type
         @openstack_endpoint_type = options[:openstack_endpoint_type] || default_endpoint_type
-        @openstack_endpoint_type.gsub!(/URL/, '')
+        @openstack_endpoint_type = @openstack_endpoint_type.gsub(/URL/, '')
         @connection_options = options[:connection_options] || {}
         @persistent = options[:persistent] || false
       end
