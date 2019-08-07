@@ -47,6 +47,7 @@ module Fog
       request :show_resource_metadata
       request :show_resource_schema
       request :show_resource_template
+      request :show_stack
       request :show_stack_details
       request :update_stack
       request :patch_stack
