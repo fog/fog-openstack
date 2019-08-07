@@ -20,10 +20,11 @@ module Fog
           load_response(data, 'stacks')
         end
 
-        # Deprecated
         def find_by_id(id)
-          Fog::Logger.deprecation("#find_by_id(id) is deprecated, use #get(name, id) instead [light_black](#{caller.first})[/]")
-          find { |stack| stack.id == id }
+          data = service.show_stack(id).body['stack']
+          new(data)
+        rescue Fog::OpenStack::Orchestration::NotFound
+            nil
         end
 
         def get(arg1, arg2 = nil)
