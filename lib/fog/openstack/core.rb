@@ -172,6 +172,9 @@ module Fog
           instance_variable_set "@#{openstack_param}".to_sym, value
         end
 
+        # Ensure OpenStack User's Password is always a String
+        @openstack_api_key = @openstack_api_key.to_s if @openstack_api_key
+
         @auth_token ||= options[:openstack_auth_token]
         @openstack_must_reauthenticate = false
         @openstack_endpoint_type = options[:openstack_endpoint_type] || 'public'
