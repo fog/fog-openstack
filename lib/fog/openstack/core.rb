@@ -54,7 +54,7 @@ module Fog
 
           response = @connection.request(
             params.merge(
-              :headers => headers(params.delete(:headers)),
+              :headers => headers(params[:headers]),
               :path    => "#{@path}/#{params[:path]}"
             )
           )
