@@ -30,7 +30,7 @@ module Fog
         end
 
         def to_h(var)
-          {var => send(var)}
+          {var => send(var).to_s}
         end
       end
 
