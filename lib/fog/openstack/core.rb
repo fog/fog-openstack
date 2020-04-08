@@ -62,7 +62,7 @@ module Fog
 
           response = @connection.request(
             params.merge(
-              :headers => headers(params.delete(:headers)),
+              :headers => headers(params[:headers]),
               :path    => "#{@path}/#{params[:path]}"
             )
           )
@@ -185,6 +185,9 @@ module Fog
         @retry_interval ||= options[:retry_interval] || 5 # Seconds
         @retry_limit    ||= options[:retry_limit] || 2
 
+        # Ensure OpenStack User's Password is always a String
+        @openstack_api_key = @openstack_api_key.to_s if @openstack_api_key
+
         @auth_token ||= options[:openstack_auth_token]
         @openstack_must_reauthenticate = false
         @openstack_endpoint_type = options[:openstack_endpoint_type] || 'public'
@@ -211,7 +214,7 @@ module Fog
 
         @openstack_service_type = options[:openstack_service_type] || default_service_type
         @openstack_endpoint_type = options[:openstack_endpoint_type] || default_endpoint_type
-        @openstack_endpoint_type.gsub!(/URL/, '')
+        @openstack_endpoint_type = @openstack_endpoint_type.gsub(/URL/, '')
         @connection_options = options[:connection_options] || {}
         @persistent = options[:persistent] || false
       end

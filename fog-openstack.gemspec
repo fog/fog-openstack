@@ -25,13 +25,13 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'fog-json',  '>= 1.0'
   spec.add_dependency 'ipaddress', '>= 0.8'
 
-  spec.add_development_dependency 'bundler', '~> 1'
+  spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency "mime-types"
   spec.add_development_dependency "mime-types-data"
   spec.add_development_dependency 'minitest'
   spec.add_development_dependency 'pry-byebug'
-  spec.add_development_dependency 'rake',    '~> 10.0'
+  spec.add_development_dependency 'rake',    '>= 12.3.3'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'shindo',  '~> 0.3'
   spec.add_development_dependency 'vcr'
