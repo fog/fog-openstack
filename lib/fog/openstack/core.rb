@@ -16,6 +16,7 @@ module Fog
       attr_reader :openstack_project_id
       attr_reader :openstack_project_domain_id
       attr_reader :openstack_identity_api_version
+      attr_reader :openstack_storage_url
 
       # fallback
       def self.not_found_class
@@ -212,15 +213,7 @@ module Fog
 
           token = Fog::OpenStack::Auth::Token.build(openstack_options, @connection_options)
 
-          @openstack_management_url = if token.catalog && !token.catalog.payload.empty?
-                                        token.catalog.get_endpoint_url(
-                                          @openstack_service_type,
-                                          @openstack_endpoint_type,
-                                          @openstack_region
-                                        )
-                                      else
-                                        @openstack_auth_url
-                                      end
+          @openstack_management_url = management_url(token)
 
           @current_user = token.user['name']
           @current_user_id          = token.user['id']
@@ -245,6 +238,20 @@ module Fog
       def authenticate!
         @openstack_must_reauthenticate = true
         authenticate
+      end
+
+      private
+
+      def management_url(token)
+        if token.catalog && !token.catalog.payload.empty?
+          token.catalog.get_endpoint_url(
+            @openstack_service_type,
+            @openstack_endpoint_type,
+            @openstack_region
+          )
+        else
+          @openstack_auth_url
+        end
       end
     end
   end
