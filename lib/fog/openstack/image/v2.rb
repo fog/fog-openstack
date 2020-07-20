@@ -16,7 +16,8 @@ module Fog
                    :openstack_project_name, :openstack_project_id,
                    :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                    :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                   :openstack_identity_api_version
+                   :openstack_identity_api_version,
+                   :idempotent, :retry_interval, :retry_limit
 
         model_path 'fog/openstack/image/v2/models'
 
