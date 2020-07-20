@@ -222,6 +222,11 @@ module Fog
                                         @openstack_auth_url
                                       end
 
+          # Manages cases where identity endpoint returned is v2 but v3 should be used
+          if @openstack_service_type.include? 'identity_v3' and @openstack_management_url =~ /\/v2\.0(\/)*$/
+            @openstack_management_url = @openstack_auth_url
+          end
+
           @current_user = token.user['name']
           @current_user_id          = token.user['id']
           @current_tenant           = token.tenant
