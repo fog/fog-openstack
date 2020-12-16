@@ -20,8 +20,27 @@ matrix:
     gemfile: Gemfile
   - rvm: jruby-head
     gemfile: Gemfile
+ # ppc64le related code
+  - rvm: 2.3.8
+    arch: ppc64le
+    gemfile: Gemfile
+  - rvm: 2.4.5
+    arch: ppc64le
+    gemfile: Gemfile
+  - rvm: 2.5.3
+    arch: ppc64le
+    gemfile: Gemfile
+  - rvm: 2.6.0
+    arch: ppc64le
+    gemfile: Gemfile
+  - rvm: jruby-head
+    arch: ppc64le
+    gemfile: Gemfile
+  
   allow_failures:
   - rvm: jruby-head
+  - rvm: jruby-head
+    arch: ppc64le
 notifications:
   webhooks:
     urls:
