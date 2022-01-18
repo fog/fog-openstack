@@ -1,5 +1,3 @@
-
-
 module Fog
   module OpenStack
     class Volume < Fog::Service
@@ -18,16 +16,18 @@ module Fog
                       :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
                       :openstack_identity_api_version]
 
-      # Fog::OpenStack::Image.new() will return a Fog::OpenStack::Volume::V3 or a Fog::OpenStack::Volume::V2 or a Fog::OpenStack::Volume::V1,
-      #  choosing the V3 by default, as V1 is deprecated since OpenStack Wallaby
+      # Fog::OpenStack::Image.new() will return a Fog::OpenStack::Volume::V3 or a Fog::OpenStack::Volume::V2 or a
+      #  Fog::OpenStack::Volume::V1, choosing the V3 by default, as V2 is deprecated since OpenStackWallaby and V1 is
+      #  deprecated since OpenStack Juno
       def self.new(args = {})
         @openstack_auth_uri = URI.parse(args[:openstack_auth_url]) if args[:openstack_auth_url]
-        service = if inspect == 'Fog::OpenStack::Volume'
-                    Fog::OpenStack::Volume::V3.new(args) || Fog::OpenStack::Volume::V2.new(args) || Fog::OpenStack::Volume::V1.new(args)
-                  else
-                    super
-                  end
-        service
+        if inspect == 'Fog::OpenStack::Volume'
+          Fog::OpenStack::Volume::V3.new(args) \
+          || Fog::OpenStack::Volume::V2.new(args)
+          || Fog::OpenStack::Volume::V1.new(args)
+        else
+          super
+        end
       end
     end
   end
