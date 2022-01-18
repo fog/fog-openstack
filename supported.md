@@ -6,7 +6,7 @@
 |------------------|--------------------|----------------|------------|-------|
 | Barbican         | Key Manager        | v1             | TBD        |       |
 | Ceilometer       | Metering           | v2             | TBD        |       |
-| Cinder           | Volume             | v1, v2         | TBD        |       |
+| Cinder           | Volume             | v1, v2, v3     | TBD        |       |
 | Designate        | DNS                | v1, v2         | TBD        |       |
 | Glance           | Image              | v1, v2         | TBD        |       |
 | Gnocci           | Metric             | v1             | TBD        |       |
@@ -53,4 +53,3 @@ Feel free to submit pull requests to add support for these.
 * solum (Lifecycle)
 * tripleo (Orchestration)
 * zaqar (Messaging)
-
