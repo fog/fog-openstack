@@ -10,10 +10,10 @@ name: Brakeman Scan
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ master ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ $default-branch ]
+    branches: [ master ]
   schedule:
     - cron: '45 0 * * 3'
 
