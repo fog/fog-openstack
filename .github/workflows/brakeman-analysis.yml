@@ -30,7 +30,7 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@f20f1eae726df008313d2e0d78c5e602562a1bcf
       with:
-        ruby-version: '2.7'
+        ruby-version: 3.0
 
     - name: Setup Brakeman
       env:
