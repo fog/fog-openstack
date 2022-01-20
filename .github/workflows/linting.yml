@@ -8,7 +8,7 @@ name: Linting
 on: [push]
 
 jobs:
-  test:
+  rubocop:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,5 +16,5 @@ jobs:
         with:
           ruby-version: 2.6
       - run: bundle install
-      - name: Rubocop
+      - name: rubocop runs
         run: rubocop
