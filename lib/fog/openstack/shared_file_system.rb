@@ -81,7 +81,7 @@ module Fog
       # availability zones
       request :list_availability_zones
 
-      # rubocop:disable LineLength, Metrics/MethodLength, Metrics/ClassLength, Metrics/AbcSize
+      # rubocop:disable Metrics/LineLength, Metrics/MethodLength, Metrics/ClassLength, Metrics/AbcSize
       class Mock
         def self.data
           @data ||= Hash.new do |hash, key|
@@ -342,7 +342,7 @@ module Fog
            :openstack_management_url => @openstack_management_url}
         end
       end
-      # rubocop:enable LineLength, Metrics/MethodLength, Metrics/ClassLength, Metrics/AbcSize
+      # rubocop:enable Metrics/LineLength, Metrics/MethodLength, Metrics/ClassLength, Metrics/AbcSize
 
       class Real
         include Fog::OpenStack::Core
