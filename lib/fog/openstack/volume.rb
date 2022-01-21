@@ -23,7 +23,7 @@ module Fog
         @openstack_auth_uri = URI.parse(args[:openstack_auth_url]) if args[:openstack_auth_url]
         if inspect == 'Fog::OpenStack::Volume'
           Fog::OpenStack::Volume::V3.new(args) \
-          || Fog::OpenStack::Volume::V2.new(args)
+          || Fog::OpenStack::Volume::V2.new(args) \
           || Fog::OpenStack::Volume::V1.new(args)
         else
           super
