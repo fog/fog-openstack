@@ -1,41 +1,24 @@
+# Opt-in new cops
+AllCops:
+  NewCops: enable
 #
 # Overrides
 #
-AbcSize:
-  Severity: refactor
-AlignHash:
+Layout/HashAlignment:
   EnforcedHashRocketStyle: table
   EnforcedColonStyle: table
-BlockNesting:
-  Severity: refactor
-ClassLength:
-  Max: 150
-  Severity: refactor
-ClassCheck:
-  EnforcedStyle: kind_of?
-CollectionMethods:
-  PreferredMethods:
-    find: detect
-    find_all: select
-    map: collect
-    reduce: inject
-CyclomaticComplexity:
-  Severity: refactor
-Debugger:
-  Enabled: true
-FormatString:
-  EnforcedStyle: percent
-HashSyntax:
-  EnforcedStyle: hash_rockets
-LineLength:
+Layout/LineLength:
   Max: 120
   Severity: refactor
-MethodLength:
-  Max: 25
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+Lint/Debugger:
+  Enabled: true
+Metrics/AbcSize:
   Severity: refactor
 # Exclude test methods from BlockLength.
 Metrics/BlockLength:
-  ExcludedMethods:
+  IgnoredMethods:
   - after
   - before
   - context
@@ -44,72 +27,88 @@ Metrics/BlockLength:
   - model_tests
   - namespace
   - draw
-ParameterLists:
+Metrics/BlockNesting:
   Severity: refactor
-PerceivedComplexity:
+Metrics/ClassLength:
+  Max: 150
   Severity: refactor
-RedundantReturn:
+Metrics/CyclomaticComplexity:
+  Severity: refactor
+Metrics/MethodLength:
+  Max: 25
+  Severity: refactor
+Metrics/ParameterLists:
+  Severity: refactor
+Metrics/PerceivedComplexity:
+  Severity: refactor
+Style/ClassCheck:
+  EnforcedStyle: kind_of?
+Style/CollectionMethods:
+  PreferredMethods:
+    find: detect
+    find_all: select
+    map: collect
+    reduce: inject
+Style/FormatString:
+  EnforcedStyle: percent
+Style/HashSyntax:
+  EnforcedStyle: hash_rockets
+Style/RedundantReturn:
   AllowMultipleReturnValues: true
-SignalException:
-  EnforcedStyle: only_raise
-SingleLineMethods:
-  AllowIfMethodIsEmpty: false
-SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
 Style/RegexpLiteral:
   EnforcedStyle: slashes
   AllowInnerSlashes: true
-TrivialAccessors:
+Style/SignalException:
+  EnforcedStyle: only_raise
+Style/SingleLineMethods:
+  AllowIfMethodIsEmpty: false
+Style/TrivialAccessors:
   AllowPredicates: true
 #
 # Enabled/Disabled
 #
-ClassAndModuleChildren:
-  Enabled: false
-DefEndAlignment:
+Layout/DefEndAlignment:
   AutoCorrect: true
-Documentation:
-  Enabled: false
-Encoding:
-  Enabled: false
-EndAlignment:
+Layout/EndAlignment:
   AutoCorrect: true
-ExtraSpacing:
-  AutoCorrect: false # https://github.com/bbatsov/rubocop/issues/2280
-FindEach:
+Layout/ExtraSpacing:
+  AutoCorrect: false # https://github.com/bbatsov/rubocop/issues/2280 <= Now closed, we should remove this
+Layout/SpaceBeforeFirstArg:
   Enabled: false
-GuardClause:
+Style/ClassAndModuleChildren:
   Enabled: false
-IfUnlessModifier:
+Style/Documentation:
   Enabled: false
-NumericLiterals:
+Style/Encoding:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
+Style/NumericLiterals:
   AutoCorrect: false
   MinDigits: 7
-ParallelAssignment:
+Style/ParallelAssignment:
   Enabled: false
-PerlBackrefs:
+Style/PerlBackrefs:
   Enabled: false
-ReadWriteAttribute:
+Style/RescueModifier:
   AutoCorrect: false
-RescueModifier:
-  AutoCorrect: false
-SingleLineBlockParams:
+Style/SingleLineBlockParams:
   Enabled: false
-SpaceBeforeFirstArg:
-  Enabled: false
-SpecialGlobalVars:
+Style/SpecialGlobalVars:
   AutoCorrect: false
 Style/FrozenStringLiteralComment:
   Enabled: false
-StringLiterals:
+Style/StringLiterals:
   Enabled: false
-StringLiteralsInInterpolation:
+Style/StringLiteralsInInterpolation:
   Enabled: false
-TrailingCommaInArrayLiteral:
+Style/TrailingCommaInArrayLiteral:
   Enabled: false
-TrailingCommaInHashLiteral:
+Style/TrailingCommaInHashLiteral:
   Enabled: false
-WhileUntilModifier:
+Style/WhileUntilModifier:
   Enabled: false
-WordArray:
+Style/WordArray:
   AutoCorrect: false
