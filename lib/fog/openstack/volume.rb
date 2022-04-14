@@ -14,7 +14,8 @@ module Fog
                       :openstack_project_name, :openstack_project_id,
                       :openstack_project_domain, :openstack_user_domain, :openstack_domain_name,
                       :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
-                      :openstack_identity_api_version]
+                      :openstack_identity_api_version,
+                      :idempotent, :retry_interval, :retry_limit]
 
       # Fog::OpenStack::Image.new() will return a Fog::OpenStack::Volume::V3 or a Fog::OpenStack::Volume::V2 or a
       #  Fog::OpenStack::Volume::V1, choosing the V3 by default, as V2 is deprecated since OpenStackWallaby and V1 is

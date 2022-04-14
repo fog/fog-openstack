@@ -71,6 +71,21 @@ If you're not sure whether your OpenStack cloud uses Keystone V2 or V3 then you 
 
 If you need a version of OpenStack to test against, get youself a copy of [DevStack](http://docs.openstack.org/developer/devstack/).
 
+### Auto Retry Requests
+
+Failed requests can be handled to allow retries capability.
+
+One use case is to be able to resubmit request when facing network latency.
+
+By default auto retry is deactivated.
+To activate auto retry set `idempotency` option to `true`
+
+The default values are:
+- retry limit is 2 times
+- retry interval is 5 seconds
+
+Those values can be overriden using `:retry_limit` and `:retry_interval` options.
+
 ### Networking Gotcha
 
 Note that tenants (aka projects) in OpenStack usually require that you create a default gateway router in order to allow external access to your instances.

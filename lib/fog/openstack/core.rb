@@ -48,6 +48,14 @@ module Fog
       private
 
       def request(params, parse_json = true)
+        if @idempotent && @idempotent_verbs.include?(params[:method])
+          params.merge!(
+            :idempotent     => @idempotent,
+            :retry_limit    => @retry_limit,
+            :retry_interval => @retry_interval
+          )
+        end
+
         retried = false
         begin
           authenticate! if @expires && (@expires - Time.now.utc).to_i < 60
@@ -171,6 +179,11 @@ module Fog
         options.select { |x| x.to_s.start_with? 'openstack' }.each do |openstack_param, value|
           instance_variable_set "@#{openstack_param}".to_sym, value
         end
+
+        @idempotent_verbs ||= %w(GET DELETE)
+        @idempotent     ||= !!options[:idempotent]
+        @retry_interval ||= options[:retry_interval] || 5 # Seconds
+        @retry_limit    ||= options[:retry_limit] || 2
 
         # Ensure OpenStack User's Password is always a String
         @openstack_api_key = @openstack_api_key.to_s if @openstack_api_key
