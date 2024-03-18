@@ -29,7 +29,9 @@ class OpenStackVCR
               :domain_id,
               :region,
               :region_other,
-              :interface
+              :interface,
+              :application_credential_id,
+              :application_credential_secret
 
   # This method should be called in a "before :all" call to set everything up.
   # A properly configured instance of the service class (e.g.
@@ -109,6 +111,8 @@ class OpenStackVCR
       @domain_id     = 'default'
       @domain_name   = 'Default'
       @project_name  = 'admin'
+      @application_credential_id = '423f19a4ac1e4f48bbb4180756e6eb6c'
+      @application_credential_secret = 'rEaqvJka48mpv'
 
       unless use_recorded
         @region        = ENV['OS_REGION_NAME']       || options[:region_name]  || @region
@@ -121,6 +125,8 @@ class OpenStackVCR
         @domain_name   = ENV['OS_USER_DOMAIN_NAME']  || options[:domain_name]  || @domain_name
         @domain_id     = ENV['OS_USER_DOMAIN_ID']    || options[:domain_id]    || @domain_id
         @project_name  = ENV['OS_PROJECT_NAME']      || options[:project_name] || @project_name
+        @application_credential_id     = ENV['OS_APPLICATION_CREDENTIAL_ID']     || options[:application_credential_id]     || @application_credential_id
+        @application_credential_secret = ENV['OS_APPLICATION_CREDENTIAL_SECRET'] || options[:application_credential_secret] || @application_credential_secret
       end
 
       # TODO: remove

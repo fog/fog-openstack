@@ -12,17 +12,17 @@ describe Fog::OpenStack::Identity::V3 do
   end
 
   it 'authenticates with password, userid and domain_id' do
-    VCR.use_cassette('authv3_a') do
-      Fog::OpenStack::Identity::V3.new(
-        :openstack_domain_id => @openstack_vcr.domain_id,
-        :openstack_api_key   => @openstack_vcr.password,
-        :openstack_userid    => @openstack_vcr.user_id,
-        :openstack_region    => @openstack_vcr.region,
-        :openstack_auth_url  => @os_auth_url
+  VCR.use_cassette('authv3_a') do
+    Fog::OpenStack::Identity::V3.new(
+      :openstack_domain_id => @openstack_vcr.domain_id,
+      :openstack_api_key   => @openstack_vcr.password,
+      :openstack_userid    => @openstack_vcr.user_id,
+      :openstack_region    => @openstack_vcr.region,
+      :openstack_auth_url  => @os_auth_url
       )
     end
   end
-
+  
   it 'authenticates with password, username and domain_id' do
     VCR.use_cassette('authv3_b') do
       Fog::OpenStack::Identity::V3.new(
@@ -43,6 +43,19 @@ describe Fog::OpenStack::Identity::V3 do
         :openstack_username    => @openstack_vcr.username,
         :openstack_region      => @openstack_vcr.region,
         :openstack_auth_url    => @os_auth_url
+      )
+    end
+  end
+
+  it 'authenticates with application credentials' do
+    VCR.use_cassette('authv3_application_credential') do
+      Fog::OpenStack::Identity::V3.new(
+        :openstack_domain_id => @openstack_vcr.domain_id,
+        :openstack_application_credential_id => @openstack_vcr.application_credential_id,
+        :openstack_application_credential_secret => @openstack_vcr.application_credential_secret,
+        :openstack_userid    => @openstack_vcr.user_id,
+        :openstack_region    => @openstack_vcr.region,
+        :openstack_auth_url  => @os_auth_url
       )
     end
   end
