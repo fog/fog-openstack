@@ -18,6 +18,11 @@ module Fog
                            'methods' => ['token'],
                            'token'   => {'id' => @token}
                          }
+                       elsif @application_credential
+                         {
+                           'methods' => ['application_credential'],
+                           'application_credential' => @application_credential
+                         }
                        else
                          {
                            'methods'  => ['password'],
@@ -50,6 +55,7 @@ module Fog
           end
 
           def scope
+            return false if @application_credential
             return @project.identity if @project
             return @domain.identity if @domain
           end
@@ -96,6 +102,11 @@ module Fog
 
             if auth[:openstack_auth_token]
               @token = auth[:openstack_auth_token]
+            elsif auth[:openstack_application_credential_id] and auth[:openstack_application_credential_secret]
+              @application_credential = {
+                :id => auth[:openstack_application_credential_id],
+                :secret => auth[:openstack_application_credential_secret],
+              }
             else
               @user = Fog::OpenStack::Auth::User.new(auth[:openstack_userid], auth[:openstack_username])
               @user.password = auth[:openstack_api_key]
