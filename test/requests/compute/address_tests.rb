@@ -33,7 +33,7 @@ describe "Fog::OpenStack::Compute | address requests" do
     self.class.compute
   end
 
-  MiniTest::Unit.after_tests do
+  Minitest.after_run do
     compute.delete_server(server_id)
   end
 
