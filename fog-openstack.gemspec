@@ -34,5 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'shindo',  '~> 0.3'
   spec.add_development_dependency 'vcr'
-  spec.add_development_dependency 'webmock',  '~> 1.24.6'
+  spec.add_development_dependency 'webmock',  '~> 3.16.2'
 end
