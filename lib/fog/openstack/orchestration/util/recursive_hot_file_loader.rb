@@ -68,12 +68,12 @@ module Fog
             template = template_file
           elsif template_is_raw?(template_file)
             template_base_url = local_base_url
-            template = YAML.safe_load(template_file, [Date])
+            template = YAML.safe_load(template_file, :permitted_classes => [Date])
           elsif template_is_url?(template_file)
             template_file = normalise_file_path_to_url(template_file)
             template_base_url = base_url_for_url(template_file)
             raw_template = read_uri(template_file)
-            template = YAML.safe_load(raw_template, [Date])
+            template = YAML.safe_load(raw_template, :permitted_classes => [Date])
 
             Fog::Logger.debug("Template visited: #{@visited}")
             @visited.add(template_file)
@@ -212,7 +212,7 @@ module Fog
         def deep_copy(item)
           return item if item.kind_of?(String)
 
-          YAML.safe_load(YAML.dump(item), [Date])
+          YAML.safe_load(YAML.dump(item), :permitted_classes => [Date])
         end
       end
     end
