@@ -13,7 +13,8 @@ module Fog
                    :openstack_user_domain_id, :openstack_project_domain_id,
                    :openstack_api_key, :openstack_current_user_id, :openstack_userid, :openstack_username,
                    :current_user, :current_user_id, :current_tenant,
-                   :provider, :openstack_identity_api_version, :openstack_cache_ttl
+                   :provider, :openstack_identity_api_version, :openstack_cache_ttl, :openstack_application_credential_id,
+                   :openstack_application_credential_secret
 
         model_path 'fog/openstack/identity/v3/models'
         model :domain

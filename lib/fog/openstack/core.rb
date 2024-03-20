@@ -16,6 +16,8 @@ module Fog
       attr_reader :openstack_project_id
       attr_reader :openstack_project_domain_id
       attr_reader :openstack_identity_api_version
+      attr_reader :openstack_application_credential_id
+      attr_reader :openstack_application_credential_secret
 
       # fallback
       def self.not_found_class
@@ -184,10 +186,11 @@ module Fog
           @openstack_can_reauthenticate = false
         else
           missing_credentials = []
-
-          missing_credentials << :openstack_api_key unless @openstack_api_key
-          unless @openstack_username || @openstack_userid
-            missing_credentials << 'openstack_username or openstack_userid'
+          unless @openstack_application_credential_secret and @openstack_application_credential_id
+            missing_credentials << :openstack_api_key unless @openstack_api_key
+            unless @openstack_username || @openstack_userid
+              missing_credentials << 'openstack_username/openstack_userid or openstack_application_credential_secret and openstack_application_credential_id'
+            end
           end
           unless missing_credentials.empty?
             raise ArgumentError, "Missing required arguments: #{missing_credentials.join(', ')}"
