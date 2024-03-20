@@ -55,7 +55,7 @@ module Fog
           end
 
           def scope
-            return false if @application_credential
+            return nil if @application_credential
             return @project.identity if @project
             return @domain.identity if @domain
           end
