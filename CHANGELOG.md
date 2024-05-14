@@ -1,3 +1,11 @@
+# 1.1.1 2024/05/14
+
+* delete newlines in base64 encoding
+* misc repo maintenance
+* add support for authentication via application credentials
+
+...
+
 # 1.10.1 2013/04/04
 
 ## Storage
