@@ -1,6 +1,10 @@
-# 1.1.2 2024/06/12
+# 1.1.3 2024/06/12
 
 * add support for application credentials to storage
+
+# 1.1.2 2024/06/12
+
+* erroroneous (thought things had been merged that weren't yet)
 
 # 1.1.1 2024/05/14
 
