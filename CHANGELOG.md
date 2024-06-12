@@ -1,3 +1,7 @@
+# 1.1.2 2024/06/12
+
+* add support for application credentials to storage
+
 # 1.1.1 2024/05/14
 
 * delete newlines in base64 encoding
