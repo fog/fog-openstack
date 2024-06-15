@@ -7,7 +7,7 @@ module Fog
             request(
               :expects => 200,
               :method  => "GET",
-              :path    => "workbooks/#{URI.encode(name)}"
+              :path    => "workbooks/#{CGI.escape(name)}"
             )
           end
         end
