@@ -2,7 +2,7 @@
 
 This document explains how to get started using OpenStack Workflow (Mistral) with Fog. It assumes you have read the [Getting Started with Fog and the OpenStack](getting_started.md) document.
 
-Fog uses the [OpenStack Mistral API](http://docs.openstack.org/developer/mistral/developer/webapi/v2.html).
+Fog uses the [OpenStack Mistral API](http://docs.openstack.org/mistral/latest/user/rest_api_v2.html).
 
 ## Workflow Service
 
@@ -125,7 +125,7 @@ https://github.com/fog/fog-openstack/tree/master/examples/workflow/workflow-exam
 ## Additional Resources
 
 * [Mistral Wiki](https://wiki.openstack.org/wiki/Mistral)
-* [Mistral DSL v2](http://docs.openstack.org/developer/mistral/dsl/dsl_v2.html)
-* [Mistral API v2](http://docs.openstack.org/developer/mistral/developer/webapi/v2.html)
+* [Mistral DSL v2](http://docs.openstack.org/mistral/ocata/dsl/dsl_v2.html)
+* [Mistral API v2](http://docs.openstack.org/mistral/latest/user/rest_api_v2.html)
 * [Mistral python client](https://github.com/openstack/python-mistralclient) Can be useful to see how to interact with the API.
 * [more resources and feedback](common/resources.md)
