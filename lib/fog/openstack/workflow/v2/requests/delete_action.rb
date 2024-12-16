@@ -7,7 +7,7 @@ module Fog
             request(
               :expects => 204,
               :method  => "DELETE",
-              :path    => "actions/#{URI.encode(name)}"
+              :path    => "actions/#{CGI.escape(name)}"
             )
           end
         end
