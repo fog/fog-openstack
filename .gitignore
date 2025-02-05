@@ -1,6 +1,7 @@
 /.bundle/
 /.yardoc
 /Gemfile.lock
+/tags
 /_yardoc/
 /coverage/
 /doc/
