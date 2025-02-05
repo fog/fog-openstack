@@ -1,3 +1,9 @@
+# 1.1.4 2025/02/05
+
+* fix DSL REST API v2 docs
+* update to latest fog/.github
+- fix namespace for OpenStack Orchestration utils
+
 # 1.1.3 2024/06/12
 
 * add support for application credentials to storage
