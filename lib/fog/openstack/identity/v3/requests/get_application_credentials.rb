@@ -3,20 +3,22 @@ module Fog
       class Identity
         class V3
           class Real
-            def list_application_credentials(user_id)
+            def get_application_credentials(id, user_id)
+              puts "get app creds id: #{id}, from user #{user_id}"
               request(
                 :expects => [200],
                 :method  => 'GET',
-                :path    => "users/#{user_id}/application_credentials",
+                :path    => "users/#{user_id}/application_credentials/#{id}",
               )
             end
           end
   
           class Mock
-            def list_application_credentials(user_id)
+            def get_application_credentials(id, user_id)
             end
           end
         end
       end
     end
   end
+  
