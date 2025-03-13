@@ -115,6 +115,7 @@ module Fog
         request :delete_os_credential
         request :list_application_credentials
         request :create_application_credentials
+        request :delete_application_credentials
         request :list_policies
         request :get_policy
         request :create_policy

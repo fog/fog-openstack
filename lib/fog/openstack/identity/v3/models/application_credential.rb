@@ -20,18 +20,16 @@ module Fog
           @cache = {}
 
           def to_s
-            name
+            id.to_s
           end
 
           def destroy
-            clear_cache
             requires :id
-            service.delete_project(id)
+            service.delete_application_credentials(id, user_id)
             true
           end
 
           def update(attr = nil)
-            clear_cache
             requires :id
             merge_attributes(
               service.update_project(id, attr || attributes).body['project']
