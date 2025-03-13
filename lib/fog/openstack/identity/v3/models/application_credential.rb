@@ -29,14 +29,6 @@ module Fog
             true
           end
 
-          def update(attr = nil)
-            requires :id
-            merge_attributes(
-              service.update_project(id, attr || attributes).body['project']
-            )
-            self
-          end
-
           def create
             merge_attributes(
               service.create_application_credentials(attributes).body['application_credential']
