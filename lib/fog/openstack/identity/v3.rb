@@ -37,6 +37,8 @@ module Fog
         collection :role_assignments
         model :os_credential
         collection :os_credentials
+        model :application_credential
+        collection :application_credentials
         model :policy
         collection :policies
 
@@ -111,12 +113,14 @@ module Fog
         request :create_os_credential
         request :update_os_credential
         request :delete_os_credential
+        request :list_application_credentials
+        request :create_application_credentials
         request :list_policies
         request :get_policy
         request :create_policy
         request :update_policy
         request :delete_policy
-
+        
         class Mock
           include Fog::OpenStack::Core
           def initialize(options = {})
