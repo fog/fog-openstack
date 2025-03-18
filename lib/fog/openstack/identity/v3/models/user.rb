@@ -30,6 +30,11 @@ module Fog
             service.list_user_projects(id).body['projects']
           end
 
+          def application_credentials
+            requires :id
+            service.list_application_credentials(id).body['application_credentials']
+          end
+
           def roles
             requires :id, :domain_id
             service.list_domain_user_roles(domain_id, id).body['roles']
