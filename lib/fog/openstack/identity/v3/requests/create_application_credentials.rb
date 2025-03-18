@@ -5,7 +5,6 @@ module Fog
           class Real
             def create_application_credentials(credential = {})
               user_id = credential.delete('user_id') || credential.delete(:user_id)
-              puts Fog::JSON.encode(:application_credential => credential)
               request(
                 :expects => [201],
                 :method  => 'POST',
@@ -16,6 +15,9 @@ module Fog
           end
   
           class Mock
+            def create_application_credentials(credential = {})
+              raise Fog::Errors::MockNotImplemented
+            end
           end
         end
       end

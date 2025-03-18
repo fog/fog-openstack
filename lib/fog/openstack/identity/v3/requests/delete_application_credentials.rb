@@ -13,6 +13,9 @@ module Fog
           end
   
           class Mock
+            def delete_application_credentials(application_credential_id, user_id)
+              raise Fog::Errors::MockNotImplemented
+            end
           end
         end
       end

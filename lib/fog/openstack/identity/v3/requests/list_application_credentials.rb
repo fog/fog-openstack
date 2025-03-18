@@ -14,6 +14,7 @@ module Fog
   
           class Mock
             def list_application_credentials(user_id)
+              raise Fog::Errors::MockNotImplemented
             end
           end
         end

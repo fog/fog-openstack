@@ -4,7 +4,6 @@ module Fog
         class V3
           class Real
             def get_application_credentials(id, user_id)
-              puts "get app creds id: #{id}, from user #{user_id}"
               request(
                 :expects => [200],
                 :method  => 'GET',
@@ -15,6 +14,7 @@ module Fog
   
           class Mock
             def get_application_credentials(id, user_id)
+              raise Fog::Errors::MockNotImplemented
             end
           end
         end
