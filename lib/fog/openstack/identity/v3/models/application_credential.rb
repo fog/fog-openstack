@@ -12,7 +12,8 @@ module Fog
           attribute :roles
           attribute :expires_at
           attribute :user_id
-
+          attribute :secret
+          
           class << self
             attr_accessor :cache
           end

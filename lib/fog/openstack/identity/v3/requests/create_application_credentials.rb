@@ -9,7 +9,7 @@ module Fog
               request(
                 :expects => [201],
                 :method  => 'POST',
-                :path    => "/users/#{user_id}/application_credentials",
+                :path    => "users/#{user_id}/application_credentials",
                 :body    => Fog::JSON.encode(:application_credential => credential)
               )
             end
