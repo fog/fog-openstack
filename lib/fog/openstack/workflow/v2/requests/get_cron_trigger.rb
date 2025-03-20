@@ -7,7 +7,7 @@ module Fog
             request(
               :expects => 200,
               :method  => "GET",
-              :path    => "cron_triggers/#{URI.encode(name)}"
+              :path    => "cron_triggers/#{CGI.escape(name)}"
             )
           end
         end
