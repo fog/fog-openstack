@@ -12,7 +12,7 @@ module Fog
       end
 
       class Mock
-        def delete_key_pair(key_name)
+        def get_key_pair(key_name)
           response = Excon::Response.new
           response.status = 200
           response.headers = {

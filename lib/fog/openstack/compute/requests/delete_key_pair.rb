@@ -8,13 +8,14 @@ module Fog
           request(
             :expects => [202, 204],
             :method  => 'DELETE',
-            :path    => "os-keypairs/#{Fog::OpenStack.escape(key_name)}"
+            :path    => "os-keypairs/#{Fog::OpenStack.escape(key_name)}",
+            :query   => options
           )
         end
       end
 
       class Mock
-        def delete_key_pair(_key_name)
+        def delete_key_pair(_key_name, _user_id = nil)
           response = Excon::Response.new
           response.status = 202
           response.headers = {
