@@ -7,10 +7,16 @@ on:
     branches: [ master ]
   schedule:
     - cron: '0 0 * * 1' # At 00:00 on Monday.
+  workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   Shared:
-    uses: fog/.github/.github/workflows/ci.yml@v1.5.0
+    # fog/.github v1.6.0
+    uses: fog/.github/.github/workflows/ci.yml@f71b6243d92cf84c2307959de3016e0fb7b3411c
