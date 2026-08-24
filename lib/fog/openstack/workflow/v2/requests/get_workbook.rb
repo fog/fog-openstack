@@ -7,7 +7,7 @@ module Fog
             request(
               :expects => 200,
               :method  => "GET",
-              :path    => "workbooks/#{URI.encode(name)}"
+              :path    => "workbooks/#{Fog::OpenStack.escape(name)}"
             )
           end
         end

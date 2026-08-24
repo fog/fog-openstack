@@ -7,7 +7,7 @@ module Fog
             request(
               :expects => 204,
               :method  => "DELETE",
-              :path    => "environments/#{URI.encode(name)}"
+              :path    => "environments/#{Fog::OpenStack.escape(name)}"
             )
           end
         end
