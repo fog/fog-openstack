@@ -1,8 +1,8 @@
 # Fog::OpenStack
 
-[![Gem Version](https://badge.fury.io/rb/fog-openstack.svg)](http://badge.fury.io/rb/fog-openstack) [![Build Status](https://travis-ci.org/fog/fog-openstack.svg?branch=master)](https://travis-ci.org/fog/fog-openstack) [![Dependency Status](https://gemnasium.com/fog/fog-openstack.svg)](https://gemnasium.com/fog/fog-openstack) [![Coverage Status](https://coveralls.io/repos/github/fog/fog-openstack/badge.svg?branch=master)](https://coveralls.io/github/fog/fog-openstack?branch=master) [![Code Climate](https://codeclimate.com/github/fog/fog-openstack.svg)](https://codeclimate.com/github/fog/fog-openstack) [![Join the chat at https://gitter.im/fog/fog-openstack](https://badges.gitter.im/fog/fog-openstack.svg)](https://gitter.im/fog/fog-openstack?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gem Version](https://img.shields.io/gem/v/fog-openstack.svg)](https://rubygems.org/gems/fog-openstack) [![Coverage Status](https://img.shields.io/coverallsCoverage/github/fog/fog-openstack.svg?branch=master)](https://coveralls.io/github/fog/fog-openstack?branch=master) [![Join the chat on Gitter](https://img.shields.io/gitter/room/fog/fog-openstack.svg)](https://app.gitter.im/#/room/#fog_fog-openstack:gitter.im)
 
-This is the plugin Gem to talk to [OpenStack](http://openstack.org) clouds via fog.
+This is the plugin Gem to talk to [OpenStack](https://www.openstack.org/) clouds via fog.
 
 The main maintainers for the OpenStack sections are @dhague, @Ladas, @seanhandley, @mdarby and @jjasghar. Please send CC them on pull requests.
 
@@ -69,13 +69,13 @@ or a tenant id (`openstack_tenant_id`). Alternatively you can use `:openstack_id
 
 If you're not sure whether your OpenStack cloud uses Keystone V2 or V3 then you can find out by logging into the dashboard (Horizon) and navigating to "Access & Security" under the "Project" section. Select "API Access" and find the line for the Identity Service. If the endpoint has "v3" in it, you're on Keystone V3, if it has "v2" then (surprise) you're on Keystone V2.
 
-If you need a version of OpenStack to test against, get youself a copy of [DevStack](http://docs.openstack.org/developer/devstack/).
+If you need a version of OpenStack to test against, get yourself a copy of [DevStack](https://docs.openstack.org/devstack/latest/).
 
 ### Networking Gotcha
 
 Note that tenants (aka projects) in OpenStack usually require that you create a default gateway router in order to allow external access to your instances.
 
-The exception is if you're using Nova (and not Neutron) for your instance networking. If you're using Neutron, you'll want to [set up your default gateway](https://github.com/fog/fog-openstack/blob/usage_doc/README.md#networking-neutron) before you try to give instances public addresses (aka floating IPs).
+The exception is if you're using Nova (and not Neutron) for your instance networking. If you're using Neutron, you'll want to [set up your default gateway](#networking-neutron) before you try to give instances public addresses (aka floating IPs).
 
 ### Compute (Nova)
 
@@ -170,7 +170,7 @@ instance.destroy
 # => true
 ```
 
-You'll probably need your instances to be accessible via SSH. [Learn more about SSH keypairs](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).
+You'll probably need your instances to be accessible via SSH. [Learn more about SSH keypairs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
 
 Allow TCP traffic through port 22:
 
@@ -331,7 +331,7 @@ Create Glance image from file or URL:
 
 ```ruby
 
-cirros_location = "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
+cirros_location = "https://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
 image_out = File.open("/tmp/cirros-image-#{SecureRandom.hex}", 'wb')
 
 streamer = lambda do |chunk, _, _|
@@ -534,8 +534,8 @@ neutron.add_router_interface router.id, subnet.id
 
 ### Further Reading
 
-* See [the documentation directory](https://github.com/fog/fog-openstack/tree/master/lib/fog/openstack/docs) for more examples.
-* Read the [OpenStack API documentation](http://developer.openstack.org/api-ref.html).
+* See [the documentation directory](https://github.com/fog/fog-openstack/tree/master/docs) for more examples.
+* Read the [OpenStack API documentation](https://docs.openstack.org/api-quick-start/index.html).
 * Also, remember that reading the code itself is the best way to educate yourself on how best to interact with this gem.
 
 ## Development
@@ -561,13 +561,13 @@ In order to release a new version, perform the following steps:
 1. Update version number in `version.rb`.
 2. Run `bundle exec rake release`, which will create a git tag for the version.
 3. Push git commits and tags.
-4. Push the `.gem` file to [rubygems.org](https://rubygems.org).
+4. Push the `.gem` file to [rubygems.org](https://rubygems.org/).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/fog/fog-openstack. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/fog/fog-openstack. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
 
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/license/MIT).
