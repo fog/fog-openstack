@@ -24,6 +24,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'fog-core',  '~> 2.1'
   spec.add_dependency 'fog-json',  '>= 1.0'
 
+  # base64 became a bundled gem in Ruby 3.4, so it must be declared explicitly.
+  # webmock requires it but does not depend on it.
+  spec.add_development_dependency 'base64'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency "mime-types"

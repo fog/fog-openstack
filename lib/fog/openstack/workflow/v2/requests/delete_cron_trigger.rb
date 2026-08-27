@@ -7,7 +7,7 @@ module Fog
             request(
               :expects => 204,
               :method  => "DELETE",
-              :path    => "cron_triggers/#{URI.encode(name)}"
+              :path    => "cron_triggers/#{Fog::OpenStack.escape(name)}"
             )
           end
         end
