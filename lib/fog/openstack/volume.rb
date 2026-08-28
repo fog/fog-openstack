@@ -16,18 +16,23 @@ module Fog
                       :openstack_project_domain_id, :openstack_user_domain_id, :openstack_domain_id,
                       :openstack_identity_api_version]
 
-      # Fog::OpenStack::Image.new() will return a Fog::OpenStack::Volume::V3 or a Fog::OpenStack::Volume::V2 or a
+      # Fog::OpenStack::Volume.new() will return a Fog::OpenStack::Volume::V3 or a Fog::OpenStack::Volume::V2 or a
       #  Fog::OpenStack::Volume::V1, choosing the V3 by default, as V2 is deprecated since OpenStackWallaby and V1 is
       #  deprecated since OpenStack Juno
       def self.new(args = {})
         @openstack_auth_uri = URI.parse(args[:openstack_auth_url]) if args[:openstack_auth_url]
-        if inspect == 'Fog::OpenStack::Volume'
-          Fog::OpenStack::Volume::V3.new(args) \
-          || Fog::OpenStack::Volume::V2.new(args) \
-          || Fog::OpenStack::Volume::V1.new(args)
-        else
-          super
+        return super unless inspect == 'Fog::OpenStack::Volume'
+
+        # Each version resolves a different catalog entry: "volumev3", "volumev2"
+        # and "volume" respectively. Try them newest first and move on when the
+        # catalog does not advertise one, re-raising when none of them match.
+        last_error = nil
+        [V3, V2, V1].each do |version|
+          return version.new(args)
+        rescue Fog::OpenStack::Auth::Catalog::ServiceTypeError => e
+          last_error = e
         end
+        raise last_error
       end
     end
   end

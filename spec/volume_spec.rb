@@ -1,8 +1,11 @@
 require 'spec_helper'
 require_relative './shared_context'
 
+# NOTE: Fog::OpenStack::Volume, the version-negotiating entry point, is covered
+# by unit/volume_test.rb rather than here. It authenticates once per version it
+# tries, and these cassettes recorded exactly one token request each, so they
+# cannot represent version negotiation.
 [
-  Fog::OpenStack::Volume,
   Fog::OpenStack::Volume::V1,
   Fog::OpenStack::Volume::V2
 ].delete_if { |the_class| ENV['TEST_CLASS'] && ENV['TEST_CLASS'] != the_class.name }.each do |service_class|
