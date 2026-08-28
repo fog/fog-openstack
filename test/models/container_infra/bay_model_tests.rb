@@ -17,16 +17,16 @@ describe "Fog::OpenStack::ContainerInfra | bay model" do
     end
 
     it "#create" do
-      @instance.uuid.wont_be_nil
+      _(@instance.uuid).wont_be_nil
     end
 
     it "#update" do
       @instance.name                 = 'rename-test-bay-model'
-      @instance.update.name.must_equal 'rename-test-bay-model'
+      _(@instance.update.name).must_equal 'rename-test-bay-model'
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

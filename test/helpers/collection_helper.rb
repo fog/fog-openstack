@@ -10,13 +10,13 @@ def collection_tests(collection, params = {})
 
     it "#new(#{params.inspect})" do
       unless Fog.mocking?
-        collection.new(params).must_equal 200
+        _(collection.new(params)).must_equal 200
       end
     end
 
     it "#create(#{params.inspect})" do
       unless Fog.mocking?
-        @instance.must_be_kind_of Fog::OpenStack::Network::SecurityGroup
+        _(@instance).must_be_kind_of Fog::OpenStack::Network::SecurityGroup
       end
     end
 
@@ -27,13 +27,13 @@ def collection_tests(collection, params = {})
 
     it "#all" do
       unless Fog.mocking?
-        collection.all.must_be_kind_of Fog::OpenStack::Network::SecurityGroups
+        _(collection.all).must_be_kind_of Fog::OpenStack::Network::SecurityGroups
       end
     end
 
     it "#get(#{@identity})" do
       unless Fog.mocking?
-        collection.get(@identity).must_be_kind_of Fog::OpenStack::Network::SecurityGroup
+        _(collection.get(@identity)).must_be_kind_of Fog::OpenStack::Network::SecurityGroup
       end
     end
 
@@ -52,7 +52,7 @@ def collection_tests(collection, params = {})
             it "##{enum_method}" do
               block_called = false
               collection.send(enum_method) { block_called = true }
-              block_called.must_equal true
+              _(block_called).must_equal true
             end
           end
         end
@@ -65,7 +65,7 @@ def collection_tests(collection, params = {})
                 block_called = true
                 return 0
               end
-              block_called.must_equal true
+              _(block_called).must_equal true
             end
           end
         end
@@ -95,7 +95,7 @@ def collection_tests(collection, params = {})
 
     it "#get(@identity" do
       unless Fog.mocking?
-        collection.get(@identity).must_equal nil
+        _(collection.get(@identity)).must_be_nil
       end
     end
   end

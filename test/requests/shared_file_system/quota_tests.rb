@@ -19,7 +19,7 @@ describe "Fog::OpenStack::SharedFileSystem | quota requests" do
 
   describe "success" do
     it "#get_quota" do
-      @quota.must_match_schema(@quota_format)
+      _(@quota).must_match_schema(@quota_format)
     end
 
     it "#update_quota" do
@@ -28,8 +28,8 @@ describe "Fog::OpenStack::SharedFileSystem | quota requests" do
         'snapshots' => @quota['snapshots'] + 2
       )
 
-      @manila.update_quota(@project_id, new_values.clone).status.must_equal 200
-      @manila.get_quota(@project_id).body['quota_set'].must_equal new_values
+      _(@manila.update_quota(@project_id, new_values.clone).status).must_equal 200
+      _(@manila.get_quota(@project_id).body['quota_set']).must_equal new_values
       # turn back
       @manila.update_quota(@project_id, @quota)
     end

@@ -28,23 +28,23 @@ describe "Fog::OpenStack::DNS::V2 | zone requests" do
 
   describe "success" do
     it "#list_zones" do
-      @dns.list_zones.body.must_match_schema("zones" => [@zone_format])
+      _(@dns.list_zones.body).must_match_schema("zones" => [@zone_format])
     end
 
     it "#create_zone" do
-      @zone.body.must_match_schema(@zone_format)
+      _(@zone.body).must_match_schema(@zone_format)
     end
 
     it "#get_zone" do
-      @dns.get_zone(@zone_id).body.must_match_schema(@zone_format)
+      _(@dns.get_zone(@zone_id).body).must_match_schema(@zone_format)
     end
 
     it "#update_zone" do
-      @dns.update_zone(@zone_id, "email" => 'new_hostmaster@example.org').body.must_match_schema(@zone_format)
+      _(@dns.update_zone(@zone_id, "email" => 'new_hostmaster@example.org').body).must_match_schema(@zone_format)
     end
 
     it "#delete_zone" do
-      @dns.delete_zone(@zone_id).body.must_match_schema(@zone_format)
+      _(@dns.delete_zone(@zone_id).body).must_match_schema(@zone_format)
     end
   end
 end

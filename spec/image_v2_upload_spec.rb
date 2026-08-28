@@ -47,14 +47,14 @@ describe Fog::OpenStack::Image do
         while @service.images.find_by_id(foobar_id).status == 'saving'
           sleep 1
         end
-        @service.images.find_by_id(foobar_id).status.must_equal 'active'
+        _(@service.images.find_by_id(foobar_id).status).must_equal 'active'
 
         size = 0
         read_block = lambda do |chunk, _remaining, _total|
           size += chunk.size
         end
         foobar_image.download_data(:response_block => read_block)
-        size.must_equal File.size(image_path)
+        _(size).must_equal File.size(image_path)
       ensure
         # Delete the image
         foobar_image.destroy if foobar_image
@@ -63,11 +63,11 @@ describe Fog::OpenStack::Image do
 
         # Check that the deletion worked
         if foobar_id
-          proc do
+          _(proc do
             @service.images.find_by_id foobar_id
-          end.must_raise Fog::OpenStack::Image::NotFound
+          end).must_raise Fog::OpenStack::Image::NotFound
         end
-        @service.images.all(:name => 'foobar_up2').length.must_equal 0
+        _(@service.images.all(:name => 'foobar_up2').length).must_equal 0
       end
     end
   end

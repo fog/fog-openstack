@@ -17,11 +17,11 @@ describe "Fog::OpenStack::Network | routers" do
 
   describe "success" do
     it "#all" do
-      @routers.all[0].status.must_equal "ACTIVE"
+      _(@routers.all[0].status).must_equal "ACTIVE"
     end
 
     it "#get" do
-      @routers.get(@router.id).status.must_equal "ACTIVE"
+      _(@routers.get(@router.id).status).must_equal "ACTIVE"
     end
   end
 end

@@ -26,30 +26,30 @@ describe "Fog::OpenStack::Baremetal | Baremetal chassis requests" do
     end
 
     it "#list_chassis" do
-      @baremetal.list_chassis.body.must_match_schema('chassis' => [@chassis_format])
+      _(@baremetal.list_chassis.body).must_match_schema('chassis' => [@chassis_format])
     end
 
     it "#list_chassis_detailed" do
-      @baremetal.list_chassis_detailed.body.must_match_schema('chassis' => [@detailed_chassis_format])
+      _(@baremetal.list_chassis_detailed.body).must_match_schema('chassis' => [@detailed_chassis_format])
     end
 
     it "#create_chassis" do
-      @instance.must_match_schema(@detailed_chassis_format)
+      _(@instance).must_match_schema(@detailed_chassis_format)
     end
 
     it "#get_chassis" do
-      @baremetal.get_chassis(@instance['uuid']).body.must_match_schema(@detailed_chassis_format)
+      _(@baremetal.get_chassis(@instance['uuid']).body).must_match_schema(@detailed_chassis_format)
     end
 
     it "#patch_chassis" do
-      @baremetal.patch_chassis(
+      _(@baremetal.patch_chassis(
         @instance['uuid'],
         [{'op' => 'replace', 'path' => '/description', 'value' => 'new description'}]
-      ).body.must_match_schema(@detailed_chassis_format)
+      ).body).must_match_schema(@detailed_chassis_format)
     end
 
     it "#delete_chassis" do
-      @baremetal.delete_chassis(@instance['uuid']).status.must_equal 200
+      _(@baremetal.delete_chassis(@instance['uuid']).status).must_equal 200
     end
   end
 end

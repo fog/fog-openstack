@@ -12,7 +12,7 @@ describe "Fog::OpenStack::Planning | Planning role requests" do
 
   describe "success" do
     it "#list_roles" do
-      Fog::OpenStack::Planning.new.list_roles.body.must_match_schema([@role_format])
+      _(Fog::OpenStack::Planning.new.list_roles.body).must_match_schema([@role_format])
     end
   end
 end

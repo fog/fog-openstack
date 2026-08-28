@@ -37,16 +37,16 @@ describe "Fog::OpenStack::Network | lb_vip requests" do
     end
 
     it "#create_lb_vip" do
-      @lb_vip.must_match_schema('vip' => @lb_vip_format)
+      _(@lb_vip).must_match_schema('vip' => @lb_vip_format)
     end
 
     it "#list_lb_vips" do
-      network.list_lb_vips.body.must_match_schema('vips' => [@lb_vip_format])
+      _(network.list_lb_vips.body).must_match_schema('vips' => [@lb_vip_format])
     end
 
     it "#get_lb_vip" do
       lb_vip_id = network.lb_vips.all.first.id
-      network.get_lb_vip(lb_vip_id).body.
+      _(network.get_lb_vip(lb_vip_id).body).
         must_match_schema('vip' => @lb_vip_format)
     end
 
@@ -60,33 +60,33 @@ describe "Fog::OpenStack::Network | lb_vip requests" do
         :session_persistence => {"type" => "HTTP_COOKIE"},
         :admin_state_up      => false
       }
-      network.update_lb_vip(lb_vip_id, attributes).body.
+      _(network.update_lb_vip(lb_vip_id, attributes).body).
         must_match_schema('vip' => @lb_vip_format)
     end
 
     it "#delete_lb_vip" do
       lb_vip_id = network.lb_vips.all.first.id
-      network.delete_lb_vip(lb_vip_id).status.must_equal 204
+      _(network.delete_lb_vip(lb_vip_id).status).must_equal 204
     end
   end
 
   describe "failure" do
     it "#get_lb_vip" do
-      proc do
+      _(proc do
         network.get_lb_vip(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_lb_vip" do
-      proc do
+      _(proc do
         network.update_lb_vip(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_lb_vip" do
-      proc do
+      _(proc do
         network.delete_lb_vip(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

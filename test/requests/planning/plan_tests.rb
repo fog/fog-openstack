@@ -21,15 +21,15 @@ describe "Fog::OpenStack::Planning | Planning plan requests" do
 
   describe "success" do
     it "#list_plans" do
-      @plans.must_match_schema([@plan_format])
+      _(@plans).must_match_schema([@plan_format])
     end
 
     it "#get_plan" do
-      Fog::OpenStack::Planning.new.get_plan(@instance['uuid']).body.must_match_schema(@plan_format)
+      _(Fog::OpenStack::Planning.new.get_plan(@instance['uuid']).body).must_match_schema(@plan_format)
     end
 
     it "#delete_plan" do
-      Fog::OpenStack::Planning.new.delete_plan(@instance['uuid']).status.must_equal 204
+      _(Fog::OpenStack::Planning.new.delete_plan(@instance['uuid']).status).must_equal 204
     end
 
     it "#create_plan" do
@@ -38,14 +38,14 @@ describe "Fog::OpenStack::Planning | Planning plan requests" do
         :description => 'test-plan-desc',
       }
       @instance = Fog::OpenStack::Planning.new.create_plan(plan_attributes).body
-      @instance.must_match_schema(@plan_format)
+      _(@instance).must_match_schema(@plan_format)
     end
 
     it "#add_role_to_plan" do
-      Fog::OpenStack::Planning.new.add_role_to_plan(
+      _(Fog::OpenStack::Planning.new.add_role_to_plan(
         @instance['uuid'],
         @role_instance['uuid']
-      ).body.must_match_schema(@plan_format)
+      ).body).must_match_schema(@plan_format)
     end
 
     it "#patch_plan" do
@@ -57,19 +57,19 @@ describe "Fog::OpenStack::Planning | Planning plan requests" do
           "value" => "test-#{parameter['name']}-value",
         }
       end
-      Fog::OpenStack::Planning.new.patch_plan(@instance['uuid'], plan_parameters).body.
+      _(Fog::OpenStack::Planning.new.patch_plan(@instance['uuid'], plan_parameters).body).
         must_match_schema(@plan_format)
     end
 
     it "#get_plan_templates" do
-      Fog::OpenStack::Planning.new.get_plan_templates(@instance['uuid']).body.
+      _(Fog::OpenStack::Planning.new.get_plan_templates(@instance['uuid']).body).
         must_match_schema(@plan_templates_format)
     end
 
     it "#remove_role_from_plan" do
-      Fog::OpenStack::Planning.new.remove_role_from_plan(
+      _(Fog::OpenStack::Planning.new.remove_role_from_plan(
         @instance['uuid'], @role_instance['uuid']
-      ).body.must_match_schema(@plan_format)
+      ).body).must_match_schema(@plan_format)
     end
   end
 end

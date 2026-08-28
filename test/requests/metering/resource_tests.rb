@@ -14,11 +14,11 @@ describe "Fog::OpenStack::Metering | resource requests" do
 
   describe "success" do
     it "#list_resource" do
-      @metering.list_resources.body.must_match_schema([@resource_format])
+      _(@metering.list_resources.body).must_match_schema([@resource_format])
     end
 
     it "#get_resource" do
-      @metering.get_resource('test').body.must_match_schema(@resource_format)
+      _(@metering.get_resource('test').body).must_match_schema(@resource_format)
     end
   end
 end

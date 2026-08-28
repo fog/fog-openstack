@@ -28,16 +28,16 @@ describe "Fog::OpenStack::Network | subnet_pool requests" do
       @subnet_pool = network.create_subnet_pool(name, prefixes).body
     end
     it "#create_subnet_pool" do
-      @subnet_pool.must_match_schema('subnetpool' => @subnet_pool_format)
+      _(@subnet_pool).must_match_schema('subnetpool' => @subnet_pool_format)
     end
 
     it "#list_subnet_pool" do
-      network.list_subnet_pools.body.must_match_schema('subnetpools' => [@subnet_pool_format])
+      _(network.list_subnet_pools.body).must_match_schema('subnetpools' => [@subnet_pool_format])
     end
 
     it "#get_subnet_pool" do
       subnet_pool_id = network.subnet_pools.all.first.id
-      network.get_subnet_pool(subnet_pool_id).body.must_match_schema('subnetpool' => @subnet_pool_format)
+      _(network.get_subnet_pool(subnet_pool_id).body).must_match_schema('subnetpool' => @subnet_pool_format)
     end
 
     it "#update_subnet_pool" do
@@ -46,32 +46,33 @@ describe "Fog::OpenStack::Network | subnet_pool requests" do
         :name => 'new_subnet_pool_name'
       }
 
-      network.update_subnet_pool(subnet_pool_id, attributes).body.must_match_schema('subnetpool' => @subnet_pool_format)
+      _(network.update_subnet_pool(subnet_pool_id, attributes).body)
+        .must_match_schema('subnetpool' => @subnet_pool_format)
     end
 
     it "#delete_subnet_pool" do
       subnet_pool_id = network.subnet_pools.all.first.id
-      network.delete_subnet_pool(subnet_pool_id).status.must_equal 204
+      _(network.delete_subnet_pool(subnet_pool_id).status).must_equal 204
     end
   end
 
   describe "failure" do
     it "#get_subnet_pool" do
-      proc do
+      _(proc do
         network.get_subnet_pool(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_subnet_pool" do
-      proc do
+      _(proc do
         network.update_subnet_pool(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_subnet_pool" do
-      proc do
+      _(proc do
         network.delete_subnet_pool(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

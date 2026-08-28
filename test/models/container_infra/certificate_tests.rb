@@ -11,12 +11,12 @@ describe "Fog::OpenStack::ContainerInfra | certificate" do
     end
 
     it "#create" do
-      @instance.pem.wont_be_nil
+      _(@instance.pem).wont_be_nil
     end
 
     it "#get" do
       @instance = container_infra.certificates.get("0562d357-8641-4759-8fed-8173f02c9633")
-      @instance.pem.wont_be_nil
+      _(@instance.pem).wont_be_nil
     end
   end
 end

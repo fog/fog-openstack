@@ -30,15 +30,15 @@ describe "Fog::Identity[:openstack] | ec2_credential" do
 
   describe "success" do
     it "#destroy" do
-      @ec2_credential.destroy.must_equal(true)
+      _(@ec2_credential.destroy).must_equal(true)
     end
   end
 
   describe "failure" do
     it "#save" do
-      proc do
+      _(proc do
         @ec2_credential.save
-      end.must_raise(Fog::Errors::Error)
+      end).must_raise(Fog::Errors::Error)
     end
   end
 end

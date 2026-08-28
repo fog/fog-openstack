@@ -44,23 +44,23 @@ describe "Fog::OpenStack::Network | lb_pool requests" do
     end
 
     it "#create_lb_pool" do
-      @lb_pool.must_match_schema('pool' => @lb_pool_format)
+      _(@lb_pool).must_match_schema('pool' => @lb_pool_format)
     end
 
     it "#list_lb_pools" do
-      network.list_lb_pools.body.
+      _(network.list_lb_pools.body).
         must_match_schema('pools' => [@lb_pool_format])
     end
 
     it "#get_lb_pool" do
       lb_pool_id = network.lb_pools.all.first.id
-      network.get_lb_pool(lb_pool_id).body.
+      _(network.get_lb_pool(lb_pool_id).body).
         must_match_schema('pool' => @lb_pool_format)
     end
 
     it "#get_lb_pool_stats" do
       lb_pool_id = network.lb_pools.all.first.id
-      network.get_lb_pool_stats(lb_pool_id).body.
+      _(network.get_lb_pool_stats(lb_pool_id).body).
         must_match_schema('stats' => @lb_pool_stats_format)
     end
 
@@ -72,33 +72,33 @@ describe "Fog::OpenStack::Network | lb_pool requests" do
         :lb_method      => 'LEAST_CONNECTIONS',
         :admin_state_up => false
       }
-      network.update_lb_pool(lb_pool_id, attributes).body.
+      _(network.update_lb_pool(lb_pool_id, attributes).body).
         must_match_schema('pool' => @lb_pool_format)
     end
 
     it "#delete_lb_pool" do
       lb_pool_id = network.lb_pools.all.first.id
-      network.delete_lb_pool(lb_pool_id).status.must_equal 204
+      _(network.delete_lb_pool(lb_pool_id).status).must_equal 204
     end
   end
 
   describe "failure" do
     it "#get_lb_pool" do
-      proc do
+      _(proc do
         network.get_lb_pool(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_lb_pool" do
-      proc do
+      _(proc do
         network.update_lb_pool(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_lb_pool" do
-      proc do
+      _(proc do
         network.delete_lb_pool(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

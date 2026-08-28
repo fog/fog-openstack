@@ -21,7 +21,7 @@ describe "Fog::OpenStack::Compute | server" do
 
       server.associate_address(ip1.fixed_ip_address)
       server.reload
-      server.floating_ip_addresses.must_equal(["192.168.11.3"])
+      _(server.floating_ip_addresses).must_equal(["192.168.11.3"])
     end
 
     describe "#security_groups" do
@@ -64,15 +64,15 @@ describe "Fog::OpenStack::Compute | server" do
       end
 
       it "groups size" do
-        found_groups.length.must_equal 1
+        _(found_groups.length).must_equal 1
       end
 
       it "name" do
-        group.name.must_equal 'my_group'
+        _(group.name).must_equal 'my_group'
       end
 
       it "" do
-        group.service.must_equal server.service
+        _(group.service).must_equal server.service
       end
     end
 
@@ -87,7 +87,7 @@ describe "Fog::OpenStack::Compute | server" do
           :image_ref  => image,
           :state      => 'success'
         )
-        server.failed?.must_equal false
+        _(server.failed?).must_equal false
       end
 
       it "fails server creation" do
@@ -97,7 +97,7 @@ describe "Fog::OpenStack::Compute | server" do
           :image_ref  => image,
           :state      => 'ERROR'
         )
-        server.failed?.must_equal true
+        _(server.failed?).must_equal true
       end
     end
 
@@ -127,7 +127,7 @@ describe "Fog::OpenStack::Compute | server" do
 
         server.save
 
-        server.metadata.length.must_equal 1
+        _(server.metadata.length).must_equal 1
 
         server.metadata.each do |datum|
           datum.value = 'foo'
@@ -218,20 +218,20 @@ describe "Fog::OpenStack::Compute | server" do
       end
 
       it "volume size" do
-        volumes.length.must_equal 1
+        _(volumes.length).must_equal 1
       end
 
       it "name" do
-        volumes.first.name.must_equal 'test volume'
+        _(volumes.first.name).must_equal 'test volume'
       end
 
       it "volume_attachments size" do
-        volume_attachments.length.must_equal 1
+        _(volume_attachments.length).must_equal 1
       end
 
       it "volume_attachments device" do
         attachment = volume_attachments.first
-        attachment['device'].must_equal '/dev/vdc'
+        _(attachment['device']).must_equal '/dev/vdc'
       end
 
       describe "detach volume" do
@@ -242,12 +242,12 @@ describe "Fog::OpenStack::Compute | server" do
 
         it "has no volumes" do
           found_volumes = server.volumes
-          found_volumes.length.must_equal 0
+          _(found_volumes.length).must_equal 0
         end
 
         it "has no volume_attachments" do
           found_attachments = server.volume_attachments
-          found_attachments.length.must_equal 0
+          _(found_attachments.length).must_equal 0
         end
       end
     end

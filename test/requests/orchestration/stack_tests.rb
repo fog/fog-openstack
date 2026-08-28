@@ -63,7 +63,7 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
 
   describe "success" do
     it "#create_stack" do
-      @stack = @orchestration.create_stack(:stack_name => "teststack").body.must_match_schema(@create_format)
+      @stack = _(@orchestration.create_stack(:stack_name => "teststack").body).must_match_schema(@create_format)
     end
 
     it "#create_stack_with_files" do
@@ -71,7 +71,7 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
         :stack_name => "teststack_files",
         :files      => {'foo.sh'=>'hello'}
       }
-      @stack = @orchestration.create_stack(args).body.must_match_schema(@create_format_files)
+      @stack = _(@orchestration.create_stack(args).body).must_match_schema(@create_format_files)
     end
 
     it "#create_stack_resolve_files" do
@@ -81,7 +81,7 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
         :template   => YAML.load_file("local.yaml"),
       }
       response = @orchestration.create_stack(args)
-      response.body.must_match_schema(@create_format_files)
+      _(response.body).must_match_schema(@create_format_files)
       files = response.body['files']
       Fog::Logger.warning("Request processed: #{files.keys}")
       assert_equal_set(expected, files.keys)
@@ -95,34 +95,34 @@ describe "Fog::OpenStack::Orchestration | stack requests" do
         :files      => {expected[-1] => "# just a mock"}
       }
       response = @orchestration.create_stack(args)
-      response.body.must_match_schema(@create_format_files)
+      _(response.body).must_match_schema(@create_format_files)
       files = response.body['files']
       Fog::Logger.warning("Request processed: #{files.keys}")
       assert_equal_set(expected, files.keys)
     end
 
     it "#list_stack_data" do
-      @orchestration.list_stack_data.body.must_match_schema('stacks' => [@stack_format])
+      _(@orchestration.list_stack_data.body).must_match_schema('stacks' => [@stack_format])
     end
 
     it "#list_stack_data_Detailed" do
-      @orchestration.list_stack_data_detailed.body.must_match_schema('stacks' => [@stack_detailed_format])
+      _(@orchestration.list_stack_data_detailed.body).must_match_schema('stacks' => [@stack_detailed_format])
     end
 
     it "#update_stack" do
-      @orchestration.update_stack(@stack_mock).body.must_match_schema({})
+      _(@orchestration.update_stack(@stack_mock).body).must_match_schema({})
     end
 
     it "#patch_stack" do
-      @orchestration.patch_stack(@stack_mock).body.must_match_schema({})
+      _(@orchestration.patch_stack(@stack_mock).body).must_match_schema({})
     end
 
     it "#delete_stack" do
-      @orchestration.delete_stack(@stack_mock).body.must_match_schema({})
+      _(@orchestration.delete_stack(@stack_mock).body).must_match_schema({})
     end
 
     it "#cancel_update" do
-      @orchestration.cancel_update(@stack_mock).body.must_match_schema({})
+      _(@orchestration.cancel_update(@stack_mock).body).must_match_schema({})
     end
   end
 end

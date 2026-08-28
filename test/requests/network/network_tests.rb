@@ -43,7 +43,7 @@ describe "Fog::OpenStack::Network | network requests" do
     end
 
     it "#create_network" do
-      created_network.must_match_schema("network" => network_format)
+      _(created_network).must_match_schema("network" => network_format)
     end
 
     it "#create_network+provider extensions" do
@@ -62,18 +62,18 @@ describe "Fog::OpenStack::Network | network requests" do
         :router_external          => true,
       }
 
-      network.create_network(attributes).body.
+      _(network.create_network(attributes).body).
         must_match_schema('network' => network_format.merge(network_extentions_format))
     end
 
     it "#list_networks" do
-      network.list_networks.body.
+      _(network.list_networks.body).
         must_match_schema('networks' => [network_format])
     end
 
     it "#get_network" do
       network_id = created_network["network"]["id"]
-      network.get_network(network_id).body.
+      _(network.get_network(network_id).body).
         must_match_schema('network' => network_format)
     end
 
@@ -89,20 +89,20 @@ describe "Fog::OpenStack::Network | network requests" do
 
       network_id = network.networks.all.first.id
       network_update_extentions_format = {"router:external" => Fog::Boolean}
-      network.update_network(network_id, attributes).body.
+      _(network.update_network(network_id, attributes).body).
         must_match_schema('network' => network_format.merge(network_update_extentions_format))
     end
 
     it "#delete_network" do
       network_id = network.networks.all.first.id
-      network.delete_network(network_id).status.must_equal 204
+      _(network.delete_network(network_id).status).must_equal 204
     end
   end
 
   describe "failure" do
     it "#create_network+provider extensions" do
       unless Fog.mocking?
-        proc do
+        _(proc do
           attributes = {
             :name                     => 'net_name',
             :shared                   => false,
@@ -117,26 +117,26 @@ describe "Fog::OpenStack::Network | network requests" do
           }
 
           network.create_network(attributes)
-        end.must_raise Excon::Errors::BadRequest
+        end).must_raise Excon::Errors::BadRequest
       end
     end
 
     it "#get_network" do
-      proc do
+      _(proc do
         network.get_network(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_network" do
-      proc do
+      _(proc do
         network.update_network(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_network" do
-      proc do
+      _(proc do
         network.delete_network(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 

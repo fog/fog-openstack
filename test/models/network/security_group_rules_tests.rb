@@ -29,7 +29,7 @@ describe "Fog::OpenStack::Network | security_group_rules collection" do
 
     it "#all(filter)" do
       secgrouprule = network.security_group_rules.all(:direction => "ingress")
-      secgrouprule.first.direction.must_equal "ingress"
+      _(secgrouprule.first.direction).must_equal "ingress"
       @secgrouprule.destroy
     end
   end

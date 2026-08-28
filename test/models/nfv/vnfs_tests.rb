@@ -14,19 +14,19 @@ describe "Fog::NFV[:openstack] | vnfs" do
 
     it "#find_by_id" do
       vnf = @nfv.vnfs.find_by_id(@vnfs.id)
-      vnf.id.must_equal @vnfs.id
+      _(vnf.id).must_equal @vnfs.id
     end
 
     it "#get" do
       vnf = @nfv.vnfs.get(@vnfs.id)
-      vnf.id.must_equal @vnfs.id
+      _(vnf.id).must_equal @vnfs.id
     end
 
     it "#destroy" do
       sleep(10) unless Fog.mocking?
 
       @nfv.vnfs.destroy(@vnfs.id)
-      @nfv.vnfds.destroy(@vnfd.id).must_equal true
+      _(@nfv.vnfds.destroy(@vnfd.id)).must_equal true
     end
   end
 end

@@ -14,7 +14,7 @@ describe "@inspector | Introspection rules requests" do
 
   describe "success" do
     it "#list_rules" do
-      @inspector.list_rules.body.must_match_schema('rules' => @rules)
+      _(@inspector.list_rules.body).must_match_schema('rules' => @rules)
     end
 
     it "#create_rules" do
@@ -32,19 +32,19 @@ describe "@inspector | Introspection rules requests" do
         "description" => "",
         "uuid"        => ""
       }
-      @inspector.create_rules(attributes).body.must_match_schema('rules' => @rules)
+      _(@inspector.create_rules(attributes).body).must_match_schema('rules' => @rules)
     end
 
     it "#get_rules" do
-      @inspector.get_rules(@rules_id).body.must_match_schema('rules' => @rules)
+      _(@inspector.get_rules(@rules_id).body).must_match_schema('rules' => @rules)
     end
 
     it "#delete_rules" do
-      @inspector.delete_rules(@rules_id).status.must_equal 204
+      _(@inspector.delete_rules(@rules_id).status).must_equal 204
     end
 
     it "#delete_rules_all" do
-      @inspector.delete_rules_all.status.must_equal 204
+      _(@inspector.delete_rules_all.status).must_equal 204
     end
   end
 end

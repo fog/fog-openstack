@@ -19,16 +19,16 @@ describe "Fog::OpenStack::Network | subnet" do
     end
 
     it "#create" do
-      @instance.id.wont_be_nil
+      _(@instance.id).wont_be_nil
     end
 
     it "#update" do
       @instance.name = 'new_subnet_name'
-      @instance.update.name.must_equal 'new_subnet_name'
+      _(@instance.update.name).must_equal 'new_subnet_name'
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

@@ -22,11 +22,11 @@ describe "Fog::OpenStack::Baremetal | Baremetal port requests" do
 
   describe "success" do
     it "#list_ports" do
-      @baremetal.list_ports.body.must_match_schema('ports' => [@port_format])
+      _(@baremetal.list_ports.body).must_match_schema('ports' => [@port_format])
     end
 
     it "#list_ports_detailed" do
-      @baremetal.list_ports_detailed.body.must_match_schema('ports' => [@detailed_port_format])
+      _(@baremetal.list_ports_detailed.body).must_match_schema('ports' => [@detailed_port_format])
     end
 
     before do
@@ -41,23 +41,23 @@ describe "Fog::OpenStack::Baremetal | Baremetal port requests" do
     end
 
     it "#create_port" do
-      @port.must_match_schema(@detailed_port_format)
+      _(@port).must_match_schema(@detailed_port_format)
     end
 
     it "#get_port" do
-      @baremetal.get_port(@port['uuid']).body.must_match_schema(@detailed_port_format)
+      _(@baremetal.get_port(@port['uuid']).body).must_match_schema(@detailed_port_format)
     end
 
     it "#patch_port" do
-      @baremetal.patch_port(
+      _(@baremetal.patch_port(
         @port['uuid'],
         [{'op' => 'add', 'path' => '/extra/name', 'value' => 'eth1'}]
-      ).body.must_match_schema(@detailed_port_format)
+      ).body).must_match_schema(@detailed_port_format)
     end
 
     it "#delete_port" do
-      @baremetal.delete_port(@port['uuid']).status.must_equal 200
-      @baremetal.delete_node(@instance['uuid']).status.must_equal 200
+      _(@baremetal.delete_port(@port['uuid']).status).must_equal 200
+      _(@baremetal.delete_node(@instance['uuid']).status).must_equal 200
     end
   end
 end

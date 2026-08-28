@@ -28,16 +28,16 @@ describe "Fog::OpenStack::Network | lb_member requests" do
     end
 
     it "#create_lb_member" do
-      @lb_member.must_match_schema('member' => @lb_member_format)
+      _(@lb_member).must_match_schema('member' => @lb_member_format)
     end
 
     it "#list_lb_members" do
-      network.list_lb_members.body.must_match_schema('members' => [@lb_member_format])
+      _(network.list_lb_members.body).must_match_schema('members' => [@lb_member_format])
     end
 
     it "#get_lb_member" do
       lb_member_id = network.lb_members.all.first.id
-      network.get_lb_member(lb_member_id).body.
+      _(network.get_lb_member(lb_member_id).body).
         must_match_schema('member' => @lb_member_format)
     end
 
@@ -49,33 +49,33 @@ describe "Fog::OpenStack::Network | lb_member requests" do
         :admin_state_up => false
       }
 
-      network.update_lb_member(lb_member_id, attributes).body.
+      _(network.update_lb_member(lb_member_id, attributes).body).
         must_match_schema('member' => @lb_member_format)
     end
 
     it "#delete_lb_member" do
       lb_member_id = network.lb_members.all.first.id
-      network.delete_lb_member(lb_member_id).status.must_equal 204
+      _(network.delete_lb_member(lb_member_id).status).must_equal 204
     end
   end
 
   describe "failure" do
     it "#get_lb_member" do
-      proc do
+      _(proc do
         network.get_lb_member(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_lb_member" do
-      proc do
+      _(proc do
         network.update_lb_member(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_lb_member" do
-      proc do
+      _(proc do
         network.delete_lb_member(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

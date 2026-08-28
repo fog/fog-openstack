@@ -15,14 +15,14 @@ describe "Fog::OpenStack::Network | floating_ips" do
 
   describe "success" do
     it "#all" do
-      @floating_ips.all[0].id.wont_be_nil
+      _(@floating_ips.all[0].id).wont_be_nil
     end
 
     it "#get" do
       # Something wrong here - Test fails when there are several floating ips
       # not properly garbage collected
       skip
-      @floating_ips.get(@floating_ip.id).id.must_equal @floating_ip.id
+      _(@floating_ips.get(@floating_ip.id).id).must_equal @floating_ip.id
     end
   end
 end

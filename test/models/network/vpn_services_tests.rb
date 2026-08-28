@@ -21,11 +21,11 @@ describe "Fog::OpenStack::Network | vpn_services" do
 
   describe "success" do
     it "#all" do
-      @vpn_services.all[0].status.must_equal "ACTIVE"
+      _(@vpn_services.all[0].status).must_equal "ACTIVE"
     end
 
     it "#get" do
-      @vpn_services.get(@vpn_service.id).status.must_equal "ACTIVE"
+      _(@vpn_services.get(@vpn_service.id).status).must_equal "ACTIVE"
     end
   end
 end

@@ -18,11 +18,11 @@ describe "Fog::OpenStack::Network | lb_health_monitors" do
 
   describe "success" do
     it "#all" do
-      @lb_health_monitors.all[0].status.must_equal "ACTIVE"
+      _(@lb_health_monitors.all[0].status).must_equal "ACTIVE"
     end
 
     it "#get" do
-      @lb_health_monitors.get(@lb_health_monitor.id).status.must_equal "ACTIVE"
+      _(@lb_health_monitors.get(@lb_health_monitor.id).status).must_equal "ACTIVE"
     end
   end
 end

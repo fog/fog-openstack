@@ -39,40 +39,40 @@ describe "Shindo.tests('@compute | security group requests" do
 
   describe "success" do
     it "#create_security_group(name, description)" do
-      @security_group.must_match_schema("security_group" => @security_group_format)
+      _(@security_group).must_match_schema("security_group" => @security_group_format)
     end
 
     it "#create_security_group_rule(parent_group_id, ip_protocol, from_port, to_port, cidr, group_id=nil)" do
-      @security_group_rule.must_match_schema("security_group_rule" => @security_group_rule_format)
+      _(@security_group_rule).must_match_schema("security_group_rule" => @security_group_rule_format)
     end
 
     it "#list_security_groups" do
-      @compute.list_security_groups.body.
+      _(@compute.list_security_groups.body).
         must_match_schema("security_groups" => [@security_group_format])
     end
 
     it "#get_security_group(security_group_id)" do
-      @compute.get_security_group(@security_group_id).body.
+      _(@compute.get_security_group(@security_group_id).body).
         must_match_schema("security_group" => @security_group_format)
     end
 
     it "#get_security_group_rule" do
       @compute.create_security_group_rule(@security_group_id, "tcp", 2222, 3333, "20.20.20.20/24").body
-      @compute.get_security_group_rule(@security_group_rule_id).body.
+      _(@compute.get_security_group_rule(@security_group_rule_id).body).
         must_match_schema("security_group_rule" => @security_group_rule_format)
     end
 
     it "#delete_security_group_rule(security_group_rule_id" do
-      @compute.delete_security_group_rule(@security_group_rule_id).status.must_equal 202
+      _(@compute.delete_security_group_rule(@security_group_rule_id).status).must_equal 202
     end
 
     it "#delete_security_group(security_group_id" do
       @compute.delete_security_group(@security_group_id)
 
       groups = @compute.list_security_groups.body['security_groups']
-      groups.any? do |group|
+      _(groups.any? do |group|
         group['id'] == @security_group_id
-      end.must_equal false
+      end).must_equal false
     end
   end
 end

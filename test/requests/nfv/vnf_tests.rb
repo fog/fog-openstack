@@ -37,29 +37,30 @@ describe "@vnf | NFV vnfs requests" do
 
   describe "success" do
     it "#create_vnfs" do
-      @vnf_body.must_match_schema('vnf' => @vnfs_create)
+      _(@vnf_body).must_match_schema('vnf' => @vnfs_create)
     end
 
     it "#list_vnfs" do
-      @nfv.list_vnfs.body.must_match_schema('vnfs' => [@vnfs])
+      _(@nfv.list_vnfs.body).must_match_schema('vnfs' => [@vnfs])
     end
 
     it "#get_vnfs" do
-      @nfv.get_vnf(@vnf_body["vnf"]["id"]).body.must_match_schema('vnf' => @vnfs)
+      _(@nfv.get_vnf(@vnf_body["vnf"]["id"]).body).must_match_schema('vnf' => @vnfs)
     end
 
     describe "inter2" do
       it "#update_vnfs" do
         vnf_data = {:attributes => {:config => "vdus:\n  vdu1:<sample_vdu_config> \n\n"}}
         auth = {"tenantName" => "admin", "passwordCredentials" => {"username" => "admin", "password" => "password"}}
-        @nfv.update_vnf(@vnf_body["vnf"]["id"], :vnf => vnf_data, :auth => auth).body.must_match_schema('vnf' => @vnfs)
+        _(@nfv.update_vnf(@vnf_body["vnf"]["id"], :vnf => vnf_data, :auth => auth).body)
+          .must_match_schema('vnf' => @vnfs)
       end
 
       it "#delete_vnfs" do
         sleep(10) unless Fog.mocking?
 
-        @nfv.delete_vnf(@vnf_body["vnf"]["id"]).status.must_equal 204
-        @nfv.delete_vnfd(@vnfd_body["vnfd"]["id"]).status.must_equal 204
+        _(@nfv.delete_vnf(@vnf_body["vnf"]["id"]).status).must_equal 204
+        _(@nfv.delete_vnfd(@vnfd_body["vnfd"]["id"]).status).must_equal 204
       end
     end
   end

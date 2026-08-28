@@ -11,14 +11,14 @@ describe "Fog::OpenStack::Network | router" do
     end
 
     it "#create" do
-      @instance.id.wont_be_nil
+      _(@instance.id).wont_be_nil
     end
 
     describe '#update' do
       it "router name" do
         @instance.name = 'new_name'
         @instance.update
-        @instance.name.must_equal 'new_name'
+        _(@instance.name).must_equal 'new_name'
       end
 
       # Needs code from issue #1598
@@ -36,7 +36,7 @@ describe "Fog::OpenStack::Network | router" do
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

@@ -9,11 +9,11 @@ describe "Fog::NFV[:openstack] | vnf" do
     end
 
     it "#create" do
-      @vnfd.id.wont_be_empty
+      _(@vnfd.id).wont_be_empty
     end
 
     it "#destroy" do
-      @vnfd.destroy.must_equal true
+      _(@vnfd.destroy).must_equal true
     end
   end
 end

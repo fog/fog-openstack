@@ -44,15 +44,15 @@ describe "Fog::OpenStack::Metering | meter requests" do
 
   describe "success" do
     it "#list_meters" do
-      @metering.list_meters.body.must_match_schema([@meter_format])
+      _(@metering.list_meters.body).must_match_schema([@meter_format])
     end
 
     it "#get_samples" do
-      @metering.get_samples('test').body.must_match_schema([@sample_format])
+      _(@metering.get_samples('test').body).must_match_schema([@sample_format])
     end
 
     it "#get_statistics" do
-      @metering.get_statistics('test').body.must_match_schema([@statistics_format])
+      _(@metering.get_statistics('test').body).must_match_schema([@statistics_format])
     end
   end
 end

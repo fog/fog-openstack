@@ -25,11 +25,11 @@ describe "Fog::OpenStack::Network | subnets" do
     end
 
     it "#all" do
-      @subnets.all[0].id.wont_be_empty
+      _(@subnets.all[0].id).wont_be_empty
     end
 
     it "#get" do
-      @subnets.get(@subnet.id).id.wont_be_empty
+      _(@subnets.get(@subnet.id).id).wont_be_empty
     end
   end
 end

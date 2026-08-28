@@ -283,19 +283,19 @@ describe "Fog::OpenStack::Introspection | Introspection requests" do
 
   describe "success" do
     it "#create_introspection" do
-      @inspector.create_introspection(@node_uuid).status.must_equal 202
+      _(@inspector.create_introspection(@node_uuid).status).must_equal 202
     end
 
     it "#abort_introspection" do
-      @inspector.abort_introspection(@node_uuid).status.must_equal 202
+      _(@inspector.abort_introspection(@node_uuid).status).must_equal 202
     end
 
     it "#get_introspection" do
-      @inspector.get_introspection(@node_uuid).body.must_match_schema(@introspection_finished)
+      _(@inspector.get_introspection(@node_uuid).body).must_match_schema(@introspection_finished)
     end
 
     it "#get_introspection_details" do
-      @inspector.get_introspection_details(@node_uuid).body.must_match_schema('data' => @introspection_data)
+      _(@inspector.get_introspection_details(@node_uuid).body).must_match_schema('data' => @introspection_data)
     end
   end
 end

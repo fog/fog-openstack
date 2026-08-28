@@ -27,11 +27,11 @@ describe "Fog::OpenStack::Network | ike_policies" do
 
   describe "success" do
     it "#all" do
-      @ike_policies.all[0].description.must_equal "Test VPN IKE Policy"
+      _(@ike_policies.all[0].description).must_equal "Test VPN IKE Policy"
     end
 
     it "#get" do
-      @ike_policies.get(@ike_policy.id).name.must_equal 'test-ike-policy'
+      _(@ike_policies.get(@ike_policy.id).name).must_equal 'test-ike-policy'
     end
   end
 end

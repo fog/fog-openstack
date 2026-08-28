@@ -8,11 +8,11 @@ describe "Fog::OpenStack::Planning | plan" do
     end
 
     it "#add_role" do
-      @instance.add_to_plan(@plan['uuid']).status.must_equal 201
+      _(@instance.add_to_plan(@plan['uuid']).status).must_equal 201
     end
 
     it "#remove_role" do
-      @instance.remove_from_plan(@plan['uuid']).status.must_equal 200
+      _(@instance.remove_from_plan(@plan['uuid']).status).must_equal 200
     end
   end
 end

@@ -55,16 +55,16 @@ describe "Fog::OpenStack::ContainerInfra | bay model requests" do
     end
 
     it "#create_bay_model" do
-      @bay.must_match_schema(@bay_model_format)
+      _(@bay).must_match_schema(@bay_model_format)
     end
 
     it "#list_bay_models" do
-      container_infra.list_bay_models.body.must_match_schema('baymodels' => [@bay_model_format])
+      _(container_infra.list_bay_models.body).must_match_schema('baymodels' => [@bay_model_format])
     end
 
     it "#get_bay_model" do
       bay_model_uuid = container_infra.bay_models.all.first.uuid
-      container_infra.get_bay_model(bay_model_uuid).body.must_match_schema(@bay_model_format)
+      _(container_infra.get_bay_model(bay_model_uuid).body).must_match_schema(@bay_model_format)
     end
 
     it "#update_bay_model" do
@@ -82,13 +82,13 @@ describe "Fog::OpenStack::ContainerInfra | bay model requests" do
         }
       ]
 
-      container_infra.update_bay_model(bay_model_uuid, attributes).body.
+      _(container_infra.update_bay_model(bay_model_uuid, attributes).body).
         must_match_schema(@bay_model_format)
     end
 
     it "#delete_bay_model" do
       bay_model_uuid = container_infra.bay_models.all.first.uuid
-      container_infra.delete_bay_model(bay_model_uuid).status.must_equal 204
+      _(container_infra.delete_bay_model(bay_model_uuid).status).must_equal 204
     end
   end
 end

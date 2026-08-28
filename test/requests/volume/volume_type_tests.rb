@@ -15,23 +15,23 @@ describe "Fog::OpenStack::Volume | volume_type requests" do
 
   describe "success" do
     it "#create_volume_type" do
-      @volume_type.must_match_schema(@volume_type_format)
+      _(@volume_type).must_match_schema(@volume_type_format)
     end
 
     it "#update_volume_type" do
-      @volume.update_volume_type(
+      _(@volume.update_volume_type(
         @volume_type['id'],
         :name => 'test_volume_type_1'
-      ).body['volume_type'].must_match_schema(@volume_type_format)
+      ).body['volume_type']).must_match_schema(@volume_type_format)
     end
 
     it "#get_volume_type" do
-      @volume.get_volume_type_details(@volume_type['id']).body['volume_type'].
+      _(@volume.get_volume_type_details(@volume_type['id']).body['volume_type']).
         must_match_schema(@volume_type_format)
     end
 
     it "#list_volume_type" do
-      @volume.list_volume_types.body['volume_types'].
+      _(@volume.list_volume_types.body['volume_types']).
         must_match_schema([@volume_type_format])
     end
 

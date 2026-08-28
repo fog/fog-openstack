@@ -34,17 +34,17 @@ describe "Fog::OpenStack::Network | ipsec_policy requests" do
     end
 
     it "#create_ipsec_policy" do
-      @create_ipsec_policy.must_match_schema('ipsecpolicy' => @ipsec_policy_format)
+      _(@create_ipsec_policy).must_match_schema('ipsecpolicy' => @ipsec_policy_format)
     end
 
     it "#list_ipsec_policies" do
-      network.list_ipsec_policies.body.
+      _(network.list_ipsec_policies.body).
         must_match_schema('ipsecpolicies' => [@ipsec_policy_format])
     end
 
     it "#get_ipsec_policy" do
       ipsec_policy_id = network.ipsec_policies.all.first.id
-      network.get_ipsec_policy(ipsec_policy_id).body.
+      _(network.get_ipsec_policy(ipsec_policy_id).body).
         must_match_schema('ipsecpolicy' => @ipsec_policy_format)
     end
 
@@ -62,33 +62,33 @@ describe "Fog::OpenStack::Network | ipsec_policy requests" do
         :encapsulation_mode   => 'tunnel'
       }
 
-      network.update_ipsec_policy(ipsec_policy_id, attributes).body.
+      _(network.update_ipsec_policy(ipsec_policy_id, attributes).body).
         must_match_schema('ipsecpolicy' => @ipsec_policy_format)
     end
 
     it "#delete_ipsec_policy" do
       ipsec_policy_id = network.ipsec_policies.all.first.id
-      network.delete_ipsec_policy(ipsec_policy_id).status.must_equal 204
+      _(network.delete_ipsec_policy(ipsec_policy_id).status).must_equal 204
     end
   end
 
   describe "failure" do
     it "#get_ipsec_policy" do
-      proc do
+      _(proc do
         network.get_ipsec_policy(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_ipsec_policy" do
-      proc do
+      _(proc do
         network.update_ipsec_policy(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_ipsec_policy" do
-      proc do
+      _(proc do
         network.delete_ipsec_policy(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

@@ -19,11 +19,11 @@ describe "Fog::OpenStack::Network | networks" do
 
   describe "success" do
     it "#all" do
-      @networks.all[0].status.must_equal "ACTIVE"
+      _(@networks.all[0].status).must_equal "ACTIVE"
     end
 
     it "#get" do
-      @networks.get(@network.id).status.must_equal "ACTIVE"
+      _(@networks.get(@network.id).status).must_equal "ACTIVE"
     end
   end
 end

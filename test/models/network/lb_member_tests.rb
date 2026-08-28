@@ -15,18 +15,18 @@ describe "Fog::OpenStack::Network | lb_member" do
     end
 
     it "#create" do
-      @instance.id.wont_be_nil
+      _(@instance.id).wont_be_nil
     end
 
     it "#update" do
       @instance.pool_id = 'new_pool_id'
       @instance.weight = 50
       @instance.admin_state_up = false
-      @instance.update.status.must_equal "ACTIVE"
+      _(@instance.update.status).must_equal "ACTIVE"
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

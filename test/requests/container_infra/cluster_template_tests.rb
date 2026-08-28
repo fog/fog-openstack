@@ -56,16 +56,16 @@ describe "Fog::OpenStack::ContainerInfra | cluster template requests" do
     end
 
     it "#create_cluster_template" do
-      @cluster_template.must_match_schema("uuid" => String)
+      _(@cluster_template).must_match_schema("uuid" => String)
     end
 
     it "#list_cluster_templates" do
-      container_infra.list_cluster_templates.body.must_match_schema('clustertemplates' => [@cluster_template_format])
+      _(container_infra.list_cluster_templates.body).must_match_schema('clustertemplates' => [@cluster_template_format])
     end
 
     it "#get_cluster_template" do
       cluster_template_uuid = container_infra.cluster_templates.all.first.uuid
-      container_infra.get_cluster_template(cluster_template_uuid).body.must_match_schema(@cluster_template_format)
+      _(container_infra.get_cluster_template(cluster_template_uuid).body).must_match_schema(@cluster_template_format)
     end
 
     it "#update_cluster_template" do
@@ -83,13 +83,13 @@ describe "Fog::OpenStack::ContainerInfra | cluster template requests" do
         }
       ]
 
-      container_infra.update_cluster_template(cluster_template_uuid, attributes).body.
+      _(container_infra.update_cluster_template(cluster_template_uuid, attributes).body).
         must_match_schema(@cluster_template_format)
     end
 
     it "#delete_cluster_template" do
       cluster_template_uuid = container_infra.cluster_templates.all.first.uuid
-      container_infra.delete_cluster_template(cluster_template_uuid).status.must_equal 204
+      _(container_infra.delete_cluster_template(cluster_template_uuid).status).must_equal 204
     end
   end
 end

@@ -18,7 +18,7 @@ describe "Fog::OpenStack::DNS::V1 | domain requests" do
 
   describe "success" do
     it "#list_domains" do
-      @dns.list_domains.body.must_match_schema("domains" => [@domain_format])
+      _(@dns.list_domains.body).must_match_schema("domains" => [@domain_format])
     end
   end
 end

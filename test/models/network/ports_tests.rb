@@ -23,11 +23,11 @@ describe "Fog::OpenStack::Network | ports" do
 
   describe "success" do
     it "#all" do
-      @ports.all[0].status.must_equal "ACTIVE"
+      _(@ports.all[0].status).must_equal "ACTIVE"
     end
 
     it "#get" do
-      @ports.get(@port.id).status.must_equal "ACTIVE"
+      _(@ports.get(@port.id).status).must_equal "ACTIVE"
     end
   end
 end

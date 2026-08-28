@@ -76,14 +76,14 @@ describe "Fog::OpenStack::Compute | server requests" do
     end
 
     it "#create_server('test', nil, #{@flavor_id}) with a block_device_mapping" do
-      @data.must_match_schema(@create_format,
-                              nil,
-                              :allow_extra_keys     => true,
-                              :allow_optional_rules => true)
+      _(@data).must_match_schema(@create_format,
+                                 nil,
+                                 :allow_extra_keys     => true,
+                                 :allow_optional_rules => true)
     end
 
     it "#get_server_details(#{@server_id})" do
-      compute.get_server_details(@server_id).body['server'].
+      _(compute.get_server_details(@server_id).body['server']).
         must_match_schema(@base_server_format,
                           nil,
                           :allow_extra_keys     => true,
@@ -91,7 +91,7 @@ describe "Fog::OpenStack::Compute | server requests" do
     end
 
     it "#block_device_mapping" do
-      compute.servers.get(@server_id).volumes.first.id.must_equal @volume1_id
+      _(compute.servers.get(@server_id).volumes.first.id).must_equal @volume1_id
     end
 
     describe "with multiple block_device_mapping_v2" do
@@ -126,14 +126,14 @@ describe "Fog::OpenStack::Compute | server requests" do
       end
 
       it "#create_server('test', nil, #{@flavor_id})" do
-        @data.must_match_schema(@create_format,
-                                nil,
-                                :allow_extra_keys     => true,
-                                :allow_optional_rules => true)
+        _(@data).must_match_schema(@create_format,
+                                   nil,
+                                   :allow_extra_keys     => true,
+                                   :allow_optional_rules => true)
       end
 
       it "#get_server_details(#{@server_id})" do
-        compute.get_server_details(@server_id).body['server'].
+        _(compute.get_server_details(@server_id).body['server']).
           must_match_schema(@base_server_format,
                             nil,
                             :allow_extra_keys     => true,
@@ -143,7 +143,7 @@ describe "Fog::OpenStack::Compute | server requests" do
       it "#block_device_mapping_v2" do
         #  Breaks sometimes: "Expected: ["56", "56"] <=> Actual: ["56"]"
         skip unless Minitest::Test::UNIT_TESTS_CLEAN
-        compute.servers.get(@server_id).volumes.collect(&:id).sort.
+        _(compute.servers.get(@server_id).volumes.collect(&:id).sort).
           must_equal [@volume1_id, @volume2_id].sort
       end
     end
@@ -157,14 +157,14 @@ describe "Fog::OpenStack::Compute | server requests" do
       end
 
       it "#create_server('test', #{@image_id}, 19)" do
-        @data.must_match_schema(@create_format,
-                                nil,
-                                :allow_extra_keys     => true,
-                                :allow_optional_rules => true)
+        _(@data).must_match_schema(@create_format,
+                                   nil,
+                                   :allow_extra_keys     => true,
+                                   :allow_optional_rules => true)
       end
 
       it "#get_server_details(#{@server_id})" do
-        compute.get_server_details(@server_id).body['server'].
+        _(compute.get_server_details(@server_id).body['server']).
           must_match_schema(@server_from_image_format,
                             nil,
                             :allow_extra_keys     => true,
@@ -190,20 +190,20 @@ describe "Fog::OpenStack::Compute | server requests" do
       end
 
       it "#create_server('test', @image_id , 19, {'min_count' => 2, 'return_reservation_id' => 'True'})" do
-        @data.must_match_schema(@reservation_format,
-                                nil,
-                                :allow_extra_keys     => true,
-                                :allow_optional_rules => true)
+        _(@data).must_match_schema(@reservation_format,
+                                   nil,
+                                   :allow_extra_keys     => true,
+                                   :allow_optional_rules => true)
       end
 
       it "#validate_multi_create" do
-        @multi_create_servers.size.must_equal 2
+        _(@multi_create_servers.size).must_equal 2
       end
     end
 
     # LIST
     it "#list_servers" do
-      compute.list_servers.body.
+      _(compute.list_servers.body).
         must_match_schema({'servers' => [OpenStack::Compute::Formats::SUMMARY]},
                           nil,
                           :allow_extra_keys     => true,
@@ -212,7 +212,7 @@ describe "Fog::OpenStack::Compute | server requests" do
 
     # DETAILS
     it "#list_servers_detail" do
-      compute.list_servers_detail.body["servers"][0].
+      _(compute.list_servers_detail.body["servers"][0]).
         must_match_schema(@server_from_image_format,
                           nil,
                           :allow_extra_keys     => true,
@@ -222,25 +222,25 @@ describe "Fog::OpenStack::Compute | server requests" do
     # CHANGE PASSWORD
     it "#change_server_password(#{@server_id}, 'fogupdatedserver')" do
       if set_password_enabled
-        compute.change_server_password(@server_id, 'foggy').status.must_equal 202
+        _(compute.change_server_password(@server_id, 'foggy').status).must_equal 202
         compute.servers.get(@server_id).wait_for { ready? } unless Fog.mocking?
       end
     end
 
     # UPDATE SERVER NAME
     it "#update_server(#{@server_id}, :name => 'fogupdatedserver')" do
-      compute.update_server(@server_id, :name => 'fogupdatedserver').status.must_equal 200
+      _(compute.update_server(@server_id, :name => 'fogupdatedserver').status).must_equal 200
       compute.servers.get(@server_id).wait_for { ready? } unless Fog.mocking?
     end
 
     # ADD SECURITY GROUP
     it "#add_security_group(#{@server_id}, #{@security_group_name})" do
-      compute.add_security_group(@server_id, @security_group_name).status.must_equal 200
+      _(compute.add_security_group(@server_id, @security_group_name).status).must_equal 200
     end
 
     # REMOVE SECURITY GROUP
     it "#remove_security_group(#{@server_id}, #{@security_group_name})" do
-      compute.remove_security_group(@server_id, @security_group_name).status.must_equal 200
+      _(compute.remove_security_group(@server_id, @security_group_name).status).must_equal 200
     end
 
     describe "Create image with metadata" do
@@ -251,23 +251,23 @@ describe "Fog::OpenStack::Compute | server requests" do
       end
 
       it "#create_image(#{@server_id}, 'fog')" do
-        @data.must_match_schema('image' => @image_format)
+        _(@data).must_match_schema('image' => @image_format)
       end
 
       it "#rebuild_server(#{@server_id}, #{@snapshot_id}, 'fog')" do
-        compute.rebuild_server(
+        _(compute.rebuild_server(
           @server_id, @snapshot_id, 'fog', 'newpass', "foo" => "bar"
-        ).body.must_match_schema({'server' => @server_from_image_format},
-                                 nil,
-                                 :allow_extra_keys     => true,
-                                 :allow_optional_rules => true)
+        ).body).must_match_schema({'server' => @server_from_image_format},
+                                  nil,
+                                  :allow_extra_keys     => true,
+                                  :allow_optional_rules => true)
 
         compute.servers.get(@server_id).wait_for { ready? } unless Fog.mocking?
       end
 
       # RESIZE
       it "#resize_server(#{@server_id}, #{get_flavor_ref_resize})" do
-        compute.resize_server(@server_id, get_flavor_ref_resize).status.must_equal 202
+        _(compute.resize_server(@server_id, get_flavor_ref_resize).status).must_equal 202
         unless Fog.mocking?
           compute.servers.get(@server_id).wait_for { state == 'VERIFY_RESIZE' }
         end
@@ -275,7 +275,7 @@ describe "Fog::OpenStack::Compute | server requests" do
 
       # RESIZE CONFIRM
       it "#resize_confirm(#{@server_id}, #{get_flavor_ref_resize})" do
-        compute.confirm_resize_server(@server_id).status.must_equal 204
+        _(compute.confirm_resize_server(@server_id).status).must_equal 204
         unless Fog.mocking?
           compute.servers.get(@server_id).wait_for { ready? }
         end
@@ -283,7 +283,7 @@ describe "Fog::OpenStack::Compute | server requests" do
 
       # REBOOT - HARD
       it "#reboot_server(#{@server_id}, 'HARD')" do
-        compute.reboot_server(@server_id, 'HARD').status.must_equal 202
+        _(compute.reboot_server(@server_id, 'HARD').status).must_equal 202
         unless Fog.mocking?
           compute.servers.get(@server_id).wait_for { ready? }
         end
@@ -291,7 +291,7 @@ describe "Fog::OpenStack::Compute | server requests" do
 
       # REBOOT - SOFT
       it "#reboot_server(#{@server_id}, 'SOFT')" do
-        compute.reboot_server(@server_id, 'SOFT').status.must_equal 202
+        _(compute.reboot_server(@server_id, 'SOFT').status).must_equal 202
         unless Fog.mocking?
           compute.servers.get(@server_id).wait_for { ready? }
         end
@@ -299,26 +299,26 @@ describe "Fog::OpenStack::Compute | server requests" do
 
       # STOP
       it "#stop_server(#{@server_id})" do
-        compute.stop_server(@server_id).must_equal true
+        _(compute.stop_server(@server_id)).must_equal true
       end
 
       # START
       it "#start_server(#{@server_id})" do
-        compute.start_server(@server_id).must_equal true
+        _(compute.start_server(@server_id)).must_equal true
         unless Fog.mocking?
           compute.servers.get(@server_id).wait_for { ready? }
         end
       end
 
       it "#shelve_server(#{@server_id}" do
-        compute.shelve_server(@server_id).must_equal true
+        _(compute.shelve_server(@server_id)).must_equal true
         unless Fog.mocking?
           compute.servers.get(@server_id).wait_for { ready? }
         end
       end
 
       it "#unshelve_server(#{@server_id})" do
-        compute.unshelve_server(@server_id).must_equal true
+        _(compute.unshelve_server(@server_id)).must_equal true
         unless Fog.mocking?
           compute.servers.get(@server_id).wait_for { ready? }
         end
@@ -339,44 +339,44 @@ describe "Fog::OpenStack::Compute | server requests" do
 
   describe "failure" do
     it "#delete_server(0)" do
-      proc do
+      _(proc do
         self.class.compute.delete_server(0)
-      end.must_raise Fog::OpenStack::Compute::NotFound
+      end).must_raise Fog::OpenStack::Compute::NotFound
     end
 
     it "#get_server_details(0)" do
-      proc do
+      _(proc do
         self.class.compute.get_server_details(0)
-      end.must_raise Fog::OpenStack::Compute::NotFound
+      end).must_raise Fog::OpenStack::Compute::NotFound
     end
 
     it "#update_server(0, :name => 'fogupdatedserver', :adminPass => 'fogupdatedserver')" do
-      proc do
+      _(proc do
         self.class.compute.update_server(0, :name => 'fogupdatedserver', :adminPass => 'fogupdatedserver')
-      end.must_raise Fog::OpenStack::Compute::NotFound
+      end).must_raise Fog::OpenStack::Compute::NotFound
     end
 
     it "#reboot_server(0)" do
       unless Fog.mocking?
-        proc do
+        _(proc do
           self.class.compute.reboot_server(0)
-        end.must_raise Fog::OpenStack::Compute::NotFound
+        end).must_raise Fog::OpenStack::Compute::NotFound
       end
     end
 
     it "#start_server(0)" do
       unless Fog.mocking?
-        proc do
+        _(proc do
           self.class.compute.start_server(0)
-        end.must_raise Fog::OpenStack::Compute::NotFound
+        end).must_raise Fog::OpenStack::Compute::NotFound
       end
     end
 
     it "#stop_server(0)" do
       unless Fog.mocking?
-        proc do
+        _(proc do
           self.class.compute.stop_server(0)
-        end.must_raise Fog::OpenStack::Compute::NotFound
+        end).must_raise Fog::OpenStack::Compute::NotFound
       end
     end
   end

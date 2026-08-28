@@ -13,16 +13,16 @@ describe "Fog::OpenStack::Network | security_group model" do
     end
 
     it "#create" do
-      @secgroup.id.wont_be_nil
+      _(@secgroup.id).wont_be_nil
     end
 
     it "#update" do
       @secgroup.name = 'new_sg_name'
-      @secgroup.name.must_equal 'new_sg_name'
+      _(@secgroup.name).must_equal 'new_sg_name'
     end
 
     it "#destroy" do
-      @secgroup.destroy.must_equal true
+      _(@secgroup.destroy).must_equal true
     end
   end
 end

@@ -26,7 +26,7 @@ describe "Fog::OpenStack::Network | security_groups collection" do
 
     it "#all(filter)" do
       secgroup = network.security_groups.all(:name => "fogsecgroup")
-      secgroup.first.name.wont_be_empty
+      _(secgroup.first.name).wont_be_empty
     end
   end
 end

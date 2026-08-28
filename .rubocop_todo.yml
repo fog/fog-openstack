@@ -1075,6 +1075,7 @@ Lint/Void:
 Metrics/AbcSize:
   Exclude:
     - 'examples/network/network_subnets_routers.rb'
+    - 'test/requests/storage/object_tests.rb'
     - 'lib/fog/openstack.rb'
     - 'lib/fog/openstack/auth/name.rb'
     - 'lib/fog/openstack/auth/token/v2.rb'

@@ -44,34 +44,34 @@ describe "Fog::OpenStack::DNS::V2 | recordset requests" do
   describe "success" do
     it "#list_recordsets deprecated" do
       recordset_list_body = @dns.list_recordsets(@zone_id).body
-      recordset_list_body.must_match_schema(@recordset_list_format)
-      recordset_list_body['recordsets'].sample['zone_id'].must_equal(@zone_id)
+      _(recordset_list_body).must_match_schema(@recordset_list_format)
+      _(recordset_list_body['recordsets'].sample['zone_id']).must_equal(@zone_id)
     end
 
     it "#list_recordsets" do
       recordset_list_body = @dns.list_recordsets(:zone_id => @zone_id).body
-      recordset_list_body.must_match_schema(@recordset_list_format)
-      recordset_list_body['recordsets'].sample['zone_id'].must_equal(@zone_id)
+      _(recordset_list_body).must_match_schema(@recordset_list_format)
+      _(recordset_list_body['recordsets'].sample['zone_id']).must_equal(@zone_id)
     end
 
     it "#create_recordset" do
-      @recordset.body.must_match_schema(@recordset_format)
+      _(@recordset.body).must_match_schema(@recordset_format)
     end
 
     it "#get_recordset" do
-      @dns.get_recordset(@zone_id, @recordset.body['id']).body.must_match_schema(@recordset_format)
+      _(@dns.get_recordset(@zone_id, @recordset.body['id']).body).must_match_schema(@recordset_format)
     end
 
     it "#update_recordset" do
-      @dns.update_recordset(
+      _(@dns.update_recordset(
         @zone_id,
         @recordset.body['id'],
         "email" => 'new_hostmaster@test.example.org'
-      ).body.must_match_schema(@recordset_format)
+      ).body).must_match_schema(@recordset_format)
     end
 
     it "#delete_recordset" do
-      @dns.delete_recordset(@zone_id, @recordset.body['id']).body.must_match_schema(@recordset_format)
+      _(@dns.delete_recordset(@zone_id, @recordset.body['id']).body).must_match_schema(@recordset_format)
     end
   end
 end

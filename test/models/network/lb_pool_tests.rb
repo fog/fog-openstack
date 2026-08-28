@@ -27,7 +27,7 @@ describe "Fog::OpenStack::Network | lb_pool" do
     end
 
     it "#create" do
-      @instance.id.wont_be_nil
+      _(@instance.id).wont_be_nil
     end
 
     it "#update" do
@@ -35,24 +35,24 @@ describe "Fog::OpenStack::Network | lb_pool" do
       @instance.description = 'New Test Pool'
       @instance.lb_method = 'LEAST_CONNECTIONS'
       @instance.admin_state_up = false
-      @instance.update.status.must_equal "ACTIVE"
+      _(@instance.update.status).must_equal "ACTIVE"
     end
 
     it "#stats" do
       @instance.stats
-      @instance.active_connections.wont_be_nil
+      _(@instance.active_connections).wont_be_nil
     end
 
     it "#associate_health_monitor" do
-      @instance.associate_health_monitor(@lb_health_monitor.id).must_equal true
+      _(@instance.associate_health_monitor(@lb_health_monitor.id)).must_equal true
     end
 
     it "#disassociate_health_monitor" do
-      @instance.disassociate_health_monitor(@lb_health_monitor.id).must_equal true
+      _(@instance.disassociate_health_monitor(@lb_health_monitor.id)).must_equal true
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

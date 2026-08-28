@@ -14,12 +14,12 @@ describe "Fog::OpenStack::Network | floating_ip" do
     end
 
     it "#create" do
-      instance.id.wont_be_nil
+      _(instance.id).wont_be_nil
     end
 
     it "#update" do
       instance.port_id = 'p0000000-0000-0000-0000-000000000000'
-      instance.update.port_id.must_equal "p0000000-0000-0000-0000-000000000000"
+      _(instance.update.port_id).must_equal "p0000000-0000-0000-0000-000000000000"
     end
 
     describe "#associate" do
@@ -28,11 +28,11 @@ describe "Fog::OpenStack::Network | floating_ip" do
       let(:associate) { instance.associate(port_id, fixed_ip_address) }
 
       it "must match port_id" do
-        associate.port_id.must_equal port_id
+        _(associate.port_id).must_equal port_id
       end
 
       it "must match fixed_ip_address" do
-        associate.fixed_ip_address.must_equal fixed_ip_address
+        _(associate.fixed_ip_address).must_equal fixed_ip_address
       end
     end
 
@@ -41,11 +41,11 @@ describe "Fog::OpenStack::Network | floating_ip" do
       let(:disassociate) { instance.disassociate(fixed_ip_address) }
 
       it "resets port_id" do
-        disassociate.port_id.must_equal nil
+        _(disassociate.port_id).must_be_nil
       end
 
       it "resets fixed_ip_address" do
-        disassociate.fixed_ip_address.must_equal nil
+        _(disassociate.fixed_ip_address).must_be_nil
       end
     end
 

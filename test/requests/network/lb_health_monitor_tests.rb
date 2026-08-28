@@ -48,17 +48,17 @@ describe "Fog::OpenStack::Network | lb_health_monitor requests" do
     end
 
     it "#create_lb_health_monitor" do
-      @lb_health_monitor.must_match_schema('health_monitor' => @lb_health_monitor_format)
+      _(@lb_health_monitor).must_match_schema('health_monitor' => @lb_health_monitor_format)
     end
 
     it "#list_lb_health_monitors" do
-      network.list_lb_health_monitors.body.
+      _(network.list_lb_health_monitors.body).
         must_match_schema('health_monitors' => [@lb_health_monitor_format])
     end
 
     it "#get_lb_health_monitor" do
       lb_health_monitor_id = network.lb_health_monitors.all.first.id
-      network.get_lb_health_monitor(lb_health_monitor_id).body.
+      _(network.get_lb_health_monitor(lb_health_monitor_id).body).
         must_match_schema('health_monitor' => @lb_health_monitor_format)
     end
 
@@ -74,55 +74,55 @@ describe "Fog::OpenStack::Network | lb_health_monitor requests" do
         :admin_state_up => false
       }
 
-      network.update_lb_health_monitor(lb_health_monitor_id, attributes).body.
+      _(network.update_lb_health_monitor(lb_health_monitor_id, attributes).body).
         must_match_schema('health_monitor' => @lb_health_monitor_format)
     end
 
     it "#associate_lb_health_monitor" do
       lb_health_monitor_id = network.lb_health_monitors.all.first.id
-      network.associate_lb_health_monitor(@lb_pool.id, lb_health_monitor_id).status.must_equal 200
+      _(network.associate_lb_health_monitor(@lb_pool.id, lb_health_monitor_id).status).must_equal 200
     end
 
     it "#disassociate_lb_health_monitor" do
       lb_health_monitor_id = network.lb_health_monitors.all.first.id
-      network.disassociate_lb_health_monitor(@lb_pool.id, lb_health_monitor_id).status.must_equal 204
+      _(network.disassociate_lb_health_monitor(@lb_pool.id, lb_health_monitor_id).status).must_equal 204
     end
 
     it "#delete_lb_health_monitor" do
       lb_health_monitor_id = network.lb_health_monitors.all.first.id
-      network.delete_lb_health_monitor(lb_health_monitor_id).status.must_equal 204
+      _(network.delete_lb_health_monitor(lb_health_monitor_id).status).must_equal 204
     end
   end
 
   describe "failure" do
     it "#get_lb_health_monitor" do
-      proc do
+      _(proc do
         network.get_lb_health_monitor(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_lb_health_monitor" do
-      proc do
+      _(proc do
         network.update_lb_health_monitor(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#associate_lb_health_monitor" do
-      proc do
+      _(proc do
         network.associate_lb_health_monitor(0, 0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#disassociate_lb_health_monitor" do
-      proc do
+      _(proc do
         network.disassociate_lb_health_monitor(0, 0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_lb_health_monitor" do
-      proc do
+      _(proc do
         network.delete_lb_health_monitor(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

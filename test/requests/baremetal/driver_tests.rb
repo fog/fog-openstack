@@ -31,15 +31,15 @@ describe "Fog::OpenStack::Baremetal | Baremetal driver requests" do
 
   describe "success" do
     it "#list_drivers" do
-      @instances.must_match_schema('drivers' => [@driver_format])
+      _(@instances).must_match_schema('drivers' => [@driver_format])
     end
 
     it "#get_driver" do
-      @baremetal.get_driver(@instance['name']).body.must_match_schema(@driver_format)
+      _(@baremetal.get_driver(@instance['name']).body).must_match_schema(@driver_format)
     end
 
     it "#get_driver_properties" do
-      @baremetal.get_driver_properties(@instance['name']).body.
+      _(@baremetal.get_driver_properties(@instance['name']).body).
         must_match_schema(@driver_properties_format)
     end
   end

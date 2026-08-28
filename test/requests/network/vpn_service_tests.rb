@@ -32,16 +32,16 @@ describe "Fog::OpenStack::Network | vpn_service requests" do
     end
 
     it "#create_vpn_service" do
-      @vpn_service.must_match_schema('vpnservice' => @vpn_service_format)
+      _(@vpn_service).must_match_schema('vpnservice' => @vpn_service_format)
     end
 
     it "#list_vpn_services" do
-      network.list_vpn_services.body.must_match_schema('vpnservices' => [@vpn_service_format])
+      _(network.list_vpn_services.body).must_match_schema('vpnservices' => [@vpn_service_format])
     end
 
     it "#get_vpn_service" do
       vpn_service_id = network.vpn_services.all.first.id
-      network.get_vpn_service(vpn_service_id).body.must_match_schema('vpnservice' => @vpn_service_format)
+      _(network.get_vpn_service(vpn_service_id).body).must_match_schema('vpnservice' => @vpn_service_format)
     end
 
     it "#update_vpn_service" do
@@ -55,32 +55,33 @@ describe "Fog::OpenStack::Network | vpn_service requests" do
         :router_id      => 'router_id'
       }
 
-      network.update_vpn_service(vpn_service_id, attributes).body.must_match_schema('vpnservice' => @vpn_service_format)
+      _(network.update_vpn_service(vpn_service_id, attributes).body)
+        .must_match_schema('vpnservice' => @vpn_service_format)
     end
 
     it "#delete_vpn_service" do
       vpn_servcice_id = network.vpn_services.all.first.id
-      network.delete_vpn_service(vpn_servcice_id).status.must_equal 204
+      _(network.delete_vpn_service(vpn_servcice_id).status).must_equal 204
     end
   end
 
   describe "failure" do
     it "#get_vpn_service" do
-      proc do
+      _(proc do
         network.get_vpn_service(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_lb_pool" do
-      proc do
+      _(proc do
         network.update_lb_pool(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_vpn_service" do
-      proc do
+      _(proc do
         network.delete_vpn_service(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end
