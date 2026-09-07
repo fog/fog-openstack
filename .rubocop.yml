@@ -1,8 +1,22 @@
 inherit_from: .rubocop_todo.yml
 
+plugins:
+  - rubocop-minitest
+
 # Opt-in new cops
 AllCops:
   NewCops: enable
+#
+# Minitest
+#
+# minitest 6 dropped the Object monkeypatch that made bare `foo.must_equal bar`
+# resolve, so expectations have to be written as `_(foo).must_equal bar`.
+# Enable just the cop that guards that; the rest of the Minitest department is
+# not part of this baseline yet.
+Minitest:
+  Enabled: false
+Minitest/GlobalExpectations:
+  Enabled: true
 #
 # Overrides
 #

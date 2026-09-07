@@ -11,16 +11,16 @@ describe "Fog::OpenStack::ContainerInfra | bay" do
     end
 
     it "#create" do
-      @instance.uuid.wont_be_nil
+      _(@instance.uuid).wont_be_nil
     end
 
     it "#update" do
       @instance.name                 = 'rename-test-cluster'
-      @instance.update.name.must_equal "rename-test-cluster"
+      _(@instance.update.name).must_equal "rename-test-cluster"
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

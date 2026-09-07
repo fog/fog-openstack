@@ -32,9 +32,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "mime-types"
   spec.add_development_dependency "mime-types-data"
   spec.add_development_dependency 'minitest'
+  spec.add_development_dependency 'minitest-mock'
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rake',    '>= 12.3.3'
   spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rubocop-minitest'
   spec.add_development_dependency 'shindo',  '~> 0.3'
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'webmock',  '~> 3.25.0'

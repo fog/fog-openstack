@@ -13,22 +13,22 @@ describe "Fog::OpenStack::Network | extension requests" do
 
   describe "success" do
     it "#list_extensions" do
-      network.list_extensions.body.
+      _(network.list_extensions.body).
         must_match_schema('extensions' => [@extension_format])
     end
 
     it "#get_extension" do
       extension_id = network.extensions.all.first.id
-      network.get_extension(extension_id).body.
+      _(network.get_extension(extension_id).body).
         must_match_schema('extension' => @extension_format)
     end
   end
 
   describe "failure" do
     it "#get_extension" do
-      proc do
+      _(proc do
         network.get_extension(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

@@ -24,19 +24,19 @@ describe "Fog::Identity[:openstack] | role" do
 
   describe "success" do
     it "#save" do
-      @instance_saved.must_equal true
+      _(@instance_saved).must_equal true
     end
 
     it "#add_to_user(@user.id, @tenant.id)" do
-      @instance.add_to_user(@user.id, @tenant.id).must_equal true
+      _(@instance.add_to_user(@user.id, @tenant.id)).must_equal true
     end
 
     it "#remove_to_user(@user.id, @tenant.id)" do
-      @instance.remove_to_user(@user.id, @tenant.id).must_equal true
+      _(@instance.remove_to_user(@user.id, @tenant.id)).must_equal true
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal(true)
+      _(@instance.destroy).must_equal(true)
     end
   end
 end

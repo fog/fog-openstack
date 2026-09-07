@@ -134,9 +134,9 @@ describe "OpenStack authentication" do
       :openstack_service_type => %w[network],
       :openstack_api_key      => 'secret',
       :openstack_username     => 'user')
-    proc do
+    _(proc do
       service.send(:authenticate)
-    end.must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
+    end).must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
   end
 
   it "v2 missing storage service" do
@@ -155,9 +155,9 @@ describe "OpenStack authentication" do
       :openstack_username     => 'user',
       :openstack_service_type => 'object-store')
 
-    proc do
+    _(proc do
       service.send(:authenticate)
-    end.must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
+    end).must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
   end
 
   it "v2 auth with two compute services" do
@@ -192,9 +192,9 @@ describe "OpenStack authentication" do
       :openstack_username     => 'user',
       :openstack_service_type => 'compute')
 
-    proc do
+    _(proc do
       service.send(:authenticate)
-    end.must_raise Fog::OpenStack::Auth::Catalog::EndpointError, 'Multiple endpoints found'
+    end).must_raise Fog::OpenStack::Auth::Catalog::EndpointError, 'Multiple endpoints found'
   end
 
   after do

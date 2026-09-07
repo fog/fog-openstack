@@ -20,7 +20,7 @@ describe Fog::OpenStack::Image do
     it 'finds image' do
       existing_image_id = 'ea20c966-d2fb-4287-a2eb-7bece9af4263'
       VCR.use_cassette('images_v1_find_by_id') do
-        @service.images.find_by_id(existing_image_id).id.must_equal existing_image_id
+        _(@service.images.find_by_id(existing_image_id).id).must_equal existing_image_id
       end
     end
 
@@ -34,7 +34,7 @@ describe Fog::OpenStack::Image do
       existing_image_id = 'ea20c966-d2fb-4287-a2eb-7bece9af4263'
       expected_value = 'bar'
       VCR.use_cassette('images_v1_find_by_id') do
-        @service.images.find_by_id(existing_image_id).properties['foo'].must_equal expected_value
+        _(@service.images.find_by_id(existing_image_id).properties['foo']).must_equal expected_value
       end
     end
   end

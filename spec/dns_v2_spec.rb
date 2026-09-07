@@ -22,30 +22,30 @@ describe Fog::OpenStack::DNS::V2 do
       begin
         # create zone
         example_zone = @service.zones.create(:name => zone_name, :email => "hostmaster@#{zone}")
-        example_zone.status.must_equal 'PENDING'
-        example_zone.action.must_equal 'CREATE'
+        _(example_zone.status).must_equal 'PENDING'
+        _(example_zone.action).must_equal 'CREATE'
         example_id = example_zone.id
 
         # add a description
         example_zone.update(:description => zone_description)
-        example_zone.reload.description.must_equal zone_description
+        _(example_zone.reload.description).must_equal zone_description
 
         # get by ID
         example_zone_by_id = @service.zones.find_by_id example_id
-        example_zone_by_id.wont_equal nil
-        example_zone_by_id.description.must_equal zone_description
+        _(example_zone_by_id).wont_equal nil
+        _(example_zone_by_id.description).must_equal zone_description
 
         # get by filtering list by name
         zones = @service.zones.all(:name => zone_name)
-        zones.length.must_equal 1
-        zones.first.id.must_equal example_id
+        _(zones.length).must_equal 1
+        _(zones.first.id).must_equal example_id
       ensure
         # delete the zone(s)
         @service.zones.all(:name => zone_name).each(&:destroy)
 
         # check delete action
         @service.zones.all(:name => zone_name).each do |z|
-          z.action.must_equal 'DELETE'
+          _(z.action).must_equal 'DELETE'
         end
       end
     end
@@ -75,17 +75,17 @@ describe Fog::OpenStack::DNS::V2 do
 
         # change record
         host_record.update(:records => records_updated)
-        host_record.reload.records.must_equal records_updated
+        _(host_record.reload.records).must_equal records_updated
 
         # get by ID
         host_record_by_id = @service.recordsets.find_by_id(example_id, host_id)
-        host_record_by_id.wont_equal nil
-        host_record_by_id.records.must_equal records_updated
+        _(host_record_by_id).wont_equal nil
+        _(host_record_by_id.records).must_equal records_updated
 
         # get by filtering list by name
         recordsets = @service.recordsets.all(:zone_id => example_id, :name => recordset_name)
-        recordsets.length.must_equal 1
-        recordsets.first.id.must_equal host_id
+        _(recordsets.length).must_equal 1
+        _(recordsets.first.id).must_equal host_id
       ensure
         # delete the recordset(s)
         @service.recordsets.all(:zone_id => example_id, :name => recordset_name).each(&:destroy)

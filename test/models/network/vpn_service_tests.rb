@@ -15,7 +15,7 @@ describe "Fog::OpenStack::Network | vpn_service" do
     end
 
     it "#create" do
-      @instance.status.must_equal "ACTIVE"
+      _(@instance.status).must_equal "ACTIVE"
     end
 
     it "#update" do
@@ -25,11 +25,11 @@ describe "Fog::OpenStack::Network | vpn_service" do
       @instance.description    = 'new'
       @instance.admin_state_up = false
       @instance.tenant_id      = 'baz'
-      @instance.update.status.must_equal "ACTIVE"
+      _(@instance.update.status).must_equal "ACTIVE"
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

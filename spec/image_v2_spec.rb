@@ -27,8 +27,8 @@ describe Fog::OpenStack::Image do
       @service.images.all(:name => image_name).each(&:destroy)
     end
     # Check that the deletion worked
-    proc { @service.images.find_by_id(image_id).must_equal nil } if image_id
-    @service.images.all(:name => image_name).length.must_equal 0 if image_name
+    proc { _(@service.images.find_by_id(image_id)).must_be_nil } if image_id
+    _(@service.images.all(:name => image_name).length).must_equal 0 if image_name
   end
 
   it "CRUD & list images" do
@@ -36,33 +36,33 @@ describe Fog::OpenStack::Image do
       image_name = 'foobar'
       image_rename = 'baz'
 
-      @service.images.all.wont_equal nil
+      _(@service.images.all).wont_equal nil
       begin
         # Create an image called foobar
         foobar_image = @service.images.create(:name => image_name)
         foobar_id = foobar_image.id
-        @service.images.all(:name => image_name).length.must_equal 1
-        foobar_image.status.must_equal 'queued'
+        _(@service.images.all(:name => image_name).length).must_equal 1
+        _(foobar_image.status).must_equal 'queued'
 
         # Rename it to baz
         # see "Patch images" test below - for now this will be a simple synthesis of a JSON patch with op = 'replace'
         foobar_image.update(:name => image_rename)
 
-        foobar_image.name.must_equal image_rename
+        _(foobar_image.name).must_equal image_rename
         baz_image = @service.images.find_by_id foobar_id
-        baz_image.wont_equal nil
-        baz_image.id.must_equal foobar_id
-        baz_image.name.must_equal image_rename
+        _(baz_image).wont_equal nil
+        _(baz_image.id).must_equal foobar_id
+        _(baz_image.name).must_equal image_rename
 
         # Read the image freshly by listing images filtered by the new name
         images = @service.images.all(:name => image_rename)
-        images.length.must_equal 1
-        images.first.id.must_equal baz_image.id
+        _(images.length).must_equal 1
+        _(images.first.id).must_equal baz_image.id
       ensure
         cleanup_image baz_image
         @service.images.all.select { |image| [image_name, image_rename].include? image.name }.each(&:destroy)
         # Check that the deletion worked
-        @service.images.all.count { |image| [image_name, image_rename].include? image.name }.must_equal 0
+        _(@service.images.all.count { |image| [image_name, image_rename].include? image.name }).must_equal 0
       end
     end
   end
@@ -78,12 +78,12 @@ describe Fog::OpenStack::Image do
         # Create an image with a specified ID
         foobar_image = @service.images.create(:name => 'foobar_id', :id => identifier)
         foobar_id = foobar_image.id
-        @service.images.all(:name => image_name).length.must_equal 1
-        foobar_image.status.must_equal 'queued'
-        foobar_id.must_equal identifier
+        _(@service.images.all(:name => image_name).length).must_equal 1
+        _(foobar_image.status).must_equal 'queued'
+        _(foobar_id).must_equal identifier
 
         get_image = @service.images.find_by_id(identifier)
-        get_image.name.must_equal image_name
+        _(get_image.name).must_equal image_name
       ensure
         cleanup_image foobar_image, image_name, foobar_id
       end
@@ -103,11 +103,11 @@ describe Fog::OpenStack::Image do
         )
         foobar_image.save
 
-        foobar_image.status.must_equal 'queued'
-        foobar_image.id.must_equal identifier
-        foobar_image.name.must_equal 'original_name'
-        foobar_image.property_to_delete.must_equal 'bar'
-        foobar_image.respond_to?(:property_to_add).must_equal false
+        _(foobar_image.status).must_equal 'queued'
+        _(foobar_image.id).must_equal identifier
+        _(foobar_image.name).must_equal 'original_name'
+        _(foobar_image.property_to_delete).must_equal 'bar'
+        _(foobar_image.respond_to?(:property_to_add)).must_equal false
 
         get_image = @service.images.find_by_id(identifier)
         get_image.name = 'updated_name'
@@ -116,9 +116,9 @@ describe Fog::OpenStack::Image do
         get_image.save
 
         updated_image = @service.images.find_by_id(identifier)
-        updated_image.name.must_equal 'updated_name'
-        updated_image.property_to_add.must_equal 'bar'
-        updated_image.respond_to?(:property_to_delete).must_equal false
+        _(updated_image.name).must_equal 'updated_name'
+        _(updated_image.property_to_add).must_equal 'bar'
+        _(updated_image.respond_to?(:property_to_delete)).must_equal false
       ensure
         cleanup_image nil, nil, identifier
       end
@@ -141,17 +141,17 @@ describe Fog::OpenStack::Image do
         found_image.name = image_name + '_updated'
         found_image.save
 
-        created_image.name.must_equal image_name + '_original',
+        _(created_image.name).must_equal image_name + '_original',
         created_image.reload
-        created_image.name.must_equal image_name + '_updated'
+        _(created_image.name).must_equal image_name + '_updated'
 
         # verify an image provided by `find_by_id` can be reloaded
         created_image.name = image_name + '_updated_again'
         created_image.save
 
-        found_image.name.must_equal image_name + '_updated'
+        _(found_image.name).must_equal image_name + '_updated'
         found_image.reload
-        found_image.name.must_equal image_name + '_updated_again'
+        _(found_image.name).must_equal image_name + '_updated_again'
       ensure
         cleanup_image nil, image_name
       end
@@ -180,23 +180,23 @@ describe Fog::OpenStack::Image do
         foobar_id = foobar_image.id
 
         # Status should be queued
-        @service.images.find_by_id(foobar_id).status.must_match(/queued/)
+        _(@service.images.find_by_id(foobar_id).status).must_match(/queued/)
 
         # Upload data from File or IO object
         foobar_image.upload_data File.new(image_path, 'r')
 
         # Status should be saving or active
-        @service.images.find_by_id(foobar_id).status.must_match(/saving|active/)
+        _(@service.images.find_by_id(foobar_id).status).must_match(/saving|active/)
 
         # Get an IO object from which to download image data - wait until finished saving though
         while @service.images.find_by_id(foobar_id).status == 'saving'
           sleep 1
         end
-        @service.images.find_by_id(foobar_id).status.must_equal 'active'
+        _(@service.images.find_by_id(foobar_id).status).must_equal 'active'
 
         # Bulk download
         downloaded_data = foobar_image.download_data
-        downloaded_data.size.must_equal File.size(image_path)
+        _(downloaded_data.size).must_equal File.size(image_path)
       ensure
         cleanup_image foobar_image, image_name
       end
@@ -221,7 +221,7 @@ describe Fog::OpenStack::Image do
         end
 
         foobar_image.deactivate
-        proc { foobar_image.download_data }.must_raise Excon::Errors::Forbidden
+        _(proc { foobar_image.download_data }).must_raise Excon::Errors::Forbidden
 
         foobar_image.reactivate
         foobar_image.download_data
@@ -242,16 +242,16 @@ describe Fog::OpenStack::Image do
         foobar_id = foobar_image.id
 
         foobar_image.add_tag 'tag1'
-        @service.images.find_by_id(foobar_id).tags.must_include 'tag1'
+        _(@service.images.find_by_id(foobar_id).tags).must_include 'tag1'
 
         foobar_image.add_tags %w[tag2 tag3 tag4]
-        @service.images.find_by_id(foobar_id).tags.must_equal %w[tag4 tag1 tag2 tag3]
+        _(@service.images.find_by_id(foobar_id).tags).must_equal %w[tag4 tag1 tag2 tag3]
 
         foobar_image.remove_tag 'tag2'
-        @service.images.find_by_id(foobar_id).tags.must_equal %w[tag4 tag1 tag3]
+        _(@service.images.find_by_id(foobar_id).tags).must_equal %w[tag4 tag1 tag3]
 
         foobar_image.remove_tags %w[tag1 tag3]
-        @service.images.find_by_id(foobar_id).tags.must_include 'tag4'
+        _(@service.images.find_by_id(foobar_id).tags).must_include 'tag4'
       ensure
         cleanup_image foobar_image, image_name
       end
@@ -266,20 +266,20 @@ describe Fog::OpenStack::Image do
         # Create an image called foobar
         foobar_image = @service.images.create(:name => image_name)
 
-        foobar_image.members.size.must_equal 0
+        _(foobar_image.members.size).must_equal 0
         foobar_image.add_member tenant_id
-        foobar_image.members.size.must_equal 1
+        _(foobar_image.members.size).must_equal 1
 
         member = foobar_image.member tenant_id
-        member.wont_equal nil
-        member['status'].must_equal 'pending'
+        _(member).wont_equal nil
+        _(member['status']).must_equal 'pending'
 
         member['status'] = 'accepted'
         foobar_image.update_member member
-        foobar_image.member(tenant_id)['status'].must_equal 'accepted'
+        _(foobar_image.member(tenant_id)['status']).must_equal 'accepted'
 
         foobar_image.remove_member member['member_id']
-        foobar_image.members.size.must_equal 0
+        _(foobar_image.members.size).must_equal 0
       ensure
         cleanup_image foobar_image, image_name
       end
@@ -338,7 +338,7 @@ describe Fog::OpenStack::Image do
     it 'finds image' do
       existing_image_id = 'fe05659e-d433-4e09-aa78-19e0b7f5e497'
       VCR.use_cassette('images_v2_find_by_id') do
-        @service.images.find_by_id(existing_image_id).id.must_equal existing_image_id
+        _(@service.images.find_by_id(existing_image_id).id).must_equal existing_image_id
       end
     end
 

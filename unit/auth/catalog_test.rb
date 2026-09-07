@@ -123,45 +123,45 @@ describe Fog::OpenStack::Auth::Catalog::V3 do
   describe '#get_endpoint_url' do
     it 'with matching name, interface and region' do
       catalog = Fog::OpenStack::Auth::Catalog::V3.new(payload)
-      catalog.get_endpoint_url('identity', 'admin', 'regionTwo').must_equal 'http://localhost2:35357'
+      _(catalog.get_endpoint_url('identity', 'admin', 'regionTwo')).must_equal 'http://localhost2:35357'
     end
 
     it 'with matching name and interface using avail region' do
       catalog = Fog::OpenStack::Auth::Catalog::V3.new(payload)
-      catalog.get_endpoint_url('network', %w[dummy admin]).must_equal 'http://localhost:9696'
+      _(catalog.get_endpoint_url('network', %w[dummy admin])).must_equal 'http://localhost:9696'
     end
 
     it 'with matching name and interface list' do
       catalog = Fog::OpenStack::Auth::Catalog::V3.new(payload)
-      catalog.get_endpoint_url('network', %w[dummy admin]).must_equal 'http://localhost:9696'
+      _(catalog.get_endpoint_url('network', %w[dummy admin])).must_equal 'http://localhost:9696'
     end
 
     it 'with matching name and interface and several regions available' do
       catalog = Fog::OpenStack::Auth::Catalog::V3.new(payload)
-      proc do
+      _(proc do
         catalog.get_endpoint_url('identity', 'admin')
-      end.must_raise Fog::OpenStack::Auth::Catalog::EndpointError
+      end).must_raise Fog::OpenStack::Auth::Catalog::EndpointError
     end
 
     it 'with unmatched name for service type' do
       catalog = Fog::OpenStack::Auth::Catalog::V3.new(payload)
-      proc do
+      _(proc do
         catalog.get_endpoint_url('service', 'public')
-      end.must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
+      end).must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
     end
 
     it 'with unmatched region' do
       catalog = Fog::OpenStack::Auth::Catalog::V3.new(payload)
-      proc do
+      _(proc do
         catalog.get_endpoint_url('identity', 'admin', 'regionOther')
-      end.must_raise Fog::OpenStack::Auth::Catalog::EndpointError
+      end).must_raise Fog::OpenStack::Auth::Catalog::EndpointError
     end
 
     it 'with unmatched interface' do
       catalog = Fog::OpenStack::Auth::Catalog::V3.new(payload)
-      proc do
+      _(proc do
         catalog.get_endpoint_url('identity', 'private')
-      end.must_raise Fog::OpenStack::Auth::Catalog::EndpointError
+      end).must_raise Fog::OpenStack::Auth::Catalog::EndpointError
     end
   end
 end
@@ -213,40 +213,40 @@ describe Fog::OpenStack::Auth::Catalog::V2 do
   describe '#get_endpoint_url' do
     it 'match name, interface and region' do
       catalog = Fog::OpenStack::Auth::Catalog::V2.new(payload)
-      catalog.get_endpoint_url('identity', 'internal', 'regionTwo').must_equal 'http://localhost:9999/v2.0'
+      _(catalog.get_endpoint_url('identity', 'internal', 'regionTwo')).must_equal 'http://localhost:9999/v2.0'
     end
 
     it 'match name, interface and unique region available' do
       catalog = Fog::OpenStack::Auth::Catalog::V2.new(payload)
-      catalog.get_endpoint_url('compute', 'internal').must_equal 'http://localhost:7777/v1.0'
+      _(catalog.get_endpoint_url('compute', 'internal')).must_equal 'http://localhost:7777/v1.0'
     end
 
     it 'fails when multiple region match' do
       catalog = Fog::OpenStack::Auth::Catalog::V2.new(payload)
-      proc do
+      _(proc do
         catalog.get_endpoint_url('identity', 'admin')
-      end.must_raise Fog::OpenStack::Auth::Catalog::EndpointError
+      end).must_raise Fog::OpenStack::Auth::Catalog::EndpointError
     end
 
     it 'with unmatched arguments' do
       catalog = Fog::OpenStack::Auth::Catalog::V2.new(payload)
-      proc do
+      _(proc do
         catalog.get_endpoint_url('test', 'unknown', 'regionOther')
-      end.must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
+      end).must_raise Fog::OpenStack::Auth::Catalog::ServiceTypeError
     end
 
     it 'with unmatched region' do
       catalog = Fog::OpenStack::Auth::Catalog::V2.new(payload)
-      proc do
+      _(proc do
         catalog.get_endpoint_url('identity', 'admin', 'regionOther')
-      end.must_raise Fog::OpenStack::Auth::Catalog::EndpointError
+      end).must_raise Fog::OpenStack::Auth::Catalog::EndpointError
     end
 
     it 'with unmatched interface' do
       catalog = Fog::OpenStack::Auth::Catalog::V2.new(payload)
-      proc do
+      _(proc do
         catalog.get_endpoint_url('identity', 'private', 'regionTwo')
-      end.must_raise Fog::OpenStack::Auth::Catalog::EndpointError
+      end).must_raise Fog::OpenStack::Auth::Catalog::EndpointError
     end
   end
 end

@@ -25,11 +25,11 @@ describe "Fog::OpenStack::Network | lb_vip" do
     end
 
     after do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
 
     it "#create" do
-      @instance.id.wont_be_nil
+      _(@instance.id).wont_be_nil
     end
 
     it "#update" do
@@ -39,7 +39,7 @@ describe "Fog::OpenStack::Network | lb_vip" do
       @instance.session_persistence = {"type" => "HTTP_COOKIE"}
       @instance.connection_limit = 5
       @instance.admin_state_up = false
-      @instance.update.status.must_equal "ACTIVE"
+      _(@instance.update.status).must_equal "ACTIVE"
     end
   end
 end

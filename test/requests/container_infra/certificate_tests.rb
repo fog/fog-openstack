@@ -41,12 +41,12 @@ describe "Fog::OpenStack::ContainerInfra | certificate requests" do
     end
 
     it "#create_certificate" do
-      @certificate.must_match_schema(@certificate_format)
+      _(@certificate).must_match_schema(@certificate_format)
     end
 
     it "#get_certificate" do
       bay_uuid = container_infra.clusters.all.first.uuid
-      container_infra.get_certificate(bay_uuid).body.must_match_schema(@certificate_format)
+      _(container_infra.get_certificate(bay_uuid).body).must_match_schema(@certificate_format)
     end
   end
 end

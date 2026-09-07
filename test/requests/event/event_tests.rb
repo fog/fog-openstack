@@ -11,12 +11,12 @@ describe "Fog::OpenStack::Event | event requests" do
 
   describe "success" do
     it "#list_events" do
-      @metering.list_events.body.
+      _(@metering.list_events.body).
         must_match_schema([@event_format])
     end
 
     it "#get_event" do
-      @metering.get_event('test').body.
+      _(@metering.get_event('test').body).
         must_match_schema(@event_format)
     end
   end

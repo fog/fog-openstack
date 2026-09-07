@@ -22,11 +22,11 @@ describe "Fog::OpenStack::DNS::V2 | pool requests" do
 
   describe "success" do
     it "#list_pools" do
-      @dns.list_pools.body.must_match_schema("pools" => [@pool_format])
+      _(@dns.list_pools.body).must_match_schema("pools" => [@pool_format])
     end
 
     it "#get_pool" do
-      @dns.get_pool(@pool_id).body.must_match_schema(@pool_format)
+      _(@dns.get_pool(@pool_id).body).must_match_schema(@pool_format)
     end
   end
 end

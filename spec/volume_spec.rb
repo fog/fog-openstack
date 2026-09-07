@@ -1,8 +1,11 @@
 require 'spec_helper'
 require_relative './shared_context'
 
+# NOTE: Fog::OpenStack::Volume, the version-negotiating entry point, is covered
+# by unit/volume_test.rb rather than here. It authenticates once per version it
+# tries, and these cassettes recorded exactly one token request each, so they
+# cannot represent version negotiation.
 [
-  Fog::OpenStack::Volume,
   Fog::OpenStack::Volume::V1,
   Fog::OpenStack::Volume::V2
 ].delete_if { |the_class| ENV['TEST_CLASS'] && ENV['TEST_CLASS'] != the_class.name }.each do |service_class|
@@ -38,7 +41,7 @@ require_relative './shared_context'
         puts "Checking for leftovers..." if ENV['DEBUG_VERBOSE']
         volume_name = options[@name_param]
         # if this fails, cleanup this object (it was left over from a failed test run)
-        @service.volumes.all(@name_param => volume_name).length.must_equal 0
+        _(@service.volumes.all(@name_param => volume_name).length).must_equal 0
 
         puts "Creating volume #{volume_name}..." if ENV['DEBUG_VERBOSE']
         return @service.volumes.create(options)
@@ -47,7 +50,7 @@ require_relative './shared_context'
         puts "Checking for leftovers..." if ENV['DEBUG_VERBOSE']
         transfer_name = options[:name]
         # if this fails, cleanup this object (it was left over from a failed test run)
-        @service.transfers.all(:name => transfer_name).length.must_equal 0
+        _(@service.transfers.all(:name => transfer_name).length).must_equal 0
 
         puts "Creating transfer #{transfer_name}..." if ENV['DEBUG_VERBOSE']
         return @service.transfers.create(options)
@@ -56,7 +59,7 @@ require_relative './shared_context'
         puts "Checking for leftovers..." if ENV['DEBUG_VERBOSE']
         snapshot_name = options[@name_param]
         # if this fails, cleanup this object (it was left over from a failed test run)
-        @service.snapshots.all(@name_param => snapshot_name).length.must_equal 0
+        _(@service.snapshots.all(@name_param => snapshot_name).length).must_equal 0
 
         puts "Creating snapshot #{snapshot_name}..." if ENV['DEBUG_VERBOSE']
         return @service.snapshots.create(options)
@@ -110,20 +113,20 @@ require_relative './shared_context'
                                                      @description_param => volume_description,
                                                      :size              => volume_size).id
 
-          @service.volumes.all(@name_param => volume_name).length.must_equal 1
+          _(@service.volumes.all(@name_param => volume_name).length).must_equal 1
 
           # check retrieval of volume by ID
           puts "Retrieving volume by ID..." if ENV['DEBUG_VERBOSE']
 
           volume = @service.volumes.get(volume_id)
-          volume.must_be_kind_of Fog::OpenStack::Volume::Volume
+          _(volume).must_be_kind_of Fog::OpenStack::Volume::Volume
 
-          volume.id.must_equal volume_id
-          volume.display_name.must_equal volume_name unless v2?
-          volume.name.must_equal volume_name if v2?
-          volume.display_description.must_equal volume_description unless v2?
-          volume.description.must_equal volume_description if v2?
-          volume.size.must_equal volume_size
+          _(volume.id).must_equal volume_id
+          _(volume.display_name).must_equal volume_name unless v2?
+          _(volume.name).must_equal volume_name if v2?
+          _(volume.display_description).must_equal volume_description unless v2?
+          _(volume.description).must_equal volume_description if v2?
+          _(volume.size).must_equal volume_size
 
           puts "Waiting for volume to be available..." if ENV['DEBUG_VERBOSE']
           volume.wait_for { ready? }
@@ -132,25 +135,25 @@ require_relative './shared_context'
           puts "Retrieving volume by name..." if ENV['DEBUG_VERBOSE']
 
           volumes = @service.volumes.all(@name_param => volume_name)
-          volumes.length.must_equal 1
+          _(volumes.length).must_equal 1
           volume = volumes[0]
-          volume.must_be_kind_of Fog::OpenStack::Volume::Volume
+          _(volume).must_be_kind_of Fog::OpenStack::Volume::Volume
 
-          volume.id.must_equal volume_id
-          volume.display_name.must_equal volume_name unless v2?
-          volume.name.must_equal volume_name if v2?
-          volume.display_description.must_equal volume_description unless v2?
-          volume.description.must_equal volume_description if v2?
-          volume.size.must_equal volume_size
+          _(volume.id).must_equal volume_id
+          _(volume.display_name).must_equal volume_name unless v2?
+          _(volume.name).must_equal volume_name if v2?
+          _(volume.display_description).must_equal volume_description unless v2?
+          _(volume.description).must_equal volume_description if v2?
+          _(volume.size).must_equal volume_size
 
           # Update the volume's name
           volume.update(@name_param => volume_new_name)
 
           volumes = @service.volumes.all(@name_param => volume_new_name)
           volume  = volumes.first
-          volume.must_be_kind_of Fog::OpenStack::Volume::Volume
-          volume.display_name.must_equal volume_new_name unless v2?
-          volume.name.must_equal volume_new_name if v2?
+          _(volume).must_be_kind_of Fog::OpenStack::Volume::Volume
+          _(volume.display_name).must_equal volume_new_name unless v2?
+          _(volume.name).must_equal volume_new_name if v2?
 
           # Check that save does an update
           volume.description         = volume_new_description if v2?
@@ -158,8 +161,8 @@ require_relative './shared_context'
           volume.save
 
           volume = @service.volumes.get(volume_id)
-          volume.display_description.must_equal volume_new_description unless v2?
-          volume.description.must_equal volume_new_description if v2?
+          _(volume.display_description).must_equal volume_new_description unless v2?
+          _(volume.description).must_equal volume_new_description if v2?
         ensure
           # delete volume
           cleanup_test_object(@service.volumes, volume_id)
@@ -173,9 +176,9 @@ require_relative './shared_context'
         puts "Listing volume types..." if ENV['DEBUG_VERBOSE']
 
         types = @service.volume_types.all
-        types.length.must_be :>, 0
+        _(types.length).must_be :>, 0
         types.each do |type|
-          type.name.must_be_kind_of String
+          _(type.name).must_be_kind_of String
         end
 
         type_id   = types[0].id
@@ -185,17 +188,17 @@ require_relative './shared_context'
         puts "Retrieving volume type by ID..." if ENV['DEBUG_VERBOSE']
 
         type = @service.volume_types.get(type_id)
-        type.must_be_kind_of Fog::OpenStack::Volume::VolumeType
-        type.id.must_equal type_id
-        type.name.must_equal type_name
+        _(type).must_be_kind_of Fog::OpenStack::Volume::VolumeType
+        _(type.id).must_equal type_id
+        _(type.name).must_equal type_name
 
         # get a single volume type by name
         puts "Retrieving volume type by name..." if ENV['DEBUG_VERBOSE']
 
         type = @service.volume_types.all(type_name).first
-        type.must_be_kind_of Fog::OpenStack::Volume::VolumeType
-        type.id.must_equal type_id
-        type.name.must_equal type_name
+        _(type).must_be_kind_of Fog::OpenStack::Volume::VolumeType
+        _(type.id).must_equal type_id
+        _(type.name).must_equal type_name
       end
     end
 
@@ -216,21 +219,23 @@ require_relative './shared_context'
           volume.wait_for do
             status == 'error_extending' || (ready? && size == volume_size_large)
           end
-          volume.status.wont_equal 'error_extending'
+          _(volume.status).wont_equal 'error_extending'
 
           # shrinking is not allowed in OpenStack
           puts "Shrinking volume should fail..." if ENV['DEBUG_VERBOSE']
-          proc do
+          error = _(proc do
             volume.extend(volume_size_small)
-          end.must_raise(Excon::Errors::BadRequest,
-                         /Invalid input received: New size for extend must be greater than current size./)
+          end).must_raise(Excon::Errors::BadRequest)
+          _(error.message).must_match(
+            /Invalid input received: New size for extend must be greater than current size./
+          )
         ensure
           # delete volume
           cleanup_test_object(@service.volumes, volume.nil? ? nil : volume.id)
 
           # check that extending a non-existing volume fails
           puts "Extending deleted volume should fail..." if ENV['DEBUG_VERBOSE']
-          proc { @service.extend_volume(volume.id, volume_size_small) }.must_raise Fog::OpenStack::Volume::NotFound
+          _(proc { @service.extend_volume(volume.id, volume_size_small) }).must_raise Fog::OpenStack::Volume::NotFound
         end
       end
     end
@@ -259,23 +264,23 @@ require_relative './shared_context'
           puts 'Retrieving transfer by ID...' if ENV['DEBUG_VERBOSE']
 
           transfer = @service.transfers.get(transfer_id)
-          transfer.must_be_kind_of Fog::OpenStack::Volume::Transfer
+          _(transfer).must_be_kind_of Fog::OpenStack::Volume::Transfer
 
-          transfer.id.must_equal transfer_id
-          transfer.name.must_equal transfer_name
-          transfer.volume_id.must_equal volume.id
+          _(transfer.id).must_equal transfer_id
+          _(transfer.name).must_equal transfer_name
+          _(transfer.volume_id).must_equal volume.id
 
           # check retrieval of transfer by name
           puts 'Retrieving transfer by name...' if ENV['DEBUG_VERBOSE']
 
           transfers = @service.transfers.all(:name => transfer_name)
-          transfers.length.must_equal 1
+          _(transfers.length).must_equal 1
           transfer = transfers[0]
-          transfer.must_be_kind_of Fog::OpenStack::Volume::Transfer
+          _(transfer).must_be_kind_of Fog::OpenStack::Volume::Transfer
 
-          transfer.id.must_equal transfer_id
-          transfer.name.must_equal transfer_name
-          transfer.volume_id.must_equal volume.id
+          _(transfer.id).must_equal transfer_id
+          _(transfer.name).must_equal transfer_name
+          _(transfer.volume_id).must_equal volume.id
           # to accept the transfer, we need a second connection to a different project
           puts 'Checking object visibility from different projects...' if ENV['DEBUG_VERBOSE']
           other_service = service_class.new(
@@ -289,7 +294,7 @@ require_relative './shared_context'
 
           # check that recipient cannot see the transfer object
           assert_nil other_service.transfers.get(transfer.id)
-          other_service.transfers.all(:name => transfer_name).length.must_equal 0
+          _(other_service.transfers.all(:name => transfer_name).length).must_equal 0
 
           # # check that recipient cannot see the volume before transfer
           # proc { other_service.volumes.get(volume.id) }.must_raise Fog::OpenStack::Compute::NotFound
@@ -297,25 +302,25 @@ require_relative './shared_context'
 
           # The recipient can inexplicably see the volume even before the
           # transfer, so to confirm that the transfer happens, we record its tenant ID.
-          volume.tenant_id.must_match(/^[0-9a-f-]+$/) # should look like a UUID
+          _(volume.tenant_id).must_match(/^[0-9a-f-]+$/) # should look like a UUID
           source_tenant_id = volume.tenant_id
 
           # check that accept_transfer fails without valid transfer ID and auth key
           bogus_uuid = 'ec8ff7e8-81e2-4e12-b9fb-3e8890612c2d' # from Fog::UUID.uuid, but fixed to play nice with VCR
-          proc { other_service.transfers.accept(bogus_uuid, auth_key) }.must_raise Fog::OpenStack::Volume::NotFound
-          proc { other_service.transfers.accept(transfer_id, 'invalidauthkey') }.must_raise Excon::Errors::BadRequest
+          _(proc { other_service.transfers.accept(bogus_uuid, auth_key) }).must_raise Fog::OpenStack::Volume::NotFound
+          _(proc { other_service.transfers.accept(transfer_id, 'invalidauthkey') }).must_raise Excon::Errors::BadRequest
 
           # accept transfer
           puts 'Accepting transfer...' if ENV['DEBUG_VERBOSE']
           transfer = other_service.transfers.accept(transfer.id, auth_key)
-          transfer.must_be_kind_of Fog::OpenStack::Volume::Transfer
+          _(transfer).must_be_kind_of Fog::OpenStack::Volume::Transfer
 
-          transfer.id.must_equal transfer_id
-          transfer.name.must_equal transfer_name
+          _(transfer.id).must_equal transfer_id
+          _(transfer.name).must_equal transfer_name
 
           # check that recipient can see the volume
           volume = other_service.volumes.get(volume.id)
-          volume.must_be_kind_of Fog::OpenStack::Volume::Volume
+          _(volume).must_be_kind_of Fog::OpenStack::Volume::Volume
 
           # # check that sender cannot see the volume anymore
           # proc { @service.volumes.get(volume.id) }.must_raise Fog::OpenStack::Compute::NotFound
@@ -323,13 +328,13 @@ require_relative './shared_context'
 
           # As noted above, both users seem to be able to see the volume at all times.
           # Check change of ownership by looking at the tenant_id, instead.
-          volume.tenant_id.must_match(/^[0-9a-f-]+$/) # should look like a UUID
-          volume.tenant_id.wont_equal(source_tenant_id)
+          _(volume.tenant_id).must_match(/^[0-9a-f-]+$/) # should look like a UUID
+          _(volume.tenant_id).wont_equal(source_tenant_id)
 
           # check that the transfer object is gone on both sides
           [@service, other_service].each do |service|
             assert_nil service.transfers.get(transfer.id)
-            service.transfers.all(:name => transfer_name).length.must_equal 0
+            _(service.transfers.all(:name => transfer_name).length).must_equal 0
           end
         ensure
           # cleanup volume
@@ -373,7 +378,7 @@ require_relative './shared_context'
 
             # check that transfer cannot be accepted when it has been deleted
             puts 'Checking that accepting a deleted transfer fails...' if ENV['DEBUG_VERBOSE']
-            proc { other_service.transfers.accept(transfer_id, auth_key) }.must_raise Fog::OpenStack::Volume::NotFound
+            _(proc { other_service.transfers.accept(transfer_id, auth_key) }).must_raise Fog::OpenStack::Volume::NotFound
           ensure
             # cleanup volume
             cleanup_test_object(@service.volumes, volume.id) if volume
@@ -402,7 +407,7 @@ require_relative './shared_context'
           Fog.wait_for do
             begin
               object = @service.snapshots.get(snapshot.id)
-              object.wont_be_nil
+              _(object).wont_be_nil
               puts "Current status: #{object ? object.status : 'deleted'}" if ENV['DEBUG_VERBOSE']
               object.nil? || (%w[available error].include? object.status.downcase)
             end
@@ -412,8 +417,8 @@ require_relative './shared_context'
           snapshot.update(@description_param => 'Updated description')
 
           updated_snapshot = @service.snapshots.get(snapshot.id)
-          updated_snapshot.description.must_equal 'Updated description' if v2?
-          updated_snapshot.display_description.must_equal 'Updated description' unless v2?
+          _(updated_snapshot.description).must_equal 'Updated description' if v2?
+          _(updated_snapshot.display_description).must_equal 'Updated description' unless v2?
 
           # delete snapshot
           snapshot.destroy
@@ -451,9 +456,9 @@ require_relative './shared_context'
 
           updated_volume = @service.volumes.get(volume.id)
           check_metadata = updated_volume.metadata
-          check_metadata.size.must_equal 2
-          check_metadata['some_metadata'].must_equal 'this is meta'
-          check_metadata['more_metadata'].must_equal 'even more meta'
+          _(check_metadata.size).must_equal 2
+          _(check_metadata['some_metadata']).must_equal 'this is meta'
+          _(check_metadata['more_metadata']).must_equal 'even more meta'
 
           # update metadata
           volume.update_metadata('some_metadata' => 'this is updated',
@@ -461,10 +466,10 @@ require_relative './shared_context'
 
           updated_volume = @service.volumes.get(volume.id)
           check_metadata = updated_volume.metadata
-          check_metadata.size.must_equal 3
-          check_metadata['some_metadata'].must_equal 'this is updated'
-          check_metadata['more_metadata'].must_equal 'even more meta'
-          check_metadata['new_metadata'].must_equal 'this is new'
+          _(check_metadata.size).must_equal 3
+          _(check_metadata['some_metadata']).must_equal 'this is updated'
+          _(check_metadata['more_metadata']).must_equal 'even more meta'
+          _(check_metadata['new_metadata']).must_equal 'this is new'
 
           # replace metadata
           volume.replace_metadata('some_metadata'  => 'this is updated again',
@@ -472,17 +477,17 @@ require_relative './shared_context'
 
           updated_volume = @service.volumes.get(volume.id)
           check_metadata = updated_volume.metadata
-          check_metadata.size.must_equal 2
-          check_metadata['some_metadata'].must_equal 'this is updated again'
-          check_metadata['newer_metadata'].must_equal 'this is newer'
+          _(check_metadata.size).must_equal 2
+          _(check_metadata['some_metadata']).must_equal 'this is updated again'
+          _(check_metadata['newer_metadata']).must_equal 'this is newer'
 
           # delete metadata
           volume.delete_metadata('some_metadata')
 
           updated_volume = @service.volumes.get(volume.id)
           check_metadata = updated_volume.metadata
-          check_metadata.size.must_equal 1
-          check_metadata['newer_metadata'].must_equal 'this is newer'
+          _(check_metadata.size).must_equal 1
+          _(check_metadata['newer_metadata']).must_equal 'this is newer'
         ensure
           # cleanup volume
           cleanup_test_object(@service.volumes, volume.id) if volume
@@ -512,7 +517,7 @@ require_relative './shared_context'
           Fog.wait_for do
             begin
               object = @service.snapshots.get(snapshot_id)
-              object.wont_be_nil
+              _(object).wont_be_nil
               puts "Current status: #{object ? object.status : 'deleted'}" if ENV['DEBUG_VERBOSE']
               object.nil? || (%w[available error].include? object.status.downcase)
             end
@@ -520,7 +525,7 @@ require_relative './shared_context'
 
           updated_snapshot = @service.snapshots.get(snapshot_id)
           check_metadata   = updated_snapshot.metadata
-          check_metadata.size.must_equal 0
+          _(check_metadata.size).must_equal 0
 
           # update metadata
           snapshot.update_metadata('some_snapshot_metadata' => 'this is data',
@@ -528,17 +533,17 @@ require_relative './shared_context'
 
           updated_snapshot = @service.snapshots.get(snapshot_id)
           check_metadata   = updated_snapshot.metadata
-          check_metadata.size.must_equal 2
-          check_metadata['some_snapshot_metadata'].must_equal 'this is data'
-          check_metadata['new_snapshot_metadata'].must_equal 'this is new'
+          _(check_metadata.size).must_equal 2
+          _(check_metadata['some_snapshot_metadata']).must_equal 'this is data'
+          _(check_metadata['new_snapshot_metadata']).must_equal 'this is new'
 
           # delete metadata
           snapshot.delete_metadata('some_snapshot_metadata')
 
           updated_snapshot = @service.snapshots.get(snapshot_id)
           check_metadata   = updated_snapshot.metadata
-          check_metadata.size.must_equal 1
-          check_metadata['new_snapshot_metadata'].must_equal 'this is new'
+          _(check_metadata.size).must_equal 1
+          _(check_metadata['new_snapshot_metadata']).must_equal 'this is new'
         ensure
           # cleanup volume
           cleanup_test_object(@service.snapshots, snapshot.id) if snapshot
@@ -549,7 +554,7 @@ require_relative './shared_context'
 
     # TODO: tests for snapshots
     it 'responds to list_snapshots_detailed' do
-      @service.respond_to?(:list_snapshots_detailed).must_equal true
+      _(@service.respond_to?(:list_snapshots_detailed)).must_equal true
     end
 
     # TODO: tests for quotas

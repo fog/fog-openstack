@@ -22,22 +22,22 @@ describe "Fog::Identity[:openstack] | EC2 credential requests" do
 
   describe "success" do
     it "#create_ec2_credential" do
-      @response.body.must_match_schema('credential' => @credential_format)
+      _(@response.body).must_match_schema('credential' => @credential_format)
     end
 
     it "#get_ec2_credential" do
-      @identity.get_ec2_credential(@user_id, @ec2_credential['access']).body.
+      _(@identity.get_ec2_credential(@user_id, @ec2_credential['access']).body).
         must_match_schema('credential' => @credential_format)
     end
 
     it "#list_ec2_credentials" do
-      @identity.list_ec2_credentials(@user_id).body.
+      _(@identity.list_ec2_credentials(@user_id).body).
         must_match_schema('credentials' => [@credential_format])
     end
 
     it "#delete_ec2_credential" do
-      @identity.delete_ec2_credential(@user_id, @ec2_credential['access']).
-        status.must_equal 204
+      _(@identity.delete_ec2_credential(@user_id, @ec2_credential['access']).
+        status).must_equal 204
     end
   end
 end

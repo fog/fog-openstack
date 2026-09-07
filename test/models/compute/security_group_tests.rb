@@ -16,19 +16,19 @@ describe "Fog::OpenStack::Compute | security_group" do
 
     describe "#create" do
       it "name" do
-        security_group.name.must_equal 'my_group'
+        _(security_group.name).must_equal 'my_group'
       end
 
       it "description" do
-        security_group.description.must_equal 'my group'
+        _(security_group.description).must_equal 'my group'
       end
 
       it "security_group_rules" do
-        security_group.security_group_rules.must_equal []
+        _(security_group.security_group_rules).must_equal []
       end
 
       it "tenant_id" do
-        security_group.tenant_id.wont_be_nil
+        _(security_group.tenant_id).wont_be_nil
       end
     end
 
@@ -42,9 +42,9 @@ describe "Fog::OpenStack::Compute | security_group" do
           :to_port         => 1234,
           :ip_range        => {"cidr" => "0.0.0.0/0"}
         )
-        security_group.security_group_rules.count.must_equal(rules_count + 1)
+        _(security_group.security_group_rules.count).must_equal(rules_count + 1)
         security_group_rule = security_group.security_group_rules.find { |r| r.id == rule.id }
-        security_group_rule.attributes.must_equal rule.attributes
+        _(security_group_rule.attributes).must_equal rule.attributes
       end
 
       it "#destroy" do
@@ -58,7 +58,7 @@ describe "Fog::OpenStack::Compute | security_group" do
           :ip_range        => {"cidr" => "0.0.0.0/0"}
         )
         rule.destroy
-        rule.reload.must_equal nil
+        _(rule.reload).must_be_nil
       end
     end
   end

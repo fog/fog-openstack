@@ -37,18 +37,18 @@ describe "Fog::OpenStack::Network | port requests" do
     end
 
     it "#create_port" do
-      @port.must_match_schema('port' => @port_format)
+      _(@port).must_match_schema('port' => @port_format)
     end
 
     it "#list_port" do
       # Breaks because sometimes "security_groups" => nil
       skip unless Minitest::Test::UNIT_TESTS_CLEAN
-      network.list_ports.body.must_match_schema('ports' => [@port_format])
+      _(network.list_ports.body).must_match_schema('ports' => [@port_format])
     end
 
     it "#get_port" do
       port_id = network.ports.all.first.id
-      network.get_port(port_id).body.must_match_schema('port' => @port_format)
+      _(network.get_port(port_id).body).must_match_schema('port' => @port_format)
     end
 
     it "#update_port" do
@@ -61,33 +61,33 @@ describe "Fog::OpenStack::Network | port requests" do
         :device_id      => 'device_id'
       }
 
-      network.update_port(port_id, attributes).body.
+      _(network.update_port(port_id, attributes).body).
         must_match_schema('port' => @port_format)
     end
 
     it "#delete_port" do
       port_id = network.ports.all.first.id
-      network.delete_port(port_id).status.must_equal 204
+      _(network.delete_port(port_id).status).must_equal 204
     end
   end
 
   describe "failure" do
     it "#get_port" do
-      proc do
+      _(proc do
         network.get_port(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_port" do
-      proc do
+      _(proc do
         network.update_port(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_port" do
-      proc do
+      _(proc do
         network.delete_port(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

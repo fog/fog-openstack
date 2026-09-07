@@ -21,16 +21,16 @@ describe "Fog::OpenStack::Network | security_group requests" do
     end
 
     it "#create_security_group('fog_security_group', 'tests group')" do
-      @security_group.must_match_schema(@security_group_format)
+      _(@security_group).must_match_schema(@security_group_format)
     end
 
     it "#get_security_group('#{@sec_group_id}')" do
-      network.get_security_group(@sec_group_id).body["security_group"].
+      _(network.get_security_group(@sec_group_id).body["security_group"]).
         must_match_schema(@security_group_format)
     end
 
     it "#list_security_groups" do
-      network.list_security_groups.body.
+      _(network.list_security_groups.body).
         must_match_schema('security_groups' => [@security_group_format])
     end
 
@@ -41,26 +41,26 @@ describe "Fog::OpenStack::Network | security_group requests" do
         :description => "New sg desc",
       }
       updated = network.update_security_group(security_group_id, attributes)
-      updated.body.must_match_schema("security_group" => @security_group_format)
-      updated.body["security_group"]["name"].must_equal "new_security_group_name"
+      _(updated.body).must_match_schema("security_group" => @security_group_format)
+      _(updated.body["security_group"]["name"]).must_equal "new_security_group_name"
     end
 
     it "#delete_security_group('#{@sec_group_id}')" do
-      network.delete_security_group(@sec_group_id).status.must_equal 204
+      _(network.delete_security_group(@sec_group_id).status).must_equal 204
     end
   end
 
   describe "failure" do
     it "#get_security_group(0)" do
-      proc do
+      _(proc do
         network.get_security_group(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_security_group(0)" do
-      proc do
+      _(proc do
         network.delete_security_group(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

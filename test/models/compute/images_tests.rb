@@ -6,11 +6,11 @@ describe "Fog::OpenStack::Compute | images collection" do
       let (:fog) { Fog::OpenStack::Compute.new }
 
       it "must be an Array" do
-        fog.images.all.must_be_kind_of Array
+        _(fog.images.all).must_be_kind_of Array
       end
 
       it "wont be nil" do
-        fog.images.all.wont_be_nil
+        _(fog.images.all).wont_be_nil
       end
     end
   end

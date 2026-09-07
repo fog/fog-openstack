@@ -25,11 +25,11 @@ describe "Fog::OpenStack::Network | ipsec_policies" do
 
   describe "success" do
     it "#all" do
-      @ipsec_policies.all[0].description.must_equal 'Test VPN ipsec Policy'
+      _(@ipsec_policies.all[0].description).must_equal 'Test VPN ipsec Policy'
     end
 
     it "#get" do
-      @ipsec_policies.get(@ipsec_policy.id).name.must_equal "test-ipsec-policy"
+      _(@ipsec_policies.get(@ipsec_policy.id).name).must_equal "test-ipsec-policy"
     end
   end
 end

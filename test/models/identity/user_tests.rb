@@ -19,41 +19,41 @@ describe "Fog::Identity[:openstack] | user" do
     end
 
     it "#save" do
-      @instance_saved.must_equal true
+      _(@instance_saved).must_equal true
     end
 
     it "#roles" do
-      @instance.roles.must_be_empty
+      _(@instance.roles).must_be_empty
     end
 
     it "#update" do
-      @instance.update(:name => 'updatename', :email => 'new@email.com').
+      _(@instance.update(:name => 'updatename', :email => 'new@email.com')).
         must_equal true
     end
 
     it "#update_password" do
-      @instance.update_password('swordfish').must_equal true
+      _(@instance.update_password('swordfish')).must_equal true
     end
 
     it "#update_tenant" do
-      @instance.update_tenant(@tenant_id).must_equal true
+      _(@instance.update_tenant(@tenant_id)).must_equal true
     end
 
     it "#update_enabled" do
-      @instance.update_enabled(true).must_equal true
+      _(@instance.update_enabled(true)).must_equal true
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 
   describe "failure" do
     it "#save" do
       skip
-      proc do
+      _(proc do
         @instance.save
-      end.must_raise(Fog::Errors::Error)
+      end).must_raise(Fog::Errors::Error)
     end
   end
 end

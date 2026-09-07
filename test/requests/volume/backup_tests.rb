@@ -18,16 +18,16 @@ describe "Fog::OpenStack::Volume | backup requests" do
 
   describe "success" do
     it "create_backup" do
-      @backup.must_match_schema(@backup_format)
+      _(@backup).must_match_schema(@backup_format)
     end
 
     it "#get_backup_details" do
-      @volume.get_backup_details(@backup['id']).body['backup'].
+      _(@volume.get_backup_details(@backup['id']).body['backup']).
         must_match_schema(@backup_format)
     end
 
     it "#list_backups_detailed" do
-      @volume.list_backups_detailed.body['backups'].
+      _(@volume.list_backups_detailed.body['backups']).
         must_match_schema([@backup_format])
     end
 

@@ -59,13 +59,13 @@ describe "OpenStack | versions, ['openstack']" do
       {:status => 300, :body => Fog::JSON.encode(@body)}
     )
 
-    proc do
+    _(proc do
       Fog::OpenStack.get_supported_version(
         /v3(\.(0|1))*/,
         URI('http://example/'),
         "authtoken"
       )
-    end.must_raise Fog::OpenStack::Errors::ServiceUnavailable
+    end).must_raise Fog::OpenStack::Errors::ServiceUnavailable
   end
 
   after do

@@ -29,7 +29,7 @@ describe Fog::OpenStack::Network do
           :ip_version => 4,
           :gateway_ip => nil
         )
-        subnet.name.must_equal 'my-network'
+        _(subnet.name).must_equal 'my-network'
       ensure
         subnet.destroy if subnet
         foonet.destroy if foonet
@@ -52,23 +52,23 @@ describe Fog::OpenStack::Network do
           :target_tenant => other_project.id,
           :action        => 'access_as_shared'
         )
-        rbac.target_tenant.must_equal other_project.id
-        foonet.reload.shared.must_equal false
-        @service.rbac_policies.all(:object_id => foonet.id).length.must_equal 1
+        _(rbac.target_tenant).must_equal other_project.id
+        _(foonet.reload.shared).must_equal false
+        _(@service.rbac_policies.all(:object_id => foonet.id).length).must_equal 1
 
         # get
-        @service.rbac_policies.find_by_id(rbac.id).wont_equal nil
+        _(@service.rbac_policies.find_by_id(rbac.id)).wont_equal nil
 
         # change share target to own project
         rbac.target_tenant = own_project.id
         rbac.save
-        foonet.reload.shared.must_equal true
+        _(foonet.reload.shared).must_equal true
 
         # delete the sharing
         rbac.destroy
         rbac = nil
-        @service.rbac_policies.all(:object_id => foonet.id).length.must_equal 0
-        foonet.reload.shared.must_equal false
+        _(@service.rbac_policies.all(:object_id => foonet.id).length).must_equal 0
+        _(foonet.reload.shared).must_equal false
       ensure
         rbac.destroy if rbac
         foonet.destroy if foonet
@@ -97,12 +97,12 @@ describe Fog::OpenStack::Network do
         service.instance_variable_set("@auth_token", @network_token.reverse)
         # with token
         if index == 0
-          err = -> { service.security_groups.all(:limit => 2) }.must_raise Excon::Errors::Unauthorized
-          err.message.must_match(/Authentication required/)
+          err = _(-> { service.security_groups.all(:limit => 2) }).must_raise Excon::Errors::Unauthorized
+          _(err.message).must_match(/Authentication required/)
         # with username+password
         else
           @after = service.security_groups.all(:limit => 2).first.tenant_id
-          @before.must_equal @after
+          _(@before).must_equal @after
         end
       end
     end

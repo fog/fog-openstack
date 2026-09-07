@@ -16,7 +16,7 @@ describe "Fog::Identity[:openstack] | tenant" do
 
     it "#users" do
       instance = @identity.tenants.first
-      instance.users.count.wont_equal @identity.users.count
+      _(instance.users.count).wont_equal @identity.users.count
     end
   end
 
@@ -26,16 +26,16 @@ describe "Fog::Identity[:openstack] | tenant" do
     end
 
     it "#create" do
-      @instance.id.nil?.wont_be_nil
+      _(@instance.id.nil?).wont_be_nil
     end
 
     it "#update" do
       @instance.update(:name => 'test2')
-      @instance.name.must_equal 'test2'
+      _(@instance.name).must_equal 'test2'
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

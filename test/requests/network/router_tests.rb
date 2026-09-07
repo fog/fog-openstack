@@ -23,16 +23,16 @@ describe "Fog::OpenStack::Network | router requests" do
     end
 
     it "#create_router" do
-      @router.must_match_schema('router' => @router_format)
+      _(@router).must_match_schema('router' => @router_format)
     end
 
     it "#list_routers" do
-      network.list_routers.body.must_match_schema('routers' => [@router_format])
+      _(network.list_routers.body).must_match_schema('routers' => [@router_format])
     end
 
     it "#get_router" do
       router_id = network.routers.all.first.id
-      network.get_router(router_id).body.must_match_schema('router' => @router_format)
+      _(network.get_router(router_id).body).must_match_schema('router' => @router_format)
     end
 
     it "#update_router" do
@@ -43,7 +43,7 @@ describe "Fog::OpenStack::Network | router requests" do
         :status                => 'ACTIVE',
         :admin_state_up        => true
       }
-      network.update_router(router_id, attributes).body.must_match_schema('router' => @router_format)
+      _(network.update_router(router_id, attributes).body).must_match_schema('router' => @router_format)
     end
 
     it "#update_router_with_network" do
@@ -56,32 +56,32 @@ describe "Fog::OpenStack::Network | router requests" do
         :admin_state_up        => true
       }
 
-      network.update_router(router_id, attributes).body.must_match_schema('router' => @router_format)
+      _(network.update_router(router_id, attributes).body).must_match_schema('router' => @router_format)
     end
 
     it "#delete_router" do
       router_id = network.routers.all.last.id
-      network.delete_router(router_id).status.must_equal 204
+      _(network.delete_router(router_id).status).must_equal 204
     end
   end
 
   describe "failure" do
     it "#get_router" do
-      proc do
+      _(proc do
         network.get_router(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#update_router" do
-      proc do
+      _(proc do
         network.update_router(0, {})
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
 
     it "#delete_router" do
-      proc do
+      _(proc do
         network.delete_router(0)
-      end.must_raise Fog::OpenStack::Network::NotFound
+      end).must_raise Fog::OpenStack::Network::NotFound
     end
   end
 end

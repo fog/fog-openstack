@@ -30,32 +30,32 @@ describe "Fog::Identity[:openstack] | ec2_credentials" do
       ec2_credential =
         @user.ec2_credentials.find_by_access_key(@ec2_credential.access)
 
-      ec2_credential.access.must_equal @ec2_credential.access
+      _(ec2_credential.access).must_equal @ec2_credential.access
     end
 
     it "#create" do
-      @user.ec2_credentials.create.tenant_id.wont_be_empty
+      _(@user.ec2_credentials.create.tenant_id).wont_be_empty
     end
 
     it "#destroy" do
-      @user.ec2_credentials.destroy(@ec2_credential.access).must_equal true
+      _(@user.ec2_credentials.destroy(@ec2_credential.access)).must_equal true
     end
   end
 
   describe "fails" do
     it "#find_by_access_key" do
       unless Fog.mocking?
-        proc do
+        _(proc do
           @user.ec2_credentials.find_by_access_key('fake')
-        end.must_raise(Fog::OpenStack::Identity::NotFound)
+        end).must_raise(Fog::OpenStack::Identity::NotFound)
       end
     end
 
     it "#destroy" do
       unless Fog.mocking?
-        proc do
+        _(proc do
           @user.ec2_credentials.destroy('fake')
-        end.must_raise(Fog::OpenStack::Identity::NotFound)
+        end).must_raise(Fog::OpenStack::Identity::NotFound)
       end
     end
   end

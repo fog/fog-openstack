@@ -12,9 +12,9 @@ describe Fog::OpenStack::Auth::Token do
             :headers => {'x-subject-token'=>'token_data'}
           )
 
-        proc do
+        _(proc do
           Fog::OpenStack::Auth::Token.build({}, {})
-        end.must_raise Fog::OpenStack::Auth::Token::URLError
+        end).must_raise Fog::OpenStack::Auth::Token::URLError
       end
 
       describe 'using the password method' do
@@ -37,7 +37,7 @@ describe Fog::OpenStack::Auth::Token do
               )
 
             token = Fog::OpenStack::Auth::Token.build(auth, {})
-            token.get.must_equal 'token_data_v3'
+            _(token.get).must_equal 'token_data_v3'
           end
 
           it 'authenticates using a project name and a project domain id' do
@@ -60,7 +60,7 @@ describe Fog::OpenStack::Auth::Token do
               )
 
             token = Fog::OpenStack::Auth::Token.build(auth, {})
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
 
           it 'authenticates using a project name and a project domain name' do
@@ -84,7 +84,7 @@ describe Fog::OpenStack::Auth::Token do
               )
 
             token = Fog::OpenStack::Auth::Token.build(auth, {})
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
         end
 
@@ -107,7 +107,7 @@ describe Fog::OpenStack::Auth::Token do
               )
 
             token = Fog::OpenStack::Auth::Token.build(auth, {})
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
 
           it 'authenticates using a domain name' do
@@ -128,7 +128,7 @@ describe Fog::OpenStack::Auth::Token do
               )
 
             token = Fog::OpenStack::Auth::Token.build(auth, {})
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
         end
 
@@ -150,7 +150,7 @@ describe Fog::OpenStack::Auth::Token do
               )
 
             token = Fog::OpenStack::Auth::Token.build(auth, {})
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
         end
       end
@@ -172,7 +172,7 @@ describe Fog::OpenStack::Auth::Token do
               )
 
             token = Fog::OpenStack::Auth::Token.build(auth, {})
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
         end
 
@@ -194,7 +194,7 @@ describe Fog::OpenStack::Auth::Token do
               )
 
             token = Fog::OpenStack::Auth::Token.build(auth, {})
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
 
           it 'authenticates using a project name and a project domain id' do
@@ -215,7 +215,7 @@ describe Fog::OpenStack::Auth::Token do
               )
 
             token = Fog::OpenStack::Auth::Token.build(auth, {})
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
         end
 
@@ -237,7 +237,7 @@ describe Fog::OpenStack::Auth::Token do
               )
 
             token = Fog::OpenStack::Auth::Token.build(auth, {})
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
 
           it 'authenticates using a domain name' do
@@ -257,7 +257,7 @@ describe Fog::OpenStack::Auth::Token do
               )
 
             token = Fog::OpenStack::Auth::Token.build(auth, {})
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
         end
       end
@@ -285,7 +285,7 @@ describe Fog::OpenStack::Auth::Token do
 
           token = Fog::OpenStack::Auth::Token.build(authv3_creds, {})
           token.stub :expired?, false do
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
         end
 
@@ -299,7 +299,7 @@ describe Fog::OpenStack::Auth::Token do
 
           token = Fog::OpenStack::Auth::Token.build(authv3_creds, {})
           token.stub :expired?, true do
-            token.get.must_equal 'token_data'
+            _(token.get).must_equal 'token_data'
           end
         end
       end
@@ -313,7 +313,7 @@ describe Fog::OpenStack::Auth::Token do
           )
 
         token = Fog::OpenStack::Auth::Token.build(authv3_creds, {})
-        token.catalog.payload.must_equal ['catalog_data']
+        _(token.catalog.payload).must_equal ['catalog_data']
       end
 
       it '#get_endpoint_url' do
@@ -325,7 +325,7 @@ describe Fog::OpenStack::Auth::Token do
           )
 
         token = Fog::OpenStack::Auth::Token.build(authv3_creds, {})
-        token.catalog.get_endpoint_url(%w[identity], 'public', 'regionOne').must_equal 'http://localhost'
+        _(token.catalog.get_endpoint_url(%w[identity], 'public', 'regionOne')).must_equal 'http://localhost'
       end
     end
   end
@@ -336,9 +336,9 @@ describe Fog::OpenStack::Auth::Token do
         stub_request(:post, 'http://localhost/identity/v2.0/tokens').
           to_return(:status => 200, :body => "{\"access\":{\"token\":{\"id\":\"token_data\"}}}", :headers => {})
 
-        proc do
+        _(proc do
           Fog::OpenStack::Auth::Token.build({}, {})
-        end.must_raise Fog::OpenStack::Auth::Token::URLError
+        end).must_raise Fog::OpenStack::Auth::Token::URLError
       end
 
       describe 'using the password method' do
@@ -356,7 +356,7 @@ describe Fog::OpenStack::Auth::Token do
             to_return(:status => 200, :body => JSON.dump(auth_response_v2('identity', 'keystone')), :headers => {})
 
           token = Fog::OpenStack::Auth::Token.build(auth, {})
-          token.get.must_equal '4ae647d3a5294690a3c29bc658e17e26'
+          _(token.get).must_equal '4ae647d3a5294690a3c29bc658e17e26'
         end
 
         it 'authenticates using the tenant id' do
@@ -373,7 +373,7 @@ describe Fog::OpenStack::Auth::Token do
             to_return(:status => 200, :body => JSON.dump(auth_response_v2('identity', 'keystone')), :headers => {})
 
           token = Fog::OpenStack::Auth::Token.build(auth, {})
-          token.get.must_equal '4ae647d3a5294690a3c29bc658e17e26'
+          _(token.get).must_equal '4ae647d3a5294690a3c29bc658e17e26'
         end
       end
 
@@ -390,7 +390,7 @@ describe Fog::OpenStack::Auth::Token do
             to_return(:status => 200, :body => JSON.dump(auth_response_v2('identity', 'keystone')), :headers => {})
 
           token = Fog::OpenStack::Auth::Token.build(auth, {})
-          token.get.must_equal '4ae647d3a5294690a3c29bc658e17e26'
+          _(token.get).must_equal '4ae647d3a5294690a3c29bc658e17e26'
         end
 
         it 'authenticates using the tenant id' do
@@ -431,7 +431,7 @@ describe Fog::OpenStack::Auth::Token do
 
           token = Fog::OpenStack::Auth::Token.build(authv2_creds, {})
           token.stub :expired?, false do
-            token.get.must_equal 'token_not_expired'
+            _(token.get).must_equal 'token_not_expired'
           end
         end
 
@@ -445,7 +445,7 @@ describe Fog::OpenStack::Auth::Token do
 
           token = Fog::OpenStack::Auth::Token.build(authv2_creds, {})
           token.stub :expired?, true do
-            token.get.must_equal 'token_expired'
+            _(token.get).must_equal 'token_expired'
           end
         end
       end
@@ -459,7 +459,7 @@ describe Fog::OpenStack::Auth::Token do
           )
 
         token = Fog::OpenStack::Auth::Token.build(authv2_creds, {})
-        token.catalog.payload.must_equal ['catalog_data']
+        _(token.catalog.payload).must_equal ['catalog_data']
       end
 
       it '#get_endpoint_url' do
@@ -471,7 +471,7 @@ describe Fog::OpenStack::Auth::Token do
           )
 
         token = Fog::OpenStack::Auth::Token.build(authv2_creds, {})
-        token.catalog.get_endpoint_url(%w[identity], 'public', 'regionOne').must_equal 'http://localhost'
+        _(token.catalog.get_endpoint_url(%w[identity], 'public', 'regionOne')).must_equal 'http://localhost'
       end
     end
   end

@@ -22,11 +22,11 @@ describe "Fog::OpenStack::Compute | volume requests" do
 
   describe "success" do
     it "#create_volume" do
-      @volume.must_match_schema('volume' => @volume_format)
+      _(@volume).must_match_schema('volume' => @volume_format)
     end
 
     it "#list_volumes" do
-      @compute.list_volumes.body.must_match_schema('volumes' => [@volume_format])
+      _(@compute.list_volumes.body).must_match_schema('volumes' => [@volume_format])
     end
 
     describe "body" do
@@ -35,12 +35,12 @@ describe "Fog::OpenStack::Compute | volume requests" do
       end
 
       it "#get_volume_detail" do
-        @compute.get_volume_details(@volume_id).
-          body.must_match_schema('volume' => @volume_format)
+        _(@compute.get_volume_details(@volume_id).
+          body).must_match_schema('volume' => @volume_format)
       end
 
       it "delete_volume" do
-        @compute.delete_volume(@volume_id).status.must_equal 204
+        _(@compute.delete_volume(@volume_id).status).must_equal 204
       end
     end
   end

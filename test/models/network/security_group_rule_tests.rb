@@ -27,11 +27,11 @@ describe "Fog::OpenStack::Network | security_group_rule model" do
     end
 
     it "#create" do
-      @secgrouprule.id.wont_be_nil
+      _(@secgrouprule.id).wont_be_nil
     end
 
     it "#destroy" do
-      @secgrouprule.destroy.must_equal true
+      _(@secgrouprule.destroy).must_equal true
     end
   end
 end

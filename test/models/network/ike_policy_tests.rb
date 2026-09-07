@@ -21,7 +21,7 @@ describe "Fog::OpenStack::Network | ike_policy" do
     end
 
     it "#create" do
-      @instance.id.wont_be_nil
+      _(@instance.id).wont_be_nil
     end
 
     it "#update" do
@@ -34,11 +34,11 @@ describe "Fog::OpenStack::Network | ike_policy" do
       @phase1_negotiation_mode       = 'main'
       @ike_version                   = 'v1'
       @lifetime                      = {'units' => 'seconds', 'value' => 3600}
-      @instance.update.name.must_equal "rename-test-ike-policy"
+      _(@instance.update.name).must_equal "rename-test-ike-policy"
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

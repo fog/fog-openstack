@@ -13,7 +13,7 @@ describe "Fog::OpenStack::Network | network" do
     end
 
     it "#create" do
-      @instance.id.wont_be_nil
+      _(@instance.id).wont_be_nil
     end
 
     it "#create+extensions" do
@@ -30,9 +30,9 @@ describe "Fog::OpenStack::Network | network" do
         :provider_segmentation_id => 22
       )
 
-      net.status.must_equal "ACTIVE"
+      _(net.status).must_equal "ACTIVE"
       net.destroy
-      net.provider_network_type.must_equal 'gre'
+      _(net.provider_network_type).must_equal 'gre'
     end
 
     describe "The network model should respond to" do
@@ -53,18 +53,18 @@ describe "Fog::OpenStack::Network | network" do
 
       it "attributes" do
         @attributes.each do |attribute|
-          @instance.respond_to?(attribute).must_equal true
+          _(@instance.respond_to?(attribute)).must_equal true
         end
       end
     end
 
     it "#update" do
       @instance.name = 'new_net_name'
-      @instance.update.status.must_equal "ACTIVE"
+      _(@instance.update.status).must_equal "ACTIVE"
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

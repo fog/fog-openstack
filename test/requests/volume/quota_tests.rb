@@ -16,12 +16,12 @@ describe "Fog::OpenStack::Volume | quota requests" do
 
   describe "success" do
     it "#get_quota_defaults" do
-      @volume.get_quota_defaults(@tenant_id).body.
+      _(@volume.get_quota_defaults(@tenant_id).body).
         must_match_schema('quota_set' => @quota_set_format)
     end
 
     it "#get_quota" do
-      @quota.must_match_schema(@quota_set_format)
+      _(@quota).must_match_schema(@quota_set_format)
     end
 
     it "updates quota" do
@@ -31,7 +31,7 @@ describe "Fog::OpenStack::Volume | quota requests" do
       )
 
       @volume.update_quota(@tenant_id, @new_values.clone)
-      @volume.get_quota(@tenant_id).body['quota_set'].must_match_schema @new_values
+      _(@volume.get_quota(@tenant_id).body['quota_set']).must_match_schema @new_values
     end
   end
 end

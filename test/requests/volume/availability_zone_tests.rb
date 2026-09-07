@@ -10,7 +10,7 @@ describe "Fog::OpenStack::Volume | availability zone requests" do
 
   describe "success" do
     it "#list_zones" do
-      Fog::OpenStack::Volume.new.list_zones.body.
+      _(Fog::OpenStack::Volume.new.list_zones.body).
         must_match_schema('availabilityZoneInfo' => [@flavor_format])
     end
   end

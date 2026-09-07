@@ -18,11 +18,11 @@ describe "Fog::OpenStack::Network | lb_members" do
 
   describe "success" do
     it "#all" do
-      @lb_members.all[0].status.must_equal "ACTIVE"
+      _(@lb_members.all[0].status).must_equal "ACTIVE"
     end
 
     it "#get" do
-      @lb_members.get(@lb_member.id).status.must_equal "ACTIVE"
+      _(@lb_members.get(@lb_member.id).status).must_equal "ACTIVE"
     end
   end
 end

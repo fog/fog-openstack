@@ -22,22 +22,22 @@ describe "Fog::OpenStack::Compute | Compute aggregate requests" do
 
   describe "success" do
     it "#create_aggregate" do
-      @aggregate_body.must_match_schema('aggregate' => @aggregate_format)
+      _(@aggregate_body).must_match_schema('aggregate' => @aggregate_format)
     end
 
     it "#list_aggregates" do
-      @compute.list_aggregates.body.
+      _(@compute.list_aggregates.body).
         must_match_schema('aggregates' => [@metadata_aggregate_format])
     end
 
     it "#update_aggregate" do
       @aggregate_attributes = {'name' => 'test_aggregate2'}
-      @compute.update_aggregate(@aggregate['id'], @aggregate_attributes).body.
+      _(@compute.update_aggregate(@aggregate['id'], @aggregate_attributes).body).
         must_match_schema('aggregate' => @aggregate_format)
     end
 
     it "#get_aggregate" do
-      @compute.get_aggregate(@aggregate['id']).body.
+      _(@compute.get_aggregate(@aggregate['id']).body).
         must_match_schema('aggregate' => @detailed_aggregate_format)
     end
 
@@ -47,20 +47,21 @@ describe "Fog::OpenStack::Compute | Compute aggregate requests" do
       end
 
       it "#add_aggregate_host" do
-        @compute.add_aggregate_host(@aggregate['id'], host_name).status.must_equal 200
+        _(@compute.add_aggregate_host(@aggregate['id'], host_name).status).must_equal 200
       end
 
       it "#remove_aggregate_host" do
-        @compute.remove_aggregate_host(@aggregate['id'], host_name).status.must_equal 200
+        _(@compute.remove_aggregate_host(@aggregate['id'], host_name).status).must_equal 200
       end
     end
 
     it "#update_aggregate_metadata" do
-      @compute.update_aggregate_metadata(@aggregate['id'], 'test' => 'test', 'test2' => 'test2').status.must_equal 200
+      metadata = {'test' => 'test', 'test2' => 'test2'}
+      _(@compute.update_aggregate_metadata(@aggregate['id'], metadata).status).must_equal 200
     end
 
     it "#delete_aggregate" do
-      @compute.delete_aggregate(@aggregate['id']).status.must_equal 200
+      _(@compute.delete_aggregate(@aggregate['id']).status).must_equal 200
     end
   end
 end

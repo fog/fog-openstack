@@ -21,7 +21,7 @@ describe "Fog::OpenStack::Network | ipsec_policy" do
     end
 
     it "#create" do
-      @instance.id.wont_be_nil
+      _(@instance.id).wont_be_nil
     end
 
     it "#update" do
@@ -34,11 +34,11 @@ describe "Fog::OpenStack::Network | ipsec_policy" do
       @instance.transform_protocol   = 'espn'
       @instance.encapsulation_mode   = 'tunnel'
       @instance.lifetime             = {'units' => 'seconds', 'value' => 3600}
-      @instance.update.name.must_equal 'rename-test-ipsec-policy'
+      _(@instance.update.name).must_equal 'rename-test-ipsec-policy'
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

@@ -11,12 +11,12 @@ describe "Fog::OpenStack::Compute | availability zone requests" do
 
   describe "success" do
     it "#list_zones" do
-      Fog::OpenStack::Compute.new.list_zones.body.
+      _(Fog::OpenStack::Compute.new.list_zones.body).
         must_match_schema('availabilityZoneInfo' => [@flavor_format])
     end
 
     it "#list_zones_detailed" do
-      Fog::OpenStack::Compute.new.list_zones_detailed.body.
+      _(Fog::OpenStack::Compute.new.list_zones_detailed.body).
         must_match_schema('availabilityZoneInfo' => [@flavor_format])
     end
   end

@@ -47,16 +47,16 @@ describe "Fog::OpenStack::ContainerInfra | bay requests" do
     end
 
     it "#create_bay" do
-      @bay.must_match_schema({"uuid" => String})
+      _(@bay).must_match_schema({"uuid" => String})
     end
 
     it "#list_bays" do
-      container_infra.list_bays.body.must_match_schema('bays' => [@bay_format])
+      _(container_infra.list_bays.body).must_match_schema('bays' => [@bay_format])
     end
 
     it "#get_bay" do
       bay_uuid = container_infra.bays.all.first.uuid
-      container_infra.get_bay(bay_uuid).body.must_match_schema(@bay_format)
+      _(container_infra.get_bay(bay_uuid).body).must_match_schema(@bay_format)
     end
 
     it "#update_bay" do
@@ -69,13 +69,13 @@ describe "Fog::OpenStack::ContainerInfra | bay requests" do
          }
       ]
 
-      container_infra.update_bay(bay_uuid, attributes).body.
+      _(container_infra.update_bay(bay_uuid, attributes).body).
         must_match_schema({"uuid" => String})
     end
 
     it "#delete_bay" do
       bay_uuid = container_infra.bays.all.first.uuid
-      container_infra.delete_bay(bay_uuid).status.must_equal 204
+      _(container_infra.delete_bay(bay_uuid).status).must_equal 204
     end
   end
 end

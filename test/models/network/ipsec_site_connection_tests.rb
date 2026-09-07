@@ -28,7 +28,7 @@ describe "Fog::OpenStack::Network | ipsec_site_connection" do
     end
 
     it "#create" do
-      @instance.id.wont_be_nil
+      _(@instance.id).wont_be_nil
     end
 
     it "#update" do
@@ -48,11 +48,11 @@ describe "Fog::OpenStack::Network | ipsec_site_connection" do
         "timeout"  => 120
       }
 
-      @instance.update.name.must_equal "rename-test-ipsec-site-connection"
+      _(@instance.update.name).must_equal "rename-test-ipsec-site-connection"
     end
 
     it "#destroy" do
-      @instance.destroy.must_equal true
+      _(@instance.destroy).must_equal true
     end
   end
 end

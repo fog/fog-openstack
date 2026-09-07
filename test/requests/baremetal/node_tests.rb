@@ -39,11 +39,11 @@ describe "Fog::OpenStack::Baremetal | Baremetal node requests" do
 
   describe "success" do
     it "#list_nodes" do
-      @baremetal.list_nodes.body.must_match_schema('nodes' => [@node_format])
+      _(@baremetal.list_nodes.body).must_match_schema('nodes' => [@node_format])
     end
 
     it "#list_nodes_detailed" do
-      @baremetal.list_nodes_detailed.body.
+      _(@baremetal.list_nodes_detailed.body).
         must_match_schema('nodes' => [@detailed_node_format])
     end
 
@@ -53,41 +53,41 @@ describe "Fog::OpenStack::Baremetal | Baremetal node requests" do
     end
 
     it "#create_node" do
-      @instance.must_match_schema(@detailed_node_format)
+      _(@instance).must_match_schema(@detailed_node_format)
     end
 
     it "#get_node" do
-      @baremetal.get_node(@instance['uuid']).body.
+      _(@baremetal.get_node(@instance['uuid']).body).
         must_match_schema(@detailed_node_format)
     end
 
     it "#patch_node" do
-      @baremetal.patch_node(
+      _(@baremetal.patch_node(
         @instance['uuid'],
         [{'op' => 'replace', 'path' => '/driver', 'value' => 'pxe_ssh'}]
-      ).body.must_match_schema(@detailed_node_format)
+      ).body).must_match_schema(@detailed_node_format)
     end
 
     it "#set_node_power_state" do
-      @baremetal.set_node_power_state(@instance['uuid'], 'power off').body.
+      _(@baremetal.set_node_power_state(@instance['uuid'], 'power off').body).
         must_match_schema(@detailed_node_format)
     end
 
     it "#set_node_provision_state" do
-      @baremetal.set_node_provision_state(@instance['uuid'], 'manage').body.
+      _(@baremetal.set_node_provision_state(@instance['uuid'], 'manage').body).
         must_match_schema(@detailed_node_format)
     end
 
     it "#set_node_maintenance" do
-      @baremetal.set_node_maintenance(@instance['uuid']).status.must_equal 202
+      _(@baremetal.set_node_maintenance(@instance['uuid']).status).must_equal 202
     end
 
     it "#unset_node_maintenance" do
-      @baremetal.unset_node_maintenance(@instance['uuid']).status.must_equal 202
+      _(@baremetal.unset_node_maintenance(@instance['uuid']).status).must_equal 202
     end
 
     it "#delete_node" do
-      @baremetal.delete_node(@instance['uuid']).status.must_equal 200
+      _(@baremetal.delete_node(@instance['uuid']).status).must_equal 200
     end
   end
 end

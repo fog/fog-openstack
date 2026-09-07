@@ -19,19 +19,19 @@ describe "@vnfd | NFV vnfds requests" do
 
   describe "success" do
     it "#create_vnfds" do
-      @vnfd_body.must_match_schema('vnfd' => @vnfds)
+      _(@vnfd_body).must_match_schema('vnfd' => @vnfds)
     end
 
     it "#list_vnfds" do
-      @nfv.list_vnfds.body.must_match_schema('vnfds' => [@vnfds])
+      _(@nfv.list_vnfds.body).must_match_schema('vnfds' => [@vnfds])
     end
 
     it "#get_vnfds" do
-      @nfv.get_vnfd(@vnfd_body["vnfd"]["id"]).body.must_match_schema('vnfd' => @vnfds)
+      _(@nfv.get_vnfd(@vnfd_body["vnfd"]["id"]).body).must_match_schema('vnfd' => @vnfds)
     end
 
     it "#delete_vnfds" do
-      @nfv.delete_vnfd(@vnfd_body["vnfd"]["id"]).status.must_equal 204
+      _(@nfv.delete_vnfd(@vnfd_body["vnfd"]["id"]).status).must_equal 204
     end
   end
 end

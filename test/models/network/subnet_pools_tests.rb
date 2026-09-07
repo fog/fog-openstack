@@ -21,11 +21,11 @@ describe 'Fog::OpenStack::Network | subnet_pools' do
     end
 
     it '#all' do
-      @subnet_pools.all[0].id.wont_be_empty
+      _(@subnet_pools.all[0].id).wont_be_empty
     end
 
     it '#get' do
-      @subnet_pools.get(@subnet_pool.id).id.wont_be_empty
+      _(@subnet_pools.get(@subnet_pool.id).id).wont_be_empty
     end
   end
 end

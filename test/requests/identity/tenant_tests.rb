@@ -24,21 +24,21 @@ describe "Fog::Identity[:openstack] | tenant requests" do
 
   describe "success" do
     it "#list_tenants" do
-      @identity.list_tenants.body.must_match_schema('tenants' => [@tenant_format], 'tenants_links' => [])
+      _(@identity.list_tenants.body).must_match_schema('tenants' => [@tenant_format], 'tenants_links' => [])
     end
 
     it "#list_roles_for_user_on_tenant(0,1)" do
-      @identity.list_roles_for_user_on_tenant(
+      _(@identity.list_roles_for_user_on_tenant(
         @identity.current_tenant['id'], OpenStack::Identity.get_user_id(@identity)
-      ).body.must_match_schema('roles' => [@role_format])
+      ).body).must_match_schema('roles' => [@role_format])
     end
 
     it "#create_tenant" do
-      @tenant.must_match_schema('tenant' => @tenant_format)
+      _(@tenant).must_match_schema('tenant' => @tenant_format)
     end
 
     it "#get_tenant" do
-      @identity.get_tenant(@tenant['tenant']['id']).body.
+      _(@identity.get_tenant(@tenant['tenant']['id']).body).
         must_match_schema('tenant' => @tenant_format)
     end
 
@@ -48,14 +48,14 @@ describe "Fog::Identity[:openstack] | tenant requests" do
         @tenant['tenant']['id'],
         'name' => tenant_name_update
       )
-      tenant.body.must_match_schema('tenant' => @tenant_format)
+      _(tenant.body).must_match_schema('tenant' => @tenant_format)
     end
 
     it "#update_tenant update name" do
       tenant_name_update = Fog::Mock.random_hex(64)
       tenant = @identity.update_tenant(
         @tenant['tenant']['id'], 'name' => tenant_name_update).body
-      tenant['tenant']['name'].must_equal tenant_name_update
+      _(tenant['tenant']['name']).must_equal tenant_name_update
     end
 
     it "#delete_tenant" do

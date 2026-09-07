@@ -47,16 +47,16 @@ describe "Fog::OpenStack::ContainerInfra | cluster requests" do
     end
 
     it "#create_cluster" do
-      @cluster.must_match_schema("uuid" => String)
+      _(@cluster).must_match_schema("uuid" => String)
     end
 
     it "#list_clusters" do
-      container_infra.list_clusters.body.must_match_schema('clusters' => [@cluster_format])
+      _(container_infra.list_clusters.body).must_match_schema('clusters' => [@cluster_format])
     end
 
     it "#get_cluster" do
       cluster_uuid = container_infra.clusters.all.first.uuid
-      container_infra.get_cluster(cluster_uuid).body.must_match_schema(@cluster_format)
+      _(container_infra.get_cluster(cluster_uuid).body).must_match_schema(@cluster_format)
     end
 
     it "#update_cluster" do
@@ -69,13 +69,13 @@ describe "Fog::OpenStack::ContainerInfra | cluster requests" do
         }
       ]
 
-      container_infra.update_cluster(cluster_uuid, attributes).body.
+      _(container_infra.update_cluster(cluster_uuid, attributes).body).
         must_match_schema({"uuid" => String})
     end
 
     it "#delete_cluster" do
       cluster_uuid = container_infra.clusters.all.first.uuid
-      container_infra.delete_cluster(cluster_uuid).status.must_equal 204
+      _(container_infra.delete_cluster(cluster_uuid).status).must_equal 204
     end
   end
 end

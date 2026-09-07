@@ -25,29 +25,29 @@ describe "Fog::Identity[:openstack] | user requests" do
 
   describe "success" do
     it "#create_user(#{@user_name}, 'mypassword', 'morph@example.com', 't3n4nt1d', true)" do
-      @user.must_match_schema(@user_format, nil, :allow_optional_rules => false)
+      _(@user).must_match_schema(@user_format, nil, :allow_optional_rules => false)
     end
 
     it "#list_users" do
-      @identity.list_users.body["users"][0].must_match_schema(@user_format)
+      _(@identity.list_users.body["users"][0]).must_match_schema(@user_format)
     end
 
     it "#get_user_by_id" do
-      @identity.get_user_by_id(@user['id']).body['user'].must_match_schema(@user_format)
+      _(@identity.get_user_by_id(@user['id']).body['user']).must_match_schema(@user_format)
     end
 
     it "#get_user_by_name" do
-      @identity.get_user_by_name(@user['name']).body['user'].must_match_schema(@user_format)
+      _(@identity.get_user_by_name(@user['name']).body['user']).must_match_schema(@user_format)
     end
 
     it "#update_user" do
-      @identity.update_user(
+      _(@identity.update_user(
         @user['id'], :name => @user_name_update, :email => 'fog@test.com'
-      ).status.must_equal 200
+      ).status).must_equal 200
     end
 
     it "#delete_user" do
-      @identity.delete_user(@user['id']).status.must_equal 204
+      _(@identity.delete_user(@user['id']).status).must_equal 204
     end
   end
 end

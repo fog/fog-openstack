@@ -15,19 +15,19 @@ describe "Fog::NFV[:openstack] | vnf" do
     end
 
     it "#create" do
-      @vnfs.status.must_equal "ACTIVE"
+      _(@vnfs.status).must_equal "ACTIVE"
     end
 
     it "#update" do
       @vnfs.vnf = {:attributes => {:config => "vdus:\n  vdu1:<sample_vdu_config> \n\n"}}
-      @vnfs.update.status.must_equal "ACTIVE"
+      _(@vnfs.update.status).must_equal "ACTIVE"
     end
 
     it "#destroy" do
       sleep(10) unless Fog.mocking?
 
       @vnfs.destroy
-      @vnfd.destroy.must_equal true
+      _(@vnfd.destroy).must_equal true
     end
   end
 end

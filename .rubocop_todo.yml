@@ -6,7 +6,7 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 11
+# Offense count: 14
 # Configuration parameters: EnforcedStyle, AllowedGems.
 # SupportedStyles: Gemfile, gems.rb, gemspec
 Gemspec/DevelopmentDependencies:
@@ -1010,23 +1010,6 @@ Lint/UnusedMethodArgument:
     - 'lib/fog/openstack/storage/requests/put_object.rb'
     - 'lib/fog/openstack/workflow/v2.rb'
 
-# Offense count: 13
-Lint/UriEscapeUnescape:
-  Exclude:
-    - 'lib/fog/openstack/compute/requests/delete_service.rb'
-    - 'lib/fog/openstack/compute/requests/disable_service.rb'
-    - 'lib/fog/openstack/compute/requests/disable_service_log_reason.rb'
-    - 'lib/fog/openstack/compute/requests/enable_service.rb'
-    - 'lib/fog/openstack/storage/requests/delete_multiple_objects.rb'
-    - 'lib/fog/openstack/workflow/v2/requests/delete_action.rb'
-    - 'lib/fog/openstack/workflow/v2/requests/delete_cron_trigger.rb'
-    - 'lib/fog/openstack/workflow/v2/requests/delete_environment.rb'
-    - 'lib/fog/openstack/workflow/v2/requests/delete_workbook.rb'
-    - 'lib/fog/openstack/workflow/v2/requests/get_action.rb'
-    - 'lib/fog/openstack/workflow/v2/requests/get_cron_trigger.rb'
-    - 'lib/fog/openstack/workflow/v2/requests/get_environment.rb'
-    - 'lib/fog/openstack/workflow/v2/requests/get_workbook.rb'
-
 # Offense count: 19
 # This cop supports safe autocorrection (--autocorrect).
 Lint/UselessAssignment:
@@ -1070,7 +1053,7 @@ Lint/Void:
   Exclude:
     - 'spec/image_v2_spec.rb'
 
-# Offense count: 133
+# Offense count: 134
 # Configuration parameters: AllowedMethods, AllowedPatterns, CountRepeatedAttributes, Max.
 Metrics/AbcSize:
   Exclude:
@@ -1191,6 +1174,7 @@ Metrics/AbcSize:
     - 'spec/shared_context.rb'
     - 'spec/volume_spec.rb'
     - 'test/helpers/collection_helper.rb'
+    - 'test/requests/storage/object_tests.rb'
 
 # Offense count: 33
 # Configuration parameters: CountComments, Max, CountAsOne, AllowedMethods, AllowedPatterns.
@@ -1604,6 +1588,18 @@ Style/ClassVars:
     - 'test/requests/compute/address_tests.rb'
     - 'test/requests/compute/server_tests.rb'
 
+# Offense count: 6
+# This cop supports unsafe autocorrection (--autocorrect-all).
+# Configuration parameters: AllowedReceivers.
+Style/CollectionCompact:
+  Exclude:
+    - 'lib/fog/openstack/compute/models/server.rb'
+    - 'lib/fog/openstack/image/v1/requests/create_image.rb'
+    - 'lib/fog/openstack/image/v1/requests/update_image.rb'
+    - 'lib/fog/openstack/storage/models/file.rb'
+    - 'lib/fog/openstack/storage/requests/get_container.rb'
+    - 'lib/fog/openstack/storage/requests/get_containers.rb'
+
 # Offense count: 3
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Style/CommentedKeyword:
@@ -1810,6 +1806,19 @@ Style/HashEachMethods:
     - 'lib/fog/openstack/network/requests/update_router.rb'
     - 'test/requests/orchestration/stack_files_util_tests.rb'
 
+# Offense count: 8
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/HashSlice:
+  Exclude:
+    - 'lib/fog/openstack/compute/models/address.rb'
+    - 'lib/fog/openstack/compute/models/key_pair.rb'
+    - 'lib/fog/openstack/compute/requests/list_images.rb'
+    - 'lib/fog/openstack/compute/requests/list_images_detail.rb'
+    - 'lib/fog/openstack/compute/requests/list_servers.rb'
+    - 'lib/fog/openstack/container_infra/models/bay.rb'
+    - 'lib/fog/openstack/container_infra/models/cluster.rb'
+    - 'lib/fog/openstack/image/v2/requests/update_image_member.rb'
+
 # Offense count: 38
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle, EnforcedShorthandSyntax, UseHashRocketsWithSymbolValues, PreferHashRocketsForNonAlnumEndingSymbols.
@@ -1972,6 +1981,16 @@ Style/NumericLiterals:
     - 'lib/fog/openstack/metering/requests/get_samples.rb'
     - 'lib/fog/openstack/network.rb'
 
+# Offense count: 8
+# This cop supports unsafe autocorrection (--autocorrect-all).
+# Configuration parameters: EnforcedStyle, AllowedMethods, AllowedPatterns.
+# SupportedStyles: predicate, comparison
+Style/NumericPredicate:
+  Exclude:
+    - 'spec/**/*'
+    - 'lib/fog/openstack/identity/v3/models/domains.rb'
+    - 'lib/fog/openstack/identity/v3/models/projects.rb'
+
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AlwaysCorrectToMultiline.
@@ -2068,14 +2087,19 @@ Style/RandomWithOffset:
     - 'lib/fog/openstack/volume/v2/requests/get_volume_details.rb'
     - 'lib/fog/openstack/volume/v3/requests/get_volume_details.rb'
 
-# Offense count: 4
+# Offense count: 29
 # This cop supports safe autocorrection (--autocorrect).
 Style/RedundantBegin:
   Exclude:
     - 'lib/fog/openstack/compute/models/image.rb'
     - 'lib/fog/openstack/compute/models/server.rb'
     - 'lib/fog/openstack/storage/models/directory.rb'
+    - 'spec/identity_v3_spec.rb'
     - 'spec/image_v2_spec.rb'
+    - 'spec/monitoring_spec.rb'
+    - 'spec/network_spec.rb'
+    - 'spec/shared_file_system_spec.rb'
+    - 'spec/volume_spec.rb'
 
 # Offense count: 3
 # This cop supports safe autocorrection (--autocorrect).
@@ -2174,6 +2198,31 @@ Style/RescueStandardError:
     - 'lib/fog/openstack/key_manager/models/secret.rb'
     - 'spec/identity_v3_spec.rb'
     - 'spec/image_v2_spec.rb'
+
+# Offense count: 61
+# This cop supports unsafe autocorrection (--autocorrect-all).
+# Configuration parameters: ConvertCodeThatCanStartToReturnNil, AllowedMethods, MaxChainLength.
+# AllowedMethods: present?, blank?, presence, try, try!
+Style/SafeNavigation:
+  Exclude:
+    - 'lib/fog/openstack/compute/models/metadata.rb'
+    - 'lib/fog/openstack/compute/requests/create_server.rb'
+    - 'lib/fog/openstack/identity/v2/models/ec2_credentials.rb'
+    - 'lib/fog/openstack/image/v1/requests/create_image.rb'
+    - 'lib/fog/openstack/image/v1/requests/update_image.rb'
+    - 'lib/fog/openstack/network/requests/create_router.rb'
+    - 'lib/fog/openstack/orchestration/models/stack.rb'
+    - 'lib/fog/openstack/orchestration/requests/list_events.rb'
+    - 'lib/fog/openstack/orchestration/requests/list_resources.rb'
+    - 'spec/identity_v3_spec.rb'
+    - 'spec/image_v2_spec.rb'
+    - 'spec/image_v2_upload_spec.rb'
+    - 'spec/monitoring_spec.rb'
+    - 'spec/network_spec.rb'
+    - 'spec/volume_spec.rb'
+    - 'test/models/compute/security_group_tests.rb'
+    - 'test/models/compute/server_tests.rb'
+    - 'test/requests/image/image_tests.rb'
 
 # Offense count: 11
 # This cop supports safe autocorrection (--autocorrect).

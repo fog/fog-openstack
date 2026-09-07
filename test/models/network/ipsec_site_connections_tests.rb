@@ -30,11 +30,11 @@ describe "Fog::OpenStack::Network | ipsec_site_connections" do
 
   describe "success" do
     it "#all" do
-      @ipsec_site_connections.all[0].status.must_equal "ACTIVE"
+      _(@ipsec_site_connections.all[0].status).must_equal "ACTIVE"
     end
 
     it "#get" do
-      @ipsec_site_connections.get(@ipsec_site_connection.id).status.must_equal "ACTIVE"
+      _(@ipsec_site_connections.get(@ipsec_site_connection.id).status).must_equal "ACTIVE"
     end
   end
 end

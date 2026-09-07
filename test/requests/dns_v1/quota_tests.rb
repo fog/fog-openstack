@@ -19,7 +19,7 @@ describe "Fog::OpenStack::DNS::V1 | quota requests" do
 
   describe "success" do
     it "#get_quota" do
-      @quota.must_match_schema(@quota_format)
+      _(@quota).must_match_schema(@quota_format)
     end
 
     it "#update_quota" do
@@ -28,8 +28,8 @@ describe "Fog::OpenStack::DNS::V1 | quota requests" do
         'domains'           => @quota['domains'] + 2
       )
 
-      @dns.update_quota(@project_id, new_values.clone).status.must_equal 200
-      @dns.get_quota(@project_id).body.must_equal new_values
+      _(@dns.update_quota(@project_id, new_values.clone).status).must_equal 200
+      _(@dns.get_quota(@project_id).body).must_equal new_values
     end
   end
 end
