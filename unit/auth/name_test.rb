@@ -30,8 +30,8 @@ describe Fog::OpenStack::Auth::Name do
   describe '#to_h' do
     it 'returns the hash of provided attribute' do
       name = Fog::OpenStack::Auth::Name.new('default', 'Default')
-      _(name.to_h(:id)).must_equal(:id => 'default')
-      _(name.to_h(:name)).must_equal(:name => 'Default')
+      _(name.to_h(:id)).must_equal({:id => 'default'})
+      _(name.to_h(:name)).must_equal({:name => 'Default'})
     end
   end
 end
@@ -41,7 +41,7 @@ describe Fog::OpenStack::Auth::User do
     it 'set/get password' do
       user = Fog::OpenStack::Auth::User.new('user_id', 'User')
       user.password = 'secret'
-      _(user.identity).must_equal(:user => {:id => 'user_id', :password => 'secret'})
+      _(user.identity).must_equal({:user => {:id => 'user_id', :password => 'secret'}})
     end
   end
 
@@ -50,21 +50,23 @@ describe Fog::OpenStack::Auth::User do
       it "with user id and user name" do
         user = Fog::OpenStack::Auth::User.new('user_id', 'User')
         user.password = 'secret'
-        _(user.identity).must_equal(:user => {:id => 'user_id', :password => 'secret'})
+        _(user.identity).must_equal({:user => {:id => 'user_id', :password => 'secret'}})
       end
 
       it 'with user name and user domain name' do
         user = Fog::OpenStack::Auth::User.new(nil, 'User')
         user.password = 'secret'
         user.domain = Fog::OpenStack::Auth::Name.new('default', nil)
-        _(user.identity).must_equal(:user => {:name => 'User', :domain => {:id => 'default'}, :password => 'secret'})
+        _(user.identity).must_equal({:user => {:name => 'User', :domain => {:id => 'default'}, :password => 'secret'}})
       end
 
       it 'with user name and domain name' do
         user = Fog::OpenStack::Auth::User.new(nil, 'User')
         user.password = 'secret'
         user.domain = Fog::OpenStack::Auth::Name.new(nil, 'Default')
-        _(user.identity).must_equal(:user => {:name => 'User', :domain => {:name => 'Default'}, :password => 'secret'})
+        _(user.identity).must_equal(
+          {:user => {:name => 'User', :domain => {:name => 'Default'}, :password => 'secret'}}
+        )
       end
     end
 
@@ -90,19 +92,19 @@ describe Fog::OpenStack::Auth::ProjectScope do
   describe '#identity' do
     it "when id is provided it doesn't require domain" do
       project = Fog::OpenStack::Auth::ProjectScope.new('project_id', 'Project')
-      _(project.identity).must_equal(:project => {:id => 'project_id'})
+      _(project.identity).must_equal({:project => {:id => 'project_id'}})
     end
 
     it 'when id is nul and name is provided it uses domain id' do
       project = Fog::OpenStack::Auth::ProjectScope.new(nil, 'Project')
       project.domain = Fog::OpenStack::Auth::Name.new('default', nil)
-      _(project.identity).must_equal(:project => {:name => 'Project', :domain => {:id => 'default'}})
+      _(project.identity).must_equal({:project => {:name => 'Project', :domain => {:id => 'default'}}})
     end
 
     it 'when id is nul and name is provided it uses domain name' do
       project = Fog::OpenStack::Auth::ProjectScope.new(nil, 'Project')
       project.domain = Fog::OpenStack::Auth::Name.new(nil, 'Default')
-      _(project.identity).must_equal(:project => {:name => 'Project', :domain => {:name => 'Default'}})
+      _(project.identity).must_equal({:project => {:name => 'Project', :domain => {:name => 'Default'}}})
     end
 
     it 'raises an error with no project id and no domain are provided' do
